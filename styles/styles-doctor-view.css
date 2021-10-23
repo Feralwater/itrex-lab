@@ -1,0 +1,156 @@
+body {
+    background-color: #e4ebff;
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0 64px;
+}
+
+.header {
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    box-sizing: border-box;
+}
+
+.header__container {
+    max-width: 1792px;
+    margin: 0 auto;
+    height: 100%;
+    padding: 0 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header__logo {
+    display: flex;
+    align-items: center;
+}
+
+.header__logo-image {
+    margin: 0 14px 0 0;
+}
+
+.header__logo-text {
+    text-transform: uppercase;
+    color: #202225;
+    font-weight: 500;
+}
+
+.header__user {
+    display: flex;
+    align-items: center;
+}
+
+.header__user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.header__user-img {
+    margin: 0 0 0 16px;
+    width: 40px;
+    height: 40px;
+}
+
+.header__user-img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    object-fit: contain;
+}
+
+.header__user-name {
+    font-weight: 600;
+    font-size: 15px;
+    color: #202225;
+    text-transform: capitalize;
+    margin: 0 0 4px 0;
+}
+
+.header__user-role {
+    font-weight: 500;
+    font-size: 13px;
+    color: #A1ABC9;
+    text-transform: capitalize;
+    margin: 0;
+}
+
+.patients {
+    max-width: 1792px;
+    height: calc(100vh - 128px);
+    padding: 40px 48px;
+    margin: 80px auto 48px auto;
+    background: #f9faff;
+    box-shadow: 0px 4px 32px rgba(218, 228, 255, 0.32);
+    border-radius: 16px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.patients__container {
+    height: 68vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+}
+
+.patients__buttons-container {
+    display: flex;
+    margin: 0 0 56px 0;
+    gap: 12px;
+}
+
+.patients__title {
+    font-weight: 600;
+    font-size: 24px;
+    color: #202225;
+    text-transform: capitalize;
+}
+
+.patients__btn {
+    width: 160px;
+    display: inline-flex;
+    font-weight: 600;
+    font-size: 15px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    padding: 12px;
+    text-decoration: none;
+}
+
+.patients__btn_blue {
+    color: #FFFFFF;
+    background: #7297ff;
+}
+
+.patients__btn_white {
+    color: #7297ff;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 32px rgba(218, 228, 255, 0.16);
+}
+
+.patients__medical-history {
+    display: flex;
+    flex-direction: column;
+    max-width: 461px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 40px;
+}
+
+.patients__medical-history-text {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 140%;
+    color: #A1ABC9;
+    display: flex;
+    flex-direction: column;
+}
