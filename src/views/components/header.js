@@ -49,6 +49,7 @@ const Header = {
             </div>
             <div class="header__user-img">
                 <img src="${user.avatar}" alt="doctor\`s avatar">
+                <span class="header__user-online"></span>
             </div>
         </div>
     </div>

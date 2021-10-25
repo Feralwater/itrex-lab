@@ -14,7 +14,7 @@ const Main = {
         }
         return `
         <header class="header">${await Header.render({user: me})}</header>
-        <main >${main}</main>
+        <main>${main}</main>
         `
     },
     after_render: async () => {

@@ -12,10 +12,23 @@ const Patients = {
         <a href="#" class="patients__btn patients__btn_blue">Patients</a>
         <a href="#" class="patients__btn patients__btn_white">Resolutions</a>
     </div>
-    <h1 class="patients__title">my patients</h1>
+    <div class="patients__header">
+        <h1 class="patients__title">my patients</h1>
+        <div class="patients__utils">
+            <div class="patients__search-field">
+                <input type="text">
+                <button class="patients__search-btn patients__icon-btn"></button>
+            </div>
+            <select class="patients__filter-btn patients__icon-btn">
+                <option value="Date">Date</option>
+                <option value="Name">Name</option>
+            </select>
+        </div>
+    </div>
     <div class="patients__container">
-    ${patients.length > 0 ? await Promise.all(patients.map((patient) => patientComponent.render(patient))) : `
-     <div class="patients__medical-history">
+        ${patients.length > 0 ?
+            (await Promise.all(patients.map((patient) => patientComponent.render(patient)))).join("")
+            : `<div class="patients__medical-history">
             <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_2:1170)">
                     <path d="M26.4335 120H93.5675C99.9627 120 105.242 114.992 105.242 108.835V27.4076C105.242 21.2515 99.9627 16.2096 93.5675 16.2096H82.9838V9.91648C82.9886 9.27667 82.7381 8.66239 82.2883 8.20876C81.8375 7.75513 81.2251 7.50091 80.5862 7.49997H71.3445C69.5206 3.14514 64.9815 -5.62299e-06 59.8763 -5.62299e-06H59.8375C54.8703 -0.0415881 50.369 2.92117 48.443 7.49997H39.2835C37.9302 7.49146 36.8169 8.5641 36.7743 9.91648V16.2096H26.4335C20.0383 16.2096 14.7583 21.2515 14.7583 27.4076V108.835C14.7583 114.992 20.0383 120 26.4335 120V120ZM41.613 12.3387H50.1658C51.2696 12.3387 52.2336 11.5911 52.5086 10.5213C53.3695 7.17392 56.389 4.83585 59.8451 4.83869H59.8696C63.4221 4.83869 66.5077 7.19093 67.208 10.4278C67.4481 11.542 68.4328 12.3377 69.5725 12.3387H78.1452V24.4354H41.613V12.3387ZM19.597 27.4076C19.597 23.9194 22.7062 21.0483 26.4335 21.0483H36.7743V26.7829C36.8103 28.1504 37.915 29.2476 39.2835 29.2741H80.5862C81.932 29.2382 82.9999 28.1287 82.9838 26.7829V21.0483H93.5675C97.2939 21.0483 100.403 23.9194 100.403 27.4076V108.835C100.403 112.324 97.2939 115.161 93.5675 115.161H26.4335C22.7062 115.161 19.597 112.324 19.597 108.835V27.4076Z"
@@ -38,8 +51,8 @@ const Patients = {
                 <span>To create a patient profile, please contact your administrator.</span>
             </div>
         </div>
-    `}
-       
+        `}
+
     </div>
 </div>
         `
