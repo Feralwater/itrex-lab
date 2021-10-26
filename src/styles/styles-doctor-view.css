@@ -105,14 +105,20 @@ body {
     overflow: hidden;
 }
 
-.patients__container {
+.no-patients__container {
     height: 68vh;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.patients__container {
+    height: 68vh;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-rows: repeat(auto-fit, 264px);
+    gap: 20px 24px;
     overflow: auto;
-    flex-wrap: wrap;
-    gap: 20px;
 }
 
 ::-webkit-scrollbar {
@@ -141,22 +147,6 @@ body {
     align-items: center;
     justify-content: space-between;
     flex-wrap: nowrap;
-}
-
-.patients__icon-btn {
-    outline: none;
-    border: none;
-    width: 20px;
-    height: 20px;
-}
-
-.patients__search-btn {
-    background: url("../img/search-icon.svg") no-repeat center/contain;
-}
-
-.patients__filter-btn {
-    background: url("../img/filter-icon.svg") no-repeat center/contain;
-    margin: 0 0 0 36px;
 }
 
 .patients__title {
@@ -208,11 +198,105 @@ body {
     flex-direction: column;
 }
 
+.fast-search__form {
+    display: flex;
+    align-items: center;
+}
+
+.fast-search__input {
+    background: url("../img/search-icon.svg") no-repeat 12px 50% /contain;
+    background-size: 20px 20px;
+    border: none;
+    box-sizing: border-box;
+    outline: none;
+    padding: 0 10px 0 38px;
+    height: 32px;
+    font-size: 15px;
+    color: #a1abc9;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.fast-search__input::placeholder {
+    font-weight: normal;
+    font-size: 15px;
+    color: #A1ABC9;
+}
+
+.custom-select-label {
+    font-weight: 400;
+    font-size: 15px;
+    color: #A1ABC9;
+    flex-shrink: 0;
+}
+
+.custom-select {
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 400;
+    color: #7297ff;
+    line-height: 140%;
+    padding: 10px 22px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    border: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    /*background-color: transparent;*/
+    background: transparent url("../img/top-arrow.svg") no-repeat 100% 50%/contain;
+    /*background-repeat: no-repeat, repeat;*/
+    /*background-position: right .7em top 50%, 0 0;*/
+    background-size: 11px 7px;
+    cursor: pointer;
+    position: relative;
+}
+
+.custom-select:focus {
+    outline: none;
+}
+
+.custom-select option {
+    font-weight: 400;
+    font-size: 15px;
+    color: #202225;
+}
+
+
+/*.fast-search__submit {*/
+/*    display: none;*/
+/*    background: #e6e6e6;*/
+/*    border: 0;*/
+/*    cursor: pointer;*/
+/*    line-height: 36px;*/
+/*    padding: 0;*/
+/*    width: 86px;*/
+/*    text-align: center;*/
+/*    position: absolute;*/
+/*    top: 2px;*/
+/*    right: 2px;*/
+/*    z-index: 2;*/
+/*}*/
+/*.patients__icon-btn {*/
+/*    outline: none;*/
+/*    border: none;*/
+/*    width: 20px;*/
+/*    height: 20px;*/
+/*}*/
+
+/*.patients__filter-btn {*/
+/*    background: url("../img/filter-icon.svg") no-repeat center/contain;*/
+/*    margin: 0 0 0 36px;*/
+/*}*/
+
 .patient__card {
     display: flex;
-    flex-direction: column;
-    width: 400px;
     height: 264px;
+    flex-direction: column;
+    /*height: fit-content;*/
     background: #FFFFFF;
     box-shadow: 0px 4px 32px rgba(218, 228, 255, 0.24);
     border-radius: 12px;
@@ -239,7 +323,6 @@ body {
 
 .patient__data {
     display: flex;
-    /*align-items: center;*/
     justify-content: center;
     flex-direction: column;
     margin: 0 0 0 16px;
@@ -293,9 +376,9 @@ body {
 }
 
 .patient__body {
-    padding: 24px 32px 0 36px;
+    padding: 24px 32px 40px 36px;
     overflow: hidden;
-    margin: 0 0 40px 0;
+    /*margin: 0 0 40px 0;*/
 }
 
 .patient__description,
@@ -304,10 +387,18 @@ body {
     gap: 18px;
 }
 
+.no-patient__description {
+    display: none;
+}
+
 .patient__description_text {
     font-weight: 400;
     font-size: 15px;
     color: #202225;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .patient__time_text {
@@ -315,4 +406,8 @@ body {
     font-size: 15px;
     color: #202225;
     margin: 0 0 16px 0;
+}
+
+@media screen and (max-width: 768px) {
+
 }

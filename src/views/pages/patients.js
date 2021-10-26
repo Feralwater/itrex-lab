@@ -7,26 +7,28 @@ const Patients = {
     render: async (props) => {
         const patients = getPatients();
         const content = `
-          <div class="patients">
-    <div class="patients__buttons-container">
-        <a href="#" class="patients__btn patients__btn_blue">Patients</a>
-        <a href="#" class="patients__btn patients__btn_white">Resolutions</a>
-    </div>
-    <div class="patients__header">
-        <h1 class="patients__title">my patients</h1>
-        <div class="patients__utils">
-            <div class="patients__search-field">
-                <input type="text">
-                <button class="patients__search-btn patients__icon-btn"></button>
+                <div class="patients">
+            <div class="patients__buttons-container">
+                <a href="#" class="patients__btn patients__btn_blue">Patients</a>
+                <a href="#" class="patients__btn patients__btn_white">Resolutions</a>
             </div>
-            <select class="patients__filter-btn patients__icon-btn">
-                <option value="Date">Date</option>
-                <option value="Name">Name</option>
-            </select>
-        </div>
-    </div>
-    <div class="patients__container">
-        ${patients.length > 0 ?
+            <div class="patients__header">
+                <h1 class="patients__title">my patients</h1>
+                <div class="patients__utils">
+                    <div class="fast-search">
+                        <form class="fast-search__form" action="/" method="get" autocomplete="off">
+                            <input class="fast-search__input" type="text" placeholder="Search">
+                            <label class="custom-select-label" for="sort-select">Sort by:</label>
+                            <select id="sort-select" class="custom-select">
+                                <option value="Date">Date</option>
+                                <option value="Name">Name</option>
+                            </select>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="${patients.length > 0 ? "patients__container" : "no-patients__container"}">
+            ${patients.length > 0 ?
             (await Promise.all(patients.map((patient) => patientComponent.render(patient)))).join("")
             : `<div class="patients__medical-history">
             <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -51,10 +53,9 @@ const Patients = {
                 <span>To create a patient profile, please contact your administrator.</span>
             </div>
         </div>
-        `}
-
-    </div>
-</div>
+            `}
+       </div>
+        </div>
         `
         return await Layout.render(content)
     },
