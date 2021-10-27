@@ -1,20 +1,11 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ITRex-lab</title>
-    <link rel="stylesheet" href="../styles/styles.css">
-    <link rel="stylesheet" href="../styles/normalize.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-</head>
-<body>
-<div class="form-container">
-    <form action="sign-up.html" class="form-box" method="post">
+import Layout from '../layouts/authorization.js'
+
+const SignUp = {
+    layout: Layout,
+    render: async (props) => {
+        const content = `
+            <div class="form-container">
+    <form action="/" class="form-box" method="post">
         <h2 class="form-box__title">Sign up</h2>
         <div class="form-box__input form-box__input_first-name">
             <input type="text" required placeholder="First Name">
@@ -43,8 +34,15 @@
     </form>
     <div class="sign-in-up__message">
         Already have an account?
-        <a href="#" class="sign-in-up__link">Sign in</a>
+        <a href="#/sign-in" class="sign-in-up__link">Sign in</a>
     </div>
 </div>
-</body>
-</html>
+        `
+        return await Layout.render(content)
+    },
+    after_render: async () => {
+    }
+
+}
+
+export default SignUp;

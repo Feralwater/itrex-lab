@@ -9,12 +9,12 @@ const Main = {
     render: async (main) => {
         const me = getMe()
         if (!me) {
-            Utils.onNavigate("/sing-in")
+            Utils.onNavigate("/sign-in");
             return
         }
         return `
         <header class="header">${await Header.render({user: me})}</header>
-        <main>${main}</main>
+        <main class="body-doctor-view">${main}</main>
         `
     },
     after_render: async () => {

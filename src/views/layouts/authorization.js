@@ -1,7 +1,7 @@
 const Authorization = {
-    render: async ({main}) => {
+    render: async (main) => {
         return `
-         <main>${main}</main>
+         <main class="body-auth">${main}</main>
         `
     },
     after_render: async () => {

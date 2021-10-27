@@ -14,18 +14,18 @@ const Patients = {
             </div>
             <div class="patients__header">
                 <h1 class="patients__title">my patients</h1>
-                <div class="patients__utils">
-                    <div class="fast-search">
-                        <form class="fast-search__form" action="/" method="get" autocomplete="off">
-                            <input class="fast-search__input" type="text" placeholder="Search">
-                            <label class="custom-select-label" for="sort-select">Sort by:</label>
-                            <select id="sort-select" class="custom-select">
-                                <option value="Date">Date</option>
-                                <option value="Name">Name</option>
-                            </select>
-                        </form>
-                    </div>
-                </div>
+<!--                <div class="patients__utils">-->
+<!--                    <div class="fast-search">-->
+<!--                        <form class="fast-search__form" action="/" method="get" autocomplete="off">-->
+<!--                            <input class="fast-search__input" type="text" placeholder="Search">-->
+<!--                            <label class="custom-select-label" for="sort-select">Sort by:</label>-->
+<!--                            <select id="sort-select" class="custom-select">-->
+<!--                                <option value="Date">Date</option>-->
+<!--                                <option value="Name">Name</option>-->
+<!--                            </select>-->
+<!--                        </form>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
             <div class="${patients.length > 0 ? "patients__container" : "no-patients__container"}">
             ${patients.length > 0 ?

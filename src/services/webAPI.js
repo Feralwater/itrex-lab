@@ -1,6 +1,7 @@
 export function getMe() {
+    // return undefined
     return {
-        avatar: "../img/doctor-avatar.png",
+        avatar: "img/doctor-avatar.png",
         firstName: "Miranda",
         secondName: "Nelson",
         role: "doctor"
@@ -19,7 +20,7 @@ export function getPatients() {
     // return  []
     return [
         {
-            avatar: "../../img/patient-avatar.png",
+            avatar: "img/patient-avatar.png",
             firstName: "Jane",
             lastName: "Cooper",
             status: statuses.confirmed,
@@ -30,7 +31,7 @@ export function getPatients() {
                 "We will invite you in for a full review every year and more frequently if you are struggling with blood sugar levels"
         },
         {
-            avatar: "../../img/patient-avatar.png",
+            avatar: "img/patient-avatar.png",
             firstName: "Jane",
             lastName: "Cooper",
             status: statuses.canceled,
@@ -38,7 +39,7 @@ export function getPatients() {
             description: "We will invite you in for a full review every year and more frequently if you are struggling with blood sugar levels"
         },
         {
-            avatar: "../../img/patient-avatar.png",
+            avatar: "img/patient-avatar.png",
             firstName: "Jane",
             lastName: "Cooper",
             status: statuses.waiting,
@@ -46,7 +47,7 @@ export function getPatients() {
             description: "We will invite you in for a full review every year and more frequently if you are struggling with blood sugar levels"
         },
         {
-            avatar: "../../img/patient-avatar.png",
+            avatar: "img/patient-avatar.png",
             firstName: "Jane",
             lastName: "Cooper",
             status: statuses.canceled,
@@ -54,7 +55,7 @@ export function getPatients() {
             description: "We will invite you in for a full review every year and more frequently if you are struggling with blood sugar levels"
         },
         {
-            avatar: "../../img/patient-avatar.png",
+            avatar: "img/patient-avatar.png",
             firstName: "Jane",
             lastName: "Cooper",
             status: statuses.confirmed,
@@ -62,7 +63,7 @@ export function getPatients() {
             description: "We will invite you in for a full review every year and more frequently if you are struggling with blood sugar levels"
         },
         {
-            avatar: "../../img/patient-avatar.png",
+            avatar: "img/patient-avatar.png",
             firstName: "Jane",
             lastName: "Cooper",
             status: statuses.canceled,
@@ -70,7 +71,7 @@ export function getPatients() {
             description: "We will invite you in for a full review every year and more frequently if you are struggling with blood sugar levels"
         },
         {
-            avatar: "../../img/patient-avatar.png",
+            avatar: "img/patient-avatar.png",
             firstName: "Jane",
             lastName: "Cooper",
             status: statuses.confirmed,
@@ -78,7 +79,7 @@ export function getPatients() {
             description: "We will invite you in for a full review every year and more frequently if you are struggling with blood sugar levels"
         },
         {
-            avatar: "../../img/patient-avatar.png",
+            avatar: "img/patient-avatar.png",
             firstName: "Jane",
             lastName: "Cooper",
             status: statuses.waiting,
@@ -86,7 +87,7 @@ export function getPatients() {
             description: "We will invite you in for a full review every year and more frequently if you are struggling with blood sugar levels"
         },
         {
-            avatar: "../../img/patient-avatar.png",
+            avatar: "img/patient-avatar.png",
             firstName: "Jane",
             lastName: "Cooper",
             status: statuses.waiting,
@@ -94,7 +95,7 @@ export function getPatients() {
             description: "We will invite you in for a full review every year and more frequently if you are struggling with blood sugar levels"
         },
         {
-            avatar: "../../img/patient-avatar.png",
+            avatar: "img/patient-avatar.png",
             firstName: "Jane",
             lastName: "Cooper",
             status: statuses.confirmed,
@@ -102,7 +103,7 @@ export function getPatients() {
             description: "We will invite you in for a full review every year and more frequently if you are struggling with blood sugar levels"
         },
         {
-            avatar: "../../img/patient-avatar.png",
+            avatar: "img/patient-avatar.png",
             firstName: "Jane",
             lastName: "Cooper",
             status: statuses.confirmed,
@@ -110,7 +111,7 @@ export function getPatients() {
             description: "We will invite you in for a full review every year and more frequently if you are struggling with blood sugar levels"
         },
         {
-            avatar: "../../img/patient-avatar.png",
+            avatar: "img/patient-avatar.png",
             firstName: "Jane",
             lastName: "Cooper",
             status: statuses.waiting,
