@@ -1,6 +1,6 @@
 import Header from "../components/header.js";
 import {getMe} from "../../services/webAPI.js";
-import Utils from "../../services/Utils.js";
+import {onNavigate} from "../../services/Utils.js";
 
 const afterRenderArray = [
     Header,
@@ -9,7 +9,7 @@ const Main = {
     render: async (main) => {
         const me = getMe()
         if (!me) {
-            Utils.onNavigate("/sign-in");
+            onNavigate("/sign-in");
             return
         }
         return `

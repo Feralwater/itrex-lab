@@ -1,19 +1,26 @@
 import Layout from '../layouts/authorization.js'
+import {
+    addEmailValidateHandler,
+    addPasswordValidateHandler,
+    formValidate,
+    visibilityPassword
+} from "../../services/Utils.js";
 
 const SignIn = {
     layout: Layout,
     render: async (props) => {
         const content = `
             <div class="form-container">
-                <form action="/" class="form-box" method="post">
+                <form action="/" class="form-box" method="post" id="form" novalidate>
                     <h2 class="form-box__title">Sign in</h2>
                     <div class="form-box__input form-box__input_email">
-                        <input type="email" required placeholder="Email">
-                        <span class="input-error__message" style="display: none">Email contain unsupported characters</span>
+                        <input data-type="email" type="email" placeholder="Email" id="email">
+                        <span class="input-error__message_non" id="email-error">Email contain unsupported characters</span>
                     </div>
                     <div class="form-box__input form-box__input_password">
-                        <input class="input-error" type="password" required placeholder="Password">
-                        <span class="input-error__message">Password contain unsupported characters</span>
+                        <input data-type="password" type="password" placeholder="Password" id="password" >
+                        <i class="form-box__input_password_icon form-box__input_password_icon-non-visible" id="visibilityBtn"></i>
+                        <span class="input-error__message_non" id="password-error">Password contain unsupported characters</span>
                     </div>
                     <div class="form-box__button">
                         <input type="submit" value="Sign in">
@@ -30,6 +37,14 @@ const SignIn = {
         return await Layout.render(content)
     },
     after_render: async () => {
+        const form = document.getElementById('form');
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            formValidate();
+        })
+        addEmailValidateHandler();
+        addPasswordValidateHandler();
+        visibilityPassword();
     }
 
 }

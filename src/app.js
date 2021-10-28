@@ -6,7 +6,7 @@ import RestorePassword from './views/pages/restore-password.js'
 import SendEmail from './views/pages/send-email.js'
 
 
-import Utils from './services/Utils.js'
+import { parseRequestURL } from './services/Utils.js'
 import Error404 from "./views/pages/error404.js";
 import Patients from "./views/pages/patients.js";
 
@@ -20,7 +20,7 @@ const routes = {
 
 const router = async () => {
     const root = document.getElementById('root');
-    const request = Utils.parseRequestURL()
+    const request = parseRequestURL()
     const parsedURL = (request.resource ? '/' + request.resource : '/') + (request.id ? '/:id' : '') + (request.verb ? '/' + request.verb : '')//
     const page = routes[parsedURL] ? routes[parsedURL] : Error404
     root.innerHTML = await page.render();

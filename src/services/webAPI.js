@@ -1,5 +1,5 @@
 export function getMe() {
-    // return undefined
+    return undefined
     return {
         avatar: "img/doctor-avatar.png",
         firstName: "Miranda",
