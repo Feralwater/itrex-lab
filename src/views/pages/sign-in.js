@@ -17,9 +17,9 @@ const SignIn = {
                         <input data-type="email" type="email" placeholder="Email" id="email">
                         <span class="input-error__message_non" id="email-error">Email contain unsupported characters</span>
                     </div>
-                    <div class="form-box__input form-box__input_password">
+                    <div class="form-box__input form-box__input_password passwordInputContainer">
                         <input data-type="password" type="password" placeholder="Password" id="password" >
-                        <i class="form-box__input_password_icon form-box__input_password_icon-non-visible" id="visibilityBtn"></i>
+                        <i class="form-box__input_password_icon form-box__input_password_icon-non-visible"></i>
                         <span class="input-error__message_non" id="password-error">Password contain unsupported characters</span>
                     </div>
                     <div class="form-box__button">

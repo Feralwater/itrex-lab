@@ -59,15 +59,15 @@ export const addPasswordValidateHandler = () => {
         }
     }
 }
-function validateName() {
-    const name = document.getElementById('password');
-    const nameMessage = document.getElementById('password-error');
-    const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^\w\s]).{6,}/
-    if (!re.test(password.value)) {
-        password.classList.add('input-error');
-        passwordMessage.classList.add('input-error__message')
-    }
-}
+// function validateName() {
+//     const name = document.getElementById('password');
+//     const nameMessage = document.getElementById('password-error');
+//     const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^\w\s]).{6,}/
+//     if (!re.test(password.value)) {
+//         password.classList.add('input-error');
+//         passwordMessage.classList.add('input-error__message')
+//     }
+// }
 
 // export const addPasswordValidateHandler = () => {
 //
@@ -104,20 +104,23 @@ export const formValidate = () => {
 
 }
 export const visibilityPassword = () => {
+    const passwordInputContainers = document.getElementsByClassName('passwordInputContainer');
+    Array.from(passwordInputContainers).forEach(el => {
+        const visibilityBtn = el.getElementsByClassName('form-box__input_password_icon')[0];
+        const passwordInput = el.querySelectorAll('input[data-type="password"]')[0]
 
-    const visibilityBtn = document.getElementById('visibilityBtn');
-    const passwordInput = document.getElementById('password')
-    visibilityBtn.addEventListener('click', () => {
-        if (passwordInput.type === 'password') {
-            passwordInput.type = 'text';
-            visibilityBtn.classList.remove('form-box__input_password_icon-non-visible');
-            visibilityBtn.classList.add('form-box__input_password_icon-visible');
+        visibilityBtn.addEventListener('click', () => {
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                visibilityBtn.classList.remove('form-box__input_password_icon-non-visible');
+                visibilityBtn.classList.add('form-box__input_password_icon-visible');
 
-        } else {
-            passwordInput.type = 'password';
-            visibilityBtn.classList.remove('form-box__input_password_icon-non-visible');
-            visibilityBtn.classList.remove('form-box__input_password_icon-visible');
-            visibilityBtn.classList.add('form-box__input_password_icon-non-visible');
-        }
+            } else {
+                passwordInput.type = 'password';
+                visibilityBtn.classList.remove('form-box__input_password_icon-non-visible');
+                visibilityBtn.classList.remove('form-box__input_password_icon-visible');
+                visibilityBtn.classList.add('form-box__input_password_icon-non-visible');
+            }
+        })
     })
 }
