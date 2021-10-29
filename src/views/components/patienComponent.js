@@ -1,4 +1,4 @@
-import {statuses} from "../../services/webAPI.js";
+import {statuses} from "../../services/model.js";
 
 
 const patientComponent = {

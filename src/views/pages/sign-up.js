@@ -1,8 +1,6 @@
 import Layout from '../layouts/authorization.js'
 import {
-    addEmailValidateHandler,
-    addPasswordValidateHandler,
-    formValidate,
+    validateForm,
     visibilityPassword
 } from "../../services/Utils.js";
 
@@ -11,29 +9,29 @@ const SignUp = {
     render: async (props) => {
         const content = `
             <div class="form-container">
-    <form action="/" class="form-box" method="post" id="form">
+    <form action="/" class="form-box" method="post" id="form" novalidate>
         <h2 class="form-box__title">Sign up</h2>
         <div class="form-box__input form-box__input_first-name">
-            <input type="text" required placeholder="First Name" id="name">
-            <span class="input-error__message" style="display: none">First name contain unsupported characters</span>
+            <input data-type="name" type="text" placeholder="First Name" id="">
+            <span class="input-error__message_non" >First name contain unsupported characters</span>
         </div>
         <div class="form-box__input form-box__input_last-name">
-            <input type="text" required placeholder="Last Name" id="name">
-            <span class="input-error__message" style="display: none">Last name contain unsupported characters</span>
+            <input data-type="name" type="text" placeholder="Last Name" id="">
+            <span class="input-error__message_non" >Last name contain unsupported characters</span>
         </div>
         <div class="form-box__input form-box__input_email">
-            <input type="email" required placeholder="Email" id="email">
-            <span class="input-error__message" style="display: none">Email contain unsupported characters</span>
+            <input data-type="email" type="email" required placeholder="Email" id="email">
+            <span class="input-error__message_non" id="email-error">Email contain unsupported characters</span>
         </div>
         <div class="form-box__input form-box__input_password passwordInputContainer">
-            <input data-type="password" type="password" required placeholder="Password" id="password">
+            <input data-password="password" data-type="password" type="password" required placeholder="Password" id="password">
             <i class="form-box__input_password_icon form-box__input_password_icon-non-visible"></i>
-            <span class="input-error__message" style="display: none">Password contain unsupported characters</span>
+              <span class="input-error__message_non" id="password-error">Password contain unsupported characters</span>
         </div>
         <div class="form-box__input form-box__input_confirm-password passwordInputContainer">
-            <input data-type="password" type="password" required placeholder="Confirm Password" id="confirm-password">
+            <input data-confirm="confirmPassword" data-type="password" type="password" required placeholder="Confirm Password" id="confirm-password">
             <i class="form-box__input_password_icon form-box__input_password_icon-non-visible"></i>
-            <span class="input-error__message" style="display: none">Password contain unsupported characters</span>
+            <span class="input-error__message_non" id="passwordConfirm-error">Password contain unsupported characters</span>
         </div>
         <div class="form-box__button">
             <input type="submit" value="Sign up">
@@ -52,11 +50,12 @@ const SignUp = {
         const form = document.getElementById('form');
         form.addEventListener('submit', e => {
             e.preventDefault();
-            formValidate();
+            validateForm();
         })
-        addEmailValidateHandler();
-        addPasswordValidateHandler();
+
         visibilityPassword();
+        validateForm();
+
     }
 
 }

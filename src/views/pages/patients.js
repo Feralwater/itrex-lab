@@ -1,5 +1,5 @@
 import Layout from '../layouts/main.js'
-import {getPatients} from "../../services/webAPI.js";
+import {getPatients} from "../../services/model.js";
 import patientComponent from "../components/patienComponent.js";
 
 const Patients = {

@@ -1,5 +1,5 @@
 import Header from "../components/header.js";
-import {getMe} from "../../services/webAPI.js";
+import {getMe} from "../../services/model.js";
 import {onNavigate} from "../../services/Utils.js";
 
 const afterRenderArray = [

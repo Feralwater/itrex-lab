@@ -1,3 +1,5 @@
+import {regexForEmailValidate, regexForNameValidate, regexForPasswordValidate} from "../const/share-regex.js";
+
 export const parseRequestURL = () => {
     const url = location.hash.slice(1).toLowerCase() || '/';
     const urlParts = url.split("/")
@@ -12,97 +14,6 @@ export const onNavigate = (pathname) => {
     window.location.replace(window.location.origin + "#" + pathname);
 }
 
-function validateEmail() {
-    const email = document.getElementById('email');
-    const errorMessage = document.getElementById('email-error');
-    const re = /^[-a-z0-9!#$%&'*+/=?^_`{|}~]+(?:\.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@(?:[a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\.)*(?:aero|arpa|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|[a-z][a-z])$/
-    if (!re.test(email.value)) {
-        email.classList.add('input-error');
-        errorMessage.classList.add('input-error__message')
-    }
-}
-
-export const addEmailValidateHandler = () => {
-
-    const email = document.getElementById('email');
-
-    email.onblur = validateEmail
-    email.onfocus = function () {
-        const errorMessage = document.getElementById('email-error');
-        if (this.classList.contains('input-error')) {
-            email.classList.remove('input-error');
-            errorMessage.classList.remove('input-error__message')
-        }
-    }
-}
-
-function validatePassword() {
-    const password = document.getElementById('password');
-    const passwordMessage = document.getElementById('password-error');
-    const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^\w\s]).{6,}/
-    if (!re.test(password.value)) {
-        password.classList.add('input-error');
-        passwordMessage.classList.add('input-error__message')
-    }
-}
-
-export const addPasswordValidateHandler = () => {
-
-    const password = document.getElementById('password');
-    password.onblur = validatePassword
-
-    password.onfocus = function () {
-        const passwordMessage = document.getElementById('password-error');
-        if (this.classList.contains('input-error')) {
-            password.classList.remove('input-error');
-            passwordMessage.classList.remove('input-error__message')
-        }
-    }
-}
-// function validateName() {
-//     const name = document.getElementById('password');
-//     const nameMessage = document.getElementById('password-error');
-//     const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^\w\s]).{6,}/
-//     if (!re.test(password.value)) {
-//         password.classList.add('input-error');
-//         passwordMessage.classList.add('input-error__message')
-//     }
-// }
-
-// export const addPasswordValidateHandler = () => {
-//
-//     const password = document.getElementById('password');
-//     password.onblur = validatePassword
-//
-//     password.onfocus = function () {
-//         const passwordMessage = document.getElementById('password-error');
-//         if (this.classList.contains('input-error')) {
-//             password.classList.remove('input-error');
-//             passwordMessage.classList.remove('input-error__message')
-//         }
-//     }
-// }
-export const formValidate = () => {
-
-    const form = document.getElementById('form');
-    const inputWrappers = form.getElementsByClassName('form-box__input')
-
-    Array.from(inputWrappers).forEach(el => {
-        const span = el.getElementsByTagName('span')[0];
-        const input = el.getElementsByTagName('input')[0];
-        const type = input.dataset.type
-        switch (type) {
-            case 'email':
-                validateEmail();
-                break;
-            case 'password':
-                validatePassword()
-                break;
-        }
-
-    })
-
-}
 export const visibilityPassword = () => {
     const passwordInputContainers = document.getElementsByClassName('passwordInputContainer');
     Array.from(passwordInputContainers).forEach(el => {
@@ -122,5 +33,60 @@ export const visibilityPassword = () => {
                 visibilityBtn.classList.add('form-box__input_password_icon-non-visible');
             }
         })
+    })
+}
+
+function validateInput(el, regex, errorMessage) {
+    el.onblur = function () {
+        if (!regex.test(el.value)) {
+            el.classList.add('input-error');
+            errorMessage.classList.add('input-error__message')
+        }
+    }
+    el.onfocus = function () {
+        if (el.classList.contains('input-error')) {
+            el.classList.remove('input-error');
+            errorMessage.classList.remove('input-error__message')
+        }
+    }
+}
+
+export const validateForm = () => {
+
+    const input = [...document.getElementsByTagName('input')];
+
+    input.forEach(el => {
+        if (el.dataset.type === "name") {
+            const errorMessage = el.nextSibling.nextSibling;
+            validateInput(el, regexForNameValidate, errorMessage);
+        }
+
+        if (el.dataset.type === "email") {
+            const errorMessage = document.getElementById('email-error');
+            validateInput(el, regexForEmailValidate, errorMessage);
+        }
+
+        if (el.dataset.type === "password") {
+            const errorMessage = document.getElementById('password-error');
+            validateInput(el, regexForPasswordValidate, errorMessage);
+        }
+
+        if (el.dataset.confirm === "confirmPassword") {
+            const errorMessage = document.getElementById('passwordConfirm-error');
+            const password = document.getElementById('password')
+
+            el.onblur = function () {
+                if (el.value !== password.value) {
+                    el.classList.add('input-error');
+                    errorMessage.classList.add('input-error__message')
+                }
+            }
+            el.onfocus = function () {
+                if (el.classList.contains('input-error')) {
+                    el.classList.remove('input-error');
+                    errorMessage.classList.remove('input-error__message')
+                }
+            }
+        }
     })
 }

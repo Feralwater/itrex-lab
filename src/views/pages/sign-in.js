@@ -1,8 +1,6 @@
 import Layout from '../layouts/authorization.js'
 import {
-    addEmailValidateHandler,
-    addPasswordValidateHandler,
-    formValidate,
+    validateForm,
     visibilityPassword
 } from "../../services/Utils.js";
 
@@ -40,11 +38,10 @@ const SignIn = {
         const form = document.getElementById('form');
         form.addEventListener('submit', e => {
             e.preventDefault();
-            formValidate();
+            validateForm();
         })
-        addEmailValidateHandler();
-        addPasswordValidateHandler();
         visibilityPassword();
+        validateForm();
     }
 
 }
