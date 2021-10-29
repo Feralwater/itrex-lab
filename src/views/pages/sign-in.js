@@ -1,5 +1,6 @@
 import Layout from '../layouts/authorization.js'
 import {
+    onNavigate,
     validateForm,
     visibilityPassword
 } from "../../services/Utils.js";
@@ -18,7 +19,7 @@ const SignIn = {
                     <div class="form-box__input form-box__input_password passwordInputContainer">
                         <input data-type="password" type="password" placeholder="Password" id="password" >
                         <i class="form-box__input_password_icon form-box__input_password_icon-non-visible"></i>
-                        <span class="input-error__message_non" id="password-error">Password contain unsupported characters</span>
+                        <span class="input-error__message_non" id="password-error">Password must be at least 6 characters long</span>
                     </div>
                     <div class="form-box__button">
                         <input type="submit" value="Sign in">
@@ -39,7 +40,11 @@ const SignIn = {
         const input = [...document.getElementsByTagName('input')];
         form.addEventListener('submit', e => {
             e.preventDefault();
-            input.forEach(el => el.onblur())
+            input.filter(el=>el.type!=='submit').forEach(el => el.onblur())
+            const isInputContainError = input.filter(i=>i.classList.contains('input-error'))
+            if (isInputContainError.length===0){
+                onNavigate('/patients');
+            }
         })
         visibilityPassword();
         validateForm();

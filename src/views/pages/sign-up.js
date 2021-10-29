@@ -26,12 +26,12 @@ const SignUp = {
         <div class="form-box__input form-box__input_password passwordInputContainer">
             <input data-password="password" data-type="password" type="password" placeholder="Password" id="password">
             <i class="form-box__input_password_icon form-box__input_password_icon-non-visible"></i>
-              <span class="input-error__message_non" id="password-error">Password contain unsupported characters</span>
+              <span class="input-error__message_non" id="password-error">Password must be at least 6 characters long</span>
         </div>
         <div class="form-box__input form-box__input_confirm-password passwordInputContainer">
             <input data-confirm="confirmPassword" data-type="password" type="password" placeholder="Confirm Password" id="confirm-password">
             <i class="form-box__input_password_icon form-box__input_password_icon-non-visible"></i>
-            <span class="input-error__message_non" id="passwordConfirm-error">Password contain unsupported characters</span>
+            <span class="input-error__message_non" id="passwordConfirm-error">Passwords do not match</span>
         </div>
         <div class="form-box__button">
             <input type="submit" value="Sign up">

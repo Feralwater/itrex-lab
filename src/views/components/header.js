@@ -43,6 +43,7 @@ const Header = {
             <span class="header__logo-text">palm clinic</span>
         </div>
         <div class="header__user">
+        <a href="#/sign-in">back</a>
             <div class="header__user-info">
                 <p class="header__user-name">${user.firstName + " " + user.secondName}</p>
                 <p class="header__user-role">${user.role}</p>

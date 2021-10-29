@@ -4,11 +4,9 @@ import SignIn from './views/pages/sign-in.js'
 import SignUp from './views/pages/sign-up.js'
 import RestorePassword from './views/pages/restore-password.js'
 import SendEmail from './views/pages/send-email.js'
-
-
-import { parseRequestURL } from './services/Utils.js'
 import Error404 from "./views/pages/error404.js";
 import Patients from "./views/pages/patients.js";
+import { parseRequestURL } from './services/Utils.js'
 
 const routes = {
     '/patients': Patients,

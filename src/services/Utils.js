@@ -11,7 +11,7 @@ export const parseRequestURL = () => {
 }
 
 export const onNavigate = (pathname) => {
-    window.location.replace(window.location.origin + "#" + pathname);
+    window.location.replace(window.location.origin + window.location.pathname + "#" + pathname);
 }
 
 export const visibilityPassword = () => {
