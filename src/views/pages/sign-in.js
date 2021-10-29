@@ -36,9 +36,10 @@ const SignIn = {
     },
     after_render: async () => {
         const form = document.getElementById('form');
+        const input = [...document.getElementsByTagName('input')];
         form.addEventListener('submit', e => {
             e.preventDefault();
-            validateForm();
+            input.forEach(el => el.onblur())
         })
         visibilityPassword();
         validateForm();

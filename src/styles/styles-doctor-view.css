@@ -116,7 +116,7 @@
 }
 
 .patients__container {
-    height: 61vh;
+    height: 64vh;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     grid-template-rows: repeat(auto-fit, 264px);
@@ -395,6 +395,7 @@ and (-webkit-min-device-pixel-ratio: 3),
         grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
         grid-template-rows: repeat(auto-fit, 305px);
         gap: 15px;
+        padding: 0;
     }
 
     .body-doctor-view {

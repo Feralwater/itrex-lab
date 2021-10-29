@@ -20,16 +20,16 @@ const SignUp = {
             <span class="input-error__message_non" >Last name contain unsupported characters</span>
         </div>
         <div class="form-box__input form-box__input_email">
-            <input data-type="email" type="email" required placeholder="Email" id="email">
+            <input data-type="email" type="email" placeholder="Email" id="email">
             <span class="input-error__message_non" id="email-error">Email contain unsupported characters</span>
         </div>
         <div class="form-box__input form-box__input_password passwordInputContainer">
-            <input data-password="password" data-type="password" type="password" required placeholder="Password" id="password">
+            <input data-password="password" data-type="password" type="password" placeholder="Password" id="password">
             <i class="form-box__input_password_icon form-box__input_password_icon-non-visible"></i>
               <span class="input-error__message_non" id="password-error">Password contain unsupported characters</span>
         </div>
         <div class="form-box__input form-box__input_confirm-password passwordInputContainer">
-            <input data-confirm="confirmPassword" data-type="password" type="password" required placeholder="Confirm Password" id="confirm-password">
+            <input data-confirm="confirmPassword" data-type="password" type="password" placeholder="Confirm Password" id="confirm-password">
             <i class="form-box__input_password_icon form-box__input_password_icon-non-visible"></i>
             <span class="input-error__message_non" id="passwordConfirm-error">Password contain unsupported characters</span>
         </div>
@@ -48,9 +48,10 @@ const SignUp = {
     },
     after_render: async () => {
         const form = document.getElementById('form');
+        const input = [...document.getElementsByTagName('input')];
         form.addEventListener('submit', e => {
             e.preventDefault();
-            validateForm();
+            input.forEach(el => el.onblur())
         })
 
         visibilityPassword();
