@@ -120,12 +120,10 @@
 }
 
 .patients__container {
-    /*height: 64vh;*/
-    /*height: calc(90% - 100px);*/
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     grid-template-rows: repeat(auto-fit, 264px);
-    gap: 20px 24px;
+    gap: 25px 24px;
     overflow: auto;
     padding: 0 32px 0 0;
 }
@@ -146,12 +144,13 @@
 
 .patients__buttons-container {
     display: flex;
-    margin: 0 0 36px 0;
+    margin: 0 0 44px 0;
     gap: 15px;
 }
 
 .patients__header,
 .patients__utils {
+    margin: 0 0 18px 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -285,7 +284,7 @@
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid rgba(220, 224, 236, 0.5);
-    padding: 24px 42px;
+    padding: 24px 31px;
 }
 
 .patient__info {
@@ -304,6 +303,7 @@
     justify-content: center;
     flex-direction: column;
     margin: 0 0 0 16px;
+    line-height: 1.5;
 }
 
 .patient__name {
@@ -359,7 +359,7 @@
 }
 
 .patient__body {
-    padding: 24px 32px 40px 36px;
+    padding: 24px 32px 40px 34px;
     overflow: hidden;
     /*margin: 0 0 40px 0;*/
 }
@@ -368,6 +368,7 @@
 .patient__time {
     display: flex;
     gap: 18px;
+    line-height: 1.5;
 }
 
 .no-patient__description {
@@ -427,16 +428,20 @@ and (-webkit-min-device-pixel-ratio: 3),
         padding: 24px;
     }
 
+    .patients__header {
+        margin: 0;
+    }
+
     .patient__body {
         padding: 16px 24px 24px 18px;
     }
 
     .patient__description_text {
-        -webkit-line-clamp: 5;
+        -webkit-line-clamp: 4;
     }
 
     .patients {
-        padding: 40px 24px 0;
+        padding: 33px 24px 0;
         height: 100%;
         overflow: auto;
         border-radius: 16px 16px 0 0;
