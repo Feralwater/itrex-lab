@@ -1,12 +1,10 @@
-import Layout from '../layouts/main.js'
-import {getPatients} from "../../services/model.js";
+import {getPatients} from "../../models/user-model.js";
 import patientComponent from "../components/patienComponent.js";
 
 const Patients = {
-    layout: Layout,
-    render: async (props) => {
+    render: async () => {
         const patients = getPatients();
-        const content = `
+        return `
                 <div class="patients">
             <div class="patients__buttons-container">
                 <a href="#" class="patients__btn patients__btn_blue">Patients</a>
@@ -45,9 +43,8 @@ const Patients = {
        </div>
         </div>
         `
-        return await Layout.render(content)
     },
-    after_render: async () => {
+    afterRender: async () => {
     }
 
 }

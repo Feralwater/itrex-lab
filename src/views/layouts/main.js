@@ -1,5 +1,5 @@
 import Header from "../components/header.js";
-import {getMe} from "../../services/model.js";
+import {getMe} from "../../models/user-model.js";
 import {onNavigate} from "../../services/Utils.js";
 
 const afterRenderArray = [
@@ -19,7 +19,7 @@ const Main = {
         </div>
         `
     },
-    after_render: async () => {
+    afterRender: async () => {
         afterRenderArray.forEach(one => one.after_render())
     }
 

@@ -1,10 +1,8 @@
-import Layout from '../layouts/authorization.js'
 import {onNavigate, validateForm, visibilityPassword} from "../../services/Utils.js";
 
 const RestorePassword = {
-    layout: Layout,
-    render: async (props) => {
-        const content = `
+    render: async () => {
+       return `
                <div class="form-container">
         <form action="/" class="form-box" method="post" id="form" novalidate>
             <a href="#/sign-in" class="form-box__title">
@@ -26,9 +24,8 @@ const RestorePassword = {
         </form>
     </div>
         `
-        return await Layout.render(content)
     },
-    after_render: async () => {
+    afterRender: async () => {
         const form = document.getElementById('form');
         const input = [...document.getElementsByName('email')];
 

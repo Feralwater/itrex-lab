@@ -120,3 +120,5 @@ export function getPatients() {
         },
     ]
 }
+
+export default {getPatients, getMe }

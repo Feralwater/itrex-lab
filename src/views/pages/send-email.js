@@ -1,9 +1,6 @@
-import Layout from '../layouts/authorization.js'
-
 const SendEmail = {
-    layout: Layout,
-    render: async (props) => {
-        const content = `
+    render: async () => {
+        return `
                    <div class="form-container">
         <form action="/" class="form-box" method="post">
             <a href="#/restore-password" class="form-box__title">
@@ -17,9 +14,8 @@ const SendEmail = {
         </form>
     </div>
         `
-        return await Layout.render(content)
     },
-    after_render: async () => {
+    afterRender: async () => {
     }
 
 }

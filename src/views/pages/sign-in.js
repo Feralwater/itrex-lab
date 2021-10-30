@@ -1,4 +1,3 @@
-import Layout from '../layouts/authorization.js'
 import {
     onNavigate,
     validateForm,
@@ -6,9 +5,8 @@ import {
 } from "../../services/Utils.js";
 
 const SignIn = {
-    layout: Layout,
-    render: async (props) => {
-        const content = `
+    render: async () => {
+        return  `
             <div class="form-container">
                 <form action="/" class="form-box" method="post" id="form" novalidate>
                     <h2 class="form-box__title">Sign in</h2>
@@ -33,9 +31,8 @@ const SignIn = {
                 </div>
             </div>
         `
-        return await Layout.render(content)
     },
-    after_render: async () => {
+    afterRender: async () => {
         const form = document.getElementById('form');
         const input = [...document.getElementsByTagName('input')];
         form.addEventListener('submit', e => {

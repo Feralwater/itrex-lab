@@ -1,13 +1,11 @@
-import Layout from '../layouts/authorization.js'
 import {
     validateForm,
     visibilityPassword
 } from "../../services/Utils.js";
 
 const SignUp = {
-    layout: Layout,
-    render: async (props) => {
-        const content = `
+    render: async () => {
+        return `
             <div class="form-container">
     <form action="/" class="form-box" method="post" id="form" novalidate>
         <h2 class="form-box__title">Sign up</h2>
@@ -44,14 +42,13 @@ const SignUp = {
     </div>
 </div>
         `
-        return await Layout.render(content)
     },
-    after_render: async () => {
+    afterRender: async () => {
         const form = document.getElementById('form');
         const input = [...document.getElementsByTagName('input')];
         form.addEventListener('submit', e => {
             e.preventDefault();
-            input.forEach(el => el.onblur())
+            input.forEach(el => el.onblur && el.onblur())
         })
 
         visibilityPassword();

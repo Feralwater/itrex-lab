@@ -4,7 +4,7 @@ const Authorization = {
          <main class="body-auth">${main}</main>
         `
     },
-    after_render: async () => {
+    afterRender: async () => {
     }
 
 }

@@ -8,7 +8,7 @@ const Error404 = {
             </section>
         `
     }
-    , after_render: async () => {
+    , afterRender: async () => {
     }
 }
 export default Error404;

@@ -1,29 +1,48 @@
 "use strict";
 
-import SignIn from './views/pages/sign-in.js'
-import SignUp from './views/pages/sign-up.js'
-import RestorePassword from './views/pages/restore-password.js'
-import SendEmail from './views/pages/send-email.js'
 import Error404 from "./views/pages/error404.js";
-import Patients from "./views/pages/patients.js";
-import { parseRequestURL } from './services/Utils.js'
+import LoginController from "./controllers/login-controller.js";
+import DoctorController from "./controllers/doctor-controller.js";
+import {parseRequestURL} from './services/Utils.js'
+
+const loginController = new LoginController
+const doctorController = new DoctorController
 
 const routes = {
-    '/patients': Patients,
-    '/sign-in': SignIn,
-    '/sign-up': SignUp,
-    '/restore-password': RestorePassword,
-    '/send-email': SendEmail,
+    '/patients': {
+        controller: doctorController,
+        method: 'patients'
+    },
+    '/sign-in': {
+        controller: loginController,
+        method: 'singIn'
+    },
+    '/sign-up': {
+        controller: loginController,
+        method: 'singUp'
+    },
+    '/restore-password': {
+        controller: loginController,
+        method: 'restorePassword'
+    },
+    '/send-email': {
+        controller: loginController,
+        method: 'sendEmail'
+    },
 };
+
+const error = {
+    controller: Error404,
+    method: 'error'
+}
 
 const router = async () => {
     const root = document.getElementById('root');
     const request = parseRequestURL()
     const parsedURL = (request.resource ? '/' + request.resource : '/') + (request.id ? '/:id' : '') + (request.verb ? '/' + request.verb : '')//
-    const page = routes[parsedURL] ? routes[parsedURL] : Error404
-    root.innerHTML = await page.render();
-    await page.after_render();
-
+    const rout = routes[parsedURL] ? routes[parsedURL] : error
+    root.innerHTML = await rout.controller.render(rout.method);
+    rout.controller.afterRender();
 }
 
 window.addEventListener('hashchange', router);
