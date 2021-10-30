@@ -13,8 +13,10 @@ const Main = {
             return
         }
         return `
+<div class="body" >
         <header class="header">${await Header.render({user: me})}</header>
         <main class="body-doctor-view">${main}</main>
+        </div>
         `
     },
     after_render: async () => {

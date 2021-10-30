@@ -1,10 +1,12 @@
 .body-doctor-view {
     background-color: #e4ebff;
     margin: 0;
-    padding: 0 64px;
-    /*height: 100vh;*/
-    height: calc(100vh - 80px);
-    /*min-height: 320px;*/
+    padding: 0 64px 48px;
+    height: calc(100vh - 128px);
+}
+
+.body {
+    padding: 80px 0 0 0;
 }
 
 .header {
@@ -98,9 +100,11 @@
 
 .patients {
     max-width: 1792px;
-    height: calc(100vh - 128px);
-    padding: 40px 16px 40px 48px;
-    margin: 80px auto 0 auto;
+    height: 100%;
+    padding: 40px 16px 0 48px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
     background: #f9faff;
     box-shadow: 0px 4px 32px rgba(218, 228, 255, 0.32);
     border-radius: 16px;
@@ -116,7 +120,8 @@
 }
 
 .patients__container {
-    height: 64vh;
+    /*height: 64vh;*/
+    /*height: calc(90% - 100px);*/
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     grid-template-rows: repeat(auto-fit, 264px);
@@ -398,6 +403,14 @@ and (-webkit-min-device-pixel-ratio: 3),
         padding: 0;
     }
 
+    .patients__buttons-container {
+        margin: 0 0 30px 0;
+    }
+
+    .patients__title {
+        font-size: 20px;
+    }
+
     .body-doctor-view {
         padding: 0;
     }
@@ -423,7 +436,7 @@ and (-webkit-min-device-pixel-ratio: 3),
     }
 
     .patients {
-        padding: 40px 24px;
+        padding: 40px 24px 0;
         height: 100%;
         overflow: auto;
         border-radius: 16px 16px 0 0;
