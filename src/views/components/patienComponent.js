@@ -56,9 +56,6 @@ const patientComponent = {
             </div>
         `
     },
-    after_render: async () => {
-    }
-
 }
 
 export default patientComponent;

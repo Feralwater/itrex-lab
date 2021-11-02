@@ -4,9 +4,6 @@ const Authorization = {
          <main class="body-auth">${main}</main>
         `
     },
-    afterRender: async () => {
-    }
-
 }
 
 export default Authorization;

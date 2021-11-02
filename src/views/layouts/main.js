@@ -2,9 +2,7 @@ import Header from "../components/header.js";
 import {getMe} from "../../models/user-model.js";
 import {onNavigate} from "../../services/Utils.js";
 
-const afterRenderArray = [
-    Header,
-]
+
 const Main = {
     render: async (main) => {
         const me = getMe()
@@ -19,9 +17,6 @@ const Main = {
         </div>
         `
     },
-    afterRender: async () => {
-        afterRenderArray.forEach(one => one.after_render())
-    }
 
 }
 

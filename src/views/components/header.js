@@ -56,9 +56,6 @@ const Header = {
     </div>
         `
     },
-    after_render: async () => {
-    }
-
 }
 
 export default Header;

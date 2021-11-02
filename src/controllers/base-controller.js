@@ -9,11 +9,10 @@ export default class BaseController {
 
     async renderView(view, props){
         this.view = view
-         return await view.render(props)
+        return await view.render(props)
     }
 
     async afterRender () {
-        await this.layout.afterRender()
         await this.view.afterRender()
     }
 
