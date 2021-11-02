@@ -1,4 +1,4 @@
-import {onNavigate, validateForm, visibilityPassword} from "../../services/Utils.js";
+import {onNavigate, validateForm, visibilityPassword} from "../../services/utils.js";
 
 const RestorePassword = {
     render: async () => {

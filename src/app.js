@@ -3,7 +3,7 @@
 import Error404 from "./views/pages/error404.js";
 import LoginController from "./controllers/login-controller.js";
 import DoctorController from "./controllers/doctor-controller.js";
-import {parseRequestURL} from './services/Utils.js'
+import {parseRequestURL} from './services/utils.js'
 
 const loginController = new LoginController
 const doctorController = new DoctorController

@@ -2,7 +2,7 @@ import {
     onNavigate,
     validateForm,
     visibilityPassword
-} from "../../services/Utils.js";
+} from "../../services/utils.js";
 
 const SignIn = {
     render: async () => {

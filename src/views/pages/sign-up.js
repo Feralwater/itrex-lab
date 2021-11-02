@@ -1,7 +1,7 @@
 import {
     validateForm,
     visibilityPassword
-} from "../../services/Utils.js";
+} from "../../services/utils.js";
 
 const SignUp = {
     render: async () => {

@@ -1,6 +1,6 @@
 import Header from "../components/header.js";
 import {getMe} from "../../models/user-model.js";
-import {onNavigate} from "../../services/Utils.js";
+import {onNavigate} from "../../services/utils.js";
 
 
 const Main = {

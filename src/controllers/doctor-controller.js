@@ -1,7 +1,7 @@
 import BaseController from "./base-controller.js";
 import mainLayouts from "../views/layouts/main.js";
 import userModel from "../models/user-model.js";
-import patientsView from "../views/pages/patients.js";
+import PatientsView from "../views/pages/patients.js";
 
 export default class DoctorController extends BaseController {
     constructor() {
@@ -11,6 +11,6 @@ export default class DoctorController extends BaseController {
     }
 
     async patients() {
-        return await this.renderView(patientsView, this.models.getPatients())
+        return await this.renderView(PatientsView, this.models.getPatients())
     }
 }
