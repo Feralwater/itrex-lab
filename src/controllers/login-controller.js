@@ -13,20 +13,20 @@ export default class LoginController extends BaseController {
         this.models = userModel
     }
 
-    async singIn() {
-        return await this.renderView(SignInView, this.models.getPatients())
+    singIn() {
+        return this.renderView(SignInView, this.models.getPatients())
     }
 
-    async singUp() {
-        return await this.renderView(SignUpView, this.models.getPatients())
+    singUp() {
+        return this.renderView(SignUpView, this.models.getPatients())
     }
 
-    async restorePassword() {
-        return await this.renderView(RestorePasswordView, this.models.getPatients())
+    restorePassword() {
+        return this.renderView(RestorePasswordView, this.models.getPatients())
     }
 
-    async sendEmail() {
-        return await this.renderView(SendEmailView, this.models.getPatients())
+    sendEmail() {
+        return this.renderView(SendEmailView, this.models.getPatients())
     }
 
 }

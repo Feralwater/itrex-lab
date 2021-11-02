@@ -5,7 +5,7 @@ import {
 } from "../../services/utils.js";
 
 const SignIn = {
-    render: async () => {
+    render: () => {
         return  `
             <div class="form-container">
                 <form action="/" class="form-box" method="post" id="form" novalidate>
@@ -32,7 +32,7 @@ const SignIn = {
             </div>
         `
     },
-    afterRender: async () => {
+    afterRender: () => {
         const form = document.getElementById('form');
         const input = [...document.getElementsByTagName('input')];
         form.addEventListener('submit', e => {

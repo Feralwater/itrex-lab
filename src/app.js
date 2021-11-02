@@ -36,12 +36,12 @@ const error = {
     method: 'error'
 }
 
-const router = async () => {
+const router = () => {
     const root = document.getElementById('root');
     const request = parseRequestURL()
     const parsedURL = (request.resource ? '/' + request.resource : '/') + (request.id ? '/:id' : '') + (request.verb ? '/' + request.verb : '')//
     const rout = routes[parsedURL] ? routes[parsedURL] : error
-    root.innerHTML = await rout.controller.render(rout.method);
+    root.innerHTML = rout.controller.render(rout.method);
     rout.controller.afterRender();
 }
 

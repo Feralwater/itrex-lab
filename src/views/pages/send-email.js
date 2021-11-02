@@ -1,5 +1,5 @@
 const SendEmail = {
-    render: async () => {
+    render: () => {
         return `
                    <div class="form-container">
         <form action="/" class="form-box" method="post">
@@ -15,7 +15,7 @@ const SendEmail = {
     </div>
         `
     },
-    afterRender: async () => {
+    afterRender: () => {
     }
 
 }

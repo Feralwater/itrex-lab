@@ -2,7 +2,7 @@ import {getPatients} from "../../models/user-model.js";
 import patientComponent from "../components/patienComponent.js";
 
 const Patients = {
-    render: async () => {
+    render: () => {
         const patients = getPatients();
         return `
                 <div class="patients">
@@ -15,7 +15,7 @@ const Patients = {
             </div>
             <div class="${patients.length > 0 ? "patients__container" : "no-patients__container"}">
             ${patients.length > 0 ?
-            (await Promise.all(patients.map((patient) => patientComponent.render(patient)))).join("")
+            (patients.map((patient) => patientComponent.render(patient))).join("")
             : `<div class="patients__medical-history">
             <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_2:1170)">
@@ -44,7 +44,7 @@ const Patients = {
         </div>
         `
     },
-    afterRender: async () => {
+    afterRender: () => {
     }
 
 }

@@ -1,5 +1,5 @@
 const Header = {
-    render: async ({user}) => {
+    render: ({user}) => {
         return `
     <div class="header__container">
         <div class="header__logo">

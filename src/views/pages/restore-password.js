@@ -1,7 +1,7 @@
 import {onNavigate, validateForm, visibilityPassword} from "../../services/utils.js";
 
 const RestorePassword = {
-    render: async () => {
+    render: () => {
        return `
                <div class="form-container">
         <form action="/" class="form-box" method="post" id="form" novalidate>
@@ -25,7 +25,7 @@ const RestorePassword = {
     </div>
         `
     },
-    afterRender: async () => {
+    afterRender: () => {
         const form = document.getElementById('form');
         const input = [...document.getElementsByName('email')];
 

@@ -2,7 +2,7 @@ import {statuses} from "../../models/user-model.js";
 
 
 const patientComponent = {
-    render: async ({
+    render: ({
                        avatar,
                        firstName,
                        lastName,

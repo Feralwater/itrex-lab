@@ -2,18 +2,18 @@
  *  @property layout
  */
 export default class BaseController {
-    async render (method) {
-        const content = await this[method]();
-        return await this.layout.render(content)
+    render (method) {
+        const content = this[method]();
+        return this.layout.render(content)
     }
 
-    async renderView(view, props){
+    renderView(view, props){
         this.view = view
-        return await view.render(props)
+        return view.render(props)
     }
 
-    async afterRender () {
-        await this.view.afterRender()
+    afterRender () {
+        this.view.afterRender()
     }
 
 }

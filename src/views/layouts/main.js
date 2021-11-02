@@ -4,7 +4,7 @@ import {onNavigate} from "../../services/utils.js";
 
 
 const Main = {
-    render: async (main) => {
+    render: (main) => {
         const me = getMe()
         if (!me) {
             onNavigate("/sign-in");
@@ -12,7 +12,7 @@ const Main = {
         }
         return `
 <div class="body" >
-        <header class="header">${await Header.render({user: me})}</header>
+        <header class="header">${Header.render({user: me})}</header>
         <main class="body-doctor-view">${main}</main>
         </div>
         `

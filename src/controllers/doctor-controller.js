@@ -10,7 +10,7 @@ export default class DoctorController extends BaseController {
         this.models = userModel
     }
 
-    async patients() {
-        return await this.renderView(PatientsView, this.models.getPatients())
+    patients() {
+        return this.renderView(PatientsView, this.models.getPatients())
     }
 }

@@ -1,6 +1,6 @@
 const Error404 = {
 
-    render: async () => {
+    render: () => {
         return `
             <section class="error">
                 <div class="error__number">404 Error</div>
@@ -8,7 +8,7 @@ const Error404 = {
             </section>
         `
     }
-    , afterRender: async () => {
+    , afterRender: () => {
     }
 }
 export default Error404;
