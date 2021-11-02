@@ -1,4 +1,4 @@
-import {regexForEmailValidate, regexForNameValidate, regexForPasswordValidate} from "../const/share-regex.js";
+import {REGEX_FOR_EMAIL_VALIDATE, REGEX_FOR_NAME_VALIDATE, REGEX_FOR_PASSWORD_VALIDATE} from "../const/share-regex.js";
 
 export const parseRequestURL = () => {
     const url = location.hash.slice(1).toLowerCase() || '/';
@@ -58,17 +58,17 @@ export const validateForm = () => {
     input.forEach(el => {
         if (el.dataset.type === "name") {
             const errorMessage = el.nextSibling.nextSibling;
-            validateInput(el, regexForNameValidate, errorMessage);
+            validateInput(el, REGEX_FOR_NAME_VALIDATE, errorMessage);
         }
 
         if (el.dataset.type === "email") {
             const errorMessage = document.getElementById('email-error');
-            validateInput(el, regexForEmailValidate, errorMessage);
+            validateInput(el, REGEX_FOR_EMAIL_VALIDATE, errorMessage);
         }
 
         if (el.dataset.type === "password") {
             const errorMessage = document.getElementById('password-error');
-            validateInput(el, regexForPasswordValidate, errorMessage);
+            validateInput(el, REGEX_FOR_PASSWORD_VALIDATE, errorMessage);
         }
 
         if (el.dataset.confirm === "confirmPassword") {
