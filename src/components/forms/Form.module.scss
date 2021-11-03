@@ -23,6 +23,22 @@
     }
   }
 
+  &__leftArrow {
+    width: 8px;
+    height: 14px;
+    background: url("../svgImages/left-arrow.svg") no-repeat center;
+    display: inline-block;
+    margin: 0 24px 2px 0;
+  }
+
+  &__restoreMessage {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 130%;
+    color: #A1ABC9;
+    margin: 0 0 40px 0;
+  }
+
   &__input {
     position: relative;
     margin: 0 0 26px 0;
