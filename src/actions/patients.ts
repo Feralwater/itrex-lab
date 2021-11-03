@@ -5,12 +5,11 @@ export const statuses = {
 }
 
 export const api = {
-
-    async getPatientsList() {
+    getPatientsList() {
         // return  []
         return [
             {
-                avatar: "img/patient-avatar.png",
+                avatar: "/img/patient-avatar.png",
                 firstName: "Jane",
                 lastName: "Cooper",
                 status: statuses.confirmed,
@@ -21,7 +20,7 @@ export const api = {
                     "We will invite you in for a full review every year and more frequently if you are struggling with blood sugar levels"
             },
             {
-                avatar: "img/patient-avatar.png",
+                avatar: "/img/patient-avatar.png",
                 firstName: "Jane",
                 lastName: "Cooper",
                 status: statuses.canceled,
@@ -29,7 +28,7 @@ export const api = {
                 description: "We will invite you in for a full review every year and more frequently if you are struggling with blood sugar levels"
             },
             {
-                avatar: "img/patient-avatar.png",
+                avatar: "/img/patient-avatar.png",
                 firstName: "Jane",
                 lastName: "Cooper",
                 status: statuses.waiting,
@@ -37,7 +36,7 @@ export const api = {
                 description: "We will invite you in for a full review every year and more frequently if you are struggling with blood sugar levels"
             },
             {
-                avatar: "img/patient-avatar.png",
+                avatar: "/img/patient-avatar.png",
                 firstName: "Jane",
                 lastName: "Cooper",
                 status: statuses.canceled,
@@ -45,7 +44,7 @@ export const api = {
                 description: "We will invite you in for a full review every year and more frequently if you are struggling with blood sugar levels"
             },
             {
-                avatar: "img/patient-avatar.png",
+                avatar: "/img/patient-avatar.png",
                 firstName: "Jane",
                 lastName: "Cooper",
                 status: statuses.confirmed,
@@ -53,7 +52,7 @@ export const api = {
                 description: "We will invite you in for a full review every year and more frequently if you are struggling with blood sugar levels"
             },
             {
-                avatar: "img/patient-avatar.png",
+                avatar: "/img/patient-avatar.png",
                 firstName: "Jane",
                 lastName: "Cooper",
                 status: statuses.canceled,
@@ -61,7 +60,7 @@ export const api = {
                 description: "We will invite you in for a full review every year and more frequently if you are struggling with blood sugar levels"
             },
             {
-                avatar: "img/patient-avatar.png",
+                avatar: "/img/patient-avatar.png",
                 firstName: "Jane",
                 lastName: "Cooper",
                 status: statuses.confirmed,
@@ -69,7 +68,7 @@ export const api = {
                 description: "We will invite you in for a full review every year and more frequently if you are struggling with blood sugar levels"
             },
             {
-                avatar: "img/patient-avatar.png",
+                avatar: "/img/patient-avatar.png",
                 firstName: "Jane",
                 lastName: "Cooper",
                 status: statuses.waiting,
@@ -77,7 +76,7 @@ export const api = {
                 description: "We will invite you in for a full review every year and more frequently if you are struggling with blood sugar levels"
             },
             {
-                avatar: "img/patient-avatar.png",
+                avatar: "/img/patient-avatar.png",
                 firstName: "Jane",
                 lastName: "Cooper",
                 status: statuses.waiting,
@@ -85,7 +84,7 @@ export const api = {
                 description: "We will invite you in for a full review every year and more frequently if you are struggling with blood sugar levels"
             },
             {
-                avatar: "img/patient-avatar.png",
+                avatar: "/img/patient-avatar.png",
                 firstName: "Jane",
                 lastName: "Cooper",
                 status: statuses.confirmed,
@@ -93,7 +92,7 @@ export const api = {
                 description: "We will invite you in for a full review every year and more frequently if you are struggling with blood sugar levels"
             },
             {
-                avatar: "img/patient-avatar.png",
+                avatar: "/img/patient-avatar.png",
                 firstName: "Jane",
                 lastName: "Cooper",
                 status: statuses.confirmed,
@@ -101,7 +100,7 @@ export const api = {
                 description: "We will invite you in for a full review every year and more frequently if you are struggling with blood sugar levels"
             },
             {
-                avatar: "img/patient-avatar.png",
+                avatar: "/img/patient-avatar.png",
                 firstName: "Jane",
                 lastName: "Cooper",
                 status: statuses.waiting,
@@ -112,6 +111,6 @@ export const api = {
     }
 }
 
-async function getPatients() {
-   const data = await api.getPatientsList()
+export function getPatients() {
+   return api.getPatientsList()
 }
