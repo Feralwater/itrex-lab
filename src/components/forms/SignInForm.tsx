@@ -53,7 +53,6 @@ const SignInForm = () => {
                     <Form className={style.form_box}>
                         <div className={style.form_box__input + " " + style.form_box__input_email}>
                             <Field
-                                id="email"
                                 name="email"
                                 placeholder="Email"
                                 type="email"
@@ -66,7 +65,6 @@ const SignInForm = () => {
                         </div>
                         <div className={style.form_box__input + " " + style.form_box__input_password}>
                             <Field
-                                id="password"
                                 name="password"
                                 placeholder="Password"
                                 type="password"

@@ -27,6 +27,13 @@
     position: relative;
     margin: 0 0 26px 0;
 
+    &_firstName,
+    &_lastName {
+      &:before {
+        background-image: url("../svgImages/user.svg");
+      }
+    }
+
     &:before {
       content: "";
       width: 20px;
@@ -76,16 +83,11 @@
       }
     }
 
-    //&_password,
-    //&_confirm-password {
-    //  &:after {
-    //
-    //    @media only screen and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3),
-    //    (max-device-width: 767px) {
-    //      right: 17px;
-    //    }
-    //  }
-    //}
+    &_confirmPassword {
+      &:before {
+        background-image: url("../svgImages/check-mark.svg");
+      }
+    }
   }
 
   & input[type="text"],
@@ -107,7 +109,7 @@
     line-height: 1.25;
     @media only screen and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3),
     (max-device-width: 767px) {
-      padding: 10px 26px 10px 48px;
+      padding: 10px 48px;
       font-size: 15px;
     }
 
