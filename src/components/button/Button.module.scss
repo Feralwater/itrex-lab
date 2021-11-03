@@ -13,4 +13,11 @@
   color: #FFFFFF;
   cursor: pointer;
   background-color: #7297ff;
+  @media only screen and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3),
+  (max-device-width: 767px) {
+    padding: 12px 49px 12px 16px;
+    height: 48px;
+    font-size: 15px;
+    background-position: 90px;
+  }
 }

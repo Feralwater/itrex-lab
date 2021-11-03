@@ -11,7 +11,7 @@ type Values = {
     confirmPassword: string
 }
 
-const RegistrationForm = () => {
+const SingUpForm = () => {
 
     const validationSchema = Yup.object({
         firstName: Yup.string()
@@ -140,4 +140,4 @@ const RegistrationForm = () => {
         </div>
     );
 };
-export default RegistrationForm;
+export default SingUpForm;
