@@ -17,7 +17,6 @@ const RestorePasswordForm = () => {
     })
     return (
         <div>
-            <h1 className={style.form_box__title}>Sign Up</h1>
             <Formik
                 initialValues={{
                     email: '',
