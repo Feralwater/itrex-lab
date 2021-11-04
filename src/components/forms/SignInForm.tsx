@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import * as Yup from "yup";
 import {ErrorMessage, Field, Form, Formik, FormikHelpers} from "formik";
 import style from "./Form.module.scss";
@@ -11,6 +11,8 @@ type Values = {
 }
 
 const SignInForm = () => {
+    const [isSecurePassword, setIsSecurePassword] = useState<boolean>(true);
+
     const validationSchema = Yup.object({
         email: Yup.string()
             .email('Email is invalid')
@@ -21,7 +23,7 @@ const SignInForm = () => {
     })
     return (
         <div>
-            <h1 className={style.form_box__title}>Sign Up</h1>
+            <h1 className={style.form_box__title}>Sign In</h1>
             <Formik
                 initialValues={{
                     email: '',
@@ -67,12 +69,13 @@ const SignInForm = () => {
                             <Field
                                 name="password"
                                 placeholder="Password"
-                                type="password"
+                                type={isSecurePassword ? "password" : "text"}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                                 value={values.password}
                             />
-                            <i className={style.form_box__input_password_icon + " " + style.form_box__input_password_icon_nonVisible}/>
+                            <i onClick={() => setIsSecurePassword(prev => !prev)}
+                               className={[style.form_box__input_password_icon, isSecurePassword ? style.form_box__input_password_icon_nonVisible : style.form_box__input_password_icon_visible].join(" ")}/>
                             {touched.password && errors.password &&
                             <ErrorMessage component={'span'} className={style.inputError__message} name={"password"}/>}
                         </div>

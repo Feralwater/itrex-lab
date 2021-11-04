@@ -2,7 +2,7 @@ import {Formik, Field, Form, FormikHelpers, ErrorMessage} from 'formik';
 import Button from "../button/Button";
 import * as Yup from "yup"
 import style from "./Form.module.scss"
-import React from "react";
+import React, {useState} from "react";
 
 type Values = {
     firstName: string
@@ -13,6 +13,9 @@ type Values = {
 }
 
 const SignUpForm = () => {
+
+    const [isSecurePassword, setIsSecurePassword] = useState<boolean>(true);
+    const [isSecureConfirmPassword, setIsSecureConfirmPassword] = useState<boolean>(true);
 
     const validationSchema = Yup.object({
         firstName: Yup.string()
@@ -111,12 +114,13 @@ const SignUpForm = () => {
                             <Field
                                 name="password"
                                 placeholder="Password"
-                                type="password"
+                                type={isSecurePassword ? "password" : "text"}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                                 value={values.password}
                             />
-                            <i className={style.form_box__input_password_icon + " " + style.form_box__input_password_icon_nonVisible}/>
+                            <i onClick={() => setIsSecurePassword(prev => !prev)}
+                               className={[style.form_box__input_password_icon, isSecurePassword ? style.form_box__input_password_icon_nonVisible : style.form_box__input_password_icon_visible].join(" ")}/>
                             {touched.password && errors.password &&
                             <ErrorMessage component={'span'} className={style.inputError__message} name={"password"}/>}
                         </div>
@@ -124,12 +128,13 @@ const SignUpForm = () => {
                             <Field
                                 name="confirmPassword"
                                 placeholder="Confirm Password"
-                                type="password"
+                                type={isSecureConfirmPassword ? "password" : "text"}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                                 value={values.confirmPassword}
                             />
-                            <i className={style.form_box__input_password_icon + " " + style.form_box__input_password_icon_nonVisible}/>
+                            <i onClick={() => setIsSecureConfirmPassword(prev => !prev)}
+                               className={[style.form_box__input_password_icon, isSecureConfirmPassword ? style.form_box__input_password_icon_nonVisible : style.form_box__input_password_icon_visible].join(" ")}/>
                             {touched.confirmPassword && errors.confirmPassword &&
                             <ErrorMessage component={'span'} className={style.inputError__message}
                                           name={"confirmPassword"}/>}

@@ -1,7 +1,7 @@
 import React from 'react';
 import {PatientType} from "../doctorViews/doctorViewFullState/DoctorViewFullState";
-import {ReactComponent as Clock} from '../svgImages/clock-icon.svg';
-import {ReactComponent as Board} from '../svgImages/board-icon.svg';
+import {ReactComponent as Clock} from '../../svgImages/clock-icon.svg';
+import {ReactComponent as Board} from '../../svgImages/board-icon.svg';
 import {statuses} from "../../actions/patients";
 import style from "./PatientCard.module.scss"
 

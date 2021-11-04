@@ -1,5 +1,5 @@
 import React from 'react';
-import {ReactComponent as Logo} from '../svgImages/logo.svg';
+import {ReactComponent as Logo} from '../../svgImages/logo.svg';
 import style from "./Header.module.scss"
 import {getMe} from "../../actions/doctors";
 import { Link } from 'react-router-dom';

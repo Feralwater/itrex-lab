@@ -26,7 +26,7 @@
   &__leftArrow {
     width: 8px;
     height: 14px;
-    background: url("../svgImages/left-arrow.svg") no-repeat center;
+    background: url("../../svgImages/left-arrow.svg") no-repeat center;
     display: inline-block;
     margin: 0 24px 2px 0;
   }
@@ -46,7 +46,7 @@
     &_firstName,
     &_lastName {
       &:before {
-        background-image: url("../svgImages/user.svg");
+        background-image: url("../../svgImages/user.svg");
       }
     }
 
@@ -69,13 +69,13 @@
 
     &_email {
       &:before {
-        background-image: url("../svgImages/email.svg");
+        background-image: url("../../svgImages/email.svg");
       }
     }
 
     &_password {
       &:before {
-        background-image: url("../svgImages/lock.svg");
+        background-image: url("../../svgImages/lock.svg");
       }
 
       &_icon {
@@ -90,18 +90,18 @@
         cursor: pointer;
 
         &_visible {
-          background: url("../svgImages/eye-icon.svg") no-repeat;
+          background: url("../../svgImages/eye-icon.svg") no-repeat;
         }
 
         &_nonVisible {
-          background: url("../svgImages/crossed-out-eye.svg") no-repeat;
+          background: url("../../svgImages/eye-off-icon.svg") no-repeat;
         }
       }
     }
 
     &_confirmPassword {
       &:before {
-        background-image: url("../svgImages/check-mark.svg");
+        background-image: url("../../svgImages/check-mark.svg");
       }
     }
   }
@@ -149,7 +149,7 @@
   &__right_arrow {
     width: 8px;
     height: 14px;
-    background: url("../svgImages/right-arrow.svg") no-repeat center;
+    background: url("../../svgImages/right-arrow.svg") no-repeat center;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);

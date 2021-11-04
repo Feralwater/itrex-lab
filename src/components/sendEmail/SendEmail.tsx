@@ -7,7 +7,7 @@ type SendEmailPropsType = {
     email: string
 }
 
-const SendEmail: React.VFC<SendEmailPropsType> = ({email = "example@exam.com"}) => {
+const SendEmail: React.VFC<SendEmailPropsType> = ({email}) => {
     return (
         <div className={s.bodyAuth}>
             <div className={s.form__container}>

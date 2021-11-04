@@ -1,5 +1,5 @@
 import React from 'react';
-import {ReactComponent as MedicalHistory} from '../../svgImages/medical-history.svg';
+import {ReactComponent as MedicalHistory} from '../../../svgImages/medical-history.svg';
 import style from './DoctorViewEmptyState.module.scss'
 
 const DoctorViewEmptyState = () => {

@@ -21,7 +21,7 @@ function Routes() {
             <Route path={'/'} exact render={() => <Redirect to={PATH.PATIENTS}/>}/>
             <Route path={PATH.PATIENTS} render={() => <DoctorViewTemplate/>}/>
             <Route path={PATH.RESTORE_PASSWORD} render={() => <RestorePassword/>}/>
-            <Route path={PATH.SEND_EMAIL} render={() => <SendEmail/>}/>
+            <Route path={PATH.SEND_EMAIL} render={() => <SendEmail email={"example@exam.com"}/>}/>
             <Route path={PATH.SIGN_IN} render={() => <SignIn/>}/>
             <Route path={PATH.SIGN_UP} render={() => <SignUp/>}/>
             <Route render={() => <Error404/>}/>
