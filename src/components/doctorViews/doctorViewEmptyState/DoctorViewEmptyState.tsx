@@ -1,18 +1,18 @@
 import React from 'react';
 import {ReactComponent as MedicalHistory} from '../../../svgImages/medical-history.svg';
-import style from './DoctorViewEmptyState.module.scss'
+import {MedicalHistoryContainer, MedicalHistoryText} from "./DoctorViewEmptyStateStyles";
 
 const DoctorViewEmptyState = () => {
     return (
-        <div className={style.patients_empty__container}>
-            <div className={style.patients__medical_history}>
+        <>
+            <MedicalHistoryContainer>
                 <MedicalHistory/>
-                <div className={style.patients__medical_history_text}>
+                <MedicalHistoryText>
                     <span>You have no patients yet.</span>
                     <span>To create a patient profile, please contact your administrator.</span>
-                </div>
-            </div>
-        </div>
+                </MedicalHistoryText>
+            </MedicalHistoryContainer>
+        </>
     );
 };
 

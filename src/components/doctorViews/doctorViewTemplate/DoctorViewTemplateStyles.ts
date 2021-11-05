@@ -1,8 +1,10 @@
-.body {
-  padding: 80px 0 0 0;
-}
+import styled from 'styled-components';
 
-.bodyDoctorView {
+export const Body = styled.div`
+  padding: 80px 0 0 0;
+`;
+
+export const BodyDoctorView = styled.main`
   background-color: #e4ebff;
   margin: 0;
   padding: 0 64px 48px;
@@ -13,9 +15,9 @@
     padding: 0;
     height: calc(100vh - 80px);
   }
-}
+`;
 
-.patients {
+export const Patients = styled.div`
   max-width: 1792px;
   height: 100%;
   padding: 40px 16px 0 48px;
@@ -34,30 +36,6 @@
     height: 100%;
     overflow: auto;
     border-radius: 16px 16px 0 0;
-  }
-
-  &__container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    grid-template-rows: repeat(auto-fit, 264px);
-    gap: 25px 24px;
-    overflow: auto;
-    padding: 0 32px 0 0;
-
-    &_empty {
-      height: 68vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    @media only screen and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3),
-    (max-device-width: 767px) {
-      grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
-      grid-template-rows: repeat(auto-fit, 305px);
-      gap: 15px;
-      padding: 0;
-    }
   }
 
   ::-webkit-scrollbar {
@@ -80,4 +58,27 @@
       width: 0px;
     }
   }
+`;
+
+interface PatientsContainerProps {
+    patientsLength: number
 }
+
+export const PatientsContainer = styled.div<PatientsContainerProps>`
+  display: ${(props) => (props.patientsLength > 0 ? "grid" : "flex")};
+  height: ${(props) => (props?.patientsLength === 0 && "68vh")};
+  justify-content: ${(props) => (props?.patientsLength === 0 && "center")};
+  align-items: ${(props) => (props?.patientsLength === 0 && "center")};
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-rows: repeat(auto-fit, 264px);
+  gap: 25px 24px;
+  overflow: auto;
+  padding: 0 32px 0 0;
+  @media only screen and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3),
+  (max-device-width: 767px) {
+    grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+    grid-template-rows: repeat(auto-fit, 305px);
+    gap: 15px;
+    padding: 0;
+  }
+`;

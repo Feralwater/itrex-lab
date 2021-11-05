@@ -1,9 +1,17 @@
 import React from 'react';
 import * as Yup from "yup";
-import {ErrorMessage, Field, Form, Formik, FormikHelpers} from "formik";
-import style from "./Form.module.scss";
+import {Formik, FormikHelpers} from "formik";
 import Button from "../button/Button";
-import {Link} from 'react-router-dom';
+import {FormSubmitButton} from "../button/ButtonsStyles";
+import {
+    ButtonRightArrow,
+    ButtonWrapper,
+    CustomErrorMessage,
+    CustomField,
+    CustomForm, FormTitle, FormTitleLeftArrow,
+    InputEmailContainer, RestoreMessage
+} from './FormStyles';
+import {Link} from "react-router-dom";
 
 type Values = {
     email: string
@@ -16,67 +24,66 @@ const RestorePasswordForm = () => {
             .required('Email is required'),
     })
     return (
-        <div>
-            <Formik
-                initialValues={{
-                    email: '',
-                }}
-                onSubmit={(
-                    values: Values,
-                    {setSubmitting}: FormikHelpers<Values>
-                ) => {
-                    setTimeout(() => {
-                        alert(JSON.stringify(values, null, 2));
-                        setSubmitting(false);
-                    }, 500);
-                }}
-                validateOnBlur
-                validationSchema={validationSchema}
-            >
-                {({
-                      values,
-                      errors,
-                      touched,
-                      handleChange,
-                      handleBlur,
-                      isValid,
-                      handleSubmit,
-                      dirty,
-                  }
-                ) => (
-                    <Form className={style.form_box}>
-                        <Link to={"/sign-in"} className={style.form_box__title}>
-                            <span className={style.form_box__leftArrow}/>
-                            Restore Password
-                        </Link>
-                        <div className={style.form_box__restoreMessage}>
-                            Please use your email address, and we’ll send
-                            you the link to reset your password
-                        </div>
-                        <div className={style.form_box__input + " " + style.form_box__input_email}>
-                            <Field
-                                name="email"
-                                placeholder="Email"
-                                type="email"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.email}
-                            />
-                            {touched.email && errors.email &&
-                            <ErrorMessage component={'span'} name={"email"} className={style.inputError__message}/>}
-                        </div>
-                        <div className={style.form_box__button_wrapper}>
-                            <Button type="submit"
-                                    disabled={!(isValid && dirty)}
-                                    onClick={handleSubmit}
-                                    className="form_box__button"
-                            >Send Reset Link</Button>
-                            <span className={style.form_box__right_arrow}/>
-                        </div>
-                    </Form>
-                )}
-            </Formik>
-        </div>
+        <Formik
+            initialValues={{
+                email: '',
+            }}
+            onSubmit={(
+                values: Values,
+                {setSubmitting}: FormikHelpers<Values>
+            ) => {
+                setTimeout(() => {
+                    alert(JSON.stringify(values, null, 2));
+                    setSubmitting(false);
+                }, 500);
+            }}
+            validateOnBlur
+            validationSchema={validationSchema}
+        >
+            {({
+                  values,
+                  errors,
+                  touched,
+                  handleChange,
+                  handleBlur,
+                  isValid,
+                  handleSubmit,
+                  dirty,
+              }
+            ) => (
+                <CustomForm>
+                    <FormTitle as={Link} to={"/sign-in"}>
+                        <FormTitleLeftArrow/>
+                        Restore Password
+                    </FormTitle>
+                    <RestoreMessage>
+                        Please use your email address, and we’ll send
+                        you the link to reset your password
+                    </RestoreMessage>
+                    <InputEmailContainer>
+                        <CustomField
+                            isError={touched.email && errors.email}
+                            name="email"
+                            placeholder="Email"
+                            type="email"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.email}
+                        />
+                        {touched.email && errors.email &&
+                        <CustomErrorMessage component={'span'} name={"email"}/>}
+                    </InputEmailContainer>
+                    <ButtonWrapper>
+                        <Button type="submit"
+                                disabled={!(isValid && dirty)}
+                                onClick={handleSubmit}
+                                styledComponent={FormSubmitButton}
+                        >Send Reset Link</Button>
+                        <ButtonRightArrow/>
+                    </ButtonWrapper>
+                </CustomForm>
+            )}
+        </Formik>
     );
 };
 

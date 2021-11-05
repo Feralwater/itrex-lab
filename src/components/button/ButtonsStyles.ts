@@ -1,4 +1,6 @@
-.form_box__button {
+import styled from 'styled-components';
+
+export const FormSubmitButton = styled.button`
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
@@ -20,4 +22,4 @@
     font-size: 15px;
     background-position: 90px;
   }
-}
+`;

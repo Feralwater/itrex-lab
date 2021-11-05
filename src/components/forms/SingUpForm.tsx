@@ -1,8 +1,18 @@
-import {Formik, Field, Form, FormikHelpers, ErrorMessage} from 'formik';
+import {Formik, FormikHelpers} from 'formik';
 import Button from "../button/Button";
 import * as Yup from "yup"
-import style from "./Form.module.scss"
 import React, {useState} from "react";
+import {FormSubmitButton} from "../button/ButtonsStyles";
+import {
+    ButtonRightArrow,
+    ButtonWrapper,
+    InputConfirmPasswordContainer,
+    InputEmailContainer,
+    InputNameContainer,
+    InputPasswordContainer,
+    InputPasswordIcon,
+    CustomForm, CustomField, CustomErrorMessage, FormTitle,
+} from "./FormStyles";
 
 type Values = {
     firstName: string
@@ -21,13 +31,11 @@ const SignUpForm = () => {
         firstName: Yup.string()
             .min(2, 'Must be 2 characters or more')
             .max(15, 'Must be 15 characters or less')
-            .required('Required')
-            .typeError('field first name should be string literal'),
+            .required('Required'),
         lastName: Yup.string()
             .min(2, 'Must be 2 characters or more')
             .max(20, 'Must be 15 characters or less')
-            .required('Required')
-            .typeError('field last name should be string literal'),
+            .required('Required'),
         email: Yup.string()
             .email('Email is invalid')
             .required('Email is required'),
@@ -40,117 +48,119 @@ const SignUpForm = () => {
     })
 
     return (
-        <div>
-            <h1>Sign Up</h1>
-            <Formik
-                initialValues={{
-                    firstName: '',
-                    lastName: '',
-                    email: '',
-                    password: '',
-                    confirmPassword: '',
-                }}
-                onSubmit={(
-                    values: Values,
-                    {setSubmitting}: FormikHelpers<Values>
-                ) => {
-                    setTimeout(() => {
-                        alert(JSON.stringify(values, null, 2));
-                        setSubmitting(false);
-                    }, 500);
-                }}
-                validateOnBlur
-                validationSchema={validationSchema}
-            >
-                {({
-                      values,
-                      errors,
-                      touched,
-                      handleChange,
-                      handleBlur,
-                      isValid,
-                      handleSubmit,
-                      dirty,
-                  }
-                ) => (
-                    <Form className={style.form_box}>
-                        <div className={style.form_box__input + " " + style.form_box__input_firstName}>
-                            <Field
-                                name="firstName"
-                                placeholder="First Name"
-                                type="text"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.firstName}
-                            />
-                            {touched.firstName && errors.firstName &&
-                            <ErrorMessage name="firstName" component="span" className={style.inputError__message}/>}
-                        </div>
-                        <div className={style.form_box__input + " " + style.form_box__input_lastName}>
-                            <Field
-                                name="lastName"
-                                placeholder="Last Name"
-                                type="text"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.lastName}
-                            />
-                            {touched.lastName && errors.lastName &&
-                            <ErrorMessage name="lastName" component="span" className={style.inputError__message}/>}
-                        </div>
-                        <div className={style.form_box__input + " " + style.form_box__input_email}>
-                            <Field
-                                name="email"
-                                placeholder="Email"
-                                type="email"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.email}
-                            />
-                            {touched.email && errors.email &&
-                            <ErrorMessage component={'span'} name={"email"} className={style.inputError__message}/>}
-                        </div>
-                        <div className={style.form_box__input + " " + style.form_box__input_password}>
-                            <Field
-                                name="password"
-                                placeholder="Password"
-                                type={isSecurePassword ? "password" : "text"}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.password}
-                            />
-                            <i onClick={() => setIsSecurePassword(prev => !prev)}
-                               className={[style.form_box__input_password_icon, isSecurePassword ? style.form_box__input_password_icon_nonVisible : style.form_box__input_password_icon_visible].join(" ")}/>
-                            {touched.password && errors.password &&
-                            <ErrorMessage component={'span'} className={style.inputError__message} name={"password"}/>}
-                        </div>
-                        <div className={style.form_box__input + " " + style.form_box__input_confirmPassword}>
-                            <Field
-                                name="confirmPassword"
-                                placeholder="Confirm Password"
-                                type={isSecureConfirmPassword ? "password" : "text"}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.confirmPassword}
-                            />
-                            <i onClick={() => setIsSecureConfirmPassword(prev => !prev)}
-                               className={[style.form_box__input_password_icon, isSecureConfirmPassword ? style.form_box__input_password_icon_nonVisible : style.form_box__input_password_icon_visible].join(" ")}/>
-                            {touched.confirmPassword && errors.confirmPassword &&
-                            <ErrorMessage component={'span'} className={style.inputError__message}
-                                          name={"confirmPassword"}/>}
-                        </div>
-                        <div className={style.form_box__button_wrapper}>
-                            <Button type="submit"
-                                    disabled={!(isValid && dirty)}
-                                    onClick={handleSubmit}
-                                    className="form_box__button"
-                            >Sign Up</Button>
-                            <span className={style.form_box__right_arrow}/>
-                        </div>
-                    </Form>
-                )}
-            </Formik>
-        </div>
+        <Formik
+            initialValues={{
+                firstName: '',
+                lastName: '',
+                email: '',
+                password: '',
+                confirmPassword: '',
+            }}
+            onSubmit={(
+                values: Values,
+                {setSubmitting}: FormikHelpers<Values>
+            ) => {
+                setTimeout(() => {
+                    alert(JSON.stringify(values, null, 2));
+                    setSubmitting(false);
+                }, 500);
+            }}
+            validateOnBlur
+            validationSchema={validationSchema}
+        >
+            {({
+                  values,
+                  errors,
+                  touched,
+                  handleChange,
+                  handleBlur,
+                  isValid,
+                  handleSubmit,
+                  dirty,
+              }
+            ) => (
+                <CustomForm>
+                    <FormTitle as={"h1"}>Sign Up</FormTitle>
+                    <InputNameContainer>
+                        <CustomField
+                            isError={touched.firstName && errors.firstName}
+                            name="firstName"
+                            placeholder="First Name"
+                            type="text"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.firstName}
+                        />
+                        {touched.firstName && errors.firstName &&
+                        <CustomErrorMessage name="firstName" component="span"/>}
+                    </InputNameContainer>
+                    <InputNameContainer>
+                        <CustomField
+                            isError={touched.lastName && errors.lastName}
+                            name="lastName"
+                            placeholder="Last Name"
+                            type="text"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.lastName}
+                        />
+                        {touched.lastName && errors.lastName &&
+                        <CustomErrorMessage name="lastName" component="span"/>}
+                    </InputNameContainer>
+                    <InputEmailContainer>
+                        <CustomField
+                            isError={touched.email && errors.email}
+                            name="email"
+                            placeholder="Email"
+                            type="email"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.email}
+                        />
+                        {touched.email && errors.email &&
+                        <CustomErrorMessage component={'span'} name={"email"}/>}
+                    </InputEmailContainer>
+                    <InputPasswordContainer>
+                        <CustomField
+                            isError={touched.password && errors.password}
+                            name="password"
+                            placeholder="Password"
+                            type={isSecurePassword ? "password" : "text"}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.password}
+                        />
+                        <InputPasswordIcon isVisible={isSecurePassword}
+                                           onClick={() => setIsSecurePassword(prev => !prev)}/>
+                        {touched.password && errors.password &&
+                        <CustomErrorMessage component={'span'} name={"password"}/>}
+                    </InputPasswordContainer>
+                    <InputConfirmPasswordContainer>
+                        <CustomField
+                            isError={touched.confirmPassword && errors.confirmPassword}
+                            name="confirmPassword"
+                            placeholder="Confirm Password"
+                            type={isSecureConfirmPassword ? "password" : "text"}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.confirmPassword}
+                        />
+                        <InputPasswordIcon isVisible={isSecureConfirmPassword}
+                                           onClick={() => setIsSecureConfirmPassword(prev => !prev)}/>
+                        {touched.confirmPassword && errors.confirmPassword &&
+                        <CustomErrorMessage component={'span'} name={"confirmPassword"}/>}
+                    </InputConfirmPasswordContainer>
+                    <ButtonWrapper>
+                        <Button type="submit"
+                                disabled={!(isValid && dirty)}
+                                onClick={handleSubmit}
+                                styledComponent={FormSubmitButton}
+                        >Sign Up</Button>
+                        <ButtonRightArrow/>
+                    </ButtonWrapper>
+                </CustomForm>
+            )}
+        </Formik>
     );
 };
 export default SignUpForm;

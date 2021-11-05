@@ -3,7 +3,21 @@ import {PatientType} from "../doctorViews/doctorViewFullState/DoctorViewFullStat
 import {ReactComponent as Clock} from '../../svgImages/clock-icon.svg';
 import {ReactComponent as Board} from '../../svgImages/board-icon.svg';
 import {statuses} from "../../actions/patients";
-import style from "./PatientCard.module.scss"
+import {
+    AppointmentStatus,
+    SettingsButton,
+    UserCard,
+    UserCardBody, UserCardBodyAppointmentConfirm, UserCardBodyDescription, UserCardBodyDescriptionText,
+    UserCardBodyTime,
+    UserCardBodyTimeText,
+    UserCardHeader,
+    UserCardImageContainer,
+    UserCardName,
+    UserData,
+    UserInformation,
+} from "./PatientCardStyles";
+import {UserImage, UserImageContainer, UserName} from '../header/HeaderStyles';
+import Button from "../button/Button";
 
 const PatientCard: React.VFC<PatientType> = ({
                                                  avatar,
@@ -13,46 +27,49 @@ const PatientCard: React.VFC<PatientType> = ({
                                                  time,
                                                  description,
                                              }) => {
-    const statusClasses = {
-        [statuses.confirmed]: style.patient__confirm_green,
-        [statuses.canceled]: style.patient__confirm_red,
-        [statuses.waiting]: style.patient__confirm_blue,
+    const statusColor = {
+        [statuses.confirmed]: '#34C197',
+        [statuses.canceled]: '#FF2567',
+        [statuses.waiting]: '#7297FF',
     }
-    const statusDescriptionClasses = {
+    const statusDescription = {
         [statuses.confirmed]: "Appointment is confirmed",
         [statuses.canceled]: "Appointment is canceled",
         [statuses.waiting]: "Waiting for confirmation...",
     }
     return (
-        <div className={style.patient__card}>
-            <div className={style.patient__header}>
-                <div className={style.patient__info}>
-                    <img className={style.patient__info_image} src={avatar} alt="user avatar"/>
-                    <div className={style.patient__data}>
-                        <p className={style.patient__name}>{firstName + " " + lastName}</p>
-                        <div className={style.patient__status}>
-                            <div className={style.patient__confirm + " " + statusClasses[status]}/>
-                            <div>{statusDescriptionClasses[status]}</div>
-                        </div>
-                    </div>
-                </div>
-                <button className={style.patient__settings_button}/>
-            </div>
-            <div className={style.patient__body}>
-                <div className={style.patient__time}>
-                    <div className={style.patient__time_icon}>
+        <UserCard>
+            <UserCardHeader>
+                <UserData>
+                    <UserCardImageContainer>
+                        <UserImage src={avatar} alt="user avatar"/>
+                    </UserCardImageContainer>
+                    <UserInformation>
+                        <UserCardName>{firstName + " " + lastName}</UserCardName>
+                        <AppointmentStatus>
+                            <UserCardBodyAppointmentConfirm color={statusColor[status]}/>
+                            <div>{statusDescription[status]}</div>
+                        </AppointmentStatus>
+                    </UserInformation>
+                </UserData>
+                <Button type={"button"} onClick={() => {
+                }} styledComponent={SettingsButton}/>
+            </UserCardHeader>
+            <UserCardBody>
+                <UserCardBodyTime>
+                    <div>
                         <Clock/>
                     </div>
-                    <div className={style.patient__time_text}>{time}</div>
-                </div>
-                <div className={description ? style.patient__description : style.patient__description_empty}>
-                    <div className={style.patient__description_icon}>
+                    <UserCardBodyTimeText>{time}</UserCardBodyTimeText>
+                </UserCardBodyTime>
+                <UserCardBodyDescription isDescription={description.length > 0}>
+                    <div>
                         <Board/>
                     </div>
-                    <div className={style.patient__description_text}>{description}</div>
-                </div>
-            </div>
-        </div>
+                    <UserCardBodyDescriptionText>{description}</UserCardBodyDescriptionText>
+                </UserCardBodyDescription>
+            </UserCardBody>
+        </UserCard>
     );
 };
 

@@ -1,19 +1,18 @@
 import React from 'react';
-import style from "../signIn/SignIn.module.scss";
-import {Link} from "react-router-dom";
 import SignUpForm from "../forms/SingUpForm";
+import {BodyAuth, FormContainer, SignInUpLink, SignInUpMessage} from "../signIn/SignInStyles";
 
 const SignUp = () => {
     return (
-        <div className={style.bodyAuth}>
-            <div className={style.form__container}>
+        <BodyAuth>
+            <FormContainer>
                 <SignUpForm/>
-                <div className={style.signInUp__message}>
+                <SignInUpMessage>
                     Already have an account?
-                    <Link to={"/sign-in"} className={style.signInUp__link}>Sign in</Link>
-                </div>
-            </div>
-        </div>
+                    <SignInUpLink to={"/sign-in"}>Sign in</SignInUpLink>
+                </SignInUpMessage>
+            </FormContainer>
+        </BodyAuth>
     );
 };
 

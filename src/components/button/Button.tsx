@@ -1,11 +1,11 @@
 import React from 'react';
-import style from './Button.module.scss'
+import styled from "styled-components";
 
 type ButtonPropsType = {
     type: "button" | "submit" | "reset" | undefined
     disabled?: boolean
     onClick: () => void
-    className: string
+    styledComponent: any
 }
 
 const Button: React.FC<ButtonPropsType> = ({
@@ -13,14 +13,14 @@ const Button: React.FC<ButtonPropsType> = ({
                                                type,
                                                disabled,
                                                onClick,
-                                               className
+                                               styledComponent
                                            }) => {
+    const StyledButton = styled(styledComponent)``;
     return (
-        <button type={type}
+        <StyledButton type={type}
                 disabled={disabled}
                 onClick={onClick}
-                className={style[className]}
-        >{children}</button>
+        >{children}</StyledButton>
     );
 };
 

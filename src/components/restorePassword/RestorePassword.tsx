@@ -1,14 +1,14 @@
 import React from 'react';
-import style from "../signIn/SignIn.module.scss";
 import RestorePasswordForm from "../forms/RestorePasswordForm";
+import {BodyAuth, FormContainer} from "../signIn/SignInStyles";
 
 const RestorePassword = () => {
     return (
-        <div className={style.bodyAuth}>
-            <div className={style.form__container}>
+        <BodyAuth>
+            <FormContainer>
                 <RestorePasswordForm/>
-            </div>
-        </div>
+            </FormContainer>
+        </BodyAuth>
     );
 };
 
