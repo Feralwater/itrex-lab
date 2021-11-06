@@ -27,7 +27,7 @@ const AppointmentsTemplate = () => {
                                 : <DoctorViewEmptyState/>
                             }
                         </PatientsContainer>
-                        {/*<MessageTemplate isSuccess={false}/>*/}
+                        <MessageTemplate isSuccess={true}/>
                     </Patients>
                 </BodyDoctorView>
             </Body>
