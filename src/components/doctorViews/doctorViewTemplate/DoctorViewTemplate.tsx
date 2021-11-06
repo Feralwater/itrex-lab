@@ -14,9 +14,12 @@ const DoctorViewTemplate = () => {
             <Body>
                 <BodyDoctorView>
                     <Patients>
-                        <PatientsContainerHeader/>
+                        <PatientsContainerHeader role={"doctor"}/>
                         <PatientsContainer patientsLength={patients.length}>
-                            {patients.length > 0 ? <DoctorViewFullState patients={patients}/> : <DoctorViewEmptyState/>}
+                            {patients.length > 0
+                                ? <DoctorViewFullState patients={patients}/>
+                                : <DoctorViewEmptyState/>
+                            }
                         </PatientsContainer>
                     </Patients>
                 </BodyDoctorView>
@@ -26,4 +29,3 @@ const DoctorViewTemplate = () => {
 };
 
 export default DoctorViewTemplate;
-// className={patients.length > 0 ? style.patients__container : style.patients__container_empty}

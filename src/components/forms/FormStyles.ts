@@ -62,6 +62,7 @@ export const InputPasswordIcon = styled.i<InputPasswordIconProps>`
   transform: translateY(-50%);
   right: 26px;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
   background: ${(props) => (props.isVisible ? "url(\"../../svgImages/eye-off-icon.svg\") no-repeat" : "url(\"../../svgImages/eye-icon.svg\") no-repeat")};
 `;
 

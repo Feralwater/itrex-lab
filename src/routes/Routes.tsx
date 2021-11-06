@@ -6,6 +6,7 @@ import SignIn from "../components/signIn/SignIn";
 import SignUp from "../components/signUp/SignUp";
 import Error404 from "../components/error404/Error404";
 import DoctorViewTemplate from "../components/doctorViews/doctorViewTemplate/DoctorViewTemplate";
+import AppointmentsTemplate from "../components/appointments/AppointmentsTemplate";
 
 export const PATH = {
     PATIENTS: '/patients',
@@ -13,6 +14,7 @@ export const PATH = {
     SEND_EMAIL: '/send-email',
     SIGN_IN: '/sign-in',
     SIGN_UP: '/sign-up',
+    APPOINTMENTS: '/appointments',
 }
 
 function Routes() {
@@ -24,6 +26,7 @@ function Routes() {
             <Route path={PATH.SEND_EMAIL} render={() => <SendEmail email={"example@exam.com"}/>}/>
             <Route path={PATH.SIGN_IN} render={() => <SignIn/>}/>
             <Route path={PATH.SIGN_UP} render={() => <SignUp/>}/>
+            <Route path={PATH.APPOINTMENTS} render={() => <AppointmentsTemplate/>}/>
             <Route render={() => <Error404/>}/>
         </Switch>
     )

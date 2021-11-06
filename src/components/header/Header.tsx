@@ -15,7 +15,8 @@ import {
 
 type HeaderPropsType = {}
 
-type DoctorType = {
+type PageOwnerType = {
+    id: string
     avatar: string
     firstName: string
     secondName: string
@@ -23,7 +24,7 @@ type DoctorType = {
 }
 
 const Header: React.VFC<HeaderPropsType> = () => {
-    const doctor: DoctorType = getMe()
+    const pageOwner: PageOwnerType = getMe()
     return (
         <HeaderWrapper>
             <HeaderContainer>
@@ -32,13 +33,12 @@ const Header: React.VFC<HeaderPropsType> = () => {
                     <LogoText>palm clinic</LogoText>
                 </HeaderLogo>
                 <User>
-                    <Link to={"/sign-in"}>back</Link>
                     <UserInfo>
-                        <UserName>{doctor.firstName + " " + doctor.secondName}</UserName>
-                        <UserRole>{doctor.role}</UserRole>
+                        <UserName>{pageOwner.firstName + " " + pageOwner.secondName}</UserName>
+                        <UserRole>{pageOwner.role}</UserRole>
                     </UserInfo>
                     <UserImageContainer>
-                        <UserImage src={doctor.avatar} alt="doctor\`s avatar"/>
+                        <UserImage src={pageOwner.avatar} alt="doctor\`s avatar"/>
                         <NetworkStatus isOnline={true}/>
                     </UserImageContainer>
                 </User>

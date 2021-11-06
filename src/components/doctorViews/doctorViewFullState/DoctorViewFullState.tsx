@@ -5,9 +5,11 @@ export type PatientType = {
     avatar: string
     firstName: string
     lastName: string
-    status: string
+    status?: string
+    doctor?: string
     time: string
     description: string
+    role: string
 }
 export type DoctorViewFullStatePropsType = {
     patients: Array<PatientType>
@@ -23,6 +25,7 @@ const DoctorViewFullState: React.VFC<DoctorViewFullStatePropsType> = ({patients}
                                                               status={patient.status}
                                                               time={patient.time}
                                                               description={patient.description}
+                                                              role={patient.role}
                 />)
             }
         </>

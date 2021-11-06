@@ -2,6 +2,7 @@ import React from 'react';
 import {PatientType} from "../doctorViews/doctorViewFullState/DoctorViewFullState";
 import {ReactComponent as Clock} from '../../svgImages/clock-icon.svg';
 import {ReactComponent as Board} from '../../svgImages/board-icon.svg';
+import {ReactComponent as Heart} from '../../svgImages/heart-icon.svg';
 import {statuses} from "../../actions/patients";
 import {
     AppointmentStatus,
@@ -26,6 +27,7 @@ const PatientCard: React.VFC<PatientType> = ({
                                                  status,
                                                  time,
                                                  description,
+                                                 role
                                              }) => {
     const statusColor = {
         [statuses.confirmed]: '#34C197',
@@ -37,6 +39,19 @@ const PatientCard: React.VFC<PatientType> = ({
         [statuses.canceled]: "Appointment is canceled",
         [statuses.waiting]: "Waiting for confirmation...",
     }
+
+    function isStatus(status: string | undefined) {
+        if (status) {
+            return (
+                <>
+                    <UserCardBodyAppointmentConfirm color={statusColor[status]}/>
+                    <div>{statusDescription[status]}</div>
+                </>)
+        } else {
+            return <div>{"Therapist"}</div>
+        }
+    }
+
     return (
         <UserCard>
             <UserCardHeader>
@@ -47,8 +62,7 @@ const PatientCard: React.VFC<PatientType> = ({
                     <UserInformation>
                         <UserCardName>{firstName + " " + lastName}</UserCardName>
                         <AppointmentStatus>
-                            <UserCardBodyAppointmentConfirm color={statusColor[status]}/>
-                            <div>{statusDescription[status]}</div>
+                            {isStatus(status)}
                         </AppointmentStatus>
                     </UserInformation>
                 </UserData>
@@ -57,15 +71,11 @@ const PatientCard: React.VFC<PatientType> = ({
             </UserCardHeader>
             <UserCardBody>
                 <UserCardBodyTime>
-                    <div>
-                        <Clock/>
-                    </div>
+                    <Clock/>
                     <UserCardBodyTimeText>{time}</UserCardBodyTimeText>
                 </UserCardBodyTime>
                 <UserCardBodyDescription isDescription={description.length > 0}>
-                    <div>
-                        <Board/>
-                    </div>
+                    {role === "doctor" ? <Board/> : <Heart/>}
                     <UserCardBodyDescriptionText>{description}</UserCardBodyDescriptionText>
                 </UserCardBodyDescription>
             </UserCardBody>
