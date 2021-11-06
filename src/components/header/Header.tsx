@@ -1,7 +1,7 @@
 import React from 'react';
 import {ReactComponent as Logo} from '../../svgImages/logo.svg';
 import {getMe} from "../../actions/doctors";
-import {Link} from 'react-router-dom';
+
 import {
     HeaderContainer,
     HeaderLogo,

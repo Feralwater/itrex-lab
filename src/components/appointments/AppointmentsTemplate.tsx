@@ -10,6 +10,7 @@ import PatientsContainerHeader from "../doctorViews/doctorViewTemplate/patientsC
 import DoctorViewFullState from "../doctorViews/doctorViewFullState/DoctorViewFullState";
 import DoctorViewEmptyState from "../doctorViews/doctorViewEmptyState/DoctorViewEmptyState";
 import {getAppointments} from "../../actions/appointments";
+import MessageTemplate from "../message/MessageTemplate";
 
 const AppointmentsTemplate = () => {
     const appointments = getAppointments()
@@ -26,6 +27,7 @@ const AppointmentsTemplate = () => {
                                 : <DoctorViewEmptyState/>
                             }
                         </PatientsContainer>
+                        {/*<MessageTemplate isSuccess={false}/>*/}
                     </Patients>
                 </BodyDoctorView>
             </Body>
