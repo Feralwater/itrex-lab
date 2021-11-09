@@ -38,16 +38,16 @@ export const Patients = styled.div`
     border-radius: 16px 16px 0 0;
   }
 
-  ::-webkit-scrollbar {
+  & ::-webkit-scrollbar {
     width: 12px;
   }
 
-  ::-webkit-scrollbar-track {
+  & ::-webkit-scrollbar-track {
     background: rgba(236, 220, 222, 0.3);
     border-radius: 8px;
   }
 
-  ::-webkit-scrollbar-thumb {
+  & ::-webkit-scrollbar-thumb {
     background: rgba(220, 224, 236, 0.5);
     border-radius: 8px;
   }
