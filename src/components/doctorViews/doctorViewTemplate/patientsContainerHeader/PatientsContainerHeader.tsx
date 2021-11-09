@@ -1,5 +1,13 @@
 import React from 'react';
-import {PatientsButton, PatientsButtonsContainer, PatientsHeader, PatientsTitle} from "./PatientsContainerHeaderStyles";
+import {
+    ButtonLeftPlusIcon,
+    CreateAppointmentButton,
+    PatientsButton,
+    PatientsButtonsContainer,
+    PatientsHeader,
+    PatientsTitle
+} from "./PatientsContainerHeaderStyles";
+import {ButtonWrapper} from "../../../forms/FormStyles";
 
 type PatientsContainerHeaderPropsType = {
     role: string
@@ -32,7 +40,14 @@ const PatientsContainerHeader: React.VFC<PatientsContainerHeaderPropsType> = ({r
                 {chooseButtons(role)}
             </PatientsButtonsContainer>
             <PatientsHeader>
-                <PatientsTitle>{role === "doctor" ? "my patients" : "my appointments"}</PatientsTitle>
+                <PatientsTitle>{role === "doctor" ? "My Patients" : "My Appointments"}</PatientsTitle>
+                {
+                    role === "patient" && <ButtonWrapper>
+                        <ButtonLeftPlusIcon/>
+                        <CreateAppointmentButton to={"/make-an-appointment"}
+                        >Create an appointment</CreateAppointmentButton>
+                    </ButtonWrapper>
+                }
             </PatientsHeader>
         </>
     );

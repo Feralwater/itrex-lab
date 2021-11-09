@@ -90,11 +90,3 @@ const Calendar: React.VFC<CalendarPropsType> = (props) => {
 };
 
 export default Calendar;
-
-// <Calendar
-//     date={new Date()}
-//     years={[2021, 2022]}
-//     monthNames={['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']}
-//     weekDayNames={['M', 'T', 'W', 'T', 'F', 'S', 'S']}
-//     onChange={Function.prototype}
-// />

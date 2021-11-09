@@ -7,6 +7,7 @@ import SignUp from "../components/signUp/SignUp";
 import Error404 from "../components/error404/Error404";
 import DoctorViewTemplate from "../components/doctorViews/doctorViewTemplate/DoctorViewTemplate";
 import AppointmentsTemplate from "../components/appointments/AppointmentsTemplate";
+import MakeAppointment from "../components/appointments/MakeAppointment";
 
 export const PATH = {
     PATIENTS: '/patients',
@@ -15,6 +16,7 @@ export const PATH = {
     SIGN_IN: '/sign-in',
     SIGN_UP: '/sign-up',
     APPOINTMENTS: '/appointments',
+    MAKE_APPOINTMENT: '/make-an-appointment',
 }
 
 function Routes() {
@@ -27,6 +29,7 @@ function Routes() {
             <Route path={PATH.SIGN_IN} render={() => <SignIn/>}/>
             <Route path={PATH.SIGN_UP} render={() => <SignUp/>}/>
             <Route path={PATH.APPOINTMENTS} render={() => <AppointmentsTemplate/>}/>
+            <Route path={PATH.MAKE_APPOINTMENT} render={() => <MakeAppointment/>}/>
             <Route render={() => <Error404/>}/>
         </Switch>
     )
