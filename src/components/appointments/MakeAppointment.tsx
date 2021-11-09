@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Header from "../header/Header";
 import {
     Body,
@@ -8,10 +8,12 @@ import {
 import {PatientsTitle} from "../doctorViews/doctorViewTemplate/patientsContainerHeader/PatientsContainerHeaderStyles";
 import AppointmentStep from "./AppointmentStep";
 import {AppointmentStepsContainer, AppointmentStepsNumbers} from './MakeAppointmentStyles';
-import Calendar from "../calendar/Calendar";
+import CustomCalendar from "../calendar/CustomCalendar";
+import TimeSlots from "../timeSlots/TimeSlots";
 
 
 const MakeAppointment: React.VFC = () => {
+
     return (
         <>
             <Header/>
@@ -26,15 +28,13 @@ const MakeAppointment: React.VFC = () => {
                                              stepNumber={3}/>
                         </AppointmentStepsNumbers>
                         <AppointmentStepsContainer>
-                            <Calendar
-                                date={new Date()}
-                                years={[2021, 2022]}
-                                monthNames={['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']}
-                                weekDayNames={['M', 'T', 'W', 'T', 'F', 'S', 'S']}
-                                onChange={Function.prototype}
-                            />
                             <div>
-                                time
+                                <CustomCalendar/>
+                            </div>
+                            <div>
+                                <TimeSlots
+                                    timeSlots={["12:00 pm", "1:00 pm", "12:00 pm", "1:00 pm", "12:00 pm", "1:00 pm", "12:00 pm", "1:00 pm", "12:00 pm", "1:00 pm"]}
+                                />
                             </div>
                             <div>
                                 selects
