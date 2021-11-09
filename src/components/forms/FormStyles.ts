@@ -69,7 +69,11 @@ export const InputPasswordIcon = styled.i<InputPasswordIconProps>`
 export const ButtonWrapper = styled.div`
   position: relative;
   width: fit-content;
-  margin: 3vh 0 0 0;
+  margin: 0 33px 0 0;
+  //@media only screen and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3),
+  //(max-device-width: 768px) {
+  //  margin: 0 50px 0 0;
+  //}
 `;
 
 export const ButtonRightArrow = styled.span`
@@ -84,7 +88,6 @@ export const ButtonRightArrow = styled.span`
   (max-device-width: 767px) {
     right: 23px;
   }
-
 `;
 
 export const CustomForm = styled(Form)`
