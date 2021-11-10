@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Step = styled.div`
   display: inline-flex;
   align-items: center;
+  margin: 0 0 40px 0;
 `
 
 export const StepNumber = styled.div`
@@ -16,6 +17,7 @@ export const StepNumber = styled.div`
   align-items: center;
   justify-content: center;
   color: #A1ABC9;
+  flex-shrink: 0;
 `
 
 export const StepDescription = styled.div`

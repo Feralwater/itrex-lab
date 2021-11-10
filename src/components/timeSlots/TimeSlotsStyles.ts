@@ -5,8 +5,8 @@ export const TimeSlotsContainer = styled.ul`
   grid-template-columns: repeat(auto-fit, 104px);
   grid-template-rows: repeat(auto-fit, 40px);
   grid-gap: 16px;
-  max-height: 152px;
-  width: 464px;
+  min-height: 152px;
+  max-width: 464px;
   overflow: hidden;
   padding: 0;
   margin: 0;

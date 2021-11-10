@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Header from "../header/Header";
 import {
     Body,
@@ -7,9 +7,20 @@ import {
 } from "../doctorViews/doctorViewTemplate/DoctorViewTemplateStyles";
 import {PatientsTitle} from "../doctorViews/doctorViewTemplate/patientsContainerHeader/PatientsContainerHeaderStyles";
 import AppointmentStep from "./AppointmentStep";
-import {AppointmentStepsContainer, AppointmentStepsNumbers} from './MakeAppointmentStyles';
+import {
+    AppointmentStepsContainer,
+    AppointmentStepsNumbers,
+    ChooseDayStep,
+    SelectDoctorStep,
+    SelectTimeslotStep,
+    SubmitButton
+} from './MakeAppointmentStyles';
 import CustomCalendar from "../calendar/CustomCalendar";
 import TimeSlots from "../timeSlots/TimeSlots";
+import CustomSelect from "../customSelect/CustomSelect";
+import Button from "../button/Button";
+import {FormSubmitButton} from "../button/ButtonsStyles";
+import {SelectStyles} from "../customSelect/CustomSelectStyles";
 
 
 const MakeAppointment: React.VFC = () => {
@@ -21,24 +32,26 @@ const MakeAppointment: React.VFC = () => {
                 <BodyDoctorView>
                     <Patients>
                         <PatientsTitle>{"Make an appointment"}</PatientsTitle>
-                        <AppointmentStepsNumbers>
-                            <AppointmentStep stepDescription={"Choose a day for an appointment"} stepNumber={1}/>
-                            <AppointmentStep stepDescription={"Select an available timeslot"} stepNumber={2}/>
-                            <AppointmentStep stepDescription={"Select a doctor and define the reason of your visit"}
-                                             stepNumber={3}/>
-                        </AppointmentStepsNumbers>
                         <AppointmentStepsContainer>
-                            <div>
+                            <ChooseDayStep>
+                                <AppointmentStep stepDescription={"Choose a day for an appointment"} stepNumber={1}/>
                                 <CustomCalendar/>
-                            </div>
-                            <div>
+                            </ChooseDayStep>
+                            <SelectTimeslotStep>
+                                <AppointmentStep stepDescription={"Select an available timeslot"} stepNumber={2}/>
                                 <TimeSlots
                                     timeSlots={["12:00 pm", "1:00 pm", "12:00 pm", "1:00 pm", "12:00 pm", "1:00 pm", "12:00 pm", "1:00 pm", "12:00 pm", "1:00 pm"]}
                                 />
-                            </div>
-                            <div>
-                                selects
-                            </div>
+                            </SelectTimeslotStep>
+                            <SelectDoctorStep>
+                                <AppointmentStep stepDescription={"Select a doctor and define the reason of your visit"}
+                                                 stepNumber={3}/>
+                                <CustomSelect selectStyles={SelectStyles}/>
+                                <CustomSelect selectStyles={SelectStyles}/>
+                                <input/>
+                                <input/>
+                                <Button type={"submit"} styledComponent={SubmitButton}>Submit</Button>
+                            </SelectDoctorStep>
                         </AppointmentStepsContainer>
                     </Patients>
                 </BodyDoctorView>
