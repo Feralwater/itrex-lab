@@ -1,6 +1,6 @@
 import {StylesConfig} from "react-select";
 
-type Option = {
+export type Option = {
     value: string
     label: string
 }
@@ -14,7 +14,10 @@ export const SelectStyles: StylesConfig<Array<Option>> = {
         boxShadow: '0px 4px 32px rgba(218, 228, 255, 0.16)',
         borderRadius: '8px',
         padding: '16px 24px',
-        // ":focus": {border: 'none'}
+        // ":focus": {
+        //     ...styles[':focus'],
+        //     border: 'none'
+        // }
     }),
     option: (styles, {data, isDisabled, isFocused, isSelected}) => {
         return {
@@ -37,8 +40,15 @@ export const SelectStyles: StylesConfig<Array<Option>> = {
         };
     },
     indicatorSeparator: () => ({}),
-    dropdownIndicator: () => ({
-        color: '#A1ABC9'
+    dropdownIndicator: (base, state) => ({
+        ...base,
+        transform: state.selectProps.menuIsOpen
+            ? 'rotate(180deg)'
+            : undefined,
+        color: state.selectProps.menuIsOpen
+            ? '#7297ff'
+            : '#a1abc9',
+        transition: "all .3s ease-out",
     }),
     input: (styles) => ({
         ...styles,

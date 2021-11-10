@@ -15,6 +15,7 @@ export const TimeSlotsContainer = styled.ul`
 
 interface TimeSlot {
     // isDisabled: boolean
+    isSelected: boolean
 }
 
 export const TimeSlot = styled.li<TimeSlot>`
@@ -28,10 +29,10 @@ export const TimeSlot = styled.li<TimeSlot>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #202225;
-  border: 1px solid transparent;
+  color: ${(props) => (props.isSelected ? "#7297ff" : "#202225")};
+  border: ${(props) => (props.isSelected ? "1px solid #7297ff" : "1px solid transparent")};
   cursor: pointer;
-  transition: all .3s ease-out;
+  transition: all .1s ease-out;
 
   &:hover {
     border-color: #7297ff;
