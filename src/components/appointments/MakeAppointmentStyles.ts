@@ -37,3 +37,25 @@ export const SubmitButton = styled(FormSubmitButton)`
   padding: 16px 40px;
 `
 
+export const NotesArea = styled.input`
+  background: #ffffff;
+  border: 1px solid #dce0ec;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 32px rgba(218, 228, 255, 0.16);
+  border-radius: 8px;
+  font-size: 17px;
+  line-height: 24px;
+  color: #202225;
+  outline: none;
+  padding: 16px 24px;
+
+  &:focus {
+    border: 1px solid #7297ff;
+    box-shadow: 0px 4px 32px rgba(218, 228, 255, 0.24);
+  }
+
+  &::placeholder {
+    color: #a1abc9;
+  }
+`
+

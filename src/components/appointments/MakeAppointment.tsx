@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Header from "../header/Header";
 import {
     Body,
@@ -10,7 +10,7 @@ import AppointmentStep from "./AppointmentStep";
 import {
     AppointmentStepsContainer,
     AppointmentStepsNumbers,
-    ChooseDayStep,
+    ChooseDayStep, NotesArea,
     SelectDoctorStep,
     SelectTimeslotStep,
     SubmitButton
@@ -49,8 +49,9 @@ const MakeAppointment: React.VFC = () => {
                                                  stepNumber={3}/>
                                 <CustomSelect selectStyles={SelectStyles}/>
                                 {/*<CustomSelect selectStyles={SelectStyles}/>*/}
-                                <SuperInputText/>
-                                <SuperInputText/>
+                                <SuperInputText styledComponent={NotesArea}
+                                />
+                                <SuperInputText styledComponent={NotesArea}/>
                                 <Button type={"submit"} styledComponent={SubmitButton}>Submit</Button>
 
                             </SelectDoctorStep>

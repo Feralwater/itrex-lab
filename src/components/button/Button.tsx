@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {JSXElementConstructor} from 'react';
 import styled from "styled-components";
 
 type ButtonPropsType = {
     type: "button" | "submit" | "reset" | undefined
     disabled?: boolean
     onClick?: (e?: any) => void
-    styledComponent: any
+    styledComponent: JSXElementConstructor<any>
 }
 
 const Button: React.FC<ButtonPropsType> = ({
