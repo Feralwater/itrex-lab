@@ -1,13 +1,13 @@
 import React from 'react'
 import {Redirect, Route, Switch} from "react-router-dom";
-import RestorePassword from "../components/restorePassword/RestorePassword";
-import SendEmail from "../components/sendEmail/SendEmail";
-import SignIn from "../components/signIn/SignIn";
-import SignUp from "../components/signUp/SignUp";
-import Error404 from "../components/error404/Error404";
-import DoctorViewTemplate from "../components/doctorViews/doctorViewTemplate/DoctorViewTemplate";
-import AppointmentsTemplate from "../components/appointments/AppointmentsTemplate";
-import MakeAppointment from "../components/appointments/MakeAppointment";
+import RestorePassword from "../component/restorePassword/RestorePassword";
+import SendEmail from "../component/sendEmail/SendEmail";
+import SignIn from "../component/signIn/SignIn";
+import SignUp from "../component/signUp/SignUp";
+import Error404 from "../component/error404/Error404";
+import DoctorViewTemplate from "../component/doctorViews/doctorViewTemplate/DoctorViewTemplate";
+import AppointmentsTemplate from "../component/appointments/AppointmentsTemplate";
+import MakeAppointment from "../component/appointments/MakeAppointment";
 
 export const PATH = {
     PATIENTS: '/patients',

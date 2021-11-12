@@ -1,26 +1,16 @@
-import React, {JSXElementConstructor} from 'react';
-import styled from "styled-components";
+import React, {ButtonHTMLAttributes, DetailedHTMLProps} from 'react';
+import {StyledButton} from './Button.styles';
 
-type ButtonPropsType = {
-    type: "button" | "submit" | "reset" | undefined
-    disabled?: boolean
-    onClick?: (e?: any) => void
-    styledComponent: JSXElementConstructor<any>
-}
+type DefaultButtonPropsType = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
 
-const Button: React.FC<ButtonPropsType> = ({
-                                               children,
-                                               type,
-                                               disabled,
-                                               onClick,
-                                               styledComponent
-                                           }) => {
-    const StyledButton = styled(styledComponent)``;
+export type ButtonPropsType = DefaultButtonPropsType & {}
+
+const Button: React.FC<any> = ({
+                                                ...restProps
+                                            }) => {
+
     return (
-        <StyledButton type={type}
-                      disabled={disabled}
-                      onClick={onClick}
-        >{children}</StyledButton>
+        <StyledButton {...restProps}/>
     );
 };
 

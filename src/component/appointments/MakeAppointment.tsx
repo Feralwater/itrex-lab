@@ -15,16 +15,18 @@ import {
     SelectTimeslotStep,
     SubmitButton
 } from './MakeAppointmentStyles';
-import CustomCalendar from "../calendar/CustomCalendar";
 import TimeSlots from "../timeSlots/TimeSlots";
 import CustomSelect from "../customSelect/CustomSelect";
-import Button from "../button/Button";
 import {SelectStyles} from "../customSelect/CustomSelectStyles";
 import SuperInputText from "../input/SuperInputText";
+import {useDispatch} from "react-redux";
+import DatePicker from "../../components/datePicker/DatePicker";
+import Button from "../../components/button/Button";
 
 
 const MakeAppointment: React.VFC = () => {
-
+    const [text, setText] = useState<string>('')
+    const dispatch = useDispatch();
     return (
         <>
             <Header/>
@@ -35,7 +37,7 @@ const MakeAppointment: React.VFC = () => {
                         <AppointmentStepsContainer>
                             <ChooseDayStep>
                                 <AppointmentStep stepDescription={"Choose a day for an appointment"} stepNumber={1}/>
-                                <CustomCalendar/>
+                                <DatePicker/>
                             </ChooseDayStep>
                             <SelectTimeslotStep>
                                 <AppointmentStep stepDescription={"Select an available timeslot"} stepNumber={2}/>
@@ -49,13 +51,12 @@ const MakeAppointment: React.VFC = () => {
                                                  stepNumber={3}/>
                                 <CustomSelect selectStyles={SelectStyles}/>
                                 {/*<CustomSelect selectStyles={SelectStyles}/>*/}
-                                <SuperInputText styledComponent={NotesArea}
-                                />
-                                <SuperInputText styledComponent={NotesArea}/>
+                                <SuperInputText onChangeText={setText}/>
+                                <SuperInputText onChangeText={dispatch}/>
                                 <Button type={"submit"} styledComponent={SubmitButton}>Submit</Button>
-
                             </SelectDoctorStep>
                         </AppointmentStepsContainer>
+                        <Button >hello</Button>
                     </Patients>
                 </BodyDoctorView>
             </Body>

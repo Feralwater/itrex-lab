@@ -1,5 +1,4 @@
 import React, {ChangeEvent, DetailedHTMLProps, InputHTMLAttributes, JSXElementConstructor, KeyboardEvent} from 'react'
-import styled from "styled-components";
 
 type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
@@ -7,7 +6,7 @@ type SuperInputTextPropsType = DefaultInputPropsType & {
     onChangeText?: (value: string) => void
     onEnter?: () => void
     error?: string
-    styledComponent: JSXElementConstructor<any>
+    // styledComponent: JSXElementConstructor<any>
 }
 
 const SuperInputText: React.VFC<SuperInputTextPropsType> = (
@@ -16,16 +15,15 @@ const SuperInputText: React.VFC<SuperInputTextPropsType> = (
         onChange, onChangeText,
         onKeyPress, onEnter,
         error,
-        styledComponent,
-        // spanClassName,
+        // styledComponent,
         ...restProps
     }
 ) => {
-    const StyledInput = styled(styledComponent)``;
+    // const StyledInput = styled(styledComponent)``;
 
     const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
         onChange && onChange(e)
-        onChangeText && onChangeText(e.currentTarget.value)
+        onChangeText && onChangeText(e.currentTarget.value) 
     }
     const onKeyPressCallback = (e: KeyboardEvent<HTMLInputElement>) => {
         onKeyPress && onKeyPress(e);
@@ -34,7 +32,7 @@ const SuperInputText: React.VFC<SuperInputTextPropsType> = (
 
     return (
         <>
-            <StyledInput
+            <input
                 type={'text'}
                 onChange={onChangeCallback}
                 onKeyPress={onKeyPressCallback}
