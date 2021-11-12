@@ -41,7 +41,7 @@ export const ErrorMessageText = styled.div`
   overflow: hidden;
 `
 
-export const CloseButton = styled.button`
+export const CloseButton = styled.div`
   background-color: transparent;
   border: none;
   margin: 0 0 0 auto;

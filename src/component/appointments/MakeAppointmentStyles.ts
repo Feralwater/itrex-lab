@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import {FormSubmitButton} from "../button/ButtonsStyles";
 
 export const AppointmentStepsNumbers = styled.div`
   display: flex;
@@ -31,10 +30,6 @@ export const SelectTimeslotStep = styled.div`
 export const SelectDoctorStep = styled.div`
   display: flex;
   flex-direction: column;
-`
-
-export const SubmitButton = styled(FormSubmitButton)`
-  padding: 16px 40px;
 `
 
 export const NotesArea = styled.input`

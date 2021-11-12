@@ -1,8 +1,6 @@
 import {Formik, FormikHelpers} from 'formik';
-import Button from "../button/Button";
 import * as Yup from "yup"
 import React, {useState} from "react";
-import {FormSubmitButton} from "../button/ButtonsStyles";
 import {
     ButtonRightArrow,
     ButtonWrapper,
@@ -13,6 +11,7 @@ import {
     InputPasswordIcon,
     CustomForm, CustomField, CustomErrorMessage, FormTitle,
 } from "./FormStyles";
+import Button from "../../components/button/Button";
 
 type Values = {
     firstName: string
@@ -154,7 +153,9 @@ const SignUpForm = () => {
                         <Button type="submit"
                                 disabled={!(isValid && dirty)}
                                 onClick={handleSubmit}
-                                styledComponent={FormSubmitButton}
+                                size={"large"}
+                                icon={"right"}
+                                variant={"primary"}
                         >Sign Up</Button>
                         <ButtonRightArrow/>
                     </ButtonWrapper>

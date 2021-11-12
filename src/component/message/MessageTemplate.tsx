@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {ReactComponent as SuccessIcon} from '../../svgImages/check-circle.svg';
 import {ReactComponent as ErrorIcon} from '../../svgImages/error-icon.svg';
 import {ReactComponent as Close} from '../../svgImages/close-icon.svg';
-import Button from "../button/Button";
 import {
     CloseButton,
     ErrorMessageBody,
@@ -28,8 +27,7 @@ const MessageTemplate: React.VFC<MessageTemplatePropsType> = ({isSuccess}) => {
                     ? <ErrorMessageTitleText>Success message goes here</ErrorMessageTitleText>
                     : <ErrorMessageTitleText>Error message goes here</ErrorMessageTitleText>
                 }
-                <Button type={"button"} onClick={() => setShowErrorMessage(false)}
-                        styledComponent={CloseButton}><Close/></Button>
+                <CloseButton onClick={() => setShowErrorMessage(false)}><Close/></CloseButton>
             </ErrorMessageTitle>
             <ErrorMessageText>
                 {isSuccess

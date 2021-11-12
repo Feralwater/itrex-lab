@@ -1,8 +1,6 @@
 import React from 'react';
 import * as Yup from "yup";
 import {Formik, FormikHelpers} from "formik";
-import Button from "../button/Button";
-import {FormSubmitButton} from "../button/ButtonsStyles";
 import {
     ButtonRightArrow,
     ButtonWrapper,
@@ -12,6 +10,7 @@ import {
     InputEmailContainer, RestoreMessage
 } from './FormStyles';
 import {Link} from "react-router-dom";
+import Button from "../../components/button/Button";
 
 type Values = {
     email: string
@@ -77,7 +76,9 @@ const RestorePasswordForm = () => {
                         <Button type="submit"
                                 disabled={!(isValid && dirty)}
                                 onClick={handleSubmit}
-                                styledComponent={FormSubmitButton}
+                                icon={"right"}
+                                size={"large"}
+                                variant={"primary"}
                         >Send Reset Link</Button>
                         <ButtonRightArrow/>
                     </ButtonWrapper>

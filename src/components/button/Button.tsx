@@ -1,16 +1,20 @@
 import React, {ButtonHTMLAttributes, DetailedHTMLProps} from 'react';
 import {StyledButton} from './Button.styles';
 
-type DefaultButtonPropsType = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
+export type ButtonPropsType = {
+    size: "large" | "small"
+    variant: "primary" | "secondary"
+    icon: "default" | "left" | "right"
+    disabled?: boolean
+    type: "button" | "submit" | "reset" | undefined
+    onClick?: (e?: any) => void
+}
 
-export type ButtonPropsType = DefaultButtonPropsType & {}
-
-const Button: React.FC<any> = ({
-                                                ...restProps
-                                            }) => {
+const Button: React.FC<ButtonPropsType> = (props) => {
 
     return (
-        <StyledButton {...restProps}/>
+        <StyledButton {...props}
+        />
     );
 };
 

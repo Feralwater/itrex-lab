@@ -26,7 +26,7 @@ export const UserCardHeader = styled.div`
   }
 `;
 
-export const SettingsButton = styled.button`
+export const SettingsButton = styled.div`
   width: 24px;
   height: 24px;
   background: url("../../svgImages/settings-dots.svg") no-repeat center/contain;

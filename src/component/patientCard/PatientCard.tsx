@@ -17,8 +17,7 @@ import {
     UserData,
     UserInformation,
 } from "./PatientCardStyles";
-import {UserImage, UserImageContainer, UserName} from '../header/HeaderStyles';
-import Button from "../button/Button";
+import {UserImage} from '../header/HeaderStyles';
 
 const PatientCard: React.VFC<PatientType> = ({
                                                  avatar,
@@ -66,8 +65,7 @@ const PatientCard: React.VFC<PatientType> = ({
                         </AppointmentStatus>
                     </UserInformation>
                 </UserData>
-                <Button type={"button"} onClick={() => {
-                }} styledComponent={SettingsButton}/>
+                <SettingsButton/>
             </UserCardHeader>
             <UserCardBody>
                 <UserCardBodyTime>

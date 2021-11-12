@@ -9,11 +9,9 @@ import {PatientsTitle} from "../doctorViews/doctorViewTemplate/patientsContainer
 import AppointmentStep from "./AppointmentStep";
 import {
     AppointmentStepsContainer,
-    AppointmentStepsNumbers,
-    ChooseDayStep, NotesArea,
+    ChooseDayStep,
     SelectDoctorStep,
     SelectTimeslotStep,
-    SubmitButton
 } from './MakeAppointmentStyles';
 import TimeSlots from "../timeSlots/TimeSlots";
 import CustomSelect from "../customSelect/CustomSelect";
@@ -53,10 +51,15 @@ const MakeAppointment: React.VFC = () => {
                                 {/*<CustomSelect selectStyles={SelectStyles}/>*/}
                                 <SuperInputText onChangeText={setText}/>
                                 <SuperInputText onChangeText={dispatch}/>
-                                <Button type={"submit"} styledComponent={SubmitButton}>Submit</Button>
+                                <Button
+                                    type={"submit"}
+                                    size={"small"}
+                                    variant={"secondary"}
+                                    icon={"default"}
+                                    disabled
+                                >Submit</Button>
                             </SelectDoctorStep>
                         </AppointmentStepsContainer>
-                        <Button >hello</Button>
                     </Patients>
                 </BodyDoctorView>
             </Body>
