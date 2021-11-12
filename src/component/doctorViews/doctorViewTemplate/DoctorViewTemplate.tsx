@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from "../../header/Header";
-import {getPatients} from "../../../actions/patients";
+import {getPatients} from "../../../mockData/patients";
 import DoctorViewFullState from "../doctorViewFullState/DoctorViewFullState";
 import DoctorViewEmptyState from "../doctorViewEmptyState/DoctorViewEmptyState";
 import PatientsContainerHeader from "./patientsContainerHeader/PatientsContainerHeader";

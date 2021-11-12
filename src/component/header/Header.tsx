@@ -1,6 +1,6 @@
 import React from 'react';
 import {ReactComponent as Logo} from '../../svgImages/logo.svg';
-import {getMe} from "../../actions/doctors";
+import {getMe} from "../../mockData/doctors";
 
 import {
     HeaderContainer,
