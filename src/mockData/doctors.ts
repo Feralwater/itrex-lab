@@ -16,11 +16,5 @@ const users = [
 ];
 
 export function getMe() {
-    // return undefined
     return users[1]
 }
-
-// export function getdoctors() {
-//     // return undefined
-//     return users
-// }

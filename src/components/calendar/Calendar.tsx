@@ -9,7 +9,7 @@ import {
     WeekdaysContainer
 } from './CalendarStyles';
 import Button from "../button/Button";
-import * as calendar from './calendar';
+import * as calendar from './utils/calendarHelpers';
 import {ReactComponent as RightCalendarArrow} from '../../svgImages/rightArrowGrey-icon.svg';
 import {ReactComponent as LeftCalendarArrow} from '../../svgImages/leftArrowGrey-icon.svg';
 
@@ -90,11 +90,3 @@ const Calendar: React.VFC<CalendarPropsType> = (props) => {
 };
 
 export default Calendar;
-
-// <Calendar
-//     date={new Date()}
-//     years={[2021, 2022]}
-//     monthNames={['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']}
-//     weekDayNames={['M', 'T', 'W', 'T', 'F', 'S', 'S']}
-//     onChange={Function.prototype}
-// />

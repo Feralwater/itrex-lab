@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import * as Yup from "yup";
 import {Formik, FormikHelpers} from "formik";
 import Button from "../button/Button";
 import {FormSubmitButton} from "../button/ButtonsStyles";
@@ -11,6 +10,7 @@ import {
     CustomForm, CustomLink, FormTitle, InputEmailContainer, InputPasswordContainer,
     InputPasswordIcon
 } from "./FormStyles";
+import {validationSchema} from "./validationSchema";
 
 type Values = {
     email: string
@@ -20,14 +20,6 @@ type Values = {
 const SignInForm = () => {
     const [isSecurePassword, setIsSecurePassword] = useState<boolean>(true);
 
-    const validationSchema = Yup.object({
-        email: Yup.string()
-            .email('Email is invalid')
-            .required('Email is required'),
-        password: Yup.string()
-            .min(8, 'Password must be at least 8 characters')
-            .required('Password is required'),
-    })
     return (
         <Formik
             initialValues={{

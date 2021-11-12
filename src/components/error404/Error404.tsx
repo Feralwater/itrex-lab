@@ -1,11 +1,12 @@
 import React from 'react';
 import {Error, ErrorMessage, ErrorNumber} from "./Error404Styles";
+import {dictionary} from "../../dictionary/dictionary";
 
 const Error404 = () => {
     return (
         <Error>
-            <ErrorNumber>404 Error</ErrorNumber>
-            <ErrorMessage>oops, the page you are looking for can`t be found!😭</ErrorMessage>
+            <ErrorNumber>{dictionary.error404.errorNumber}</ErrorNumber>
+            <ErrorMessage>{dictionary.error404.errorMessage}</ErrorMessage>
         </Error>
     );
 };

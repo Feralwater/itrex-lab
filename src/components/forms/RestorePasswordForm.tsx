@@ -1,5 +1,4 @@
 import React from 'react';
-import * as Yup from "yup";
 import {Formik, FormikHelpers} from "formik";
 import Button from "../button/Button";
 import {FormSubmitButton} from "../button/ButtonsStyles";
@@ -12,17 +11,14 @@ import {
     InputEmailContainer, RestoreMessage
 } from './FormStyles';
 import {Link} from "react-router-dom";
+import {validationSchema} from "./validationSchema";
 
 type Values = {
     email: string
 }
 
 const RestorePasswordForm = () => {
-    const validationSchema = Yup.object({
-        email: Yup.string()
-            .email('Email is invalid')
-            .required('Email is required'),
-    })
+
     return (
         <Formik
             initialValues={{

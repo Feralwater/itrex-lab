@@ -1,6 +1,7 @@
 import React from 'react';
 import {ReactComponent as MedicalHistory} from '../../../svgImages/medical-history.svg';
 import {MedicalHistoryContainer, MedicalHistoryText} from "./DoctorViewEmptyStateStyles";
+import {dictionary} from "../../../dictionary/dictionary";
 
 const DoctorViewEmptyState = () => {
     return (
@@ -8,8 +9,8 @@ const DoctorViewEmptyState = () => {
             <MedicalHistoryContainer>
                 <MedicalHistory/>
                 <MedicalHistoryText>
-                    <span>You have no patients yet.</span>
-                    <span>To create a patient profile, please contact your administrator.</span>
+                    <span>{dictionary.doctorViewEmptyState.medicalHistoryTextPart1}</span>
+                    <span>{dictionary.doctorViewEmptyState.medicalHistoryTextPart2}</span>
                 </MedicalHistoryText>
             </MedicalHistoryContainer>
         </>

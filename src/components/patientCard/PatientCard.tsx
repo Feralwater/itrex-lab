@@ -3,7 +3,7 @@ import {PatientType} from "../doctorViews/doctorViewFullState/DoctorViewFullStat
 import {ReactComponent as Clock} from '../../svgImages/clock-icon.svg';
 import {ReactComponent as Board} from '../../svgImages/board-icon.svg';
 import {ReactComponent as Heart} from '../../svgImages/heart-icon.svg';
-import {statuses} from "../../actions/patients";
+import {statuses} from "../../mockData/patients";
 import {
     AppointmentStatus,
     SettingsButton,

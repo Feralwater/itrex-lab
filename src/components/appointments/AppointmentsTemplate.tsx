@@ -9,7 +9,7 @@ import {
 import PatientsContainerHeader from "../doctorViews/doctorViewTemplate/patientsContainerHeader/PatientsContainerHeader";
 import DoctorViewFullState from "../doctorViews/doctorViewFullState/DoctorViewFullState";
 import DoctorViewEmptyState from "../doctorViews/doctorViewEmptyState/DoctorViewEmptyState";
-import {getAppointments} from "../../actions/appointments";
+import {getAppointments} from "../../mockData/appointments";
 import MessageTemplate from "../message/MessageTemplate";
 
 const AppointmentsTemplate = () => {

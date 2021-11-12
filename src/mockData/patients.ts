@@ -6,7 +6,6 @@ export const statuses = {
 
 export const api = {
     getPatientsList() {
-        // return  []
         return [
             {
                 avatar: "/img/patient-avatar.png",

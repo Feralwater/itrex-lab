@@ -10,6 +10,7 @@ import {
     ErrorMessageText,
     ErrorMessageTitleText
 } from "./MessageStyles";
+import {dictionary} from "../../dictionary/dictionary";
 
 type MessageTemplatePropsType = {
     isSuccess: boolean
@@ -25,16 +26,16 @@ const MessageTemplate: React.VFC<MessageTemplatePropsType> = ({isSuccess}) => {
             <ErrorMessageTitle>
                 {isSuccess ? <SuccessIcon/> : <ErrorIcon/>}
                 {isSuccess
-                    ? <ErrorMessageTitleText>Success message goes here</ErrorMessageTitleText>
-                    : <ErrorMessageTitleText>Error message goes here</ErrorMessageTitleText>
+                    ? <ErrorMessageTitleText>{dictionary.messageTemplate.messageTitleSuccess}</ErrorMessageTitleText>
+                    : <ErrorMessageTitleText>{dictionary.messageTemplate.messageTitleError}</ErrorMessageTitleText>
                 }
                 <Button type={"button"} onClick={() => setShowErrorMessage(false)}
                         styledComponent={CloseButton}><Close/></Button>
             </ErrorMessageTitle>
             <ErrorMessageText>
                 {isSuccess
-                    ? "We show this message if something awesome has happened. You are awesome too"
-                    : "We show this message if something irreparable has happened. But there is nothing irreparable"
+                    ? dictionary.messageTemplate.successMessageText
+                    : dictionary.messageTemplate.errorMessageText
                 }
             </ErrorMessageText>
         </ErrorMessageBody>)}
