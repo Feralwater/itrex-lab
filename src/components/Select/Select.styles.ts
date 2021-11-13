@@ -1,11 +1,7 @@
 import {StylesConfig} from "react-select";
+import {Options} from "./Select.types";
 
-export type Option = {
-    value: string
-    label: string
-}
-
-export const SelectStyles: StylesConfig<Array<Option>> = {
+export const SelectStyles: StylesConfig<Array<Options>> = {
     control: (styles) => ({
         ...styles,
         backgroundColor: '#ffffff',

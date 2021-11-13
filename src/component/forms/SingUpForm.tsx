@@ -11,7 +11,7 @@ import {
     InputPasswordIcon,
     CustomForm, CustomField, CustomErrorMessage, FormTitle,
 } from "./FormStyles";
-import Button from "../../components/button/Button";
+import Button from "../../components/Button/Button";
 
 type Values = {
     firstName: string

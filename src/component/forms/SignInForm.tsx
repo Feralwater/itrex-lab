@@ -9,7 +9,7 @@ import {
     CustomForm, CustomLink, FormTitle, InputEmailContainer, InputPasswordContainer,
     InputPasswordIcon
 } from "./FormStyles";
-import Button from "../../components/button/Button";
+import Button from "../../components/Button/Button";
 
 type Values = {
     email: string

@@ -1,5 +1,6 @@
 import styled, {css} from "styled-components";
-import {ButtonPropsType} from "./Button";
+import {ButtonPropsType} from "./Button.types";
+
 
 export const StyledButton = styled.button<ButtonPropsType>`
   display: inline-flex;

@@ -14,12 +14,13 @@ import {
     SelectTimeslotStep,
 } from './MakeAppointmentStyles';
 import TimeSlots from "../timeSlots/TimeSlots";
-import CustomSelect from "../customSelect/CustomSelect";
-import {SelectStyles} from "../customSelect/CustomSelectStyles";
-import SuperInputText from "../input/SuperInputText";
+import InputText from "../../components/Input/InputText";
 import {useDispatch} from "react-redux";
-import DatePicker from "../../components/datePicker/DatePicker";
-import Button from "../../components/button/Button";
+import DatePicker from "../../components/DatePicker/DatePicker";
+import Button from "../../components/Button/Button";
+import CustomSelect from "../../components/Select/Select";
+import {getDoctors, getOccupations, users} from "../../mockData/doctors";
+import {addDoctorAC, addNoteAC, addOccupationAC, addReasonAC} from "../../redux/reducers/appointmentReducer";
 
 
 const MakeAppointment: React.VFC = () => {
@@ -47,10 +48,26 @@ const MakeAppointment: React.VFC = () => {
 
                                 <AppointmentStep stepDescription={"Select a doctor and define the reason of your visit"}
                                                  stepNumber={3}/>
-                                <CustomSelect selectStyles={SelectStyles}/>
-                                {/*<CustomSelect selectStyles={SelectStyles}/>*/}
-                                <SuperInputText onChangeText={setText}/>
-                                <SuperInputText onChangeText={dispatch}/>
+                                <CustomSelect
+                                    valuesForSelect={getOccupations(users)}
+                                    placeholder={'Choose an occupation'}
+                                    addActionCreator={addOccupationAC}
+                                />
+                                <CustomSelect
+                                    valuesForSelect={getDoctors(users)}
+                                    placeholder={'Choose a doctor'}
+                                    addActionCreator={addDoctorAC}
+                                />
+                                <InputText
+                                    addActionCreator={addReasonAC}
+                                    onChangeText={setText}
+                                    placeholder={"Headache, pant"}
+                                />
+                                <InputText
+                                    addActionCreator={addNoteAC}
+                                    onChangeText={dispatch}
+                                    placeholder={"Leave a note if needed"}
+                                />
                                 <Button
                                     type={"submit"}
                                     size={"small"}
