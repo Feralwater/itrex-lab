@@ -1,14 +1,13 @@
 import styled from "styled-components";
 
-interface ErrorMessageBody {
+interface ErrorMessageBodyType {
     isSuccess: boolean
 }
 
-export const ErrorMessageBody = styled.div<ErrorMessageBody>`
+export const ErrorMessageBody = styled.div<ErrorMessageBodyType>`
   background-color: ${(props) => (props.isSuccess ? "#34C197" : "#FF2567")};
   display: flex;
   flex-direction: column;
-  //align-items: center;
   justify-content: center;
   color: #ffffff;
   border-radius: 12px;

@@ -10,7 +10,7 @@ import PatientsContainerHeader from "../doctorViews/doctorViewTemplate/patientsC
 import DoctorViewFullState from "../doctorViews/doctorViewFullState/DoctorViewFullState";
 import DoctorViewEmptyState from "../doctorViews/doctorViewEmptyState/DoctorViewEmptyState";
 import {getAppointments} from "../../mockData/appointments";
-import MessageTemplate from "../message/MessageTemplate";
+import MessageTemplate from "../../components/Message/Message";
 
 const AppointmentsTemplate = () => {
     const appointments = getAppointments()

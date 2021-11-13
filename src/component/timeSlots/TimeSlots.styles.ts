@@ -13,12 +13,11 @@ export const TimeSlotsContainer = styled.ul`
   list-style-type: none;
 `
 
-interface TimeSlot {
-    // isDisabled: boolean
+interface TimeSlotType {
     isSelected: boolean
 }
 
-export const TimeSlot = styled.li<TimeSlot>`
+export const TimeSlot = styled.li<TimeSlotType>`
   background: #ffffff;
   box-shadow: 0px 4px 32px rgba(218, 228, 255, 0.24);
   border-radius: 8px;

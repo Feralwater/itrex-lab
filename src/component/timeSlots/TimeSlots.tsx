@@ -1,13 +1,9 @@
 import React from 'react';
-import {TimeSlot, TimeSlotsContainer} from './TimeSlotsStyles';
+import {TimeSlot, TimeSlotsContainer} from './TimeSlots.styles';
 import {addTimeslotAC} from "../../redux/reducers/appointmentReducer";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../redux/store";
-import * as events from "events";
-
-type TimeSlotsPropsType = {
-    timeSlots: Array<string>
-}
+import {TimeSlotsPropsType} from "./TimeSlots.types";
 
 const TimeSlots: React.VFC<TimeSlotsPropsType> = ({timeSlots}) => {
 
@@ -20,7 +16,10 @@ const TimeSlots: React.VFC<TimeSlotsPropsType> = ({timeSlots}) => {
 
     return (
         <TimeSlotsContainer>
-            {timeSlots.map((time) => <TimeSlot isSelected={selected === time} onClick={handlerClick}>{time}</TimeSlot>)}
+            {timeSlots.map((time, index) => <TimeSlot key={index}
+                                                      isSelected={selected === time}
+                                                      onClick={handlerClick}
+            >{time}</TimeSlot>)}
         </TimeSlotsContainer>
     );
 };

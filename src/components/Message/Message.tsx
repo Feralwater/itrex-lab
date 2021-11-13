@@ -8,13 +8,12 @@ import {
     ErrorMessageTitle,
     ErrorMessageText,
     ErrorMessageTitleText
-} from "./MessageStyles";
+} from "./Message.styles";
+import {MessagePropsType} from "./Message.types";
+import {dictionary} from "../../dictionary/dictionary";
 
-type MessageTemplatePropsType = {
-    isSuccess: boolean
-}
 
-const MessageTemplate: React.VFC<MessageTemplatePropsType> = ({isSuccess}) => {
+const Message: React.VFC<MessagePropsType> = ({isSuccess}) => {
 
     const [showErrorMessage, setShowErrorMessage] = useState<boolean>(true);
 
@@ -24,19 +23,19 @@ const MessageTemplate: React.VFC<MessageTemplatePropsType> = ({isSuccess}) => {
             <ErrorMessageTitle>
                 {isSuccess ? <SuccessIcon/> : <ErrorIcon/>}
                 {isSuccess
-                    ? <ErrorMessageTitleText>Success message goes here</ErrorMessageTitleText>
-                    : <ErrorMessageTitleText>Error message goes here</ErrorMessageTitleText>
+                    ? <ErrorMessageTitleText>{dictionary.message.messageTitleSuccess}</ErrorMessageTitleText>
+                    : <ErrorMessageTitleText>{dictionary.message.messageTitleError}</ErrorMessageTitleText>
                 }
                 <CloseButton onClick={() => setShowErrorMessage(false)}><Close/></CloseButton>
             </ErrorMessageTitle>
             <ErrorMessageText>
                 {isSuccess
-                    ? "We show this message if something awesome has happened. You are awesome too"
-                    : "We show this message if something irreparable has happened. But there is nothing irreparable"
+                    ? dictionary.message.successMessageText
+                    : dictionary.message.errorMessageText
                 }
             </ErrorMessageText>
         </ErrorMessageBody>)}
     </>);
 };
 
-export default MessageTemplate;
+export default Message;

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Header from "../header/Header";
 import {
     Body,
@@ -15,7 +15,6 @@ import {
 } from './MakeAppointmentStyles';
 import TimeSlots from "../timeSlots/TimeSlots";
 import InputText from "../../components/Input/InputText";
-import {useDispatch} from "react-redux";
 import DatePicker from "../../components/DatePicker/DatePicker";
 import Button from "../../components/Button/Button";
 import CustomSelect from "../../components/Select/Select";
@@ -24,8 +23,7 @@ import {addDoctorAC, addNoteAC, addOccupationAC, addReasonAC} from "../../redux/
 
 
 const MakeAppointment: React.VFC = () => {
-    const [text, setText] = useState<string>('')
-    const dispatch = useDispatch();
+
     return (
         <>
             <Header/>
@@ -60,12 +58,10 @@ const MakeAppointment: React.VFC = () => {
                                 />
                                 <InputText
                                     addActionCreator={addReasonAC}
-                                    onChangeText={setText}
-                                    placeholder={"Headache, pant"}
+                                    placeholder={"Leave a reason for the visit"}
                                 />
                                 <InputText
                                     addActionCreator={addNoteAC}
-                                    onChangeText={dispatch}
                                     placeholder={"Leave a note if needed"}
                                 />
                                 <Button
