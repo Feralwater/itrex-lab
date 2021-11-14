@@ -6,7 +6,7 @@ export type Options = {
 }
 
 export type CustomSelectPropsType = {
-    valuesForSelect: Array<string>
+    valuesForSelect: { selectedValue: string, doctorID: string }[]
     placeholder: string
     addActionCreator: (selected: SingleValue<{ value: string; label: string;}>) => {type: string, label: string}
 }

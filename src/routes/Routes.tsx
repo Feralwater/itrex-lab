@@ -8,6 +8,7 @@ import Error404 from "../component/error404/Error404";
 import DoctorViewTemplate from "../component/doctorViews/doctorViewTemplate/DoctorViewTemplate";
 import AppointmentsTemplate from "../component/appointments/AppointmentsTemplate";
 import MakeAppointment from "../component/appointments/MakeAppointment";
+import {TIME_SLOTS} from "../mockData/doctors";
 
 export const PATH = {
     PATIENTS: '/patients',
@@ -29,7 +30,7 @@ function Routes() {
             <Route path={PATH.SIGN_IN} render={() => <SignIn/>}/>
             <Route path={PATH.SIGN_UP} render={() => <SignUp/>}/>
             <Route path={PATH.APPOINTMENTS} render={() => <AppointmentsTemplate/>}/>
-            <Route path={PATH.MAKE_APPOINTMENT} render={() => <MakeAppointment/>}/>
+            <Route path={PATH.MAKE_APPOINTMENT} render={() => <MakeAppointment timeSlots={TIME_SLOTS}/>}/>
             <Route render={() => <Error404/>}/>
         </Switch>
     )

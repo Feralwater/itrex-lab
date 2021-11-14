@@ -8,15 +8,24 @@ const ADD_DOCTOR = "ADD_DOCTOR"
 const ADD_NOTE = "ADD_NOTE"
 
 const initialState = {
+    selectedDoctorId: "",
     label: "",
     time: "",
     reason: "",
-    date: "",
+    date: null,
     doctor: "",
     note: "",
 }
 
-export type InitialStateType = typeof initialState
+export type InitialStateType = {
+    selectedDoctorId: string
+    label: string
+    time: string
+    reason: string
+    date: Date | null,
+    doctor: string
+    note: string
+}
 
 type ActionType =
     AddOccupationType
@@ -51,7 +60,8 @@ export default function appointmentReducer(state: InitialStateType = initialStat
         case ADD_DOCTOR:
             return {
                 ...state,
-                doctor: action.label
+                doctor: action.label,
+                selectedDoctorId: action.selectedDoctorId
             }
         case ADD_NOTE:
             return {
@@ -76,9 +86,10 @@ export const addOccupationAC = (selected: SingleValue<{ value: string; label: st
 } as const);
 export const addDoctorAC = (selected: SingleValue<{ value: string; label: string; }>) => ({
     type: "ADD_DOCTOR",
-    label: selected!.label
+    label: selected!.label,
+    selectedDoctorId: selected!.value
 } as const);
 export const addTimeslotAC = (time: string) => ({type: "ADD_TIMESLOT", time} as const);
 export const addReasonAC = (inputValue: string) => ({type: "ADD_REASON", inputValue} as const);
 export const addNoteAC = (inputValue: string) => ({type: "ADD_NOTE", inputValue} as const);
-export const addDateAC = (date: string) => ({type: "ADD_DATE", date} as const);
+export const addDateAC = (date: Date) => ({type: "ADD_DATE", date} as const);

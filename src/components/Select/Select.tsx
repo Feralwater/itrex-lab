@@ -12,7 +12,7 @@ const CustomSelect: React.VFC<CustomSelectPropsType> = ({
                                                         }) => {
     const dispatch = useDispatch();
 
-    const options: any = valuesForSelect.map((v) => ({value: v, label: v}))
+    const options: any = valuesForSelect.map((v) => ({value: v.doctorID, label: v.selectedValue}))
 
     function formatOptionLabel({label}: any, {inputValue}: any) {
         return (

@@ -15,10 +15,11 @@ export const TimeSlotsContainer = styled.ul`
 
 interface TimeSlotType {
     isSelected: boolean
+    isAvailableTimeSlot: boolean
 }
 
 export const TimeSlot = styled.li<TimeSlotType>`
-  background: #ffffff;
+  background: ${(props) => (props.isAvailableTimeSlot ? "#ffffff" : "#dce0ec")};
   box-shadow: 0px 4px 32px rgba(218, 228, 255, 0.24);
   border-radius: 8px;
   padding: 8px 16px;
@@ -28,8 +29,9 @@ export const TimeSlot = styled.li<TimeSlotType>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: ${(props) => (props.isSelected ? "#7297ff" : "#202225")};
+  color: ${(props) => (props.isSelected ? "#7297ff" : props.isAvailableTimeSlot ? "#202225" : "#f9faff")};
   border: ${(props) => (props.isSelected ? "1px solid #7297ff" : "1px solid transparent")};
+  pointer-events:  ${(props) => (props.isAvailableTimeSlot ? "all" : "none")};;
   cursor: pointer;
   transition: all .1s ease-out;
 

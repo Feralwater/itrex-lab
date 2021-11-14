@@ -23,10 +23,15 @@ import {getDoctors, getOccupations, users} from "../../mockData/doctors";
 import {addDoctorAC, addNoteAC, addOccupationAC, addReasonAC} from "../../redux/reducers/appointmentReducer";
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../redux/store";
+import {MakeAppointmentPropsType} from "./MakeAppointment.types";
 
 
-const MakeAppointment: React.VFC = () => {
+const MakeAppointment: React.VFC<MakeAppointmentPropsType> = ({
+                                                                  timeSlots
+                                                              }) => {
     const occupation = useSelector<AppRootStateType, string>(state => state.appointment.label);
+
+
     return (
         <>
             <Header/>
@@ -66,7 +71,7 @@ const MakeAppointment: React.VFC = () => {
                             <SelectTimeslotStep>
                                 <AppointmentStep stepDescription={"Select an available timeslot"} stepNumber={3}/>
                                 <TimeSlots
-                                    timeSlots={["12:00 am", "1:00 pm", "2:00 pm", "3:00 pm", "4:00 pm", "5:00 pm", "6:00 pm", "7:00 pm", "8:00 pm", "9:00 pm"]}
+                                    timeSlots={timeSlots}
                                 />
                             </SelectTimeslotStep>
                         </AppointmentStepsContainer>
