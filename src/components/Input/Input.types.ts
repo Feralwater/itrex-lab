@@ -3,4 +3,5 @@ export type InputTextPropsType = {
     error?: string
     placeholder?: string
     addActionCreator: (value: string) => { type: string, inputValue: string }
+    inputLabel: string
 }

@@ -9,7 +9,7 @@ const InputText: React.VFC<InputTextPropsType> = (
         error,
         placeholder,
         addActionCreator,
-        ...restProps
+        inputLabel,
     }
 ) => {
     const dispatch = useDispatch();
@@ -20,12 +20,13 @@ const InputText: React.VFC<InputTextPropsType> = (
 
     return (
         <>
+            <label htmlFor="input">{inputLabel}</label>
             <StyledInput
+                inputLabel={inputLabel}
                 addActionCreator={addActionCreator}
                 type={'text'}
                 placeholder={placeholder}
                 onChange={onChangeCallback}
-                {...restProps}
             />
             {error && <span>{error}</span>}
         </>

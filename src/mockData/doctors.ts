@@ -1,27 +1,46 @@
+const OCCUPATIONS = {
+    THERAPIST: "therapist",
+    DERMATOLOGIST: "dermatologist",
+    CARDIOLOGIST: "cardiologist"
+}
+
+const ROLES = {
+    DOCTOR: 'doctor',
+    PATIENT: 'patient',
+}
+
+// timeslots = [
+//     {
+//         timeslots[rrer],
+//         doctorid
+//     }
+//
+// ]
+
 export const users: Array<DoctorType> = [
     {
         id: "2",
         avatar: "img/doctor-avatar.png",
         firstName: "Miranda",
         secondName: "Nelson",
-        role: "doctor",
-        occupation: "therapist"
+        role: ROLES.DOCTOR,
+        occupation: OCCUPATIONS.THERAPIST
     },
     {
         id: "1",
         avatar: "img/user-avatar.png",
         firstName: "Larry",
         secondName: "Prinston",
-        role: "patient",
-        occupation: "dermatologist"
+        role: ROLES.DOCTOR,
+        occupation: OCCUPATIONS.DERMATOLOGIST
     },
     {
         id: "3",
         avatar: "img/doctor-avatar.png",
         firstName: "Lorem",
         secondName: "Ipsum",
-        role: "doctor",
-        occupation: "cardiologist"
+        role: ROLES.DOCTOR,
+        occupation: OCCUPATIONS.CARDIOLOGIST
     },
 ];
 
@@ -38,10 +57,10 @@ type DoctorType = {
     occupation: string
 }
 
-export function getDoctors(doctors: Array<DoctorType>):Array<string> {
-    return doctors.map((d) => d.firstName + " " + d.secondName)
+export function getDoctors(doctors: Array<DoctorType>, occupation: string): Array<string> {
+    return doctors.filter((doctor) => doctor.occupation === occupation).map((d) => d.firstName + " " + d.secondName)
 }
 
-export function getOccupations(doctors: Array<DoctorType>):Array<string> {
+export function getOccupations(doctors: Array<DoctorType>): Array<string> {
     return doctors.map((d) => d.occupation)
 }
