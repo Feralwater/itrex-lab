@@ -90,7 +90,7 @@ const MakeAppointment: React.VFC<MakeAppointmentPropsType> = ({
                         <MakeAppointmentButtonContainer>
                             <Button
                                 type={"submit"}
-                                size={"small"}
+                                size={"large"}
                                 variant={"primary"}
                                 icon={"default"}
                             >Submit</Button>

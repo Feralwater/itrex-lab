@@ -4,7 +4,6 @@ import {colors} from "../../styles/colors";
 export const Step = styled.div`
   display: inline-flex;
   align-items: center;
-  margin: 0 0 40px 0;
 `
 
 export const StepNumber = styled.div`

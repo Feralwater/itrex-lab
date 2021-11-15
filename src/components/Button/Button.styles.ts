@@ -13,6 +13,7 @@ export const StyledButton = styled.button<ButtonPropsType>`
   text-transform: capitalize;
   ${props => props.size === "large" && css`
     font-size: 17px;
+    line-height: 24px;
   `}
   ${props => props.variant === "primary" && css`
     background-color: ${colors.cornflower_blue};
@@ -25,7 +26,7 @@ export const StyledButton = styled.button<ButtonPropsType>`
   `}
   ${props => props.size === "small" && css`
     font-size: 15px;
-
+    line-height: 20px;
   `}
   ${props => props.variant === "secondary" && css`
     background-color: ${colors.link_water};
@@ -34,7 +35,7 @@ export const StyledButton = styled.button<ButtonPropsType>`
   `}
   ${props => props.icon === "default"
           ? css`
-            padding: 12px 40px;
+            padding: 16px 48px;
           `
           : props.icon === "left"
                   ? css`

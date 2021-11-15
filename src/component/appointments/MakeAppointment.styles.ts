@@ -11,19 +11,21 @@ export const AppointmentStepsNumbers = styled.div`
 export const AppointmentStepsContainer = styled.div`
   display: flex;
   gap: 0 104px;
-  margin: 0 33px 0 0;
+  margin: 25px 33px 0 0;
 `
 
 export const ChooseDayStep = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 400px;
+  gap: 40px;
 `
 
 export const SelectTimeslotStep = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 464px;
+  gap: 40px;
 `
 
 export const SelectDoctorStep = styled.div`
