@@ -1,13 +1,13 @@
 import React from 'react';
 import Calendar from "react-calendar";
-import './DatePicker.css'
 import {useDispatch, useSelector} from "react-redux";
 import {addDateAC} from "../../redux/reducers/appointmentReducer";
 import {ReactComponent as NextIcon} from '../../assets/svgImages/rightArrowGrey-icon.svg';
 import {ReactComponent as PrevIcon} from '../../assets/svgImages/leftArrowGrey-icon.svg';
-import { getDateOfAppointmentsByDoctorId} from "../../mockData/doctors";
+import {getDateOfAppointmentsByDoctorId} from "../../mockData/doctors";
 import {AppRootStateType} from "../../redux/store";
 import {isSameDay} from "date-fns";
+import {ReactCalendar} from "./DataPicker.styles";
 
 const DatePicker: React.VFC = () => {
 
@@ -23,12 +23,13 @@ const DatePicker: React.VFC = () => {
     const dateOfAppointments = getDateOfAppointmentsByDoctorId(doctorId)
 
     const disabledDays = ({activeStartDate, date, view}: any) => {
-        return  !dateOfAppointments.some((slot)=> {
-           return  isSameDay(slot.dayOfMonth, date)
+        return !dateOfAppointments.some((slot) => {
+            return isSameDay(slot.dayOfMonth, date)
         })
     }
 
-    return (<>
+    return (
+        <ReactCalendar>
             <Calendar locale={"Us"}
                       prev2Label={null}
                       next2Label={null}
@@ -42,7 +43,7 @@ const DatePicker: React.VFC = () => {
                       formatShortWeekday={(locale, date) => formatDate(date)}
                       tileDisabled={disabledDays}
             />
-        </>
+        </ReactCalendar>
     );
 };
 
