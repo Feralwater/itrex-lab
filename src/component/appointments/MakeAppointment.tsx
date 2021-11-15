@@ -4,16 +4,16 @@ import {
     Body,
     BodyDoctorView,
     Patients,
-} from "../doctorViews/doctorViewTemplate/DoctorViewTemplateStyles";
+} from "../doctorViews/doctorViewTemplate/DoctorViewTemplate.styles";
 import {PatientsTitle} from "../doctorViews/doctorViewTemplate/patientsContainerHeader/PatientsContainerHeaderStyles";
 import AppointmentStep from "./AppointmentStep";
 import {
     AppointmentStepsContainer,
-    ChooseDayStep,
+    ChooseDayStep, InputContainer,
     MakeAppointmentButtonContainer,
     SelectDoctorStep,
     SelectTimeslotStep,
-} from './MakeAppointmentStyles';
+} from './MakeAppointment.styles';
 import TimeSlots from "../timeSlots/TimeSlots";
 import InputText from "../../components/Input/InputText";
 import DatePicker from "../../components/DatePicker/DatePicker";
@@ -43,26 +43,38 @@ const MakeAppointment: React.VFC<MakeAppointmentPropsType> = ({
                             <SelectDoctorStep>
                                 <AppointmentStep stepDescription={"Select a doctor and define the reason of your visit"}
                                                  stepNumber={1}/>
-                                <CustomSelect
-                                    valuesForSelect={getOccupations(users)}
-                                    placeholder={'Choose an occupation'}
-                                    addActionCreator={addOccupationAC}
-                                />
-                                <CustomSelect
-                                    valuesForSelect={getDoctors(users, occupation)}
-                                    placeholder={'Choose a doctor'}
-                                    addActionCreator={addDoctorAC}
-                                />
-                                <InputText
-                                    inputLabel={"Reason for the visit"}
-                                    addActionCreator={addReasonAC}
-                                    placeholder={"Leave a reason for the visit"}
-                                />
-                                <InputText
-                                    inputLabel={"Note"}
-                                    addActionCreator={addNoteAC}
-                                    placeholder={"Leave a note if needed"}
-                                />
+                                <InputContainer>
+                                    <CustomSelect
+                                        valuesForSelect={getOccupations(users)}
+                                        placeholder={'Choose an occupation'}
+                                        addActionCreator={addOccupationAC}
+                                        label={"Occupation"}
+                                        id={"Occupation"}
+                                    />
+                                </InputContainer>
+                                <InputContainer>
+                                    <CustomSelect
+                                        valuesForSelect={getDoctors(users, occupation)}
+                                        placeholder={'Choose a doctor'}
+                                        addActionCreator={addDoctorAC}
+                                        label={"Doctor`s Name"}
+                                        id={"Doctor`s Name"}
+                                    />
+                                </InputContainer>
+                                <InputContainer>
+                                    <InputText
+                                        inputLabel={"Reason for the visit"}
+                                        addActionCreator={addReasonAC}
+                                        placeholder={"Leave a reason for the visit"}
+                                    />
+                                </InputContainer>
+                                <InputContainer>
+                                    <InputText
+                                        inputLabel={"Note"}
+                                        addActionCreator={addNoteAC}
+                                        placeholder={"Leave a note if needed"}
+                                    />
+                                </InputContainer>
                             </SelectDoctorStep>
                             <ChooseDayStep>
                                 <AppointmentStep stepDescription={"Choose a day for an appointment"} stepNumber={2}/>
@@ -79,9 +91,8 @@ const MakeAppointment: React.VFC<MakeAppointmentPropsType> = ({
                             <Button
                                 type={"submit"}
                                 size={"small"}
-                                variant={"secondary"}
+                                variant={"primary"}
                                 icon={"default"}
-                                disabled
                             >Submit</Button>
                         </MakeAppointmentButtonContainer>
                     </Patients>

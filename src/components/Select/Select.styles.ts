@@ -1,13 +1,14 @@
 import {StylesConfig} from "react-select";
 import {Options} from "./Select.types";
+import {colors} from "../../styles/colors";
 
 export const SelectStyles: StylesConfig<Array<Options>> = {
     control: (styles) => ({
         ...styles,
-        backgroundColor: '#ffffff',
-        border: '1px solid #DCE0EC',
+        backgroundColor: `${colors.white}`,
+        border: `1px solid ${colors.link_water}`,
         boxSizing: 'border-box',
-        boxShadow: '0px 4px 32px rgba(218, 228, 255, 0.16)',
+        boxShadow: `0px 4px 32px ${colors.link_water_alfa016}`,
         borderRadius: '8px',
         padding: '16px 24px',
         // ":focus": {
@@ -23,15 +24,15 @@ export const SelectStyles: StylesConfig<Array<Options>> = {
             backgroundColor: isDisabled
                 ? undefined
                 : isSelected
-                    ? '#f9faff'
+                    ? `${colors.alabaster}`
                     : isFocused
-                        ? '#f9faff'
-                        : '#ffffff',
+                        ? `${colors.alabaster}`
+                        : `${colors.white}`,
             color: isDisabled
-                ? '#cccccc'
+                ? `${colors.pastel_grey}`
                 : isSelected
-                    ? '#202225'
-                    : '#202225',
+                    ? `${colors.dark_jungle_green}`
+                    : `${colors.dark_jungle_green}`,
             cursor: isDisabled ? 'not-allowed' : 'default',
         };
     },
@@ -42,8 +43,8 @@ export const SelectStyles: StylesConfig<Array<Options>> = {
             ? 'rotate(180deg)'
             : undefined,
         color: state.selectProps.menuIsOpen
-            ? '#7297ff'
-            : '#a1abc9',
+            ? `${colors.cornflower_blue}`
+            : `${colors.rock_blue}`,
         transition: "all .3s ease-out",
     }),
     input: (styles) => ({
@@ -53,6 +54,6 @@ export const SelectStyles: StylesConfig<Array<Options>> = {
         ...styles,
         fontSize: '17px',
         lineHeight: '24px',
-        color: '#a1abc9',
+        color: `${colors.rock_blue}`,
     }),
 };

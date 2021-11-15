@@ -1,8 +1,8 @@
 import React from 'react';
 import {PatientType} from "../doctorViews/doctorViewFullState/DoctorViewFullState";
-import {ReactComponent as Clock} from '../../svgImages/clock-icon.svg';
-import {ReactComponent as Board} from '../../svgImages/board-icon.svg';
-import {ReactComponent as Heart} from '../../svgImages/heart-icon.svg';
+import {ReactComponent as Clock} from '../../assets/svgImages/clock-icon.svg';
+import {ReactComponent as Board} from '../../assets/svgImages/board-icon.svg';
+import {ReactComponent as Heart} from '../../assets/svgImages/heart-icon.svg';
 import {statuses} from "../../mockData/patients";
 import {
     AppointmentStatus,
@@ -16,8 +16,9 @@ import {
     UserCardName,
     UserData,
     UserInformation,
-} from "./PatientCardStyles";
-import {UserImage} from '../header/HeaderStyles';
+} from "./PatientCard.styles";
+import {UserImage} from '../header/Header.styles';
+import {colors} from "../../styles/colors";
 
 const PatientCard: React.VFC<PatientType> = ({
                                                  avatar,
@@ -29,9 +30,9 @@ const PatientCard: React.VFC<PatientType> = ({
                                                  role
                                              }) => {
     const statusColor = {
-        [statuses.confirmed]: '#34C197',
-        [statuses.canceled]: '#FF2567',
-        [statuses.waiting]: '#7297FF',
+        [statuses.confirmed]: `${colors.greenish_teal}`,
+        [statuses.canceled]: `${colors.radical_red}`,
+        [statuses.waiting]: `${colors.cornflower_blue}`,
     }
     const statusDescription = {
         [statuses.confirmed]: "Appointment is confirmed",

@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import {InputTextPropsType} from "./Input.types";
+import {colors} from "../../styles/colors";
 
 export const StyledInput = styled.input<InputTextPropsType>`
   background: #ffffff;
-  border: 1px solid #dce0ec;
+  border: 1px solid ${colors.link_water};
   box-sizing: border-box;
-  box-shadow: 0px 4px 32px rgba(218, 228, 255, 0.16);
+  box-shadow: 0px 4px 32px ${colors.link_water_alfa016};
   border-radius: 8px;
   padding: 16px 24px;
   font-size: 17px;
@@ -13,11 +14,11 @@ export const StyledInput = styled.input<InputTextPropsType>`
   outline: none;
 
   &::placeholder {
-    color: #a1abc9;
+    color: ${colors.rock_blue};
   }
 
   &:focus {
-    box-shadow: 0px 4px 32px rgba(218, 228, 255, 0.24);
-    border: 1px solid #7297ff;
+    box-shadow: 0px 4px 32px ${colors.link_water_alfa024};
+    border: 1px solid ${colors.cornflower_blue};
   }
 `

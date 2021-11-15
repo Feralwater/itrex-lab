@@ -1,11 +1,12 @@
 import styled from "styled-components";
+import {colors} from "../../styles/colors";
 
 interface ErrorMessageBodyType {
     isSuccess: boolean
 }
 
 export const ErrorMessageBody = styled.div<ErrorMessageBodyType>`
-  background-color: ${(props) => (props.isSuccess ? "#34C197" : "#FF2567")};
+  background-color: ${(props) => (props.isSuccess ? `${colors.greenish_teal}` : `${colors.radical_red}`)};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -41,7 +42,7 @@ export const ErrorMessageText = styled.div`
 `
 
 export const CloseButton = styled.div`
-  background-color: transparent;
+  background-color: ${colors.transparent};
   border: none;
   margin: 0 0 0 auto;
   cursor: pointer;

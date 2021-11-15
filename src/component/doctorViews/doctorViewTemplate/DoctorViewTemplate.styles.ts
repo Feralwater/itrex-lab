@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+import {colors} from "../../../styles/colors";
 
 export const Body = styled.div`
   padding: 80px 0 0 0;
 `;
 
 export const BodyDoctorView = styled.main`
-  background-color: #e4ebff;
+  background-color: ${colors.blue_chalk};
   margin: 0;
   padding: 0 64px 48px;
   height: calc(100vh - 128px);
@@ -24,8 +25,8 @@ export const Patients = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  background: #f9faff;
-  box-shadow: 0px 4px 32px rgba(218, 228, 255, 0.32);
+  background: ${colors.alabaster};
+  box-shadow: 0px 4px 32px ${colors.link_water_alfa032};
   border-radius: 16px;
   box-sizing: border-box;
   overflow: hidden;
@@ -43,12 +44,12 @@ export const Patients = styled.div`
   }
 
   & ::-webkit-scrollbar-track {
-    background: rgba(236, 220, 222, 0.3);
+    background: ${colors.lavender_pinocchio_alfa030};
     border-radius: 8px;
   }
 
   & ::-webkit-scrollbar-thumb {
-    background: rgba(220, 224, 236, 0.5);
+    background: ${colors.platinum_alfa050};
     border-radius: 8px;
   }
 

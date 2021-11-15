@@ -8,7 +8,9 @@ import {CustomSelectPropsType} from "./Select.types";
 const CustomSelect: React.VFC<CustomSelectPropsType> = ({
                                                             valuesForSelect,
                                                             placeholder,
-                                                            addActionCreator
+                                                            addActionCreator,
+                                                            id,
+                                                            label
                                                         }) => {
     const dispatch = useDispatch();
 
@@ -17,7 +19,7 @@ const CustomSelect: React.VFC<CustomSelectPropsType> = ({
     function formatOptionLabel({label}: any, {inputValue}: any) {
         return (
             <Highlighter
-                highlightStyle={{"fontWeight": "bold", "backgroundColor": "transparent"}}
+                highlightStyle={{"fontWeight": "bold", "backgroundColor": "${colors.transparent}"}}
                 searchWords={[inputValue]}
                 textToHighlight={label}
             />
@@ -28,13 +30,16 @@ const CustomSelect: React.VFC<CustomSelectPropsType> = ({
         dispatch(addActionCreator(selected))
     }
 
-    return (
-        <Select options={options}
-                styles={SelectStyles}
-                placeholder={placeholder}
-                onChange={(selected: any) => handleChange(selected)}
-                formatOptionLabel={formatOptionLabel}
-        />
+    return (<>
+            <label htmlFor={id}>{label}</label>
+            <Select options={options}
+                    styles={SelectStyles}
+                    placeholder={placeholder}
+                    onChange={(selected: any) => handleChange(selected)}
+                    formatOptionLabel={formatOptionLabel}
+                    id={id}
+            />
+        </>
     );
 };
 

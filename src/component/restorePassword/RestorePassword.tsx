@@ -1,6 +1,6 @@
 import React from 'react';
 import RestorePasswordForm from "../forms/RestorePasswordForm";
-import {BodyAuth, FormContainer} from "../signIn/SignInStyles";
+import {BodyAuth, FormContainer} from "../signIn/SignIn.styles";
 
 const RestorePassword = () => {
     return (

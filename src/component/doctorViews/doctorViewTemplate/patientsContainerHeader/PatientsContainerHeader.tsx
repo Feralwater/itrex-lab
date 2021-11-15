@@ -7,7 +7,7 @@ import {
     PatientsHeader,
     PatientsTitle
 } from "./PatientsContainerHeaderStyles";
-import {ButtonWrapper} from "../../../forms/FormStyles";
+import {ButtonWrapper} from "../../../forms/Form.styles";
 
 type PatientsContainerHeaderPropsType = {
     role: string

@@ -24,11 +24,11 @@ function Routes() {
     return (
         <Switch>
             <Route path={'/'} exact render={() => <Redirect to={PATH.PATIENTS}/>}/>
-            <Route path={PATH.PATIENTS} render={() => <DoctorViewTemplate/>}/>
             <Route path={PATH.RESTORE_PASSWORD} render={() => <RestorePassword/>}/>
             <Route path={PATH.SEND_EMAIL} render={() => <SendEmail email={"example@exam.com"}/>}/>
             <Route path={PATH.SIGN_IN} render={() => <SignIn/>}/>
             <Route path={PATH.SIGN_UP} render={() => <SignUp/>}/>
+            <Route path={PATH.PATIENTS} render={() => <DoctorViewTemplate/>}/>
             <Route path={PATH.APPOINTMENTS} render={() => <AppointmentsTemplate/>}/>
             <Route path={PATH.MAKE_APPOINTMENT} render={() => <MakeAppointment timeSlots={TIME_SLOTS}/>}/>
             <Route render={() => <Error404/>}/>

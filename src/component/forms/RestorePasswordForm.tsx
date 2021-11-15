@@ -1,5 +1,4 @@
 import React from 'react';
-import * as Yup from "yup";
 import {Formik, FormikHelpers} from "formik";
 import {
     ButtonRightArrow,
@@ -8,20 +7,17 @@ import {
     CustomField,
     CustomForm, FormTitle, FormTitleLeftArrow,
     InputEmailContainer, RestoreMessage
-} from './FormStyles';
+} from './Form.styles';
 import {Link} from "react-router-dom";
 import Button from "../../components/Button/Button";
+import {validationSchema} from "./validationSchema";
 
 type Values = {
     email: string
 }
 
 const RestorePasswordForm = () => {
-    const validationSchema = Yup.object({
-        email: Yup.string()
-            .email('Email is invalid')
-            .required('Email is required'),
-    })
+
     return (
         <Formik
             initialValues={{

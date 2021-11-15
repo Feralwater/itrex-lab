@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {colors} from "../../styles/colors";
 
 export const HeaderWrapper = styled.header`
   position: fixed;
@@ -8,7 +9,7 @@ export const HeaderWrapper = styled.header`
   height: 80px;
   box-sizing: border-box;
   margin: 0;
-  background-color: #e4ebff;
+  background-color: ${colors.blue_chalk};
 `;
 
 export const HeaderContainer = styled.div`
@@ -33,7 +34,7 @@ export const HeaderLogo = styled.div`
 
 export const LogoText = styled.span`
   text-transform: uppercase;
-  color: #202225;
+  color: ${colors.dark_jungle_green};
   font-weight: 500;
   margin: 0 0 0 14px;
 `;
@@ -77,8 +78,8 @@ export const NetworkStatus = styled.span<NetworkStatusProps>`
   width: 8px;
   height: 8px;
   border-radius: 100%;
-  border: 3px solid #e4Ebff;
-  background-color: #34c197;
+  border: 3px solid ${colors.blue_chalk};
+  background-color: ${colors.greenish_teal};
   position: absolute;
   top: -1px;
   right: -3px;
@@ -87,7 +88,7 @@ export const NetworkStatus = styled.span<NetworkStatusProps>`
 export const UserName = styled.p`
   font-weight: 600;
   font-size: 15px;
-  color: #202225;
+  color: ${colors.dark_jungle_green};
   text-transform: capitalize;
   margin: 0 0 4px 0;
   overflow: hidden;
@@ -99,7 +100,7 @@ export const UserName = styled.p`
 export const UserRole = styled.p`
   font-weight: 500;
   font-size: 13px;
-  color: #A1ABC9;
+  color: ${colors.rock_blue};
   text-transform: capitalize;
   margin: 0;
 `;

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import {Link} from "react-router-dom";
+import {colors} from "../../styles/colors";
 
 export const BodyAuth = styled.div`
   margin: 0;
@@ -18,7 +19,7 @@ export const BodyAuth = styled.div`
 `;
 
 export const FormContainer = styled.div`
-  background-color: #f9faff;
+  background-color: ${colors.alabaster};
   max-width: 560px;
   margin: 0 0 0 auto;
   min-height: 100vh;
@@ -54,7 +55,7 @@ export const SignInUpMessage = styled.div`
   font-size: 15px;
   display: flex;
   align-items: center;
-  color: #A1ABC9;
+  color: ${colors.rock_blue};
   grid-area: footer;
   margin: 20px 0 0 0;
   align-self: end;
@@ -70,7 +71,7 @@ export const SignInUpMessage = styled.div`
 export const SignInUpLink= styled(Link)`
   margin: 0 12px;
   font-size: 15px;
-  color: #7297ff;
+  color: ${colors.cornflower_blue};
   font-weight: 600;
   text-decoration: underline;
 

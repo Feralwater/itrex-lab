@@ -1,5 +1,6 @@
 import styled, {css} from "styled-components";
 import {ButtonPropsType} from "./Button.types";
+import {colors} from "../../styles/colors";
 
 
 export const StyledButton = styled.button<ButtonPropsType>`
@@ -14,11 +15,11 @@ export const StyledButton = styled.button<ButtonPropsType>`
     font-size: 17px;
   `}
   ${props => props.variant === "primary" && css`
-    background-color: #7297ff;
+    background-color: ${colors.cornflower_blue};
     color: #ffffff;
 
     &:hover {
-      background-color: #476cd3;
+      background-color: ${colors.warm_blue};
       transition: background-color 0.2s ease-out;
     }
   `}
@@ -27,8 +28,8 @@ export const StyledButton = styled.button<ButtonPropsType>`
 
   `}
   ${props => props.variant === "secondary" && css`
-    background-color: #dce0ec;
-    color: #a1abc9;
+    background-color: ${colors.link_water};
+    color: ${colors.rock_blue};
 
   `}
   ${props => props.icon === "default"
@@ -51,6 +52,6 @@ export const StyledButton = styled.button<ButtonPropsType>`
   }
   ${props => props.disabled && css`
     color: #ffffff;
-    background-color: #dce0ec;
+    background-color: ${colors.link_water};
   `}
 `

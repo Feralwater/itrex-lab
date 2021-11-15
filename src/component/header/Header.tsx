@@ -1,5 +1,5 @@
 import React from 'react';
-import {ReactComponent as Logo} from '../../svgImages/logo.svg';
+import {ReactComponent as Logo} from '../../assets/svgImages/logo.svg';
 import {getMe} from "../../mockData/doctors";
 
 import {
@@ -11,7 +11,7 @@ import {
     UserImage,
     UserImageContainer,
     UserInfo, UserName, UserRole
-} from "./HeaderStyles";
+} from "./Header.styles";
 
 type HeaderPropsType = {}
 

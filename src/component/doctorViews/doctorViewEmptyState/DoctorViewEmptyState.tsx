@@ -1,6 +1,6 @@
 import React from 'react';
-import {ReactComponent as MedicalHistory} from '../../../svgImages/medical-history.svg';
-import {MedicalHistoryContainer, MedicalHistoryText} from "./DoctorViewEmptyStateStyles";
+import {ReactComponent as MedicalHistory} from '../../../assets/svgImages/medical-history.svg';
+import {MedicalHistoryContainer, MedicalHistoryText} from "./DoctorViewEmptyState.styles";
 
 const DoctorViewEmptyState = () => {
     return (

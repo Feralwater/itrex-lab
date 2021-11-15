@@ -4,7 +4,7 @@ import {getPatients} from "../../../mockData/patients";
 import DoctorViewFullState from "../doctorViewFullState/DoctorViewFullState";
 import DoctorViewEmptyState from "../doctorViewEmptyState/DoctorViewEmptyState";
 import PatientsContainerHeader from "./patientsContainerHeader/PatientsContainerHeader";
-import {Body, BodyDoctorView, Patients, PatientsContainer} from "./DoctorViewTemplateStyles";
+import {Body, BodyDoctorView, Patients, PatientsContainer} from "./DoctorViewTemplate.styles";
 
 const DoctorViewTemplate = () => {
     const patients = getPatients()

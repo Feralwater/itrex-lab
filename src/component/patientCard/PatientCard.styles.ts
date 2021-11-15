@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+import {colors} from "../../styles/colors";
 
 export const UserCard = styled.div`
   display: flex;
   height: 264px;
   flex-direction: column;
   background: #FFFFFF;
-  box-shadow: 0px 4px 32px rgba(218, 228, 255, 0.24);
+  box-shadow: 0px 4px 32px ${colors.link_water_alfa024};
   border-radius: 12px;
   overflow: hidden;
   @media only screen and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3),
@@ -17,7 +18,7 @@ export const UserCard = styled.div`
 export const UserCardHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(220, 224, 236, 0.5);
+  border-bottom: 1px solid ${colors.platinum_alfa050};
   padding: 24px 31px;
   @media only screen and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3),
   (max-device-width: 767px) {
@@ -29,7 +30,7 @@ export const UserCardHeader = styled.div`
 export const SettingsButton = styled.div`
   width: 24px;
   height: 24px;
-  background: url("../../svgImages/settings-dots.svg") no-repeat center/contain;
+  background: url("../../assets/svgImages/settings-dots.svg") no-repeat center/contain;
   border: none;
   outline: none;
 `
@@ -53,7 +54,7 @@ export const UserCardBodyTime = styled.div`
 export const UserCardBodyTimeText = styled.div`
   font-weight: 600;
   font-size: 15px;
-  color: #202225;
+  color: ${colors.dark_jungle_green};
   margin: 0 0 16px 0;
 `;
 
@@ -68,7 +69,7 @@ export const UserCardBodyDescription = styled(UserCardBodyTime)<UserCardBodyDesc
 export const UserCardBodyDescriptionText = styled.div`
   font-weight: 400;
   font-size: 15px;
-  color: #202225;
+  color: ${colors.dark_jungle_green};
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
@@ -93,7 +94,7 @@ export const AppointmentStatus = styled.div`
   align-items: center;
   font-weight: 500;
   font-size: 13px;
-  color: #A1ABC9;
+  color: ${colors.rock_blue};
   margin: 0;
 `;
 
@@ -120,7 +121,7 @@ export const UserCardName = styled.div`
   font-weight: 600;
   font-size: 17px;
   align-items: center;
-  color: #202225;
+  color: ${colors.dark_jungle_green};
   margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;

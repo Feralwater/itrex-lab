@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import {ReactComponent as SuccessIcon} from '../../svgImages/check-circle.svg';
-import {ReactComponent as ErrorIcon} from '../../svgImages/error-icon.svg';
-import {ReactComponent as Close} from '../../svgImages/close-icon.svg';
+import {ReactComponent as SuccessIcon} from '../../assets/svgImages/check-circle.svg';
+import {ReactComponent as ErrorIcon} from '../../assets/svgImages/error-icon.svg';
+import {ReactComponent as Close} from '../../assets/svgImages/close-icon.svg';
 import {
     CloseButton,
     ErrorMessageBody,

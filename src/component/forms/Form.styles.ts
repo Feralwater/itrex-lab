@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import {ErrorMessage, Field, Form} from "formik";
 import {Link} from "react-router-dom";
+import {colors} from "../../styles/colors";
 
 export const InputContainer = styled.div`
   position: relative;
@@ -26,25 +27,25 @@ export const InputContainer = styled.div`
 
 export const InputNameContainer = styled(InputContainer)`
   &:before {
-    background-image: url("../../svgImages/user.svg");
+    background-image: url("../../assets/svgImages/user.svg");
   }
 `;
 
 export const InputEmailContainer = styled(InputContainer)`
   &:before {
-    background-image: url("../../svgImages/email.svg");
+    background-image: url("../../assets/svgImages/email.svg");
   }
 `;
 
 export const InputPasswordContainer = styled(InputContainer)`
   &:before {
-    background-image: url("../../svgImages/lock.svg");
+    background-image: url("../../assets/svgImages/lock.svg");
   }
 `;
 
 export const InputConfirmPasswordContainer = styled(InputContainer)`
   &:before {
-    background-image: url("../../svgImages/check-mark.svg");
+    background-image: url("../../assets/svgImages/check-mark.svg");
   }
 `;
 
@@ -62,7 +63,7 @@ export const InputPasswordIcon = styled.i<InputPasswordIconProps>`
   transform: translateY(-50%);
   right: 26px;
   cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: ${colors.transparent};
   background: ${(props) => (props.isVisible ? "url(\"../../svgImages/eye-off-icon.svg\") no-repeat" : "url(\"../../svgImages/eye-icon.svg\") no-repeat")};
 `;
 
@@ -70,16 +71,12 @@ export const ButtonWrapper = styled.div`
   position: relative;
   width: fit-content;
   margin: 0 33px 0 0;
-  //@media only screen and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3),
-  //(max-device-width: 768px) {
-  //  margin: 0 50px 0 0;
-  //}
 `;
 
 export const ButtonRightArrow = styled.span`
   width: 8px;
   height: 14px;
-  background: url("../../svgImages/right-arrow.svg") no-repeat center;
+  background: url("../../assets/svgImages/right-arrow.svg") no-repeat center;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -109,7 +106,7 @@ export const FormTitle = styled.div`
   font-family: inherit;
   font-weight: 600;
   font-size: 24px;
-  color: #202225;
+  color: ${colors.dark_jungle_green};
   margin: 0 0 4vh 0;
   text-decoration: none;
   @media only screen and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3),
@@ -122,7 +119,7 @@ export const FormTitle = styled.div`
 export const FormTitleLeftArrow = styled.span`
   width: 8px;
   height: 14px;
-  background: url("../../svgImages/left-arrow.svg") no-repeat center;
+  background: url("../../assets/svgImages/left-arrow.svg") no-repeat center;
   display: inline-block;
   margin: 0 24px 2px 0;
 `;
@@ -131,7 +128,7 @@ export const RestoreMessage = styled.div`
   font-weight: 400;
   font-size: 15px;
   line-height: 130%;
-  color: #A1ABC9;
+  color: ${colors.rock_blue};
   margin: 0 0 40px 0;
 `;
 
@@ -140,16 +137,16 @@ interface CustomFieldProps {
 }
 
 export const CustomField = styled(Field)<CustomFieldProps>`
-  border: ${(props) => (props.isError ? "1px solid #FF2567" : "1px solid #dce0ec")};
+  border: ${(props) => (props.isError ? `1px solid ${colors.radical_red}` : `1px solid ${colors.link_water}`)};
   box-sizing: border-box;
-  box-shadow: 0px 4px 32px rgba(218, 228, 255, 0.16);
+  box-shadow: 0px 4px 32px ${colors.link_water_alfa016};
   border-radius: 8px;
   width: 100%;
   padding: 16px 64px;
   font-weight: 400;
   font-size: 17px;
   outline: none;
-  background-color: #f9faff;
+  background-color: ${colors.alabaster};
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -161,13 +158,13 @@ export const CustomField = styled(Field)<CustomFieldProps>`
   }
 
   &:focus {
-    border: 1px solid #7297ff;
-    box-shadow: 0px 4px 32px rgba(218, 228, 255, 0.24);
-    background: #ffffff;
+    border: 1px solid ${colors.cornflower_blue};
+    box-shadow: 0px 4px 32px ${colors.link_water_alfa024};
+    background: ${colors.white};
   }
 
   &::placeholder {
-    color: #a1Abc9;
+    color: ${colors.rock_blue};
   }
 `;
 
@@ -176,7 +173,7 @@ export const CustomErrorMessage = styled(ErrorMessage)`
   font-weight: 400;
   font-size: 11px;
   letter-spacing: -0.24px;
-  color: #F6657F;
+  color: ${colors.brink_pink};
   margin: 8px 0 0 0;
   position: absolute;
   top: 90%;
@@ -187,7 +184,7 @@ export const CustomLink = styled(Link)`
   font-weight: 500;
   font-size: 15px;
   text-decoration-line: underline;
-  color: #7297FF;
+  color: ${colors.cornflower_blue};
   margin: 32px 0px;
   width: fit-content;
 `;

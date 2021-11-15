@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {colors} from "../../styles/colors";
 
 export const AppointmentStepsNumbers = styled.div`
   display: flex;
@@ -9,7 +10,6 @@ export const AppointmentStepsNumbers = styled.div`
 
 export const AppointmentStepsContainer = styled.div`
   display: flex;
-  justify-content: space-between;
   gap: 0 104px;
   margin: 0 33px 0 0;
 `
@@ -30,11 +30,26 @@ export const SelectDoctorStep = styled.div`
   display: flex;
   flex-direction: column;
   gap: 40px;
+  flex-grow: 1;
 `
 
 export const MakeAppointmentButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;
+  margin: 0 32px 0 0;
+`
+
+export const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  & label {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 130%;
+    color: ${colors.black};
+  }
 `
 
 

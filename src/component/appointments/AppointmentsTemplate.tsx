@@ -5,7 +5,7 @@ import {
     BodyDoctorView,
     Patients,
     PatientsContainer
-} from "../doctorViews/doctorViewTemplate/DoctorViewTemplateStyles";
+} from "../doctorViews/doctorViewTemplate/DoctorViewTemplate.styles";
 import PatientsContainerHeader from "../doctorViews/doctorViewTemplate/patientsContainerHeader/PatientsContainerHeader";
 import DoctorViewFullState from "../doctorViews/doctorViewFullState/DoctorViewFullState";
 import DoctorViewEmptyState from "../doctorViews/doctorViewEmptyState/DoctorViewEmptyState";

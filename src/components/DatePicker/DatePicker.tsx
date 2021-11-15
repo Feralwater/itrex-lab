@@ -3,8 +3,8 @@ import Calendar from "react-calendar";
 import './DatePicker.css'
 import {useDispatch, useSelector} from "react-redux";
 import {addDateAC} from "../../redux/reducers/appointmentReducer";
-import {ReactComponent as NextIcon} from '../../svgImages/rightArrowGrey-icon.svg';
-import {ReactComponent as PrevIcon} from '../../svgImages/leftArrowGrey-icon.svg';
+import {ReactComponent as NextIcon} from '../../assets/svgImages/rightArrowGrey-icon.svg';
+import {ReactComponent as PrevIcon} from '../../assets/svgImages/leftArrowGrey-icon.svg';
 import { getDateOfAppointmentsByDoctorId} from "../../mockData/doctors";
 import {AppRootStateType} from "../../redux/store";
 import {isSameDay} from "date-fns";

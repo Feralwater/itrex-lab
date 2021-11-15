@@ -5,8 +5,8 @@ import {
     FormTitleLeftArrow,
     RestoreMessage,
     RestorePasswordContainer
-} from "../forms/FormStyles";
-import {BodyAuth, FormContainer} from "../signIn/SignInStyles";
+} from "../forms/Form.styles";
+import {BodyAuth, FormContainer} from "../signIn/SignIn.styles";
 import {Link} from "react-router-dom";
 
 type SendEmailPropsType = {

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Error, ErrorMessage, ErrorNumber} from "./Error404Styles";
+import {Error, ErrorMessage, ErrorNumber} from "./Error404.styles";
 
 const Error404 = () => {
     return (

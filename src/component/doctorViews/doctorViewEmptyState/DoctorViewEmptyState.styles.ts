@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {colors} from "../../../styles/colors";
 
 export const MedicalHistoryContainer = styled.div`
   display: flex;
@@ -13,7 +14,7 @@ export const MedicalHistoryText = styled.div`
   font-weight: 400;
   font-size: 15px;
   line-height: 140%;
-  color: #A1ABC9;
+  color: ${colors.rock_blue};
   display: flex;
   flex-direction: column;
 `

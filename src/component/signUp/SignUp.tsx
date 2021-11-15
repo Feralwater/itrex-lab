@@ -1,6 +1,6 @@
 import React from 'react';
 import SignUpForm from "../forms/SingUpForm";
-import {BodyAuth, FormContainer, SignInUpLink, SignInUpMessage} from "../signIn/SignInStyles";
+import {BodyAuth, FormContainer, SignInUpLink, SignInUpMessage} from "../signIn/SignIn.styles";
 
 const SignUp = () => {
     return (

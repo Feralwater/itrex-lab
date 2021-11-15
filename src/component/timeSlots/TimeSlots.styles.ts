@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {colors} from "../../styles/colors";
 
 export const TimeSlotsContainer = styled.ul`
   display: grid;
@@ -19,8 +20,8 @@ interface TimeSlotType {
 }
 
 export const TimeSlot = styled.li<TimeSlotType>`
-  background: ${(props) => (props.isAvailableTimeSlot ? "#ffffff" : "#dce0ec")};
-  box-shadow: 0px 4px 32px rgba(218, 228, 255, 0.24);
+  background: ${(props) => (props.isAvailableTimeSlot ? `${colors.white}` : `${colors.link_water}`)};
+  box-shadow: 0px 4px 32px ${colors.link_water_alfa024};
   border-radius: 8px;
   padding: 8px 16px;
   font-weight: 600;
@@ -29,14 +30,14 @@ export const TimeSlot = styled.li<TimeSlotType>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: ${(props) => (props.isSelected ? "#7297ff" : props.isAvailableTimeSlot ? "#202225" : "#f9faff")};
-  border: ${(props) => (props.isSelected ? "1px solid #7297ff" : "1px solid transparent")};
-  pointer-events:  ${(props) => (props.isAvailableTimeSlot ? "all" : "none")};;
+  color: ${(props) => (props.isSelected ? `${colors.cornflower_blue}` : props.isAvailableTimeSlot ? `${colors.dark_jungle_green}` : `${colors.alabaster}`)};
+  border: ${(props) => (props.isSelected ? `1px solid ${colors.cornflower_blue}` : `1px solid ${colors.transparent}`)};
+  pointer-events: ${(props) => (props.isAvailableTimeSlot ? "all" : "none")};;
   cursor: pointer;
   transition: all .1s ease-out;
 
   &:hover {
-    border-color: #7297ff;
-    color: #7297ff;
+    border-color: ${colors.cornflower_blue};
+    color: ${colors.cornflower_blue};
   }
 `

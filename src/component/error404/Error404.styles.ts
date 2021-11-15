@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {colors} from "../../styles/colors";
 
 export const Error = styled.section`
   width: 100%;
@@ -11,7 +12,7 @@ export const Error = styled.section`
 `;
 
 export const ErrorNumber = styled.div`
-  color: #ff2567;
+  color: ${colors.radical_red};
   font-size: 130px;
   font-weight: bold;
 `;

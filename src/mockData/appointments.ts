@@ -1,5 +1,4 @@
 export function getAppointments() {
-    // return  []
     return [
         {
             avatar: "/img/patient-avatar.png",

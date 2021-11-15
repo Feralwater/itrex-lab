@@ -1,5 +1,5 @@
 import React from 'react';
-import {Step, StepDescription, StepNumber} from "./AppointentStepStyles";
+import {Step, StepDescription, StepNumber} from "./AppointentStep.styles";
 
 type AppointmentStepsPropsType = {
     stepNumber: number
