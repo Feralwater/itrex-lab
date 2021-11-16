@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { TimeSlot, TimeSlotsContainer } from './TimeSlots.styles';
+import { TimeSlot, TimeSlotLabel, TimeSlotsContainer } from './TimeSlots.styles';
 import { addTimeslotAC } from '../../redux/reducers/appointmentReducer';
 import { AppRootStateType } from '../../redux/store';
 import { TimeSlotsPropsType } from './TimeSlots.types';
@@ -15,22 +15,27 @@ const TimeSlots: React.VFC<TimeSlotsPropsType> = ({ timeSlots }) => {
   const doctorsTimeslots = getDateOfAppointmentsByDoctorIdAndDate(doctorId, selectedDate);
 
   const handlerClick = (e: any) => {
-    dispatch(addTimeslotAC(e.currentTarget.innerHTML));
+    dispatch(addTimeslotAC(e.currentTarget.value));
   };
 
   return (
     <TimeSlotsContainer>
       {timeSlots.map((time, index) => {
-        const isAvailableTimeSlot = doctorsTimeslots.some((timeslot) => timeslot.indexOfTimeSlot === index);
+        const disabled = doctorsTimeslots.some((timeslot) => timeslot.indexOfTimeSlot === index);
         return (
-          <TimeSlot
-            key={time}
-            isSelected={selected === time}
-            onClick={handlerClick}
-            isAvailableTimeSlot={isAvailableTimeSlot}
-          >
-            {time}
-          </TimeSlot>
+          <>
+            <TimeSlot
+              id={time}
+              type="radio"
+              name="radio"
+              value={time}
+              key={time}
+              checked={selected === time}
+              onClick={handlerClick}
+              disabled={disabled}
+            />
+            <TimeSlotLabel htmlFor={time}>{time}</TimeSlotLabel>
+          </>
         );
       })}
     </TimeSlotsContainer>
