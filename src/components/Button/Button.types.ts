@@ -4,5 +4,5 @@ export type ButtonPropsType = {
     icon: 'default' | 'left' | 'right'
     disabled?: boolean
     type: 'button' | 'submit' | 'reset' | undefined
-    onClick?: (e?: any) => void
+    onClick?: () => void
 }

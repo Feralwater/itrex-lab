@@ -1,14 +1,16 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import RestorePassword from '../component/restorePassword/RestorePassword';
-import SendEmail from '../component/sendEmail/SendEmail';
-import SignIn from '../component/signIn/SignIn';
-import SignUp from '../component/signUp/SignUp';
-import Error404 from '../component/error404/Error404';
-import DoctorViewTemplate from '../component/doctorViews/doctorViewTemplate/DoctorViewTemplate';
-import AppointmentsTemplate from '../component/appointments/AppointmentsTemplate';
-import MakeAppointment from '../component/appointments/MakeAppointment';
+import RestorePassword from '../pages/authorisedPages/restorePassword/RestorePassword';
+import SendEmail from '../pages/authorisedPages/sendEmail/SendEmail';
+import SignUp from '../pages/authorisedPages/signUp/SignUp';
+import Error404 from '../pages/error404Page/Error404';
+import DoctorViewTemplate from '../pages/publicPages/doctorViews/doctorViewTemplate/DoctorViewTemplate';
+import AppointmentsTemplate from '../pages/publicPages/AppointmentsTemplate';
+import MakeAppointment from '../pages/publicPages/MakeAppointment';
 import { TIME_SLOTS } from '../mockData/doctors';
+import AuthorisedLayout from '../layouts/authorised/authorised';
+import SignIn from '../pages/authorisedPages/signIn/SignIn';
+import Public from '../layouts/public/public';
 
 export const PATH = {
   PATIENTS: '/patients',
@@ -24,13 +26,27 @@ function Routes() {
   return (
     <Switch>
       <Route path="/" exact render={() => <Redirect to={PATH.PATIENTS} />} />
-      <Route path={PATH.RESTORE_PASSWORD} render={() => <RestorePassword />} />
-      <Route path={PATH.SEND_EMAIL} render={() => <SendEmail email="example@exam.com" />} />
-      <Route path={PATH.SIGN_IN} render={() => <SignIn />} />
-      <Route path={PATH.SIGN_UP} render={() => <SignUp />} />
-      <Route path={PATH.PATIENTS} render={() => <DoctorViewTemplate />} />
-      <Route path={PATH.APPOINTMENTS} render={() => <AppointmentsTemplate />} />
-      <Route path={PATH.MAKE_APPOINTMENT} render={() => <MakeAppointment timeSlots={TIME_SLOTS} />} />
+      <Route path={PATH.RESTORE_PASSWORD} render={() => <AuthorisedLayout><RestorePassword /></AuthorisedLayout>} />
+      <Route
+        path={PATH.SEND_EMAIL}
+        render={() => (
+          <AuthorisedLayout>
+            <SendEmail email="example@exam.com" />
+          </AuthorisedLayout>
+        )}
+      />
+      <Route path={PATH.SIGN_IN} render={() => <AuthorisedLayout><SignIn /></AuthorisedLayout>} />
+      <Route path={PATH.SIGN_UP} render={() => <AuthorisedLayout><SignUp /></AuthorisedLayout>} />
+      <Route path={PATH.PATIENTS} render={() => <Public><DoctorViewTemplate /></Public>} />
+      <Route path={PATH.APPOINTMENTS} render={() => <Public><AppointmentsTemplate /></Public>} />
+      <Route
+        path={PATH.MAKE_APPOINTMENT}
+        render={() => (
+          <Public>
+            <MakeAppointment timeSlots={TIME_SLOTS} />
+          </Public>
+        )}
+      />
       <Route render={() => <Error404 />} />
     </Switch>
   );
