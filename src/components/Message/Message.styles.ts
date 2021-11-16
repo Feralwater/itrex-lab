@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import {colors} from "../../styles/colors";
+import styled from 'styled-components';
+import colors from '../../styles/colors';
 
 interface ErrorMessageBodyType {
     isSuccess: boolean
@@ -16,19 +16,19 @@ export const ErrorMessageBody = styled.div<ErrorMessageBodyType>`
   min-height: 122px;
   padding: 0px 16px 0px 34px;
   box-sizing: border-box;
-`
+`;
 
 export const ErrorMessageTitle = styled.div`
   display: flex;
   line-height: 24px;
   margin: 0 0 8px 0;
-`
+`;
 
 export const ErrorMessageTitleText = styled.h2`
   font-weight: 600;
   font-size: 17px;
   margin: 0 0 0 18px;
-`
+`;
 
 export const ErrorMessageText = styled.div`
   font-weight: 500;
@@ -39,11 +39,11 @@ export const ErrorMessageText = styled.div`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-`
+`;
 
 export const CloseButton = styled.div`
   background-color: ${colors.transparent};
   border: none;
   margin: 0 0 0 auto;
   cursor: pointer;
-`
+`;

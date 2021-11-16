@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import {colors} from "../../styles/colors";
+import styled from 'styled-components';
+import colors from '../../styles/colors';
 
 export const TimeSlotsContainer = styled.ul`
   display: grid;
@@ -12,7 +12,7 @@ export const TimeSlotsContainer = styled.ul`
   padding: 0;
   margin: 0;
   list-style-type: none;
-`
+`;
 
 interface TimeSlotType {
     isSelected: boolean
@@ -32,7 +32,7 @@ export const TimeSlot = styled.li<TimeSlotType>`
   justify-content: center;
   color: ${(props) => (props.isSelected ? `${colors.cornflower_blue}` : props.isAvailableTimeSlot ? `${colors.dark_jungle_green}` : `${colors.alabaster}`)};
   border: ${(props) => (props.isSelected ? `1px solid ${colors.cornflower_blue}` : `1px solid ${colors.transparent}`)};
-  pointer-events: ${(props) => (props.isAvailableTimeSlot ? "all" : "none")};;
+  pointer-events: ${(props) => (props.isAvailableTimeSlot ? 'all' : 'none')};;
   cursor: pointer;
   transition: all .1s ease-out;
 
@@ -40,4 +40,4 @@ export const TimeSlot = styled.li<TimeSlotType>`
     border-color: ${colors.cornflower_blue};
     color: ${colors.cornflower_blue};
   }
-`
+`;

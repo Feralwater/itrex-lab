@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {colors} from "../../styles/colors";
+import colors from '../../styles/colors';
 
 export const UserCard = styled.div`
   display: flex;
@@ -33,7 +33,7 @@ export const SettingsButton = styled.div`
   background: url("../../assets/svgImages/settings-dots.svg") no-repeat center/contain;
   border: none;
   outline: none;
-`
+`;
 
 export const UserCardBody = styled.div`
   padding: 24px 32px 40px 34px;
@@ -63,7 +63,7 @@ interface UserCardBodyDescriptionProps {
 }
 
 export const UserCardBodyDescription = styled(UserCardBodyTime)<UserCardBodyDescriptionProps>`
-  display: ${(props) => (props.isDescription ? "flex" : "none")}
+  display: ${(props) => (props.isDescription ? 'flex' : 'none')}
 `;
 
 export const UserCardBodyDescriptionText = styled.div`
@@ -128,4 +128,3 @@ export const UserCardName = styled.div`
   white-space: nowrap;
   max-width: 130px;
 `;
-

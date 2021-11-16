@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import {ErrorMessage, Field, Form} from "formik";
-import {Link} from "react-router-dom";
-import {colors} from "../../styles/colors";
+import { ErrorMessage, Field, Form } from 'formik';
+import { Link } from 'react-router-dom';
+import colors from '../../styles/colors';
 
 export const InputContainer = styled.div`
   position: relative;
@@ -64,7 +64,7 @@ export const InputPasswordIcon = styled.i<InputPasswordIconProps>`
   right: 26px;
   cursor: pointer;
   -webkit-tap-highlight-color: ${colors.transparent};
-  background: ${(props) => (props.isVisible ? "url(\"../../svgImages/eye-off-icon.svg\") no-repeat" : "url(\"../../svgImages/eye-icon.svg\") no-repeat")};
+  background: ${(props) => (props.isVisible ? 'url("../../svgImages/eye-off-icon.svg") no-repeat' : 'url("../../svgImages/eye-icon.svg") no-repeat')};
 `;
 
 export const ButtonWrapper = styled.div`
@@ -99,7 +99,7 @@ export const CustomForm = styled(Form)`
 `;
 
 export const RestorePasswordContainer = styled(CustomForm).attrs({
-    as: "div"
+  as: 'div',
 })``;
 
 export const FormTitle = styled.div`

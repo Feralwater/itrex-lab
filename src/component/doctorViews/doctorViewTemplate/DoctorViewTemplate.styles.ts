@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {colors} from "../../../styles/colors";
+import colors from '../../../styles/colors';
 
 export const Body = styled.div`
   padding: 80px 0 0 0;
@@ -66,10 +66,10 @@ interface PatientsContainerProps {
 }
 
 export const PatientsContainer = styled.div<PatientsContainerProps>`
-  display: ${(props) => (props.patientsLength > 0 ? "grid" : "flex")};
-  height: ${(props) => (props?.patientsLength === 0 && "68vh")};
-  justify-content: ${(props) => (props?.patientsLength === 0 && "center")};
-  align-items: ${(props) => (props?.patientsLength === 0 && "center")};
+  display: ${(props) => (props.patientsLength > 0 ? 'grid' : 'flex')};
+  height: ${(props) => (props?.patientsLength === 0 && '68vh')};
+  justify-content: ${(props) => (props?.patientsLength === 0 && 'center')};
+  align-items: ${(props) => (props?.patientsLength === 0 && 'center')};
   grid-template-columns: repeat(auto-fit, minmax(400px, 400px));
   grid-template-rows: repeat(auto-fit, 264px);
   gap: 25px 24px;

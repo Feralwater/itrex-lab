@@ -1,4 +1,4 @@
-import {SingleValue} from "react-select";
+import { SingleValue } from 'react-select';
 
 export type Options = {
     value?: string
@@ -10,5 +10,5 @@ export type CustomSelectPropsType = {
     placeholder: string
     addActionCreator: (selected: SingleValue<{ value: string; label: string; }>) => { type: string, label: string }
     id: string
-    label: string
+    labelText: string
 }

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {colors} from "../../styles/colors";
+import colors from '../../styles/colors';
 
 export const HeaderWrapper = styled.header`
   position: fixed;
@@ -74,7 +74,7 @@ interface NetworkStatusProps {
 }
 
 export const NetworkStatus = styled.span<NetworkStatusProps>`
-  display: ${(props) => (props.isOnline ? "inline-block" : "none")};
+  display: ${(props) => (props.isOnline ? 'inline-block' : 'none')};
   width: 8px;
   height: 8px;
   border-radius: 100%;
@@ -104,4 +104,3 @@ export const UserRole = styled.p`
   text-transform: capitalize;
   margin: 0;
 `;
-

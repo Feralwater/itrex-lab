@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import {Link} from "react-router-dom";
-import {colors} from "../../styles/colors";
+import { Link } from 'react-router-dom';
+import colors from '../../styles/colors';
 
 export const BodyAuth = styled.div`
   margin: 0;
@@ -68,7 +68,7 @@ export const SignInUpMessage = styled.div`
   }
 `;
 
-export const SignInUpLink= styled(Link)`
+export const SignInUpLink = styled(Link)`
   margin: 0 12px;
   font-size: 15px;
   color: ${colors.cornflower_blue};
