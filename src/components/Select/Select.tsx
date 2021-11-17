@@ -1,48 +1,41 @@
 import React from 'react';
-import Select, { SingleValue } from 'react-select';
-import { useDispatch } from 'react-redux';
+import Select from 'react-select';
+import { useField } from 'formik';
 import Highlighter from 'react-highlight-words';
-import SelectStyles from './Select.styles';
-import { CustomSelectPropsType } from './Select.types';
 import colors from '../../styles/colors';
+import SelectStyles from './Select.styles';
 
-const CustomSelect: React.VFC<CustomSelectPropsType> = ({
-  valuesForSelect,
-  placeholder,
-  addActionCreator,
-  id,
-  labelText,
-}) => {
-  const dispatch = useDispatch();
-
-  const options: any = valuesForSelect.map((v) => ({ value: v.doctorID, label: v.selectedValue }));
+const CustomSelect = ({
+  labelText, id, name, options, placeholder, ...props
+}: any) => {
+  const [, , { setValue }] = useField(props.field);
 
   function formatOptionLabel({ label }: any, { inputValue }: any) {
     return (
       <Highlighter
-        highlightStyle={{ fontWeight: 'bold', backgroundColor: `${colors.transparent}` }}
+        highlightStyle={{
+          fontWeight: 'bold',
+          backgroundColor: `${colors.transparent}`,
+        }}
         searchWords={[inputValue]}
         textToHighlight={label}
       />
     );
   }
 
-  const handleChange = (selected: SingleValue<{ value: string; label: string; }>): void => {
-    dispatch(addActionCreator(selected));
-  };
-
   return (
-    <>
-      <label htmlFor={id}>{labelText}</label>
+    <label htmlFor={id}>
+      {labelText}
       <Select
-        options={options}
-        styles={SelectStyles}
-        placeholder={placeholder}
-        onChange={(selected: any) => handleChange(selected)}
-        formatOptionLabel={formatOptionLabel}
+        {...props}
         id={id}
+        placeholder={placeholder}
+        formatOptionLabel={formatOptionLabel}
+        styles={SelectStyles}
+        options={options}
+        onChange={setValue}
       />
-    </>
+    </label>
   );
 };
 

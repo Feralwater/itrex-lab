@@ -6,11 +6,10 @@ import SignUp from '../pages/authorisedPages/signUp/SignUp';
 import Error404 from '../pages/error404Page/Error404';
 import DoctorViewTemplate from '../pages/publicPages/doctorViews/doctorViewTemplate/DoctorViewTemplate';
 import AppointmentsTemplate from '../pages/publicPages/AppointmentsTemplate';
-import MakeAppointment from '../pages/publicPages/MakeAppointment';
-import { TIME_SLOTS } from '../mockData/doctors';
 import AuthorisedLayout from '../layouts/authorised/authorised';
 import SignIn from '../pages/authorisedPages/signIn/SignIn';
 import Public from '../layouts/public/public';
+import MakeAnAppointment from '../pages/publicPages/makeAnAppointment';
 
 export const PATH = {
   PATIENTS: '/patients',
@@ -43,7 +42,7 @@ function Routes() {
         path={PATH.MAKE_APPOINTMENT}
         render={() => (
           <Public>
-            <MakeAppointment timeSlots={TIME_SLOTS} />
+            <MakeAnAppointment />
           </Public>
         )}
       />

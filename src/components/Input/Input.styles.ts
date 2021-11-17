@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-import { InputTextPropsType } from './Input.types';
 import colors from '../../styles/colors';
 
-const StyledInput = styled.input<InputTextPropsType>`
+const StyledInput = styled.input`
   background: #ffffff;
   border: 1px solid ${colors.link_water};
   box-sizing: border-box;

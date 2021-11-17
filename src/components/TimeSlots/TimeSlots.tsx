@@ -1,26 +1,22 @@
 import React, { ChangeEvent } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useField } from 'formik';
 import { TimeSlot, TimeSlotLabel, TimeSlotsContainer } from './TimeSlots.styles';
-import { addTimeslotAC } from '../../redux/reducers/appointmentReducer';
-import { AppRootStateType } from '../../redux/store';
-import { TimeSlotsPropsType } from './TimeSlots.types';
 import { getDateOfAppointmentsByDoctorIdAndDate } from '../../mockData/doctors';
 
-const TimeSlots: React.VFC<TimeSlotsPropsType> = ({ timeSlots }) => {
-  const selected = useSelector<AppRootStateType, string>((state) => state.appointment.time);
-  const selectedDate = useSelector<AppRootStateType, Date | null>((state) => state.appointment.date);
-  const doctorId = useSelector<AppRootStateType, string>((state) => state.appointment.selectedDoctorId);
-  const dispatch = useDispatch();
+const TimeSlots = ({
+  doctorId, date, timeSlots, ...props
+}:any) => {
+  const [, , { setValue }] = useField(props.field);
 
-  const doctorsTimeslots = getDateOfAppointmentsByDoctorIdAndDate(doctorId, selectedDate);
+  const doctorsTimeslots = getDateOfAppointmentsByDoctorIdAndDate(doctorId, date);
 
   const handlerClick = (e: ChangeEvent<HTMLInputElement>) => {
-    dispatch(addTimeslotAC(e.currentTarget.value));
+    setValue(e.currentTarget.value);
   };
 
   return (
     <TimeSlotsContainer>
-      {timeSlots.map((time, index) => {
+      {timeSlots.map((time:any, index:any) => {
         const disabled = !doctorsTimeslots.some((timeslot) => timeslot.indexOfTimeSlot === index);
         return (
           <div key={time}>
@@ -29,7 +25,6 @@ const TimeSlots: React.VFC<TimeSlotsPropsType> = ({ timeSlots }) => {
               type="radio"
               name="radio"
               value={time}
-              checked={selected === time}
               onChange={handlerClick}
               disabled={disabled}
             />

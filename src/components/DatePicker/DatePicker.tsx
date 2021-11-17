@@ -1,22 +1,18 @@
 import React from 'react';
 import Calendar, { CalendarTileProperties } from 'react-calendar';
-import { useDispatch, useSelector } from 'react-redux';
 import { isSameDay } from 'date-fns';
-import { addDateAC } from '../../redux/reducers/appointmentReducer';
+import { useField } from 'formik';
 import { ReactComponent as NextIcon } from '../../assets/svgImages/rightArrowGrey-icon.svg';
 import { ReactComponent as PrevIcon } from '../../assets/svgImages/leftArrowGrey-icon.svg';
 import { getDateOfAppointmentsByDoctorId } from '../../mockData/doctors';
-import { AppRootStateType } from '../../redux/store';
 import ReactCalendar from './DataPicker.styles';
 
-const DatePicker: React.VFC = () => {
-  const dispatch = useDispatch();
+const DatePicker = ({ doctorId, ...props }:any) => {
+  const [, , { setValue }] = useField(props.field);
   const handlerClickDay = (checkedDate: Date) => {
-    dispatch(addDateAC(checkedDate));
+    setValue(checkedDate);
   };
-
   const formatDate = (date: Date) => date.toDateString()[0];
-  const doctorId = useSelector<AppRootStateType, string>((state) => state.appointment.selectedDoctorId);
   const dateOfAppointments = getDateOfAppointmentsByDoctorId(doctorId);
 
   const disabledDays = ({ date }: CalendarTileProperties) => !dateOfAppointments.some((slot):boolean => isSameDay(slot.dayOfMonth, date));

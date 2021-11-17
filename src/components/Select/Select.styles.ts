@@ -78,6 +78,7 @@ const SelectStyles: StylesConfig<Array<Options>> = {
     ...styles,
     fontSize: '17px',
     lineHeight: '24px',
+    fontWeight: 400,
     color: `${colors.rock_blue}`,
   }),
 };
