@@ -27,25 +27,25 @@ export const InputContainer = styled.div`
 
 export const InputNameContainer = styled(InputContainer)`
   &:before {
-    background-image: url("../../assets/svgImages/user.svg");
+    background-image: url("../../svgImages/user.svg");
   }
 `;
 
 export const InputEmailContainer = styled(InputContainer)`
   &:before {
-    background-image: url("../../assets/svgImages/email.svg");
+    background-image: url("../../svgImages/email.svg");
   }
 `;
 
 export const InputPasswordContainer = styled(InputContainer)`
   &:before {
-    background-image: url("../../assets/svgImages/lock.svg");
+    background-image: url("../../svgImages/lock.svg");
   }
 `;
 
 export const InputConfirmPasswordContainer = styled(InputContainer)`
   &:before {
-    background-image: url("../../assets/svgImages/check-mark.svg");
+    background-image: url("../../svgImages/check-mark.svg");
   }
 `;
 
@@ -71,20 +71,6 @@ export const ButtonWrapper = styled.div`
   position: relative;
   width: fit-content;
   margin: 0 33px 0 0;
-`;
-
-export const ButtonRightArrow = styled.span`
-  width: 8px;
-  height: 14px;
-  background: url("../../assets/svgImages/right-arrow.svg") no-repeat center;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 30px;
-  @media only screen and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3),
-  (max-device-width: 767px) {
-    right: 23px;
-  }
 `;
 
 export const CustomForm = styled(Form)`
@@ -119,7 +105,7 @@ export const FormTitle = styled.div`
 export const FormTitleLeftArrow = styled.span`
   width: 8px;
   height: 14px;
-  background: url("../../assets/svgImages/left-arrow.svg") no-repeat center;
+  background: url("../../svgImages/left-arrow.svg") no-repeat center;
   display: inline-block;
   margin: 0 24px 2px 0;
 `;

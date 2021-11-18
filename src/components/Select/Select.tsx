@@ -4,13 +4,14 @@ import { useField } from 'formik';
 import Highlighter from 'react-highlight-words';
 import colors from '../../styles/colors';
 import SelectStyles from './Select.styles';
+import { InputValueType, LabelType } from './Select.types';
 
-const CustomSelect = ({
+const CustomSelect:React.VFC = ({
   labelText, id, name, options, placeholder, ...props
 }: any) => {
   const [, , { setValue }] = useField(props.field);
 
-  function formatOptionLabel({ label }: any, { inputValue }: any) {
+  function formatOptionLabel({ label }:LabelType, { inputValue }:InputValueType) {
     return (
       <Highlighter
         highlightStyle={{

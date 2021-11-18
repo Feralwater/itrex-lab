@@ -65,7 +65,7 @@ const PatientCard: React.VFC<PatientType> = ({
           <UserCardBodyTimeText>{time}</UserCardBodyTimeText>
         </UserCardBodyTime>
         <UserCardBodyDescription isDescription={description.length > 0}>
-          {role === 'doctor' ? <Board /> : <Heart />}
+          {role === 'doctor' ? <Board /> : <div><Heart /></div>}
           <UserCardBodyDescriptionText>{description}</UserCardBodyDescriptionText>
         </UserCardBodyDescription>
       </UserCardBody>

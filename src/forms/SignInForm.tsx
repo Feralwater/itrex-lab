@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Formik, FormikHelpers } from 'formik';
 import {
-  ButtonRightArrow,
   ButtonWrapper,
   CustomErrorMessage,
   CustomField,
@@ -30,10 +29,8 @@ const SignInForm = () => {
         values: Values,
         { setSubmitting }: FormikHelpers<Values>,
       ) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 500);
+        alert(JSON.stringify(values, null, 2));
+        setSubmitting(false);
       }}
       validateOnBlur
       validationSchema={validationSchema}
@@ -91,7 +88,6 @@ const SignInForm = () => {
             >
               Sign in
             </Button>
-            <ButtonRightArrow />
           </ButtonWrapper>
           <CustomLink to="/restore-password">{dictionary.form.forgotLinkText}</CustomLink>
         </CustomForm>

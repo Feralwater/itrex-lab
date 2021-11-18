@@ -18,7 +18,7 @@ const StyledButton = styled.button<ButtonPropsType>`
     background-color: ${colors.cornflower_blue};
     color: #ffffff;
 
-    &:hover {
+    &:enabled:hover {
       background-color: ${colors.warm_blue};
       transition: background-color 0.2s ease-out;
     }

@@ -2,7 +2,6 @@ import React from 'react';
 import { Formik, FormikHelpers } from 'formik';
 import { Link } from 'react-router-dom';
 import {
-  ButtonRightArrow,
   ButtonWrapper,
   CustomErrorMessage,
   CustomField,
@@ -74,7 +73,6 @@ const RestorePasswordForm = () => (
           >
             {dictionary.form.resetLinkText}
           </Button>
-          <ButtonRightArrow />
         </ButtonWrapper>
       </CustomForm>
     )}

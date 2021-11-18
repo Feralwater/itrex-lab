@@ -16,7 +16,7 @@ const TimeSlots = ({
 
   return (
     <TimeSlotsContainer>
-      {timeSlots.map((time:any, index:any) => {
+      {timeSlots.map((time:string, index:number) => {
         const disabled = !doctorsTimeslots.some((timeslot) => timeslot.indexOfTimeSlot === index);
         return (
           <div key={time}>

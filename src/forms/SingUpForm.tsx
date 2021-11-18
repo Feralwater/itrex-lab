@@ -1,7 +1,6 @@
-import { Formik, FormikHelpers } from 'formik';
+import { Formik } from 'formik';
 import React, { useState } from 'react';
 import {
-  ButtonRightArrow,
   ButtonWrapper,
   InputConfirmPasswordContainer,
   InputEmailContainer,
@@ -12,6 +11,7 @@ import {
 } from './Form.styles';
 import Button from '../components/Button/Button';
 import validationSchema from './validationSchema';
+import apiClient from '../services/api/api';
 
 type Values = {
     firstName: string
@@ -34,13 +34,19 @@ const SignUpForm = () => {
         password: '',
         confirmPassword: '',
       }}
-      onSubmit={(
-        values: Values,
-        { setSubmitting }: FormikHelpers<Values>,
-      ) => {
-        alert(JSON.stringify(values, null, 2));
-        setSubmitting(false);
-      }}
+      async
+      onSubmit={
+        async (
+          values: Values,
+        ) => {
+          const {
+            email: userName, password, firstName, lastName,
+          } = values;
+          await apiClient.SignUp({
+            userName, password, firstName, lastName,
+          });
+        }
+}
       validateOnBlur
       validationSchema={validationSchema}
     >
@@ -140,7 +146,6 @@ const SignUpForm = () => {
             >
               Sign Up
             </Button>
-            <ButtonRightArrow />
           </ButtonWrapper>
         </CustomForm>
       )}

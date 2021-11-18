@@ -6,8 +6,9 @@ import { ReactComponent as NextIcon } from '../../assets/svgImages/rightArrowGre
 import { ReactComponent as PrevIcon } from '../../assets/svgImages/leftArrowGrey-icon.svg';
 import { getDateOfAppointmentsByDoctorId } from '../../mockData/doctors';
 import ReactCalendar from './DataPicker.styles';
+import { DatePickerPropsType } from './DataPicker.types';
 
-const DatePicker = ({ doctorId, ...props }:any) => {
+const DatePicker:React.VFC<DatePickerPropsType> = ({ doctorId, ...props }) => {
   const [, , { setValue }] = useField(props.field);
   const handlerClickDay = (checkedDate: Date) => {
     setValue(checkedDate);
