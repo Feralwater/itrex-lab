@@ -3,6 +3,11 @@ export type Options = {
     label: string
 }
 
+export type SpecializationsType = {
+    specialization_name: string
+    id: string
+}
+
 export type CustomSelectPropsType = {
     labelText: string
     id: string

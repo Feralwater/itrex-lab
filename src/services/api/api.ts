@@ -1,5 +1,7 @@
 import axios from 'axios';
-import { AppointmentsResponseType, SignUpDataType, SignUpResponseType } from './api.types';
+import {
+  AppointmentsResponseType, SignUpDataType, SignUpResponseType, SpecializationsResponseType,
+} from './api.types';
 
 const instance = axios.create({
   baseURL: 'https://reactlabapi.herokuapp.com/api/',
@@ -19,6 +21,9 @@ const apiClient = {
   },
   async getAppointments(offset:number, limit:number) {
     return instance.get<AppointmentsResponseType>(`appointments/patient/me?offset=${offset}&limit=${limit}`);
+  },
+  async getOccupations() {
+    return instance.get<SpecializationsResponseType>('specializations');
   },
 };
 
