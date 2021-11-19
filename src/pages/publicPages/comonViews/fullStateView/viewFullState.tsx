@@ -1,6 +1,6 @@
 import AppointmentCard from 'pages/components/AppointmentCard/AppointmentCard';
 import React from 'react';
-import { AppointmentsResponseType } from '../../../../services/api/api.types';
+import { AppointmentsResponseType } from '../../../../resources/appointments/appointments.types';
 
 const ViewFullState: React.VFC<AppointmentsResponseType> = ({ appointments }) => (
   <>

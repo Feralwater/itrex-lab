@@ -12,8 +12,8 @@ import {
 } from './authForm.styles';
 import Button from '../../components/Button/Button';
 import authValidationSchema from './authValidationSchema';
-import apiClient from '../../services/api/api';
 import { PATH } from '../../routes/Routes';
+import auth from '../../resources/auth/auth.api';
 
 type Values = {
     firstName: string
@@ -41,7 +41,7 @@ const SignUpForm = () => {
           email: userName, password, firstName, lastName,
         }:Values) => {
           try {
-            const response = await apiClient.SignUp({
+            const response = await auth.SignUp({
               userName, password, firstName, lastName,
             });
             localStorage.setItem('access_token', response.data.access_token);

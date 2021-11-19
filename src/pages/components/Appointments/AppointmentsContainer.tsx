@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import apiClient from '../../../services/api/api';
+import { AppointmentsResponseType } from 'resources/appointments/appointments.types';
 import AppointmentsWrapperHeader
   from '../../publicPages/doctorPage/PatientsContainerHeader';
 import ViewFullState from '../../publicPages/comonViews/fullStateView/viewFullState';
 import ViewEmptyState from '../../publicPages/comonViews/emptyStateView/viewEmptyState';
 import AppointmentsWrapper from './AppointmentsContainer.styles';
-import { AppointmentsResponseType } from '../../../services/api/api.types';
+import appointments from '../../../resources/appointments/appointments.api';
 
 const AppointmentsContainer:React.VFC = () => {
   const [data, updateData] = useState<AppointmentsResponseType>({ appointments: [], total: 0 });
   const getAppointments = async () => {
-    const response = await apiClient.getAppointments(0, 0);
+    const response = await appointments.getAppointments(0, 0);
     updateData(response.data);
   };
   useEffect(() => {

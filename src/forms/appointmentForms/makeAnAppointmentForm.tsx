@@ -10,7 +10,7 @@ import {
   SelectDoctorStep,
   SelectTimeslotStep,
 } from 'forms/appointmentForms/makeAnAppointment.styles';
-import { getDoctors, TIME_SLOTS, users } from 'mockData/doctors';
+import { TIME_SLOTS } from 'mockData/doctors';
 import dictionary from 'dictionary/dictionary';
 import DatePicker from 'components/DatePicker/DatePicker';
 import { PatientsTitle } from 'pages/publicPages/doctorPage/PatientsContainerHeader.styles';
@@ -18,19 +18,38 @@ import Button from '../../components/Button/Button';
 import CustomSelect from '../../components/Select/Select';
 import AppointmentStep from '../../pages/publicPages/patientPage/AppointmentStep';
 import TimeSlots from '../../components/TimeSlots/TimeSlots';
-import apiClient from '../../services/api/api';
-import { SpecializationsType } from '../../services/api/api.types';
+import { SpecializationsType } from '../../resources/occupations/occupations.types';
+import occupations from '../../resources/occupations/occupations.api';
+import { DoctorsBySpecializationIdResponseType } from '../../resources/doctors/doctors.types';
+import doctors from '../../resources/doctors/doctors.api';
 
 const MakeAnAppointmentForm = () => {
-  const [occupations, updateOccupations] = useState<Array<SpecializationsType>>([]);
+  const [specializations, setSpecializations] = useState<Array<SpecializationsType>>([]);
+  const [doctorNames, setDoctorNames] = useState<Array<DoctorsBySpecializationIdResponseType>>([]);
+  const [selectedOccupationID, setSelectedOccupationID] = useState<string>('');
+  const optionsForOccupationsSelect = specializations.map((specialization: SpecializationsType) => ({
+    label: specialization.specialization_name,
+    value: specialization.id,
+  }));
+  const optionsForDoctorNamesSelect = doctorNames.map((doctorName: DoctorsBySpecializationIdResponseType) => ({
+    label: [doctorName.first_name, doctorName.last_name].join(' '),
+    value: doctorName.id,
+  }));
   const getOccupations = async () => {
-    const response = await apiClient.getOccupations();
-    updateOccupations(response.data);
+    const response = await occupations.getOccupations();
+    setSpecializations(response.data);
+  };
+  const getDoctors = async () => {
+    const response = await doctors.getDoctorsBySpecializationId(selectedOccupationID);
+    setDoctorNames(response.data);
   };
 
   useEffect(() => {
     getOccupations();
   }, []);
+  useEffect(() => {
+    getDoctors();
+  }, [selectedOccupationID]);
 
   return (
     <>
@@ -70,9 +89,10 @@ const MakeAnAppointmentForm = () => {
                     component={CustomSelect}
                     name="occupation"
                     id="occupation"
-                    options={occupations}
+                    options={optionsForOccupationsSelect}
                     placeholder="Choose an occupation"
                     labelText="Occupation"
+                    setSelectedOccupationID={setSelectedOccupationID}
                   />
                 </InputContainer>
                 <InputContainer>
@@ -82,11 +102,7 @@ const MakeAnAppointmentForm = () => {
                     id="doctorName"
                     placeholder="Choose a doctor"
                     labelText="Doctor`s name"
-                    options={getDoctors(users, values.occupation.label)
-                      .map((v) => ({
-                        value: v.doctorID,
-                        label: v.selectedValue,
-                      }))}
+                    options={optionsForDoctorNamesSelect}
                   />
                 </InputContainer>
                 <InputContainer>
