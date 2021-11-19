@@ -7,14 +7,14 @@ import {
   PatientsHeader,
   PatientsTitle,
 } from './PatientsContainerHeader.styles';
-import { ButtonWrapper } from '../../../../../forms/authForms/authForm.styles';
-import dictionary from '../../../../../dictionary/dictionary';
+import { ButtonWrapper } from '../../../forms/authForms/authForm.styles';
+import dictionary from '../../../dictionary/dictionary';
 
 type AppointmentsWrapperHeaderPropsType = {
-    userType: string
+  role_name: string
 }
 
-const AppointmentsWrapperHeader: React.VFC<AppointmentsWrapperHeaderPropsType> = ({ userType }) => {
+const AppointmentsWrapperHeader: React.VFC<AppointmentsWrapperHeaderPropsType> = ({ role_name }) => {
   function chooseButtons(role: string) {
     switch (role) {
       case 'doctor':
@@ -40,19 +40,19 @@ const AppointmentsWrapperHeader: React.VFC<AppointmentsWrapperHeaderPropsType> =
   return (
     <>
       <PatientsButtonsContainer>
-        {chooseButtons(userType)}
+        {chooseButtons(role_name)}
       </PatientsButtonsContainer>
       <PatientsHeader>
-        <PatientsTitle>{userType === 'doctor' ? 'My Patients' : 'My Appointments'}</PatientsTitle>
+        <PatientsTitle>{role_name === 'doctor' ? 'My Patients' : 'My Appointments'}</PatientsTitle>
         {
-                    userType === 'patient' && (
-                    <ButtonWrapper>
-                      <ButtonLeftPlusIcon />
-                      <CreateAppointmentButton to="/make-an-appointment">
-                        {dictionary.buttonsText.createAppointments}
-                      </CreateAppointmentButton>
-                    </ButtonWrapper>
-                    )
+          role_name === 'patient' && (
+          <ButtonWrapper>
+            <ButtonLeftPlusIcon />
+            <CreateAppointmentButton to="/make-an-appointment">
+              {dictionary.buttonsText.createAppointments}
+            </CreateAppointmentButton>
+          </ButtonWrapper>
+          )
                 }
       </PatientsHeader>
     </>

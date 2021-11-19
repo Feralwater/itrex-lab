@@ -41,6 +41,10 @@ const dictionary: DictionaryType = {
     emptyMedicalHistoryTextLine1: 'You have no patients yet.',
     emptyMedicalHistoryTextLine2: 'To create a patient profile, please contact your administrator.',
   },
+  patientPage: {
+    emptyAppointmentsHistoryTextLine1: 'You have no appointments yet.',
+    emptyAppointmentsHistoryTextLine2: 'To create an appointment, please push the button +Create an appointment.',
+  },
   buttonsText: {
     buttonPatients: 'Patients',
     buttonResolutions: 'Resolutions',

@@ -39,6 +39,10 @@ export type DictionaryType = {
     emptyMedicalHistoryTextLine1: string
     emptyMedicalHistoryTextLine2: string
   },
+  patientPage: {
+    emptyAppointmentsHistoryTextLine1: string
+    emptyAppointmentsHistoryTextLine2: string
+  },
   buttonsText: {
     buttonPatients: string
     buttonResolutions: string

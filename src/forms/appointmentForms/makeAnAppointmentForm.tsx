@@ -11,10 +11,10 @@ import {
 } from 'mockData/doctors';
 import dictionary from 'dictionary/dictionary';
 import DatePicker from 'components/DatePicker/DatePicker';
-import { PatientsTitle } from 'pages/publicPages/doctorPages/doctorViewTemplate/patientsContainerHeader/PatientsContainerHeader.styles';
+import { PatientsTitle } from 'pages/publicPages/doctorPage/PatientsContainerHeader.styles';
 import Button from '../../components/Button/Button';
 import CustomSelect from '../../components/Select/Select';
-import AppointmentStep from '../../pages/publicPages/patientPages/AppointmentStep';
+import AppointmentStep from '../../pages/publicPages/patientPage/AppointmentStep';
 import TimeSlots from '../../components/TimeSlots/TimeSlots';
 
 const occupations: any = getOccupations(users)

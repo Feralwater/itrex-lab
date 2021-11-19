@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import apiClient from '../../../services/api/api';
 import AppointmentsWrapperHeader
-  from '../../publicPages/doctorPages/doctorViewTemplate/patientsContainerHeader/PatientsContainerHeader';
-import ViewFullState from '../../publicPages/doctorPages/doctorViewFullState/DoctorViewFullState';
-import ViewEmptyState from '../../publicPages/doctorPages/doctorViewEmptyState/DoctorViewEmptyState';
-import AppointmentsWrapper from '../../publicPages/doctorPages/doctorViewTemplate/DoctorViewTemplate.styles';
+  from '../../publicPages/doctorPage/PatientsContainerHeader';
+import ViewFullState from '../../publicPages/comonViews/fullStateView/viewFullState';
+import ViewEmptyState from '../../publicPages/comonViews/emptyStateView/viewEmptyState';
+import AppointmentsWrapper from './AppointmentsContainer.styles';
 import { AppointmentsResponseType } from '../../../services/api/api.types';
 
 const AppointmentsContainer:React.VFC = () => {
@@ -19,11 +19,11 @@ const AppointmentsContainer:React.VFC = () => {
 
   return (
     <>
-      <AppointmentsWrapperHeader userType="patient" />
+      <AppointmentsWrapperHeader role_name="patient" />
       <AppointmentsWrapper patientsLength={data.appointments.length}>
         {data.appointments.length > 0
           ? <ViewFullState appointments={data.appointments} total={data.total} />
-          : <ViewEmptyState />}
+          : <ViewEmptyState role_name="patient" />}
       </AppointmentsWrapper>
     </>
   );
