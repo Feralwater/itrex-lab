@@ -1,7 +1,7 @@
 import { DictionaryType } from './dictionary.types';
 
 const dictionary: DictionaryType = {
-  doctorViewEmptyState: {
+  ViewEmptyState: {
     medicalHistoryTextPart1: 'You have no patients yet.',
     medicalHistoryTextPart2: 'To create a patient profile, please contact your administrator.',
   },

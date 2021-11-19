@@ -6,7 +6,7 @@ import {
   FormTitleLeftArrow,
   RestoreMessage,
   RestorePasswordContainer,
-} from '../../../forms/Form.styles';
+} from '../../../forms/authForms/authForm.styles';
 import dictionary from '../../../dictionary/dictionary';
 
 type SendEmailPropsType = {

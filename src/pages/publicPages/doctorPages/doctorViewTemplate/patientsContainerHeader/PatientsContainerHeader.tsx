@@ -7,14 +7,14 @@ import {
   PatientsHeader,
   PatientsTitle,
 } from './PatientsContainerHeader.styles';
-import { ButtonWrapper } from '../../../../../forms/Form.styles';
+import { ButtonWrapper } from '../../../../../forms/authForms/authForm.styles';
 import dictionary from '../../../../../dictionary/dictionary';
 
-type PatientsContainerHeaderPropsType = {
+type AppointmentsWrapperHeaderPropsType = {
     userType: string
 }
 
-const PatientsContainerHeader: React.VFC<PatientsContainerHeaderPropsType> = ({ userType }) => {
+const AppointmentsWrapperHeader: React.VFC<AppointmentsWrapperHeaderPropsType> = ({ userType }) => {
   function chooseButtons(role: string) {
     switch (role) {
       case 'doctor':
@@ -59,4 +59,4 @@ const PatientsContainerHeader: React.VFC<PatientsContainerHeaderPropsType> = ({ 
   );
 };
 
-export default PatientsContainerHeader;
+export default AppointmentsWrapperHeader;

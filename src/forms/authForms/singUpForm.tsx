@@ -1,5 +1,6 @@
 import { Formik } from 'formik';
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import {
   ButtonWrapper,
   InputConfirmPasswordContainer,
@@ -8,10 +9,11 @@ import {
   InputPasswordContainer,
   InputPasswordIcon,
   CustomForm, CustomField, CustomErrorMessage, FormTitle,
-} from './Form.styles';
-import Button from '../components/Button/Button';
-import validationSchema from './validationSchema';
-import apiClient from '../services/api/api';
+} from './authForm.styles';
+import Button from '../../components/Button/Button';
+import authValidationSchema from './authValidationSchema';
+import apiClient from '../../services/api/api';
+import { PATH } from '../../routes/Routes';
 
 type Values = {
     firstName: string
@@ -24,7 +26,7 @@ type Values = {
 const SignUpForm = () => {
   const [isSecurePassword, setIsSecurePassword] = useState<boolean>(true);
   const [isSecureConfirmPassword, setIsSecureConfirmPassword] = useState<boolean>(true);
-
+  const history = useHistory();
   return (
     <Formik
       initialValues={{
@@ -34,21 +36,25 @@ const SignUpForm = () => {
         password: '',
         confirmPassword: '',
       }}
-      async
       onSubmit={
-        async (
-          values: Values,
-        ) => {
-          const {
-            email: userName, password, firstName, lastName,
-          } = values;
-          await apiClient.SignUp({
-            userName, password, firstName, lastName,
-          });
+        async ({
+          email: userName, password, firstName, lastName,
+        }:Values) => {
+          try {
+            const response = await apiClient.SignUp({
+              userName, password, firstName, lastName,
+            });
+            localStorage.setItem('access_token', response.data.access_token);
+            localStorage.setItem('refresh_token', response.data.refresh_token);
+            history.push(PATH.APPOINTMENTS);
+          } catch (e) {
+            // @ts-ignore
+            alert(e.message);
+          }
         }
 }
       validateOnBlur
-      validationSchema={validationSchema}
+      validationSchema={authValidationSchema}
     >
       {({
         values,

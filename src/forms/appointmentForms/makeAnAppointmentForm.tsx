@@ -5,17 +5,17 @@ import {
   AppointmentFormContainer,
   AppointmentStepsContainer, ChooseDayStep, InputContainer,
   MakeAppointmentButtonContainer, SelectDoctorStep, SelectTimeslotStep,
-} from 'pages/publicPages/MakeAppointment.styles';
+} from 'forms/appointmentForms/makeAnAppointment.styles';
 import {
   getOccupations, users, TIME_SLOTS, getDoctors,
 } from 'mockData/doctors';
 import dictionary from 'dictionary/dictionary';
-import { PatientsTitle } from 'pages/publicPages/doctorViews/doctorViewTemplate/patientsContainerHeader/PatientsContainerHeader.styles';
 import DatePicker from 'components/DatePicker/DatePicker';
-import Button from '../components/Button/Button';
-import CustomSelect from '../components/Select/Select';
-import AppointmentStep from '../pages/publicPages/AppointmentStep';
-import TimeSlots from '../components/TimeSlots/TimeSlots';
+import { PatientsTitle } from 'pages/publicPages/doctorPages/doctorViewTemplate/patientsContainerHeader/PatientsContainerHeader.styles';
+import Button from '../../components/Button/Button';
+import CustomSelect from '../../components/Select/Select';
+import AppointmentStep from '../../pages/publicPages/patientPages/AppointmentStep';
+import TimeSlots from '../../components/TimeSlots/TimeSlots';
 
 const occupations: any = getOccupations(users)
   .map((v: any) => ({

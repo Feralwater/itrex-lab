@@ -1,5 +1,5 @@
 import React from 'react';
-import SignInForm from '../../../forms/SignInForm';
+import SignInForm from '../../../forms/authForms/signInForm';
 import { SignInUpLink, SignInUpMessage } from './SignIn.styles';
 import dictionary from '../../../dictionary/dictionary';
 

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { ErrorMessage, Field, Form } from 'formik';
 import { Link } from 'react-router-dom';
-import colors from '../styles/colors';
+import colors from '../../styles/colors';
 
 export const InputContainer = styled.div`
   position: relative;

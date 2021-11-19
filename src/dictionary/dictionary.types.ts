@@ -1,5 +1,5 @@
 export type DictionaryType = {
-  doctorViewEmptyState: {
+  ViewEmptyState: {
     medicalHistoryTextPart1: string
     medicalHistoryTextPart2: string
   },

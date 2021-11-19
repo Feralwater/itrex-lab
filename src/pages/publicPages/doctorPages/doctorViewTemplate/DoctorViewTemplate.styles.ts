@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-interface PatientsContainerProps {
+interface AppointmentsWrapperProps {
     patientsLength: number
 }
 
-const PatientsContainer = styled.div<PatientsContainerProps>`
+const AppointmentsWrapper = styled.div<AppointmentsWrapperProps>`
   display: ${(props) => (props.patientsLength > 0 ? 'grid' : 'flex')};
   height: ${(props) => (props?.patientsLength === 0 && '68vh')};
   justify-content: ${(props) => (props?.patientsLength === 0 && 'center')};
@@ -26,4 +26,4 @@ const PatientsContainer = styled.div<PatientsContainerProps>`
   }
 `;
 
-export default PatientsContainer;
+export default AppointmentsWrapper;

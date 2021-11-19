@@ -1,5 +1,5 @@
-import { statuses } from '../../mockData/patients';
-import colors from '../../styles/colors';
+import { statuses } from '../../../mockData/patients';
+import colors from '../../../styles/colors';
 
 export const statusColor = {
   [statuses.confirmed]: `${colors.greenish_teal}`,

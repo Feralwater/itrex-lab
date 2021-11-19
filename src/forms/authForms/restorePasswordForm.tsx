@@ -7,10 +7,10 @@ import {
   CustomField,
   CustomForm, FormTitle, FormTitleLeftArrow,
   InputEmailContainer, RestoreMessage,
-} from './Form.styles';
-import Button from '../components/Button/Button';
-import validationSchema from './validationSchema';
-import dictionary from '../dictionary/dictionary';
+} from './authForm.styles';
+import Button from '../../components/Button/Button';
+import authValidationSchema from './authValidationSchema';
+import dictionary from '../../dictionary/dictionary';
 
 type Values = {
     email: string
@@ -29,7 +29,7 @@ const RestorePasswordForm = () => (
       setSubmitting(false);
     }}
     validateOnBlur
-    validationSchema={validationSchema}
+    validationSchema={authValidationSchema}
   >
     {({
       values,

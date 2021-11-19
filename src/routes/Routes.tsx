@@ -4,12 +4,11 @@ import RestorePassword from '../pages/authorisedPages/restorePassword/RestorePas
 import SendEmail from '../pages/authorisedPages/sendEmail/SendEmail';
 import SignUp from '../pages/authorisedPages/signUp/SignUp';
 import Error404 from '../pages/error404Page/Error404';
-import DoctorViewTemplate from '../pages/publicPages/doctorViews/doctorViewTemplate/DoctorViewTemplate';
-import AppointmentsTemplate from '../pages/publicPages/AppointmentsTemplate';
 import AuthorisedLayout from '../layouts/authorised/authorised';
 import SignIn from '../pages/authorisedPages/signIn/SignIn';
 import Public from '../layouts/public/public';
-import MakeAnAppointment from '../pages/publicPages/makeAnAppointment';
+import MakeAnAppointmentForm from '../forms/appointmentForms/makeAnAppointmentForm';
+import AppointmentsContainer from '../pages/components/Appointments/AppointmentsContainer';
 
 export const PATH = {
   PATIENTS: '/patients',
@@ -36,13 +35,13 @@ function Routes() {
       />
       <Route path={PATH.SIGN_IN} render={() => <AuthorisedLayout><SignIn /></AuthorisedLayout>} />
       <Route path={PATH.SIGN_UP} render={() => <AuthorisedLayout><SignUp /></AuthorisedLayout>} />
-      <Route path={PATH.PATIENTS} render={() => <Public><DoctorViewTemplate /></Public>} />
-      <Route path={PATH.APPOINTMENTS} render={() => <Public><AppointmentsTemplate /></Public>} />
+      <Route path={PATH.PATIENTS} render={() => <Public><AppointmentsContainer /></Public>} />
+      <Route path={PATH.APPOINTMENTS} render={() => <Public><AppointmentsContainer /></Public>} />
       <Route
         path={PATH.MAKE_APPOINTMENT}
         render={() => (
           <Public>
-            <MakeAnAppointment />
+            <MakeAnAppointmentForm />
           </Public>
         )}
       />

@@ -1,8 +1,7 @@
 import React from 'react';
-import { PatientType } from '../../pages/publicPages/doctorViews/doctorViewFullState/DoctorViewFullState';
-import { ReactComponent as Clock } from '../../assets/svgImages/clock-icon.svg';
-import { ReactComponent as Board } from '../../assets/svgImages/board-icon.svg';
-import { ReactComponent as Heart } from '../../assets/svgImages/heart-icon.svg';
+import { ReactComponent as Clock } from '../../../assets/svgImages/clock-icon.svg';
+import { ReactComponent as Board } from '../../../assets/svgImages/board-icon.svg';
+import { ReactComponent as Heart } from '../../../assets/svgImages/heart-icon.svg';
 import {
   AppointmentStatus,
   SettingsButton,
@@ -18,17 +17,17 @@ import {
   UserCardName,
   UserData,
   UserInformation,
-} from './PatientCard.styles';
-import { UserImage } from '../Header/Header.styles';
+} from './AppointmentCard.styles';
+import { UserImage } from '../../../components/Header/Header.styles';
 import { statusColor, statusDescription } from './const';
 
-const PatientCard: React.VFC<PatientType> = ({
-  avatar,
+const AppointmentCard: React.VFC<any> = ({
   firstName,
   lastName,
+  avatar,
   status,
   time,
-  description,
+  note,
   role,
 }) => {
   function isStatus() {
@@ -64,13 +63,13 @@ const PatientCard: React.VFC<PatientType> = ({
           <Clock />
           <UserCardBodyTimeText>{time}</UserCardBodyTimeText>
         </UserCardBodyTime>
-        <UserCardBodyDescription isDescription={description.length > 0}>
+        <UserCardBodyDescription isDescription={note.length > 0}>
           {role === 'doctor' ? <Board /> : <div><Heart /></div>}
-          <UserCardBodyDescriptionText>{description}</UserCardBodyDescriptionText>
+          <UserCardBodyDescriptionText>{note}</UserCardBodyDescriptionText>
         </UserCardBodyDescription>
       </UserCardBody>
     </UserCard>
   );
 };
 
-export default PatientCard;
+export default AppointmentCard;

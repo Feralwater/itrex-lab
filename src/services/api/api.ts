@@ -1,18 +1,24 @@
 import axios from 'axios';
-import { CommonResponseType, SignUpDataType } from './api.types';
+import { AppointmentsResponseType, SignUpDataType, SignUpResponseType } from './api.types';
 
 const instance = axios.create({
   baseURL: 'https://reactlabapi.herokuapp.com/api/',
+  headers: {
+    Authorization: localStorage.getItem('access_token') ?? '',
+  },
 });
 
 const apiClient = {
-  SignUp(data:SignUpDataType) {
-    return instance.post<CommonResponseType>('auth/registration', {
+  async SignUp(data: SignUpDataType) {
+    return instance.post<SignUpResponseType>('auth/registration', {
       userName: data.userName,
       password: data.password,
       firstName: data.firstName,
       lastName: data.lastName,
-    }).then((res) => console.log(res.data));
+    });
+  },
+  async getAppointments(offset:number, limit:number) {
+    return instance.get<AppointmentsResponseType>(`appointments/patient/me?offset=${offset}&limit=${limit}`);
   },
 };
 
