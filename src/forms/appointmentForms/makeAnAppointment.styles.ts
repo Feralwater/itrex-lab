@@ -15,7 +15,7 @@ export const AppointmentFormContainer = styled(Form)`
   gap: 80px 0;
 `;
 
-export const AppointmentStepsContainer = styled(Form)`
+export const AppointmentStepsContainer = styled.div`
   display: flex;
   gap: 0 104px;
   margin: 25px 33px 0 0;

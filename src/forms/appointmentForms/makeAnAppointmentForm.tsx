@@ -27,6 +27,8 @@ const MakeAnAppointmentForm = () => {
   const [specializations, setSpecializations] = useState<Array<SpecializationsType>>([]);
   const [doctorNames, setDoctorNames] = useState<Array<DoctorsBySpecializationIdResponseType>>([]);
   const [selectedOccupationID, setSelectedOccupationID] = useState<string>('');
+  const [selectedDoctorID, setSelectedDoctorID] = useState<string>('');
+  const [disableDate, setDisableDate] = useState<boolean>(true);
   const optionsForOccupationsSelect = specializations.map((specialization: SpecializationsType) => ({
     label: specialization.specialization_name,
     value: specialization.id,
@@ -50,6 +52,9 @@ const MakeAnAppointmentForm = () => {
   useEffect(() => {
     getDoctors();
   }, [selectedOccupationID]);
+  useEffect(() => {
+    setDisableDate(!selectedDoctorID);
+  }, [selectedDoctorID]);
 
   return (
     <>
@@ -92,7 +97,7 @@ const MakeAnAppointmentForm = () => {
                     options={optionsForOccupationsSelect}
                     placeholder="Choose an occupation"
                     labelText="Occupation"
-                    setSelectedOccupationID={setSelectedOccupationID}
+                    setSelectedValue={setSelectedOccupationID}
                   />
                 </InputContainer>
                 <InputContainer>
@@ -103,6 +108,7 @@ const MakeAnAppointmentForm = () => {
                     placeholder="Choose a doctor"
                     labelText="Doctor`s name"
                     options={optionsForDoctorNamesSelect}
+                    setSelectedValue={setSelectedDoctorID}
                   />
                 </InputContainer>
                 <InputContainer>
@@ -127,6 +133,7 @@ const MakeAnAppointmentForm = () => {
                   id="date"
                   component={DatePicker}
                   doctorId={values.doctorName.value}
+                  disableDate={disableDate}
                 />
               </ChooseDayStep>
               <SelectTimeslotStep>

@@ -74,26 +74,27 @@ const ReactCalendar = styled.div`
     }
   }
 
-  & button.react-calendar__tile--now {
+  &:enabled:hover {
+    border: 1px solid ${colors.cornflower_blue};
+    background-color: ${colors.white};
+    color: ${colors.black};
+  }
+
+  &:enabled:focus {
     background: ${colors.cornflower_blue};
     color: ${colors.white};
-
-    &:enabled:hover {
-      border: 1px solid ${colors.cornflower_blue};
-      background-color: ${colors.white};
-      color: ${colors.black};
-    }
-
-    &:enabled:focus {
-      background: ${colors.cornflower_blue};
-      color: ${colors.white};
-    }
   }
+}
 
-  & button.react-calendar__tile--active {
-    color: ${colors.cornflower_blue};
-    border: 1px solid ${colors.cornflower_blue};
-  }
+& button.react-calendar__tile--active {
+  color: ${colors.cornflower_blue};
+
+  border: 1px solid ${colors.cornflower_blue};
+}
+
+& button.react-calendar__tile--now {
+  background: ${colors.cornflower_blue};
+  color: ${colors.white};
 `;
 
 export default ReactCalendar;

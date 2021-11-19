@@ -25,8 +25,8 @@ const CustomSelect:React.VFC = ({
   }
   const onChangeHandler = (value:Options) => {
     setValue(value);
-    if (props.setSelectedOccupationID) {
-      props.setSelectedOccupationID(value.value);
+    if (props.setSelectedValue) {
+      props.setSelectedValue(value.value);
     }
   };
 

@@ -1,22 +1,25 @@
 import React from 'react';
 import Calendar, { CalendarTileProperties } from 'react-calendar';
-import { isSameDay } from 'date-fns';
 import { useField } from 'formik';
+import { isPast, addDays } from 'date-fns';
 import { ReactComponent as NextIcon } from '../../assets/svgImages/rightArrowGrey-icon.svg';
 import { ReactComponent as PrevIcon } from '../../assets/svgImages/leftArrowGrey-icon.svg';
-import { getDateOfAppointmentsByDoctorId } from '../../mockData/doctors';
 import ReactCalendar from './DataPicker.styles';
 import { DatePickerPropsType } from './DataPicker.types';
 
-const DatePicker:React.VFC<DatePickerPropsType> = ({ doctorId, ...props }) => {
+const DatePicker:React.VFC<DatePickerPropsType> = ({ doctorId, disableDate, ...props }) => {
   const [, , { setValue }] = useField(props.field);
   const handlerClickDay = (checkedDate: Date) => {
     setValue(checkedDate);
   };
   const formatDate = (date: Date) => date.toDateString()[0];
-  const dateOfAppointments = getDateOfAppointmentsByDoctorId(doctorId);
 
-  const disabledDays = ({ date }: CalendarTileProperties) => !dateOfAppointments.some((slot):boolean => isSameDay(slot.dayOfMonth, date));
+  const disabledDays = ({ date }: CalendarTileProperties) => {
+    if (disableDate) {
+      return disableDate;
+    }
+    return isPast(addDays(date, 1));
+  };
 
   return (
     <ReactCalendar>
