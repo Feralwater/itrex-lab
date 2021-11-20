@@ -8,8 +8,8 @@ import {
   InputPasswordIcon,
 } from './authForm.styles';
 import Button from '../../components/Button/Button';
-import authValidationSchema from './authValidationSchema';
 import dictionary from '../../dictionary/dictionary';
+import authValidationSchema from './auth.validation';
 
 type Values = {
     email: string

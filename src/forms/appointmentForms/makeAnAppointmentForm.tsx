@@ -23,6 +23,8 @@ import occupations from '../../resources/occupations/occupations.api';
 import { DoctorsBySpecializationIdResponseType } from '../../resources/doctors/doctors.types';
 import doctors from '../../resources/doctors/doctors.api';
 import appointments from '../../resources/appointments/appointments.api';
+import appointmentValidationSchema from '../authForms/appointment.validation';
+import { CustomErrorMessage } from '../authForms/authForm.styles';
 
 const MakeAnAppointmentForm = () => {
   const [specializations, setSpecializations] = useState<Array<SpecializationsType>>([]);
@@ -32,7 +34,6 @@ const MakeAnAppointmentForm = () => {
   const [disableDate, setDisableDate] = useState<boolean>(true);
   const [selectedDate, setSelectedDate] = useState<string>(format(new Date(), "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"));
   const [freeTime, setFreeTime] = useState<Array<string>>([]);
-  console.log(selectedDate);
   const optionsForOccupationsSelect = specializations.map((specialization: SpecializationsType) => ({
     label: specialization.specialization_name,
     value: specialization.id,
@@ -85,6 +86,7 @@ const MakeAnAppointmentForm = () => {
           date: null,
           time: null,
         }}
+        validationSchema={appointmentValidationSchema}
         onSubmit={(values, actions) => {
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
@@ -92,7 +94,13 @@ const MakeAnAppointmentForm = () => {
           }, 100);
         }}
       >
-        {({ values }) => (
+        {({
+          values,
+          isValid,
+          dirty,
+          touched,
+          errors,
+        }) => (
           <AppointmentFormContainer>
             <AppointmentStepsContainer>
               <SelectDoctorStep>
@@ -123,14 +131,19 @@ const MakeAnAppointmentForm = () => {
                   />
                 </InputContainer>
                 <InputContainer>
-                  <InputText
+                  <Field
+                    component={InputText}
+                    isError={touched.reason && errors.reason}
                     placeholder="Leave a reason for the visit"
                     name="reason"
                     label="Reason for the visit"
                   />
+                  {touched.reason && errors.reason
+                  && <CustomErrorMessage name="reason" component="span" />}
                 </InputContainer>
                 <InputContainer>
-                  <InputText
+                  <Field
+                    component={InputText}
                     placeholder="Leave a note if needed"
                     name="note"
                     label="Note"
@@ -163,6 +176,7 @@ const MakeAnAppointmentForm = () => {
                 size="large"
                 variant="primary"
                 icon="default"
+                disabled={!(isValid && dirty)}
               >
                 Submit
               </Button>

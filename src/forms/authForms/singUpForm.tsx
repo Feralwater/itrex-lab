@@ -11,9 +11,9 @@ import {
   CustomForm, CustomField, CustomErrorMessage, FormTitle,
 } from './authForm.styles';
 import Button from '../../components/Button/Button';
-import authValidationSchema from './authValidationSchema';
 import { PATH } from '../../routes/Routes';
 import auth from '../../resources/auth/auth.api';
+import authValidationSchema from './auth.validation';
 
 type Values = {
     firstName: string

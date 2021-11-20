@@ -49,6 +49,8 @@ export const MakeAppointmentButtonContainer = styled.div`
 `;
 
 export const InputContainer = styled.div`
+  position: relative;
+  
   & label {
     font-weight: 500;
     font-size: 13px;
