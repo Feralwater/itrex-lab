@@ -1,4 +1,5 @@
 import { addBusinessDays, isSameDay } from 'date-fns';
+import TIME_SLOTS from '../forms/const/const';
 
 const OCCUPATIONS = {
   THERAPIST: 'therapist',
@@ -38,8 +39,6 @@ export const users: Array<DoctorType> = [
   },
 ];
 
-export const TIME_SLOTS = ['12:00 am', '1:00 pm', '2:00 pm', '3:00 pm', '4:00 pm', '5:00 pm', '6:00 pm', '7:00 pm', '8:00 pm', '9:00 pm'];
-
 const MAX_DATE_DELTA_IN_COMPARE_CURRENT = 11;
 const COUNT_TIMESLOTS = 20;
 const MAX_INDEX_OF_TIMESLOT = TIME_SLOTS.length - 1;
@@ -73,10 +72,6 @@ export function getDoctors(doctors: Array<DoctorType>, occupation: string): { se
     selectedValue: `${d.firstName} ${d.secondName}`,
     doctorID: d.id,
   }));
-}
-
-export function getOccupations(doctors: Array<DoctorType>): { selectedValue: string, doctorID: string }[] {
-  return doctors.map((d) => ({ selectedValue: d.occupation, doctorID: d.id }));
 }
 
 export function getDateOfAppointmentsByDoctorId(doctorID: string) {

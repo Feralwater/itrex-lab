@@ -1,3 +1,4 @@
 export type TimeSlotsPropsType = {
-    timeSlots: Array<string>
+  freeTime: Array<string>
+  [x: string]: any;
 }

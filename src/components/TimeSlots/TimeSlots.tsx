@@ -1,23 +1,26 @@
 import React, { ChangeEvent } from 'react';
 import { useField } from 'formik';
+import { parseISO, format } from 'date-fns';
 import { TimeSlot, TimeSlotLabel, TimeSlotsContainer } from './TimeSlots.styles';
-import { getDateOfAppointmentsByDoctorIdAndDate } from '../../mockData/doctors';
+import { TimeSlotsPropsType } from './TimeSlots.types';
+import TIME_SLOTS from '../../forms/const/const';
 
-const TimeSlots = ({
-  doctorId, date, timeSlots, ...props
-}:any) => {
+const TimeSlots: React.VFC<TimeSlotsPropsType> = ({
+  freeTime,
+  ...props
+}) => {
   const [, , { setValue }] = useField(props.field);
-
-  const doctorsTimeslots = getDateOfAppointmentsByDoctorIdAndDate(doctorId, date);
 
   const handlerClick = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.currentTarget.value);
   };
+  const freeTimeSlots = freeTime.map((time) => format(parseISO(time), 'h:mm aaa'));
 
   return (
     <TimeSlotsContainer>
-      {timeSlots.map((time:string, index:number) => {
-        const disabled = !doctorsTimeslots.some((timeslot) => timeslot.indexOfTimeSlot === index);
+      {TIME_SLOTS.map((time: string) => {
+        const disabled = !freeTimeSlots.some((timeSlot) => timeSlot === time);
+        console.log(time);
         return (
           <div key={time}>
             <TimeSlot

@@ -19,3 +19,5 @@ export type AppointmentsResponseType = {
   appointments: Array<AppointmentType>,
   total: number
 }
+
+export type FreeTimeResponseType = Array<string>

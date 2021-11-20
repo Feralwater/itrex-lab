@@ -4,7 +4,7 @@ import colors from '../../styles/colors';
 export const TimeSlotsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, 104px);
-  grid-template-rows: repeat(auto-fit, 40px);
+  grid-template-rows: repeat(40px);
   grid-gap: 16px;
   min-height: 152px;
   max-width: 464px;
@@ -39,13 +39,15 @@ export const TimeSlotLabel = styled.label`
   border: 1px solid ${colors.transparent};
   box-shadow: 0px 4px 32px ${colors.link_water_alfa024};
   border-radius: 8px;
-  padding: 8px 16px;
+  padding: 8px 0;
   font-weight: 600;
   font-size: 15px;
   line-height: 130%;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  min-width: 104px;
+  box-sizing: border-box;
   transition: all .1s ease-out;
 
   &:hover {

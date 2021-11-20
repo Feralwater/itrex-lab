@@ -10,10 +10,10 @@ import {
   SelectDoctorStep,
   SelectTimeslotStep,
 } from 'forms/appointmentForms/makeAnAppointment.styles';
-import { TIME_SLOTS } from 'mockData/doctors';
 import dictionary from 'dictionary/dictionary';
 import DatePicker from 'components/DatePicker/DatePicker';
 import { PatientsTitle } from 'pages/publicPages/doctorPage/PatientsContainerHeader.styles';
+import { format } from 'date-fns';
 import Button from '../../components/Button/Button';
 import CustomSelect from '../../components/Select/Select';
 import AppointmentStep from '../../pages/publicPages/patientPage/AppointmentStep';
@@ -22,6 +22,7 @@ import { SpecializationsType } from '../../resources/occupations/occupations.typ
 import occupations from '../../resources/occupations/occupations.api';
 import { DoctorsBySpecializationIdResponseType } from '../../resources/doctors/doctors.types';
 import doctors from '../../resources/doctors/doctors.api';
+import appointments from '../../resources/appointments/appointments.api';
 
 const MakeAnAppointmentForm = () => {
   const [specializations, setSpecializations] = useState<Array<SpecializationsType>>([]);
@@ -29,6 +30,9 @@ const MakeAnAppointmentForm = () => {
   const [selectedOccupationID, setSelectedOccupationID] = useState<string>('');
   const [selectedDoctorID, setSelectedDoctorID] = useState<string>('');
   const [disableDate, setDisableDate] = useState<boolean>(true);
+  const [selectedDate, setSelectedDate] = useState<string>(format(new Date(), "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"));
+  const [freeTime, setFreeTime] = useState<Array<string>>([]);
+  console.log(selectedDate);
   const optionsForOccupationsSelect = specializations.map((specialization: SpecializationsType) => ({
     label: specialization.specialization_name,
     value: specialization.id,
@@ -45,6 +49,10 @@ const MakeAnAppointmentForm = () => {
     const response = await doctors.getDoctorsBySpecializationId(selectedOccupationID);
     setDoctorNames(response.data);
   };
+  const getFreeTime = async () => {
+    const response = await appointments.getFreeTime(selectedDate, selectedDoctorID);
+    setFreeTime(response.data);
+  };
 
   useEffect(() => {
     getOccupations();
@@ -55,6 +63,9 @@ const MakeAnAppointmentForm = () => {
   useEffect(() => {
     setDisableDate(!selectedDoctorID);
   }, [selectedDoctorID]);
+  useEffect(() => {
+    getFreeTime();
+  }, [selectedDate, selectedDoctorID]);
 
   return (
     <>
@@ -134,6 +145,7 @@ const MakeAnAppointmentForm = () => {
                   component={DatePicker}
                   doctorId={values.doctorName.value}
                   disableDate={disableDate}
+                  setSelectedDate={setSelectedDate}
                 />
               </ChooseDayStep>
               <SelectTimeslotStep>
@@ -141,9 +153,7 @@ const MakeAnAppointmentForm = () => {
                 <Field
                   name="time"
                   component={TimeSlots}
-                  timeSlots={TIME_SLOTS}
-                  doctorId={values.doctorName.value}
-                  date={values.date}
+                  freeTime={freeTime}
                 />
               </SelectTimeslotStep>
             </AppointmentStepsContainer>
