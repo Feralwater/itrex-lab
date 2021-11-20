@@ -23,7 +23,7 @@ import occupations from '../../resources/occupations/occupations.api';
 import { DoctorsBySpecializationIdResponseType } from '../../resources/doctors/doctors.types';
 import doctors from '../../resources/doctors/doctors.api';
 import appointments from '../../resources/appointments/appointments.api';
-import appointmentValidationSchema from '../authForms/appointment.validation';
+import appointmentValidationSchema from './appointment.validation';
 import { CustomErrorMessage } from '../authForms/authForm.styles';
 
 const MakeAnAppointmentForm = () => {
@@ -88,10 +88,8 @@ const MakeAnAppointmentForm = () => {
         }}
         validationSchema={appointmentValidationSchema}
         onSubmit={(values, actions) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            actions.setSubmitting(false);
-          }, 100);
+          alert(JSON.stringify(values, null, 2));
+          actions.setSubmitting(false);
         }}
       >
         {({
@@ -133,7 +131,6 @@ const MakeAnAppointmentForm = () => {
                 <InputContainer>
                   <Field
                     component={InputText}
-                    isError={touched.reason && errors.reason}
                     placeholder="Leave a reason for the visit"
                     name="reason"
                     label="Reason for the visit"
@@ -148,6 +145,8 @@ const MakeAnAppointmentForm = () => {
                     name="note"
                     label="Note"
                   />
+                  {touched.note && errors.note
+                  && <CustomErrorMessage name="note" component="span" />}
                 </InputContainer>
               </SelectDoctorStep>
               <ChooseDayStep>
