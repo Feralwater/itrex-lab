@@ -11,16 +11,20 @@ const TimeSlots: React.VFC<TimeSlotsPropsType> = ({
 }) => {
   const [, , { setValue }] = useField(props.field);
 
+  const freeTimeSlots = freeTime.map((time) => ({
+    timeForDisplay: format(parseISO(time), 'h:mm aaa'),
+    timeForServer: time,
+  }));
+
   const handlerClick = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.currentTarget.value);
+    const selectedTimeSlot = freeTimeSlots.filter((k) => k.timeForDisplay === e.currentTarget.value);
+    setValue(selectedTimeSlot[0].timeForServer);
   };
-  const freeTimeSlots = freeTime.map((time) => format(parseISO(time), 'h:mm aaa'));
 
   return (
     <TimeSlotsContainer>
       {TIME_SLOTS.map((time: string) => {
-        const disabled = !freeTimeSlots.some((timeSlot) => timeSlot === time);
-        console.log(time);
+        const disabled = !freeTimeSlots.some((timeSlot) => timeSlot.timeForDisplay === time);
         return (
           <div key={time}>
             <TimeSlot

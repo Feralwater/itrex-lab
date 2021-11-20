@@ -1,6 +1,3 @@
-import { addBusinessDays, isSameDay } from 'date-fns';
-import TIME_SLOTS from '../forms/const/const';
-
 const OCCUPATIONS = {
   THERAPIST: 'therapist',
   DERMATOLOGIST: 'dermatologist',
@@ -39,21 +36,6 @@ export const users: Array<DoctorType> = [
   },
 ];
 
-const MAX_DATE_DELTA_IN_COMPARE_CURRENT = 11;
-const COUNT_TIMESLOTS = 20;
-const MAX_INDEX_OF_TIMESLOT = TIME_SLOTS.length - 1;
-
-const AVAILABLE_TIMESLOTS = users.flatMap((doctor) => (new Array(COUNT_TIMESLOTS)).fill(0).map(() => {
-  const dayOfMonth = addBusinessDays(new Date(), Math.floor(Math.random() * MAX_DATE_DELTA_IN_COMPARE_CURRENT));
-  const indexOfTimeSlot = Math.floor(Math.random() * MAX_INDEX_OF_TIMESLOT);
-  const doctorID = doctor.id;
-  return {
-    dayOfMonth,
-    indexOfTimeSlot,
-    doctorID,
-  };
-}));
-
 export function getMe(): DoctorType {
   return users[1];
 }
@@ -65,20 +47,4 @@ type DoctorType = {
     secondName: string
     role: string
     occupation: string
-}
-
-export function getDoctors(doctors: Array<DoctorType>, occupation: string): { selectedValue: string, doctorID: string }[] {
-  return doctors.filter((doctor) => doctor.occupation === occupation).map((d) => ({
-    selectedValue: `${d.firstName} ${d.secondName}`,
-    doctorID: d.id,
-  }));
-}
-
-export function getDateOfAppointmentsByDoctorId(doctorID: string) {
-  return AVAILABLE_TIMESLOTS.filter((slot) => slot.doctorID === doctorID);
-}
-
-export function getDateOfAppointmentsByDoctorIdAndDate(doctorID: string, date: Date | null) {
-  return getDateOfAppointmentsByDoctorId(doctorID)
-    .filter((slot) => date && isSameDay(slot.dayOfMonth, date));
 }

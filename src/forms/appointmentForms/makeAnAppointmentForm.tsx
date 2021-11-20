@@ -34,6 +34,7 @@ const MakeAnAppointmentForm = () => {
   const [disableDate, setDisableDate] = useState<boolean>(true);
   const [selectedDate, setSelectedDate] = useState<string>(format(new Date(), "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"));
   const [freeTime, setFreeTime] = useState<Array<string>>([]);
+
   const optionsForOccupationsSelect = specializations.map((specialization: SpecializationsType) => ({
     label: specialization.specialization_name,
     value: specialization.id,
@@ -84,11 +85,16 @@ const MakeAnAppointmentForm = () => {
           reason: '',
           note: '',
           date: null,
-          time: null,
+          time: '',
         }}
         validationSchema={appointmentValidationSchema}
-        onSubmit={(values, actions) => {
-          alert(JSON.stringify(values, null, 2));
+        onSubmit={async (values, actions) => {
+          await appointments.addAppointments(
+            values.time,
+            values.reason,
+            values.note,
+            values.doctorName.value,
+          );
           actions.setSubmitting(false);
         }}
       >
