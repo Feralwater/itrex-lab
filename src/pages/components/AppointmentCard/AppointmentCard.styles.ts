@@ -30,7 +30,7 @@ export const UserCardHeader = styled.div`
 export const SettingsButton = styled.div`
   width: 24px;
   height: 24px;
-  background: url("../../assets/svgImages/settings-dots.svg") no-repeat center/contain;
+  background: url("../../svgImages/settings-dots.svg") no-repeat center/contain;
   border: none;
   outline: none;
 `;
@@ -59,7 +59,7 @@ export const UserCardBodyTimeText = styled.div`
 `;
 
 interface UserCardBodyDescriptionProps {
-    isDescription: boolean
+  isDescription: boolean;
 }
 
 export const UserCardBodyDescription = styled(UserCardBodyTime)<UserCardBodyDescriptionProps>`
@@ -77,7 +77,7 @@ export const UserCardBodyDescriptionText = styled.div`
 `;
 
 interface UserCardBodyAppointmentConfirmProps {
-    color: string
+  color: string;
 }
 
 export const UserCardBodyAppointmentConfirm = styled.div<UserCardBodyAppointmentConfirmProps>`
@@ -96,6 +96,14 @@ export const AppointmentStatus = styled.div`
   font-size: 13px;
   color: ${colors.rock_blue};
   margin: 0;
+`;
+
+export const DoctorSpecializationName = styled.div`
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 130%;
+  color: ${colors.rock_blue};
+  text-transform: capitalize;
 `;
 
 export const UserData = styled.div`

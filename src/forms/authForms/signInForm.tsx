@@ -1,15 +1,24 @@
+import { Formik } from 'formik';
 import React, { useState } from 'react';
-import { Formik, FormikHelpers } from 'formik';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import {
   ButtonWrapper,
   CustomErrorMessage,
   CustomField,
-  CustomForm, CustomLink, FormTitle, InputEmailContainer, InputPasswordContainer,
+  CustomForm,
+  CustomLink,
+  FormTitle,
+  InputEmailContainer,
+  InputPasswordContainer,
   InputPasswordIcon,
 } from './authForm.styles';
 import Button from '../../components/Button/Button';
+import { PATH } from '../../routes/Routes';
+import auth from '../../resources/auth/auth.api';
 import dictionary from '../../dictionary/dictionary';
-import authValidationSchema from './auth.validation';
+import singInValidationSchema from './validation/singIn.validation';
+import { addProfileData } from '../../redux/reducers/profileReducer';
 
 type Values = {
     email: string
@@ -18,22 +27,36 @@ type Values = {
 
 const SignInForm = () => {
   const [isSecurePassword, setIsSecurePassword] = useState<boolean>(true);
-
+  const history = useHistory();
+  const dispatch = useDispatch();
   return (
     <Formik
       initialValues={{
         email: '',
         password: '',
       }}
-      onSubmit={(
-        values: Values,
-        { setSubmitting }: FormikHelpers<Values>,
-      ) => {
-        alert(JSON.stringify(values, null, 2));
-        setSubmitting(false);
-      }}
+      onSubmit={
+        async ({
+          email: userName, password,
+        }:Values, actions) => {
+          try {
+            const signInResponse = await auth.SignIn({
+              userName, password,
+            });
+            localStorage.setItem('access_token', signInResponse.data.access_token);
+            localStorage.setItem('refresh_token', signInResponse.data.refresh_token);
+            const profileDataResponse = await auth.getProfile();
+            dispatch(addProfileData(profileDataResponse.data));
+            history.push(PATH.APPOINTMENTS);
+            actions.setSubmitting(false);
+          } catch (e) {
+            // @ts-ignore
+            alert(e.message);
+          }
+        }
+      }
       validateOnBlur
-      validationSchema={authValidationSchema}
+      validationSchema={singInValidationSchema}
     >
       {({
         values,

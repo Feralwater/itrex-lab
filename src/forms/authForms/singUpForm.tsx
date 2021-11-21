@@ -8,12 +8,15 @@ import {
   InputNameContainer,
   InputPasswordContainer,
   InputPasswordIcon,
-  CustomForm, CustomField, CustomErrorMessage, FormTitle,
+  CustomForm,
+  CustomField,
+  CustomErrorMessage,
+  FormTitle,
 } from './authForm.styles';
 import Button from '../../components/Button/Button';
 import { PATH } from '../../routes/Routes';
 import auth from '../../resources/auth/auth.api';
-import authValidationSchema from './auth.validation';
+import signUpValidationSchema from './validation/signUp.validation';
 
 type Values = {
     firstName: string
@@ -39,7 +42,7 @@ const SignUpForm = () => {
       onSubmit={
         async ({
           email: userName, password, firstName, lastName,
-        }:Values) => {
+        }:Values, actions) => {
           try {
             const response = await auth.SignUp({
               userName, password, firstName, lastName,
@@ -47,6 +50,7 @@ const SignUpForm = () => {
             localStorage.setItem('access_token', response.data.access_token);
             localStorage.setItem('refresh_token', response.data.refresh_token);
             history.push(PATH.APPOINTMENTS);
+            actions.setSubmitting(false);
           } catch (e) {
             // @ts-ignore
             alert(e.message);
@@ -54,7 +58,7 @@ const SignUpForm = () => {
         }
 }
       validateOnBlur
-      validationSchema={authValidationSchema}
+      validationSchema={signUpValidationSchema}
     >
       {({
         values,

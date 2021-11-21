@@ -11,19 +11,19 @@ import {
   SelectTimeslotStep,
 } from 'forms/appointmentForms/makeAnAppointment.styles';
 import dictionary from 'dictionary/dictionary';
-import DatePicker from 'components/DatePicker/DatePicker';
-import { PatientsTitle } from 'pages/publicPages/doctorPage/PatientsContainerHeader.styles';
+import DatePicker from 'pages/components/DatePicker/DatePicker';
+import { PatientsTitle } from 'pages/components/AppointmentsContainerHeader/AppointmentsContainerHeader.styles';
 import { format } from 'date-fns';
 import Button from '../../components/Button/Button';
 import CustomSelect from '../../components/Select/Select';
-import AppointmentStep from '../../pages/publicPages/patientPage/AppointmentStep';
-import TimeSlots from '../../components/TimeSlots/TimeSlots';
+import AppointmentStep from '../../pages/components/AppointmentStep/AppointmentStep';
+import TimeSlots from '../../pages/components/TimeSlots/TimeSlots';
 import { SpecializationsType } from '../../resources/occupations/occupations.types';
 import occupations from '../../resources/occupations/occupations.api';
 import { DoctorsBySpecializationIdResponseType } from '../../resources/doctors/doctors.types';
 import doctors from '../../resources/doctors/doctors.api';
 import appointments from '../../resources/appointments/appointments.api';
-import appointmentValidationSchema from './appointment.validation';
+import appointmentValidationSchema from './validation/appointment.validation';
 import { CustomErrorMessage } from '../authForms/authForm.styles';
 
 const MakeAnAppointmentForm = () => {

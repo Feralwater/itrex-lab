@@ -1,11 +1,11 @@
-import { combineReducers, createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import thunk from 'redux-thunk';
-import appointmentReducer from './reducers/appointmentReducer';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import profileReducer from './reducers/profileReducer';
 
 const rootReducer = combineReducers({
-  appointment: appointmentReducer,
+  profile: profileReducer,
 });
 
-export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
-export type AppRootStateType = ReturnType<typeof rootReducer>;
+export const store = configureStore({
+  reducer: rootReducer,
+});
+export type RootStateType = ReturnType<typeof rootReducer>;

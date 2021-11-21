@@ -16,7 +16,7 @@ const dictionary: DictionaryType = {
     errorMessageText: 'We show this message if something irreparable has happened. But there is nothing irreparable',
   },
   header: {
-    avatarAlt: 'doctor`s avatar',
+    avatarAlt: 'user`s avatar',
     logoText: 'palm clinic',
   },
   form: {

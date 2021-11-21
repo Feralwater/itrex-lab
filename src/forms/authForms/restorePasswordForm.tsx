@@ -10,7 +10,7 @@ import {
 } from './authForm.styles';
 import Button from '../../components/Button/Button';
 import dictionary from '../../dictionary/dictionary';
-import authValidationSchema from './auth.validation';
+import authValidationSchema from './validation/signUp.validation';
 
 type Values = {
     email: string

@@ -1,6 +1,6 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { ReactComponent as Logo } from '../../assets/svgImages/logo.svg';
-import { getMe } from '../../mockData/doctors';
 
 import {
   HeaderContainer,
@@ -12,11 +12,14 @@ import {
   UserImageContainer,
   UserInfo, UserName, UserRole,
 } from './Header.styles';
-import { HeaderPropsType, PageOwnerType } from './Header.types';
 import dictionary from '../../dictionary/dictionary';
+import { RootStateType } from '../../redux/store';
 
-const Header: React.VFC<HeaderPropsType> = () => {
-  const pageOwner: PageOwnerType = getMe();
+const Header: React.VFC = () => {
+  const firstName = useSelector<RootStateType, string>((state) => state.profile.first_name);
+  const secondName = useSelector<RootStateType, string>((state) => state.profile.last_name);
+  const roleName = useSelector<RootStateType, string>((state) => state.profile.role_name);
+  const avatar = useSelector<RootStateType, string>((state) => state.profile.photo);
   return (
     <HeaderWrapper>
       <HeaderContainer>
@@ -26,11 +29,11 @@ const Header: React.VFC<HeaderPropsType> = () => {
         </HeaderLogo>
         <User>
           <UserInfo>
-            <UserName>{`${pageOwner.firstName} ${pageOwner.secondName}`}</UserName>
-            <UserRole>{pageOwner.role}</UserRole>
+            <UserName>{`${firstName} ${secondName}`}</UserName>
+            <UserRole>{roleName}</UserRole>
           </UserInfo>
           <UserImageContainer>
-            <UserImage src={pageOwner.avatar} alt={dictionary.header.avatarAlt} />
+            <UserImage src={avatar} alt={dictionary.header.avatarAlt} />
             <NetworkStatus isOnline />
           </UserImageContainer>
         </User>

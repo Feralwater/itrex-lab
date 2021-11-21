@@ -1,4 +1,4 @@
-export type SignUpResponseType = {
+export type SignUpInResponseType = {
   access_token: string
   refresh_token: string
 }
@@ -8,4 +8,17 @@ export type SignUpDataType = {
   password: string
   firstName: string
   lastName: string
+}
+
+export type SignInDataType = {
+  userName: string
+  password: string
+}
+
+export type ProfileResponseType = {
+  id: string,
+  first_name: string,
+  last_name: string,
+  photo: string,
+  role_name: string
 }

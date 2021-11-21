@@ -1,10 +1,6 @@
 import React from 'react';
 import { Step, StepDescription, StepNumber } from './AppointentStep.styles';
-
-type AppointmentStepsPropsType = {
-    stepNumber: number
-    stepDescription: string
-}
+import { AppointmentStepsPropsType } from './AppointmentStep.types';
 
 const AppointmentStep: React.VFC<AppointmentStepsPropsType> = ({
   stepNumber,

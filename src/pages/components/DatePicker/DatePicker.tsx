@@ -2,8 +2,8 @@ import React from 'react';
 import Calendar, { CalendarTileProperties } from 'react-calendar';
 import { useField } from 'formik';
 import { isPast, addDays, format } from 'date-fns';
-import { ReactComponent as NextIcon } from '../../assets/svgImages/rightArrowGrey-icon.svg';
-import { ReactComponent as PrevIcon } from '../../assets/svgImages/leftArrowGrey-icon.svg';
+import { ReactComponent as NextIcon } from '../../../assets/svgImages/rightArrowGrey-icon.svg';
+import { ReactComponent as PrevIcon } from '../../../assets/svgImages/leftArrowGrey-icon.svg';
 import ReactCalendar from './DataPicker.styles';
 import { DatePickerPropsType } from './DataPicker.types';
 
@@ -15,7 +15,7 @@ const DatePicker:React.VFC<DatePickerPropsType> = ({
     setValue(checkedDate);
     setSelectedDate(format(checkedDate, "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"));
   };
-  const formatDate = (date: Date) => date.toDateString()[0];
+  const formatDate = (date: Date) => format(new Date(date), 'EEEEE');
 
   const disabledDays = ({ date }: CalendarTileProperties) => {
     if (disableDate) {

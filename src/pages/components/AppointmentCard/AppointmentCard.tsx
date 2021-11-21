@@ -1,9 +1,11 @@
 import React from 'react';
+import { add, format } from 'date-fns';
 import { ReactComponent as Clock } from '../../../assets/svgImages/clock-icon.svg';
 import { ReactComponent as Board } from '../../../assets/svgImages/board-icon.svg';
 import { ReactComponent as Heart } from '../../../assets/svgImages/heart-icon.svg';
 import {
   AppointmentStatus,
+  DoctorSpecializationName,
   SettingsButton,
   UserCard,
   UserCardBody,
@@ -20,18 +22,20 @@ import {
 } from './AppointmentCard.styles';
 import { UserImage } from '../../../components/Header/Header.styles';
 import { statusColor, statusDescription } from './const';
+import { AppointmentCardPropsType } from './AppointmentCard.types';
 
-const AppointmentCard: React.VFC<any> = ({
+const AppointmentCard: React.VFC<AppointmentCardPropsType> = ({
+  doctor,
   firstName,
   lastName,
   avatar,
   status,
   time,
-  note,
+  reason,
   role,
 }) => {
-  function isStatus() {
-    if (status) {
+  function statusOrDoctor() {
+    if (role === 'doctor') {
       return (
         <>
           <UserCardBodyAppointmentConfirm color={statusColor[status]} />
@@ -39,7 +43,13 @@ const AppointmentCard: React.VFC<any> = ({
         </>
       );
     }
-    return <div>Therapist</div>;
+    return <DoctorSpecializationName>{doctor.specialization_name}</DoctorSpecializationName>;
+  }
+
+  function formatVisitTime(timeBeforeFormat: string) {
+    const endVisitDate = add(new Date(timeBeforeFormat), { hours: 1 });
+    const endVisitHour = format(new Date(endVisitDate), 'h');
+    return format(new Date(timeBeforeFormat), `ccc LLL dd, Y h bbb - ${endVisitHour} bbb`);
   }
 
   return (
@@ -52,7 +62,7 @@ const AppointmentCard: React.VFC<any> = ({
           <UserInformation>
             <UserCardName>{`${firstName} ${lastName}`}</UserCardName>
             <AppointmentStatus>
-              {isStatus}
+              {statusOrDoctor()}
             </AppointmentStatus>
           </UserInformation>
         </UserData>
@@ -61,11 +71,11 @@ const AppointmentCard: React.VFC<any> = ({
       <UserCardBody>
         <UserCardBodyTime>
           <Clock />
-          <UserCardBodyTimeText>{time}</UserCardBodyTimeText>
+          <UserCardBodyTimeText>{formatVisitTime(time)}</UserCardBodyTimeText>
         </UserCardBodyTime>
-        <UserCardBodyDescription isDescription={note.length > 0}>
+        <UserCardBodyDescription isDescription={reason.length > 0}>
           {role === 'doctor' ? <Board /> : <div><Heart /></div>}
-          <UserCardBodyDescriptionText>{note}</UserCardBodyDescriptionText>
+          <UserCardBodyDescriptionText>{reason}</UserCardBodyDescriptionText>
         </UserCardBodyDescription>
       </UserCardBody>
     </UserCard>

@@ -1,4 +1,4 @@
-export type PageOwnerType = {
+export type ProfileStateType={
   id: string
   first_name: string
   last_name: string
