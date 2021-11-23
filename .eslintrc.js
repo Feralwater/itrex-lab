@@ -31,6 +31,7 @@ module.exports = {
     'no-use-before-define': 'off',
     'max-len': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
+    'no-param-reassign': 'off',
     camelcase: 'off',
   },
   settings: {

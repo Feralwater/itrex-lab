@@ -5,3 +5,8 @@ export type ProfileStateType={
   photo: string
   role_name: string
 }
+export type LoginStateType ={
+  accessToken: string;
+  refreshToken?: string;
+  status: 'idle' | 'loading' | 'failed' | 'fulfilled';
+}

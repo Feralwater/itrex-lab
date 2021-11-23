@@ -1,11 +1,18 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import profileReducer from './reducers/profileReducer';
+import { configureStore } from '@reduxjs/toolkit';
+import createSagaMiddleware from 'redux-saga';
+import { loginReducer } from './reducers/login.reducer';
+import rootSaga from './rootSaga';
 
-const rootReducer = combineReducers({
-  profile: profileReducer,
-});
+const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
-  reducer: rootReducer,
+  reducer: {
+    login: loginReducer,
+  },
+  middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(), sagaMiddleware],
 });
-export type RootStateType = ReturnType<typeof rootReducer>;
+
+sagaMiddleware.run(rootSaga);
+
+export type AppDispatchType = typeof store.dispatch;
+export type RootStateType = ReturnType<typeof store.getState>;

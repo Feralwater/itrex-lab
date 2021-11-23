@@ -1,7 +1,6 @@
 import { Formik } from 'formik';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import {
   ButtonWrapper,
   CustomErrorMessage,
@@ -18,7 +17,9 @@ import { PATH } from '../../routes/Routes';
 import auth from '../../resources/auth/auth.api';
 import dictionary from '../../dictionary/dictionary';
 import singInValidationSchema from './validation/singIn.validation';
-import { addProfileData } from '../../redux/reducers/profileReducer';
+import { addProfileData } from '../../redux/reducers/profile.reducer';
+import { useAppDispatch } from '../../hooks';
+import { login } from '../../redux/actions/login.actions';
 
 type Values = {
     email: string
@@ -28,7 +29,7 @@ type Values = {
 const SignInForm = () => {
   const [isSecurePassword, setIsSecurePassword] = useState<boolean>(true);
   const history = useHistory();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   return (
     <Formik
       initialValues={{
@@ -40,12 +41,8 @@ const SignInForm = () => {
           email: userName, password,
         }:Values, actions) => {
           try {
-            const signInResponse = await auth.SignIn({
-              userName, password,
-            });
-            localStorage.setItem('access_token', signInResponse.data.access_token);
-            localStorage.setItem('refresh_token', signInResponse.data.refresh_token);
-            const profileDataResponse = await auth.getProfile();
+            dispatch(login.pending({ userName, password }));
+            const profileDataResponse = await auth.getMe();
             dispatch(addProfileData(profileDataResponse.data));
             history.push(PATH.APPOINTMENTS);
             actions.setSubmitting(false);
