@@ -11,13 +11,13 @@ import {
   SelectTimeslotStep,
 } from 'forms/appointmentForms/makeAnAppointment.styles';
 import dictionary from 'dictionary/dictionary';
-import DatePicker from 'pages/components/DatePicker/DatePicker';
-import { PatientsTitle } from 'pages/components/AppointmentsContainerHeader/AppointmentsContainerHeader.styles';
+import DatePicker from 'pages/publicPages/patientPage/datePicker/datePicker';
+import { PatientsTitle } from 'pages/publicPages/patientPage/appointmentsHeader/appointmentsHeader.styles';
 import { format } from 'date-fns';
 import Button from '../../components/Button/Button';
 import CustomSelect from '../../components/Select/Select';
-import AppointmentStep from '../../pages/components/AppointmentStep/AppointmentStep';
-import TimeSlots from '../../pages/components/TimeSlots/TimeSlots';
+import AppointmentsSteps from '../../pages/publicPages/patientPage/appointmentsSteps/appointmentsSteps';
+import TimeSlots from '../../pages/publicPages/patientPage/timeSlots/timeSlots';
 import { SpecializationsType } from '../../resources/occupations/occupations.types';
 import occupations from '../../resources/occupations/occupations.api';
 import { DoctorsBySpecializationIdResponseType } from '../../resources/doctors/doctors.types';
@@ -108,7 +108,7 @@ const MakeAnAppointmentForm = () => {
           <AppointmentFormContainer>
             <AppointmentStepsContainer>
               <SelectDoctorStep>
-                <AppointmentStep
+                <AppointmentsSteps
                   stepDescription={dictionary.makeAppointments.step1Description}
                   stepNumber={1}
                 />
@@ -156,7 +156,7 @@ const MakeAnAppointmentForm = () => {
                 </InputContainer>
               </SelectDoctorStep>
               <ChooseDayStep>
-                <AppointmentStep stepDescription={dictionary.makeAppointments.step2Description} stepNumber={2} />
+                <AppointmentsSteps stepDescription={dictionary.makeAppointments.step2Description} stepNumber={2} />
                 <Field
                   name="date"
                   id="date"
@@ -167,7 +167,7 @@ const MakeAnAppointmentForm = () => {
                 />
               </ChooseDayStep>
               <SelectTimeslotStep>
-                <AppointmentStep stepDescription={dictionary.makeAppointments.step3Description} stepNumber={3} />
+                <AppointmentsSteps stepDescription={dictionary.makeAppointments.step3Description} stepNumber={3} />
                 <Field
                   name="time"
                   component={TimeSlots}

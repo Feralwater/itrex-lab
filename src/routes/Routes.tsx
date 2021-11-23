@@ -8,7 +8,8 @@ import AuthorisedLayout from '../layouts/authorised/authorised';
 import SignIn from '../pages/authorisedPages/signIn/SignIn';
 import Public from '../layouts/public/public';
 import MakeAnAppointmentForm from '../forms/appointmentForms/makeAnAppointmentForm';
-import AppointmentsContainer from '../pages/components/Appointments/AppointmentsContainer';
+import PatientsContainer from '../pages/publicPages/doctorPage/patients/patientsContainer';
+import AppointmentsContainer from '../pages/publicPages/patientPage/appointmentsContainer/appointmentsContainer';
 
 export const PATH = {
   PATIENTS: '/patients',
@@ -17,7 +18,7 @@ export const PATH = {
   SIGN_IN: '/sign-in',
   SIGN_UP: '/sign-up',
   APPOINTMENTS: '/appointments',
-  MAKE_APPOINTMENT: '/make-an-appointment',
+  MAKE_APPOINTMENT: '/create-an-appointment',
 };
 
 function Routes() {
@@ -35,7 +36,7 @@ function Routes() {
       />
       <Route path={PATH.SIGN_IN} render={() => <AuthorisedLayout><SignIn /></AuthorisedLayout>} />
       <Route path={PATH.SIGN_UP} render={() => <AuthorisedLayout><SignUp /></AuthorisedLayout>} />
-      <Route path={PATH.PATIENTS} render={() => <Public><AppointmentsContainer /></Public>} />
+      <Route path={PATH.PATIENTS} render={() => <Public><PatientsContainer /></Public>} />
       <Route path={PATH.APPOINTMENTS} render={() => <Public><AppointmentsContainer /></Public>} />
       <Route
         path={PATH.MAKE_APPOINTMENT}
