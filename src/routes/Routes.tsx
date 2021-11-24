@@ -12,12 +12,12 @@ import PatientsContainer from '../pages/publicPages/doctorPage/patients/patients
 import AppointmentsContainer from '../pages/publicPages/patientPage/appointmentsContainer/appointmentsContainer';
 
 export const PATH = {
-  PATIENTS: '/patients',
+  PATIENTS: '/my-patients',
   RESTORE_PASSWORD: '/restore-password',
   SEND_EMAIL: '/send-email',
   SIGN_IN: '/sign-in',
   SIGN_UP: '/sign-up',
-  APPOINTMENTS: '/appointments',
+  APPOINTMENTS: '/my-appointments',
   MAKE_APPOINTMENT: '/create-an-appointment',
 };
 

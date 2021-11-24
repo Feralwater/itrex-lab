@@ -13,16 +13,16 @@ import dictionary from '../../../../dictionary/dictionary';
 const AppointmentsWrapperHeader: React.VFC = () => (
   <>
     <PatientsButtonsContainer>
-      <PatientsButton to="" color="white">{dictionary.buttonsText.buttonProfile}</PatientsButton>
-      <PatientsButton to="/appointments" color="blue">{dictionary.buttonsText.buttonAppointments}</PatientsButton>
-      <PatientsButton to="" color="white">{dictionary.buttonsText.buttonResolutions}</PatientsButton>
+      <PatientsButton to="" color="white">{dictionary.patientPage.buttonProfile}</PatientsButton>
+      <PatientsButton to="/my-appointments" color="blue">{dictionary.patientPage.buttonAppointments}</PatientsButton>
+      <PatientsButton to="" color="white">{dictionary.patientPage.buttonResolutions}</PatientsButton>
     </PatientsButtonsContainer>
     <PatientsHeader>
       <PatientsTitle>{dictionary.patientPage.title}</PatientsTitle>
       <ButtonWrapper>
         <ButtonLeftPlusIcon />
         <CreateAppointmentButton to="/create-an-appointment">
-          {dictionary.buttonsText.createAppointments}
+          {dictionary.patientPage.createAppointments}
         </CreateAppointmentButton>
       </ButtonWrapper>
     </PatientsHeader>

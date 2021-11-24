@@ -24,7 +24,7 @@ type Values = {
     password: string
 }
 
-export const checkUserRole = (history:any, userRoleName:string) => {
+export const checkUserRole = (history: import('history').History, userRoleName:string) => {
   switch (userRoleName) {
     case 'Patient':
       history.push(PATH.APPOINTMENTS);

@@ -13,7 +13,6 @@ import {
 import dictionary from 'dictionary/dictionary';
 import DatePicker from 'pages/publicPages/patientPage/datePicker/datePicker';
 import { PatientsTitle } from 'pages/publicPages/patientPage/appointmentsHeader/appointmentsHeader.styles';
-import { format } from 'date-fns';
 import Button from '../../components/Button/Button';
 import CustomSelect from '../../components/Select/Select';
 import AppointmentsSteps from '../../pages/publicPages/patientPage/appointmentsSteps/appointmentsSteps';
@@ -25,6 +24,9 @@ import doctors from '../../resources/doctors/doctors.api';
 import appointments from '../../resources/appointments/appointments.api';
 import appointmentValidationSchema from './validation/appointment.validation';
 import { CustomErrorMessage } from '../authForms/authForm.styles';
+import auth from '../../resources/auth/auth.api';
+import { PATH } from '../../routes/Routes';
+import Notification from '../../components/Message/Notification';
 
 const MakeAnAppointmentForm = () => {
   const [specializations, setSpecializations] = useState<Array<SpecializationsType>>([]);
@@ -32,7 +34,7 @@ const MakeAnAppointmentForm = () => {
   const [selectedOccupationID, setSelectedOccupationID] = useState<string>('');
   const [selectedDoctorID, setSelectedDoctorID] = useState<string>('');
   const [disableDate, setDisableDate] = useState<boolean>(true);
-  const [selectedDate, setSelectedDate] = useState<string>(format(new Date(), "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"));
+  const [selectedDate, setSelectedDate] = useState<string|null>(null);
   const [freeTime, setFreeTime] = useState<Array<string>>([]);
 
   const optionsForOccupationsSelect = specializations.map((specialization: SpecializationsType) => ({

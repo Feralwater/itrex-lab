@@ -38,14 +38,13 @@ export type DictionaryType = {
   doctorPage: {
     emptyMedicalHistoryTextLine1: string
     emptyMedicalHistoryTextLine2: string
+    buttonPatients: string
+    buttonResolutions: string
   },
   patientPage: {
     emptyAppointmentsHistoryTextLine1: string
     emptyAppointmentsHistoryTextLine2: string
     title: string
-  },
-  buttonsText: {
-    buttonPatients: string
     buttonResolutions: string
     buttonProfile: string
     buttonAppointments: string

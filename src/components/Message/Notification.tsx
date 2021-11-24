@@ -12,7 +12,7 @@ import {
 import { MessagePropsType } from './Message.types';
 import dictionary from '../../dictionary/dictionary';
 
-const Message: React.VFC<MessagePropsType> = ({ isSuccess }) => {
+const Notification: React.VFC<MessagePropsType> = ({ isSuccess }) => {
   const [showErrorMessage, setShowErrorMessage] = useState<boolean>(true);
 
   return (
@@ -38,4 +38,4 @@ const Message: React.VFC<MessagePropsType> = ({ isSuccess }) => {
   );
 };
 
-export default Message;
+export default Notification;
