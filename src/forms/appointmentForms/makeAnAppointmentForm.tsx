@@ -24,9 +24,8 @@ import doctors from '../../resources/doctors/doctors.api';
 import appointments from '../../resources/appointments/appointments.api';
 import appointmentValidationSchema from './validation/appointment.validation';
 import { CustomErrorMessage } from '../authForms/authForm.styles';
-import auth from '../../resources/auth/auth.api';
-import { PATH } from '../../routes/Routes';
-import Notification from '../../components/Message/Notification';
+import { useAppDispatch } from '../../hooks';
+import { appointment } from '../../redux/actions/appointment.actions';
 
 const MakeAnAppointmentForm = () => {
   const [specializations, setSpecializations] = useState<Array<SpecializationsType>>([]);
@@ -70,7 +69,7 @@ const MakeAnAppointmentForm = () => {
   useEffect(() => {
     getFreeTime();
   }, [selectedDate, selectedDoctorID]);
-
+  const dispatch = useAppDispatch();
   return (
     <>
       <PatientsTitle>Make an appointment</PatientsTitle>
@@ -91,13 +90,19 @@ const MakeAnAppointmentForm = () => {
         }}
         validationSchema={appointmentValidationSchema}
         onSubmit={async (values, actions) => {
-          await appointments.addAppointments(
-            values.time,
-            values.reason,
-            values.note,
-            values.doctorName.value,
-          );
-          actions.setSubmitting(false);
+          const date = values.time;
+          const { reason } = values;
+          const { note } = values;
+          const doctorID = values.doctorName.value;
+          try {
+            dispatch(appointment.pending({
+              date, reason, note, doctorID,
+            }));
+            actions.setSubmitting(false);
+          } catch (e) {
+            // @ts-ignore
+            alert(e.message);
+          }
         }}
       >
         {({

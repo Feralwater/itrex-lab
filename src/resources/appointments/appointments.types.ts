@@ -22,7 +22,14 @@ export type AppointmentsResponseType = {
 
 export type FreeTimeResponseType = Array<string>
 
-export type NewAppointmentResponseType ={
+export type AppointmentDataType = {
+  date: string
+  reason: string
+  note: string
+  doctorID: string
+}
+
+export type NewAppointmentResponseType = {
   id: 'string',
   patient_id: 'string',
   doctor_id: 'string',

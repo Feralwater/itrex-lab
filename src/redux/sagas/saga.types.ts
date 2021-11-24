@@ -4,6 +4,9 @@ export type AsyncActionType = {
   pending: PayloadActionCreator<any>;
   fulfilled: PayloadActionCreator<any>;
   failed: PayloadActionCreator<any>;
+};
+
+export type AsyncLoginActionType =AsyncActionType & {
   me: PayloadActionCreator<any>;
 };
 

@@ -1,13 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 import { loginReducer } from './reducers/login.reducer';
-import rootSaga from './rootSaga';
+import rootSaga from './sagas/rootSaga';
+import { appointmentReducer } from './reducers/appointments.reducer';
 
 const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
   reducer: {
     login: loginReducer,
+    appointments: appointmentReducer,
   },
   middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(), sagaMiddleware],
 });

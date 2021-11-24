@@ -1,13 +1,13 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { PayloadActionCreator } from '@reduxjs/toolkit/src/createAction';
 import { AxiosResponse } from 'axios';
-import { AnyFunction, AsyncActionType } from './saga.types';
-import { login } from './actions/login.actions';
-import { ProfileResponseType, SignUpInResponseType } from '../resources/auth/auth.types';
-import auth from '../resources/auth/auth.api';
-import { loginRepository } from '../resources/loginRepository';
+import { AnyFunction, AsyncLoginActionType } from './saga.types';
+import { login } from '../actions/login.actions';
+import { ProfileResponseType, SignUpInResponseType } from '../../resources/auth/auth.types';
+import auth from '../../resources/auth/auth.api';
+import { loginRepository } from '../../resources/loginRepository';
 
-function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction?: PayloadActionCreator<any>):any {
+function* runAsyncSaga(action: AsyncLoginActionType, saga: AnyFunction, pendingAction?: PayloadActionCreator<any>):any {
   try {
     const result = yield saga(pendingAction);
     yield put(action.fulfilled(result));
