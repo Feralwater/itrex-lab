@@ -7,6 +7,11 @@ import { login } from '../actions/login.actions';
 const initialState: LoginStateType = {
   accessToken: loginRepository.getAccessToken() || '',
   status: 'idle',
+  id: '',
+  first_name: '',
+  last_name: '',
+  photo: '',
+  role_name: '',
 };
 
 export const loginSlice = createSlice({
@@ -19,6 +24,14 @@ export const loginSlice = createSlice({
         state.status = 'fulfilled';
         state.accessToken = payload.access_token;
         state.refreshToken = payload.refresh_token;
+      });
+    builder
+      .addCase(login.me, (state, { payload }) => {
+        state.id = payload.id;
+        state.first_name = payload.first_name;
+        state.last_name = payload.last_name;
+        state.photo = payload.photo;
+        state.role_name = payload.role_name;
       });
 
     // builder

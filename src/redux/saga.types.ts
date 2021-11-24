@@ -4,6 +4,7 @@ export type AsyncActionType = {
   pending: PayloadActionCreator<any>;
   fulfilled: PayloadActionCreator<any>;
   failed: PayloadActionCreator<any>;
+  me: PayloadActionCreator<any>;
 };
 
 // eslint-disable-next-line no-unused-vars

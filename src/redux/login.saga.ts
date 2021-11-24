@@ -3,7 +3,7 @@ import { PayloadActionCreator } from '@reduxjs/toolkit/src/createAction';
 import { AxiosResponse } from 'axios';
 import { AnyFunction, AsyncActionType } from './saga.types';
 import { login } from './actions/login.actions';
-import { SignUpInResponseType } from '../resources/auth/auth.types';
+import { ProfileResponseType, SignUpInResponseType } from '../resources/auth/auth.types';
 import auth from '../resources/auth/auth.api';
 import { loginRepository } from '../resources/loginRepository';
 
@@ -11,6 +11,7 @@ function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction
   try {
     const result = yield saga(pendingAction);
     yield put(action.fulfilled(result));
+    yield put(action.me(result));
   } catch (error:any) {
     const errorSerialized = {
       message: error.message,
@@ -36,9 +37,9 @@ function* loginPost(action: ReturnType<typeof login.pending>) {
       .setRefreshToken(data.refresh_token);
   }
 
-  // const profile: AxiosResponse<ProfileResponseType> = yield call(auth.getMe);
+  const profile: AxiosResponse<ProfileResponseType> = yield call(auth.getMe);
 
-  return response.data;
+  return { ...response.data, ...profile.data };
 }
 
 const loginPostSaga = runAsyncSaga.bind(null, login, loginPost);

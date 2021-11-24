@@ -1,5 +1,5 @@
 import { Formik } from 'formik';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import {
   ButtonWrapper,
@@ -14,11 +14,9 @@ import {
 } from './authForm.styles';
 import Button from '../../components/Button/Button';
 import { PATH } from '../../routes/Routes';
-import auth from '../../resources/auth/auth.api';
 import dictionary from '../../dictionary/dictionary';
 import singInValidationSchema from './validation/singIn.validation';
-import { addProfileData } from '../../redux/reducers/profile.reducer';
-import { useAppDispatch } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import { login } from '../../redux/actions/login.actions';
 
 type Values = {
@@ -26,9 +24,27 @@ type Values = {
     password: string
 }
 
+export const checkUserRole = (history:any, userRoleName:string) => {
+  switch (userRoleName) {
+    case 'Patient':
+      history.push(PATH.APPOINTMENTS);
+      break;
+    case 'Doctor':
+      history.push(PATH.PATIENTS);
+      break;
+    default:
+      break;
+  }
+};
+
 const SignInForm = () => {
   const [isSecurePassword, setIsSecurePassword] = useState<boolean>(true);
+  const token = useAppSelector((state) => state.login.accessToken);
+  const roleName = useAppSelector((state) => state.login.role_name);
   const history = useHistory();
+  useEffect(() => {
+    checkUserRole(history, roleName);
+  }, [roleName]);
   const dispatch = useAppDispatch();
   return (
     <Formik
@@ -42,9 +58,7 @@ const SignInForm = () => {
         }:Values, actions) => {
           try {
             dispatch(login.pending({ userName, password }));
-            const profileDataResponse = await auth.getMe();
-            dispatch(addProfileData(profileDataResponse.data));
-            history.push(PATH.APPOINTMENTS);
+            dispatch(login.me({ token }));
             actions.setSubmitting(false);
           } catch (e) {
             // @ts-ignore
