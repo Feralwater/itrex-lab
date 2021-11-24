@@ -20,7 +20,6 @@ export const appointmentSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(appointment.fulfilled, (state, { payload }) => {
-        state.status = 'fulfilled';
         state.id = payload.id;
         state.patient_id = payload.patient_id;
         state.doctor_id = payload.doctor_id;
@@ -28,6 +27,7 @@ export const appointmentSlice = createSlice({
         state.reason = payload.reason;
         state.note = payload.note;
         state.status = payload.status;
+        state.responseStatus = 'fulfilled';
       });
 
     // builder
