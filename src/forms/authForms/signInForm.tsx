@@ -39,8 +39,7 @@ export const checkUserRole = (history: import('history').History, userRoleName:s
 
 const SignInForm = () => {
   const [isSecurePassword, setIsSecurePassword] = useState<boolean>(true);
-  const token = useAppSelector((state) => state.login.accessToken);
-  const roleName = useAppSelector((state) => state.login.role_name);
+  const roleName = useAppSelector((state) => state.profile.role_name);
   const history = useHistory();
   useEffect(() => {
     checkUserRole(history, roleName);
@@ -58,7 +57,6 @@ const SignInForm = () => {
         }:Values, actions) => {
           try {
             dispatch(login.pending({ userName, password }));
-            dispatch(login.me({ token }));
             actions.setSubmitting(false);
           } catch (e) {
             // @ts-ignore

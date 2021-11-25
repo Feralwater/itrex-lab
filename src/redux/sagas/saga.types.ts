@@ -6,7 +6,7 @@ export type AsyncActionType = {
   failed: PayloadActionCreator<any>;
 };
 
-export type AsyncLoginActionType =AsyncActionType & {
+export type ProfileActionType = {
   me: PayloadActionCreator<any>;
 };
 

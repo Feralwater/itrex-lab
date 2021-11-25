@@ -7,18 +7,22 @@ import {
   HeaderWrapper,
   LogoText, NetworkStatus,
   User,
+  UserImage,
   UserImageContainer,
   UserInfo,
+  UserName,
+  UserRole,
 } from './Header.styles';
 import dictionary from '../../dictionary/dictionary';
+import { useAppSelector } from '../../hooks';
 
-const Header: React.VFC = () =>
-  // const firstName = useSelector<RootStateType, string>((state) => state.profile.first_name);
-  // const secondName = useSelector<RootStateType, string>((state) => state.profile.last_name);
-  // const roleName = useSelector<RootStateType, string>((state) => state.profile.role_name);
-  // const avatar = useSelector<RootStateType, string>((state) => state.profile.photo);
-  // eslint-disable-next-line implicit-arrow-linebreak
-  (
+const Header: React.VFC = () => {
+  const firstName = useAppSelector((state) => state.profile.first_name);
+  const secondName = useAppSelector((state) => state.profile.last_name);
+  const roleName = useAppSelector((state) => state.profile.role_name);
+  const avatar = useAppSelector((state) => state.profile.photo);
+
+  return (
     <HeaderWrapper>
       <HeaderContainer>
         <HeaderLogo>
@@ -27,16 +31,17 @@ const Header: React.VFC = () =>
         </HeaderLogo>
         <User>
           <UserInfo>
-            {/* <UserName>{`${firstName} ${secondName}`}</UserName> */}
-            {/* <UserRole>{roleName}</UserRole> */}
+            <UserName>{`${firstName} ${secondName}`}</UserName>
+            <UserRole>{roleName}</UserRole>
           </UserInfo>
           <UserImageContainer>
-            {/* <UserImage src={avatar} alt={dictionary.header.avatarAlt} /> */}
+            <UserImage src={avatar} alt={dictionary.header.avatarAlt} />
             <NetworkStatus isOnline />
           </UserImageContainer>
         </User>
       </HeaderContainer>
     </HeaderWrapper>
   );
+};
 
 export default Header;
