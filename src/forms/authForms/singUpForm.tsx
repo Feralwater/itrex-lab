@@ -15,8 +15,9 @@ import {
 } from './authForm.styles';
 import Button from '../../components/Button/Button';
 import { PATH } from '../../routes/Routes';
-import auth from '../../resources/auth/auth.api';
 import signUpValidationSchema from './validation/signUp.validation';
+import { useAppDispatch } from '../../hooks';
+import { registration } from '../../redux/actions/registration.actions';
 
 type Values = {
     firstName: string
@@ -27,9 +28,10 @@ type Values = {
 }
 
 const SignUpForm = () => {
-  const [isSecurePassword, setIsSecurePassword] = useState<boolean>(true);
-  const [isSecureConfirmPassword, setIsSecureConfirmPassword] = useState<boolean>(true);
+  const [isSecurePassword, setIsSecurePassword] = useState<boolean>(false);
+  const [isSecureConfirmPassword, setIsSecureConfirmPassword] = useState<boolean>(false);
   const history = useHistory();
+  const dispatch = useAppDispatch();
   return (
     <Formik
       initialValues={{
@@ -44,11 +46,9 @@ const SignUpForm = () => {
           email: userName, password, firstName, lastName,
         }:Values, actions) => {
           try {
-            const response = await auth.SignUp({
+            dispatch(registration.pending({
               userName, password, firstName, lastName,
-            });
-            localStorage.setItem('access_token', response.data.access_token);
-            localStorage.setItem('refresh_token', response.data.refresh_token);
+            }));
             history.push(PATH.APPOINTMENTS);
             actions.setSubmitting(false);
           } catch (e) {
@@ -116,7 +116,7 @@ const SignUpForm = () => {
               isError={touched.password && errors.password}
               name="password"
               placeholder="Password"
-              type={isSecurePassword ? 'password' : 'text'}
+              type={!isSecurePassword ? 'password' : 'text'}
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.password}
@@ -133,7 +133,7 @@ const SignUpForm = () => {
               isError={touched.confirmPassword && errors.confirmPassword}
               name="confirmPassword"
               placeholder="Confirm Password"
-              type={isSecureConfirmPassword ? 'password' : 'text'}
+              type={!isSecureConfirmPassword ? 'password' : 'text'}
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.confirmPassword}
