@@ -7,7 +7,7 @@ import {
 } from './appointments.types';
 
 const appointments = {
-  async getAppointments(offset:number, limit:number) {
+  async getAppointments(offset:number = 0, limit:number = 12) {
     return instance.get<AppointmentsResponseType>(`appointments/patient/me?offset=${offset}&limit=${limit}`);
   },
   async getFreeTime(date:string|null, doctorID:string) {

@@ -1,3 +1,7 @@
+// export type RoleName = 'Patient' | 'Doctor' | ''
+
+import { RoleName } from 'redux/reducers/reducers.types';
+
 export type SignUpInResponseType = {
   access_token: string
   refresh_token: string
@@ -20,5 +24,5 @@ export type ProfileResponseType = {
   first_name: string,
   last_name: string,
   photo: string,
-  role_name: string
+  role_name: RoleName
 }

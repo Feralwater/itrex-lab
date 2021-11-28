@@ -11,11 +11,16 @@ export class LoginRepository {
   }
 
   getAccessToken() {
-    return this.client.getItem(this.accessTokenKey);
+    return this.client.getItem(this.accessTokenKey) || '';
   }
 
   setRefreshToken(token: string) {
     this.client.setItem(this.refreshTokenKey, token);
+    return this;
+  }
+
+  removeAccessToken() {
+    this.client.removeItem(this.accessTokenKey);
     return this;
   }
 

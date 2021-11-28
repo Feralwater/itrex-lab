@@ -1,6 +1,5 @@
 import { Formik } from 'formik';
-import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
 import {
   ButtonWrapper,
   CustomErrorMessage,
@@ -13,37 +12,19 @@ import {
   InputPasswordIcon,
 } from './authForm.styles';
 import Button from '../../components/Button/Button';
-import { PATH } from '../../routes/Routes';
 import dictionary from '../../dictionary/dictionary';
-import singInValidationSchema from './validation/singIn.validation';
-import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useAppDispatch } from '../../hooks';
 import { login } from '../../redux/actions/login.actions';
+import singInValidationSchema from './validation/singIn.validation';
 
 type Values = {
     email: string
     password: string
 }
 
-export const checkUserRole = (history: import('history').History, userRoleName:string) => {
-  switch (userRoleName) {
-    case 'Patient':
-      history.push(PATH.APPOINTMENTS);
-      break;
-    case 'Doctor':
-      history.push(PATH.PATIENTS);
-      break;
-    default:
-      break;
-  }
-};
-
 const SignInForm = () => {
   const [isSecurePassword, setIsSecurePassword] = useState<boolean>(true);
-  const roleName = useAppSelector((state) => state.profile.role_name);
-  const history = useHistory();
-  useEffect(() => {
-    checkUserRole(history, roleName);
-  }, [roleName]);
+
   const dispatch = useAppDispatch();
   return (
     <Formik

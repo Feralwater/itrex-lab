@@ -49,12 +49,20 @@ const MakeAnAppointmentForm = () => {
     setSpecializations(response.data);
   };
   const getDoctors = async () => {
-    const response = await doctors.getDoctorsBySpecializationId(selectedOccupationID);
-    setDoctorNames(response.data);
+    if (selectedOccupationID) {
+      const { data } = await doctors.getDoctorsBySpecializationId(selectedOccupationID);
+      setDoctorNames(data);
+    } else {
+      setDoctorNames([]);
+    }
   };
   const getFreeTime = async () => {
-    const response = await appointments.getFreeTime(selectedDate, selectedDoctorID);
-    setFreeTime(response.data);
+    if (selectedOccupationID) {
+      const { data } = await appointments.getFreeTime(selectedDate, selectedDoctorID);
+      setFreeTime(data);
+    } else {
+      setFreeTime([]);
+    }
   };
 
   useEffect(() => {

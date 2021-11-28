@@ -1,22 +1,28 @@
 import React, { useEffect } from 'react';
 import Routes from './routes/Routes';
-import { useAppDispatch } from './hooks';
 import profile from './redux/actions/profile.actions';
+import { useAppDispatch, useAppSelector } from './hooks';
 
 function App() {
+  const { accessToken } = useAppSelector((state) => state.login);
+
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(profile.me({
+    dispatch(profile.pending({
       first_name: '',
       id: '',
       last_name: '',
       photo: '',
-      role_name: '',
+      role_name: 'PUBLIC',
     }));
-  }, []);
+  }, [dispatch, accessToken]);
+
+  const { roleName } = useAppSelector((state) => state.profile);
 
   return (
-    <Routes />
+    (roleName !== '')
+      ? <Routes />
+      : null
   );
 }
 

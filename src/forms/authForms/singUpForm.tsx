@@ -14,7 +14,7 @@ import {
   FormTitle,
 } from './authForm.styles';
 import Button from '../../components/Button/Button';
-import { PATH } from '../../routes/Routes';
+import { PATH } from '../../routes/constants';
 import signUpValidationSchema from './validation/signUp.validation';
 import { useAppDispatch } from '../../hooks';
 import { registration } from '../../redux/actions/registration.actions';
@@ -49,7 +49,7 @@ const SignUpForm = () => {
             dispatch(registration.pending({
               userName, password, firstName, lastName,
             }));
-            history.push(PATH.APPOINTMENTS);
+            history.push(PATH.MY_APPOINTMENTS);
             actions.setSubmitting(false);
           } catch (e) {
             // @ts-ignore

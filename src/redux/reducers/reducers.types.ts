@@ -1,17 +1,26 @@
-export type LoginStateType = {
+import { ROLES } from '../../routes/constants';
+
+export type Status = 'idle' | 'loading' | 'failed' | 'fulfilled'
+export type RoleName = keyof typeof ROLES | ''
+
+interface Request{
+  status: Status
+}
+
+export interface LoginStateType extends Request {
   accessToken: string
   refreshToken?: string
-  status: 'idle' | 'loading' | 'failed' | 'fulfilled'
 }
-export type ProfileStateType = {
+
+export interface ProfileStateType extends Request {
   id: string
-  first_name: string
-  last_name: string
+  firstName: string
+  lastName: string
   photo: string
-  role_name: string
+  roleName: RoleName
   isAuth: boolean
 }
-export type AppointmentStateType = {
+export interface AppointmentStateType {
   id: string
   patient_id: string
   doctor_id: string
@@ -19,10 +28,9 @@ export type AppointmentStateType = {
   reason: string
   note: string
   status: string
-  responseStatus: 'idle' | 'loading' | 'failed' | 'fulfilled'
+  responseStatus: Status
 }
-export type RegistrationStateType = {
+export interface RegistrationStateType extends Request {
   accessToken: string
   refreshToken?: string
-  status: 'idle' | 'loading' | 'failed' | 'fulfilled'
 }

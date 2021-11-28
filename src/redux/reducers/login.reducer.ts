@@ -21,15 +21,15 @@ export const loginSlice = createSlice({
         state.refreshToken = payload.refresh_token;
       });
 
-    // builder
-    //   .addCase(login.pending, (state, { payload }) => {
-    //     state.status = 'loading';
-    //   });
+    builder
+      .addCase(login.pending, (state) => {
+        state.status = 'loading';
+      });
 
-    // builder
-    //   .addCase(login.failed, (state, { payload }) => {
-    //     state.error = payload;
-    //   });
+    builder
+      .addCase(login.failed, (state) => {
+        state.status = 'failed';
+      });
   },
 });
 

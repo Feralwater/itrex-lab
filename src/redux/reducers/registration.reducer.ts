@@ -21,15 +21,14 @@ export const registrationSlice = createSlice({
         state.refreshToken = payload.refresh_token;
       });
 
-    // builder
-    //   .addCase(registration.pending, (state, { payload }) => {
-    //     state.status = 'loading';
-    //   });
-
-    // builder
-    //   .addCase(registration.failed, (state, { payload }) => {
-    //     state.error = payload;
-    //   });
+    builder
+      .addCase(registration.pending, (state) => {
+        state.status = 'loading';
+      });
+    builder
+      .addCase(registration.failed, (state) => {
+        state.status = 'failed';
+      });
   },
 });
 

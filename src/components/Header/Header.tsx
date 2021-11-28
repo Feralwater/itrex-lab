@@ -17,9 +17,9 @@ import dictionary from '../../dictionary/dictionary';
 import { useAppSelector } from '../../hooks';
 
 const Header: React.VFC = () => {
-  const firstName = useAppSelector((state) => state.profile.first_name);
-  const secondName = useAppSelector((state) => state.profile.last_name);
-  const roleName = useAppSelector((state) => state.profile.role_name);
+  const firstName = useAppSelector((state) => state.profile.firstName);
+  const secondName = useAppSelector((state) => state.profile.lastName);
+  const roleName = useAppSelector((state) => state.profile.roleName);
   const avatar = useAppSelector((state) => state.profile.photo);
 
   return (

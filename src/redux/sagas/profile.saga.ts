@@ -1,26 +1,37 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { PayloadActionCreator } from '@reduxjs/toolkit/src/createAction';
 import { AxiosResponse } from 'axios';
-import { AnyFunction, ProfileActionType } from './saga.types';
+import { AnyFunction, AsyncActionType } from './saga.types';
 import { ProfileResponseType } from '../../resources/auth/auth.types';
 import auth from '../../resources/auth/auth.api';
 import profile from '../actions/profile.actions';
+import { loginRepository } from '../../resources/loginRepository';
 
-function* runAsyncSaga(action: ProfileActionType, saga: AnyFunction, pendingAction?: PayloadActionCreator<any>):any {
-  const result = yield saga(pendingAction);
-  yield put(action.me(result));
+function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction?: PayloadActionCreator<any>):any {
+  try {
+    const result = yield saga(pendingAction);
+    yield put(action.fulfilled(result));
+  } catch (error:any) {
+    const errorSerialized = {
+      message: error.message,
+      stack: error.stack,
+    };
+    yield put(action.failed(errorSerialized));
+    throw error;
+  }
 }
 
 function* profilePost() {
-  const me: AxiosResponse<ProfileResponseType> = yield call(auth.getMe);
+  const token = loginRepository.getAccessToken();
+  const me: AxiosResponse<ProfileResponseType> = token ? yield call(auth.getMe) : null;
 
-  return me.data;
+  return me?.data || null;
 }
 
 const profilePostSaga = runAsyncSaga.bind(null, profile, profilePost);
 
 function* profilePostWatcher() {
-  yield takeEvery(profile.me, profilePostSaga);
+  yield takeEvery(profile.pending, profilePostSaga);
 }
 
 function* profileSaga() {

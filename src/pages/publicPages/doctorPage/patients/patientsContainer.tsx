@@ -10,8 +10,8 @@ import appointments from '../../../../resources/appointments/appointments.api';
 const PatientsContainer:React.VFC = () => {
   const [data, updateData] = useState<AppointmentsResponseType>({ appointments: [], total: 0 });
   const getAppointments = async () => {
-    const response = await appointments.getAppointments(0, 12);
-    updateData(response.data);
+    const response = await appointments.getAppointments();
+    updateData(response?.data);
   };
   useEffect(() => {
     getAppointments();

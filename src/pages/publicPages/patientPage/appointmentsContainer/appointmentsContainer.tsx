@@ -5,16 +5,21 @@ import AppointmentsWrapper from './appointmentsContainer.styles';
 import PatientFullState from '../fullStateView/patientFullState';
 import PatientEmptyState from '../emptyStateView/patientEmptyState';
 import AppointmentsWrapperHeader from '../appointmentsHeader/appointmentsHeader';
+import { useAppSelector } from '../../../../hooks';
 
 const AppointmentsContainer:React.VFC = () => {
   const [data, updateData] = useState<AppointmentsResponseType>({ appointments: [], total: 0 });
   const getAppointments = async () => {
-    const response = await appointments.getAppointments(0, 12);
-    updateData(response.data);
+    const response = await appointments.getAppointments();
+    updateData(response?.data);
   };
+  const userId = useAppSelector((state) => state.profile.id);
+
   useEffect(() => {
-    getAppointments();
-  }, []);
+    if (userId) {
+      getAppointments();
+    }
+  }, [userId]);
 
   return (
     <>

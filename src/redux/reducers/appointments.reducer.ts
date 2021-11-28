@@ -30,15 +30,14 @@ export const appointmentSlice = createSlice({
         state.responseStatus = 'fulfilled';
       });
 
-    // builder
-    //   .addCase(login.pending, (state, { payload }) => {
-    //     state.status = 'loading';
-    //   });
-
-    // builder
-    //   .addCase(login.failed, (state, { payload }) => {
-    //     state.error = payload;
-    //   });
+    builder
+      .addCase(appointment.pending, (state) => {
+        state.status = 'loading';
+      });
+    builder
+      .addCase(appointment.failed, (state) => {
+        state.status = 'failed';
+      });
   },
 });
 
