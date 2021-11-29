@@ -22,6 +22,7 @@ export type DictionaryType = {
     restoreMessage: string
     resetLinkText: string
     forgotLinkText: string
+    signInTitle: string
   },
   authorisedPages: {
     sendEmailMessage: string

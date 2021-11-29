@@ -59,10 +59,10 @@ const SignInForm = () => {
         dirty,
       }) => (
         <CustomForm>
-          <FormTitle as="h1">Sign In</FormTitle>
+          <FormTitle as="h1">{dictionary.form.signInTitle}</FormTitle>
           <InputEmailContainer>
             <CustomField
-              isError={touched.email && errors.email}
+              error={touched.email && errors.email}
               name="email"
               placeholder="Email"
               type="email"
@@ -75,7 +75,7 @@ const SignInForm = () => {
           </InputEmailContainer>
           <InputPasswordContainer>
             <CustomField
-              isError={touched.password && errors.password}
+              error={touched.password && errors.password}
               name="password"
               placeholder="Password"
               type={isSecurePassword ? 'password' : 'text'}
@@ -99,7 +99,7 @@ const SignInForm = () => {
               icon="right"
               variant="primary"
             >
-              Sign in
+              {dictionary.form.signInTitle}
             </Button>
           </ButtonWrapper>
           <CustomLink to="/restore-password">{dictionary.form.forgotLinkText}</CustomLink>

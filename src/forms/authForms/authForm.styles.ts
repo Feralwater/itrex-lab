@@ -119,11 +119,11 @@ export const RestoreMessage = styled.div`
 `;
 
 interface CustomFieldProps {
-    isError: boolean
+    error: boolean
 }
 
 export const CustomField = styled(Field)<CustomFieldProps>`
-  border: ${(props) => (props.isError ? `1px solid ${colors.radical_red}` : `1px solid ${colors.link_water}`)};
+  border: ${(props) => (props.error ? `1px solid ${colors.radical_red}` : `1px solid ${colors.link_water}`)};
   box-sizing: border-box;
   box-shadow: 0px 4px 32px ${colors.link_water_alfa016};
   border-radius: 8px;

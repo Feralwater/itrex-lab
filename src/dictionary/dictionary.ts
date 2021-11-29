@@ -24,6 +24,7 @@ const dictionary: DictionaryType = {
     restoreMessage: ' Please use your email address, and we’ll send you the link to reset your password',
     resetLinkText: 'Send Reset Link',
     forgotLinkText: 'Forgot Password?',
+    signInTitle: 'Sign In',
   },
   authorisedPages: {
     sendEmailMessage: 'An email has been sent to',

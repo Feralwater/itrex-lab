@@ -51,7 +51,7 @@ const RestorePasswordForm = () => (
         </RestoreMessage>
         <InputEmailContainer>
           <CustomField
-            isError={touched.email && errors.email}
+            error={touched.email && errors.email}
             name="email"
             placeholder="Email"
             type="email"

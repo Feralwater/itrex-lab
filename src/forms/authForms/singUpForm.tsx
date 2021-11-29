@@ -74,7 +74,7 @@ const SignUpForm = () => {
           <FormTitle as="h1">Sign Up</FormTitle>
           <InputNameContainer>
             <CustomField
-              isError={touched.firstName && errors.firstName}
+              error={touched.firstName && errors.firstName}
               name="firstName"
               placeholder="First Name"
               type="text"
@@ -87,7 +87,7 @@ const SignUpForm = () => {
           </InputNameContainer>
           <InputNameContainer>
             <CustomField
-              isError={touched.lastName && errors.lastName}
+              error={touched.lastName && errors.lastName}
               name="lastName"
               placeholder="Last Name"
               type="text"
@@ -100,7 +100,7 @@ const SignUpForm = () => {
           </InputNameContainer>
           <InputEmailContainer>
             <CustomField
-              isError={touched.email && errors.email}
+              error={touched.email && errors.email}
               name="email"
               placeholder="Email"
               type="email"
@@ -113,7 +113,7 @@ const SignUpForm = () => {
           </InputEmailContainer>
           <InputPasswordContainer>
             <CustomField
-              isError={touched.password && errors.password}
+              error={touched.password && errors.password}
               name="password"
               placeholder="Password"
               type={!isSecurePassword ? 'password' : 'text'}
@@ -130,7 +130,7 @@ const SignUpForm = () => {
           </InputPasswordContainer>
           <InputConfirmPasswordContainer>
             <CustomField
-              isError={touched.confirmPassword && errors.confirmPassword}
+              error={touched.confirmPassword && errors.confirmPassword}
               name="confirmPassword"
               placeholder="Confirm Password"
               type={!isSecureConfirmPassword ? 'password' : 'text'}
