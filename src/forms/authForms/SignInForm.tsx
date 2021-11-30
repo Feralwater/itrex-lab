@@ -50,7 +50,8 @@ const SignInForm:React.VFC = () => {
           <FormTitle as="h1">{dictionary.form.signInTitle}</FormTitle>
           {signInFieldsData.map((data) => (
             <Field
-              value={values.email}
+              // @ts-ignore
+              value={values[data.name]}
               // @ts-ignore
               isError={touched[data.name] && errors[data.name]}
               // @ts-ignore
