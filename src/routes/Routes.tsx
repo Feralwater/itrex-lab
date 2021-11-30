@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Redirect, Route, Switch, useHistory, useLocation,
 } from 'react-router-dom';
@@ -14,24 +14,25 @@ import MakeAnAppointmentForm from '../forms/appointmentForms/makeAnAppointmentFo
 import { useAppSelector } from '../hooks';
 import { PATH } from './constants';
 import checkUserRole from './utils';
-import RestorePassword from '../pages/restorePassword/RestorePassword';
+import RestorePasswordForm from '../forms/authForms/restorePasswordForm';
 
 function Routes() {
   const { roleName } = useAppSelector((state) => state.profile);
   const history = useHistory();
   const location = useLocation();
+  const [restorePassword, setRestorePassword] = useState<string>('');
   useEffect(() => {
     checkUserRole(history, roleName, location.pathname);
   }, [roleName, location.pathname]);
   return (
     <Switch>
-      <Route path="/" exact render={() => <Redirect to={PATH.MY_PATIENTS} />} />
-      <Route path={PATH.RESTORE_PASSWORD} render={() => <AuthorisedLayout><RestorePassword /></AuthorisedLayout>} />
+      <Route path="/" exact render={() => <Redirect to={PATH.SIGN_IN} />} />
+      <Route path={PATH.RESTORE_PASSWORD} render={() => <AuthorisedLayout><RestorePasswordForm setRestorePassword={setRestorePassword} /></AuthorisedLayout>} />
       <Route
         path={PATH.SEND_EMAIL}
         render={() => (
           <AuthorisedLayout>
-            <SendEmail email="example@exam.com" />
+            <SendEmail email={restorePassword} />
           </AuthorisedLayout>
         )}
       />

@@ -10,14 +10,15 @@ import {
 } from './authForm.styles';
 import Button from '../../components/Button/Button';
 import dictionary from '../../dictionary/dictionary';
-import { RestoreValues } from './form.types';
 import restorePasswordValidationSchema from './validation/restorePassword.validation';
 import { PATH } from '../../routes/constants';
 import { restoreFieldsData } from './fieldsData';
+import { RestoreEmail } from './form.types';
 
-const RestorePasswordForm:React.VFC = () => {
+const RestorePasswordForm:React.VFC<RestoreEmail> = ({ setRestorePassword }) => {
   const history = useHistory();
-  const handleSubmitForm = () => {
+  const handleSubmitForm = (email:string) => {
+    setRestorePassword(email);
     history.push(PATH.SEND_EMAIL);
   };
   return (
@@ -25,11 +26,8 @@ const RestorePasswordForm:React.VFC = () => {
       initialValues={{
         email: '',
       }}
-      onSubmit={(
-        values: RestoreValues,
-        actions,
-      ) => {
-        handleSubmitForm();
+      onSubmit={({ email }, actions) => {
+        handleSubmitForm(email);
         actions.setSubmitting(false);
       }}
       validationSchema={restorePasswordValidationSchema}

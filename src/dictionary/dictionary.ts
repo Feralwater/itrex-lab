@@ -28,7 +28,8 @@ const dictionary: DictionaryType = {
     signUpTitle: 'Sign Up',
   },
   authorisedPages: {
-    sendEmailMessage: 'An email has been sent to',
+    sendEmailMessage1: 'An email has been sent to',
+    sendEmailMessage2: 'Check your inbox, and click the reset link provided.',
     checkEmailMessage: 'Check your inbox, and click the reset link provided.',
     signUpQuestion: 'Don`t have an account?',
     signUp: 'Sign up',

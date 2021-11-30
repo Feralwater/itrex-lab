@@ -26,7 +26,8 @@ export type DictionaryType = {
     signUpTitle: string
   },
   authorisedPages: {
-    sendEmailMessage: string
+    sendEmailMessage1: string
+    sendEmailMessage2: string
     checkEmailMessage: string
     signUpQuestion: string
     signInQuestion: string

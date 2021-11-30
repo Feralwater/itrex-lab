@@ -8,23 +8,29 @@ import {
   RestorePasswordContainer,
 } from '../../forms/authForms/authForm.styles';
 import dictionary from '../../dictionary/dictionary';
+import { SendEmailProps } from './SendEmail.types';
+import { PATH } from '../../routes/constants';
 
-type SendEmailPropsType = {
-    email: string
-}
-
-const SendEmail: React.VFC<SendEmailPropsType> = ({ email }) => (
+const SendEmail: React.VFC<SendEmailProps> = ({ email }) => (
   <RestorePasswordContainer>
-    <FormTitle as={Link} to="/restore-password">
+    <FormTitle as={Link} to={PATH.RESTORE_PASSWORD}>
       <FormTitleLeftArrow />
-      Restore Password
+      {dictionary.form.restoreTitle}
     </FormTitle>
     <RestoreMessage>
-      {dictionary.authorisedPages.sendEmailMessage}
+      {dictionary.authorisedPages.sendEmailMessage1}
       {' '}
-      <CustomLink to="">{email}</CustomLink>
-      .
-      {dictionary.authorisedPages.sendEmailMessage}
+      <CustomLink
+        to="#"
+        onClick={(e) => {
+          window.location.href = `mailto:${email}`;
+          e.preventDefault();
+        }}
+      >
+        {email}
+      </CustomLink>
+      {'. '}
+      {dictionary.authorisedPages.sendEmailMessage2}
     </RestoreMessage>
   </RestorePasswordContainer>
 );

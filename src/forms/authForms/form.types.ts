@@ -28,3 +28,8 @@ export interface FormFieldData {
 export interface RestoreValues {
   email: string
 }
+
+export interface RestoreEmail {
+  // eslint-disable-next-line no-unused-vars
+  setRestorePassword:(email: string)=>void
+}
