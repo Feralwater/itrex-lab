@@ -1,83 +1,81 @@
 import React from 'react';
-import { Formik, FormikHelpers } from 'formik';
-import { Link } from 'react-router-dom';
-import { InputEmailContainer } from 'components/Input/Input.styles';
+import {
+  Field, Formik, FormikErrors, FormikTouched, FormikValues,
+} from 'formik';
+import { Link, useHistory } from 'react-router-dom';
 import {
   ButtonWrapper,
-  CustomErrorMessage,
-  CustomField,
   CustomForm, FormTitle, FormTitleLeftArrow,
   RestoreMessage,
 } from './authForm.styles';
 import Button from '../../components/Button/Button';
 import dictionary from '../../dictionary/dictionary';
-import authValidationSchema from './validation/signUp.validation';
+import { RestoreValues } from './form.types';
+import restorePasswordValidationSchema from './validation/restorePassword.validation';
+import { PATH } from '../../routes/constants';
+import { restoreFieldsData } from './fieldsData';
 
-type Values = {
-    email: string
-}
-
-const RestorePasswordForm = () => (
-  <Formik
-    initialValues={{
-      email: '',
-    }}
-    onSubmit={(
-      values: Values,
-      { setSubmitting }: FormikHelpers<Values>,
-    ) => {
-      alert(JSON.stringify(values, null, 2));
-      setSubmitting(false);
-    }}
-    validateOnBlur
-    validationSchema={authValidationSchema}
-  >
-    {({
-      values,
-      errors,
-      touched,
-      handleChange,
-      handleBlur,
-      isValid,
-      handleSubmit,
-      dirty,
-    }) => (
-      <CustomForm>
-        <FormTitle as={Link} to="/sign-in">
-          <FormTitleLeftArrow />
-          {dictionary.form.restoreTitle}
-        </FormTitle>
-        <RestoreMessage>
-          {dictionary.form.restoreMessage}
-        </RestoreMessage>
-        <InputEmailContainer icon="left">
-          <CustomField
-            error={touched.email && errors.email}
-            name="email"
-            placeholder="Email"
-            type="email"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.email}
-          />
-          {touched.email && errors.email
-                        && <CustomErrorMessage component="span" name="email" />}
-        </InputEmailContainer>
-        <ButtonWrapper>
-          <Button
-            type="submit"
-            disabled={!(isValid && dirty)}
-            onClick={handleSubmit}
-            icon="right"
-            size="large"
-            variant="primary"
-          >
-            {dictionary.form.resetLinkText}
-          </Button>
-        </ButtonWrapper>
-      </CustomForm>
-    )}
-  </Formik>
-);
+const RestorePasswordForm:React.VFC = () => {
+  const history = useHistory();
+  const handleSubmitForm = () => {
+    history.push(PATH.SEND_EMAIL);
+  };
+  return (
+    <Formik
+      initialValues={{
+        email: '',
+      }}
+      onSubmit={(
+        values: RestoreValues,
+        actions,
+      ) => {
+        handleSubmitForm();
+        actions.setSubmitting(false);
+      }}
+      validationSchema={restorePasswordValidationSchema}
+    >
+      {({
+        values,
+        errors,
+        touched,
+        handleChange,
+        handleBlur,
+        isValid,
+        handleSubmit,
+        dirty,
+      }) => (
+        <CustomForm onSubmit={handleSubmit}>
+          <FormTitle as={Link} to={PATH.SIGN_IN}>
+            <FormTitleLeftArrow />
+            {dictionary.form.restoreTitle}
+          </FormTitle>
+          <RestoreMessage>{dictionary.form.restoreMessage}</RestoreMessage>
+          {restoreFieldsData.map((data) => (
+            <Field
+              key={data.name}
+              value={(values as FormikValues)[data.name]}
+              isError={(touched as FormikTouched<FormikValues>)[data.name] && (errors as FormikErrors<FormikValues>)[data.name]}
+              errorText={(errors as FormikErrors<FormikValues>)[data.name]}
+              onBlur={handleBlur}
+              onChange={handleChange}
+              {...data}
+            />
+          ))}
+          <ButtonWrapper>
+            <Button
+              type="submit"
+              disabled={!(isValid && dirty)}
+              icon="right"
+              size="large"
+              variant="primary"
+            >
+              {dictionary.form.resetLinkText}
+            </Button>
+          </ButtonWrapper>
+        </CustomForm>
+      )}
+    </Formik>
+  );
+};
 
 export default RestorePasswordForm;

@@ -52,12 +52,6 @@ export const StyledInput = styled.input<InputProps>`
   }
 `;
 
-export const InputEmailContainer = styled(InputContainer)`
-  &:before {
-    //background-image: url("svgImages/email.svg");
-  }
-`;
-
 interface InputPasswordIconProps {
   isVisible: boolean;
 }

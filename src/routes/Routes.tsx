@@ -4,7 +4,7 @@ import {
 } from 'react-router-dom';
 import SendEmail from 'pages/sendEmail/SendEmail';
 import SignIn from 'pages/SignIn/SignIn';
-import SignUp from 'pages/signUp/SignUp';
+import SignUp from 'pages/SignUp/SignUp';
 import PatientsContainer from 'pages/doctorPage/patients/patientsContainer';
 import AppointmentsContainer from 'pages/patientPage/appointmentsContainer/appointmentsContainer';
 import Error404 from '../pages/error404Page/Error404';

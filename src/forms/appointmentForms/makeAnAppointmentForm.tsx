@@ -13,8 +13,8 @@ import {
 import dictionary from 'dictionary/dictionary';
 import { PatientsTitle } from 'pages/patientPage/appointmentsHeader/appointmentsHeader.styles';
 import AppointmentsSteps from 'pages/patientPage/appointmentsSteps/appointmentsSteps';
-import DatePicker from 'pages/patientPage/datePicker/datePicker';
-import TimeSlots from 'pages/patientPage/timeSlots/timeSlots';
+import DatePicker from 'pages/patientPage/components/DatePicker/datePicker';
+import TimeSlots from 'pages/patientPage/components/TimeSlots/timeSlots';
 import Button from '../../components/Button/Button';
 import CustomSelect from '../../components/Select/Select';
 import { SpecializationsType } from '../../resources/occupations/occupations.types';
@@ -27,7 +27,7 @@ import { CustomErrorMessage } from '../authForms/authForm.styles';
 import { useAppDispatch } from '../../hooks';
 import { appointment } from '../../redux/actions/appointment.actions';
 
-const MakeAnAppointmentForm = () => {
+const MakeAnAppointmentForm:React.VFC = () => {
   const [specializations, setSpecializations] = useState<Array<SpecializationsType>>([]);
   const [doctorNames, setDoctorNames] = useState<Array<DoctorsBySpecializationIdResponseType>>([]);
   const [selectedOccupationID, setSelectedOccupationID] = useState<string>('');

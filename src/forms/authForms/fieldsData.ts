@@ -1,7 +1,7 @@
 import Input from '../../components/Input/Input';
-import { formFieldData } from './form.types';
+import { FormFieldData } from './form.types';
 
-export const signInFieldsData:Array<formFieldData> = [
+export const signInFieldsData:Array<FormFieldData> = [
   {
     component: Input,
     name: 'email',
@@ -24,7 +24,7 @@ export const signInFieldsData:Array<formFieldData> = [
   },
 ];
 
-export const signUpFieldsData:Array<formFieldData> = [
+export const signUpFieldsData:Array<FormFieldData> = [
   {
     component: Input,
     name: 'firstName',
@@ -74,5 +74,18 @@ export const signUpFieldsData:Array<formFieldData> = [
     type: 'password',
     icon: 'left',
     iconURL: 'svgImages/check-mark.svg',
+  },
+];
+
+export const restoreFieldsData:Array<FormFieldData> = [
+  {
+    component: Input,
+    name: 'email',
+    inputName: 'email',
+    label: '',
+    type: 'email',
+    placeholder: 'Email',
+    icon: 'left',
+    iconURL: 'svgImages/email.svg',
   },
 ];

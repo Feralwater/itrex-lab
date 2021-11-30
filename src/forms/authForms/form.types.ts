@@ -14,7 +14,7 @@ export interface SignUpValues {
   confirmPassword: string
 }
 
-export interface formFieldData {
+export interface FormFieldData {
   component: React.VFC<TextInput>,
   name: string
   inputName: string
@@ -23,4 +23,8 @@ export interface formFieldData {
   placeholder: string
   icon: string
   iconURL: string
+}
+
+export interface RestoreValues {
+  email: string
 }

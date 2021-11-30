@@ -2,8 +2,8 @@ import React from 'react';
 import Calendar, { CalendarTileProperties } from 'react-calendar';
 import { useField } from 'formik';
 import { isPast, addDays, format } from 'date-fns';
-import { ReactComponent as NextIcon } from '../../../assets/svgImages/rightArrowGrey-icon.svg';
-import { ReactComponent as PrevIcon } from '../../../assets/svgImages/leftArrowGrey-icon.svg';
+import { ReactComponent as NextIcon } from '../../../../assets/svgImages/rightArrowGrey-icon.svg';
+import { ReactComponent as PrevIcon } from '../../../../assets/svgImages/leftArrowGrey-icon.svg';
 import ReactCalendar from './dataPicker.styles';
 import { DatePickerPropsType } from './dataPicker.types';
 
