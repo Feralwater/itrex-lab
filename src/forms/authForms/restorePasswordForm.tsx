@@ -1,12 +1,13 @@
 import React from 'react';
 import { Formik, FormikHelpers } from 'formik';
 import { Link } from 'react-router-dom';
+import { InputEmailContainer } from 'components/Input/Input.styles';
 import {
   ButtonWrapper,
   CustomErrorMessage,
   CustomField,
   CustomForm, FormTitle, FormTitleLeftArrow,
-  InputEmailContainer, RestoreMessage,
+  RestoreMessage,
 } from './authForm.styles';
 import Button from '../../components/Button/Button';
 import dictionary from '../../dictionary/dictionary';
@@ -49,7 +50,7 @@ const RestorePasswordForm = () => (
         <RestoreMessage>
           {dictionary.form.restoreMessage}
         </RestoreMessage>
-        <InputEmailContainer>
+        <InputEmailContainer icon="left">
           <CustomField
             error={touched.email && errors.email}
             name="email"

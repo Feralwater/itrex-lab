@@ -21,7 +21,7 @@ const auth = {
 
   async getMe() {
     try {
-      return instance.get<ProfileResponseType>('auth/profile'); //
+      return instance.get<ProfileResponseType>('auth/profile');
     } catch (e) {
       console.log(JSON.stringify(e));
       throw (e);

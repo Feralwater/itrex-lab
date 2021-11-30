@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Field, Formik } from 'formik';
-import InputText from 'components/Input/Input';
+import InputText from 'components/Input/Tinput';
 import {
   AppointmentFormContainer,
   AppointmentStepsContainer,
@@ -11,12 +11,12 @@ import {
   SelectTimeslotStep,
 } from 'forms/appointmentForms/makeAnAppointment.styles';
 import dictionary from 'dictionary/dictionary';
-import DatePicker from 'pages/publicPages/patientPage/datePicker/datePicker';
-import { PatientsTitle } from 'pages/publicPages/patientPage/appointmentsHeader/appointmentsHeader.styles';
+import { PatientsTitle } from 'pages/patientPage/appointmentsHeader/appointmentsHeader.styles';
+import AppointmentsSteps from 'pages/patientPage/appointmentsSteps/appointmentsSteps';
+import DatePicker from 'pages/patientPage/datePicker/datePicker';
+import TimeSlots from 'pages/patientPage/timeSlots/timeSlots';
 import Button from '../../components/Button/Button';
 import CustomSelect from '../../components/Select/Select';
-import AppointmentsSteps from '../../pages/publicPages/patientPage/appointmentsSteps/appointmentsSteps';
-import TimeSlots from '../../pages/publicPages/patientPage/timeSlots/timeSlots';
 import { SpecializationsType } from '../../resources/occupations/occupations.types';
 import occupations from '../../resources/occupations/occupations.api';
 import { DoctorsBySpecializationIdResponseType } from '../../resources/doctors/doctors.types';

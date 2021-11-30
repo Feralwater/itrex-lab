@@ -2,12 +2,10 @@ import { Formik } from 'formik';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import {
+  InputConfirmPasswordContainer, InputEmailContainer, InputNameContainer, InputPasswordContainer, InputPasswordIcon,
+} from 'components/Input/Input.styles';
+import {
   ButtonWrapper,
-  InputConfirmPasswordContainer,
-  InputEmailContainer,
-  InputNameContainer,
-  InputPasswordContainer,
-  InputPasswordIcon,
   CustomForm,
   CustomField,
   CustomErrorMessage,
@@ -72,7 +70,7 @@ const SignUpForm = () => {
       }) => (
         <CustomForm>
           <FormTitle as="h1">Sign Up</FormTitle>
-          <InputNameContainer>
+          <InputNameContainer icon="left">
             <CustomField
               error={touched.firstName && errors.firstName}
               name="firstName"
@@ -85,7 +83,7 @@ const SignUpForm = () => {
             {touched.firstName && errors.firstName
                         && <CustomErrorMessage name="firstName" component="span" />}
           </InputNameContainer>
-          <InputNameContainer>
+          <InputNameContainer icon="left">
             <CustomField
               error={touched.lastName && errors.lastName}
               name="lastName"
@@ -98,7 +96,7 @@ const SignUpForm = () => {
             {touched.lastName && errors.lastName
                         && <CustomErrorMessage name="lastName" component="span" />}
           </InputNameContainer>
-          <InputEmailContainer>
+          <InputEmailContainer icon="left">
             <CustomField
               error={touched.email && errors.email}
               name="email"
@@ -111,7 +109,7 @@ const SignUpForm = () => {
             {touched.email && errors.email
                         && <CustomErrorMessage component="span" name="email" />}
           </InputEmailContainer>
-          <InputPasswordContainer>
+          <InputPasswordContainer icon="left">
             <CustomField
               error={touched.password && errors.password}
               name="password"
@@ -128,7 +126,7 @@ const SignUpForm = () => {
             {touched.password && errors.password
                         && <CustomErrorMessage component="span" name="password" />}
           </InputPasswordContainer>
-          <InputConfirmPasswordContainer>
+          <InputConfirmPasswordContainer icon="left">
             <CustomField
               error={touched.confirmPassword && errors.confirmPassword}
               name="confirmPassword"

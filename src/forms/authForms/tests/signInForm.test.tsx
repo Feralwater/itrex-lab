@@ -5,7 +5,7 @@ import {
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { BrowserRouter } from 'react-router-dom';
-import SignInForm from '../signInForm';
+import SignInForm from '../SignInForm';
 
 describe('Login form tests', () => {
   const initialState = {

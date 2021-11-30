@@ -2,19 +2,19 @@ import React, { useEffect } from 'react';
 import {
   Redirect, Route, Switch, useHistory, useLocation,
 } from 'react-router-dom';
-import RestorePassword from '../pages/authorisedPages/restorePassword/RestorePassword';
-import SendEmail from '../pages/authorisedPages/sendEmail/SendEmail';
-import SignUp from '../pages/authorisedPages/signUp/SignUp';
+import SendEmail from 'pages/sendEmail/SendEmail';
+import SignIn from 'pages/SignIn/SignIn';
+import SignUp from 'pages/signUp/SignUp';
+import PatientsContainer from 'pages/doctorPage/patients/patientsContainer';
+import AppointmentsContainer from 'pages/patientPage/appointmentsContainer/appointmentsContainer';
 import Error404 from '../pages/error404Page/Error404';
 import AuthorisedLayout from '../layouts/authorised/authorised';
-import SignIn from '../pages/authorisedPages/signIn/SignIn';
 import Public from '../layouts/public/public';
 import MakeAnAppointmentForm from '../forms/appointmentForms/makeAnAppointmentForm';
-import PatientsContainer from '../pages/publicPages/doctorPage/patients/patientsContainer';
-import AppointmentsContainer from '../pages/publicPages/patientPage/appointmentsContainer/appointmentsContainer';
 import { useAppSelector } from '../hooks';
 import { PATH } from './constants';
 import checkUserRole from './utils';
+import RestorePassword from '../pages/restorePassword/RestorePassword';
 
 function Routes() {
   const { roleName } = useAppSelector((state) => state.profile);
