@@ -52,27 +52,9 @@ export const StyledInput = styled.input<InputProps>`
   }
 `;
 
-export const InputNameContainer = styled(InputContainer)`
-  &:before {
-    background-image: url("svgImages/user.svg");
-  }
-`;
-
 export const InputEmailContainer = styled(InputContainer)`
   &:before {
     //background-image: url("svgImages/email.svg");
-  }
-`;
-
-export const InputPasswordContainer = styled(InputContainer)`
-  &:before {
-    //background-image: url("svgImages/lock.svg");
-  }
-`;
-
-export const InputConfirmPasswordContainer = styled(InputContainer)`
-  &:before {
-    background-image: url("svgImages/check-mark.svg");
   }
 `;
 

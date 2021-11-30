@@ -7,14 +7,14 @@ export type SignUpInResponseType = {
   refresh_token: string
 }
 
-export type SignUpDataType = {
+export interface SignUpData {
   userName: string
   password: string
   firstName: string
   lastName: string
 }
 
-export type SignInDataType = {
+export interface SignInData {
   userName: string
   password: string
 }

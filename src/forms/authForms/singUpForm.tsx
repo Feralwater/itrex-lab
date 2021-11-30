@@ -1,35 +1,30 @@
-import { Formik } from 'formik';
-import React, { useState } from 'react';
+import {
+  Field, Formik, FormikErrors, FormikTouched, FormikValues,
+} from 'formik';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
-import {
-  InputConfirmPasswordContainer, InputEmailContainer, InputNameContainer, InputPasswordContainer, InputPasswordIcon,
-} from 'components/Input/Input.styles';
-import {
-  ButtonWrapper,
-  CustomForm,
-  CustomField,
-  CustomErrorMessage,
-  FormTitle,
-} from './authForm.styles';
 import Button from '../../components/Button/Button';
 import { PATH } from '../../routes/constants';
 import signUpValidationSchema from './validation/signUp.validation';
 import { useAppDispatch } from '../../hooks';
 import { registration } from '../../redux/actions/registration.actions';
+import { SignUpValues } from './form.types';
+import { ButtonWrapper, CustomForm, FormTitle } from './authForm.styles';
+import { signUpFieldsData } from './fieldsData';
+import dictionary from '../../dictionary/dictionary';
+import { SignUpData } from '../../resources/auth/auth.types';
 
-type Values = {
-    firstName: string
-    lastName: string
-    email: string
-    password: string
-    confirmPassword: string
-}
-
-const SignUpForm = () => {
-  const [isSecurePassword, setIsSecurePassword] = useState<boolean>(false);
-  const [isSecureConfirmPassword, setIsSecureConfirmPassword] = useState<boolean>(false);
+const SignUpForm:React.VFC = () => {
   const history = useHistory();
   const dispatch = useAppDispatch();
+  const handleSubmitForm = ({
+    userName, password, firstName, lastName,
+  }: SignUpData) => {
+    dispatch(registration.pending({
+      userName, password, firstName, lastName,
+    }));
+    history.push(PATH.MY_APPOINTMENTS);
+  };
   return (
     <Formik
       initialValues={{
@@ -39,23 +34,14 @@ const SignUpForm = () => {
         password: '',
         confirmPassword: '',
       }}
-      onSubmit={
-        async ({
-          email: userName, password, firstName, lastName,
-        }:Values, actions) => {
-          try {
-            dispatch(registration.pending({
-              userName, password, firstName, lastName,
-            }));
-            history.push(PATH.MY_APPOINTMENTS);
-            actions.setSubmitting(false);
-          } catch (e) {
-            // @ts-ignore
-            alert(e.message);
-          }
-        }
-}
-      validateOnBlur
+      onSubmit={({
+        email: userName, password, firstName, lastName,
+      }:SignUpValues, actions) => {
+        handleSubmitForm({
+          userName, password, firstName, lastName,
+        });
+        actions.setSubmitting(false);
+      }}
       validationSchema={signUpValidationSchema}
     >
       {({
@@ -68,91 +54,28 @@ const SignUpForm = () => {
         handleSubmit,
         dirty,
       }) => (
-        <CustomForm>
-          <FormTitle as="h1">Sign Up</FormTitle>
-          <InputNameContainer icon="left">
-            <CustomField
-              error={touched.firstName && errors.firstName}
-              name="firstName"
-              placeholder="First Name"
-              type="text"
-              onChange={handleChange}
+        <CustomForm onSubmit={handleSubmit}>
+          <FormTitle as="h1">{dictionary.form.signUpTitle}</FormTitle>
+          {signUpFieldsData.map((data) => (
+            <Field
+              key={data.name}
+              value={(values as FormikValues)[data.name]}
+              isError={(touched as FormikTouched<FormikValues>)[data.name] && (errors as FormikErrors<FormikValues>)[data.name]}
+              errorText={(errors as FormikErrors<FormikValues>)[data.name]}
               onBlur={handleBlur}
-              value={values.firstName}
-            />
-            {touched.firstName && errors.firstName
-                        && <CustomErrorMessage name="firstName" component="span" />}
-          </InputNameContainer>
-          <InputNameContainer icon="left">
-            <CustomField
-              error={touched.lastName && errors.lastName}
-              name="lastName"
-              placeholder="Last Name"
-              type="text"
               onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.lastName}
+              {...data}
             />
-            {touched.lastName && errors.lastName
-                        && <CustomErrorMessage name="lastName" component="span" />}
-          </InputNameContainer>
-          <InputEmailContainer icon="left">
-            <CustomField
-              error={touched.email && errors.email}
-              name="email"
-              placeholder="Email"
-              type="email"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.email}
-            />
-            {touched.email && errors.email
-                        && <CustomErrorMessage component="span" name="email" />}
-          </InputEmailContainer>
-          <InputPasswordContainer icon="left">
-            <CustomField
-              error={touched.password && errors.password}
-              name="password"
-              placeholder="Password"
-              type={!isSecurePassword ? 'password' : 'text'}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.password}
-            />
-            <InputPasswordIcon
-              isVisible={isSecurePassword}
-              onClick={() => setIsSecurePassword((prev) => !prev)}
-            />
-            {touched.password && errors.password
-                        && <CustomErrorMessage component="span" name="password" />}
-          </InputPasswordContainer>
-          <InputConfirmPasswordContainer icon="left">
-            <CustomField
-              error={touched.confirmPassword && errors.confirmPassword}
-              name="confirmPassword"
-              placeholder="Confirm Password"
-              type={!isSecureConfirmPassword ? 'password' : 'text'}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.confirmPassword}
-            />
-            <InputPasswordIcon
-              isVisible={isSecureConfirmPassword}
-              onClick={() => setIsSecureConfirmPassword((prev) => !prev)}
-            />
-            {touched.confirmPassword && errors.confirmPassword
-                        && <CustomErrorMessage component="span" name="confirmPassword" />}
-          </InputConfirmPasswordContainer>
+          ))}
           <ButtonWrapper>
             <Button
               type="submit"
               disabled={!(isValid && dirty)}
-              onClick={handleSubmit}
               size="large"
               icon="right"
               variant="primary"
             >
-              Sign Up
+              {dictionary.form.signUpTitle}
             </Button>
           </ButtonWrapper>
         </CustomForm>

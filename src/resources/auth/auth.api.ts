@@ -1,16 +1,16 @@
 import instance from '../../services/api/api';
 import {
   ProfileResponseType,
-  SignInDataType, SignUpDataType, SignUpInResponseType,
+  SignInData, SignUpData, SignUpInResponseType,
 } from './auth.types';
 import { loginRepository } from '../loginRepository';
 
 const auth = {
-  async SignUp(data: SignUpDataType) {
+  async SignUp(data: SignUpData) {
     return instance.post<SignUpInResponseType>('auth/registration', data);
   },
 
-  async SignIn(data:SignInDataType) {
+  async SignIn(data:SignInData) {
     try {
       return instance.post<SignUpInResponseType>('auth/login', data);
     } catch (e) {

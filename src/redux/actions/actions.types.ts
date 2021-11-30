@@ -1,10 +1,10 @@
-import { SignInDataType, SignUpDataType, SignUpInResponseType } from '../../resources/auth/auth.types';
+import { SignInData, SignUpData, SignUpInResponseType } from '../../resources/auth/auth.types';
 import { NewAppointmentResponseType } from '../../resources/appointments/appointments.types';
 
-export type LoginPendingType = SignInDataType;
+export type LoginPendingType = SignInData;
 export type LoginFulfilledType = SignUpInResponseType;
 
-export type RegistrationPendingType = SignUpDataType;
+export type RegistrationPendingType = SignUpData;
 export type RegistrationFulfilledType = SignUpInResponseType;
 
 export type AppointmentPendingType = {
