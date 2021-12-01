@@ -19,11 +19,13 @@ export type DictionaryType = {
   },
   form: {
     restoreTitle: string
+    makeAppointmentTitle: string
     restoreMessage: string
     resetLinkText: string
     forgotLinkText: string
     signInTitle: string
     signUpTitle: string
+    submitTitle: string
   },
   authorisedPages: {
     sendEmailMessage1: string

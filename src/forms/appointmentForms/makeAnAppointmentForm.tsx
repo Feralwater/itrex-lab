@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Field, Formik } from 'formik';
-import InputText from 'components/Input/Tinput';
+import {
+  Field, Formik, FormikErrors, FormikTouched, FormikValues,
+} from 'formik';
 import {
   AppointmentFormContainer,
   AppointmentStepsContainer,
   ChooseDayStep,
-  InputContainer,
   MakeAppointmentButtonContainer,
   SelectDoctorStep,
   SelectTimeslotStep,
@@ -23,9 +23,9 @@ import { DoctorsBySpecializationIdResponseType } from '../../resources/doctors/d
 import doctors from '../../resources/doctors/doctors.api';
 import appointments from '../../resources/appointments/appointments.api';
 import appointmentValidationSchema from './validation/appointment.validation';
-import { CustomErrorMessage } from '../authForms/authForm.styles';
 import { useAppDispatch } from '../../hooks';
 import { appointment } from '../../redux/actions/appointment.actions';
+import makeAppointmentsFieldsData from './fieldsData';
 
 const MakeAnAppointmentForm:React.VFC = () => {
   const [specializations, setSpecializations] = useState<Array<SpecializationsType>>([]);
@@ -80,7 +80,7 @@ const MakeAnAppointmentForm:React.VFC = () => {
   const dispatch = useAppDispatch();
   return (
     <>
-      <PatientsTitle>Make an appointment</PatientsTitle>
+      <PatientsTitle>{dictionary.form.makeAppointmentTitle}</PatientsTitle>
       <Formik
         initialValues={{
           occupation: {
@@ -119,56 +119,48 @@ const MakeAnAppointmentForm:React.VFC = () => {
           dirty,
           touched,
           errors,
+          handleSubmit,
+          handleBlur,
+          handleChange,
         }) => (
-          <AppointmentFormContainer>
+          <AppointmentFormContainer onSubmit={handleSubmit}>
             <AppointmentStepsContainer>
               <SelectDoctorStep>
                 <AppointmentsSteps
                   stepDescription={dictionary.makeAppointments.step1Description}
                   stepNumber={1}
                 />
-                <InputContainer>
+
+                <Field
+                  component={CustomSelect}
+                  name="occupation"
+                  id="occupation"
+                  options={optionsForOccupationsSelect}
+                  placeholder="Choose an occupation"
+                  labelText="Occupation"
+                  setSelectedValue={setSelectedOccupationID}
+                />
+
+                <Field
+                  component={CustomSelect}
+                  name="doctorName"
+                  id="doctorName"
+                  placeholder="Choose a doctor"
+                  labelText="Doctor`s name"
+                  options={optionsForDoctorNamesSelect}
+                  setSelectedValue={setSelectedDoctorID}
+                />
+                {makeAppointmentsFieldsData.map((data) => (
                   <Field
-                    component={CustomSelect}
-                    name="occupation"
-                    id="occupation"
-                    options={optionsForOccupationsSelect}
-                    placeholder="Choose an occupation"
-                    labelText="Occupation"
-                    setSelectedValue={setSelectedOccupationID}
+                    key={data.name}
+                    value={(values as FormikValues)[data.name]}
+                    isError={(touched as FormikTouched<FormikValues>)[data.name] && (errors as FormikErrors<FormikValues>)[data.name]}
+                    errorText={(errors as FormikErrors<FormikValues>)[data.name]}
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    {...data}
                   />
-                </InputContainer>
-                <InputContainer>
-                  <Field
-                    component={CustomSelect}
-                    name="doctorName"
-                    id="doctorName"
-                    placeholder="Choose a doctor"
-                    labelText="Doctor`s name"
-                    options={optionsForDoctorNamesSelect}
-                    setSelectedValue={setSelectedDoctorID}
-                  />
-                </InputContainer>
-                <InputContainer>
-                  <Field
-                    component={InputText}
-                    placeholder="Leave a reason for the visit"
-                    name="reason"
-                    label="Reason for the visit"
-                  />
-                  {touched.reason && errors.reason
-                  && <CustomErrorMessage name="reason" component="span" />}
-                </InputContainer>
-                <InputContainer>
-                  <Field
-                    component={InputText}
-                    placeholder="Leave a note if needed"
-                    name="note"
-                    label="Note"
-                  />
-                  {touched.note && errors.note
-                  && <CustomErrorMessage name="note" component="span" />}
-                </InputContainer>
+                ))}
               </SelectDoctorStep>
               <ChooseDayStep>
                 <AppointmentsSteps stepDescription={dictionary.makeAppointments.step2Description} stepNumber={2} />
@@ -198,7 +190,7 @@ const MakeAnAppointmentForm:React.VFC = () => {
                 icon="default"
                 disabled={!(isValid && dirty)}
               >
-                Submit
+                {dictionary.form.submitTitle}
               </Button>
             </MakeAppointmentButtonContainer>
           </AppointmentFormContainer>

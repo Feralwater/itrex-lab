@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { Form } from 'formik';
-import colors from '../../styles/colors';
 
 export const AppointmentStepsNumbers = styled.div`
   display: flex;
@@ -46,18 +45,4 @@ export const MakeAppointmentButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   margin: 0 32px 0 0;
-`;
-
-export const InputContainer = styled.div`
-  position: relative;
-  
-  & label {
-    font-weight: 500;
-    font-size: 13px;
-    line-height: 130%;
-    color: ${colors.black};
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
 `;

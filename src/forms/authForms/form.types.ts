@@ -22,7 +22,7 @@ export interface FormFieldData {
   type: string
   placeholder: string
   icon: string
-  iconURL: string
+  iconURL?: string
 }
 
 export interface RestoreValues {

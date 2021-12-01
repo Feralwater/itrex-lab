@@ -27,8 +27,10 @@ describe('Login form tests', () => {
     );
     const inputNodeEmail = component.getByPlaceholderText(/email/ig);
     const inputNodePassword = component.getByPlaceholderText(/password/ig);
-    expect(inputNodeEmail).toBeInTheDocument();
-    expect(inputNodePassword).toBeInTheDocument();
+    expect(inputNodeEmail)
+      .toBeInTheDocument();
+    expect(inputNodePassword)
+      .toBeInTheDocument();
   });
   it('inputs should accept text', async () => {
     store = mockStore(initialState);
@@ -43,8 +45,10 @@ describe('Login form tests', () => {
     const passwordInputNode = getByPlaceholderText(/password/i) as HTMLInputElement;
     fireEvent.change(emailInputNode, { target: { value: 'testing email' } });
     fireEvent.change(passwordInputNode, { target: { value: 'testing password' } });
-    await waitFor(() => expect(emailInputNode.value).toMatch('testing email'));
-    await waitFor(() => expect(passwordInputNode.value).toMatch('testing password'));
+    await waitFor(() => expect(emailInputNode.value)
+      .toMatch('testing email'));
+    await waitFor(() => expect(passwordInputNode.value)
+      .toMatch('testing password'));
   });
   it('shouldn`t be error message on the document', () => {
     store = mockStore(initialState);
@@ -59,12 +63,17 @@ describe('Login form tests', () => {
     const errorPasswordNode = queryByText(
       /Password must be at least 2 characters|Password must be 30 characters or less|Password is required/i,
     ) as HTMLSpanElement;
-    expect(errorEmailNode).toBeNull();
-    expect(errorPasswordNode).toBeNull();
+    expect(errorEmailNode)
+      .toBeNull();
+    expect(errorPasswordNode)
+      .toBeNull();
   });
   it('button should be disable while inputs values are incorrect', async () => {
     store = mockStore(initialState);
-    const { getByRole, getByPlaceholderText } = render(
+    const {
+      getByRole,
+      getByPlaceholderText,
+    } = render(
       <Provider store={store}>
         <BrowserRouter>
           <SignInForm />
@@ -78,7 +87,8 @@ describe('Login form tests', () => {
     passwordInputNode.focus();
     // fireEvent.change(emailInputNode, { target: { value: 'email.gmail.com' } });
     // fireEvent.change(passwordInputNode, { target: { value: 'p' } });
-    await waitFor(() => expect(buttonNode).toBeDisabled());
+    await waitFor(() => expect(buttonNode)
+      .toBeDisabled());
   });
   it('initial inputs should be empty', () => {
     store = mockStore(initialState);
@@ -91,10 +101,12 @@ describe('Login form tests', () => {
     );
     const emailInputNode = getByPlaceholderText(/email/i) as HTMLInputElement;
     const passwordInputNode = getByPlaceholderText(/password/i) as HTMLInputElement;
-    expect(emailInputNode).toBeEmptyDOMElement();
-    expect(passwordInputNode).toBeEmptyDOMElement();
+    expect(emailInputNode)
+      .toBeEmptyDOMElement();
+    expect(passwordInputNode)
+      .toBeEmptyDOMElement();
   });
-  it('renders learn forgot password link', () => {
+  it('render forgot password link', () => {
     store = mockStore(initialState);
     const { getByText } = render(
       <Provider store={store}>

@@ -21,11 +21,13 @@ const dictionary: DictionaryType = {
   },
   form: {
     restoreTitle: 'Restore Password',
+    makeAppointmentTitle: 'Make an appointment',
     restoreMessage: ' Please use your email address, and we’ll send you the link to reset your password',
     resetLinkText: 'Send Reset Link',
     forgotLinkText: 'Forgot Password?',
     signInTitle: 'Sign In',
     signUpTitle: 'Sign Up',
+    submitTitle: 'Submit',
   },
   authorisedPages: {
     sendEmailMessage1: 'An email has been sent to',

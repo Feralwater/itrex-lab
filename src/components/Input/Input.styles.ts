@@ -4,7 +4,7 @@ import colors from '../../styles/colors';
 interface InputProps {
   icon: 'default' | 'left';
   iconURL?: string;
-  isError?: boolean
+  isError?: boolean;
 }
 
 export const InputContainer = styled.div<InputProps>`
@@ -28,11 +28,21 @@ export const InputContainer = styled.div<InputProps>`
       left: 18px;
     }
   }
+
+  & label {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 130%;
+    color: ${colors.black};
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
 `;
 
 export const StyledInput = styled.input<InputProps>`
   background: #ffffff;
-  border:${(props) => (props.isError ? `1px solid ${colors.radical_red}` : `1px solid ${colors.link_water}`)};
+  border: ${(props) => (props.isError ? `1px solid ${colors.radical_red}` : `1px solid ${colors.link_water}`)};
   box-sizing: border-box;
   box-shadow: 0px 4px 32px ${colors.link_water_alfa016};
   border-radius: 8px;
