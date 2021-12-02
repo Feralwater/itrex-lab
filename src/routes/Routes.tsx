@@ -5,9 +5,9 @@ import {
 import SendEmail from 'pages/sendEmail/SendEmail';
 import SignIn from 'pages/SignIn/SignIn';
 import SignUp from 'pages/SignUp/SignUp';
-import PatientsContainer from 'pages/doctorPage/patients/patientsContainer';
-import AppointmentsContainer from 'pages/patientPage/appointmentsContainer/appointmentsContainer';
-import Error404 from '../pages/error404Page/Error404';
+import AppointmentsForDoctorContainer from 'pages/UserPage/AppointmentsContainer/AppointmentsForDoctorContainer';
+import AppointmentsForPatientContainer from 'pages/UserPage/AppointmentsContainer/AppointmentsForPatientContainer';
+import Error404 from '../components/Error404Page/Error404';
 import AuthorisedLayout from '../layouts/authorised/authorised';
 import Public from '../layouts/public/public';
 import MakeAnAppointmentForm from '../forms/appointmentForms/makeAnAppointmentForm';
@@ -27,7 +27,12 @@ function Routes() {
   return (
     <Switch>
       <Route path="/" exact render={() => <Redirect to={PATH.SIGN_IN} />} />
-      <Route path={PATH.RESTORE_PASSWORD} render={() => <AuthorisedLayout><RestorePasswordForm setRestorePassword={setRestorePassword} /></AuthorisedLayout>} />
+      <Route
+        path={PATH.RESTORE_PASSWORD}
+        render={
+        () => <AuthorisedLayout><RestorePasswordForm setRestorePassword={setRestorePassword} /></AuthorisedLayout>
+}
+      />
       <Route
         path={PATH.SEND_EMAIL}
         render={() => (
@@ -38,8 +43,8 @@ function Routes() {
       />
       <Route path={PATH.SIGN_IN} render={() => <AuthorisedLayout><SignIn /></AuthorisedLayout>} />
       <Route path={PATH.SIGN_UP} render={() => <AuthorisedLayout><SignUp /></AuthorisedLayout>} />
-      <Route path={PATH.MY_PATIENTS} render={() => <Public><PatientsContainer /></Public>} />
-      <Route path={PATH.MY_APPOINTMENTS} render={() => <Public><AppointmentsContainer /></Public>} />
+      <Route path={PATH.MY_PATIENTS} render={() => <Public><AppointmentsForDoctorContainer /></Public>} />
+      <Route path={PATH.MY_APPOINTMENTS} render={() => <Public><AppointmentsForPatientContainer /></Public>} />
       <Route
         path={PATH.CREATE_APPOINTMENT}
         render={() => (

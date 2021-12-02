@@ -3,7 +3,7 @@ import { PayloadActionCreator } from '@reduxjs/toolkit/src/createAction';
 import { AxiosResponse } from 'axios';
 import { AnyFunction, AsyncActionType } from './saga.types';
 import { appointment } from '../actions/appointment.actions';
-import { NewAppointmentResponseType } from '../../resources/appointments/appointments.types';
+import { NewAppointmentResponse } from '../../resources/appointments/appointments.types';
 import appointments from '../../resources/appointments/appointments.api';
 
 function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction?: PayloadActionCreator<any>):any {
@@ -22,7 +22,7 @@ function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction
 
 function* appointmentPost(action: ReturnType<typeof appointment.pending>) {
   const { payload } = action;
-  const response: AxiosResponse<NewAppointmentResponseType> = yield call(appointments.addAppointments, {
+  const response: AxiosResponse<NewAppointmentResponse> = yield call(appointments.addAppointments, {
     date: payload.date,
     reason: payload.reason,
     note: payload.note,

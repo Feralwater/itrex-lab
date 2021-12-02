@@ -22,10 +22,10 @@ import {
 } from './AppointmentCard.styles';
 import { UserImage } from '../../../components/Header/Header.styles';
 import { statusColor, statusDescription } from './const';
-import { AppointmentCardPropsType } from './AppointmentCard.types';
+import { AppointmentCardProps } from './AppointmentCard.types';
 
-const AppointmentCard: React.VFC<AppointmentCardPropsType> = ({
-  doctor,
+const AppointmentCard: React.VFC<AppointmentCardProps> = ({
+  specialization,
   firstName,
   lastName,
   avatar,
@@ -35,7 +35,7 @@ const AppointmentCard: React.VFC<AppointmentCardPropsType> = ({
   role,
 }) => {
   function statusOrDoctor() {
-    if (role === 'doctor') {
+    if (role === 'DOCTOR') {
       return (
         <>
           <UserCardBodyAppointmentConfirm color={statusColor[status]} />
@@ -43,7 +43,7 @@ const AppointmentCard: React.VFC<AppointmentCardPropsType> = ({
         </>
       );
     }
-    return <DoctorSpecializationName>{doctor.specialization_name}</DoctorSpecializationName>;
+    return <DoctorSpecializationName>{specialization}</DoctorSpecializationName>;
   }
 
   function formatVisitTime(timeBeforeFormat: string) {
@@ -74,7 +74,7 @@ const AppointmentCard: React.VFC<AppointmentCardPropsType> = ({
           <UserCardBodyTimeText>{formatVisitTime(time)}</UserCardBodyTimeText>
         </UserCardBodyTime>
         <UserCardBodyDescription isDescription={reason.length > 0}>
-          {role === 'doctor' ? <Board /> : <div><Heart /></div>}
+          {role === 'DOCTOR' ? <Board /> : <div><Heart /></div>}
           <UserCardBodyDescriptionText>{reason}</UserCardBodyDescriptionText>
         </UserCardBodyDescription>
       </UserCardBody>

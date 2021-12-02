@@ -41,6 +41,7 @@ export type DictionaryType = {
     errorMessage: string
   },
   doctorPage: {
+    title: string
     emptyMedicalHistoryTextLine1: string
     emptyMedicalHistoryTextLine2: string
     buttonPatients: string

@@ -1,5 +1,5 @@
 export const PATH = {
-  MY_PATIENTS: '/my-patients',
+  MY_PATIENTS: '/my-AppointmentsForDoctorContainer',
   RESTORE_PASSWORD: '/restore-password',
   SEND_EMAIL: '/send-email',
   SIGN_IN: '/sign-in',

@@ -1,6 +1,10 @@
-import { statuses } from '../../../mockData/patients';
 import colors from '../../../styles/colors';
 
+export const statuses = {
+  confirmed: 'confirmed',
+  canceled: 'canceled',
+  waiting: 'waiting',
+};
 export const statusColor = {
   [statuses.confirmed]: `${colors.greenish_teal}`,
   [statuses.canceled]: `${colors.radical_red}`,

@@ -11,10 +11,10 @@ import {
   SelectTimeslotStep,
 } from 'forms/appointmentForms/makeAnAppointment.styles';
 import dictionary from 'dictionary/dictionary';
-import { PatientsTitle } from 'pages/patientPage/appointmentsHeader/appointmentsHeader.styles';
-import AppointmentsSteps from 'pages/patientPage/appointmentsSteps/appointmentsSteps';
-import DatePicker from 'pages/patientPage/components/DatePicker/datePicker';
-import TimeSlots from 'pages/patientPage/components/TimeSlots/timeSlots';
+import { PatientsTitle } from 'pages/components/NavigatePanel/NavigatePanel.styles';
+import AppointmentsSteps from 'pages/UserPage/components/AppointmentsSteps/AppointmentsSteps';
+import DatePicker from 'pages/UserPage/components/DatePicker/datePicker';
+import TimeSlots from 'pages/UserPage/components/TimeSlots/timeSlots';
 import Button from '../../components/Button/Button';
 import CustomSelect from '../../components/Select/Select';
 import { SpecializationsType } from '../../resources/occupations/occupations.types';

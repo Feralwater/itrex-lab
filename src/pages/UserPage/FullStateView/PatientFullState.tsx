@@ -1,14 +1,17 @@
 import AppointmentCard from 'pages/components/AppointmentCard/AppointmentCard';
 import React from 'react';
-import { AppointmentsResponseType } from '../../../resources/appointments/appointments.types';
+import { AppointmentsForPatient } from '../../../resources/appointments/appointments.types';
+import { useAppSelector } from '../../../hooks';
 
-const PatientFullState: React.VFC<AppointmentsResponseType> = ({ appointments }) => (
-  <>
-    {
+const PatientFullState: React.VFC<AppointmentsForPatient> = ({ appointments }) => {
+  const role = useAppSelector((state) => state.profile.roleName);
+  return (
+    <>
+      {
         appointments.map((appointment) => (
           <AppointmentCard
             key={appointment.id}
-            doctor={appointment.doctor}
+            specialization={appointment.doctor.specialization_name}
             firstName={appointment.doctor.first_name}
             lastName={appointment.doctor.last_name}
             avatar={appointment.doctor.photo}
@@ -16,11 +19,12 @@ const PatientFullState: React.VFC<AppointmentsResponseType> = ({ appointments })
             reason={appointment.reason}
             time={appointment.visit_date}
             note={appointment.note}
-            role={appointment.doctor.specialization_name}
+            role={role}
           />
         ))
-            }
-  </>
-);
+      }
+    </>
+  );
+};
 
 export default PatientFullState;

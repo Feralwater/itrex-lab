@@ -7,15 +7,17 @@ import {
   PatientsButtonsContainer,
   PatientsHeader,
   PatientsTitle,
-} from './appointmentsHeader.styles';
+} from './NavigatePanel.styles';
 import dictionary from '../../../dictionary/dictionary';
+import { PATH } from '../../../routes/constants';
+import colors from '../../../styles/colors';
 
-const AppointmentsWrapperHeader: React.VFC = () => (
+const PatientNavigatePanel: React.VFC = () => (
   <>
     <PatientsButtonsContainer>
-      <PatientsButton to="" color="white">{dictionary.patientPage.buttonProfile}</PatientsButton>
-      <PatientsButton to="/my-appointments" color="blue">{dictionary.patientPage.buttonAppointments}</PatientsButton>
-      <PatientsButton to="" color="white">{dictionary.patientPage.buttonResolutions}</PatientsButton>
+      <PatientsButton to="" color={colors.white}>{dictionary.patientPage.buttonProfile}</PatientsButton>
+      <PatientsButton to={PATH.MY_APPOINTMENTS} color={colors.cornflower_blue}>{dictionary.patientPage.buttonAppointments}</PatientsButton>
+      <PatientsButton to="" color={colors.white}>{dictionary.patientPage.buttonResolutions}</PatientsButton>
     </PatientsButtonsContainer>
     <PatientsHeader>
       <PatientsTitle>{dictionary.patientPage.title}</PatientsTitle>
@@ -29,4 +31,4 @@ const AppointmentsWrapperHeader: React.VFC = () => (
   </>
 );
 
-export default AppointmentsWrapperHeader;
+export default PatientNavigatePanel;

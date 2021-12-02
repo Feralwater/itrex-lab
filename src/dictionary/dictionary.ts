@@ -2,7 +2,7 @@ import { DictionaryType } from './dictionary.types';
 
 const dictionary: DictionaryType = {
   ViewEmptyState: {
-    medicalHistoryTextPart1: 'You have no patients yet.',
+    medicalHistoryTextPart1: 'You have no AppointmentsForDoctorContainer yet.',
     medicalHistoryTextPart2: 'To create a patient profile, please contact your administrator.',
   },
   error404: {
@@ -43,7 +43,8 @@ const dictionary: DictionaryType = {
     errorMessage: 'oops, the page you are looking for can`t be found!😭',
   },
   doctorPage: {
-    emptyMedicalHistoryTextLine1: 'You have no patients yet.',
+    title: 'My Patients',
+    emptyMedicalHistoryTextLine1: 'You have no AppointmentsForDoctorContainer yet.',
     emptyMedicalHistoryTextLine2: 'To create a patient profile, please contact your administrator.',
     buttonPatients: 'Patients',
     buttonResolutions: 'Resolutions',
