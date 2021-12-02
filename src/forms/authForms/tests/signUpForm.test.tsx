@@ -31,7 +31,7 @@ describe('Sign Up form tests', () => {
     inputNodeLastName = getByPlaceholderText(/last name/i) as HTMLInputElement;
     inputNodeEmail = getByPlaceholderText(/email/i) as HTMLInputElement;
     inputNodePassword = getByPlaceholderText(/^password$/i) as HTMLInputElement;
-    inputNodeConfirmPassword = getByPlaceholderText(/onfirm password/i) as HTMLInputElement;
+    inputNodeConfirmPassword = getByPlaceholderText(/^confirm password$/i) as HTMLInputElement;
     buttonNode = getByRole('button') as HTMLButtonElement;
   });
   it('Inputs should be in the document', () => {
