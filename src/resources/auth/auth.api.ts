@@ -13,21 +13,11 @@ const auth = {
   },
 
   async SignIn(data:SignInData) {
-    try {
-      return instance.post<SignUpInResponseType>('auth/login', data);
-    } catch (e) {
-      console.log(JSON.stringify(e));
-      throw (e);
-    }
+    return instance.post<SignUpInResponseType>('auth/login', data);
   },
 
   async getMe() {
-    try {
-      return instance.get<ProfileResponseType>('auth/profile');
-    } catch (e) {
-      console.log(JSON.stringify(e));
-      throw (e);
-    }
+    return instance.get<ProfileResponseType>('auth/profile');
   },
   async refreshToken() {
     return instance.post<SignUpInResponseType>('auth/token/refresh');
@@ -41,7 +31,7 @@ instance.interceptors.request.use(
     if (token && refreshToken) {
       const expiryDate: Date = new Date(jwt<JWTToken>(token).exp * 1000);
       if (expiryDate > new Date()) {
-        loginRepository.setAccessToken(refreshToken || '');
+        loginRepository.setAccessToken(refreshToken);
         const { data } = await auth.refreshToken();
         loginRepository.setAccessToken(data.access_token);
         token = data.access_token;

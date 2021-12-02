@@ -13,7 +13,10 @@ const dictionary: DictionaryType = {
     messageTitleSuccess: 'Success message goes here',
     messageTitleError: 'Error message goes here',
     successMessageText: 'We show this message if something awesome has happened. You are awesome too',
-    NotificationText: 'We show this message if something irreparable has happened. But there is nothing irreparable',
+    errorMessageText: 'We show this message if something irreparable has happened. But there is nothing irreparable',
+    error400Text: 'Validation error. Login should be mail',
+    error401Text: 'Wrong data. Please check it and try again',
+    error500Text: 'Server error. Please try again later',
   },
   header: {
     avatarAlt: 'user`s avatar',

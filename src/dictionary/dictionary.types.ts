@@ -10,8 +10,11 @@ export type DictionaryType = {
   message: {
     messageTitleSuccess: string
     messageTitleError: string
-    NotificationText: string
+    errorMessageText: string
     successMessageText: string
+    error400Text: string
+    error401Text: string
+    error500Text: string
   },
   header: {
     avatarAlt: string

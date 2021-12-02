@@ -19,7 +19,7 @@ const Notification: React.VFC<NotificationProps> = ({
     if (showNotification) {
       setTimeout(() => {
         setShowNotification(false);
-      }, 5000);
+      }, 10000);
     }
   }, [showNotification]);
 

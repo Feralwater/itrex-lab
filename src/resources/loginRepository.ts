@@ -1,7 +1,7 @@
 export class LoginRepository {
-  private accessTokenKey = 'login.accessToken';
+  private accessTokenKey = 'accessToken';
 
-  private refreshTokenKey = 'login.refreshToken';
+  private refreshTokenKey = 'refreshToken';
 
   client = localStorage;
 
