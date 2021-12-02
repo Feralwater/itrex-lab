@@ -1,5 +1,7 @@
+import jwt from 'jwt-decode';
 import instance from '../../services/api/api';
 import {
+  JWTToken,
   ProfileResponseType,
   SignInData, SignUpData, SignUpInResponseType,
 } from './auth.types';
@@ -33,60 +35,43 @@ const auth = {
 };
 
 instance.interceptors.request.use(
-  (request) => {
-    const token = loginRepository.getAccessToken();
-    if (token) {
+  async (request) => {
+    let token = loginRepository.getAccessToken();
+    const refreshToken = loginRepository.getRefreshToken();
+    if (token && refreshToken) {
+      const expiryDate: Date = new Date(jwt<JWTToken>(token).exp * 1000);
+      if (expiryDate > new Date()) {
+        loginRepository.setAccessToken(refreshToken || '');
+        const { data } = await auth.refreshToken();
+        loginRepository.setAccessToken(data.access_token);
+        token = data.access_token;
+        loginRepository.setRefreshToken(data.refresh_token);
+      }
       request.headers = {
         ...request.headers,
         Authorization: `Bearer ${token}`,
       };
     }
-
     return request;
-  },
-  (err) => {
-    if (err.statusCode === 403) {
-      // const response =  auth.refreshToken();
-      // if (!response.data) {
-      //   loginRepository.removeAccessToken();
-      //   // kill token and redirect
-      // } else {
-      //   const {
-      //     refresh_token,
-      //     access_token,
-      //   } = response.data;
-      //   loginRepository.setAccessToken(access_token);
-      //   loginRepository.setRefreshToken(refresh_token);
-    }
-
-    return 'jhghjg';
   },
 );
 
 instance.interceptors.response.use(
-  (response) => {
-    // eslint-disable-next-line no-unused-vars
-    console.log(JSON.stringify(response));
-    return response;
-  },
+  (response) => response,
   async (e) => {
-    // if (e.statusCode === 403) {
-    //   const response = await auth.refreshToken();
-    //   if (!response?.data) {
-    //     loginRepository.removeAccessToken();
-    //     // kill token and redirect
-    //   } else {
-    //     const {
-    //       refresh_token,
-    //       access_token,
-    //     } = response.data;
-    //     loginRepository.setAccessToken(access_token);
-    //     loginRepository.setRefreshToken(refresh_token);
-    //   }
-    //   // Any status codes that falls outside the range of 2xx cause this function to trigger
-    //   // Do something with response error
-    // }
-    console.log(JSON.stringify(e));
+    if (e.statusCode === 403) {
+      const response = await auth.refreshToken();
+      if (!response?.data) {
+        loginRepository.removeAccessToken();
+      } else {
+        const {
+          access_token,
+          refresh_token,
+        } = response.data;
+        loginRepository.setAccessToken(access_token);
+        loginRepository.setRefreshToken(refresh_token);
+      }
+    }
     throw e;
   },
 );

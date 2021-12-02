@@ -97,20 +97,15 @@ const MakeAnAppointmentForm:React.VFC = () => {
           time: '',
         }}
         validationSchema={appointmentValidationSchema}
-        onSubmit={async (values, actions) => {
+        onSubmit={(values, actions) => {
           const date = values.time;
           const { reason } = values;
           const { note } = values;
           const doctorID = values.doctorName.value;
-          try {
-            dispatch(appointment.pending({
-              date, reason, note, doctorID,
-            }));
-            actions.setSubmitting(false);
-          } catch (e) {
-            // @ts-ignore
-            alert(e.message);
-          }
+          dispatch(appointment.pending({
+            date, reason, note, doctorID,
+          }));
+          actions.setSubmitting(false);
         }}
       >
         {({

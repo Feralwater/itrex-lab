@@ -26,3 +26,9 @@ export type ProfileResponseType = {
   photo: string,
   role_name: RoleName
 }
+
+export interface JWTToken {
+  name: string;
+  exp: number;
+  int: number
+}
