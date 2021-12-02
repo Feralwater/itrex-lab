@@ -1,36 +1,40 @@
 import styled from 'styled-components';
 import colors from '../../styles/colors';
 
-interface ErrorMessageBodyType {
-    isSuccess: boolean
+interface NotificationBodyType {
+  isSuccess: boolean;
 }
 
-export const ErrorMessageBody = styled.div<ErrorMessageBodyType>`
+export const NotificationBody = styled.div<NotificationBodyType>`
+  position: absolute;
+  left: 32px;
+  bottom: 32px;
+  z-index: 100;
   background-color: ${(props) => (props.isSuccess ? `${colors.greenish_teal}` : `${colors.radical_red}`)};
   display: flex;
   flex-direction: column;
   justify-content: center;
   color: #ffffff;
   border-radius: 12px;
-  max-width: 457px;
+  width: 457px;
   min-height: 122px;
   padding: 0px 16px 0px 34px;
   box-sizing: border-box;
 `;
 
-export const ErrorMessageTitle = styled.div`
+export const NotificationTitle = styled.div`
   display: flex;
   line-height: 24px;
   margin: 0 0 8px 0;
 `;
 
-export const ErrorMessageTitleText = styled.h2`
+export const NotificationTitleText = styled.h2`
   font-weight: 600;
   font-size: 17px;
   margin: 0 0 0 18px;
 `;
 
-export const ErrorMessageText = styled.div`
+export const NotificationText = styled.div`
   font-weight: 500;
   font-size: 13px;
   line-height: 130%;

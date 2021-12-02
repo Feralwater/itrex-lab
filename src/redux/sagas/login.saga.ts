@@ -6,6 +6,7 @@ import { login } from '../actions/login.actions';
 import { SignUpInResponseType } from '../../resources/auth/auth.types';
 import auth from '../../resources/auth/auth.api';
 import { loginRepository } from '../../resources/loginRepository';
+import { notificationSuccess } from '../actions/notification.actions';
 
 function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction?: PayloadActionCreator<any>):any {
   try {
@@ -34,6 +35,8 @@ function* loginPost(action: ReturnType<typeof login.pending>) {
     loginRepository
       .setAccessToken(data.access_token)
       .setRefreshToken(data.refresh_token);
+
+    yield put(notificationSuccess('Success login'));
   }
 
   return response.data;

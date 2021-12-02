@@ -5,6 +5,7 @@ import rootSaga from './sagas/rootSaga';
 import { appointmentReducer } from './reducers/appointments.reducer';
 import { registrationReducer } from './reducers/registration.reducer';
 import { profileReducer } from './reducers/profile.reducer';
+import { notificationReducer } from './reducers/notification.reducer';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -14,6 +15,7 @@ export const store = configureStore({
     appointments: appointmentReducer,
     registration: registrationReducer,
     profile: profileReducer,
+    notification: notificationReducer,
   },
   middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(), sagaMiddleware],
 });

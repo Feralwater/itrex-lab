@@ -40,3 +40,9 @@ export interface RegistrationStateType extends Request {
 export interface RestoreState {
   password: string;
 }
+
+export interface NotificationState {
+  isSuccess: boolean
+  successMessageText: string
+  errorMessageText: string
+}

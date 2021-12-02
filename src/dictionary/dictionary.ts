@@ -13,7 +13,7 @@ const dictionary: DictionaryType = {
     messageTitleSuccess: 'Success message goes here',
     messageTitleError: 'Error message goes here',
     successMessageText: 'We show this message if something awesome has happened. You are awesome too',
-    errorMessageText: 'We show this message if something irreparable has happened. But there is nothing irreparable',
+    NotificationText: 'We show this message if something irreparable has happened. But there is nothing irreparable',
   },
   header: {
     avatarAlt: 'user`s avatar',

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Routes from './routes/Routes';
 import profile from './redux/actions/profile.actions';
 import { useAppDispatch, useAppSelector } from './hooks';
+import NotificationContainer from './components/Notification/NotificationContainer';
 
 function App() {
   const { accessToken } = useAppSelector((state) => state.login);
@@ -20,9 +21,12 @@ function App() {
   const { roleName } = useAppSelector((state) => state.profile);
 
   return (
-    (roleName !== '')
-      ? <Routes />
-      : null
+    <>
+      {(roleName !== '')
+        ? <Routes />
+        : null}
+      <NotificationContainer />
+    </>
   );
 }
 
