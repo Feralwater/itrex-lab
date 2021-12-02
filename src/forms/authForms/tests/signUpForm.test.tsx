@@ -5,7 +5,7 @@ import {
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { BrowserRouter } from 'react-router-dom';
-import SignInForm from '../SignInForm';
+import SignUpForm from '../singUpForm';
 
 let inputNodeFirsName:HTMLInputElement;
 let inputNodeLastName:HTMLInputElement;
@@ -14,7 +14,7 @@ let inputNodeConfirmPassword:HTMLInputElement;
 let inputNodePassword:HTMLInputElement;
 let buttonNode:HTMLButtonElement;
 
-describe('Sign In form tests', () => {
+describe('Sign Up form tests', () => {
   const initialState = { };
   const mockStore = configureStore();
   let store;
@@ -23,7 +23,7 @@ describe('Sign In form tests', () => {
     const { getByPlaceholderText, getByRole } = render(
       <Provider store={store}>
         <BrowserRouter>
-          <SignInForm />
+          <SignUpForm />
         </BrowserRouter>
       </Provider>,
     );
@@ -61,15 +61,24 @@ describe('Sign In form tests', () => {
       .toMatch(inputNodePassword.value));
   });
   it('button should be disable while inputs values are incorrect', async () => {
+    inputNodeFirsName.focus();
+    inputNodeLastName.focus();
     inputNodeEmail.focus();
     inputNodePassword.focus();
+    inputNodeConfirmPassword.focus();
     await waitFor(() => expect(buttonNode)
       .toBeDisabled());
   });
   it('initial inputs should be empty', () => {
+    expect(inputNodeFirsName)
+      .toBeEmptyDOMElement();
+    expect(inputNodeLastName)
+      .toBeEmptyDOMElement();
     expect(inputNodeEmail)
       .toBeEmptyDOMElement();
     expect(inputNodePassword)
+      .toBeEmptyDOMElement();
+    expect(inputNodeConfirmPassword)
       .toBeEmptyDOMElement();
   });
 });

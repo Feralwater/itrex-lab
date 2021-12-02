@@ -19,7 +19,7 @@ import { signInFieldsData } from './fieldsData';
 import { PATH } from '../../routes/constants';
 import { SignInData } from '../../resources/auth/auth.types';
 
-const SignInForm:React.VFC = () => {
+const SignInForm:React.FC = () => {
   const dispatch = useAppDispatch();
   const handleSubmitForm = ({ userName, password } : SignInData) => {
     dispatch(login.pending({ userName, password }));
