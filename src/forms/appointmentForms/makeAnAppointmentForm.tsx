@@ -24,7 +24,7 @@ import doctors from '../../resources/doctors/doctors.api';
 import appointments from '../../resources/appointments/appointments.api';
 import appointmentValidationSchema from './validation/appointment.validation';
 import { useAppDispatch } from '../../hooks';
-import { appointment } from '../../redux/actions/appointment.actions';
+import appointment from '../../redux/actions/appointment.actions';
 import makeAppointmentsFieldsData from './fieldsData';
 
 const MakeAnAppointmentForm:React.VFC = () => {
@@ -125,7 +125,6 @@ const MakeAnAppointmentForm:React.VFC = () => {
                   stepDescription={dictionary.makeAppointments.step1Description}
                   stepNumber={1}
                 />
-
                 <Field
                   component={CustomSelect}
                   name="occupation"
@@ -135,7 +134,6 @@ const MakeAnAppointmentForm:React.VFC = () => {
                   labelText="Occupation"
                   setSelectedValue={setSelectedOccupationID}
                 />
-
                 <Field
                   component={CustomSelect}
                   name="doctorName"

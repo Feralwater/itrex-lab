@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { LoginStateType } from './reducers.types';
 import { RootStateType } from '../store';
 import { loginRepository } from '../../resources/loginRepository';
-import { login } from '../actions/login.actions';
+import login from '../actions/login.actions';
 
 const initialState: LoginStateType = {
   accessToken: loginRepository.getAccessToken() || '',

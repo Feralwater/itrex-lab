@@ -7,7 +7,7 @@ import Button from '../../components/Button/Button';
 import { PATH } from '../../routes/constants';
 import signUpValidationSchema from './validation/signUp.validation';
 import { useAppDispatch } from '../../hooks';
-import { registration } from '../../redux/actions/registration.actions';
+import registration from '../../redux/actions/registration.actions';
 import { SignUpValues } from './form.types';
 import { ButtonWrapper, CustomForm, FormTitle } from './authForm.styles';
 import { signUpFieldsData } from './fieldsData';

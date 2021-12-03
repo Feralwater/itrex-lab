@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { AppointmentStateType } from './reducers.types';
-import { appointment } from '../actions/appointment.actions';
+import appointment from '../actions/appointment.actions';
 
 const initialState: AppointmentStateType = {
   id: '',
@@ -32,11 +32,11 @@ export const appointmentSlice = createSlice({
 
     builder
       .addCase(appointment.pending, (state) => {
-        state.status = 'loading';
+        state.responseStatus = 'loading';
       });
     builder
       .addCase(appointment.failed, (state) => {
-        state.status = 'failed';
+        state.responseStatus = 'failed';
       });
   },
 });

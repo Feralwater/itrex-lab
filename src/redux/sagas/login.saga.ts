@@ -1,6 +1,6 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
-import { login } from '../actions/login.actions';
+import login from '../actions/login.actions';
 import { SignUpInResponseType } from '../../resources/auth/auth.types';
 import auth from '../../resources/auth/auth.api';
 import { loginRepository } from '../../resources/loginRepository';

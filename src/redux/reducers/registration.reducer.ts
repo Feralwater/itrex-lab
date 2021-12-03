@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { RegistrationStateType } from './reducers.types';
 import { RootStateType } from '../store';
 import { loginRepository } from '../../resources/loginRepository';
-import { registration } from '../actions/registration.actions';
+import registration from '../actions/registration.actions';
 
 const initialState: RegistrationStateType = {
   accessToken: loginRepository.getAccessToken() || '',

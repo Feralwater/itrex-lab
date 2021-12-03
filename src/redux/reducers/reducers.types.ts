@@ -1,4 +1,5 @@
 import { ROLES } from '../../routes/constants';
+import { AppointmentsForPatient } from '../../resources/appointments/appointments.types';
 
 export type Status = 'idle' | 'loading' | 'failed' | 'fulfilled'
 export type RoleName = keyof typeof ROLES | ''
@@ -45,4 +46,8 @@ export interface NotificationState {
   isSuccess: boolean
   successMessageText: string
   errorMessageText: string
+}
+
+export interface AppointmentsForPatientState extends AppointmentsForPatient{
+  responseStatus: Status;
 }
