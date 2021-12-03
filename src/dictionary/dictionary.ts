@@ -16,6 +16,7 @@ const dictionary: DictionaryType = {
     errorMessageText: 'We show this message if something irreparable has happened. But there is nothing irreparable',
     error400Text: 'Validation error. Login should be mail',
     error401Text: 'Wrong data. Please check it and try again',
+    error403Text: 'Access error. Please check it and try again',
     error500Text: 'Server error. Please try again later',
   },
   header: {

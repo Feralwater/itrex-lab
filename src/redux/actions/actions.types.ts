@@ -1,5 +1,9 @@
 import { SignInData, SignUpData, SignUpInResponseType } from '../../resources/auth/auth.types';
-import { AppointmentsForPatient, NewAppointmentResponse } from '../../resources/appointments/appointments.types';
+import {
+  AppointmentsForDoctor,
+  AppointmentsForPatient,
+  NewAppointmentResponse
+} from '../../resources/appointments/appointments.types';
 
 export type LoginPendingType = SignInData;
 export type LoginFulfilledType = SignUpInResponseType;
@@ -19,6 +23,13 @@ export interface AppointmentsForPatientPending {
   limit: number;
 }
 
+export interface appointmentsForDoctorPending {
+  offset: number;
+  limit: number;
+}
+
 export type AppointmentFulfilledType = NewAppointmentResponse;
 
 export type AppointmentsForPatientFulfilled = AppointmentsForPatient;
+
+export type appointmentsForDoctorFulfilled = AppointmentsForDoctor;

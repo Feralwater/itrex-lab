@@ -1,3 +1,5 @@
+import { appointmentsForDoctorFulfilled } from '../../redux/actions/actions.types';
+
 export interface Appointment{
   id: 'string',
   reason: 'string',

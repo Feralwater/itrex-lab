@@ -11,7 +11,7 @@ const appointments = {
   async getAppointmentsForPatient(offset:number, limit:number) {
     return instance.get<AppointmentsForPatient>(`appointments/patient/me?offset=${offset}&limit=${limit}`);
   },
-  async getAppointmentsForDoctor(offset:number = 0, limit:number = 20) {
+  async getAppointmentsForDoctor(offset:number, limit:number) {
     return instance.get<AppointmentsForDoctor>(`appointments/doctor/me?offset=${offset}&limit=${limit}`);
   },
   async getFreeTime(date:string|null, doctorID:string) {
