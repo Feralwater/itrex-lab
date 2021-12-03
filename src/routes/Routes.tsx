@@ -10,11 +10,11 @@ import AppointmentsForPatientContainer from 'pages/UserPage/AppointmentsContaine
 import Error404 from '../components/Error404Page/Error404';
 import AuthorisedLayout from '../layouts/authorised/authorised';
 import Public from '../layouts/public/public';
-import MakeAnAppointmentForm from '../forms/appointmentForms/makeAnAppointmentForm';
 import { useAppSelector } from '../hooks';
 import { PATH } from './constants';
 import checkUserRole from './utils';
 import RestorePasswordForm from '../forms/authForms/restorePasswordForm';
+import MakeAppointmentFormContainer from '../forms/appointmentForm/MakeAppointmentFormContainer';
 
 function Routes() {
   const { roleName } = useAppSelector((state) => state.profile);
@@ -49,7 +49,7 @@ function Routes() {
         path={PATH.CREATE_APPOINTMENT}
         render={() => (
           <Public>
-            <MakeAnAppointmentForm />
+            <MakeAppointmentFormContainer />
           </Public>
         )}
       />

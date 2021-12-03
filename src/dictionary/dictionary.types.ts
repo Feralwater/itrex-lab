@@ -15,6 +15,7 @@ export type DictionaryType = {
     error400Text: string
     error401Text: string
     error403Text: string
+    error409Text: string
     error500Text: string
   },
   header: {

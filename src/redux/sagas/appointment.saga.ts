@@ -1,9 +1,11 @@
-import { call, takeEvery } from 'redux-saga/effects';
+import { call, put, takeEvery } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
 import appointment from '../actions/appointment.actions';
 import { NewAppointmentResponse } from '../../resources/appointments/appointments.types';
 import appointments from '../../resources/appointments/appointments.api';
 import runAsyncSaga from './runAsync.saga';
+import { notificationSuccess } from '../actions/notification.actions';
+import { createSuccessNotificationMessage } from '../../serverResponseDictionary/serverResponsesDictionary';
 
 function* appointmentPost(action: ReturnType<typeof appointment.pending>) {
   const { payload } = action;
@@ -13,6 +15,7 @@ function* appointmentPost(action: ReturnType<typeof appointment.pending>) {
     note: payload.note,
     doctorID: payload.doctorID,
   });
+  yield put(notificationSuccess(createSuccessNotificationMessage(response.status)));
   return response.data;
 }
 

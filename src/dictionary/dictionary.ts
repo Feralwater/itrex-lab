@@ -14,9 +14,10 @@ const dictionary: DictionaryType = {
     messageTitleError: 'Error message goes here',
     successMessageText: 'We show this message if something awesome has happened. You are awesome too',
     errorMessageText: 'We show this message if something irreparable has happened. But there is nothing irreparable',
-    error400Text: 'Validation error. Login should be mail',
+    error400Text: 'Validation error. Please check data and try again',
     error401Text: 'Wrong data. Please check it and try again',
     error403Text: 'Access error. Please check it and try again',
+    error409Text: 'Request error. Date and time are not free. Please choose another one',
     error500Text: 'Server error. Please try again later',
   },
   header: {
