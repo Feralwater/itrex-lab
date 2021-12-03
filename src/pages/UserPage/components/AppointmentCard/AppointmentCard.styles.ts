@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import colors from '../../../styles/colors';
+import colors from '../../../../styles/colors';
 
 export const UserCard = styled.div`
   display: flex;
@@ -9,6 +9,7 @@ export const UserCard = styled.div`
   box-shadow: 0px 4px 32px ${colors.link_water_alfa024};
   border-radius: 12px;
   overflow: hidden;
+  position: relative;
   @media only screen and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3),
   (max-device-width: 767px) {
     height: 305px;
@@ -28,11 +29,17 @@ export const UserCardHeader = styled.div`
 `;
 
 export const SettingsButton = styled.div`
-  width: 24px;
-  height: 24px;
-  background: url("../../svgImages/settings-dots.svg") no-repeat center/contain;
+  width: 40px;
+  height: 40px;
+  background: url("../../svgImages/settings-dots.svg") no-repeat center/24px;
   border: none;
   outline: none;
+  cursor: pointer;
+  border-radius: 6px;
+
+  &:hover {
+    background: ${colors.alabaster} url("../../svgImages/settings-dots-blue.svg") no-repeat center/24px;
+  }
 `;
 
 export const UserCardBody = styled.div`
@@ -134,5 +141,5 @@ export const UserCardName = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  max-width: 130px;
+  max-width: 200px;
 `;

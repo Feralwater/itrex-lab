@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import DoctorFullState from '../FullStateView/DoctorFullState';
 import DoctorEmptyState from '../EmptyStateView/DoctorEmptyState';
-import DoctorNavigatePanel from '../../components/NavigatePanel/DoctorNavigatePanel';
+import DoctorNavigatePanel from '../components/NavigatePanel/DoctorNavigatePanel';
 import AppointmentsWrapper from './AppointmentsContainer.styles';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
 import appointmentsForDoctor from '../../../redux/actions/appointmentsForDoctors.actions';

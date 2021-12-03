@@ -1,4 +1,4 @@
-import AppointmentCard from 'pages/components/AppointmentCard/AppointmentCard';
+import AppointmentCard from 'pages/UserPage/components/AppointmentCard/AppointmentCard';
 import React from 'react';
 import { AppointmentsForPatient } from '../../../resources/appointments/appointments.types';
 import { useAppSelector } from '../../../hooks';

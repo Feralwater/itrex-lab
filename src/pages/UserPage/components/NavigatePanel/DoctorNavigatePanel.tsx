@@ -2,10 +2,10 @@ import React from 'react';
 import { ButtonWrapper } from 'forms/authForms/authForm.styles';
 import {
   PatientsButton, PatientsButtonsContainer, PatientsHeader, PatientsTitle,
-} from 'pages/components/NavigatePanel/NavigatePanel.styles';
-import dictionary from '../../../dictionary/dictionary';
-import { PATH } from '../../../routes/constants';
-import colors from '../../../styles/colors';
+} from 'pages/UserPage/components/NavigatePanel/NavigatePanel.styles';
+import dictionary from '../../../../dictionary/dictionary';
+import { PATH } from '../../../../routes/constants';
+import colors from '../../../../styles/colors';
 
 const DoctorNavigatePanel: React.VFC = () => (
   <>

@@ -51,6 +51,7 @@ export type DictionaryType = {
     emptyMedicalHistoryTextLine2: string
     buttonPatients: string
     buttonResolutions: string
+    controlCommandsListForDoctor: Array<string>
   },
   patientPage: {
     emptyAppointmentsHistoryTextLine1: string
@@ -60,6 +61,7 @@ export type DictionaryType = {
     buttonProfile: string
     buttonAppointments: string
     createAppointments: string
+    controlCommandsListForPatient: Array<string>
   },
   makeAppointments: {
     step1Description: string

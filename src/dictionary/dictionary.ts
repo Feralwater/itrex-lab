@@ -53,6 +53,7 @@ const dictionary: DictionaryType = {
     emptyMedicalHistoryTextLine2: 'To create a patient profile, please contact your administrator.',
     buttonPatients: 'Patients',
     buttonResolutions: 'Resolutions',
+    controlCommandsListForDoctor: ['Create a resolution', 'Edit an appointment', 'Delete'],
   },
   patientPage: {
     emptyAppointmentsHistoryTextLine1: 'You have no appointments yet.',
@@ -62,6 +63,7 @@ const dictionary: DictionaryType = {
     buttonProfile: 'Profile',
     buttonAppointments: 'Appointments',
     createAppointments: 'Create an appointment',
+    controlCommandsListForPatient: ['Delete'],
   },
   makeAppointments: {
     step1Description: 'Select a doctor and define the reason of your visit',

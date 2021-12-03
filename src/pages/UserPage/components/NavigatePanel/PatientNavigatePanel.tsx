@@ -8,9 +8,9 @@ import {
   PatientsHeader,
   PatientsTitle,
 } from './NavigatePanel.styles';
-import dictionary from '../../../dictionary/dictionary';
-import { PATH } from '../../../routes/constants';
-import colors from '../../../styles/colors';
+import dictionary from '../../../../dictionary/dictionary';
+import { PATH } from '../../../../routes/constants';
+import colors from '../../../../styles/colors';
 
 const PatientNavigatePanel: React.VFC = () => (
   <>

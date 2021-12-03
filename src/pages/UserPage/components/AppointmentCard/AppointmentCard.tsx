@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { add, format } from 'date-fns';
-import { ReactComponent as Clock } from '../../../assets/svgImages/clock-icon.svg';
-import { ReactComponent as Board } from '../../../assets/svgImages/board-icon.svg';
-import { ReactComponent as Heart } from '../../../assets/svgImages/heart-icon.svg';
+import { ReactComponent as Clock } from '../../../../assets/svgImages/clock-icon.svg';
+import { ReactComponent as Board } from '../../../../assets/svgImages/board-icon.svg';
+import { ReactComponent as Heart } from '../../../../assets/svgImages/heart-icon.svg';
+
 import {
   AppointmentStatus,
   DoctorSpecializationName,
@@ -20,9 +21,11 @@ import {
   UserData,
   UserInformation,
 } from './AppointmentCard.styles';
-import { UserImage } from '../../../components/Header/Header.styles';
+import { UserImage } from '../../../../components/Header/Header.styles';
 import { statusColor, statusDescription } from './const';
 import { AppointmentCardProps } from './AppointmentCard.types';
+import ControlCardPanel from '../ControlCardPanel/ControlCardPanel';
+import dictionary from '../../../../dictionary/dictionary';
 
 const AppointmentCard: React.VFC<AppointmentCardProps> = ({
   specialization,
@@ -52,6 +55,7 @@ const AppointmentCard: React.VFC<AppointmentCardProps> = ({
     return format(new Date(timeBeforeFormat), `ccc LLL dd, Y h bbb - ${endVisitHour} bbb`);
   }
 
+  const [showControlCardPanel, setShowControlCardPanel] = useState<boolean>(false);
   return (
     <UserCard>
       <UserCardHeader>
@@ -66,7 +70,13 @@ const AppointmentCard: React.VFC<AppointmentCardProps> = ({
             </AppointmentStatus>
           </UserInformation>
         </UserData>
-        <SettingsButton />
+        <SettingsButton onClick={() => setShowControlCardPanel(!showControlCardPanel)} />
+        {showControlCardPanel
+          && (
+          <ControlCardPanel
+            controlCommandsList={role === 'DOCTOR' ? dictionary.doctorPage.controlCommandsListForDoctor : dictionary.patientPage.controlCommandsListForPatient}
+          />
+          )}
       </UserCardHeader>
       <UserCardBody>
         <UserCardBodyTime>

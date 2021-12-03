@@ -11,7 +11,7 @@ import {
   SelectTimeslotStep,
 } from 'forms/appointmentForm/MakeAnAppointment.styles';
 import dictionary from 'dictionary/dictionary';
-import { PatientsTitle } from 'pages/components/NavigatePanel/NavigatePanel.styles';
+import { PatientsTitle } from 'pages/UserPage/components/NavigatePanel/NavigatePanel.styles';
 import AppointmentsSteps from 'pages/UserPage/components/AppointmentsSteps/AppointmentsSteps';
 import DatePicker from 'pages/UserPage/components/DatePicker/datePicker';
 import TimeSlots from 'pages/UserPage/components/TimeSlots/timeSlots';
