@@ -4,12 +4,16 @@ import {
   AppointmentsForPatient, DeleteAppointment,
   NewAppointmentResponse,
 } from '../../resources/appointments/appointments.types';
+import { ResolutionData, ResolutionResponse } from '../../resources/resolutions/resolutions.types';
 
 export type LoginPendingType = SignInData;
 export type LoginFulfilledType = SignUpInResponseType;
 
 export type RegistrationPendingType = SignUpData;
 export type RegistrationFulfilledType = SignUpInResponseType;
+
+export type ResolutionPending = ResolutionData;
+export type ResolutionFulfilled = ResolutionResponse;
 
 export type AppointmentPendingType = {
   date: string

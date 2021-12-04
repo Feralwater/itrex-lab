@@ -1,5 +1,3 @@
-// export type RoleName = 'Patient' | 'Doctor' | ''
-
 import { RoleName } from 'redux/reducers/reducers.types';
 
 export type SignUpInResponseType = {

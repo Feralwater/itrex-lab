@@ -17,6 +17,7 @@ const colors = {
   link_water_alfa032: 'rgba(218, 228, 255, 0.32)',
   platinum_alfa050: 'rgba(220, 224, 236, 0.5)',
   lavender_pinocchio_alfa030: 'rgba(236, 220, 222, 0.3)',
+  gravel_alfa060: 'rgba(70, 72, 75, 0.6)',
   transparent: 'transparent',
 };
 

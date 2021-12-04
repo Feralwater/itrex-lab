@@ -1,5 +1,6 @@
 export const PATH = {
   MY_PATIENTS: '/my-patients',
+  RESOLUTIONS: '/resolutions',
   RESTORE_PASSWORD: '/restore-password',
   SEND_EMAIL: '/send-email',
   SIGN_IN: '/sign-in',
@@ -27,7 +28,7 @@ export const DEFAULT_PATH = {
 };
 
 export const ROLES_ACCESS = {
-  [ROLES.DOCTOR]: new Set([PATH.MY_PATIENTS]),
+  [ROLES.DOCTOR]: new Set([PATH.MY_PATIENTS, PATH.RESOLUTIONS]),
   [ROLES.PATIENT]: new Set([
     PATH.MY_APPOINTMENTS,
     PATH.CREATE_APPOINTMENT,

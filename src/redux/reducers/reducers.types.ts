@@ -53,6 +53,14 @@ export interface NotificationState {
   errorMessageText: string
 }
 
+export interface ResolutionState {
+  appointmentID: string
+  nextAppointmentDate: string
+  resolution: string
+  resolutionID: string
+  status: Status,
+}
+
 export interface AppointmentsForPatientState extends AppointmentsForPatient{
   responseStatus: Status;
 }

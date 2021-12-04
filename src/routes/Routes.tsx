@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import {
   Redirect, Route, Switch, useHistory, useLocation,
 } from 'react-router-dom';
-import SendEmail from 'pages/sendEmail/SendEmail';
+import SendEmail from 'pages/SendEmail/SendEmail';
 import SignIn from 'pages/SignIn/SignIn';
 import SignUp from 'pages/SignUp/SignUp';
-import AppointmentsForDoctorContainer from 'pages/UserPage/AppointmentsContainer/AppointmentsForDoctorContainer';
-import AppointmentsForPatientContainer from 'pages/UserPage/AppointmentsContainer/AppointmentsForPatientContainer';
+import AppointmentsForDoctorContainer from 'pages/AppointmentsContainer/AppointmentsForDoctorContainer';
+import AppointmentsForPatientContainer from 'pages/AppointmentsContainer/AppointmentsForPatientContainer';
 import Error404 from '../components/Error404Page/Error404';
 import AuthorisedLayout from '../layouts/authorised/authorised';
 import Public from '../layouts/public/public';
@@ -15,6 +15,7 @@ import { PATH } from './constants';
 import checkUserRole from './utils';
 import RestorePasswordForm from '../forms/authForms/restorePasswordForm';
 import MakeAppointmentFormContainer from '../forms/appointmentForm/MakeAppointmentFormContainer';
+import Resolutions from '../pages/Resolutions/Resolutions';
 
 function Routes() {
   const { roleName } = useAppSelector((state) => state.profile);
@@ -45,6 +46,7 @@ function Routes() {
       <Route path={PATH.SIGN_UP} render={() => <AuthorisedLayout><SignUp /></AuthorisedLayout>} />
       <Route path={PATH.MY_PATIENTS} render={() => <Public><AppointmentsForDoctorContainer /></Public>} />
       <Route path={PATH.MY_APPOINTMENTS} render={() => <Public><AppointmentsForPatientContainer /></Public>} />
+      <Route path={PATH.RESOLUTIONS} render={() => <Public><Resolutions /></Public>} />
       <Route
         path={PATH.CREATE_APPOINTMENT}
         render={() => (
