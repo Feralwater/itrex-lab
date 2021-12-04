@@ -1,6 +1,4 @@
-import { appointmentsForDoctorFulfilled } from '../../redux/actions/actions.types';
-
-export interface Appointment{
+export interface Appointment {
   id: 'string',
   reason: 'string',
   note: 'string',
@@ -9,23 +7,24 @@ export interface Appointment{
   visit_date: 'string',
   status: 'string',
 }
-export interface AppointmentForPatient extends Appointment{
+
+export interface AppointmentForPatient extends Appointment {
   doctor: {
     last_name: 'string',
     first_name: 'string',
     id: 'string',
     photo: 'string',
     specialization_name: 'string',
-  }
+  };
 }
 
-export interface AppointmentForDoctor extends Appointment{
+export interface AppointmentForDoctor extends Appointment {
   patient: {
     last_name: 'string',
     first_name: 'string',
     id: 'string',
     photo: 'string',
-  }
+  };
 }
 
 export interface AppointmentsForPatient {
@@ -38,13 +37,17 @@ export interface AppointmentsForDoctor {
   total: number
 }
 
+export interface DeleteAppointment {
+  id: string;
+}
+
 export type FreeTimeResponse = Array<string>
 
 export interface AppointmentData {
-  date: string
-  reason: string
-  note: string
-  doctorID: string
+  date: string;
+  reason: string;
+  note: string;
+  doctorID: string;
 }
 
 export interface NewAppointmentResponse {

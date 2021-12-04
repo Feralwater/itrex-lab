@@ -20,6 +20,9 @@ const appointments = {
   async addAppointment(data:AppointmentData) {
     return instance.post<NewAppointmentResponse>('appointments', data);
   },
+  async deleteAppointment(id:string) {
+    return instance.delete<string>(`appointments/${id}`);
+  },
 };
 
 export default appointments;

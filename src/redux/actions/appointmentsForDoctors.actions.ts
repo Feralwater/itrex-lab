@@ -1,6 +1,6 @@
-import { appointmentsForDoctorFulfilled, appointmentsForDoctorPending } from './actions.types';
+import { AppointmentsForDoctorFulfilled, AppointmentsForDoctorPending } from './actions.types';
 import createSagaActions from './createSaga.actions';
 
-const appointmentsForDoctor = createSagaActions<appointmentsForDoctorPending, appointmentsForDoctorFulfilled>('appointmentsForDoctor');
+const appointmentsForDoctor = createSagaActions<AppointmentsForDoctorPending, AppointmentsForDoctorFulfilled>('appointmentsForDoctor');
 
 export default appointmentsForDoctor;

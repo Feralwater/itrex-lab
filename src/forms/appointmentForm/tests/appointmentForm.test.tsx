@@ -5,7 +5,7 @@ import {
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { BrowserRouter } from 'react-router-dom';
-import MakeAnAppointmentForm from '../MakeAnAppointmentForm';
+import MakeAppointmentFormContainer from '../MakeAppointmentFormContainer';
 
 let inputNodeOccupations:HTMLDivElement;
 let inputNodeDoctorsNames:HTMLDivElement;
@@ -22,7 +22,7 @@ describe('Make an appointmentForm form tests', () => {
     const { getByPlaceholderText, getByText } = render(
       <Provider store={store}>
         <BrowserRouter>
-          <MakeAnAppointmentForm />
+          <MakeAppointmentFormContainer />
         </BrowserRouter>
       </Provider>,
     );

@@ -16,7 +16,7 @@ const AppointmentsForDoctorContainer:React.VFC = () => {
     if (userId) {
       dispatch(appointmentsForDoctor.pending({ offset: 0, limit: 20 }));
     }
-  }, [userId]);
+  }, [userId, appointments]);
 
   return (
     <>

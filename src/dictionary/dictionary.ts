@@ -17,6 +17,7 @@ const dictionary: DictionaryType = {
     error400Text: 'Validation error. Please check data and try again',
     error401Text: 'Wrong data. Please check it and try again',
     error403Text: 'Access error. Please check it and try again',
+    error404Text: 'Request error. Appointment does not exist',
     error409Text: 'Request error. Date and time are not free. Please choose another one',
     error500Text: 'Server error. Please try again later',
   },
@@ -53,7 +54,9 @@ const dictionary: DictionaryType = {
     emptyMedicalHistoryTextLine2: 'To create a patient profile, please contact your administrator.',
     buttonPatients: 'Patients',
     buttonResolutions: 'Resolutions',
-    controlCommandsListForDoctor: ['Create a resolution', 'Edit an appointment', 'Delete'],
+    controlCommandCreate: 'Create a resolution',
+    controlCommandEdit: 'Edit an appointment',
+    controlCommandDelete: 'Delete',
   },
   patientPage: {
     emptyAppointmentsHistoryTextLine1: 'You have no appointments yet.',
@@ -63,7 +66,6 @@ const dictionary: DictionaryType = {
     buttonProfile: 'Profile',
     buttonAppointments: 'Appointments',
     createAppointments: 'Create an appointment',
-    controlCommandsListForPatient: ['Delete'],
   },
   makeAppointments: {
     step1Description: 'Select a doctor and define the reason of your visit',

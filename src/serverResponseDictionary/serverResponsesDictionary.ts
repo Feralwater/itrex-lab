@@ -8,6 +8,8 @@ export function createErrorNotificationMessage(responseStatusCode: number) {
       return dictionary.message.error401Text;
     case 403:
       return dictionary.message.error403Text;
+    case 404:
+      return dictionary.message.error404Text;
     case 500:
       return dictionary.message.error500Text;
     default:

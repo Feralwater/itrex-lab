@@ -42,6 +42,11 @@ export interface RestoreState {
   password: string;
 }
 
+export interface DeleteAppointmentState {
+  id: string;
+  status: string;
+}
+
 export interface NotificationState {
   isSuccess: boolean
   successMessageText: string

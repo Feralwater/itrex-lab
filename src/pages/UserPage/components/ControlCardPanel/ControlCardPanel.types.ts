@@ -1,3 +1,3 @@
 export interface ControlCardPanelProps {
-  controlCommandsList: Array<string>;
+  appointmentID: string
 }

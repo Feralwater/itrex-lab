@@ -25,10 +25,10 @@ import { UserImage } from '../../../../components/Header/Header.styles';
 import { statusColor, statusDescription } from './const';
 import { AppointmentCardProps } from './AppointmentCard.types';
 import ControlCardPanel from '../ControlCardPanel/ControlCardPanel';
-import dictionary from '../../../../dictionary/dictionary';
 
 const AppointmentCard: React.VFC<AppointmentCardProps> = ({
   specialization,
+  appointmentID,
   firstName,
   lastName,
   avatar,
@@ -70,13 +70,8 @@ const AppointmentCard: React.VFC<AppointmentCardProps> = ({
             </AppointmentStatus>
           </UserInformation>
         </UserData>
-        <SettingsButton onClick={() => setShowControlCardPanel(!showControlCardPanel)} />
-        {showControlCardPanel
-          && (
-          <ControlCardPanel
-            controlCommandsList={role === 'DOCTOR' ? dictionary.doctorPage.controlCommandsListForDoctor : dictionary.patientPage.controlCommandsListForPatient}
-          />
-          )}
+        {role === 'DOCTOR' && <SettingsButton onClick={() => setShowControlCardPanel(!showControlCardPanel)} />}
+        {showControlCardPanel && (<ControlCardPanel appointmentID={appointmentID} />)}
       </UserCardHeader>
       <UserCardBody>
         <UserCardBodyTime>

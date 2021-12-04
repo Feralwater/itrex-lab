@@ -11,6 +11,7 @@ const PatientFullState: React.VFC<AppointmentsForPatient> = ({ appointments }) =
         appointments.map((appointment) => (
           <AppointmentCard
             key={appointment.id}
+            appointmentID={appointment.id}
             specialization={appointment.doctor.specialization_name}
             firstName={appointment.doctor.first_name}
             lastName={appointment.doctor.last_name}
