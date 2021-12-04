@@ -1,6 +1,6 @@
 import { Dispatch } from '@reduxjs/toolkit';
 import dictionary from '../../../../dictionary/dictionary';
-import deleteAppointment from '../../../../redux/actions/deleteAppointment.actions';
+import { deleteAppointment } from '../../../../redux/actions/appointmentsForDoctors.actions';
 
 const controlPanelCommandsList = [
   {

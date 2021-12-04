@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { AppointmentsForDoctorState } from './reducers.types';
-import appointmentsForDoctor from '../actions/appointmentsForDoctors.actions';
+import { appointmentsForDoctor, deleteAppointment } from '../actions/appointmentsForDoctors.actions';
 
 const initialState = {
   appointments: [],
@@ -19,7 +19,12 @@ export const appointmentsForDoctorSlice = createSlice({
         state.total = payload.total;
         state.responseStatus = 'fulfilled';
       });
-
+    builder
+      .addCase(deleteAppointment.fulfilled, (state, { payload }) => {
+        state.appointments = state.appointments.filter((appointment) => appointment.id !== payload.id);
+        state.total -= 1;
+        state.responseStatus = 'fulfilled';
+      });
     builder
       .addCase(appointmentsForDoctor.pending, (state) => {
         state.responseStatus = 'loading';

@@ -1,10 +1,10 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
-import deleteAppointment from '../actions/deleteAppointment.actions';
 import appointments from '../../resources/appointments/appointments.api';
 import { notificationSuccess } from '../actions/notification.actions';
 import { createSuccessNotificationMessage } from '../../serverResponseDictionary/serverResponsesDictionary';
 import runAsyncSaga from './runAsync.saga';
+import { deleteAppointment } from '../actions/appointmentsForDoctors.actions';
 
 function* appointmentDelete(action: ReturnType<typeof deleteAppointment.pending>) {
   const { payload } = action;

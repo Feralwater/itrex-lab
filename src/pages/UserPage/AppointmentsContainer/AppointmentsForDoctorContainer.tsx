@@ -4,7 +4,7 @@ import DoctorEmptyState from '../EmptyStateView/DoctorEmptyState';
 import DoctorNavigatePanel from '../components/NavigatePanel/DoctorNavigatePanel';
 import AppointmentsWrapper from './AppointmentsContainer.styles';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
-import appointmentsForDoctor from '../../../redux/actions/appointmentsForDoctors.actions';
+import { appointmentsForDoctor } from '../../../redux/actions/appointmentsForDoctors.actions';
 
 const AppointmentsForDoctorContainer:React.VFC = () => {
   const dispatch = useAppDispatch();
@@ -16,7 +16,7 @@ const AppointmentsForDoctorContainer:React.VFC = () => {
     if (userId) {
       dispatch(appointmentsForDoctor.pending({ offset: 0, limit: 20 }));
     }
-  }, [userId, appointments]);
+  }, [userId, total]);
 
   return (
     <>

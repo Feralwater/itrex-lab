@@ -3,7 +3,7 @@ import { AxiosResponse } from 'axios';
 import runAsyncSaga from './runAsync.saga';
 import appointments from '../../resources/appointments/appointments.api';
 import { AppointmentsForDoctor } from '../../resources/appointments/appointments.types';
-import appointmentsForDoctor from '../actions/appointmentsForDoctors.actions';
+import { appointmentsForDoctor } from '../actions/appointmentsForDoctors.actions';
 
 function* appointmentsForDoctorPost(action: ReturnType<typeof appointmentsForDoctor.pending>) {
   const { payload } = action;

@@ -43,8 +43,8 @@ export interface RestoreState {
 }
 
 export interface DeleteAppointmentState {
-  id: string;
-  status: string;
+  deleteAppointmentID: string;
+  status: Status;
 }
 
 export interface NotificationState {

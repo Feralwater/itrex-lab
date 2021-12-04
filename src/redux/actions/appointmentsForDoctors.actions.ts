@@ -1,6 +1,9 @@
-import { AppointmentsForDoctorFulfilled, AppointmentsForDoctorPending } from './actions.types';
+import {
+  AppointmentsForDoctorFulfilled,
+  AppointmentsForDoctorPending, DeleteAppointmentFulfilled,
+  DeleteAppointmentPending,
+} from './actions.types';
 import createSagaActions from './createSaga.actions';
 
-const appointmentsForDoctor = createSagaActions<AppointmentsForDoctorPending, AppointmentsForDoctorFulfilled>('appointmentsForDoctor');
-
-export default appointmentsForDoctor;
+export const appointmentsForDoctor = createSagaActions<AppointmentsForDoctorPending, AppointmentsForDoctorFulfilled>('appointmentsForDoctor');
+export const deleteAppointment = createSagaActions<DeleteAppointmentPending, DeleteAppointmentFulfilled>('deleteAppointment');
