@@ -5,6 +5,7 @@ export const UserCard = styled.div`
   display: flex;
   flex-direction: column;
   background: #FFFFFF;
+  min-height: 217px;
   box-shadow: 0px 4px 32px ${colors.link_water_alfa024};
   border-radius: 12px;
   overflow: hidden;

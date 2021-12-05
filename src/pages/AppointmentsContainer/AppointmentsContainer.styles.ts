@@ -10,7 +10,7 @@ const AppointmentsWrapper = styled.div<AppointmentsWrapperProps>`
   justify-content: ${(props) => (props?.patientsLength === 0 && 'center')};
   align-items: ${(props) => (props?.patientsLength === 0 && 'center')};
   grid-template-columns: repeat(auto-fit, minmax(400px, 400px));
-  grid-template-rows: repeat(minmax(185px, 264px));
+  grid-template-rows: minmax(217px, 264px);
   gap: 25px 24px;
   overflow: auto;
   padding: 0 32px 0 0;

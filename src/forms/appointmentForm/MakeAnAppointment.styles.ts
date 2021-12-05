@@ -13,7 +13,7 @@ export const AppointmentStepsNumbers = styled.div`
 export const AppointmentFormContainer = styled(Form)`
   display: flex;
   flex-direction: column;
-  gap: 80px 0;
+  gap: 50px 0;
 `;
 
 export const AppointmentStepsContainer = styled.div`
