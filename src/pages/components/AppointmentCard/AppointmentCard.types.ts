@@ -6,7 +6,7 @@ export interface AppointmentCardProps {
   avatar: string;
   status: string;
   time: string;
-  reason: string;
+  reason?: string;
   note: string;
   role: string;
 }

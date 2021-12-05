@@ -1,8 +1,8 @@
 import React from 'react';
-import { CreateResolutionModalProps } from './CreateResolutionModal.types';
-import { Modal, ModalContent } from './CreateResolutionModal.styles';
+import { ModalProps } from './Modal.types';
+import { Modal, ModalContent } from './Modal.styles';
 
-const CreateResolutionModal: React.FC<CreateResolutionModalProps> = (
+const ModalWindow: React.FC<ModalProps> = (
   { activeModal, setActiveModal, children },
 ) => (
   <Modal onClick={() => setActiveModal(false)} isActive={activeModal}>
@@ -12,4 +12,4 @@ const CreateResolutionModal: React.FC<CreateResolutionModalProps> = (
   </Modal>
 );
 
-export default CreateResolutionModal;
+export default ModalWindow;

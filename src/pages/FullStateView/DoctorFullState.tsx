@@ -16,7 +16,6 @@ const DoctorFullState: React.VFC<AppointmentsForDoctor> = ({ appointments }) => 
             lastName={appointment.patient.last_name}
             avatar={appointment.patient.photo}
             status={appointment.status}
-            reason={appointment.reason}
             time={appointment.visit_date}
             note={appointment.note}
             role={role}

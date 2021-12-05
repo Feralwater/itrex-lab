@@ -3,7 +3,6 @@ import colors from '../../../styles/colors';
 
 export const UserCard = styled.div`
   display: flex;
-  height: 264px;
   flex-direction: column;
   background: #FFFFFF;
   box-shadow: 0px 4px 32px ${colors.link_water_alfa024};
@@ -70,7 +69,7 @@ interface UserCardBodyDescriptionProps {
 }
 
 export const UserCardBodyDescription = styled(UserCardBodyTime)<UserCardBodyDescriptionProps>`
-  display: ${(props) => (props.isDescription ? 'flex' : 'none')}
+  display: ${(props) => (props.isDescription ? 'flex' : 'none')};
 `;
 
 export const UserCardBodyDescriptionText = styled.div`
