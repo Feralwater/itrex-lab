@@ -11,7 +11,10 @@ import { resolutions } from '../../redux/actions/resolution.actions';
 const Resolutions = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(resolutions.pending({ offset: 0, limit: 20 }));
+    dispatch(resolutions.pending({
+      offset: 0,
+      limit: 20,
+    }));
   }, []);
   const myResolutions = useAppSelector((state) => state.resolutions.resolutions);
   return (
@@ -21,7 +24,7 @@ const Resolutions = () => {
         <thead>
           <ResolutionsTableHead>
             {Object.entries(columnsNames)
-              .map(([, value]) => <ResolutionsTableHeaderCell as="th">{value}</ResolutionsTableHeaderCell>)}
+              .map(([key, value]) => <ResolutionsTableHeaderCell as="th" key={key}>{value}</ResolutionsTableHeaderCell>)}
           </ResolutionsTableHead>
         </thead>
         <tbody>

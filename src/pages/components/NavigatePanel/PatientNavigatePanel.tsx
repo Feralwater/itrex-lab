@@ -10,18 +10,19 @@ import {
 } from './NavigatePanel.styles';
 import dictionary from '../../../dictionary/dictionary';
 import { PATH } from '../../../routes/constants';
+import isActiveTab from './helpers';
 
 const PatientNavigatePanel: React.VFC = () => (
   <>
     <PatientsButtonsContainer>
-      <PatientsButton to="" active>{dictionary.patientPage.buttonProfile}</PatientsButton>
+      <PatientsButton to="" isActive>{dictionary.patientPage.buttonProfile}</PatientsButton>
       <PatientsButton
         to={PATH.APPOINTMENTS}
-        active={window.location.pathname.substr(1) === dictionary.patientPage.buttonAppointments.toLocaleLowerCase()}
+        isActive={isActiveTab(dictionary.patientPage.buttonAppointments)}
       >
         {dictionary.patientPage.buttonAppointments}
       </PatientsButton>
-      <PatientsButton to="" active>{dictionary.patientPage.buttonResolutions}</PatientsButton>
+      <PatientsButton to="" isActive>{dictionary.patientPage.buttonResolutions}</PatientsButton>
     </PatientsButtonsContainer>
     <PatientsHeader>
       <PatientsTitle>{dictionary.patientPage.title}</PatientsTitle>

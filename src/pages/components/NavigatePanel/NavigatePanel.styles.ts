@@ -14,7 +14,7 @@ export const PatientsButtonsContainer = styled.div`
 `;
 
 interface PatientsButtonProps {
-  active: boolean;
+  isActive: boolean;
 }
 
 export const PatientsButton = styled(Link)<PatientsButtonProps>`
@@ -27,8 +27,9 @@ export const PatientsButton = styled(Link)<PatientsButtonProps>`
   border-radius: 8px;
   padding: 10px;
   text-decoration: none;
-  color: ${(props) => (props.active ? `${colors.white}` : `${colors.cornflower_blue}`)};
-  background-color: ${(props) => (props.active ? `${colors.cornflower_blue}` : `${colors.white}`)};
+  cursor: pointer;
+  color: ${(props) => (props.isActive ? `${colors.white}` : `${colors.cornflower_blue}`)};
+  background-color: ${(props) => (props.isActive ? `${colors.cornflower_blue}` : `${colors.white}`)};
   box-shadow: ${(props) => (props.color === `${colors.white}` && `0px 4px 32px ${colors.link_water_alfa016}`)};
 `;
 export const PatientsHeader = styled.div`

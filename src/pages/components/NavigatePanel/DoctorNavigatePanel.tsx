@@ -6,19 +6,20 @@ import {
 import dictionary from '../../../dictionary/dictionary';
 import { PATH } from '../../../routes/constants';
 import { DoctorNavigatePanelProps } from '../../AppointmentsContainer/AppointmentsContainer.types';
+import isActiveTab from './helpers';
 
 const DoctorNavigatePanel: React.VFC<DoctorNavigatePanelProps> = ({ pageTitle }) => (
   <>
     <PatientsButtonsContainer>
       <PatientsButton
         to={PATH.PATIENTS}
-        active={window.location.pathname.substr(1) === dictionary.doctorPage.buttonPatients.toLocaleLowerCase()}
+        isActive={isActiveTab(dictionary.doctorPage.buttonPatients)}
       >
         {dictionary.doctorPage.buttonPatients}
       </PatientsButton>
       <PatientsButton
         to={PATH.RESOLUTIONS}
-        active={window.location.pathname.substr(1) === dictionary.doctorPage.buttonResolutions.toLocaleLowerCase()}
+        isActive={isActiveTab(dictionary.doctorPage.buttonResolutions)}
       >
         {dictionary.doctorPage.buttonResolutions}
       </PatientsButton>
