@@ -1,3 +1,3 @@
-export interface DoctorNavigatePanelProps {
+export interface NavigatePanelProps {
   pageTitle: string
 }

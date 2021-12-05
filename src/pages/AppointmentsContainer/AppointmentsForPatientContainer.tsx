@@ -5,6 +5,7 @@ import PatientEmptyState from '../EmptyStateView/PatientEmptyState';
 import PatientNavigatePanel from '../components/NavigatePanel/PatientNavigatePanel';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import appointmentsForPatient from '../../redux/actions/appointmentsForPatient.actions';
+import dictionary from '../../dictionary/dictionary';
 
 const AppointmentsForPatientContainer:React.VFC = () => {
   const dispatch = useAppDispatch();
@@ -20,7 +21,7 @@ const AppointmentsForPatientContainer:React.VFC = () => {
 
   return (
     <>
-      <PatientNavigatePanel />
+      <PatientNavigatePanel pageTitle={dictionary.patientPage.title} />
       <AppointmentsWrapper patientsLength={appointments.length}>
         {appointments.length > 0
           ? <PatientFullState appointments={appointments} total={total} />

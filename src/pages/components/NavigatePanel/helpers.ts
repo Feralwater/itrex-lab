@@ -1,5 +1,6 @@
-function isActiveTab(tabText:string) {
-  return window.location.pathname.substr(1) === tabText.toLocaleLowerCase();
+function isActiveTab(tabText: string) {
+  const pattern = new RegExp(`^.*/${tabText.toLocaleLowerCase()}$`, 'g');
+  return pattern.test(window.location.pathname);
 }
 
 export default isActiveTab;

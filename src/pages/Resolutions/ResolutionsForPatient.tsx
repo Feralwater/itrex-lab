@@ -3,8 +3,7 @@ import PatientNavigatePanel from '../components/NavigatePanel/PatientNavigatePan
 
 const ResolutionsForPatient = () => (
   <div>
-    <PatientNavigatePanel />
-    Resolutions For Patient goes here
+    <PatientNavigatePanel pageTitle="Resolutions For Patient goes here" />
   </div>
 );
 

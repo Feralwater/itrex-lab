@@ -5,21 +5,21 @@ import {
 } from 'pages/components/NavigatePanel/NavigatePanel.styles';
 import dictionary from '../../../dictionary/dictionary';
 import { PATH } from '../../../routes/constants';
-import { DoctorNavigatePanelProps } from '../../AppointmentsContainer/AppointmentsContainer.types';
+import { NavigatePanelProps } from '../../AppointmentsContainer/AppointmentsContainer.types';
 import isActiveTab from './helpers';
 
-const DoctorNavigatePanel: React.VFC<DoctorNavigatePanelProps> = ({ pageTitle }) => (
+const DoctorNavigatePanel: React.VFC<NavigatePanelProps> = ({ pageTitle }) => (
   <>
     <PatientsButtonsContainer>
       <PatientsButton
         to={PATH.PATIENTS}
-        isActive={isActiveTab(dictionary.doctorPage.buttonPatients)}
+        $active={isActiveTab(dictionary.doctorPage.buttonPatients)}
       >
         {dictionary.doctorPage.buttonPatients}
       </PatientsButton>
       <PatientsButton
         to={PATH.RESOLUTIONS}
-        isActive={isActiveTab(dictionary.doctorPage.buttonResolutions)}
+        $active={isActiveTab(dictionary.doctorPage.buttonResolutions)}
       >
         {dictionary.doctorPage.buttonResolutions}
       </PatientsButton>

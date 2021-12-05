@@ -1,6 +1,6 @@
 export const PATH = {
   PATIENTS: '/patients',
-  RESOLUTIONS: '/resolutions',
+  RESOLUTIONS: '/doctors/resolutions',
   RESTORE_PASSWORD: '/restore-password',
   SEND_EMAIL: '/send-email',
   SIGN_IN: '/sign-in',
@@ -8,7 +8,7 @@ export const PATH = {
   APPOINTMENTS: '/appointments',
   CREATE_APPOINTMENT: '/create-an-appointment',
   PROFILE: '/profile',
-  MY_RESOLUTIONS: '/my-resolutions',
+  MY_RESOLUTIONS: '/patient/resolutions',
 };
 
 export const ROLES = {
