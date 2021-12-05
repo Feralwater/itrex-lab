@@ -15,6 +15,9 @@ export type RegistrationFulfilledType = SignUpInResponseType;
 export type ResolutionPending = ResolutionData;
 export type ResolutionFulfilled = ResolutionResponse;
 
+export type ResolutionsPending = AppointmentsForDoctorPending;
+export type ResolutionsFulfilled = ResolutionResponse;
+
 export type AppointmentPendingType = {
   date: string
   reason: string

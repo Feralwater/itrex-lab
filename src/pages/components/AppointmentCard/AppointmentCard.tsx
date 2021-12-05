@@ -25,7 +25,6 @@ import { UserImage } from '../../../components/Header/Header.styles';
 import { statusColor, statusDescription } from './const';
 import { AppointmentCardProps } from './AppointmentCard.types';
 import ControlCardPanel from '../ControlCardPanel/ControlCardPanel';
-import { useAppSelector } from '../../../hooks';
 
 const AppointmentCard: React.VFC<AppointmentCardProps> = ({
   specialization,
@@ -36,6 +35,7 @@ const AppointmentCard: React.VFC<AppointmentCardProps> = ({
   status,
   time,
   role,
+  doctorsResolutions,
 }) => {
   function statusOrDoctor() {
     if (role === 'DOCTOR') {
@@ -55,8 +55,8 @@ const AppointmentCard: React.VFC<AppointmentCardProps> = ({
     return format(new Date(timeBeforeFormat), `ccc LLL dd, Y h bbb - ${endVisitHour} bbb`);
   }
 
-  const resolution = useAppSelector((state) => state.resolutions.resolution);
   const [showControlCardPanel, setShowControlCardPanel] = useState<boolean>(false);
+  const resolution = doctorsResolutions?.find((res) => res.appointment_id === appointmentID);
 
   return (
     <UserCard>
@@ -80,9 +80,9 @@ const AppointmentCard: React.VFC<AppointmentCardProps> = ({
           <Clock />
           <UserCardBodyTimeText>{formatVisitTime(time)}</UserCardBodyTimeText>
         </UserCardBodyTime>
-        <UserCardBodyDescription isDescription={resolution.length > 0}>
+        <UserCardBodyDescription isDescription={resolution && (resolution.resolution.length > 0)}>
           {role === 'DOCTOR' ? <div><Board /></div> : <div><Heart /></div>}
-          <UserCardBodyDescriptionText>{resolution}</UserCardBodyDescriptionText>
+          <UserCardBodyDescriptionText>{resolution?.resolution}</UserCardBodyDescriptionText>
         </UserCardBodyDescription>
       </UserCardBody>
     </UserCard>

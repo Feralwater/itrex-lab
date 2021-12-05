@@ -65,7 +65,7 @@ export const UserCardBodyTimeText = styled.div`
 `;
 
 interface UserCardBodyDescriptionProps {
-  isDescription: boolean;
+  isDescription: boolean | undefined;
 }
 
 export const UserCardBodyDescription = styled(UserCardBodyTime)<UserCardBodyDescriptionProps>`

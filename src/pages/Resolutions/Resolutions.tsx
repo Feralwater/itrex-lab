@@ -1,28 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
 import { format } from 'date-fns';
-import { loginRepository } from '../../resources/loginRepository';
 import DoctorNavigatePanel from '../components/NavigatePanel/DoctorNavigatePanel';
 import dictionary from '../../dictionary/dictionary';
 import columnsNames from './const';
 import ResolutionRow from './ResolutionRow';
 import { ResolutionsTable, ResolutionsTableHead, ResolutionsTableHeaderCell } from './Resolutions.styles';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { resolutions } from '../../redux/actions/resolution.actions';
 
 const Resolutions = () => {
-  const [res, setRes] = useState<any>([]);
-
+  const dispatch = useAppDispatch();
   useEffect(() => {
-    axios.get(
-      'https://reactlabapi.herokuapp.com/api/resolutions/doctor/me?offset=0&limit=10',
-      {
-        headers: {
-          Authorization: `Bearer ${loginRepository.getAccessToken()}`,
-        },
-      },
-    )
-      .then((resp) => setRes(resp.data.resolutions));
+    dispatch(resolutions.pending({ offset: 0, limit: 20 }));
   }, []);
-
+  const myResolutions = useAppSelector((state) => state.resolutions.resolutions);
   return (
     <div>
       <DoctorNavigatePanel pageTitle={dictionary.doctorPage.resolutionsTitle} />
@@ -34,14 +25,14 @@ const Resolutions = () => {
           </ResolutionsTableHead>
         </thead>
         <tbody>
-          {res.map((r: any) => (
+          {myResolutions.map((resolution) => (
             <ResolutionRow
-              key={r.id}
-              firstName={r.patient.first_name}
-              lastName={r.patient.last_name}
-              resolution={r.resolution}
-              visitDate={format(new Date(r.visit_date), 'MM/dd/yy')}
-              nextAppointmentDate={format(new Date(r.next_appointment_date), 'MM/dd/yy')}
+              key={resolution.id}
+              firstName={resolution.patient.first_name}
+              lastName={resolution.patient.last_name}
+              resolution={resolution.resolution}
+              visitDate={format(new Date(resolution.visit_date), 'MM/dd/yy')}
+              nextAppointmentDate={format(new Date(resolution.next_appointment_date), 'MM/dd/yy')}
             />
           ))}
         </tbody>

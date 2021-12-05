@@ -13,7 +13,7 @@ import { ControlCardPanelProps } from './ControlCardPanel.types';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
 import dictionary from '../../../dictionary/dictionary';
 import { deleteAppointment } from '../../../redux/actions/appointmentsForDoctors.actions';
-import resolution from '../../../redux/actions/resolution.actions';
+import { resolution } from '../../../redux/actions/resolution.actions';
 import ModalWindow from '../Modal/Modal';
 
 const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({ appointmentID }) => {

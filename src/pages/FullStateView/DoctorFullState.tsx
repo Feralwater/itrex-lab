@@ -3,7 +3,7 @@ import React from 'react';
 import { AppointmentsForDoctor } from '../../resources/appointments/appointments.types';
 import { useAppSelector } from '../../hooks';
 
-const DoctorFullState: React.VFC<AppointmentsForDoctor> = ({ appointments }) => {
+const DoctorFullState: React.VFC<AppointmentsForDoctor> = ({ appointments, doctorsResolutions }) => {
   const role = useAppSelector((state) => state.profile.roleName);
   return (
     <>
@@ -19,6 +19,7 @@ const DoctorFullState: React.VFC<AppointmentsForDoctor> = ({ appointments }) => 
             time={appointment.visit_date}
             note={appointment.note}
             role={role}
+            doctorsResolutions={doctorsResolutions}
           />
         ))
       }
