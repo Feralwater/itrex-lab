@@ -5,8 +5,9 @@ import {
 } from 'pages/components/NavigatePanel/NavigatePanel.styles';
 import dictionary from '../../../dictionary/dictionary';
 import { PATH } from '../../../routes/constants';
+import { DoctorNavigatePanelProps } from '../../AppointmentsContainer/AppointmentsContainer.types';
 
-const DoctorNavigatePanel: React.VFC = () => (
+const DoctorNavigatePanel: React.VFC<DoctorNavigatePanelProps> = ({ pageTitle }) => (
   <>
     <PatientsButtonsContainer>
       <PatientsButton
@@ -23,7 +24,7 @@ const DoctorNavigatePanel: React.VFC = () => (
       </PatientsButton>
     </PatientsButtonsContainer>
     <PatientsHeader>
-      <PatientsTitle>{dictionary.doctorPage.title}</PatientsTitle>
+      <PatientsTitle>{pageTitle}</PatientsTitle>
       <ButtonWrapper>
         search + sort
       </ButtonWrapper>

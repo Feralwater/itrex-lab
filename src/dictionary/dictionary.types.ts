@@ -47,7 +47,8 @@ export interface DictionaryType {
     errorMessage: string
   },
   doctorPage: {
-    title: string
+    patientsTitle: string
+    resolutionsTitle: string
     emptyMedicalHistoryTextLine1: string
     emptyMedicalHistoryTextLine2: string
     buttonPatients: string

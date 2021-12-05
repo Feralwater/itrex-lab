@@ -49,7 +49,8 @@ const dictionary: DictionaryType = {
     errorMessage: 'oops, the page you are looking for can`t be found!😭',
   },
   doctorPage: {
-    title: 'My Patients',
+    patientsTitle: 'My Patients',
+    resolutionsTitle: 'Resolutions',
     emptyMedicalHistoryTextLine1: 'You have no AppointmentsForDoctorContainer yet.',
     emptyMedicalHistoryTextLine2: 'To create a patient profile, please contact your administrator.',
     buttonPatients: 'Patients',
