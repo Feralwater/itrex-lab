@@ -6,9 +6,9 @@ import {
   AppointmentFormContainer,
   AppointmentStepsContainer,
   ChooseDayStep,
-  MakeAppointmentButtonContainer,
+  MakeAppointmentButtonContainer, NoUnderlineLink,
   SelectDoctorStep,
-  SelectTimeslotStep,
+  SelectTimeslotStep, LinksContainer, DisabledLink,
 } from 'forms/appointmentForm/MakeAnAppointment.styles';
 import dictionary from 'dictionary/dictionary';
 import { PatientsTitle } from 'pages/components/NavigatePanel/NavigatePanel.styles';
@@ -20,6 +20,8 @@ import CustomSelect from '../../components/Select/Select';
 import appointmentValidationSchema from './validation/appointment.validation';
 import makeAppointmentsFieldsData from './fieldsData';
 import { appointmentValues, MakeAnAppointmentFormProps } from './form.types';
+import { PATH } from '../../routes/constants';
+import { ReactComponent as RightArrow } from '../../assets/svgImages/rightArrowGrey-icon.svg';
 
 const MakeAnAppointmentForm:React.VFC<MakeAnAppointmentFormProps> = ({
   handleSubmitForm,
@@ -32,6 +34,11 @@ const MakeAnAppointmentForm:React.VFC<MakeAnAppointmentFormProps> = ({
   freeTime,
 }) => (
   <>
+    <LinksContainer>
+      <NoUnderlineLink to={PATH.APPOINTMENTS}>{dictionary.patientPage.buttonAppointments}</NoUnderlineLink>
+      <RightArrow />
+      <DisabledLink to={PATH.CREATE_APPOINTMENT}>{dictionary.form.makeAppointmentTitle}</DisabledLink>
+    </LinksContainer>
     <PatientsTitle>{dictionary.form.makeAppointmentTitle}</PatientsTitle>
     <Formik
       initialValues={{

@@ -22,7 +22,7 @@ const PatientNavigatePanel: React.VFC = () => (
       >
         {dictionary.patientPage.buttonAppointments}
       </PatientsButton>
-      <PatientsButton to="" isActive={isActiveTab(dictionary.patientPage.buttonResolutions)}>{dictionary.patientPage.buttonResolutions}</PatientsButton>
+      <PatientsButton to={PATH.MY_RESOLUTIONS} isActive={isActiveTab(dictionary.patientPage.buttonResolutions)}>{dictionary.patientPage.buttonResolutions}</PatientsButton>
     </PatientsButtonsContainer>
     <PatientsHeader>
       <PatientsTitle>{dictionary.patientPage.title}</PatientsTitle>

@@ -8,6 +8,7 @@ export const PATH = {
   APPOINTMENTS: '/appointments',
   CREATE_APPOINTMENT: '/create-an-appointment',
   PROFILE: '/profile',
+  MY_RESOLUTIONS: '/my-resolutions',
 };
 
 export const ROLES = {
@@ -34,6 +35,7 @@ export const ROLES_ACCESS = {
     PATH.APPOINTMENTS,
     PATH.CREATE_APPOINTMENT,
     PATH.PROFILE,
+    PATH.MY_RESOLUTIONS,
   ]),
   [ROLES.PUBLIC]: new Set([PATH.SIGN_IN, PATH.SIGN_UP, PATH.RESTORE_PASSWORD, PATH.SEND_EMAIL]),
 };

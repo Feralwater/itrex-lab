@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { Form } from 'formik';
+import { Link } from 'react-router-dom';
+import colors from '../../styles/colors';
 
 export const AppointmentStepsNumbers = styled.div`
   display: flex;
@@ -45,4 +47,28 @@ export const MakeAppointmentButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   margin: 0 32px 0 0;
+`;
+
+export const NoUnderlineLink = styled(Link)`
+  font-size: 17px;
+  line-height: 24px;
+  text-decoration-line: none;
+  color: ${colors.cornflower_blue};
+  width: fit-content;
+`;
+
+export const LinksContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0px 0 20px 0;
+  width: fit-content;
+`;
+
+export const DisabledLink = styled(Link)`
+  font-size: 17px;
+  line-height: 24px;
+  text-decoration-line: none;
+  color: ${colors.rock_blue};
+  width: fit-content;
 `;

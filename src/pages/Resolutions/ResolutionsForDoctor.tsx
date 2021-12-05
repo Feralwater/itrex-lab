@@ -8,7 +8,7 @@ import { ResolutionsTable, ResolutionsTableHead, ResolutionsTableHeaderCell } fr
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { resolutions } from '../../redux/actions/resolution.actions';
 
-const Resolutions = () => {
+const ResolutionsForDoctor = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(resolutions.pending({
@@ -44,4 +44,4 @@ const Resolutions = () => {
   );
 };
 
-export default Resolutions;
+export default ResolutionsForDoctor;
