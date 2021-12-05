@@ -16,6 +16,7 @@ import checkUserRole from './utils';
 import RestorePasswordForm from '../forms/authForms/restorePasswordForm';
 import MakeAppointmentFormContainer from '../forms/appointmentForm/MakeAppointmentFormContainer';
 import Resolutions from '../pages/Resolutions/Resolutions';
+import PatientProfile from '../pages/PatientProfile/PatientProfile';
 
 function Routes() {
   const { roleName } = useAppSelector((state) => state.profile);
@@ -47,6 +48,7 @@ function Routes() {
       <Route path={PATH.PATIENTS} render={() => <Public><AppointmentsForDoctorContainer /></Public>} />
       <Route path={PATH.APPOINTMENTS} render={() => <Public><AppointmentsForPatientContainer /></Public>} />
       <Route path={PATH.RESOLUTIONS} render={() => <Public><Resolutions /></Public>} />
+      <Route path={PATH.PROFILE} render={() => <Public><PatientProfile /></Public>} />
       <Route
         path={PATH.CREATE_APPOINTMENT}
         render={() => (

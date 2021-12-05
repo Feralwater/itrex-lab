@@ -15,14 +15,14 @@ import isActiveTab from './helpers';
 const PatientNavigatePanel: React.VFC = () => (
   <>
     <PatientsButtonsContainer>
-      <PatientsButton to="" isActive>{dictionary.patientPage.buttonProfile}</PatientsButton>
+      <PatientsButton to={PATH.PROFILE} isActive={isActiveTab(dictionary.patientPage.buttonProfile)}>{dictionary.patientPage.buttonProfile}</PatientsButton>
       <PatientsButton
         to={PATH.APPOINTMENTS}
         isActive={isActiveTab(dictionary.patientPage.buttonAppointments)}
       >
         {dictionary.patientPage.buttonAppointments}
       </PatientsButton>
-      <PatientsButton to="" isActive>{dictionary.patientPage.buttonResolutions}</PatientsButton>
+      <PatientsButton to="" isActive={isActiveTab(dictionary.patientPage.buttonResolutions)}>{dictionary.patientPage.buttonResolutions}</PatientsButton>
     </PatientsButtonsContainer>
     <PatientsHeader>
       <PatientsTitle>{dictionary.patientPage.title}</PatientsTitle>

@@ -7,6 +7,7 @@ export const PATH = {
   SIGN_UP: '/sign-up',
   APPOINTMENTS: '/appointments',
   CREATE_APPOINTMENT: '/create-an-appointment',
+  PROFILE: '/profile',
 };
 
 export const ROLES = {
@@ -32,6 +33,7 @@ export const ROLES_ACCESS = {
   [ROLES.PATIENT]: new Set([
     PATH.APPOINTMENTS,
     PATH.CREATE_APPOINTMENT,
+    PATH.PROFILE,
   ]),
   [ROLES.PUBLIC]: new Set([PATH.SIGN_IN, PATH.SIGN_UP, PATH.RESTORE_PASSWORD, PATH.SEND_EMAIL]),
 };

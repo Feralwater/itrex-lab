@@ -35,6 +35,7 @@ const AppointmentCard: React.VFC<AppointmentCardProps> = ({
   status,
   time,
   role,
+  reason,
   doctorsResolutions,
 }) => {
   function statusOrDoctor() {
@@ -57,7 +58,15 @@ const AppointmentCard: React.VFC<AppointmentCardProps> = ({
 
   const [showControlCardPanel, setShowControlCardPanel] = useState<boolean>(false);
   const resolution = doctorsResolutions?.find((res) => res.appointment_id === appointmentID);
-
+  function isCardDescription() {
+    if (role === 'DOCTOR' && resolution) {
+      return resolution.resolution.length > 0;
+    }
+    if (role === 'PATIENT' && reason) {
+      return reason.length > 0;
+    }
+    return false;
+  }
   return (
     <UserCard>
       <UserCardHeader>
@@ -80,9 +89,9 @@ const AppointmentCard: React.VFC<AppointmentCardProps> = ({
           <Clock />
           <UserCardBodyTimeText>{formatVisitTime(time)}</UserCardBodyTimeText>
         </UserCardBodyTime>
-        <UserCardBodyDescription isDescription={resolution && (resolution.resolution.length > 0)}>
+        <UserCardBodyDescription isDescription={isCardDescription()}>
           {role === 'DOCTOR' ? <div><Board /></div> : <div><Heart /></div>}
-          <UserCardBodyDescriptionText>{resolution?.resolution}</UserCardBodyDescriptionText>
+          <UserCardBodyDescriptionText>{role === 'DOCTOR' ? resolution?.resolution : reason}</UserCardBodyDescriptionText>
         </UserCardBodyDescription>
       </UserCardBody>
     </UserCard>
