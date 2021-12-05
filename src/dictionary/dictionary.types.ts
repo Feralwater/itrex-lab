@@ -74,5 +74,7 @@ export interface DictionaryType {
   resolutionModal: {
     resolutionTitle: string
     resolutionTextareaTitle: string
+    cancelButtonText: string
+    createButtonText: string
   },
 }

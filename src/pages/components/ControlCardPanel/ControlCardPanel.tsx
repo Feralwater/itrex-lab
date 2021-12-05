@@ -60,7 +60,7 @@ const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({ appointmentID }) =
             isBorder
             onClick={() => setActiveModal(false)}
           >
-            Cancel
+            {dictionary.resolutionModal.cancelButtonText}
           </Button>
           <Button
             type="button"
@@ -73,7 +73,7 @@ const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({ appointmentID }) =
               setActiveModal(false);
             }}
           >
-            Create
+            {dictionary.resolutionModal.createButtonText}
           </Button>
         </ResolutionModalFooter>
       </ModalWindow>

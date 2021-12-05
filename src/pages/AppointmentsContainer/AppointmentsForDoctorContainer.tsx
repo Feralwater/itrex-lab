@@ -18,11 +18,11 @@ const AppointmentsForDoctorContainer:React.VFC = () => {
     if (userId) {
       dispatch(appointmentsForDoctor.pending({ offset: 0, limit: 20 }));
     }
-  }, [userId, total]);
+  }, [userId, total, dispatch]);
 
   useEffect(() => {
-    dispatch(resolutions.pending({ offset: 0, limit: 20 }));
-  }, []);
+    dispatch(resolutions.pending({ offset: 0, limit: 8 }));
+  }, [dispatch]);
   const doctorsResolutions = useAppSelector((state) => state.resolutions.resolutions);
   return (
     <>

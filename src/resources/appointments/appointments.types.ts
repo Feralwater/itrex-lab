@@ -1,4 +1,4 @@
-import { Patient, ResolutionsResponse } from '../resolutions/resolutions.types';
+import { ResolutionForDoctor } from '../resolutions/resolutions.types';
 
 export interface Appointment {
   id: 'string',
@@ -37,15 +37,7 @@ export interface AppointmentsForPatient {
 export interface AppointmentsForDoctor {
   appointments: Array<AppointmentForDoctor>,
   total: number
-  doctorsResolutions?: [
-    {
-      id: string,
-      appointment_id: string,
-      next_appointment_date: string,
-      resolution: string,
-      visit_date: string,
-      patient: Patient, }
-    ],
+  doctorsResolutions?: Array<ResolutionForDoctor>
 }
 
 export interface DeleteAppointment {

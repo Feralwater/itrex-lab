@@ -3,7 +3,7 @@ import { resolutions } from '../actions/resolution.actions';
 import { ResolutionsState } from './reducers.types';
 
 const initialState = {
-  resolutions: [{}],
+  resolutions: [],
   total: 0,
   status: 'idle',
 } as ResolutionsState;

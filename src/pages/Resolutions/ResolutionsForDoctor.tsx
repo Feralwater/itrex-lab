@@ -13,9 +13,9 @@ const ResolutionsForDoctor = () => {
   useEffect(() => {
     dispatch(resolutions.pending({
       offset: 0,
-      limit: 20,
+      limit: 8,
     }));
-  }, []);
+  }, [dispatch]);
   const myResolutions = useAppSelector((state) => state.resolutions.resolutions);
   return (
     <div>

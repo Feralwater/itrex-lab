@@ -76,6 +76,8 @@ const dictionary: DictionaryType = {
   resolutionModal: {
     resolutionTitle: 'Create a Resolution',
     resolutionTextareaTitle: 'Resolution',
+    cancelButtonText: 'Cancel',
+    createButtonText: 'Create',
   },
 };
 

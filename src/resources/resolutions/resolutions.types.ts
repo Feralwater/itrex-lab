@@ -17,15 +17,16 @@ export interface Patient{
   photo: string
 }
 
+export interface ResolutionForDoctor{
+  id: string;
+  appointment_id: string;
+  next_appointment_date: string;
+  resolution: string;
+  visit_date: string;
+  patient: Patient;
+}
+
 export interface ResolutionsResponse{
-  resolutions: [
-  {
-    id: string,
-    appointment_id: string,
-    next_appointment_date: string,
-    resolution: string,
-    visit_date: string,
-    patient: Patient, }
-],
+  resolutions: Array<ResolutionForDoctor>
   total: 0
 }
