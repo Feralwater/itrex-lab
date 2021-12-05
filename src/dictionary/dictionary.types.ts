@@ -1,4 +1,4 @@
-export type DictionaryType = {
+export interface DictionaryType {
   ViewEmptyState: {
     medicalHistoryTextPart1: string
     medicalHistoryTextPart2: string
@@ -69,5 +69,9 @@ export type DictionaryType = {
     step1Description: string
     step2Description: string
     step3Description: string
-  }
+  },
+  resolutionModal: {
+    resolutionTitle: string
+    resolutionTextareaTitle: string
+  },
 }

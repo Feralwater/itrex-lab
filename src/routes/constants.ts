@@ -1,11 +1,11 @@
 export const PATH = {
-  MY_PATIENTS: '/my-patients',
+  PATIENTS: '/patients',
   RESOLUTIONS: '/resolutions',
   RESTORE_PASSWORD: '/restore-password',
   SEND_EMAIL: '/send-email',
   SIGN_IN: '/sign-in',
   SIGN_UP: '/sign-up',
-  MY_APPOINTMENTS: '/my-appointments',
+  APPOINTMENTS: '/appointments',
   CREATE_APPOINTMENT: '/create-an-appointment',
 };
 
@@ -22,15 +22,15 @@ export const ROLES_API = {
 };
 
 export const DEFAULT_PATH = {
-  [ROLES.DOCTOR]: PATH.MY_PATIENTS,
-  [ROLES.PATIENT]: PATH.MY_APPOINTMENTS,
+  [ROLES.DOCTOR]: PATH.PATIENTS,
+  [ROLES.PATIENT]: PATH.APPOINTMENTS,
   [ROLES.PUBLIC]: PATH.SIGN_IN,
 };
 
 export const ROLES_ACCESS = {
-  [ROLES.DOCTOR]: new Set([PATH.MY_PATIENTS, PATH.RESOLUTIONS]),
+  [ROLES.DOCTOR]: new Set([PATH.PATIENTS, PATH.RESOLUTIONS]),
   [ROLES.PATIENT]: new Set([
-    PATH.MY_APPOINTMENTS,
+    PATH.APPOINTMENTS,
     PATH.CREATE_APPOINTMENT,
   ]),
   [ROLES.PUBLIC]: new Set([PATH.SIGN_IN, PATH.SIGN_UP, PATH.RESTORE_PASSWORD, PATH.SEND_EMAIL]),

@@ -5,4 +5,6 @@ export type ButtonPropsType = {
     disabled?: boolean
     type: 'button' | 'submit' | 'reset' | undefined
     onClick?: () => void
+    iconUrl?: string
+    isBorder?: boolean
 }

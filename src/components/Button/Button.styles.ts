@@ -7,7 +7,7 @@ const StyledButton = styled.button<ButtonPropsType>`
   width: fit-content;
   font-weight: 600;
   border-radius: 8px;
-  border: none;
+  border: ${(props) => (props.isBorder ? `1px solid ${colors.link_water}` : 'none')};
   cursor: pointer;
   text-transform: capitalize;
   ${(props) => props.size === 'large' && css`
@@ -28,7 +28,7 @@ const StyledButton = styled.button<ButtonPropsType>`
     line-height: 20px;
   `}
   ${(props) => props.variant === 'secondary' && css`
-    background-color: ${colors.link_water};
+    background-color: ${colors.white};
     color: ${colors.rock_blue};
 
   `}
@@ -49,6 +49,14 @@ const StyledButton = styled.button<ButtonPropsType>`
                     background-repeat: no-repeat;
                     background-position: 80% 50%;
                   `)
+}
+  ${(props) => (props.iconUrl && (props.icon === 'left'
+    ? css`
+      background-image: url(${props.iconUrl});
+                  `
+    : css`
+       background-image: url(${props.iconUrl});
+                  `))
 }
   ${(props) => props.disabled && css`
     color: #ffffff;

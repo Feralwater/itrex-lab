@@ -44,8 +44,8 @@ function Routes() {
       />
       <Route path={PATH.SIGN_IN} render={() => <AuthorisedLayout><SignIn /></AuthorisedLayout>} />
       <Route path={PATH.SIGN_UP} render={() => <AuthorisedLayout><SignUp /></AuthorisedLayout>} />
-      <Route path={PATH.MY_PATIENTS} render={() => <Public><AppointmentsForDoctorContainer /></Public>} />
-      <Route path={PATH.MY_APPOINTMENTS} render={() => <Public><AppointmentsForPatientContainer /></Public>} />
+      <Route path={PATH.PATIENTS} render={() => <Public><AppointmentsForDoctorContainer /></Public>} />
+      <Route path={PATH.APPOINTMENTS} render={() => <Public><AppointmentsForPatientContainer /></Public>} />
       <Route path={PATH.RESOLUTIONS} render={() => <Public><Resolutions /></Public>} />
       <Route
         path={PATH.CREATE_APPOINTMENT}

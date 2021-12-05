@@ -15,7 +15,6 @@ export const Modal = styled.div<ModalProps>`
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
   transition: .5s;
   opacity: ${(props) => (props.isActive ? '1' : '0')};
   pointer-events: ${(props) => (props.isActive ? 'all' : 'none')};
@@ -23,7 +22,6 @@ export const Modal = styled.div<ModalProps>`
 `;
 
 export const ModalContent = styled.div<ModalProps>`
-  padding: 40px 40px 40px 32px;
   border-radius: 16px;
   background-color: ${colors.white};
   transform: ${(props) => (props.isActive ? 'scale(1)' : 'scale(.5)')};

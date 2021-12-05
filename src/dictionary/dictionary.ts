@@ -72,6 +72,10 @@ const dictionary: DictionaryType = {
     step2Description: 'Choose a day for an appointment',
     step3Description: 'Select an available timeslot',
   },
+  resolutionModal: {
+    resolutionTitle: 'Create a Resolution',
+    resolutionTextareaTitle: 'Resolution',
+  },
 };
 
 export default dictionary;

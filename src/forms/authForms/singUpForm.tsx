@@ -23,7 +23,7 @@ const SignUpForm:React.VFC = () => {
     dispatch(registration.pending({
       userName, password, firstName, lastName,
     }));
-    history.push(PATH.MY_APPOINTMENTS);
+    history.push(PATH.APPOINTMENTS);
   };
   return (
     <Formik

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { loginRepository } from '../../resources/loginRepository';
+import DoctorNavigatePanel from '../components/NavigatePanel/DoctorNavigatePanel';
 
 const Resolutions = () => {
   const [res, setRes] = useState([]);
@@ -17,6 +18,7 @@ const Resolutions = () => {
   }, []);
   return (
     <div>
+      <DoctorNavigatePanel />
       {res.map((r:any) => (
         <>
           <span>{r.patient.first_name}</span>
