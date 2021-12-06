@@ -30,7 +30,7 @@ instance.interceptors.request.use(
     const refreshToken = loginRepository.getRefreshToken();
     if (token && refreshToken) {
       const expiryDate: Date = new Date(jwt<JWTToken>(token).exp * 1000);
-      if (expiryDate > new Date()) {
+      if (expiryDate < new Date()) {
         loginRepository.setAccessToken(refreshToken);
         const { data } = await auth.refreshToken();
         loginRepository.setAccessToken(data.access_token);
