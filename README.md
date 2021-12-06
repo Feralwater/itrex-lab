@@ -1,30 +1,27 @@
 ## Palm Clinic
 
-An application used to book the doctor visit, built with React, Redux-Toolkit, TypeScript, styled-components and redux-saga.
+Palm Clinic is an application used to book the doctor visit, built with React, Redux-Toolkit, TypeScript, styled-components and redux-saga.
 
 ## Project Status
 
 This project is currently in development. Users can book the doctor visit and doctors can create a resolution.
 
-## Project Screen Shot
-
-![img_1.png](img_1.png)
-
 ## Installation and Setup Instructions
 
-Clone down this repository. You will need `node` and `npm` or `yarn` installed globally on your machine.
+Clone down this repository. You will need `node` and `yarn` and `git` installed globally on your machine.
 
-Installation:
-
-`npm install` or `yarn`
+1. Install [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+2. Clone down this [repository](https://github.com/Feralwater/itrex-lab)
+3. Install [Node](https://nodejs.org/en/download/package-manager/)
+4. Run following command in terminal: `yarn`
 
 To Run Test Suite:
-
-`npm test` or `yarn test`
+ 
+`yarn test`
 
 To Start Server:
 
-`npm start` or `yarn run`
+`yarn run`
 
 To Visit App:
 
@@ -33,3 +30,7 @@ To Visit App:
 ## Reflection
 
 This project built during ITRex React.JS-lab
+
+## Project Screen Shot
+
+<img src="img.png" height="300">

@@ -58,7 +58,7 @@ const AppointmentCard: React.VFC<AppointmentCardProps> = ({
 
   const [showControlCardPanel, setShowControlCardPanel] = useState<boolean>(false);
   const resolution = doctorsResolutions?.find((res) => res.appointment_id === appointmentID);
-  console.log(doctorsResolutions);
+
   function isCardDescription() {
     if (role === 'DOCTOR' && resolution) {
       return resolution.resolution.length > 0;
