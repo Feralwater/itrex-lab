@@ -1,8 +1,8 @@
 import React from 'react';
 import Header from '../../components/Header/Header';
-import { Body, BodyDoctorView, Patients } from './public.styles';
+import { Body, BodyDoctorView, Patients } from './Privat.styles';
 
-const Public: React.FC = ({ children }) => (
+const Privat: React.FC = ({ children }) => (
   <>
     <Header />
     <Body>
@@ -15,4 +15,4 @@ const Public: React.FC = ({ children }) => (
   </>
 );
 
-export default Public;
+export default Privat;

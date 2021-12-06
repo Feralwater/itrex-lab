@@ -1,24 +1,21 @@
-export type Options = {
-    value: string
-    label: string
+export interface Options {
+  value: string;
+  label: string;
 }
 
-export type CustomSelectPropsType = {
-    labelText: string
-    id: string
-    name: string
-    options:{
-        value: string
-        label: string
-    }
-    placeholder: string
-    [x:string]: any;
+export interface CustomSelectPropsType {
+  labelText: string;
+  id: string;
+  name: string;
+  options: Options;
+  placeholder: string;
+  [x: string]: any;
 }
 
-export type LabelType={
-    label: string
+export interface LabelType {
+  label: string;
 }
 
-export type InputValueType={
-    inputValue: string
+export interface InputValueType {
+  inputValue: string;
 }

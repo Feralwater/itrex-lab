@@ -1,32 +1,19 @@
 import React from 'react';
 import Select from 'react-select';
 import { useField } from 'formik';
-import Highlighter from 'react-highlight-words';
-import colors from '../../styles/colors';
 import SelectStyles from './Select.styles';
-import { InputValueType, LabelType, Options } from './Select.types';
+import { Options } from './Select.types';
+import searchOptionHelper from './searchOptionHelper';
 
-const CustomSelect:React.VFC = ({
-  labelText, id, name, options, placeholder, ...props
+const CustomSelect = ({
+  labelText, id, name, options, placeholder, setSelectedValue, ...props
 }: any) => {
   const [, , { setValue }] = useField(props.field);
 
-  function formatOptionLabel({ label }:LabelType, { inputValue }:InputValueType) {
-    return (
-      <Highlighter
-        highlightStyle={{
-          fontWeight: 'bold',
-          backgroundColor: `${colors.transparent}`,
-        }}
-        searchWords={[inputValue]}
-        textToHighlight={label}
-      />
-    );
-  }
   const onChangeHandler = (value:Options) => {
     setValue(value);
-    if (props.setSelectedValue) {
-      props.setSelectedValue(value.value);
+    if (setSelectedValue) {
+      setSelectedValue(value.value);
     }
   };
 
@@ -37,7 +24,7 @@ const CustomSelect:React.VFC = ({
         {...props}
         id={id}
         placeholder={placeholder}
-        formatOptionLabel={formatOptionLabel}
+        formatOptionLabel={searchOptionHelper}
         styles={SelectStyles}
         options={options}
         onChange={onChangeHandler}

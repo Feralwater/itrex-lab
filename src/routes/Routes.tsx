@@ -8,8 +8,8 @@ import SignUp from 'pages/SignUp/SignUp';
 import AppointmentsForDoctorContainer from 'pages/AppointmentsContainer/AppointmentsForDoctorContainer';
 import AppointmentsForPatientContainer from 'pages/AppointmentsContainer/AppointmentsForPatientContainer';
 import Error404 from '../components/Error404Page/Error404';
-import AuthorisedLayout from '../layouts/authorised/authorised';
-import Public from '../layouts/public/public';
+import AuthorisedLayout from '../layouts/Authorised/Authorised';
+import Privat from '../layouts/Privat/Privat';
 import { useAppSelector } from '../hooks';
 import { PATH } from './constants';
 import checkUserRole from './utils';
@@ -46,17 +46,17 @@ function Routes() {
       />
       <Route path={PATH.SIGN_IN} render={() => <AuthorisedLayout><SignIn /></AuthorisedLayout>} />
       <Route path={PATH.SIGN_UP} render={() => <AuthorisedLayout><SignUp /></AuthorisedLayout>} />
-      <Route path={PATH.PATIENTS} render={() => <Public><AppointmentsForDoctorContainer /></Public>} />
-      <Route path={PATH.APPOINTMENTS} render={() => <Public><AppointmentsForPatientContainer /></Public>} />
-      <Route path={PATH.RESOLUTIONS} render={() => <Public><ResolutionsForDoctor /></Public>} />
-      <Route path={PATH.PROFILE} render={() => <Public><PatientProfile /></Public>} />
-      <Route path={PATH.MY_RESOLUTIONS} render={() => <Public><ResolutionsForPatient /></Public>} />
+      <Route path={PATH.PATIENTS} render={() => <Privat><AppointmentsForDoctorContainer /></Privat>} />
+      <Route path={PATH.APPOINTMENTS} render={() => <Privat><AppointmentsForPatientContainer /></Privat>} />
+      <Route path={PATH.RESOLUTIONS} render={() => <Privat><ResolutionsForDoctor /></Privat>} />
+      <Route path={PATH.PROFILE} render={() => <Privat><PatientProfile /></Privat>} />
+      <Route path={PATH.MY_RESOLUTIONS} render={() => <Privat><ResolutionsForPatient /></Privat>} />
       <Route
         path={PATH.CREATE_APPOINTMENT}
         render={() => (
-          <Public>
+          <Privat>
             <MakeAppointmentFormContainer />
-          </Public>
+          </Privat>
         )}
       />
       <Route render={() => <Error404 />} />
