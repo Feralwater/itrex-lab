@@ -21,13 +21,13 @@ const ResolutionsPaginate: React.VFC = () => {
     }));
     setCurrentPage(currentPageNumber.selected + 1);
   };
+  const fromItem = (currentPage - 1) * resolutionsOnPage + 1;
+  const toItem = Math.min((currentPage - 1) * resolutionsOnPage + resolutionsOnPage, totalCount);
+
   return (
     <Paginate>
       <div>
-        {`${dictionary.paginate.resultsText} ${(currentPage - 1) * resolutionsOnPage + 1}-${
-          (currentPage - 1) * resolutionsOnPage + resolutionsOnPage > totalCount ? totalCount
-            : (currentPage - 1) * resolutionsOnPage + resolutionsOnPage
-        } ${dictionary.paginate.resultsPronoun} ${totalCount}`}
+        {`${dictionary.paginate.resultsText} ${fromItem}-${toItem} ${dictionary.paginate.resultsPronoun} ${totalCount}`}
       </div>
       <StyledPaginateContainer>
         <ReactPaginate
