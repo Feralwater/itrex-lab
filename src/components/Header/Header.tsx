@@ -13,8 +13,8 @@ import {
   UserName,
   UserRole,
 } from './Header.styles';
-import dictionary from '../../dictionary/dictionary';
 import { useAppSelector } from '../../hooks';
+import componentsDictionary from '../dictionary/componentsDictionary';
 
 const Header: React.VFC = () => {
   const firstName = useAppSelector((state) => state.profile.firstName);
@@ -27,7 +27,7 @@ const Header: React.VFC = () => {
       <HeaderContainer>
         <HeaderLogo>
           <Logo />
-          <LogoText>{dictionary.header.logoText}</LogoText>
+          <LogoText>{componentsDictionary.header.logoText}</LogoText>
         </HeaderLogo>
         <User>
           <UserInfo>
@@ -35,7 +35,7 @@ const Header: React.VFC = () => {
             <UserRole>{roleName}</UserRole>
           </UserInfo>
           <UserImageContainer>
-            <UserImage src={avatar} alt={dictionary.header.avatarAlt} />
+            <UserImage src={avatar} alt={componentsDictionary.header.avatarAlt} />
             <NetworkStatus isOnline />
           </UserImageContainer>
         </User>

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { format } from 'date-fns';
 import DoctorNavigatePanel from '../components/NavigatePanel/DoctorNavigatePanel';
-import dictionary from '../../dictionary/dictionary';
+import dictionary from '../dictionary/pagesDictionary';
 import { columnsNames, resolutionsOnPage } from './const';
 import ResolutionRow from './ResolutionRow';
 import { ResolutionsTable, ResolutionsTableHead, ResolutionsTableHeaderCell } from './Resolutions.styles';

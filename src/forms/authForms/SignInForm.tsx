@@ -10,7 +10,7 @@ import {
   FormTitle,
 } from './authForm.styles';
 import Button from '../../components/Button/Button';
-import dictionary from '../../dictionary/dictionary';
+import dictionary from '../../pages/dictionary/pagesDictionary';
 import { useAppDispatch } from '../../hooks';
 import login from '../../redux/actions/login.actions';
 import singInValidationSchema from './validation/singIn.validation';

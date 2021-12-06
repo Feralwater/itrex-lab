@@ -1,7 +1,7 @@
 import React from 'react';
 import { ReactComponent as MedicalHistory } from '../../assets/svgImages/medical-history.svg';
 import { MedicalHistoryContainer, MedicalHistoryText } from './EmptyState.styles';
-import dictionary from '../../dictionary/dictionary';
+import dictionary from '../dictionary/pagesDictionary';
 
 const DoctorEmptyState:React.VFC = () => (
   <MedicalHistoryContainer>

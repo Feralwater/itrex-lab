@@ -5,7 +5,7 @@ import PatientEmptyState from '../EmptyStateView/PatientEmptyState';
 import PatientNavigatePanel from '../components/NavigatePanel/PatientNavigatePanel';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import appointmentsForPatient from '../../redux/actions/appointmentsForPatient.actions';
-import dictionary from '../../dictionary/dictionary';
+import dictionary from '../dictionary/pagesDictionary';
 
 const AppointmentsForPatientContainer:React.VFC = () => {
   const dispatch = useAppDispatch();

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Error, ErrorMessage, ErrorNumber } from './Error404.styles';
-import dictionary from '../../dictionary/dictionary';
+import dictionary from '../../pages/dictionary/pagesDictionary';
 
 const Error404:React.VFC = () => (
   <Error>

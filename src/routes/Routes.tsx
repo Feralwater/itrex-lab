@@ -7,7 +7,7 @@ import SignIn from 'pages/SignIn/SignIn';
 import SignUp from 'pages/SignUp/SignUp';
 import AppointmentsForDoctorContainer from 'pages/AppointmentsContainer/AppointmentsForDoctorContainer';
 import AppointmentsForPatientContainer from 'pages/AppointmentsContainer/AppointmentsForPatientContainer';
-import Error404 from '../components/Error404Page/Error404';
+import Error404 from '../components/Error404/Error404';
 import AuthorisedLayout from '../layouts/Authorised/Authorised';
 import Privat from '../layouts/Privat/Privat';
 import { useAppSelector } from '../hooks';

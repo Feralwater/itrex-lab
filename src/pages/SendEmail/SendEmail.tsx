@@ -7,7 +7,7 @@ import {
   RestoreMessage,
   RestorePasswordContainer,
 } from '../../forms/authForms/authForm.styles';
-import dictionary from '../../dictionary/dictionary';
+import dictionary from '../dictionary/pagesDictionary';
 import { SendEmailProps } from './SendEmail.types';
 import { PATH } from '../../routes/constants';
 

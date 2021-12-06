@@ -5,7 +5,7 @@ import DoctorNavigatePanel from '../components/NavigatePanel/DoctorNavigatePanel
 import AppointmentsWrapper from './AppointmentsContainer.styles';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { appointmentsForDoctor } from '../../redux/actions/appointmentsForDoctors.actions';
-import dictionary from '../../dictionary/dictionary';
+import dictionary from '../dictionary/pagesDictionary';
 import { resolutions } from '../../redux/actions/resolution.actions';
 
 const AppointmentsForDoctorContainer:React.VFC = () => {

@@ -1,27 +1,27 @@
-import dictionary from '../dictionary/dictionary';
+import componentsDictionary from '../components/dictionary/componentsDictionary';
 
 export function createErrorNotificationMessage(responseStatusCode: number) {
   switch (responseStatusCode) {
     case 400:
-      return dictionary.message.error400Text;
+      return componentsDictionary.message.error400Text;
     case 401:
-      return dictionary.message.error401Text;
+      return componentsDictionary.message.error401Text;
     case 403:
-      return dictionary.message.error403Text;
+      return componentsDictionary.message.error403Text;
     case 404:
-      return dictionary.message.error404Text;
+      return componentsDictionary.message.error404Text;
     case 500:
-      return dictionary.message.error500Text;
+      return componentsDictionary.message.error500Text;
     default:
-      return dictionary.message.errorMessageText;
+      return componentsDictionary.message.errorMessageText;
   }
 }
 
 export function createSuccessNotificationMessage(responseStatusCode: number) {
   switch (responseStatusCode) {
     case 201:
-      return dictionary.message.successMessageText;
+      return componentsDictionary.message.successMessageText;
     default:
-      return dictionary.message.successMessageText;
+      return componentsDictionary.message.successMessageText;
   }
 }

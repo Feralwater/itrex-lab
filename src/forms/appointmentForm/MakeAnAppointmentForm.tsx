@@ -10,7 +10,7 @@ import {
   SelectDoctorStep,
   SelectTimeslotStep, LinksContainer, DisabledLink,
 } from 'forms/appointmentForm/MakeAnAppointment.styles';
-import dictionary from 'dictionary/dictionary';
+import dictionary from 'pages/dictionary/pagesDictionary';
 import { PatientsTitle } from 'pages/components/NavigatePanel/NavigatePanel.styles';
 import AppointmentsSteps from 'pages/components/AppointmentsSteps/AppointmentsSteps';
 import DatePicker from 'pages/components/DatePicker/datePicker';

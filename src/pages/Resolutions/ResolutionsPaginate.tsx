@@ -6,7 +6,7 @@ import { resolutions } from '../../redux/actions/resolution.actions';
 import { ReactComponent as NextIcon } from '../../assets/svgImages/rightArrowGrey-icon.svg';
 import { ReactComponent as PrevIcon } from '../../assets/svgImages/leftArrowGrey-icon.svg';
 import { Paginate, StyledPaginateContainer } from './ResolutionsPaginate.styles';
-import dictionary from '../../dictionary/dictionary';
+import dictionary from '../dictionary/pagesDictionary';
 
 const ResolutionsPaginate: React.VFC = () => {
   const dispatch = useAppDispatch();

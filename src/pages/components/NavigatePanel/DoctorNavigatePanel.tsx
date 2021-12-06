@@ -3,7 +3,7 @@ import { ButtonWrapper } from 'forms/authForms/authForm.styles';
 import {
   PatientsButton, PatientsButtonsContainer, PatientsHeader, PatientsTitle,
 } from 'pages/components/NavigatePanel/NavigatePanel.styles';
-import dictionary from '../../../dictionary/dictionary';
+import dictionary from '../../dictionary/pagesDictionary';
 import { PATH } from '../../../routes/constants';
 import { NavigatePanelProps } from '../../AppointmentsContainer/AppointmentsContainer.types';
 import isActiveTab from './helpers';

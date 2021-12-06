@@ -10,7 +10,7 @@ import {
   NotificationTitleText,
 } from './Notification.styles';
 import { NotificationProps } from './Notification.types';
-import dictionary from '../../dictionary/dictionary';
+import componentsDictionary from '../dictionary/componentsDictionary';
 
 const Notification: React.VFC<NotificationProps> = ({
   isSuccess, message, showNotification, setShowNotification,
@@ -31,8 +31,8 @@ const Notification: React.VFC<NotificationProps> = ({
             <NotificationTitle>
               {isSuccess ? <SuccessIcon /> : <ErrorIcon />}
               {isSuccess
-                ? <NotificationTitleText>{dictionary.message.messageTitleSuccess}</NotificationTitleText>
-                : <NotificationTitleText>{dictionary.message.messageTitleError}</NotificationTitleText>}
+                ? <NotificationTitleText>{componentsDictionary.message.messageTitleSuccess}</NotificationTitleText>
+                : <NotificationTitleText>{componentsDictionary.message.messageTitleError}</NotificationTitleText>}
               <CloseButton onClick={() => setShowNotification(false)}><Close /></CloseButton>
             </NotificationTitle>
             <NotificationText>

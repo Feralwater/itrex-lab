@@ -11,7 +11,7 @@ import registration from '../../redux/actions/registration.actions';
 import { SignUpValues } from './form.types';
 import { ButtonWrapper, CustomForm, FormTitle } from './authForm.styles';
 import { signUpFieldsData } from './fieldsData';
-import dictionary from '../../dictionary/dictionary';
+import dictionary from '../../pages/dictionary/pagesDictionary';
 import { SignUpData } from '../../resources/auth/auth.types';
 
 const SignUpForm:React.VFC = () => {

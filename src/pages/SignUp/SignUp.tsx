@@ -1,7 +1,7 @@
 import React from 'react';
 import SignUpForm from 'forms/authForms/singUpForm';
 import { SignInUpLink, SignInUpMessage } from '../SignIn/SignIn.styles';
-import dictionary from '../../dictionary/dictionary';
+import dictionary from '../dictionary/pagesDictionary';
 
 const SignUp = () => (
   <>
