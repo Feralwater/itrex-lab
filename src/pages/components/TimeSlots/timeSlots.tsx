@@ -3,7 +3,7 @@ import { useField } from 'formik';
 import { parseISO, format } from 'date-fns';
 import { TimeSlot, TimeSlotLabel, TimeSlotsContainer } from './timeSlots.styles';
 import { TimeSlotsPropsType } from './timeSlots.types';
-import TIME_SLOTS from '../../../forms/const/const';
+import TIME_SLOTS from '../../const/const';
 
 const TimeSlots: React.VFC<TimeSlotsPropsType> = ({
   freeTime,

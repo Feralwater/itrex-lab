@@ -8,13 +8,13 @@ import SignUp from 'pages/SignUp/SignUp';
 import AppointmentsForDoctorContainer from 'pages/AppointmentsContainer/AppointmentsForDoctorContainer';
 import AppointmentsForPatientContainer from 'pages/AppointmentsContainer/AppointmentsForPatientContainer';
 import Error404 from '../components/Error404/Error404';
-import AuthorisedLayout from '../layouts/Authorised/Authorised';
-import Privat from '../layouts/Privat/Privat';
+import AuthorisedLayout from '../components/LayoutAuthorised/LayoutAuthorised';
+import LayoutPrivate from '../components/LayoutPrivate/LayoutPrivate';
 import { useAppSelector } from '../hooks';
 import { PATH } from './constants';
 import checkUserRole from './utils';
-import RestorePasswordForm from '../forms/authForms/restorePasswordForm';
-import MakeAppointmentFormContainer from '../forms/appointmentForm/MakeAppointmentFormContainer';
+import RestorePasswordForm from '../pages/components/AuthForms/RestorePasswordForm';
+import MakeAppointmentFormContainer from '../pages/components/AppointmentForm/MakeAppointmentFormContainer';
 import ResolutionsForDoctor from '../pages/Resolutions/ResolutionsForDoctor';
 import PatientProfile from '../pages/PatientProfile/PatientProfile';
 import ResolutionsForPatient from '../pages/Resolutions/ResolutionsForPatient';
@@ -46,17 +46,17 @@ function Routes() {
       />
       <Route path={PATH.SIGN_IN} render={() => <AuthorisedLayout><SignIn /></AuthorisedLayout>} />
       <Route path={PATH.SIGN_UP} render={() => <AuthorisedLayout><SignUp /></AuthorisedLayout>} />
-      <Route path={PATH.PATIENTS} render={() => <Privat><AppointmentsForDoctorContainer /></Privat>} />
-      <Route path={PATH.APPOINTMENTS} render={() => <Privat><AppointmentsForPatientContainer /></Privat>} />
-      <Route path={PATH.RESOLUTIONS} render={() => <Privat><ResolutionsForDoctor /></Privat>} />
-      <Route path={PATH.PROFILE} render={() => <Privat><PatientProfile /></Privat>} />
-      <Route path={PATH.MY_RESOLUTIONS} render={() => <Privat><ResolutionsForPatient /></Privat>} />
+      <Route path={PATH.PATIENTS} render={() => <LayoutPrivate><AppointmentsForDoctorContainer /></LayoutPrivate>} />
+      <Route path={PATH.APPOINTMENTS} render={() => <LayoutPrivate><AppointmentsForPatientContainer /></LayoutPrivate>} />
+      <Route path={PATH.RESOLUTIONS} render={() => <LayoutPrivate><ResolutionsForDoctor /></LayoutPrivate>} />
+      <Route path={PATH.PROFILE} render={() => <LayoutPrivate><PatientProfile /></LayoutPrivate>} />
+      <Route path={PATH.MY_RESOLUTIONS} render={() => <LayoutPrivate><ResolutionsForPatient /></LayoutPrivate>} />
       <Route
         path={PATH.CREATE_APPOINTMENT}
         render={() => (
-          <Privat>
+          <LayoutPrivate>
             <MakeAppointmentFormContainer />
-          </Privat>
+          </LayoutPrivate>
         )}
       />
       <Route render={() => <Error404 />} />

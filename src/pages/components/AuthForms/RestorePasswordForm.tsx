@@ -7,13 +7,13 @@ import {
   ButtonWrapper,
   CustomForm, FormTitle, FormTitleLeftArrow,
   RestoreMessage,
-} from './authForm.styles';
-import Button from '../../components/Button/Button';
-import dictionary from '../../pages/dictionary/pagesDictionary';
+} from './AuthForm.styles';
+import Button from '../../../components/Button/Button';
+import dictionary from '../../dictionary/pagesDictionary';
 import restorePasswordValidationSchema from './validation/restorePassword.validation';
-import { PATH } from '../../routes/constants';
+import { PATH } from '../../../routes/constants';
 import { restoreFieldsData } from './fieldsData';
-import { RestoreEmail } from './form.types';
+import { RestoreEmail } from './Form.types';
 
 const RestorePasswordForm:React.VFC<RestoreEmail> = ({ setRestorePassword }) => {
   const history = useHistory();

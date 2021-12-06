@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import colors from '../../styles/colors';
+import { colors } from '../../components/CommonStyles/theme';
 
 export const ResolutionsTable = styled.table`
   width: 100%;
@@ -13,12 +13,12 @@ export const ResolutionsTableHead = styled.tr`
   line-height: 24px;
   color: ${colors.rock_blue};
   background-color: ${colors.white};
-  box-shadow: 0px 4px 32px ${colors.link_water_alfa024};
+  box-shadow: 0px 4px 32px ${colors.link_water['024']};
 `;
 
 export const ResolutionsTableCell = styled.td`
   padding: 10px 0 10px 0;
-  border-bottom: solid ${colors.link_water_alfa032};
+  border-bottom: solid ${colors.link_water['032']};
   box-sizing: border-box;
 
   &:first-child {
@@ -66,7 +66,7 @@ export const ResolutionsTableRow = styled.tr`
   line-height: 24px;
   color: ${colors.dark_jungle_green};
   background-color: ${colors.white};
-  box-shadow: 0px 4px 32px ${colors.link_water_alfa024};
+  box-shadow: 0px 4px 32px ${colors.link_water['024']};
 
   &:last-child {
     border-bottom: none;

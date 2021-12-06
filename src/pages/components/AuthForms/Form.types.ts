@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextInput } from '../../components/Input/Input.types';
+import { TextInput } from '../../../components/Input/Input.types';
 
 export interface SignInValues {
   email: string

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import colors from '../../styles/colors';
+import { colors } from '../../components/CommonStyles/theme';
 
 export const SignInUpMessage = styled.div`
   font-weight: 400;

@@ -1,5 +1,5 @@
-import Input from '../../components/Input/Input';
-import { FormFieldData } from '../authForms/form.types';
+import Input from '../../../components/Input/Input';
+import { FormFieldData } from '../AuthForms/Form.types';
 
 const makeAppointmentsFieldsData:Array<FormFieldData> = [
   {

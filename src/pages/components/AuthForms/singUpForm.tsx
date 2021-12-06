@@ -3,16 +3,16 @@ import {
 } from 'formik';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import Button from '../../components/Button/Button';
-import { PATH } from '../../routes/constants';
+import Button from '../../../components/Button/Button';
+import { PATH } from '../../../routes/constants';
 import signUpValidationSchema from './validation/signUp.validation';
-import { useAppDispatch } from '../../hooks';
-import registration from '../../redux/actions/registration.actions';
-import { SignUpValues } from './form.types';
-import { ButtonWrapper, CustomForm, FormTitle } from './authForm.styles';
+import { useAppDispatch } from '../../../hooks';
+import registration from '../../../redux/actions/registration.actions';
+import { SignUpValues } from './Form.types';
+import { ButtonWrapper, CustomForm, FormTitle } from './AuthForm.styles';
 import { signUpFieldsData } from './fieldsData';
-import dictionary from '../../pages/dictionary/pagesDictionary';
-import { SignUpData } from '../../resources/auth/auth.types';
+import dictionary from '../../dictionary/pagesDictionary';
+import { SignUpData } from '../../../resources/auth/auth.types';
 
 const SignUpForm:React.VFC = () => {
   const history = useHistory();

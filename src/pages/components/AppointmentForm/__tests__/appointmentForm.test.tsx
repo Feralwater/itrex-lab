@@ -13,7 +13,7 @@ let inputNodeReason:HTMLInputElement;
 let inputNodeNote:HTMLInputElement;
 let buttonNode:HTMLButtonElement;
 
-describe('Make an appointmentForm form tests', () => {
+describe('Make an AppointmentForm form __tests__', () => {
   const initialState = { };
   const mockStore = configureStore();
   let store;

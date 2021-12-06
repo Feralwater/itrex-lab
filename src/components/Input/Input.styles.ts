@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import colors from '../../styles/colors';
+import { colors } from '../CommonStyles/theme';
 
 interface InputProps {
   icon: 'default' | 'left';
@@ -42,9 +42,9 @@ export const InputContainer = styled.div<InputProps>`
 
 export const StyledInput = styled.input<InputProps>`
   background: #ffffff;
-  border: ${(props) => (props.isError ? `1px solid ${colors.radical_red}` : `1px solid ${colors.link_water}`)};
+  border: ${(props) => (props.isError ? `1px solid ${colors.radical_red}` : `1px solid ${colors.link_water['1']}`)};
   box-sizing: border-box;
-  box-shadow: 0px 4px 32px ${colors.link_water_alfa016};
+  box-shadow: 0px 4px 32px ${colors.link_water['016']};
   border-radius: 8px;
   padding: ${(props) => (props.icon === 'default' ? '16px 24px' : '16px 24px 16px 64px')};
   font-size: 17px;
@@ -57,7 +57,7 @@ export const StyledInput = styled.input<InputProps>`
   }
 
   &:focus {
-    box-shadow: 0px 4px 32px ${colors.link_water_alfa024};
+    box-shadow: 0px 4px 32px ${colors.link_water['024']};
     border: 1px solid ${colors.cornflower_blue};
   }
 `;

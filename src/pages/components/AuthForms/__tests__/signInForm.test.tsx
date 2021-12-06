@@ -14,7 +14,7 @@ let inputNodeConfirmPassword:HTMLInputElement;
 let inputNodePassword:HTMLInputElement;
 let buttonNode:HTMLButtonElement;
 
-describe('Sign In form tests', () => {
+describe('Sign In form __tests__', () => {
   const initialState = { };
   const mockStore = configureStore();
   let store;

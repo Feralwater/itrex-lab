@@ -1,7 +1,7 @@
 import React from 'react';
 import dictionary from '../dictionary/pagesDictionary';
 import { SignInUpLink, SignInUpMessage } from './SignIn.styles';
-import SignInForm from '../../forms/authForms/SignInForm';
+import SignInForm from '../components/AuthForms/SignInForm';
 import { PATH } from '../../routes/constants';
 
 const SignIn:React.VFC = () => (

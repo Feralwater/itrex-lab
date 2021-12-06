@@ -1,5 +1,5 @@
 import React from 'react';
-import { ButtonWrapper } from 'forms/authForms/authForm.styles';
+import { ButtonWrapper } from 'pages/components/AuthForms/AuthForm.styles';
 import {
   PatientsButton, PatientsButtonsContainer, PatientsHeader, PatientsTitle,
 } from 'pages/components/NavigatePanel/NavigatePanel.styles';

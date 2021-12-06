@@ -1,4 +1,4 @@
-import colors from '../../../styles/colors';
+import { colors } from '../../../components/CommonStyles/theme';
 
 export const statuses = {
   confirmed: 'confirmed',

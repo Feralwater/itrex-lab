@@ -1,5 +1,5 @@
 import React from 'react';
-import { BodyAuth, FormContainer } from './Authorised.styles';
+import { BodyAuth, FormContainer } from './LayoutAuthorised.styles';
 
 const AuthorisedLayout:React.FC = ({ children }) => (
   <BodyAuth>

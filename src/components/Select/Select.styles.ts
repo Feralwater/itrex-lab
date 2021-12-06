@@ -1,14 +1,14 @@
 import { StylesConfig } from 'react-select';
 import { Options } from './Select.types';
-import colors from '../../styles/colors';
+import { colors } from '../CommonStyles/theme';
 
 const SelectStyles: StylesConfig<Array<Options>> = {
   control: (styles) => ({
     ...styles,
     backgroundColor: `${colors.white}`,
-    border: `1px solid ${colors.link_water}`,
+    border: `1px solid ${colors.link_water['1']}`,
     boxSizing: 'border-box',
-    boxShadow: `0px 4px 32px ${colors.link_water_alfa016}`,
+    boxShadow: `0px 4px 32px ${colors.link_water['016']}`,
     borderRadius: '8px',
     padding: '9px 17px',
     fontSize: '17px',

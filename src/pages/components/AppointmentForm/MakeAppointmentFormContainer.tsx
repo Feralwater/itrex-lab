@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { SpecializationsType } from '../../resources/occupations/occupations.types';
-import { DoctorsBySpecializationIdResponseType } from '../../resources/doctors/doctors.types';
-import occupations from '../../resources/occupations/occupations.api';
-import doctors from '../../resources/doctors/doctors.api';
-import appointments from '../../resources/appointments/appointments.api';
-import { useAppDispatch } from '../../hooks';
+import { SpecializationsType } from '../../../resources/occupations/occupations.types';
+import { DoctorsBySpecializationIdResponseType } from '../../../resources/doctors/doctors.types';
+import occupations from '../../../resources/occupations/occupations.api';
+import doctors from '../../../resources/doctors/doctors.api';
+import appointments from '../../../resources/appointments/appointments.api';
+import { useAppDispatch } from '../../../hooks';
 import { appointmentValues } from './form.types';
-import appointment from '../../redux/actions/appointment.actions';
+import appointment from '../../../redux/actions/appointment.actions';
 import MakeAnAppointmentForm from './MakeAnAppointmentForm';
 
 const MakeAppointmentFormContainer:React.VFC = () => {

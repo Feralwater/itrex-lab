@@ -1,7 +1,7 @@
 import Highlighter from 'react-highlight-words';
 import React from 'react';
 import { InputValueType, LabelType } from './Select.types';
-import colors from '../../styles/colors';
+import { colors } from '../CommonStyles/theme';
 
 function searchOptionHelper({ label }:LabelType, { inputValue }:InputValueType) {
   return (

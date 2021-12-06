@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import colors from '../../../styles/colors';
+import { colors } from '../../../components/CommonStyles/theme';
 
 export const CommandsList = styled.ul`
   list-style-type: none;
@@ -13,7 +13,7 @@ export const CommandsList = styled.ul`
   position: absolute;
   top: 72px;
   right: 16px;
-  box-shadow: 0px 4px 32px ${colors.link_water_alfa032};
+  box-shadow: 0px 4px 32px ${colors.link_water['032']};
 `;
 
 export const ControlCommand = styled.li`
@@ -78,9 +78,9 @@ export const ResolutionModalFooter = styled.div`
 
 export const ResolutionModalTextArea = styled.textarea`
   background: ${colors.white};
-  border: 1px solid ${colors.link_water};
+  border: 1px solid ${colors.link_water['1']};
   box-sizing: border-box;
-  box-shadow: 0px 4px 32px ${colors.link_water_alfa016};
+  box-shadow: 0px 4px 32px ${colors.link_water['016']};
   border-radius: 8px;
   overflow-y: auto;
   width: 100%;

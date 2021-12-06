@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import colors from '../../styles/colors';
+import { colors } from '../CommonStyles/theme';
 
 export const Body = styled.div`
   padding: 80px 0 0 0;
@@ -26,7 +26,7 @@ export const Patients = styled.div`
   display: flex;
   flex-direction: column;
   background: ${colors.alabaster};
-  box-shadow: 0px 4px 32px ${colors.link_water_alfa032};
+  box-shadow: 0px 4px 32px ${colors.link_water['032']};
   border-radius: 16px;
   box-sizing: border-box;
   overflow: hidden;
@@ -44,12 +44,12 @@ export const Patients = styled.div`
   }
 
   & ::-webkit-scrollbar-track {
-    background: ${colors.lavender_pinocchio_alfa030};
+    background: ${colors.lavender_pinocchio['030']};
     border-radius: 8px;
   }
 
   & ::-webkit-scrollbar-thumb {
-    background: ${colors.platinum_alfa050};
+    background: ${colors.platinum['050']};
     border-radius: 8px;
   }
 

@@ -8,16 +8,16 @@ import {
   CustomForm,
   CustomLink,
   FormTitle,
-} from './authForm.styles';
-import Button from '../../components/Button/Button';
-import dictionary from '../../pages/dictionary/pagesDictionary';
-import { useAppDispatch } from '../../hooks';
-import login from '../../redux/actions/login.actions';
+} from './AuthForm.styles';
+import Button from '../../../components/Button/Button';
+import dictionary from '../../dictionary/pagesDictionary';
+import { useAppDispatch } from '../../../hooks';
+import login from '../../../redux/actions/login.actions';
 import singInValidationSchema from './validation/singIn.validation';
-import { SignInValues } from './form.types';
+import { SignInValues } from './Form.types';
 import { signInFieldsData } from './fieldsData';
-import { PATH } from '../../routes/constants';
-import { SignInData } from '../../resources/auth/auth.types';
+import { PATH } from '../../../routes/constants';
+import { SignInData } from '../../../resources/auth/auth.types';
 
 const SignInForm:React.VFC = () => {
   const dispatch = useAppDispatch();

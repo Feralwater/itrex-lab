@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import colors from '../../styles/colors';
+import { colors } from '../CommonStyles/theme';
 
 export const BodyAuth = styled.div`
   margin: 0;

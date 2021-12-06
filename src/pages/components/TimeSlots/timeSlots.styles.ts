@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import colors from '../../../styles/colors';
+import { colors } from '../../../components/CommonStyles/theme';
 
 export const TimeSlotsContainer = styled.div`
   display: grid;
@@ -25,7 +25,7 @@ export const TimeSlot = styled.input`
 
   &:disabled {
     & + label {
-      background: ${colors.link_water};
+      background: ${colors.link_water['1']};
       color: ${colors.alabaster};
       pointer-events: none;
     }
@@ -37,7 +37,7 @@ export const TimeSlotLabel = styled.label`
   background: ${colors.white};
   color: ${colors.dark_jungle_green};
   border: 1px solid ${colors.transparent};
-  box-shadow: 0px 4px 32px ${colors.link_water_alfa024};
+  box-shadow: 0px 4px 32px ${colors.link_water['024']};
   border-radius: 8px;
   padding: 8px 0;
   font-weight: 600;

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import colors from '../../../styles/colors';
+import { colors } from '../../../components/CommonStyles/theme';
 
 interface ModalProps{
   isActive: boolean
@@ -8,7 +8,7 @@ interface ModalProps{
 export const Modal = styled.div<ModalProps>`
   height: 100vh;
   width: 100vw;
-  background-color: ${colors.gravel_alfa060};
+  background-color: ${colors.gravel['060']};
   position: fixed;
   top: 0;
   left: 0;

@@ -1,13 +1,13 @@
 import styled, { css } from 'styled-components';
 import { ButtonPropsType } from './Button.types';
-import colors from '../../styles/colors';
+import { colors } from '../CommonStyles/theme';
 
 const StyledButton = styled.button<ButtonPropsType>`
   display: inline-flex;
   width: fit-content;
   font-weight: 600;
   border-radius: 8px;
-  border: ${(props) => (props.isBorder ? `1px solid ${colors.link_water}` : 'none')};
+  border: ${(props) => (props.isBorder ? `1px solid ${colors.link_water['1']}` : 'none')};
   cursor: pointer;
   text-transform: capitalize;
   ${(props) => props.size === 'large' && css`
@@ -60,7 +60,7 @@ const StyledButton = styled.button<ButtonPropsType>`
 }
   ${(props) => props.disabled && css`
     color: #ffffff;
-    background-color: ${colors.link_water};
+    background-color: ${colors.link_water['1']};
   `}
 `;
 

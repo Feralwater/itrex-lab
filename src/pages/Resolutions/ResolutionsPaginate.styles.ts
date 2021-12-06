@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import colors from '../../styles/colors';
+import { colors } from '../../components/CommonStyles/theme';
 
 export const StyledPaginateContainer = styled.div`
   & ul {

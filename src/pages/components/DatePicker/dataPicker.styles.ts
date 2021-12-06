@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import colors from '../../../styles/colors';
+import { colors } from '../../../components/CommonStyles/theme';
 
 const ReactCalendar = styled.div`
   & div.react-calendar {
     width: 400px;
     max-width: 100%;
     background: ${colors.white};
-    box-shadow: 0px 4px 32px ${colors.link_water_alfa024};
+    box-shadow: 0px 4px 32px ${colors.link_water['024']};
     border-radius: 12px;
     box-sizing: border-box;
     padding: 0 32px 32px 32px;
@@ -26,7 +26,7 @@ const ReactCalendar = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid ${colors.platinum_alfa050};
+    border-bottom: 1px solid ${colors.platinum['050']};
     margin: 0 0 30px 0;
     padding: 25px 0;
 
@@ -58,7 +58,7 @@ const ReactCalendar = styled.div`
   }
 
   & button.react-calendar__month-view__days__day--neighboringMonth {
-    color: ${colors.link_water};
+    color: ${colors.link_water['1']};
   }
 
   & button.react-calendar__tile {

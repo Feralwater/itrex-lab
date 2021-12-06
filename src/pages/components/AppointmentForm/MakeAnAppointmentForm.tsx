@@ -9,19 +9,19 @@ import {
   MakeAppointmentButtonContainer, NoUnderlineLink,
   SelectDoctorStep,
   SelectTimeslotStep, LinksContainer, DisabledLink,
-} from 'forms/appointmentForm/MakeAnAppointment.styles';
+} from 'pages/components/AppointmentForm/MakeAnAppointment.styles';
 import dictionary from 'pages/dictionary/pagesDictionary';
 import { PatientsTitle } from 'pages/components/NavigatePanel/NavigatePanel.styles';
 import AppointmentsSteps from 'pages/components/AppointmentsSteps/AppointmentsSteps';
 import DatePicker from 'pages/components/DatePicker/datePicker';
 import TimeSlots from 'pages/components/TimeSlots/timeSlots';
-import Button from '../../components/Button/Button';
-import CustomSelect from '../../components/Select/Select';
+import Button from '../../../components/Button/Button';
+import CustomSelect from '../../../components/Select/Select';
 import appointmentValidationSchema from './validation/appointment.validation';
 import makeAppointmentsFieldsData from './fieldsData';
 import { appointmentValues, MakeAnAppointmentFormProps } from './form.types';
-import { PATH } from '../../routes/constants';
-import { ReactComponent as RightArrow } from '../../assets/svgImages/rightArrowGrey-icon.svg';
+import { PATH } from '../../../routes/constants';
+import { ReactComponent as RightArrow } from '../../../assets/svgImages/rightArrowGrey-icon.svg';
 
 const MakeAnAppointmentForm:React.VFC<MakeAnAppointmentFormProps> = ({
   handleSubmitForm,

@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import colors from '../../../styles/colors';
+import { colors } from '../../../components/CommonStyles/theme';
 
 export const UserCard = styled.div`
   display: flex;
   flex-direction: column;
   background: #FFFFFF;
   min-height: 217px;
-  box-shadow: 0px 4px 32px ${colors.link_water_alfa024};
+  box-shadow: 0px 4px 32px ${colors.link_water['024']};
   border-radius: 12px;
   overflow: hidden;
   position: relative;
@@ -19,7 +19,7 @@ export const UserCard = styled.div`
 export const UserCardHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid ${colors.platinum_alfa050};
+  border-bottom: 1px solid ${colors.platinum['050']};
   padding: 24px 31px;
   @media only screen and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3),
   (max-device-width: 767px) {
