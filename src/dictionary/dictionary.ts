@@ -79,6 +79,10 @@ const dictionary: DictionaryType = {
     cancelButtonText: 'Cancel',
     createButtonText: 'Create',
   },
+  paginate: {
+    resultsText: 'Results:',
+    resultsPronoun: 'of',
+  },
 };
 
 export default dictionary;

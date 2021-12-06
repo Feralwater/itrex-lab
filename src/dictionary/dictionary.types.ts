@@ -77,4 +77,8 @@ export interface DictionaryType {
     cancelButtonText: string
     createButtonText: string
   },
+  paginate: {
+    resultsText: string
+    resultsPronoun: string
+  },
 }

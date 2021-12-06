@@ -1,4 +1,4 @@
-const columnsNames = {
+export const columnsNames = {
   firstName: 'First Name',
   lastName: 'Last Name',
   resolution: 'Resolution',
@@ -7,4 +7,4 @@ const columnsNames = {
   actions: 'Actions',
 };
 
-export default columnsNames;
+export const resolutionsOnPage = 8;

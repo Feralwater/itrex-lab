@@ -2,18 +2,20 @@ import React, { useEffect } from 'react';
 import { format } from 'date-fns';
 import DoctorNavigatePanel from '../components/NavigatePanel/DoctorNavigatePanel';
 import dictionary from '../../dictionary/dictionary';
-import columnsNames from './const';
+import { columnsNames, resolutionsOnPage } from './const';
 import ResolutionRow from './ResolutionRow';
 import { ResolutionsTable, ResolutionsTableHead, ResolutionsTableHeaderCell } from './Resolutions.styles';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { resolutions } from '../../redux/actions/resolution.actions';
+import ResolutionsPaginate from './ResolutionsPaginate';
 
 const ResolutionsForDoctor = () => {
   const dispatch = useAppDispatch();
+
   useEffect(() => {
     dispatch(resolutions.pending({
       offset: 0,
-      limit: 8,
+      limit: resolutionsOnPage,
     }));
   }, [dispatch]);
   const myResolutions = useAppSelector((state) => state.resolutions.resolutions);
@@ -40,6 +42,7 @@ const ResolutionsForDoctor = () => {
           ))}
         </tbody>
       </ResolutionsTable>
+      <ResolutionsPaginate />
     </div>
   );
 };
