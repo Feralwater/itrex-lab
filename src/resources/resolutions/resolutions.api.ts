@@ -6,7 +6,12 @@ const resolutionsAPI = {
     return instance.post<ResolutionResponse>('resolutions', data);
   },
   async getResolutions(offset: number, limit:number) {
-    return instance.get<ResolutionResponse>(`resolutions/doctor/me?offset=${offset}&limit=${limit}`);
+    return instance.get<ResolutionResponse>('resolutions/doctor/me', {
+      params: {
+        offset,
+        limit,
+      },
+    });
   },
 };
 

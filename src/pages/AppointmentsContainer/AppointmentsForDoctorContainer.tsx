@@ -13,16 +13,17 @@ const AppointmentsForDoctorContainer:React.VFC = () => {
   const userId = useAppSelector((state) => state.profile.id);
   const appointments = useAppSelector((state) => state.appointmentsForDoctor.appointments);
   const total = useAppSelector((state) => state.appointmentsForDoctor.total);
+  const resolutionStatus = useAppSelector((state) => state.resolution.status);
 
   useEffect(() => {
     if (userId) {
-      dispatch(appointmentsForDoctor.pending({ offset: 0, limit: 20 }));
+      dispatch(appointmentsForDoctor.pending({ offset: 0, limit: 100 }));
     }
-  }, [userId, total, dispatch]);
+  }, [userId, total, dispatch, resolutionStatus]);
 
   useEffect(() => {
-    dispatch(resolutions.pending({ offset: 0, limit: 20 }));
-  }, [dispatch]);
+    dispatch(resolutions.pending({ offset: 0, limit: 100 }));
+  }, [dispatch, resolutionStatus]);
   const doctorsResolutions = useAppSelector((state) => state.resolutions.resolutions);
   return (
     <>
