@@ -1,9 +1,9 @@
 import React, { ChangeEvent } from 'react';
 import { useField } from 'formik';
 import { parseISO, format } from 'date-fns';
-import { TimeSlot, TimeSlotLabel, TimeSlotsContainer } from './timeSlots.styles';
-import { TimeSlotsPropsType } from './timeSlots.types';
-import TIME_SLOTS from '../../const/const';
+import { TimeSlot, TimeSlotLabel, TimeSlotsContainer } from './TimeSlots.styles';
+import { TimeSlotsPropsType } from './TimeSlots.types';
+import TIME_SLOTS from '../../constants/constants';
 
 const TimeSlots: React.VFC<TimeSlotsPropsType> = ({
   freeTime,

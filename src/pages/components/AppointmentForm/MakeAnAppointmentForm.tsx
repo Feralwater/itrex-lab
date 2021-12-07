@@ -13,8 +13,8 @@ import {
 import dictionary from 'pages/dictionary/pagesDictionary';
 import { PatientsTitle } from 'pages/components/NavigatePanel/NavigatePanel.styles';
 import AppointmentsSteps from 'pages/components/AppointmentsSteps/AppointmentsSteps';
-import DatePicker from 'pages/components/DatePicker/datePicker';
-import TimeSlots from 'pages/components/TimeSlots/timeSlots';
+import DatePicker from 'pages/components/DatePicker/DatePicker';
+import TimeSlots from 'pages/components/TimeSlots/TimeSlots';
 import Button from '../../../components/Button/Button';
 import CustomSelect from '../../../components/Select/Select';
 import appointmentValidationSchema from './validation/appointment.validation';
