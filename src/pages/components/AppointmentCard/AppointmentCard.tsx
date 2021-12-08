@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { add, format } from 'date-fns';
 import { ReactComponent as Clock } from '../../../assets/svgImages/clock-icon.svg';
 import { ReactComponent as Board } from '../../../assets/svgImages/board-icon.svg';
@@ -56,7 +56,7 @@ const AppointmentCard: React.VFC<AppointmentCardProps> = ({
     return format(new Date(timeBeforeFormat), `ccc LLL dd, Y h bbb - ${endVisitHour} bbb`);
   }
 
-  const [showControlCardPanel, setShowControlCardPanel] = useState<boolean>(false);
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const resolution = doctorsResolutions?.find((res) => res.appointment_id === appointmentID);
 
   function isCardDescription() {
@@ -68,6 +68,20 @@ const AppointmentCard: React.VFC<AppointmentCardProps> = ({
     }
     return false;
   }
+
+  const menuRef = useRef() as React.MutableRefObject<HTMLDivElement> | undefined;
+  useEffect(() => {
+    const handler = (event:any) => {
+      if (menuRef?.current && !menuRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handler);
+
+    return () => {
+      document.removeEventListener('mousedown', handler);
+    };
+  });
   return (
     <UserCard>
       <UserCardHeader>
@@ -82,8 +96,10 @@ const AppointmentCard: React.VFC<AppointmentCardProps> = ({
             </AppointmentStatus>
           </UserInformation>
         </UserData>
-        {role === 'DOCTOR' && <SettingsButton onClick={() => setShowControlCardPanel(!showControlCardPanel)} />}
-        {showControlCardPanel && (<ControlCardPanel appointmentID={appointmentID} />)}
+        <div ref={menuRef}>
+          {role === 'DOCTOR' && <SettingsButton onClick={() => setIsMenuOpen(!isMenuOpen)} />}
+          {isMenuOpen && (<ControlCardPanel appointmentID={appointmentID} />)}
+        </div>
       </UserCardHeader>
       <UserCardBody>
         <UserCardBodyTime>

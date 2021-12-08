@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { resolutionsOnPage } from './const';
+import { resolutionsOnPage } from './constants';
 import { resolutions } from '../../redux/actions/resolution.actions';
 import { ReactComponent as NextIcon } from '../../assets/svgImages/rightArrowGrey-icon.svg';
 import { ReactComponent as PrevIcon } from '../../assets/svgImages/leftArrowGrey-icon.svg';
