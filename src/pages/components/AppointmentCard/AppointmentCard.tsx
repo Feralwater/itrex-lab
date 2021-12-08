@@ -53,7 +53,7 @@ const AppointmentCard: React.VFC<AppointmentCardProps> = ({
   function formatVisitTime(timeBeforeFormat: string) {
     const endVisitDate = add(new Date(timeBeforeFormat), { hours: 1 });
     const endVisitHour = format(new Date(endVisitDate), 'h');
-    return format(new Date(timeBeforeFormat), `ccc LLL dd, Y h bbb - ${endVisitHour} bbb`);
+    return format(new Date(timeBeforeFormat), `ccc LLL dd, Y h aaa - ${endVisitHour} aaa`);
   }
 
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
