@@ -22,7 +22,6 @@ module.exports = {
   ],
   rules: {
     'import/extensions': 'off',
-    'no-nested-ternary': 'off',
     'default-param-last': 'off',
     'react/function-component-definition': 'off',
     'react/prop-types': 'off',

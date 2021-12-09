@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import { StylesConfig } from 'react-select';
 import { Options } from './Select.types';
 import { colors } from '../CommonStyles/theme';
