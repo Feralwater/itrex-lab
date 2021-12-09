@@ -1,14 +1,14 @@
 import { call, takeEvery } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
 import registration from '../actions/registration.actions';
-import { ProfileResponseType, SignUpInResponseType } from '../../resources/auth/auth.types';
+import { ProfileResponse, SignUpInResponse } from '../../resources/auth/auth.types';
 import auth from '../../resources/auth/auth.api';
 import { loginRepository } from '../../resources/loginRepository';
 import runAsyncSaga from './runAsync.saga';
 
 function* registrationPost(action: ReturnType<typeof registration.pending>) {
   const { payload } = action;
-  const response: AxiosResponse<SignUpInResponseType> = yield call(
+  const response: AxiosResponse<SignUpInResponse> = yield call(
     auth.SignUp,
     {
       userName: payload.userName,
@@ -26,7 +26,7 @@ function* registrationPost(action: ReturnType<typeof registration.pending>) {
       .setRefreshToken(data.refresh_token);
   }
 
-  const profile: AxiosResponse<ProfileResponseType> = yield call(auth.getMe);
+  const profile: AxiosResponse<ProfileResponse> = yield call(auth.getMe);
 
   return { ...response.data, ...profile.data };
 }

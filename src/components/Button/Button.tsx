@@ -1,8 +1,8 @@
 import React from 'react';
 import StyledButton from './Button.styles';
-import { ButtonPropsType } from './Button.types';
+import { ButtonProps } from './Button.types';
 
-const Button: React.FC<ButtonPropsType> = (props) => (
+const Button: React.FC<ButtonProps> = (props) => (
   <StyledButton {...props} />
 );
 

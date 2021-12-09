@@ -1,6 +1,6 @@
-export type SpecializationsType = {
+export interface Specializations {
   specialization_name: string
   id: string
 }
 
-export type SpecializationsResponseType = Array<SpecializationsType>
+export type SpecializationsResponse = Array<Specializations>

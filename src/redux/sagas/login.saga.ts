@@ -1,7 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
 import login from '../actions/login.actions';
-import { SignUpInResponseType } from '../../resources/auth/auth.types';
+import { SignUpInResponse } from '../../resources/auth/auth.types';
 import auth from '../../resources/auth/auth.api';
 import { loginRepository } from '../../resources/loginRepository';
 import { notificationSuccess } from '../actions/notification.actions';
@@ -10,7 +10,7 @@ import runAsyncSaga from './runAsync.saga';
 
 function* loginPost(action: ReturnType<typeof login.pending>) {
   const { payload } = action;
-  const response: AxiosResponse<SignUpInResponseType> = yield call(
+  const response: AxiosResponse<SignUpInResponse> = yield call(
     auth.SignIn,
     { userName: payload.userName, password: payload.password },
   );

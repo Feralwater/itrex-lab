@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { LoginStateType } from './reducers.types';
-import { RootStateType } from '../store';
+import { LoginState } from './reducers.types';
+import { RootState } from '../store';
 import { loginRepository } from '../../resources/loginRepository';
 import login from '../actions/login.actions';
 
-const initialState: LoginStateType = {
+const initialState: LoginState = {
   accessToken: loginRepository.getAccessToken() || '',
   status: 'idle',
 };
@@ -33,6 +33,6 @@ export const loginSlice = createSlice({
   },
 });
 
-export const selectAccessToken = (state: RootStateType) => state.login.accessToken;
+export const selectAccessToken = (state: RootState) => state.login.accessToken;
 
 export const loginReducer = loginSlice.reducer;

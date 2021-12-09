@@ -9,12 +9,12 @@ interface Request {
   status: Status;
 }
 
-export interface LoginStateType extends Request {
+export interface LoginState extends Request {
   accessToken: string;
   refreshToken?: string;
 }
 
-export interface ProfileStateType extends Request {
+export interface ProfileState extends Request {
   id: string;
   firstName: string;
   lastName: string;
@@ -23,7 +23,7 @@ export interface ProfileStateType extends Request {
   isAuth: boolean;
 }
 
-export interface AppointmentStateType {
+export interface AppointmentState {
   id: string;
   patient_id: string;
   doctor_id: string;
@@ -34,7 +34,7 @@ export interface AppointmentStateType {
   responseStatus: Status;
 }
 
-export interface RegistrationStateType extends Request {
+export interface RegistrationState extends Request {
   accessToken: string;
   refreshToken?: string;
 }

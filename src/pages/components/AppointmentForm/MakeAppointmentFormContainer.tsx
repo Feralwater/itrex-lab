@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { SpecializationsType } from '../../../resources/occupations/occupations.types';
-import { DoctorsBySpecializationIdResponseType } from '../../../resources/doctors/doctors.types';
+import { Specializations } from '../../../resources/occupations/occupations.types';
+import { DoctorsBySpecializationIdResponse } from '../../../resources/doctors/doctors.types';
 import occupations from '../../../resources/occupations/occupations.api';
 import doctors from '../../../resources/doctors/doctors.api';
 import appointments from '../../../resources/appointments/appointments.api';
@@ -10,19 +10,19 @@ import appointment from '../../../redux/actions/appointment.actions';
 import MakeAnAppointmentForm from './MakeAnAppointmentForm';
 
 const MakeAppointmentFormContainer:React.VFC = () => {
-  const [specializations, setSpecializations] = useState<Array<SpecializationsType>>([]);
-  const [doctorNames, setDoctorNames] = useState<Array<DoctorsBySpecializationIdResponseType>>([]);
+  const [specializations, setSpecializations] = useState<Array<Specializations>>([]);
+  const [doctorNames, setDoctorNames] = useState<Array<DoctorsBySpecializationIdResponse>>([]);
   const [selectedOccupationID, setSelectedOccupationID] = useState<string>('');
   const [selectedDoctorID, setSelectedDoctorID] = useState<string>('');
   const [disableDate, setDisableDate] = useState<boolean>(true);
   const [selectedDate, setSelectedDate] = useState<string>('');
   const [freeTime, setFreeTime] = useState<Array<string>>([]);
 
-  const optionsForOccupationsSelect = specializations.map((specialization: SpecializationsType) => ({
+  const optionsForOccupationsSelect = specializations.map((specialization: Specializations) => ({
     label: specialization.specialization_name,
     value: specialization.id,
   }));
-  const optionsForDoctorNamesSelect = doctorNames.map((doctorName: DoctorsBySpecializationIdResponseType) => ({
+  const optionsForDoctorNamesSelect = doctorNames.map((doctorName: DoctorsBySpecializationIdResponse) => ({
     label: [doctorName.first_name, doctorName.last_name].join(' '),
     value: doctorName.id,
   }));

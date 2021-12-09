@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { AppointmentStateType } from './reducers.types';
+import { AppointmentState } from './reducers.types';
 import appointment from '../actions/appointment.actions';
 
-const initialState: AppointmentStateType = {
+const initialState: AppointmentState = {
   id: '',
   patient_id: '',
   doctor_id: '',

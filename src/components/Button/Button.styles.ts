@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
-import { ButtonPropsType } from './Button.types';
+import { ButtonProps } from './Button.types';
 import { colors } from '../CommonStyles/theme';
 
-const StyledButton = styled.button<ButtonPropsType>`
+const StyledButton = styled.button<ButtonProps>`
   display: inline-flex;
   width: fit-content;
   font-weight: 600;

@@ -1,4 +1,4 @@
-import { SignInData, SignUpData, SignUpInResponseType } from '../../resources/auth/auth.types';
+import { SignInData, SignUpData, SignUpInResponse } from '../../resources/auth/auth.types';
 import {
   AppointmentsForDoctor,
   AppointmentsForPatient, DeleteAppointment,
@@ -6,11 +6,11 @@ import {
 } from '../../resources/appointments/appointments.types';
 import { ResolutionData, ResolutionResponse } from '../../resources/resolutions/resolutions.types';
 
-export type LoginPendingType = SignInData;
-export type LoginFulfilledType = SignUpInResponseType;
+export type LoginPending = SignInData;
+export type LoginFulfilled = SignUpInResponse;
 
-export type RegistrationPendingType = SignUpData;
-export type RegistrationFulfilledType = SignUpInResponseType;
+export type RegistrationPending = SignUpData;
+export type RegistrationFulfilled = SignUpInResponse;
 
 export type ResolutionPending = ResolutionData;
 export type ResolutionFulfilled = ResolutionResponse;
@@ -18,12 +18,12 @@ export type ResolutionFulfilled = ResolutionResponse;
 export type ResolutionsPending = AppointmentsForDoctorPending;
 export type ResolutionsFulfilled = ResolutionResponse;
 
-export type AppointmentPendingType = {
+export interface AppointmentPending {
   date: string
   reason: string
   note: string
   doctorID: string
-};
+}
 
 export interface AppointmentsForPatientPending {
   offset: number;
@@ -39,7 +39,7 @@ export interface DeleteAppointmentPending {
   id: string;
 }
 
-export type AppointmentFulfilledType = NewAppointmentResponse;
+export type AppointmentFulfilled = NewAppointmentResponse;
 
 export type AppointmentsForPatientFulfilled = AppointmentsForPatient;
 

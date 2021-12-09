@@ -1,4 +1,4 @@
-export type ButtonPropsType = {
+export interface ButtonProps {
     size: 'large' | 'small'
     variant: 'primary' | 'secondary'
     icon: 'default' | 'left' | 'right'

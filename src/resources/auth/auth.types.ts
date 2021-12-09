@@ -1,6 +1,6 @@
 import { RoleName } from 'redux/reducers/reducers.types';
 
-export type SignUpInResponseType = {
+export interface SignUpInResponse {
   access_token: string
   refresh_token: string
 }
@@ -17,7 +17,7 @@ export interface SignInData {
   password: string
 }
 
-export type ProfileResponseType = {
+export interface ProfileResponse {
   id: string,
   first_name: string,
   last_name: string,

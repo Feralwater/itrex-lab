@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 interface AppointmentsWrapperProps {
-    patientsLength: number
+  patientsLength: number;
 }
 
 const AppointmentsWrapper = styled.div<AppointmentsWrapperProps>`
@@ -12,7 +12,8 @@ const AppointmentsWrapper = styled.div<AppointmentsWrapperProps>`
   grid-template-columns: repeat(auto-fit, minmax(400px, 400px));
   grid-template-rows: minmax(217px, 264px);
   gap: 25px 24px;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   padding: 0 32px 0 0;
   @media only screen and (max-device-width: 1050px) {
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));

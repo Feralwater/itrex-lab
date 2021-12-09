@@ -1,4 +1,4 @@
-export type TimeSlotsPropsType = {
+export interface TimeSlotsProps {
   freeTime: Array<string>
   [x: string]: any;
 }

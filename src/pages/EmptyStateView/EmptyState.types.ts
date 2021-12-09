@@ -1,3 +1,3 @@
-export type ViewEmptyStatePropsType={
+export interface ViewEmptyStateProps {
   role_name: string
 }

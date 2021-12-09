@@ -8,30 +8,66 @@ import { appointmentsForDoctor } from '../../redux/actions/appointmentsForDoctor
 import dictionary from '../dictionary/pagesDictionary';
 import { resolutions } from '../../redux/actions/resolution.actions';
 
-const AppointmentsForDoctorContainer:React.VFC = () => {
+const AppointmentsForDoctorContainer: React.VFC = () => {
   const dispatch = useAppDispatch();
   const userId = useAppSelector((state) => state.profile.id);
   const appointments = useAppSelector((state) => state.appointmentsForDoctor.appointments);
-  const total = useAppSelector((state) => state.appointmentsForDoctor.total);
+  const totalAppointmentsCount = useAppSelector((state) => state.appointmentsForDoctor.total);
   const resolutionStatus = useAppSelector((state) => state.resolution.status);
 
   useEffect(() => {
     if (userId) {
-      dispatch(appointmentsForDoctor.pending({ offset: 0, limit: 100 }));
+      dispatch(appointmentsForDoctor.pending({
+        offset: 0,
+        limit: 12,
+      }));
     }
-  }, [userId, total, dispatch, resolutionStatus]);
+  }, [userId, totalAppointmentsCount, dispatch, resolutionStatus]);
 
   useEffect(() => {
-    dispatch(resolutions.pending({ offset: 0, limit: 100 }));
+    dispatch(resolutions.pending({
+      offset: 0,
+      limit: 12,
+    }));
   }, [dispatch, resolutionStatus]);
   const doctorsResolutions = useAppSelector((state) => state.resolutions.resolutions);
+  const myObserver = new IntersectionObserver((elements) => {
+    if (elements[0].intersectionRatio !== 0) {
+      console.log('The element is in view!');
+    } else {
+      console.log('The element is out of view');
+    }
+  });
+
+  const myEl = document.querySelector('#scrollingBlock');
+  console.log(myEl);
+  // eslint-disable-next-line no-unused-expressions
+  myEl && myObserver.observe(myEl);
   return (
     <>
       <DoctorNavigatePanel pageTitle={dictionary.doctorPage.patientsTitle} />
       <AppointmentsWrapper patientsLength={appointments.length}>
         {appointments.length > 0
-          ? <DoctorFullState appointments={appointments} total={total} doctorsResolutions={doctorsResolutions} />
-          : <DoctorEmptyState />}
+          ? (
+            <DoctorFullState
+              appointments={appointments}
+              total={totalAppointmentsCount}
+              doctorsResolutions={doctorsResolutions}
+            />
+          )
+          : (
+            <>
+              <DoctorEmptyState />
+              <div
+                style={{
+                  height: '10px',
+                  backgroundColor: 'red',
+                  width: '90vw',
+                }}
+                id="scrollingBlock"
+              />
+            </>
+          )}
       </AppointmentsWrapper>
     </>
   );

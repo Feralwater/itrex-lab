@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { ProfileStateType } from './reducers.types';
+import { ProfileState } from './reducers.types';
 import profile from '../actions/profile.actions';
 import { ROLES, ROLES_API } from '../../routes/constants';
-import { ProfileResponseType } from '../../resources/auth/auth.types';
+import { ProfileResponse } from '../../resources/auth/auth.types';
 
-const initialState: ProfileStateType = {
+const initialState: ProfileState = {
   id: '',
   firstName: '',
   lastName: '',
@@ -20,7 +20,7 @@ export const profileSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(profile.fulfilled, (state, { payload }: { payload :ProfileResponseType}) => { //
+      .addCase(profile.fulfilled, (state, { payload }: { payload :ProfileResponse}) => { //
         if (payload) {
           state.id = payload.id;
           state.firstName = payload.first_name;

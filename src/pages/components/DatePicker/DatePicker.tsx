@@ -5,9 +5,9 @@ import { isPast, addDays, format } from 'date-fns';
 import { ReactComponent as NextIcon } from '../../../assets/svgImages/rightArrowGrey-icon.svg';
 import { ReactComponent as PrevIcon } from '../../../assets/svgImages/leftArrowGrey-icon.svg';
 import ReactCalendar from './DataPicker.styles';
-import { DatePickerPropsType } from './DataPicker.types';
+import { DatePickerProps } from './DataPicker.types';
 
-const DatePicker:React.VFC<DatePickerPropsType> = ({
+const DatePicker:React.VFC<DatePickerProps> = ({
   doctorId, disableDate, setSelectedDate, ...props
 }) => {
   const [, , { setValue }] = useField(props.field);

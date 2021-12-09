@@ -1,10 +1,10 @@
 import { PayloadActionCreator } from '@reduxjs/toolkit/src/createAction';
 import { put } from 'redux-saga/effects';
-import { AnyFunction, AsyncActionType } from './saga.types';
+import { AnyFunction, AsyncAction } from './saga.types';
 import { notificationError } from '../actions/notification.actions';
 import { createErrorNotificationMessage } from '../../serverResponseDictionary/serverResponsesDictionary';
 
-function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction?: PayloadActionCreator<any>):any {
+function* runAsyncSaga(action: AsyncAction, saga: AnyFunction, pendingAction?: PayloadActionCreator<any>):any {
   try {
     const result = yield saga(pendingAction);
     yield put(action.fulfilled(result));

@@ -1,9 +1,9 @@
 import instance from '../../services/api/api';
-import { DoctorsBySpecializationIdResponseType } from './doctors.types';
+import { DoctorsBySpecializationIdResponse } from './doctors.types';
 
 const doctors = {
   async getDoctorsBySpecializationId(id:string) {
-    return instance.get<Array<DoctorsBySpecializationIdResponseType>>(`doctors/specialization/${id}`);
+    return instance.get<Array<DoctorsBySpecializationIdResponse>>(`doctors/specialization/${id}`);
   },
 };
 

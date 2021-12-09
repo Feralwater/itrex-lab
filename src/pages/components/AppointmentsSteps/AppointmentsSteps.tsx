@@ -1,8 +1,8 @@
 import React from 'react';
 import { Step, StepDescription, StepNumber } from './AppointmentsSteps.styles';
-import { AppointmentStepsPropsType } from './AppointmentsSteps.types';
+import { AppointmentStepsProps } from './AppointmentsSteps.types';
 
-const AppointmentsSteps: React.VFC<AppointmentStepsPropsType> = ({
+const AppointmentsSteps: React.VFC<AppointmentStepsProps> = ({
   stepNumber,
   stepDescription,
 }) => (

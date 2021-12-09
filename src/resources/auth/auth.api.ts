@@ -2,25 +2,25 @@ import jwt from 'jwt-decode';
 import instance from '../../services/api/api';
 import {
   JWTToken,
-  ProfileResponseType,
-  SignInData, SignUpData, SignUpInResponseType,
+  ProfileResponse,
+  SignInData, SignUpData, SignUpInResponse,
 } from './auth.types';
 import { loginRepository } from '../loginRepository';
 
 const auth = {
   async SignUp(data: SignUpData) {
-    return instance.post<SignUpInResponseType>('auth/registration', data);
+    return instance.post<SignUpInResponse>('auth/registration', data);
   },
 
   async SignIn(data:SignInData) {
-    return instance.post<SignUpInResponseType>('auth/login', data);
+    return instance.post<SignUpInResponse>('auth/login', data);
   },
 
   async getMe() {
-    return instance.get<ProfileResponseType>('auth/profile');
+    return instance.get<ProfileResponse>('auth/profile');
   },
   async refreshToken() {
-    return instance.post<SignUpInResponseType>('auth/token/refresh');
+    return instance.post<SignUpInResponse>('auth/token/refresh');
   },
 };
 

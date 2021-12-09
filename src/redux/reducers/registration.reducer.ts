@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { RegistrationStateType } from './reducers.types';
-import { RootStateType } from '../store';
+import { RegistrationState } from './reducers.types';
+import { RootState } from '../store';
 import { loginRepository } from '../../resources/loginRepository';
 import registration from '../actions/registration.actions';
 
-const initialState: RegistrationStateType = {
+const initialState: RegistrationState = {
   accessToken: loginRepository.getAccessToken() || '',
   status: 'idle',
 };
@@ -32,6 +32,6 @@ export const registrationSlice = createSlice({
   },
 });
 
-export const selectAccessToken = (state: RootStateType) => state.registration.accessToken;
+export const selectAccessToken = (state: RootState) => state.registration.accessToken;
 
 export const registrationReducer = registrationSlice.reducer;
