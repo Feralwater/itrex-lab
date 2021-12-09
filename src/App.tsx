@@ -3,6 +3,7 @@ import Routes from './routes/Routes';
 import profile from './redux/actions/profile.actions';
 import { useAppDispatch, useAppSelector } from './hooks';
 import NotificationContainer from './components/Notification/NotificationContainer';
+import { ROLES } from './routes/constants';
 
 function App() {
   const { accessToken } = useAppSelector((state) => state.login);
@@ -14,7 +15,7 @@ function App() {
       id: '',
       last_name: '',
       photo: '',
-      role_name: 'PUBLIC',
+      role_name: ROLES.PUBLIC,
     }));
   }, [dispatch, accessToken]);
 

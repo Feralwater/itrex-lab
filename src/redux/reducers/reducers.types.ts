@@ -1,9 +1,8 @@
-import { ROLES } from '../../routes/constants';
 import { AppointmentsForDoctor, AppointmentsForPatient } from '../../resources/appointments/appointments.types';
 import { ResolutionsResponse } from '../../resources/resolutions/resolutions.types';
 
 export type Status = 'idle' | 'loading' | 'failed' | 'fulfilled'
-export type RoleName = keyof typeof ROLES | ''
+export type RoleName = 'Doctor' | 'Patient' | 'Public' | ''
 
 interface Request {
   status: Status;

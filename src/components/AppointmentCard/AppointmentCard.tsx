@@ -25,6 +25,7 @@ import { UserImage } from '../Header/Header.styles';
 import { statusColor, statusDescription } from './const';
 import { AppointmentCardProps } from './AppointmentCard.types';
 import ControlCardPanel from '../ControlCardPanel/ControlCardPanel';
+import { ROLES } from '../../routes/constants';
 
 const AppointmentCard: React.VFC<AppointmentCardProps> = ({
   specialization,
@@ -39,7 +40,7 @@ const AppointmentCard: React.VFC<AppointmentCardProps> = ({
   doctorsResolutions,
 }) => {
   function statusOrDoctor() {
-    if (role === 'DOCTOR') {
+    if (role === ROLES.DOCTOR) {
       return (
         <>
           <UserCardBodyAppointmentConfirm color={statusColor[status]} />
@@ -60,10 +61,10 @@ const AppointmentCard: React.VFC<AppointmentCardProps> = ({
   const resolution = doctorsResolutions?.find((res) => res.appointment_id === appointmentID);
 
   function isCardDescription() {
-    if (role === 'DOCTOR' && resolution) {
+    if (role === ROLES.DOCTOR && resolution) {
       return resolution.resolution.length > 0;
     }
-    if (role === 'PATIENT' && reason) {
+    if (role === ROLES.PATIENT && reason) {
       return reason.length > 0;
     }
     return false;
@@ -97,7 +98,7 @@ const AppointmentCard: React.VFC<AppointmentCardProps> = ({
           </UserInformation>
         </UserData>
         <div ref={menuRef}>
-          {role === 'DOCTOR' && <SettingsButton onClick={() => setIsMenuOpen(!isMenuOpen)} />}
+          {role === ROLES.DOCTOR && <SettingsButton onClick={() => setIsMenuOpen(!isMenuOpen)} />}
           {isMenuOpen && (<ControlCardPanel appointmentID={appointmentID} />)}
         </div>
       </UserCardHeader>
@@ -107,8 +108,8 @@ const AppointmentCard: React.VFC<AppointmentCardProps> = ({
           <UserCardBodyTimeText>{formatVisitTime(time)}</UserCardBodyTimeText>
         </UserCardBodyTime>
         <UserCardBodyDescription isDescription={isCardDescription()}>
-          {role === 'DOCTOR' ? <div><Board /></div> : <div><Heart /></div>}
-          <UserCardBodyDescriptionText>{role === 'DOCTOR' ? resolution?.resolution : reason}</UserCardBodyDescriptionText>
+          {role === ROLES.DOCTOR ? <div><Board /></div> : <div><Heart /></div>}
+          <UserCardBodyDescriptionText>{role === ROLES.DOCTOR ? resolution?.resolution : reason}</UserCardBodyDescriptionText>
         </UserCardBodyDescription>
       </UserCardBody>
     </UserCard>

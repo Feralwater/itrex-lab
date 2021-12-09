@@ -12,9 +12,9 @@ export const PATH = {
 };
 
 export const ROLES = {
-  DOCTOR: 'DOCTOR',
-  PATIENT: 'PATIENT',
-  PUBLIC: 'PUBLIC',
+  DOCTOR: 'Doctor',
+  PATIENT: 'Patient',
+  PUBLIC: 'Public',
 } as const;
 
 export const ROLES_API = {

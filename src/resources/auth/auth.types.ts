@@ -1,20 +1,21 @@
+/* eslint-disable camelcase */
 import { RoleName } from 'redux/reducers/reducers.types';
 
 export interface SignUpInResponse {
-  access_token: string
-  refresh_token: string
+  access_token: string;
+  refresh_token: string;
 }
 
 export interface SignUpData {
-  userName: string
-  password: string
-  firstName: string
-  lastName: string
+  userName: string;
+  password: string;
+  firstName: string;
+  lastName: string;
 }
 
 export interface SignInData {
-  userName: string
-  password: string
+  userName: string;
+  password: string;
 }
 
 export interface ProfileResponse {
@@ -28,5 +29,5 @@ export interface ProfileResponse {
 export interface JWTToken {
   name: string;
   exp: number;
-  int: number
+  int: number;
 }
