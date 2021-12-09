@@ -33,7 +33,6 @@ module.exports = {
     'max-len': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
     'no-param-reassign': 'off',
-    camelcase: 'off',
   },
   settings: {
     'import/resolver': {

@@ -4,7 +4,7 @@ import profile from '../actions/profile.actions';
 import { ROLES, ROLES_API } from '../../routes/constants';
 import { ProfileResponse } from '../../resources/auth/auth.types';
 
-const initialState: ProfileState = {
+const initialState = {
   id: '',
   firstName: '',
   lastName: '',
@@ -12,7 +12,7 @@ const initialState: ProfileState = {
   roleName: '',
   isAuth: false,
   status: 'idle',
-};
+} as ProfileState;
 
 export const profileSlice = createSlice({
   name: 'profile',

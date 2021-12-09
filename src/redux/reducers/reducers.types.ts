@@ -25,9 +25,9 @@ export interface ProfileState extends Request {
 
 export interface AppointmentState {
   id: string;
-  patient_id: string;
-  doctor_id: string;
-  visit_date: string;
+  patientID: string;
+  doctorID: string;
+  visitDate: string;
   reason: string;
   note: string;
   status: string;

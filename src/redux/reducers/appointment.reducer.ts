@@ -2,16 +2,16 @@ import { createSlice } from '@reduxjs/toolkit';
 import { AppointmentState } from './reducers.types';
 import appointment from '../actions/appointment.actions';
 
-const initialState: AppointmentState = {
+const initialState = {
   id: '',
-  patient_id: '',
-  doctor_id: '',
-  visit_date: '',
+  patientID: '',
+  doctorID: '',
+  visitDate: '',
   reason: '',
   note: '',
   status: '',
   responseStatus: 'idle',
-};
+} as AppointmentState;
 
 export const appointmentSlice = createSlice({
   name: 'appointment',
@@ -21,9 +21,9 @@ export const appointmentSlice = createSlice({
     builder
       .addCase(appointment.fulfilled, (state, { payload }) => {
         state.id = payload.id;
-        state.patient_id = payload.patient_id;
-        state.doctor_id = payload.doctor_id;
-        state.visit_date = payload.visit_date;
+        state.patientID = payload.patient_id;
+        state.doctorID = payload.doctor_id;
+        state.visitDate = payload.visit_date;
         state.reason = payload.reason;
         state.note = payload.note;
         state.status = payload.status;

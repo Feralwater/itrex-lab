@@ -55,11 +55,11 @@ instance.interceptors.response.use(
         loginRepository.removeAccessToken();
       } else {
         const {
-          access_token,
-          refresh_token,
+          access_token: accessToken,
+          refresh_token: refreshToken,
         } = response.data;
-        loginRepository.setAccessToken(access_token);
-        loginRepository.setRefreshToken(refresh_token);
+        loginRepository.setAccessToken(accessToken);
+        loginRepository.setRefreshToken(refreshToken);
       }
     }
     throw e;
