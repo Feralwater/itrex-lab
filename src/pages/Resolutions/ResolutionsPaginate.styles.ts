@@ -13,7 +13,7 @@ export const StyledPaginateContainer = styled.div`
   }
 
   & li {
-    padding: 10px;
+    padding: 5px 10px;
     background: none;
     border-radius: 8px;
     color: ${colors.rock_blue};
@@ -22,7 +22,30 @@ export const StyledPaginateContainer = styled.div`
     & a {
       padding: 5px;
       outline: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        color: ${colors.cornflower_blue};
+      }
     }
+
+    & svg {
+      padding: 5px;
+
+      &:hover > path {
+        fill: ${colors.cornflower_blue};
+      }
+    }
+  }
+
+  & li.previous.disabled {
+
+    & svg:hover > path {
+      fill: ${colors.rock_blue};
+    }
+
   }
 
   & li.selected {
@@ -31,7 +54,14 @@ export const StyledPaginateContainer = styled.div`
     line-height: 130%;
     color: ${colors.white};
     background-color: ${colors.cornflower_blue};
+
+    & a {
+      &:hover {
+        color: ${colors.white};
+      }
+    }
   }
+}
 `;
 
 export const Paginate = styled.div`
