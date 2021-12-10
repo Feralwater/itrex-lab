@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { LoginState } from './reducers.types';
 import { loginRepository } from '../../resources/loginRepository';
 import login from '../actions/login.actions';
+import { RootState } from '../store';
 
 const initialState: LoginState = {
   accessToken: loginRepository.getAccessToken() || '',
@@ -31,5 +32,7 @@ export const loginSlice = createSlice({
       });
   },
 });
+
+export const selectAccessToken = (state: RootState) => state.login.accessToken;
 
 export const loginReducer = loginSlice.reducer;

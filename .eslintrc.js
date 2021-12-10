@@ -32,6 +32,7 @@ module.exports = {
     'max-len': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
     'no-param-reassign': 'off',
+    'import/prefer-default-export': 'off',
   },
   settings: {
     'import/resolver': {

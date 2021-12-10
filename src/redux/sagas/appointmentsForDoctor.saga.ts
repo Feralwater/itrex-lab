@@ -1,9 +1,9 @@
 import { call, takeEvery } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
-import runAsyncSaga from './runAsync.saga';
+import utils from './utils';
 import appointments from '../../resources/appointments/appointments.api';
 import { AppointmentsForDoctor } from '../../resources/appointments/appointments.types';
-import { appointmentsForDoctor } from '../actions/appointmentsForDoctors.actions';
+import { appointmentsForDoctor } from '../actions';
 
 function* appointmentsForDoctorPost(action: ReturnType<typeof appointmentsForDoctor.pending>) {
   const { payload } = action;
@@ -11,7 +11,7 @@ function* appointmentsForDoctorPost(action: ReturnType<typeof appointmentsForDoc
   return response.data;
 }
 
-const appointmentsForDoctorPostSaga = runAsyncSaga.bind(null, appointmentsForDoctor, appointmentsForDoctorPost);
+const appointmentsForDoctorPostSaga = utils.bind(null, appointmentsForDoctor, appointmentsForDoctorPost);
 
 function* appointmentsForDoctorPostWatcher() {
   yield takeEvery(appointmentsForDoctor.pending, appointmentsForDoctorPostSaga);

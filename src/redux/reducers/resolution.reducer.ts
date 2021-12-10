@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { ResolutionState } from './reducers.types';
-import { resolution } from '../actions/resolution.actions';
+import { resolution } from '../actions';
+import { RootState } from '../store';
 
 const initialState = {
   appointmentID: '',
@@ -34,5 +35,7 @@ export const resolutionSlice = createSlice({
       });
   },
 });
+
+export const selectResolution = (state: RootState) => state.resolution;
 
 export const resolutionReducer = resolutionSlice.reducer;

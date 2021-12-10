@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import styled, { css } from 'styled-components';
 import { ButtonProps } from './Button.types';
 import { colors } from '../CommonStyles/theme';

@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { resolutions } from '../actions/resolution.actions';
+import { resolutions } from '../actions';
 import { ResolutionsState } from './reducers.types';
+import { RootState } from '../store';
 
 const initialState = {
   resolutions: [],
@@ -30,5 +31,7 @@ export const resolutionsSlice = createSlice({
       });
   },
 });
+
+export const selectResolutions = (state: RootState) => state.resolutions;
 
 export const resolutionsReducer = resolutionsSlice.reducer;

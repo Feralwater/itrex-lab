@@ -7,10 +7,11 @@ import { ReactComponent as NextIcon } from '../../assets/svgImages/rightArrowGre
 import { ReactComponent as PrevIcon } from '../../assets/svgImages/leftArrowGrey-icon.svg';
 import { Paginate, StyledPaginateContainer } from './ResolutionsPaginate.styles';
 import dictionary from '../dictionary/pagesDictionary';
+import { selectResolutions } from '../../redux/reducers';
 
 const ResolutionsPaginate: React.VFC = () => {
   const dispatch = useAppDispatch();
-  const totalCount = useAppSelector((state) => state.resolutions.total);
+  const { total: totalCount } = useAppSelector(selectResolutions);
   const pagesCount = Math.ceil(totalCount / resolutionsOnPage);
   const [currentPage, setCurrentPage] = useState<number>(1);
 

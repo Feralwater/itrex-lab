@@ -4,7 +4,7 @@ import registration from '../actions/registration.actions';
 import { ProfileResponse, SignUpInResponse } from '../../resources/auth/auth.types';
 import auth from '../../resources/auth/auth.api';
 import { loginRepository } from '../../resources/loginRepository';
-import runAsyncSaga from './runAsync.saga';
+import utils from './utils';
 
 function* registrationPost(action: ReturnType<typeof registration.pending>) {
   const { payload } = action;
@@ -31,7 +31,7 @@ function* registrationPost(action: ReturnType<typeof registration.pending>) {
   return { ...response.data, ...profile.data };
 }
 
-const registrationPostSaga = runAsyncSaga.bind(null, registration, registrationPost);
+const registrationPostSaga = utils.bind(null, registration, registrationPost);
 
 function* registrationPostWatcher() {
   yield takeEvery(registration.pending, registrationPostSaga);

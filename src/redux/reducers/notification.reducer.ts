@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { NotificationState } from './reducers.types';
-import { notificationError, notificationSuccess } from '../actions/notification.actions';
+import { notificationError, notificationSuccess } from '../actions';
+import { RootState } from '../store';
 
 const initialState = {
   isSuccess: true,
@@ -26,5 +27,7 @@ export const notificationSlice = createSlice({
       });
   },
 });
+
+export const selectNotification = (state: RootState) => state.notification;
 
 export const notificationReducer = notificationSlice.reducer;

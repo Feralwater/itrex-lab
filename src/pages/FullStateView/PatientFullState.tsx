@@ -1,10 +1,11 @@
-import AppointmentCard from 'components/AppointmentCard/AppointmentCard';
+import { AppointmentCard } from 'components';
 import React from 'react';
 import { AppointmentsForPatient } from '../../resources/appointments/appointments.types';
 import { useAppSelector } from '../../hooks';
+import { selectProfile } from '../../redux/reducers';
 
 const PatientFullState: React.VFC<AppointmentsForPatient> = ({ appointments }) => {
-  const role = useAppSelector((state) => state.profile.roleName);
+  const { roleName } = useAppSelector(selectProfile);
   return (
     <>
       {
@@ -20,7 +21,7 @@ const PatientFullState: React.VFC<AppointmentsForPatient> = ({ appointments }) =
             reason={appointment.reason}
             time={appointment.visit_date}
             note={appointment.note}
-            role={role}
+            role={roleName}
           />
         ))
       }

@@ -27,7 +27,7 @@ import { AppointmentCardProps } from './AppointmentCard.types';
 import ControlCardPanel from '../ControlCardPanel/ControlCardPanel';
 import { ROLES } from '../../routes/constants';
 
-const AppointmentCard: React.VFC<AppointmentCardProps> = ({
+export const AppointmentCard: React.VFC<AppointmentCardProps> = ({
   specialization,
   appointmentID,
   firstName,
@@ -115,5 +115,3 @@ const AppointmentCard: React.VFC<AppointmentCardProps> = ({
     </UserCard>
   );
 };
-
-export default AppointmentCard;

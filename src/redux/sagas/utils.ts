@@ -4,7 +4,7 @@ import { AnyFunction, AsyncAction } from './saga.types';
 import { notificationError } from '../actions/notification.actions';
 import { createErrorNotificationMessage } from '../../serverResponseDictionary/serverResponsesDictionary';
 
-function* runAsyncSaga(action: AsyncAction, saga: AnyFunction, pendingAction?: PayloadActionCreator<any>):any {
+function* utils(action: AsyncAction, saga: AnyFunction, pendingAction?: PayloadActionCreator<any>):any {
   try {
     const result = yield saga(pendingAction);
     yield put(action.fulfilled(result));
@@ -19,4 +19,4 @@ function* runAsyncSaga(action: AsyncAction, saga: AnyFunction, pendingAction?: P
   }
 }
 
-export default runAsyncSaga;
+export default utils;

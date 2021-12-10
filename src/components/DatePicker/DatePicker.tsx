@@ -4,8 +4,9 @@ import { useField } from 'formik';
 import { isPast, addDays, format } from 'date-fns';
 import { ReactComponent as NextIcon } from '../../assets/svgImages/rightArrowGrey-icon.svg';
 import { ReactComponent as PrevIcon } from '../../assets/svgImages/leftArrowGrey-icon.svg';
-import ReactCalendar from './DataPicker.styles';
-import { DatePickerProps } from './DataPicker.types';
+import ReactCalendar from './DatePicker.styles';
+import { DatePickerProps } from './DatePicker.types';
+import { selectedDateFormatString, shortWeekdayFormatString } from './constants';
 
 const DatePicker:React.VFC<DatePickerProps> = ({
   doctorId, disableDate, setSelectedDate, ...props
@@ -13,9 +14,9 @@ const DatePicker:React.VFC<DatePickerProps> = ({
   const [, , { setValue }] = useField(props.field);
   const handlerClickDay = (checkedDate: Date) => {
     setValue(checkedDate);
-    setSelectedDate(format(checkedDate, "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"));
+    setSelectedDate(format(checkedDate, selectedDateFormatString));
   };
-  const formatDate = (date: Date) => format(new Date(date), 'EEEEE');
+  const formatDate = (date: Date) => format(new Date(date), shortWeekdayFormatString);
 
   const disabledDays = ({ date }: CalendarTileProperties) => {
     if (disableDate) {

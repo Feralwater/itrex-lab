@@ -20,7 +20,7 @@ export const ROLES = {
 export const ROLES_API = {
   Doctor: ROLES.DOCTOR,
   Patient: ROLES.PATIENT,
-  '': ROLES.PUBLIC,
+  Public: ROLES.PUBLIC,
 };
 
 export const DEFAULT_PATH = {

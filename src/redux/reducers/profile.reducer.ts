@@ -3,13 +3,14 @@ import { ProfileState } from './reducers.types';
 import profile from '../actions/profile.actions';
 import { ROLES, ROLES_API } from '../../routes/constants';
 import { ProfileResponse } from '../../resources/auth/auth.types';
+import { RootState } from '../store';
 
 const initialState = {
   id: '',
   firstName: '',
   lastName: '',
   photo: '',
-  roleName: '',
+  roleName: ROLES.PUBLIC,
   isAuth: false,
   status: 'idle',
 } as ProfileState;
@@ -26,7 +27,6 @@ export const profileSlice = createSlice({
           state.firstName = payload.first_name;
           state.lastName = payload.last_name;
           state.photo = payload.photo;
-          // @ts-ignore
           state.roleName = ROLES_API[payload.role_name];
           state.isAuth = true;
           state.status = 'fulfilled';
@@ -46,5 +46,7 @@ export const profileSlice = createSlice({
       });
   },
 });
+
+export const selectProfile = (state: RootState) => state.profile;
 
 export const profileReducer = profileSlice.reducer;

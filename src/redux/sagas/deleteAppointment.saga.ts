@@ -1,10 +1,9 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
 import appointments from '../../resources/appointments/appointments.api';
-import { notificationSuccess } from '../actions/notification.actions';
+import { notificationSuccess, deleteAppointment } from '../actions';
 import { createSuccessNotificationMessage } from '../../serverResponseDictionary/serverResponsesDictionary';
-import runAsyncSaga from './runAsync.saga';
-import { deleteAppointment } from '../actions/appointmentsForDoctors.actions';
+import utils from './utils';
 
 function* appointmentDelete(action: ReturnType<typeof deleteAppointment.pending>) {
   const { payload } = action;
@@ -13,7 +12,7 @@ function* appointmentDelete(action: ReturnType<typeof deleteAppointment.pending>
   return response.data;
 }
 
-const appointmentDeleteSaga = runAsyncSaga.bind(null, deleteAppointment, appointmentDelete);
+const appointmentDeleteSaga = utils.bind(null, deleteAppointment, appointmentDelete);
 
 function* appointmentDeleteWatcher() {
   yield takeEvery(deleteAppointment.pending, appointmentDeleteSaga);

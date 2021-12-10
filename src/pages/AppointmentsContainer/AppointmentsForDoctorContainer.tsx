@@ -4,16 +4,18 @@ import DoctorEmptyState from '../EmptyStateView/DoctorEmptyState';
 import DoctorNavigatePanel from '../../components/NavigatePanel/DoctorNavigatePanel';
 import AppointmentsWrapper from './AppointmentsContainer.styles';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { appointmentsForDoctor } from '../../redux/actions/appointmentsForDoctors.actions';
+import { appointmentsForDoctor, resolutions } from '../../redux/actions';
 import dictionary from '../dictionary/pagesDictionary';
-import { resolutions } from '../../redux/actions/resolution.actions';
+import {
+  selectAppointmentsForDoctor, selectProfile, selectResolution, selectResolutions,
+} from '../../redux/reducers';
 
 const AppointmentsForDoctorContainer: React.VFC = () => {
   const dispatch = useAppDispatch();
-  const userId = useAppSelector((state) => state.profile.id);
-  const appointments = useAppSelector((state) => state.appointmentsForDoctor.appointments);
-  const totalAppointmentsCount = useAppSelector((state) => state.appointmentsForDoctor.total);
-  const resolutionStatus = useAppSelector((state) => state.resolution.status);
+  const { id: userId } = useAppSelector(selectProfile);
+  const { appointments } = useAppSelector(selectAppointmentsForDoctor);
+  const { total: totalAppointmentsCount } = useAppSelector(selectAppointmentsForDoctor);
+  const { status: resolutionStatus } = useAppSelector(selectResolution);
 
   useEffect(() => {
     if (userId) {
@@ -30,7 +32,7 @@ const AppointmentsForDoctorContainer: React.VFC = () => {
       limit: 12,
     }));
   }, [dispatch, resolutionStatus]);
-  const doctorsResolutions = useAppSelector((state) => state.resolutions.resolutions);
+  const { resolutions: doctorsResolutions } = useAppSelector(selectResolutions);
   const myObserver = new IntersectionObserver((elements) => {
     if (elements[0].intersectionRatio !== 0) {
       console.log('The element is in view!');

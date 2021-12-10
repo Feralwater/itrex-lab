@@ -15,12 +15,14 @@ import dictionary from '../../pages/dictionary/pagesDictionary';
 import { deleteAppointment } from '../../redux/actions/appointmentsForDoctors.actions';
 import { resolution } from '../../redux/actions/resolution.actions';
 import ModalWindow from '../Modal/Modal';
+import { selectAppointmentsForDoctor } from '../../redux/reducers';
 
 const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({ appointmentID }) => {
   const dispatch = useAppDispatch();
   const [activeModal, setActiveModal] = useState<boolean>(false);
   const [resolutionText, setResolutionText] = useState<string>('');
-  const selectedAppointment = useAppSelector((state) => state.appointmentsForDoctor.appointments.find((appointment) => appointment.id === appointmentID));
+  const { appointments } = useAppSelector(selectAppointmentsForDoctor);
+  const selectedAppointment = appointments.find((appointment) => appointment.id === appointmentID);
   return (
     <>
       <CommandsList>

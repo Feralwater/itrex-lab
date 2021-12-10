@@ -4,9 +4,9 @@ import login from '../actions/login.actions';
 import { SignUpInResponse } from '../../resources/auth/auth.types';
 import auth from '../../resources/auth/auth.api';
 import { loginRepository } from '../../resources/loginRepository';
-import { notificationSuccess } from '../actions/notification.actions';
+import { notificationSuccess } from '../actions';
 import { createSuccessNotificationMessage } from '../../serverResponseDictionary/serverResponsesDictionary';
-import runAsyncSaga from './runAsync.saga';
+import utils from './utils';
 
 function* loginPost(action: ReturnType<typeof login.pending>) {
   const { payload } = action;
@@ -27,7 +27,7 @@ function* loginPost(action: ReturnType<typeof login.pending>) {
   return response.data;
 }
 
-const loginPostSaga = runAsyncSaga.bind(null, login, loginPost);
+const loginPostSaga = utils.bind(null, login, loginPost);
 
 function* loginPostWatcher() {
   yield takeEvery(login.pending, loginPostSaga);

@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Notification from './Notification';
 import { useAppSelector } from '../../hooks';
+import { selectNotification } from '../../redux/reducers';
 
 const NotificationContainer = () => {
   const [showNotification, setShowNotification] = useState<boolean>(false);
-  const isSuccess = useAppSelector((state) => state.notification.isSuccess);
-  const successMessageText = useAppSelector((state) => state.notification.successMessageText);
-  const errorMessageText = useAppSelector((state) => state.notification.errorMessageText);
+  const { isSuccess, successMessageText, errorMessageText } = useAppSelector(selectNotification);
 
   useEffect(() => {
     if (successMessageText || errorMessageText) {

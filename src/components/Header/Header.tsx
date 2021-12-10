@@ -15,12 +15,12 @@ import {
 } from './Header.styles';
 import { useAppSelector } from '../../hooks';
 import componentsDictionary from '../dictionary/componentsDictionary';
+import { selectProfile } from '../../redux/reducers';
 
 const Header: React.VFC = () => {
-  const firstName = useAppSelector((state) => state.profile.firstName);
-  const secondName = useAppSelector((state) => state.profile.lastName);
-  const roleName = useAppSelector((state) => state.profile.roleName);
-  const avatar = useAppSelector((state) => state.profile.photo);
+  const {
+    firstName, lastName, roleName, photo,
+  } = useAppSelector(selectProfile);
 
   return (
     <HeaderWrapper>
@@ -31,11 +31,11 @@ const Header: React.VFC = () => {
         </HeaderLogo>
         <User>
           <UserInfo>
-            <UserName>{`${firstName} ${secondName}`}</UserName>
+            <UserName>{`${firstName} ${lastName}`}</UserName>
             <UserRole>{roleName}</UserRole>
           </UserInfo>
           <UserImageContainer>
-            <UserImage src={avatar} alt={componentsDictionary.header.avatarAlt} />
+            <UserImage src={photo} alt={componentsDictionary.header.avatarAlt} />
             <NetworkStatus isOnline />
           </UserImageContainer>
         </User>

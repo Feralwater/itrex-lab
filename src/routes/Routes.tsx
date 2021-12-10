@@ -18,9 +18,10 @@ import MakeAppointmentFormContainer from '../components/AppointmentForm/MakeAppo
 import ResolutionsForDoctor from '../pages/Resolutions/ResolutionsForDoctor';
 import PatientProfile from '../pages/PatientProfile/PatientProfile';
 import ResolutionsForPatient from '../pages/Resolutions/ResolutionsForPatient';
+import { selectProfile } from '../redux/reducers';
 
 function Routes() {
-  const { roleName } = useAppSelector((state) => state.profile);
+  const { roleName } = useAppSelector(selectProfile);
   const history = useHistory();
   const location = useLocation();
   const [restorePassword, setRestorePassword] = useState<string>('');

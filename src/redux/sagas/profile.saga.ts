@@ -4,7 +4,7 @@ import { ProfileResponse } from '../../resources/auth/auth.types';
 import auth from '../../resources/auth/auth.api';
 import profile from '../actions/profile.actions';
 import { loginRepository } from '../../resources/loginRepository';
-import runAsyncSaga from './runAsync.saga';
+import utils from './utils';
 
 function* profilePost() {
   const token = loginRepository.getAccessToken();
@@ -13,7 +13,7 @@ function* profilePost() {
   return me?.data || null;
 }
 
-const profilePostSaga = runAsyncSaga.bind(null, profile, profilePost);
+const profilePostSaga = utils.bind(null, profile, profilePost);
 
 function* profilePostWatcher() {
   yield takeEvery(profile.pending, profilePostSaga);

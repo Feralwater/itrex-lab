@@ -8,6 +8,7 @@ import { ResolutionsTable, ResolutionsTableHead, ResolutionsTableHeaderCell } fr
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { resolutions } from '../../redux/actions/resolution.actions';
 import ResolutionsPaginate from './ResolutionsPaginate';
+import { selectResolutions } from '../../redux/reducers';
 
 const ResolutionsForDoctor = () => {
   const dispatch = useAppDispatch();
@@ -18,7 +19,7 @@ const ResolutionsForDoctor = () => {
       limit: resolutionsOnPage,
     }));
   }, [dispatch]);
-  const myResolutions = useAppSelector((state) => state.resolutions.resolutions);
+  const { resolutions: myResolutions } = useAppSelector(selectResolutions);
   return (
     <div>
       <DoctorNavigatePanel pageTitle={dictionary.doctorPage.resolutionsTitle} />

@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { AppointmentsForDoctorState } from './reducers.types';
-import { appointmentsForDoctor, deleteAppointment } from '../actions/appointmentsForDoctors.actions';
+import { appointmentsForDoctor, deleteAppointment } from '../actions';
+import { RootState } from '../store';
 
 const initialState = {
   appointments: [],
@@ -35,5 +36,7 @@ export const appointmentsForDoctorSlice = createSlice({
       });
   },
 });
+
+export const selectAppointmentsForDoctor = (state: RootState) => state.appointmentsForDoctor;
 
 export const appointmentsForDoctorReducer = appointmentsForDoctorSlice.reducer;
