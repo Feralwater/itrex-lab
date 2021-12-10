@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ErrorMessage, Field, Form } from 'formik';
+import { Field, Form } from 'formik';
 import { Link } from 'react-router-dom';
 import { colors } from '../CommonStyles/theme';
 
@@ -88,18 +88,6 @@ export const CustomField = styled(Field)<CustomFieldProps>`
   &::placeholder {
     color: ${colors.rock_blue};
   }
-`;
-
-export const CustomErrorMessage = styled(ErrorMessage)`
-  display: inline-block;
-  font-weight: 400;
-  font-size: 11px;
-  letter-spacing: -0.24px;
-  color: ${colors.brink_pink};
-  margin: 8px 0 0 0;
-  position: absolute;
-  top: 90%;
-  left: 0;
 `;
 
 export const CustomLink = styled(Link)`

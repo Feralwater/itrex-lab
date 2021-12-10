@@ -23,8 +23,9 @@ const pagesDictionary = {
     signIn: 'Sign in',
   },
   errorPage: {
-    errorNumber: '404 Error',
-    errorMessage: 'oops, the page you are looking for can`t be found!😭',
+    errorNumber: '404',
+    errorMessageFirstLine: 'Oops...',
+    errorMessageSecondLine: 'We can’t seem to find the page you are looking for.',
   },
   doctorPage: {
     patientsTitle: 'My Patients',
@@ -60,6 +61,17 @@ const pagesDictionary = {
   paginate: {
     resultsText: 'Results:',
     resultsPronoun: 'of',
+  },
+  profile: {
+    pageTitle: 'Profile',
+    changePasswordButton: 'Change Password',
+    avatarAlt: '',
+  },
+  makeAppointmentsForm: {
+    occupationPlaceholder: 'Choose an occupation',
+    occupationLabelText: 'Occupation',
+    doctorNamePlaceholder: 'Choose a doctor',
+    doctorNameLabelText: 'Doctor`s name',
   },
 } as const;
 

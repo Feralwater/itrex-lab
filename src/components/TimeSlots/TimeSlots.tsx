@@ -4,6 +4,7 @@ import { parseISO, format } from 'date-fns';
 import { TimeSlot, TimeSlotLabel, TimeSlotsContainer } from './TimeSlots.styles';
 import { TimeSlotsProps } from './TimeSlots.types';
 import TIME_SLOTS from '../../pages/constants/constants';
+import { timeForDisplayFormat } from './constants';
 
 const TimeSlots: React.VFC<TimeSlotsProps> = ({
   freeTime,
@@ -12,7 +13,7 @@ const TimeSlots: React.VFC<TimeSlotsProps> = ({
   const [, , { setValue }] = useField(props.field);
 
   const freeTimeSlots = freeTime.map((time) => ({
-    timeForDisplay: format(parseISO(time), 'h:mm aaa'),
+    timeForDisplay: format(parseISO(time), timeForDisplayFormat),
     timeForServer: time,
   }));
 

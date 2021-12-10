@@ -10,11 +10,11 @@ import {
   SelectDoctorStep,
   SelectTimeslotStep, LinksContainer, DisabledLink,
 } from 'components/AppointmentForm/MakeAnAppointment.styles';
-import dictionary from 'pages/dictionary/pagesDictionary';
 import { PatientsTitle } from 'components/NavigatePanel/NavigatePanel.styles';
 import AppointmentsSteps from 'components/AppointmentsSteps/AppointmentsSteps';
 import DatePicker from 'components/DatePicker/DatePicker';
 import TimeSlots from 'components/TimeSlots/TimeSlots';
+import pagesDictionary from 'pages/dictionary/pagesDictionary';
 import Button from '../Button/Button';
 import CustomSelect from '../Select/Select';
 import appointmentValidationSchema from './validation/appointment.validation';
@@ -23,7 +23,7 @@ import { appointmentValues, MakeAnAppointmentFormProps } from './form.types';
 import { PATH } from '../../routes/constants';
 import { ReactComponent as RightArrow } from '../../assets/svgImages/rightArrowGrey-icon.svg';
 
-const MakeAnAppointmentForm:React.VFC<MakeAnAppointmentFormProps> = ({
+const MakeAnAppointmentForm: React.VFC<MakeAnAppointmentFormProps> = ({
   handleSubmitForm,
   optionsForOccupationsSelect,
   setSelectedOccupationID,
@@ -35,11 +35,11 @@ const MakeAnAppointmentForm:React.VFC<MakeAnAppointmentFormProps> = ({
 }) => (
   <>
     <LinksContainer>
-      <NoUnderlineLink to={PATH.APPOINTMENTS}>{dictionary.patientPage.buttonAppointments}</NoUnderlineLink>
+      <NoUnderlineLink to={PATH.APPOINTMENTS}>{pagesDictionary.patientPage.buttonAppointments}</NoUnderlineLink>
       <RightArrow />
-      <DisabledLink to={PATH.CREATE_APPOINTMENT}>{dictionary.form.makeAppointmentTitle}</DisabledLink>
+      <DisabledLink to={PATH.CREATE_APPOINTMENT}>{pagesDictionary.form.makeAppointmentTitle}</DisabledLink>
     </LinksContainer>
-    <PatientsTitle>{dictionary.form.makeAppointmentTitle}</PatientsTitle>
+    <PatientsTitle>{pagesDictionary.form.makeAppointmentTitle}</PatientsTitle>
     <Formik
       initialValues={{
         occupation: {
@@ -75,7 +75,7 @@ const MakeAnAppointmentForm:React.VFC<MakeAnAppointmentFormProps> = ({
           <AppointmentStepsContainer>
             <SelectDoctorStep>
               <AppointmentsSteps
-                stepDescription={dictionary.makeAppointments.step1Description}
+                stepDescription={pagesDictionary.makeAppointments.step1Description}
                 stepNumber={1}
               />
               <Field
@@ -83,16 +83,16 @@ const MakeAnAppointmentForm:React.VFC<MakeAnAppointmentFormProps> = ({
                 name="occupation"
                 id="occupation"
                 options={optionsForOccupationsSelect}
-                placeholder="Choose an occupation"
-                labelText="Occupation"
+                placeholder={pagesDictionary.makeAppointmentsForm.occupationPlaceholder}
+                labelText={pagesDictionary.makeAppointmentsForm.occupationLabelText}
                 setSelectedValue={setSelectedOccupationID}
               />
               <Field
                 component={CustomSelect}
                 name="doctorName"
                 id="doctorName"
-                placeholder="Choose a doctor"
-                labelText="Doctor`s name"
+                placeholder={pagesDictionary.makeAppointmentsForm.doctorNamePlaceholder}
+                labelText={pagesDictionary.makeAppointmentsForm.doctorNameLabelText}
                 options={optionsForDoctorNamesSelect}
                 setSelectedValue={setSelectedDoctorID}
               />
@@ -109,7 +109,7 @@ const MakeAnAppointmentForm:React.VFC<MakeAnAppointmentFormProps> = ({
               ))}
             </SelectDoctorStep>
             <ChooseDayStep>
-              <AppointmentsSteps stepDescription={dictionary.makeAppointments.step2Description} stepNumber={2} />
+              <AppointmentsSteps stepDescription={pagesDictionary.makeAppointments.step2Description} stepNumber={2} />
               <Field
                 name="date"
                 id="date"
@@ -120,7 +120,7 @@ const MakeAnAppointmentForm:React.VFC<MakeAnAppointmentFormProps> = ({
               />
             </ChooseDayStep>
             <SelectTimeslotStep>
-              <AppointmentsSteps stepDescription={dictionary.makeAppointments.step3Description} stepNumber={3} />
+              <AppointmentsSteps stepDescription={pagesDictionary.makeAppointments.step3Description} stepNumber={3} />
               <Field
                 name="time"
                 component={TimeSlots}
@@ -136,7 +136,7 @@ const MakeAnAppointmentForm:React.VFC<MakeAnAppointmentFormProps> = ({
               icon="default"
               disabled={!(isValid && dirty)}
             >
-              {dictionary.form.submitTitle}
+              {pagesDictionary.form.submitTitle}
             </Button>
           </MakeAppointmentButtonContainer>
         </AppointmentFormContainer>

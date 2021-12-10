@@ -12,12 +12,20 @@ export const Error = styled.section`
 `;
 
 export const ErrorNumber = styled.div`
-  color: ${colors.radical_red};
-  font-size: 130px;
-  font-weight: bold;
+  background: url("../../img/bg.png") no-repeat center center;
+  background-size: 100%;
+  font-size: 300px;
+  font-weight: 900;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-align: center;
+  text-transform: uppercase;
 `;
 
 export const ErrorMessage = styled.div`
-  text-transform: uppercase;
-  font-size: 18px;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 110%;
+  color: ${colors.rock_blue};
 `;

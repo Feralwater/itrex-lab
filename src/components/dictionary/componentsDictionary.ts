@@ -19,6 +19,12 @@ const componentsDictionary = {
     avatarAlt: 'user`s avatar',
     logoText: 'palm clinic',
   },
+  appointmentCard: {
+    avatarAlt: 'Your Profile',
+  },
+  controlCardPanel: {
+    selectedPatientImageAlt: '',
+  },
 } as const;
 
 export default componentsDictionary;

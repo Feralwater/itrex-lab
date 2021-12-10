@@ -12,10 +12,10 @@ import {
 import { ControlCardPanelProps } from './ControlCardPanel.types';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import dictionary from '../../pages/dictionary/pagesDictionary';
-import { deleteAppointment } from '../../redux/actions/appointmentsForDoctors.actions';
-import { resolution } from '../../redux/actions/resolution.actions';
+import { deleteAppointment, resolution } from '../../redux/actions';
 import ModalWindow from '../Modal/Modal';
 import { selectAppointmentsForDoctor } from '../../redux/reducers';
+import componentsDictionary from '../dictionary/componentsDictionary';
 
 const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({ appointmentID }) => {
   const dispatch = useAppDispatch();
@@ -42,7 +42,7 @@ const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({ appointmentID }) =
         <ResolutionModalBody>
           <ResolutionModalTitle>{dictionary.resolutionModal.resolutionTitle}</ResolutionModalTitle>
           <SelectedPatientInfo>
-            <SelectedPatientImage src={selectedAppointment?.patient.photo} alt="patient`s avatar" />
+            <SelectedPatientImage src={selectedAppointment?.patient.photo} alt={componentsDictionary.controlCardPanel.selectedPatientImageAlt} />
             <span>
               {selectedAppointment?.patient.first_name}
               {' '}

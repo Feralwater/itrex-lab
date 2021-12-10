@@ -22,10 +22,13 @@ import {
   UserInformation,
 } from './AppointmentCard.styles';
 import { UserImage } from '../Header/Header.styles';
-import { statusColor, statusDescription } from './const';
+import {
+  endVisitHourFormat, statusColor, statusDescription, visitTimeFormat,
+} from './constants';
 import { AppointmentCardProps } from './AppointmentCard.types';
 import ControlCardPanel from '../ControlCardPanel/ControlCardPanel';
 import { ROLES } from '../../routes/constants';
+import componentsDictionary from '../dictionary/componentsDictionary';
 
 export const AppointmentCard: React.VFC<AppointmentCardProps> = ({
   specialization,
@@ -53,8 +56,8 @@ export const AppointmentCard: React.VFC<AppointmentCardProps> = ({
 
   function formatVisitTime(timeBeforeFormat: string) {
     const endVisitDate = add(new Date(timeBeforeFormat), { hours: 1 });
-    const endVisitHour = format(new Date(endVisitDate), 'h');
-    return format(new Date(timeBeforeFormat), `ccc LLL dd, Y h aaa - ${endVisitHour} aaa`);
+    const endVisitHour = format(new Date(endVisitDate), endVisitHourFormat);
+    return format(new Date(timeBeforeFormat), visitTimeFormat(endVisitHour));
   }
 
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -88,7 +91,7 @@ export const AppointmentCard: React.VFC<AppointmentCardProps> = ({
       <UserCardHeader>
         <UserData>
           <UserCardImageContainer>
-            <UserImage src={avatar} alt="user avatar" />
+            <UserImage src={avatar} alt={componentsDictionary.appointmentCard.avatarAlt} />
           </UserCardImageContainer>
           <UserInformation>
             <UserCardName>{`${firstName} ${lastName}`}</UserCardName>

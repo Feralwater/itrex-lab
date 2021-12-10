@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 import { format } from 'date-fns';
 import DoctorNavigatePanel from '../../components/NavigatePanel/DoctorNavigatePanel';
 import dictionary from '../dictionary/pagesDictionary';
-import { columnsNames, resolutionsOnPage } from './constants';
+import { columnsNames, resolutionsOnPage, visitDate } from './constants';
 import ResolutionRow from './ResolutionRow';
 import { ResolutionsTable, ResolutionsTableHead, ResolutionsTableHeaderCell } from './Resolutions.styles';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { resolutions } from '../../redux/actions/resolution.actions';
+import { resolutions } from '../../redux/actions';
 import ResolutionsPaginate from './ResolutionsPaginate';
 import { selectResolutions } from '../../redux/reducers';
 
@@ -37,8 +37,8 @@ const ResolutionsForDoctor = () => {
               firstName={resolution.patient.first_name}
               lastName={resolution.patient.last_name}
               resolution={resolution.resolution}
-              visitDate={format(new Date(resolution.visit_date), 'MM/dd/yy')}
-              nextAppointmentDate={format(new Date(resolution.next_appointment_date), 'MM/dd/yy')}
+              visitDate={format(new Date(resolution.visit_date), visitDate)}
+              nextAppointmentDate={format(new Date(resolution.next_appointment_date), visitDate)}
             />
           ))}
         </tbody>

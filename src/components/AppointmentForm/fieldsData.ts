@@ -1,7 +1,7 @@
 import Input from '../Input/Input';
 import { FormFieldData } from '../AuthForms/Form.types';
 
-const makeAppointmentsFieldsData:Array<FormFieldData> = [
+const makeAppointmentsFieldsData: Array<FormFieldData> = [
   {
     component: Input,
     name: 'reason',

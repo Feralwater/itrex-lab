@@ -5,7 +5,8 @@ import dictionary from '../../pages/dictionary/pagesDictionary';
 const Error404:React.VFC = () => (
   <Error>
     <ErrorNumber>{dictionary.errorPage.errorNumber}</ErrorNumber>
-    <ErrorMessage>{dictionary.errorPage.errorMessage}</ErrorMessage>
+    <ErrorMessage>{dictionary.errorPage.errorMessageFirstLine}</ErrorMessage>
+    <ErrorMessage>{dictionary.errorPage.errorMessageSecondLine}</ErrorMessage>
   </Error>
 );
 

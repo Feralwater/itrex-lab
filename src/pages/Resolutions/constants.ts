@@ -8,3 +8,5 @@ export const columnsNames = {
 };
 
 export const resolutionsOnPage = 8;
+
+export const visitDate = 'MM/dd/yy';
