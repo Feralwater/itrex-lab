@@ -104,7 +104,7 @@ export const AppointmentCard: React.VFC<AppointmentCardProps> = ({
         </UserCardBodyTime>
         <UserCardBodyDescription isDescription={isCardDescription()}>
           {role === ROLES.DOCTOR ? <div><Board /></div> : <div><Heart /></div>}
-          <UserCardBodyDescriptionText>{role === ROLES.DOCTOR ? resolution?.resolution : reason}</UserCardBodyDescriptionText>
+          <UserCardBodyDescriptionText>{reason}</UserCardBodyDescriptionText>
         </UserCardBodyDescription>
       </UserCardBody>
     </UserCard>

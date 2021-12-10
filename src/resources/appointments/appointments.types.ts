@@ -1,4 +1,5 @@
 import { ResolutionForDoctor } from '../resolutions/resolutions.types';
+import { Dispatch, SetStateAction } from 'react';
 
 export interface Appointment {
   id: 'string',
@@ -37,7 +38,6 @@ export interface AppointmentsForPatient {
 export interface AppointmentsForDoctor {
   appointments: Array<AppointmentForDoctor>,
   total: number
-  doctorsResolutions?: Array<ResolutionForDoctor>
 }
 
 export interface DeleteAppointment {

@@ -16,7 +16,8 @@ export interface appointmentValues {
 }
 
 export interface MakeAnAppointmentFormProps {
-  handleSubmitForm: Dispatch<SetStateAction<appointmentValues>>;
+  // eslint-disable-next-line no-unused-vars
+  handleSubmitForm: (formValues: appointmentValues)=>void;
   optionsForOccupationsSelect: { label: string, value: string, }[];
   setSelectedOccupationID: Dispatch<SetStateAction<string>>;
   setSelectedDoctorID: Dispatch<SetStateAction<string>>;
