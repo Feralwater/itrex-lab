@@ -24,7 +24,7 @@ export const NotificationBody = styled.div<NotificationBodyType>`
 
 export const NotificationTitle = styled.div`
   display: flex;
-  line-height: 24px;
+  line-height: 240%;
   margin: 0 0 8px 0;
 `;
 

@@ -10,7 +10,7 @@ export const ResolutionsTable = styled.table`
 
 export const ResolutionsTableHead = styled.tr`
   font-size: 15px;
-  line-height: 24px;
+  line-height: 240%;
   color: ${colors.rock_blue};
   background-color: ${colors.white};
   box-shadow: 0px 4px 32px ${colors.link_water['024']};
@@ -63,7 +63,7 @@ export const ResolutionsTableHeaderCell = styled(ResolutionsTableCell)`
 
 export const ResolutionsTableRow = styled.tr`
   font-size: 17px;
-  line-height: 24px;
+  line-height: 240%;
   color: ${colors.dark_jungle_green};
   background-color: ${colors.white};
   box-shadow: 0px 4px 32px ${colors.link_water['024']};

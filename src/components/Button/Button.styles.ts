@@ -13,7 +13,7 @@ const StyledButton = styled.button<ButtonProps>`
   text-transform: capitalize;
   ${(props) => props.size === 'large' && css`
     font-size: 17px;
-    line-height: 24px;
+    line-height: 240%;
   `}
   ${(props) => props.variant === 'primary' && css`
     background-color: ${colors.cornflower_blue};
@@ -26,7 +26,7 @@ const StyledButton = styled.button<ButtonProps>`
   `}
   ${(props) => props.size === 'small' && css`
     font-size: 15px;
-    line-height: 20px;
+    line-height: 200%;
   `}
   ${(props) => props.variant === 'secondary' && css`
     background-color: ${colors.white};

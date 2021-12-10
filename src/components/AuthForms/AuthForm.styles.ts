@@ -72,7 +72,7 @@ export const CustomField = styled(Field)<CustomFieldProps>`
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  line-height: 1.25;
+  line-height: 125%;
   @media only screen and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3),
   (max-device-width: 767px) {
     padding: 10px 48px;

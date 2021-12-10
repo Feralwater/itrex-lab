@@ -35,7 +35,7 @@ const ReactCalendar = styled.div`
       color: ${colors.black};
       font-weight: 600;
       font-size: 17px;
-      line-height: 24px;
+      line-height: 240%;
     }
   }
 

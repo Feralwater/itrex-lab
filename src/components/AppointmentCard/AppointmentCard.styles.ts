@@ -55,7 +55,7 @@ export const UserCardBody = styled.div`
 export const UserCardBodyTime = styled.div`
   display: flex;
   gap: 18px;
-  line-height: 1.5;
+  line-height: 150%;
 `;
 
 export const UserCardBodyTimeText = styled.div`
@@ -123,7 +123,7 @@ export const UserInformation = styled.div`
   justify-content: center;
   flex-direction: column;
   margin: 0 0 0 16px;
-  line-height: 1.5;
+  line-height: 150%;
 `;
 
 export const UserCardImageContainer = styled.div`

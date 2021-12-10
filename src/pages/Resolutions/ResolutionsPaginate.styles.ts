@@ -6,7 +6,7 @@ export const StyledPaginateContainer = styled.div`
     display: flex;
     list-style-type: none;
     padding-inline-start: 0;
-    line-height: 23px;
+    line-height: 230%;
     margin-right: 19px;
     align-items: center;
     text-align: center;

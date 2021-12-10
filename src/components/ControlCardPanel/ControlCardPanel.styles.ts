@@ -44,7 +44,7 @@ export const SelectedPatientImage = styled.img`
 export const ResolutionModalTitle = styled.h4`
   font-weight: 600;
   font-size: 20px;
-  line-height: 24px;
+  line-height: 240%;
   color: ${colors.dark_jungle_green};
   margin: 0 0 24px 0;
 `;

@@ -48,7 +48,7 @@ export const StyledInput = styled.input<InputProps>`
   border-radius: 8px;
   padding: ${(props) => (props.icon === 'default' ? '16px 24px' : '16px 24px 16px 64px')};
   font-size: 17px;
-  line-height: 24px;
+  line-height: 240%;
   outline: none;
   max-width: 100%;
 

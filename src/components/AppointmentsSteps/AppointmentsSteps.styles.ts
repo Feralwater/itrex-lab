@@ -12,7 +12,7 @@ export const StepNumber = styled.div`
   border: 1px solid ${colors.rock_blue};
   border-radius: 100%;
   font-size: 17px;
-  line-height: 24px;
+  line-height: 240%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,7 +22,7 @@ export const StepNumber = styled.div`
 
 export const StepDescription = styled.div`
   font-size: 17px;
-  line-height: 24px;
+  line-height: 240%;
   color: ${colors.rock_blue};
   margin: 0 0 0 16px;
 `;
