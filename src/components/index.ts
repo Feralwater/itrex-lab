@@ -19,3 +19,4 @@ export * from './NavigatePanel/DoctorNavigatePanel';
 export * from './Notification/Notification';
 export * from './Select/Select';
 export * from './TimeSlots/TimeSlots';
+export * from './ControlCardPanel/CardControlList';

@@ -53,10 +53,12 @@ const pagesDictionary = {
     step3Description: 'Select an available timeslot',
   },
   resolutionModal: {
-    resolutionTitle: 'Create a Resolution',
+    createResolutionTitle: 'Create a Resolution',
+    editResolutionTitle: 'Edit a Resolution',
     resolutionTextareaTitle: 'Resolution',
     cancelButtonText: 'Cancel',
     createButtonText: 'Create',
+    saveButtonText: 'Save',
   },
   paginate: {
     resultsText: 'Results:',

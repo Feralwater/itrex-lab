@@ -1,4 +1,5 @@
 import { PayloadActionCreator } from '@reduxjs/toolkit/src/createAction';
+import { Dispatch, SetStateAction } from 'react';
 
 export interface AsyncAction {
   pending: PayloadActionCreator<any>;
@@ -6,5 +7,4 @@ export interface AsyncAction {
   failed: PayloadActionCreator<any>;
 }
 
-// eslint-disable-next-line no-unused-vars
-export type AnyFunction = (...rest:any) => any;
+export type AnyFunction = Dispatch<SetStateAction<any>>;

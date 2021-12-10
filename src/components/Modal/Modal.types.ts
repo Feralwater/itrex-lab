@@ -1,5 +1,6 @@
+import { Dispatch, SetStateAction } from 'react';
+
 export interface ModalProps{
   activeModal: boolean
-  // eslint-disable-next-line no-unused-vars
-  setActiveModal: (activeModal: boolean)=> void
+  setActiveModal: Dispatch<SetStateAction<boolean>>;
 }

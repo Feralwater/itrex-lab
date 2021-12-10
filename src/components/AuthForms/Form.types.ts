@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import { TextInput } from '../Input/Input.types';
 
 export interface SignInValues {
@@ -30,6 +30,5 @@ export interface RestoreValues {
 }
 
 export interface RestoreEmail {
-  // eslint-disable-next-line no-unused-vars
-  setRestorePassword:(email: string)=>void
+  setRestorePassword:Dispatch<SetStateAction<string>>;
 }

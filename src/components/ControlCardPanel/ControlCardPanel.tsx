@@ -1,83 +1,76 @@
 import React, { useState } from 'react';
-import Button from 'components/Button/Button';
-import {
-  CommandsList,
-  ControlCommand, ResolutionModalBody,
-  ResolutionModalFooter,
-  ResolutionModalTextArea, ResolutionModalTitle,
-  ResolutionTextareaTitle,
-  SelectedPatientImage,
-  SelectedPatientInfo,
-} from './ControlCardPanel.styles';
 import { ControlCardPanelProps } from './ControlCardPanel.types';
-import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useAppDispatch } from '../../hooks';
 import dictionary from '../../pages/dictionary/pagesDictionary';
-import { deleteAppointment, resolution } from '../../redux/actions';
+import { resolution } from '../../redux/actions';
 import ModalWindow from '../Modal/Modal';
-import { selectAppointmentsForDoctor } from '../../redux/reducers';
-import componentsDictionary from '../dictionary/componentsDictionary';
+import { CardControlList } from '..';
+import { ResolutionModal } from './ResolutionModal';
+import { ResolutionModalButtons } from './ResolutionModalButtons';
 
-const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({ appointmentID }) => {
+const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({ appointmentID, setIsMenuOpen }) => {
   const dispatch = useAppDispatch();
-  const [activeModal, setActiveModal] = useState<boolean>(false);
+  const [activeCreateResolutionModal, setActiveCreateResolutionModal] = useState<boolean>(false);
+  const [activeEditResolutionModal, setActiveEditResolutionModal] = useState<boolean>(false);
   const [resolutionText, setResolutionText] = useState<string>('');
-  const { appointments } = useAppSelector(selectAppointmentsForDoctor);
-  const selectedAppointment = appointments.find((appointment) => appointment.id === appointmentID);
+
+  const saveHandler = () => {
+    dispatch(resolution.pending({
+      resolution: resolutionText,
+      appointmentID,
+    }));
+    setActiveCreateResolutionModal(false);
+  };
+  const editHandler = () => {
+    dispatch(resolution.pending({
+      resolution: resolutionText,
+      appointmentID,
+    }));
+    setActiveEditResolutionModal(false);
+  };
+  const cancelHandler = () => {
+    setActiveEditResolutionModal(false);
+    setIsMenuOpen(false);
+  };
+
   return (
     <>
-      <CommandsList>
-        <ControlCommand
-          onClick={() => setActiveModal(true)}
-        >
-          {dictionary.doctorPage.controlCommandCreate}
-        </ControlCommand>
-        <ControlCommand>{dictionary.doctorPage.controlCommandEdit}</ControlCommand>
-        <ControlCommand
-          onClick={() => dispatch(deleteAppointment.pending({ id: appointmentID }))}
-        >
-          {dictionary.doctorPage.controlCommandDelete}
-        </ControlCommand>
-      </CommandsList>
-      <ModalWindow activeModal={activeModal} setActiveModal={setActiveModal}>
-        <ResolutionModalBody>
-          <ResolutionModalTitle>{dictionary.resolutionModal.resolutionTitle}</ResolutionModalTitle>
-          <SelectedPatientInfo>
-            <SelectedPatientImage src={selectedAppointment?.patient.photo} alt={componentsDictionary.controlCardPanel.selectedPatientImageAlt} />
-            <span>
-              {selectedAppointment?.patient.first_name}
-              {' '}
-              {selectedAppointment?.patient.last_name}
-            </span>
-          </SelectedPatientInfo>
-          <ResolutionTextareaTitle>{dictionary.resolutionModal.resolutionTextareaTitle}</ResolutionTextareaTitle>
-          <ResolutionModalTextArea value={resolutionText} onChange={(event) => setResolutionText(event.currentTarget.value)} />
-        </ResolutionModalBody>
-        <ResolutionModalFooter>
-          <Button
-            type="button"
-            icon="left"
-            size="large"
-            variant="secondary"
-            iconUrl="./svgImages/close-icon.svg"
-            isBorder
-            onClick={() => setActiveModal(false)}
-          >
-            {dictionary.resolutionModal.cancelButtonText}
-          </Button>
-          <Button
-            type="button"
-            icon="left"
-            size="large"
-            variant="primary"
-            iconUrl="./svgImages/board-icon.svg"
-            onClick={() => {
-              dispatch(resolution.pending({ resolution: resolutionText, appointmentID }));
-              setActiveModal(false);
-            }}
-          >
-            {dictionary.resolutionModal.createButtonText}
-          </Button>
-        </ResolutionModalFooter>
+      <CardControlList
+        setActiveCreateResolutionModal={setActiveCreateResolutionModal}
+        appointmentID={appointmentID}
+        setActiveEditResolutionModal={setActiveEditResolutionModal}
+      />
+      <ModalWindow activeModal={activeCreateResolutionModal} setActiveModal={setActiveCreateResolutionModal}>
+        <ResolutionModal
+          resolutionText={resolutionText}
+          setResolutionText={setResolutionText}
+          appointmentID={appointmentID}
+          resolutionModalTitle={dictionary.resolutionModal.createResolutionTitle}
+        />
+        <ResolutionModalButtons
+          cancelHandler={cancelHandler}
+          saveHandler={saveHandler}
+          passiveButtonText={dictionary.resolutionModal.cancelButtonText}
+          activeButtonText={dictionary.resolutionModal.createButtonText}
+          activeButtonIcon="./svgImages/board-icon.svg"
+          passiveButtonIcon="./svgImages/close-icon.svg"
+        />
+      </ModalWindow>
+      <ModalWindow activeModal={activeEditResolutionModal} setActiveModal={setActiveEditResolutionModal}>
+        <ResolutionModal
+          resolutionText={resolutionText}
+          setResolutionText={setResolutionText}
+          appointmentID={appointmentID}
+          resolutionModalTitle={dictionary.resolutionModal.editResolutionTitle}
+        />
+        <ResolutionModalButtons
+          cancelHandler={cancelHandler}
+          saveHandler={editHandler}
+          passiveButtonText={dictionary.resolutionModal.cancelButtonText}
+          activeButtonText={dictionary.resolutionModal.saveButtonText}
+          activeButtonIcon="./svgImages/save-icon.svg"
+          passiveButtonIcon="./svgImages/close-icon.svg"
+        />
       </ModalWindow>
     </>
   );

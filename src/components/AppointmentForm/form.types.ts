@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from 'react';
+
 export interface appointmentValues {
   occupation: {
     label: string,
@@ -14,16 +16,12 @@ export interface appointmentValues {
 }
 
 export interface MakeAnAppointmentFormProps {
-  // eslint-disable-next-line no-unused-vars
-  handleSubmitForm: (formValues: appointmentValues) => void;
+  handleSubmitForm: Dispatch<SetStateAction<appointmentValues>>;
   optionsForOccupationsSelect: { label: string, value: string, }[];
-  // eslint-disable-next-line no-unused-vars
-  setSelectedOccupationID: (selectedOccupationID: string) => void;
-  // eslint-disable-next-line no-unused-vars
-  setSelectedDoctorID: (selectedDoctorID: string) => void;
+  setSelectedOccupationID: Dispatch<SetStateAction<string>>;
+  setSelectedDoctorID: Dispatch<SetStateAction<string>>;
   optionsForDoctorNamesSelect: { label: string, value: string, }[];
   disableDate: boolean;
-  // eslint-disable-next-line no-unused-vars
-  setSelectedDate: (selectedDate: string) => void;
+  setSelectedDate: Dispatch<SetStateAction<string>>;
   freeTime: Array<string>;
 }

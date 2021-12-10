@@ -1,7 +1,8 @@
+import { Dispatch, SetStateAction } from 'react';
+
 export interface DatePickerProps {
   doctorId: string
   disableDate: boolean
-  // eslint-disable-next-line no-unused-vars
-  setSelectedDate: (checkedDate: string) => void
+  setSelectedDate: Dispatch<SetStateAction<string>>;
   [x: string]: any;
 }
