@@ -17,7 +17,7 @@ const StyledButton = styled.button<ButtonProps>`
   `}
   ${(props) => props.variant === 'primary' && css`
     background-color: ${colors.cornflower_blue};
-    color: #ffffff;
+    color: ${colors.white};
 
     &:enabled:hover {
       background-color: ${colors.warm_blue};
@@ -60,7 +60,7 @@ const StyledButton = styled.button<ButtonProps>`
                   `))
 }
   ${(props) => props.disabled && css`
-    color: #ffffff;
+    color: ${colors.white};
     background-color: ${colors.link_water['1']};
   `}
 `;

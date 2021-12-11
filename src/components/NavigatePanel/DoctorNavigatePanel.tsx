@@ -7,6 +7,7 @@ import dictionary from '../../pages/dictionary/pagesDictionary';
 import { PATH } from '../../routes/constants';
 import { NavigatePanelProps } from '../../pages/AppointmentsContainer/AppointmentsContainer.types';
 import isActiveTab from './helpers';
+import Input from '../Input/Input';
 
 const DoctorNavigatePanel: React.VFC<NavigatePanelProps> = ({ pageTitle }) => (
   <>
@@ -27,7 +28,7 @@ const DoctorNavigatePanel: React.VFC<NavigatePanelProps> = ({ pageTitle }) => (
     <PatientsHeader>
       <PatientsTitle>{pageTitle}</PatientsTitle>
       <ButtonWrapper>
-        search + sort
+        <Input label="" inputName="search" type="text" icon="left" iconURL="svgImages/search-icon.svg" placeholder="Search" inputSize="small" />
       </ButtonWrapper>
     </PatientsHeader>
   </>

@@ -1,11 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { colors } from '../CommonStyles/theme';
-
-interface InputProps {
-  icon: 'default' | 'left';
-  iconURL?: string;
-  isError?: boolean;
-}
+import { InputProps } from './Input.types';
 
 export const InputContainer = styled.div<InputProps>`
   position: relative;
@@ -46,12 +41,22 @@ export const StyledInput = styled.input<InputProps>`
   box-sizing: border-box;
   box-shadow: 0px 4px 32px ${colors.link_water['016']};
   border-radius: 8px;
-  padding: ${(props) => (props.icon === 'default' ? '16px 24px' : '16px 24px 16px 64px')};
-  font-size: 17px;
-  line-height: 240%;
   outline: none;
   max-width: 100%;
-
+  font-size: ${(props) => (props.inputSize === 'large' ? '17px' : '15px')};
+  line-height: ${(props) => (props.inputSize === 'large' ? '240%' : '140%')};
+  ${(props) => props.icon === 'default' && props.inputSize === 'large' && css`
+    padding: 16px 24px;
+  `}
+  ${(props) => props.icon === 'default' && props.inputSize === 'small' && css`
+    padding: 10px 18px;
+  `}
+  ${(props) => props.icon === 'left' && props.inputSize === 'large' && css`
+    padding: 16px 24px 16px 64px;
+  `}
+  ${(props) => props.icon === 'left' && props.inputSize === 'small' && css`
+    padding: 10px 48px;
+  `}
   &::placeholder {
     color: ${colors.rock_blue};
   }

@@ -10,6 +10,7 @@ const makeAppointmentsFieldsData: Array<FormFieldData> = [
     type: 'text',
     placeholder: 'Leave a reason for the visit',
     icon: 'default',
+    inputSize: 'large',
   },
   {
     component: Input,
@@ -19,6 +20,7 @@ const makeAppointmentsFieldsData: Array<FormFieldData> = [
     type: 'text',
     placeholder: 'Leave a note if needed',
     icon: 'default',
+    inputSize: 'large',
   },
 ];
 export default makeAppointmentsFieldsData;

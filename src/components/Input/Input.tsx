@@ -2,10 +2,17 @@ import React, { useState } from 'react';
 import {
   InputContainer, InputErrorMessage, InputPasswordIcon, StyledInput,
 } from './Input.styles';
-import { TextInput } from './Input.types';
+import { InputProps } from './Input.types';
 
-const Input:React.VFC<TextInput> = ({
-  label, inputName, type, icon, iconURL, isError, errorText, ...restProps
+const Input:React.VFC<InputProps> = ({
+  label,
+  inputName,
+  type,
+  icon,
+  iconURL,
+  isError,
+  errorText,
+  ...restProps
 }) => {
   const [isSecurePassword, setIsSecurePassword] = useState<boolean>(true);
   function chooseInputType(inputType:string) {
@@ -14,6 +21,9 @@ const Input:React.VFC<TextInput> = ({
     }
     return inputType;
   }
+
+  const onEyeIconClickHandler = () => setIsSecurePassword((prevState) => !prevState);
+
   return (
     <InputContainer icon={icon} iconURL={iconURL}>
       <label htmlFor={inputName}>
@@ -23,7 +33,7 @@ const Input:React.VFC<TextInput> = ({
       {type === 'password' && (
         <InputPasswordIcon
           isVisible={isSecurePassword}
-          onClick={() => setIsSecurePassword((prev) => !prev)}
+          onClick={onEyeIconClickHandler}
         />
       )}
       {isError && <InputErrorMessage>{errorText}</InputErrorMessage>}

@@ -11,6 +11,7 @@ export const signInFieldsData:Array<FormFieldData> = [
     placeholder: 'Email',
     icon: 'left',
     iconURL: 'svgImages/email.svg',
+    inputSize: 'large',
   },
   {
     component: Input,
@@ -21,6 +22,7 @@ export const signInFieldsData:Array<FormFieldData> = [
     type: 'password',
     icon: 'left',
     iconURL: 'svgImages/lock.svg',
+    inputSize: 'large',
   },
 ];
 
@@ -34,6 +36,7 @@ export const signUpFieldsData:Array<FormFieldData> = [
     type: 'text',
     icon: 'left',
     iconURL: 'svgImages/user.svg',
+    inputSize: 'large',
   },
   {
     component: Input,
@@ -44,6 +47,7 @@ export const signUpFieldsData:Array<FormFieldData> = [
     type: 'text',
     icon: 'left',
     iconURL: 'svgImages/user.svg',
+    inputSize: 'large',
   },
   {
     component: Input,
@@ -54,6 +58,7 @@ export const signUpFieldsData:Array<FormFieldData> = [
     type: 'email',
     icon: 'left',
     iconURL: 'svgImages/email.svg',
+    inputSize: 'large',
   },
   {
     component: Input,
@@ -64,6 +69,7 @@ export const signUpFieldsData:Array<FormFieldData> = [
     type: 'password',
     icon: 'left',
     iconURL: 'svgImages/lock.svg',
+    inputSize: 'large',
   },
   {
     component: Input,
@@ -74,6 +80,7 @@ export const signUpFieldsData:Array<FormFieldData> = [
     type: 'password',
     icon: 'left',
     iconURL: 'svgImages/check-mark.svg',
+    inputSize: 'large',
   },
 ];
 
@@ -87,5 +94,6 @@ export const restoreFieldsData:Array<FormFieldData> = [
     placeholder: 'Email',
     icon: 'left',
     iconURL: 'svgImages/email.svg',
+    inputSize: 'large',
   },
 ];

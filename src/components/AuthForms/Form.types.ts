@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction } from 'react';
-import { TextInput } from '../Input/Input.types';
+import { InputProps } from '../Input/Input.types';
 
 export interface SignInValues {
   email: string
@@ -15,7 +15,7 @@ export interface SignUpValues {
 }
 
 export interface FormFieldData {
-  component: React.VFC<TextInput>,
+  component: React.VFC<InputProps>,
   name: string
   inputName: string
   label: string
@@ -23,6 +23,7 @@ export interface FormFieldData {
   placeholder: string
   icon: string
   iconURL?: string
+  inputSize: 'large' | 'small'
 }
 
 export interface RestoreValues {
