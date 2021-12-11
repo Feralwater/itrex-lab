@@ -16,7 +16,7 @@ import checkUserRole from './utils';
 import RestorePasswordForm from '../components/AuthForms/RestorePasswordForm';
 import MakeAppointmentFormContainer from '../components/AppointmentForm/MakeAppointmentFormContainer';
 import ResolutionsForDoctor from '../pages/Resolutions/ResolutionsForDoctor';
-import PatientProfile from '../pages/PatientProfile/PatientProfile';
+import Profile from '../pages/Profile/Profile';
 import ResolutionsForPatient from '../pages/Resolutions/ResolutionsForPatient';
 import { selectProfile } from '../redux/reducers';
 
@@ -50,7 +50,7 @@ function Routes() {
       <Route path={PATH.PATIENTS} render={() => <LayoutPrivate><AppointmentsForDoctorContainer /></LayoutPrivate>} />
       <Route path={PATH.APPOINTMENTS} render={() => <LayoutPrivate><AppointmentsForPatientContainer /></LayoutPrivate>} />
       <Route path={PATH.RESOLUTIONS} render={() => <LayoutPrivate><ResolutionsForDoctor /></LayoutPrivate>} />
-      <Route path={PATH.PROFILE} render={() => <LayoutPrivate><PatientProfile /></LayoutPrivate>} />
+      <Route path={PATH.PROFILE} render={() => <LayoutPrivate><Profile /></LayoutPrivate>} />
       <Route path={PATH.MY_RESOLUTIONS} render={() => <LayoutPrivate><ResolutionsForPatient /></LayoutPrivate>} />
       <Route
         path={PATH.CREATE_APPOINTMENT}

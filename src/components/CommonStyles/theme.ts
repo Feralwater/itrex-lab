@@ -8,6 +8,7 @@ export const colors = {
   white: '#ffffff',
   brink_pink: '#f6657f',
   greenish_teal: '#34c197',
+  cloud: '#c4c4c4',
   link_water: {
     1: '#dce0ec',
     '024': 'rgba(218, 228, 255, 0.24)',
@@ -31,5 +32,3 @@ export const colors = {
     },
   transparent: 'transparent',
 };
-
-export const typography = {};

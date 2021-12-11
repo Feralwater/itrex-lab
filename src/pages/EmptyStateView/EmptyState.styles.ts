@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from '../../components/CommonStyles/theme';
+import { colors } from '../../components';
 
 export const MedicalHistoryContainer = styled.div`
   display: flex;

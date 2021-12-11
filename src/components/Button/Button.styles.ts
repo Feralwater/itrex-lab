@@ -13,7 +13,7 @@ const StyledButton = styled.button<ButtonProps>`
   text-transform: capitalize;
   ${(props) => props.size === 'large' && css`
     font-size: 17px;
-    line-height: 240%;
+    line-height: 120%;
   `}
   ${(props) => props.variant === 'primary' && css`
     background-color: ${colors.cornflower_blue};
@@ -26,12 +26,15 @@ const StyledButton = styled.button<ButtonProps>`
   `}
   ${(props) => props.size === 'small' && css`
     font-size: 15px;
-    line-height: 200%;
+    line-height: 120%;
   `}
   ${(props) => props.variant === 'secondary' && css`
     background-color: ${colors.white};
     color: ${colors.rock_blue};
-
+    &:enabled:hover {
+      background-color: ${colors.alabaster};
+      transition: background-color 0.2s ease-out;
+    }
   `}
   ${(props) => (props.icon === 'default'
     ? css`
@@ -42,7 +45,7 @@ const StyledButton = styled.button<ButtonProps>`
                     padding: 16px 24px 16px 57px;
                     background-image: url("./svgImages/right-arrow.svg");
                     background-repeat: no-repeat;
-                    background-position: 20% 50%;
+                    background-position: 25px 50%;
                   `
       : css`
                     padding: 16px 57px 16px 24px;

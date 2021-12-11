@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/svgImages/logo.svg';
 
 import {
@@ -16,10 +17,14 @@ import {
 import { useAppSelector } from '../../hooks';
 import componentsDictionary from '../dictionary/componentsDictionary';
 import { selectProfile } from '../../redux/reducers';
+import { PATH } from '../../routes/constants';
 
 const Header: React.VFC = () => {
   const {
-    firstName, lastName, roleName, photo,
+    firstName,
+    lastName,
+    roleName,
+    photo,
   } = useAppSelector(selectProfile);
 
   return (
@@ -35,7 +40,9 @@ const Header: React.VFC = () => {
             <UserRole>{roleName}</UserRole>
           </UserInfo>
           <UserImageContainer>
-            <UserImage src={photo} alt={componentsDictionary.header.avatarAlt} />
+            <Link to={PATH.PROFILE}>
+              <UserImage src={photo} alt={componentsDictionary.header.avatarAlt} />
+            </Link>
             <NetworkStatus isOnline />
           </UserImageContainer>
         </User>

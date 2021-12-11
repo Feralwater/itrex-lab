@@ -67,6 +67,7 @@ const pagesDictionary = {
   profile: {
     pageTitle: 'Profile',
     changePasswordButton: 'Change Password',
+    editButton: 'Edit',
     avatarAlt: '',
   },
   makeAppointmentsForm: {

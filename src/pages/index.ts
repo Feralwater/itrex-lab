@@ -5,7 +5,7 @@ export * from './EmptyStateView/DoctorEmptyState';
 export * from './EmptyStateView/PatientEmptyState';
 export * from './FullStateView/PatientFullState';
 export * from './FullStateView/DoctorFullState';
-export * from './PatientProfile/PatientProfile';
+export * from './Profile/Profile';
 export * from './Resolutions/ResolutionsForDoctor';
 export * from './Resolutions/ResolutionsForPatient';
 export * from './SendEmail/SendEmail';
