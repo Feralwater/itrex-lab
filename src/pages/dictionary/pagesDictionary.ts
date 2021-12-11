@@ -23,7 +23,6 @@ const pagesDictionary = {
     signIn: 'Sign in',
   },
   errorPage: {
-    errorNumber: '404',
     errorMessageFirstLine: 'Oops...',
     errorMessageSecondLine: 'We can’t seem to find the page you are looking for.',
   },

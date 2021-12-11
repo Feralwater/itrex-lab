@@ -12,15 +12,10 @@ export const Error = styled.section`
 `;
 
 export const ErrorNumber = styled.div`
-  background: url("../../img/bg.png") no-repeat center center;
-  background-size: 100%;
-  font-size: 300px;
-  font-weight: 900;
-  color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-  text-align: center;
-  text-transform: uppercase;
+  background: url("../../img/404.png") no-repeat center center/contain;
+  width: 800px;
+  height: 300px;
+  margin: 0 0 90px 0;
 `;
 
 export const ErrorMessage = styled.div`
