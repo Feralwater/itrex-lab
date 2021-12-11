@@ -1,9 +1,9 @@
-import Input from '../Input/Input';
 import { FormFieldData } from '../AuthForms/Form.types';
+import InputFormContainer from '../Input/InputFormContainer';
 
 const makeAppointmentsFieldsData: Array<FormFieldData> = [
   {
-    component: Input,
+    component: InputFormContainer,
     name: 'reason',
     inputName: 'reason',
     label: 'Reason for the visit',
@@ -13,7 +13,7 @@ const makeAppointmentsFieldsData: Array<FormFieldData> = [
     inputSize: 'large',
   },
   {
-    component: Input,
+    component: InputFormContainer,
     name: 'note',
     inputName: 'note',
     label: 'Note',

@@ -45,6 +45,7 @@ export const StyledInput = styled.input<InputProps>`
   max-width: 100%;
   font-size: ${(props) => (props.inputSize === 'large' ? '17px' : '15px')};
   line-height: ${(props) => (props.inputSize === 'large' ? '240%' : '140%')};
+
   ${(props) => props.icon === 'default' && props.inputSize === 'large' && css`
     padding: 16px 24px;
   `}
@@ -94,4 +95,16 @@ export const InputErrorMessage = styled.div`
   position: absolute;
   top: 90%;
   left: 0;
+`;
+
+export const SearchContainer = styled(InputContainer)`
+  margin: 0;
+
+  & input {
+    border: none;
+    max-width: 130px;
+    background-color: ${colors.alabaster};
+    padding: 10px 10px 10px 58px;
+    box-shadow: none;
+  }
 `;

@@ -1,13 +1,14 @@
 import React from 'react';
-import { ButtonWrapper } from 'components/AuthForms/AuthForm.styles';
 import {
-  PatientsButton, PatientsButtonsContainer, PatientsHeader, PatientsTitle,
+  PatientsButton, PatientsButtonsContainer, UserPageTitle, PatientsTitle, SearchAndFilter,
 } from 'components/NavigatePanel/NavigatePanel.styles';
 import dictionary from '../../pages/dictionary/pagesDictionary';
 import { PATH } from '../../routes/constants';
 import { NavigatePanelProps } from '../../pages/AppointmentsContainer/AppointmentsContainer.types';
 import isActiveTab from './helpers';
-import Input from '../Input/Input';
+import InputSearchContainer from '../Input/InputSearchContainer';
+import SelectForSortContainer from '../Select/SelectForSortContainer';
+import { optionsForSearchSelect } from './constants';
 
 const DoctorNavigatePanel: React.VFC<NavigatePanelProps> = ({ pageTitle }) => (
   <>
@@ -25,12 +26,26 @@ const DoctorNavigatePanel: React.VFC<NavigatePanelProps> = ({ pageTitle }) => (
         {dictionary.doctorPage.buttonResolutions}
       </PatientsButton>
     </PatientsButtonsContainer>
-    <PatientsHeader>
+    <UserPageTitle>
       <PatientsTitle>{pageTitle}</PatientsTitle>
-      <ButtonWrapper>
-        <Input label="" inputName="search" type="text" icon="left" iconURL="svgImages/search-icon.svg" placeholder="Search" inputSize="small" />
-      </ButtonWrapper>
-    </PatientsHeader>
+      <SearchAndFilter>
+        <InputSearchContainer
+          label=""
+          inputName="search"
+          type="text"
+          icon="left"
+          iconURL="svgImages/search-icon.svg"
+          placeholder="Search"
+          inputSize="small"
+        />
+        <SelectForSortContainer
+          labelText=""
+          id=""
+          name=""
+          options={optionsForSearchSelect}
+        />
+      </SearchAndFilter>
+    </UserPageTitle>
   </>
 );
 

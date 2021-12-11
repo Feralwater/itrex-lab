@@ -1,9 +1,9 @@
-import Input from '../Input/Input';
 import { FormFieldData } from './Form.types';
+import InputFormContainer from '../Input/InputFormContainer';
 
 export const signInFieldsData:Array<FormFieldData> = [
   {
-    component: Input,
+    component: InputFormContainer,
     name: 'email',
     inputName: 'email',
     label: '',
@@ -14,7 +14,7 @@ export const signInFieldsData:Array<FormFieldData> = [
     inputSize: 'large',
   },
   {
-    component: Input,
+    component: InputFormContainer,
     name: 'password',
     inputName: 'password',
     label: '',
@@ -28,7 +28,7 @@ export const signInFieldsData:Array<FormFieldData> = [
 
 export const signUpFieldsData:Array<FormFieldData> = [
   {
-    component: Input,
+    component: InputFormContainer,
     name: 'firstName',
     inputName: 'firstName',
     label: '',
@@ -39,7 +39,7 @@ export const signUpFieldsData:Array<FormFieldData> = [
     inputSize: 'large',
   },
   {
-    component: Input,
+    component: InputFormContainer,
     name: 'lastName',
     inputName: 'lastName',
     label: '',
@@ -50,7 +50,7 @@ export const signUpFieldsData:Array<FormFieldData> = [
     inputSize: 'large',
   },
   {
-    component: Input,
+    component: InputFormContainer,
     name: 'email',
     inputName: 'email',
     label: '',
@@ -61,7 +61,7 @@ export const signUpFieldsData:Array<FormFieldData> = [
     inputSize: 'large',
   },
   {
-    component: Input,
+    component: InputFormContainer,
     name: 'password',
     inputName: 'password',
     label: '',
@@ -72,7 +72,7 @@ export const signUpFieldsData:Array<FormFieldData> = [
     inputSize: 'large',
   },
   {
-    component: Input,
+    component: InputFormContainer,
     name: 'confirmPassword',
     inputName: 'confirmPassword',
     label: '',
@@ -86,7 +86,7 @@ export const signUpFieldsData:Array<FormFieldData> = [
 
 export const restoreFieldsData:Array<FormFieldData> = [
   {
-    component: Input,
+    component: InputFormContainer,
     name: 'email',
     inputName: 'email',
     label: '',

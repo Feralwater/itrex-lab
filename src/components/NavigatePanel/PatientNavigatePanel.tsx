@@ -5,7 +5,7 @@ import {
   CreateAppointmentButton,
   PatientsButton,
   PatientsButtonsContainer,
-  PatientsHeader,
+  UserPageTitle,
   PatientsTitle,
 } from './NavigatePanel.styles';
 import dictionary from '../../pages/dictionary/pagesDictionary';
@@ -25,7 +25,7 @@ const PatientNavigatePanel:React.VFC<NavigatePanelProps> = ({ pageTitle }) => (
       </PatientsButton>
       <PatientsButton to={PATH.MY_RESOLUTIONS} $active={isActiveTab(dictionary.patientPage.buttonResolutions)}>{dictionary.patientPage.buttonResolutions}</PatientsButton>
     </PatientsButtonsContainer>
-    <PatientsHeader>
+    <UserPageTitle>
       <PatientsTitle>{ pageTitle }</PatientsTitle>
       <ButtonWrapper>
         <ButtonLeftPlusIcon />
@@ -33,7 +33,7 @@ const PatientNavigatePanel:React.VFC<NavigatePanelProps> = ({ pageTitle }) => (
           {dictionary.patientPage.createAppointments}
         </CreateAppointmentButton>
       </ButtonWrapper>
-    </PatientsHeader>
+    </UserPageTitle>
   </>
 );
 

@@ -16,12 +16,12 @@ import DatePicker from 'components/DatePicker/DatePicker';
 import TimeSlots from 'components/TimeSlots/TimeSlots';
 import pagesDictionary from 'pages/dictionary/pagesDictionary';
 import Button from '../Button/Button';
-import CustomSelect from '../Select/Select';
 import appointmentValidationSchema from './validation/appointment.validation';
 import makeAppointmentsFieldsData from './fieldsData';
 import { appointmentValues, MakeAnAppointmentFormProps } from './form.types';
 import { PATH } from '../../routes/constants';
 import { ReactComponent as RightArrow } from '../../assets/svgImages/rightArrowGrey-icon.svg';
+import SelectForAppointmentFormContainer from '../Select/SelectForAppointmentFormContainer';
 
 const MakeAnAppointmentForm: React.VFC<MakeAnAppointmentFormProps> = ({
   handleSubmitForm,
@@ -79,7 +79,7 @@ const MakeAnAppointmentForm: React.VFC<MakeAnAppointmentFormProps> = ({
                 stepNumber={1}
               />
               <Field
-                component={CustomSelect}
+                component={SelectForAppointmentFormContainer}
                 name="occupation"
                 id="occupation"
                 options={optionsForOccupationsSelect}
@@ -88,7 +88,7 @@ const MakeAnAppointmentForm: React.VFC<MakeAnAppointmentFormProps> = ({
                 setSelectedValue={setSelectedOccupationID}
               />
               <Field
-                component={CustomSelect}
+                component={SelectForAppointmentFormContainer}
                 name="doctorName"
                 id="doctorName"
                 placeholder={pagesDictionary.makeAppointmentsForm.doctorNamePlaceholder}

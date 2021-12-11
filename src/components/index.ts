@@ -11,7 +11,7 @@ export * from './DatePicker/DatePicker';
 export * from './dictionary/componentsDictionary';
 export * from './Error404/Error404';
 export * from './Header/Header';
-export * from './Input/Input';
+export * from './Input/InputFormContainer';
 export * from './LayoutAuthorised/LayoutAuthorised';
 export * from './LayoutPrivate/LayoutPrivate';
 export * from './Modal/Modal';

@@ -32,14 +32,21 @@ export const PatientsButton = styled(Link)<PatientsButtonProps>`
   background-color: ${(props) => (props.$active ? `${colors.cornflower_blue}` : `${colors.white}`)};
   box-shadow: ${(props) => (props.color === `${colors.white}` && `0px 4px 32px ${colors.link_water['016']}`)};
 `;
-export const PatientsHeader = styled.div`
+export const UserPageTitle = styled.div`
   margin: 0 0 18px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: nowrap;
 `;
-
+export const SearchAndFilter = styled.div`
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 18px;
+  //max-width: 275px;
+  padding: 0 50px 0 0;
+`;
 export const PatientsTitle = styled.h1`
   font-weight: 600;
   font-size: 24px;
