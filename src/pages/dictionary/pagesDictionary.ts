@@ -1,8 +1,4 @@
 const pagesDictionary = {
-  ViewEmptyState: {
-    medicalHistoryTextPart1: 'You have no AppointmentsForDoctorContainer yet.',
-    medicalHistoryTextPart2: 'To create a patient profile, please contact your administrator.',
-  },
   form: {
     restoreTitle: 'Restore Password',
     makeAppointmentTitle: 'Make an appointment',
@@ -29,13 +25,14 @@ const pagesDictionary = {
   doctorPage: {
     patientsTitle: 'My Patients',
     resolutionsTitle: 'Resolutions',
-    emptyMedicalHistoryTextLine1: 'You have no AppointmentsForDoctorContainer yet.',
+    emptyMedicalHistoryTextLine1: 'You have no patient yet.',
     emptyMedicalHistoryTextLine2: 'To create a patient profile, please contact your administrator.',
     buttonPatients: 'Patients',
     buttonResolutions: 'Resolutions',
     controlCommandCreate: 'Create a resolution',
     controlCommandEdit: 'Edit a resolution',
     controlCommandDelete: 'Delete',
+    controlCommandEditAppointment: 'Edit an appointment',
   },
   patientPage: {
     emptyAppointmentsHistoryTextLine1: 'You have no appointments yet.',

@@ -53,8 +53,8 @@ const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({ appointmentID, set
           saveHandler={saveHandler}
           passiveButtonText={dictionary.resolutionModal.cancelButtonText}
           activeButtonText={dictionary.resolutionModal.createButtonText}
-          activeButtonIcon="./svgImages/board-icon.svg"
-          passiveButtonIcon="./svgImages/close-icon.svg"
+          activeButtonIcon="/svgImages/board-icon.svg"
+          passiveButtonIcon="/svgImages/close-icon.svg"
         />
       </ModalWindow>
       <ModalWindow activeModal={activeEditResolutionModal} setActiveModal={setActiveEditResolutionModal}>
@@ -69,8 +69,8 @@ const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({ appointmentID, set
           saveHandler={editHandler}
           passiveButtonText={dictionary.resolutionModal.cancelButtonText}
           activeButtonText={dictionary.resolutionModal.saveButtonText}
-          activeButtonIcon="./svgImages/save-icon.svg"
-          passiveButtonIcon="./svgImages/close-icon.svg"
+          activeButtonIcon="/svgImages/save-icon.svg"
+          passiveButtonIcon="/svgImages/close-icon.svg"
         />
       </ModalWindow>
     </>

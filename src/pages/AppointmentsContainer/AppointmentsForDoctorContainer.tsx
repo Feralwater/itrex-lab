@@ -5,10 +5,10 @@ import DoctorEmptyState from '../EmptyStateView/DoctorEmptyState';
 import DoctorNavigatePanel from '../../components/NavigatePanel/DoctorNavigatePanel';
 import AppointmentsWrapper from './AppointmentsContainer.styles';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { appointmentsForDoctor } from '../../redux/actions';
+import { appointmentsForDoctor, resolutions } from '../../redux/actions';
 import dictionary from '../dictionary/pagesDictionary';
 import {
-  selectAppointmentsForDoctor, selectProfile, selectResolution,
+  selectAppointmentsForDoctor, selectProfile, selectResolution, selectResolutions,
 } from '../../redux/reducers';
 
 const AppointmentsForDoctorContainer: React.VFC = () => {
@@ -21,6 +21,10 @@ const AppointmentsForDoctorContainer: React.VFC = () => {
   useEffect(() => {
     if (userId) {
       dispatch(appointmentsForDoctor.pending({
+        offset: (currentPage - 1) * 12,
+        limit: 12,
+      }));
+      dispatch(resolutions.pending({
         offset: (currentPage - 1) * 12,
         limit: 12,
       }));

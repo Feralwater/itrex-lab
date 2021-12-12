@@ -3,7 +3,7 @@ import {
   EditResolutionPending,
   ResolutionFulfilled,
   ResolutionPending,
-  ResolutionsPending
+  ResolutionsPending,
 } from './actions.types';
 import createSagaActions from './createSaga.actions';
 import { ResolutionsResponse } from '../../resources/resolutions/resolutions.types';

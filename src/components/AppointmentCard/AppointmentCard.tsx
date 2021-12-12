@@ -27,6 +27,8 @@ import ControlCardPanel from '../ControlCardPanel/ControlCardPanel';
 import { ROLES } from '../../routes/constants';
 import componentsDictionary from '../dictionary/componentsDictionary';
 import { formatVisitTime } from './utils';
+import { useAppSelector } from '../../hooks';
+import { selectResolutions } from '../../redux/reducers';
 
 export const AppointmentCard: React.VFC<AppointmentCardProps> = ({
   specialization,
@@ -38,9 +40,9 @@ export const AppointmentCard: React.VFC<AppointmentCardProps> = ({
   time,
   role,
   reason,
-  doctorsResolutions,
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const { resolutions: doctorsResolutions } = useAppSelector(selectResolutions);
   const resolution = doctorsResolutions?.find((res) => res.appointment_id === appointmentID);
   const menuRef = useRef() as React.MutableRefObject<HTMLDivElement> | undefined;
 
@@ -104,7 +106,9 @@ export const AppointmentCard: React.VFC<AppointmentCardProps> = ({
         </UserCardBodyTime>
         <UserCardBodyDescription isDescription={isCardDescription()}>
           {role === ROLES.DOCTOR ? <div><Board /></div> : <div><Heart /></div>}
-          <UserCardBodyDescriptionText>{reason}</UserCardBodyDescriptionText>
+          {role === ROLES.DOCTOR
+            ? <UserCardBodyDescriptionText>{resolution?.resolution}</UserCardBodyDescriptionText>
+            : <UserCardBodyDescriptionText>{reason}</UserCardBodyDescriptionText>}
         </UserCardBodyDescription>
       </UserCardBody>
     </UserCard>

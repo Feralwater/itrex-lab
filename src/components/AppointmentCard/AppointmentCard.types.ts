@@ -1,5 +1,3 @@
-import { ResolutionForDoctor } from '../../resources/resolutions/resolutions.types';
-
 export interface AppointmentCardProps {
   specialization?: string;
   appointmentID: string;
@@ -11,5 +9,4 @@ export interface AppointmentCardProps {
   reason?: string;
   note: string;
   role: string;
-  doctorsResolutions?: Array<ResolutionForDoctor>;
 }
