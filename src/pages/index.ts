@@ -7,7 +7,6 @@ export * from './FullStateView';
 export * from './FullStateView';
 export * from './Profile';
 export * from './Resolutions';
-export * from './Resolutions';
 export * from './SendEmail';
 export * from './SignIn';
 export * from './SignUp';

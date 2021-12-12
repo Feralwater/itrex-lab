@@ -42,6 +42,7 @@ const pagesDictionary = {
     buttonProfile: 'Profile',
     buttonAppointments: 'Appointments',
     createAppointments: 'Create an appointment',
+    resolutionsTitle: 'Resolutions',
   },
   makeAppointments: {
     step1Description: 'Select a doctor and define the reason of your visit',

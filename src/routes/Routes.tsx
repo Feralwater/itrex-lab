@@ -14,7 +14,7 @@ import { useAppSelector } from '../hooks';
 import { PATH } from './constants';
 import checkUserRole from './utils';
 import {
-  ResolutionsForDoctor, Profile, ResolutionsForPatient, ProfileEditMode,
+  ResolutionsForDoctorContainer, Profile, ResolutionsForPatientContainer, ProfileEditMode,
 } from '../pages';
 import { selectProfile } from '../redux/reducers';
 
@@ -47,10 +47,10 @@ function Routes() {
       <Route path={PATH.SIGN_UP} render={() => <AuthorisedLayout><SignUp /></AuthorisedLayout>} />
       <Route path={PATH.PATIENTS} render={() => <LayoutPrivate><AppointmentsForDoctorContainer /></LayoutPrivate>} />
       <Route path={PATH.APPOINTMENTS} render={() => <LayoutPrivate><AppointmentsForPatientContainer /></LayoutPrivate>} />
-      <Route path={PATH.RESOLUTIONS} render={() => <LayoutPrivate><ResolutionsForDoctor /></LayoutPrivate>} />
+      <Route path={PATH.RESOLUTIONS} render={() => <LayoutPrivate><ResolutionsForDoctorContainer /></LayoutPrivate>} />
       <Route path={PATH.PROFILE} render={() => <LayoutPrivate><Profile /></LayoutPrivate>} />
       <Route path={PATH.EDIT_DOCTOR_PROFILE} render={() => <LayoutPrivate><ProfileEditMode /></LayoutPrivate>} />
-      <Route path={PATH.MY_RESOLUTIONS} render={() => <LayoutPrivate><ResolutionsForPatient /></LayoutPrivate>} />
+      <Route path={PATH.MY_RESOLUTIONS} render={() => <LayoutPrivate><ResolutionsForPatientContainer /></LayoutPrivate>} />
       <Route
         path={PATH.CREATE_APPOINTMENT}
         render={() => (

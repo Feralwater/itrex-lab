@@ -1,5 +1,5 @@
 import { AppointmentsForDoctor, AppointmentsForPatient } from '../../resources/appointments/appointments.types';
-import { ResolutionsResponse } from '../../resources/resolutions/resolutions.types';
+import { ResolutionsForPatientResponse, ResolutionsResponse } from '../../resources/resolutions/resolutions.types';
 
 export type Status = 'idle' | 'loading' | 'failed' | 'fulfilled'
 export type RoleName = 'Doctor' | 'Patient' | 'Public' | ''
