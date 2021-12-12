@@ -8,6 +8,7 @@ const initialState = {
   nextAppointmentDate: '',
   resolution: '',
   resolutionID: '',
+  total: 0,
   status: 'idle',
 } as ResolutionState;
 
@@ -22,6 +23,7 @@ export const resolutionSlice = createSlice({
         state.nextAppointmentDate = payload.next_appointment_date;
         state.resolution = payload.resolution;
         state.resolutionID = payload.id;
+        state.total += 1;
         state.status = 'fulfilled';
       });
 

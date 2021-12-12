@@ -67,6 +67,7 @@ export interface ResolutionState {
   nextAppointmentDate: string
   resolution: string
   resolutionID: string
+  total: number
   status: Status,
 }
 
