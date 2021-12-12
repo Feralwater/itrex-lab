@@ -8,7 +8,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 import { appointmentsForDoctor, resolutions } from '../../redux/actions';
 import dictionary from '../dictionary/pagesDictionary';
 import {
-  selectAppointmentsForDoctor, selectProfile, selectResolution, selectResolutions,
+  selectAppointmentsForDoctor, selectProfile, selectResolution,
 } from '../../redux/reducers';
 
 const AppointmentsForDoctorContainer: React.VFC = () => {

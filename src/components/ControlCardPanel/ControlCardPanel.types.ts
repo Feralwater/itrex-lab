@@ -3,6 +3,7 @@ import { Dispatch, SetStateAction } from 'react';
 export interface ControlCardPanelProps {
   appointmentID: string
   setIsMenuOpen: Dispatch<SetStateAction<boolean>>
+  resolutionID?: string
 }
 
 export interface CardControlListProps {

@@ -96,7 +96,13 @@ export const AppointmentCard: React.VFC<AppointmentCardProps> = ({
         </UserData>
         <div ref={menuRef}>
           {role === ROLES.DOCTOR && <SettingsButton onClick={() => setIsMenuOpen(!isMenuOpen)} />}
-          {isMenuOpen && (<ControlCardPanel appointmentID={appointmentID} setIsMenuOpen={setIsMenuOpen} />)}
+          {isMenuOpen && (
+          <ControlCardPanel
+            appointmentID={appointmentID}
+            setIsMenuOpen={setIsMenuOpen}
+            resolutionID={resolution?.id}
+          />
+          )}
         </div>
       </UserCardHeader>
       <UserCardBody>

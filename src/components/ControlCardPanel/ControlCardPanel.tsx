@@ -8,12 +8,15 @@ import { CardControlList } from '..';
 import { ResolutionModal } from './ResolutionModal';
 import { ResolutionModalButtons } from './ResolutionModalButtons';
 
-const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({ appointmentID, setIsMenuOpen }) => {
+const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
+  appointmentID,
+  setIsMenuOpen,
+  resolutionID,
+}) => {
   const dispatch = useAppDispatch();
   const [activeCreateResolutionModal, setActiveCreateResolutionModal] = useState<boolean>(false);
   const [activeEditResolutionModal, setActiveEditResolutionModal] = useState<boolean>(false);
   const [resolutionText, setResolutionText] = useState<string>('');
-  const resolutionID = '924b0b40-5b47-11ec-83ad-671076b7e9dc';
 
   const saveHandler = () => {
     dispatch(resolution.pending({

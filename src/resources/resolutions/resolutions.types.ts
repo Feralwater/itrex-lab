@@ -6,7 +6,7 @@ export interface ResolutionData {
 
 export interface EditResolutionData {
   resolution: string;
-  resolutionID: string;
+  resolutionID?: string;
 }
 
 export interface ResolutionResponse {
