@@ -1,6 +1,5 @@
 import React from 'react';
 import { H1, H2, SubTitle } from 'components/CommonStyles/Topography';
-import { Link } from 'react-router-dom';
 import pagesDictionary from '../dictionary/pagesDictionary';
 import { useAppSelector } from '../../hooks';
 import { selectProfile } from '../../redux/reducers';

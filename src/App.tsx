@@ -4,10 +4,11 @@ import { profile } from './redux/actions';
 import { useAppDispatch, useAppSelector } from './hooks';
 import NotificationContainer from './components/Notification/NotificationContainer';
 import { ROLES } from './routes/constants';
-import { selectAccessToken } from './redux/reducers';
+import { selectAccessToken, selectProfile } from './redux/reducers';
 
 function App() {
   const accessToken = useAppSelector(selectAccessToken);
+  const { roleName } = useAppSelector(selectProfile);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -22,7 +23,9 @@ function App() {
 
   return (
     <>
-      <Routes />
+      {(roleName !== '')
+        ? <Routes />
+        : null}
       <NotificationContainer />
     </>
   );

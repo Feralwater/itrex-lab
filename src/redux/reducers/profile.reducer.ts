@@ -10,7 +10,7 @@ const initialState = {
   firstName: '',
   lastName: '',
   photo: '',
-  roleName: ROLES.PUBLIC,
+  roleName: '',
   isAuth: false,
   status: 'idle',
 } as ProfileState;
