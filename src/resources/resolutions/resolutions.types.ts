@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 export interface ResolutionData {
   resolution: string;
   appointmentID: string;

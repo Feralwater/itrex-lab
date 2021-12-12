@@ -26,6 +26,10 @@ export interface ProfileResponse {
   role_name: RoleName
 }
 
+export interface EditProfileResponse extends ProfileResponse{
+  specialization_name: string
+}
+
 export interface JWTToken {
   name: string;
   exp: number;

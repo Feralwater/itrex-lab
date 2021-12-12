@@ -1,5 +1,6 @@
 import { createAction } from '@reduxjs/toolkit';
-import { ProfileResponse } from '../../resources/auth/auth.types';
+import { EditProfileResponse, ProfileResponse } from '../../resources/auth/auth.types';
+import { EditProfilePending } from './actions.types';
 
 const createSagaActions = <T1 = any, T2 = any, T3 = any>(prefix: string) => ({
   pending: createAction<T1>(`${prefix}/pending`),
@@ -7,6 +8,5 @@ const createSagaActions = <T1 = any, T2 = any, T3 = any>(prefix: string) => ({
   failed: createAction<T3>(`${prefix}/failed`),
 });
 
-const profile = createSagaActions<ProfileResponse>('profile');
-
-export default profile;
+export const profile = createSagaActions<ProfileResponse>('profile');
+export const editProfile = createSagaActions<EditProfilePending, EditProfileResponse>('editProfile');

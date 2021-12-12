@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { ProfileState } from './reducers.types';
-import profile from '../actions/profile.actions';
 import { ROLES, ROLES_API } from '../../routes/constants';
 import { ProfileResponse } from '../../resources/auth/auth.types';
 import { RootState } from '../store';
+import { profile } from '../actions';
 
 const initialState = {
   id: '',
@@ -21,7 +21,7 @@ export const profileSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(profile.fulfilled, (state, { payload }: { payload :ProfileResponse}) => { //
+      .addCase(profile.fulfilled, (state, { payload }: { payload :ProfileResponse}) => {
         if (payload) {
           state.id = payload.id;
           state.firstName = payload.first_name;

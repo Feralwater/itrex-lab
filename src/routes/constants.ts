@@ -9,6 +9,7 @@ export const PATH = {
   CREATE_APPOINTMENT: '/create-an-appointment',
   PROFILE: '/profile',
   MY_RESOLUTIONS: '/patient/resolutions',
+  EDIT_DOCTOR_PROFILE: '/doctor/edit-profile',
 };
 
 export const ROLES = {
@@ -33,6 +34,7 @@ export const ROLES_ACCESS = {
   [ROLES.DOCTOR]: new Set([PATH.PATIENTS,
     PATH.RESOLUTIONS,
     PATH.PROFILE,
+    PATH.EDIT_DOCTOR_PROFILE,
   ]),
   [ROLES.PATIENT]: new Set([
     PATH.APPOINTMENTS,

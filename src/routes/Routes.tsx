@@ -19,6 +19,7 @@ import ResolutionsForDoctor from '../pages/Resolutions/ResolutionsForDoctor';
 import Profile from '../pages/Profile/Profile';
 import ResolutionsForPatient from '../pages/Resolutions/ResolutionsForPatient';
 import { selectProfile } from '../redux/reducers';
+import ProfileEditMode from '../pages/Profile/ProfileEditMode';
 
 function Routes() {
   const { roleName } = useAppSelector(selectProfile);
@@ -51,6 +52,7 @@ function Routes() {
       <Route path={PATH.APPOINTMENTS} render={() => <LayoutPrivate><AppointmentsForPatientContainer /></LayoutPrivate>} />
       <Route path={PATH.RESOLUTIONS} render={() => <LayoutPrivate><ResolutionsForDoctor /></LayoutPrivate>} />
       <Route path={PATH.PROFILE} render={() => <LayoutPrivate><Profile /></LayoutPrivate>} />
+      <Route path={PATH.EDIT_DOCTOR_PROFILE} render={() => <LayoutPrivate><ProfileEditMode /></LayoutPrivate>} />
       <Route path={PATH.MY_RESOLUTIONS} render={() => <LayoutPrivate><ResolutionsForPatient /></LayoutPrivate>} />
       <Route
         path={PATH.CREATE_APPOINTMENT}

@@ -33,6 +33,15 @@ export interface AppointmentState {
   responseStatus: Status;
 }
 
+export interface EditProfileState extends Request{
+  id: string,
+  firstName: string,
+  lastName: string,
+  photo: string,
+  roleName: string,
+  specializationName: string
+}
+
 export interface RegistrationState extends Request {
   accessToken: string;
   refreshToken?: string;

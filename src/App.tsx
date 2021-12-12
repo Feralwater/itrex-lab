@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Routes from './routes/Routes';
-import profile from './redux/actions/profile.actions';
+import { profile } from './redux/actions';
 import { useAppDispatch, useAppSelector } from './hooks';
 import NotificationContainer from './components/Notification/NotificationContainer';
 import { ROLES } from './routes/constants';

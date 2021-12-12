@@ -1,12 +1,15 @@
 import React from 'react';
 import { H1, H2, SubTitle } from 'components/CommonStyles/Topography';
+import { Link } from 'react-router-dom';
 import pagesDictionary from '../dictionary/pagesDictionary';
 import { useAppSelector } from '../../hooks';
 import { selectProfile } from '../../redux/reducers';
 import Button from '../../components/Button/Button';
 import {
+  EditLink,
   ImageContainer, InfoContainer, ProfileContainer, TitlePanel,
 } from './Profile.styles';
+import { PATH } from '../../routes/constants';
 
 const Profile: React.VFC = () => {
   const {
@@ -26,7 +29,9 @@ const Profile: React.VFC = () => {
           type="button"
           iconUrl="svgImages/pencil-icon.svg"
         >
-          {pagesDictionary.profile.editButton}
+          <EditLink to={PATH.EDIT_DOCTOR_PROFILE}>
+            {pagesDictionary.profile.editButton}
+          </EditLink>
         </Button>
       </TitlePanel>
       <ProfileContainer>
@@ -43,7 +48,7 @@ const Profile: React.VFC = () => {
             variant="secondary"
             icon="left"
             type="button"
-            iconUrl="svgImages/lock.svg"
+            iconUrl="/svgImages/lock.svg"
             isBorder
           >
             {pagesDictionary.profile.changePasswordButton}

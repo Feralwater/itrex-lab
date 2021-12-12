@@ -16,7 +16,7 @@ const componentsDictionary = {
     error500Text: 'Server error. Please try again later',
   },
   header: {
-    avatarAlt: 'user`s avatar',
+    avatarAlt: 'Your Profile',
     logoText: 'palm clinic',
   },
   appointmentCard: {

@@ -1,6 +1,5 @@
 export const colors = {
   rock_blue: '#a1abc9',
-  black: '#000000',
   blue_chalk: '#e4ebff',
   alabaster: '#f9faff',
   radical_red: '#ff2567',
@@ -30,5 +29,9 @@ export const colors = {
     {
       '060': 'rgba(70, 72, 75, 0.6)',
     },
+  black: {
+    1: '#000000',
+    '040': 'rgba(0, 0, 0, 0.4)',
+  },
   transparent: 'transparent',
 };

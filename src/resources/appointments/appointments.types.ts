@@ -1,6 +1,4 @@
-import { ResolutionForDoctor } from '../resolutions/resolutions.types';
-import { Dispatch, SetStateAction } from 'react';
-
+/* eslint-disable camelcase */
 export interface Appointment {
   id: 'string',
   reason: 'string',

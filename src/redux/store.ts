@@ -1,15 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
-import { loginReducer } from './reducers/login.reducer';
+import {
+  loginReducer, appointmentReducer, registrationReducer,
+  profileReducer, notificationReducer, appointmentsForPatientReducer,
+  appointmentsForDoctorReducer, resolutionReducer, resolutionsReducer,
+} from './reducers';
 import rootSaga from './sagas/rootSaga';
-import { appointmentReducer } from './reducers/appointment.reducer';
-import { registrationReducer } from './reducers/registration.reducer';
-import { profileReducer } from './reducers/profile.reducer';
-import { notificationReducer } from './reducers/notification.reducer';
-import { appointmentsForPatientReducer } from './reducers/appointmentsForPatient.reducer';
-import { appointmentsForDoctorReducer } from './reducers/appointmentsForDoctor.reducer';
-import { resolutionReducer } from './reducers/resolution.reducer';
-import { resolutionsReducer } from './reducers/resolutions.reducer';
+import { editProfileReducer } from './reducers/editProfile.reducer';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -24,8 +21,13 @@ export const store = configureStore({
     appointmentsForDoctor: appointmentsForDoctorReducer,
     resolution: resolutionReducer,
     resolutions: resolutionsReducer,
+    editProfile: editProfileReducer,
   },
-  middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(), sagaMiddleware],
+  middleware: (getDefaultMiddleware) => [...getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: ['editProfile/pending'],
+    },
+  }), sagaMiddleware],
 });
 
 sagaMiddleware.run(rootSaga);
