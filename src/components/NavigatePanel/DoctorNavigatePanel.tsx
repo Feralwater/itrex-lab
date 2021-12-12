@@ -34,7 +34,7 @@ const DoctorNavigatePanel: React.VFC<NavigatePanelProps> = ({ pageTitle }) => (
           inputName="search"
           type="text"
           icon="left"
-          iconURL="svgImages/search-icon.svg"
+          iconURL="/svgImages/search-icon.svg"
           placeholder="Search"
           inputSize="small"
         />

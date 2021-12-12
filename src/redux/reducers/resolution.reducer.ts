@@ -26,7 +26,6 @@ export const resolutionSlice = createSlice({
         state.total += 1;
         state.status = 'fulfilled';
       });
-
     builder
       .addCase(resolution.pending, (state) => {
         state.status = 'loading';

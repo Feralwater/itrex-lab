@@ -70,15 +70,18 @@ export interface ResolutionState {
   total: number
   status: Status,
 }
-
+export interface EditResolutionState {
+  resolutionID: string
+  status: Status
+}
 export interface ResolutionsState extends ResolutionsResponse{
-  status: Status,
+  status: Status
 }
 
 export interface AppointmentsForPatientState extends AppointmentsForPatient{
-  responseStatus: Status;
+  responseStatus: Status
 }
 
 export interface AppointmentsForDoctorState extends AppointmentsForDoctor{
-  responseStatus: Status;
+  responseStatus: Status
 }

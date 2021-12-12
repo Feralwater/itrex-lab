@@ -4,7 +4,12 @@ import {
   AppointmentsForPatient, DeleteAppointment,
   NewAppointmentResponse,
 } from '../../resources/appointments/appointments.types';
-import { ResolutionData, ResolutionResponse } from '../../resources/resolutions/resolutions.types';
+import {
+  EditResolutionData,
+  EditResolutionResponse,
+  ResolutionData,
+  ResolutionResponse,
+} from '../../resources/resolutions/resolutions.types';
 import { EditProfileData } from '../../pages/Profile/EditProfile.types';
 
 export type LoginPending = SignInData;
@@ -14,7 +19,9 @@ export type RegistrationPending = SignUpData;
 export type RegistrationFulfilled = SignUpInResponse;
 
 export type ResolutionPending = ResolutionData;
+export type EditResolutionPending = EditResolutionData;
 export type ResolutionFulfilled = ResolutionResponse;
+export type EditResolutionFulfilled = EditResolutionResponse;
 
 export type ResolutionsPending = AppointmentsForDoctorPending;
 

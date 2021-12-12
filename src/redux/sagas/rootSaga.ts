@@ -9,6 +9,7 @@ import deleteAppointmentSaga from './deleteAppointment.saga';
 import resolutionSaga from './resolution.saga';
 import resolutionsSaga from './resolutions.saga';
 import editProfileSaga from './editProfile.saga';
+import editResolutionSaga from './editResolution.saga';
 
 function* rootSaga() {
   yield all([
@@ -22,6 +23,7 @@ function* rootSaga() {
     resolutionSaga(),
     resolutionsSaga(),
     editProfileSaga(),
+    editResolutionSaga(),
   ]);
 }
 

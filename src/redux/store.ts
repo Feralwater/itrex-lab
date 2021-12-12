@@ -7,6 +7,7 @@ import {
 } from './reducers';
 import rootSaga from './sagas/rootSaga';
 import { editProfileReducer } from './reducers/editProfile.reducer';
+import { editResolutionReducer } from './reducers/editResolution.reducer';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -22,6 +23,7 @@ export const store = configureStore({
     resolution: resolutionReducer,
     resolutions: resolutionsReducer,
     editProfile: editProfileReducer,
+    editResolution: editResolutionReducer,
   },
   middleware: (getDefaultMiddleware) => [...getDefaultMiddleware({
     serializableCheck: {

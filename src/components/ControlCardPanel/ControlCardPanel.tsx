@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ControlCardPanelProps } from './ControlCardPanel.types';
 import { useAppDispatch } from '../../hooks';
 import dictionary from '../../pages/dictionary/pagesDictionary';
-import { resolution } from '../../redux/actions';
+import { editResolution, resolution } from '../../redux/actions';
 import ModalWindow from '../Modal/Modal';
 import { CardControlList } from '..';
 import { ResolutionModal } from './ResolutionModal';
@@ -13,6 +13,7 @@ const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({ appointmentID, set
   const [activeCreateResolutionModal, setActiveCreateResolutionModal] = useState<boolean>(false);
   const [activeEditResolutionModal, setActiveEditResolutionModal] = useState<boolean>(false);
   const [resolutionText, setResolutionText] = useState<string>('');
+  const resolutionID = '924b0b40-5b47-11ec-83ad-671076b7e9dc';
 
   const saveHandler = () => {
     dispatch(resolution.pending({
@@ -22,9 +23,9 @@ const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({ appointmentID, set
     setActiveCreateResolutionModal(false);
   };
   const editHandler = () => {
-    dispatch(resolution.pending({
+    dispatch(editResolution.pending({
       resolution: resolutionText,
-      appointmentID,
+      resolutionID,
     }));
     setActiveEditResolutionModal(false);
   };

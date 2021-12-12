@@ -4,6 +4,11 @@ export interface ResolutionData {
   appointmentID: string;
 }
 
+export interface EditResolutionData {
+  resolution: string;
+  resolutionID: string;
+}
+
 export interface ResolutionResponse {
   appointment_id: string;
   next_appointment_date: string;
@@ -11,14 +16,18 @@ export interface ResolutionResponse {
   id: string;
 }
 
-export interface Patient{
+export interface EditResolutionResponse {
+  resolutionID: string;
+}
+
+export interface Patient {
   last_name: string,
   first_name: string,
   id: string,
   photo: string
 }
 
-export interface ResolutionForDoctor{
+export interface ResolutionForDoctor {
   id: string;
   appointment_id: string;
   next_appointment_date: string;
@@ -27,7 +36,7 @@ export interface ResolutionForDoctor{
   patient: Patient;
 }
 
-export interface ResolutionsResponse{
-  resolutions: Array<ResolutionForDoctor>
-  total: 0
+export interface ResolutionsResponse {
+  resolutions: Array<ResolutionForDoctor>;
+  total: 0;
 }

@@ -34,7 +34,7 @@ const pagesDictionary = {
     buttonPatients: 'Patients',
     buttonResolutions: 'Resolutions',
     controlCommandCreate: 'Create a resolution',
-    controlCommandEdit: 'Edit an appointment',
+    controlCommandEdit: 'Edit a resolution',
     controlCommandDelete: 'Delete',
   },
   patientPage: {
