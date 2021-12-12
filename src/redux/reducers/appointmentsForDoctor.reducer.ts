@@ -15,25 +15,20 @@ export const appointmentsForDoctorSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(appointmentsForDoctor.fulfilled, (state, { payload }) => {
-        state.appointments = payload.appointments;
-        state.total = payload.total;
-        state.responseStatus = 'fulfilled';
-      });
+      .addCase(appointmentsForDoctor.fulfilled, (state, { payload }) => ({
+        ...state, appointments: payload.appointments, total: payload.total, responseStatus: 'fulfilled',
+      }));
     builder
-      .addCase(deleteAppointment.fulfilled, (state, { payload }) => {
-        state.appointments.filter((appointment) => appointment.id !== payload.id);
-        state.total -= 1;
-        state.responseStatus = 'fulfilled';
-      });
+      .addCase(deleteAppointment.fulfilled, (state, { payload }) => ({
+        ...state,
+        appointments: state.appointments.filter((appointment) => appointment.id !== payload.id),
+        total: state.total - 1,
+        responseStatus: 'fulfilled',
+      }));
     builder
-      .addCase(appointmentsForDoctor.pending, (state) => {
-        state.responseStatus = 'loading';
-      });
+      .addCase(appointmentsForDoctor.pending, (state) => ({ ...state, responseStatus: 'loading' }));
     builder
-      .addCase(appointmentsForDoctor.failed, (state) => {
-        state.responseStatus = 'failed';
-      });
+      .addCase(appointmentsForDoctor.failed, (state) => ({ ...state, responseStatus: 'failed' }));
   },
 });
 
