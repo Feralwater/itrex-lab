@@ -11,7 +11,7 @@ import dictionary from '../dictionary/pagesDictionary';
 import { SendEmailProps } from './SendEmail.types';
 import { PATH } from '../../routes/constants';
 
-const SendEmail: React.VFC<SendEmailProps> = ({ email }) => (
+export const SendEmail: React.VFC<SendEmailProps> = ({ email }) => (
   <RestorePasswordContainer>
     <FormTitle as={Link} to={PATH.RESTORE_PASSWORD}>
       <FormTitleLeftArrow />
@@ -34,5 +34,3 @@ const SendEmail: React.VFC<SendEmailProps> = ({ email }) => (
     </RestoreMessage>
   </RestorePasswordContainer>
 );
-
-export default SendEmail;

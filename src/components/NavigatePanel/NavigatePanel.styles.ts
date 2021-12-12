@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { colors } from '../CommonStyles/theme';
+import { colors } from '../CommonStyles';
 
 export const PatientsButtonsContainer = styled.div`
   display: flex;
@@ -77,7 +77,7 @@ export const CreateAppointmentButton = styled(Link)`
     width: 20px;
     height: 20px;
     padding: 0;
-    background: url("../../svgImages/filter-icon.svg") no-repeat center;
+    background: url("../../svg/filter-icon.svg") no-repeat center;
     font-size: 0;
   }
 `;
@@ -85,7 +85,7 @@ export const CreateAppointmentButton = styled(Link)`
 export const ButtonLeftPlusIcon = styled.span`
   width: 16px;
   height: 16px;
-  background: url("../../svgImages/plus-icon.svg") no-repeat center;
+  background: url("../../svg/plus-icon.svg") no-repeat center;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);

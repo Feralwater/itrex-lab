@@ -57,7 +57,7 @@ export const EditImageContainer = styled.div<EditProfileFormProps>`
 
   &:before {
     content: '';
-    background: url("/svgImages/camera.svg");
+    background: url("/svg/camera.svg");
     width: 27px;
     height: 23px;
     position: absolute;

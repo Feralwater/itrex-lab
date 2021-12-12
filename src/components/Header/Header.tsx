@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ReactComponent as Logo } from '../../assets/svgImages/logo.svg';
+import { ReactComponent as Logo } from '../../assets/svg/logo.svg';
 
 import {
   HeaderContainer,
@@ -15,11 +15,11 @@ import {
   UserRole,
 } from './Header.styles';
 import { useAppSelector } from '../../hooks';
-import componentsDictionary from '../dictionary/componentsDictionary';
+import { componentsDictionary } from '../dictionary/componentsDictionary';
 import { selectProfile } from '../../redux/reducers';
 import { PATH } from '../../routes/constants';
 
-const Header: React.VFC = () => {
+export const Header: React.VFC = () => {
   const {
     firstName,
     lastName,
@@ -50,5 +50,3 @@ const Header: React.VFC = () => {
     </HeaderWrapper>
   );
 };
-
-export default Header;

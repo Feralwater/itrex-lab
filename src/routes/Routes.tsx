@@ -2,24 +2,21 @@ import React, { useEffect, useState } from 'react';
 import {
   Redirect, Route, Switch, useHistory, useLocation,
 } from 'react-router-dom';
-import SendEmail from 'pages/SendEmail/SendEmail';
-import SignIn from 'pages/SignIn/SignIn';
-import SignUp from 'pages/SignUp/SignUp';
-import AppointmentsForDoctorContainer from 'pages/AppointmentsContainer/AppointmentsForDoctorContainer';
-import AppointmentsForPatientContainer from 'pages/AppointmentsContainer/AppointmentsForPatientContainer';
-import Error404 from '../components/Error404/Error404';
-import AuthorisedLayout from '../components/LayoutAuthorised/LayoutAuthorised';
-import LayoutPrivate from '../components/LayoutPrivate/LayoutPrivate';
+import { SendEmail } from 'pages/SendEmail/SendEmail';
+import { SignIn } from 'pages/SignIn/SignIn';
+import { SignUp } from 'pages/SignUp/SignUp';
+import { AppointmentsForDoctorContainer } from 'pages/AppointmentsContainer/AppointmentsForDoctorContainer';
+import { AppointmentsForPatientContainer } from 'pages/AppointmentsContainer/AppointmentsForPatientContainer';
+import {
+  Error404, AuthorisedLayout, LayoutPrivate, RestorePasswordForm, MakeAppointmentFormContainer,
+} from '../components';
 import { useAppSelector } from '../hooks';
 import { PATH } from './constants';
 import checkUserRole from './utils';
-import RestorePasswordForm from '../components/AuthForms/RestorePasswordForm';
-import MakeAppointmentFormContainer from '../components/AppointmentForm/MakeAppointmentFormContainer';
-import ResolutionsForDoctor from '../pages/Resolutions/ResolutionsForDoctor';
-import Profile from '../pages/Profile/Profile';
-import ResolutionsForPatient from '../pages/Resolutions/ResolutionsForPatient';
+import {
+  ResolutionsForDoctor, Profile, ResolutionsForPatient, ProfileEditMode,
+} from '../pages';
 import { selectProfile } from '../redux/reducers';
-import ProfileEditMode from '../pages/Profile/ProfileEditMode';
 
 function Routes() {
   const { roleName } = useAppSelector(selectProfile);

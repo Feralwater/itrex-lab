@@ -2,7 +2,7 @@ import React from 'react';
 import { StyledInput } from './Input.styles';
 import { InputProps } from './Input.types';
 
-const Input:React.VFC<InputProps> = ({
+export const Input:React.VFC<InputProps> = ({
   label,
   inputName,
   type,
@@ -25,5 +25,3 @@ const Input:React.VFC<InputProps> = ({
     </label>
   );
 };
-
-export default Input;

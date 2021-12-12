@@ -1,10 +1,10 @@
 import React from 'react';
 import dictionary from '../dictionary/pagesDictionary';
 import { SignInUpLink, SignInUpMessage } from './SignIn.styles';
-import SignInForm from '../../components/AuthForms/SignInForm';
+import { SignInForm } from '../../components';
 import { PATH } from '../../routes/constants';
 
-const SignIn:React.VFC = () => (
+export const SignIn:React.VFC = () => (
   <>
     <SignInForm />
     <SignInUpMessage>
@@ -13,5 +13,3 @@ const SignIn:React.VFC = () => (
     </SignInUpMessage>
   </>
 );
-
-export default SignIn;

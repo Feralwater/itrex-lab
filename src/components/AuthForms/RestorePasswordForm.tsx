@@ -8,14 +8,14 @@ import {
   CustomForm, FormTitle, FormTitleLeftArrow,
   RestoreMessage,
 } from './AuthForm.styles';
-import Button from '../Button/Button';
+import { Button } from '../Button';
 import dictionary from '../../pages/dictionary/pagesDictionary';
 import restorePasswordValidationSchema from './validation/restorePassword.validation';
 import { PATH } from '../../routes/constants';
 import { restoreFieldsData } from './fieldsData';
 import { RestoreEmail } from './Form.types';
 
-const RestorePasswordForm:React.VFC<RestoreEmail> = ({ setRestorePassword }) => {
+export const RestorePasswordForm:React.VFC<RestoreEmail> = ({ setRestorePassword }) => {
   const history = useHistory();
   const handleSubmitForm = (email:string) => {
     setRestorePassword(email);
@@ -75,5 +75,3 @@ const RestorePasswordForm:React.VFC<RestoreEmail> = ({ setRestorePassword }) => 
     </Formik>
   );
 };
-
-export default RestorePasswordForm;

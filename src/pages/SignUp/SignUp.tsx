@@ -1,10 +1,10 @@
 import React from 'react';
-import SignUpForm from 'components/AuthForms/singUpForm';
+import { SignUpForm } from 'components/AuthForms/singUpForm';
 import { SignInUpLink, SignInUpMessage } from '../SignIn/SignIn.styles';
 import dictionary from '../dictionary/pagesDictionary';
 import { PATH } from '../../routes/constants';
 
-const SignUp = () => (
+export const SignUp = () => (
   <>
     <SignUpForm />
     <SignInUpMessage>
@@ -13,5 +13,3 @@ const SignUp = () => (
     </SignInUpMessage>
   </>
 );
-
-export default SignUp;

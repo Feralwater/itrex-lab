@@ -1,18 +1,17 @@
 import React, { useEffect } from 'react';
 import { format } from 'date-fns';
 import Loader from 'react-loader-spinner';
-import DoctorNavigatePanel from '../../components/NavigatePanel/DoctorNavigatePanel';
+import { DoctorNavigatePanel, colors } from '../../components';
 import dictionary from '../dictionary/pagesDictionary';
 import { columnsNames, resolutionsOnPage, visitDate } from './constants';
-import ResolutionRow from './ResolutionRow';
+import { ResolutionRow } from './ResolutionRow';
 import { ResolutionsTable, ResolutionsTableHead, ResolutionsTableHeaderCell } from './Resolutions.styles';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { resolutions } from '../../redux/actions';
-import ResolutionsPaginate from './ResolutionsPaginate';
+import { ResolutionsPaginate } from './ResolutionsPaginate';
 import { selectResolutions } from '../../redux/reducers';
-import { colors } from '../../components';
 
-const ResolutionsForDoctor = () => {
+export const ResolutionsForDoctor = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -62,5 +61,3 @@ const ResolutionsForDoctor = () => {
     </div>
   );
 };
-
-export default ResolutionsForDoctor;

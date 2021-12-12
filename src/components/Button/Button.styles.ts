@@ -1,7 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import styled, { css } from 'styled-components';
 import { ButtonProps } from './Button.types';
-import { colors } from '../CommonStyles/theme';
+import { colors } from '../CommonStyles';
 
 const StyledButton = styled.button<ButtonProps>`
   display: inline-flex;
@@ -43,13 +43,13 @@ const StyledButton = styled.button<ButtonProps>`
     : props.icon === 'left'
       ? css`
                     padding: 16px 24px 16px 57px;
-                    background-image: url("./svgImages/right-arrow.svg");
+                    background-image: url("./svg/right-arrow.svg");
                     background-repeat: no-repeat;
                     background-position: 25px 50%;
                   `
       : css`
                     padding: 16px 57px 16px 24px;
-                    background-image: url("./svgImages/right-arrow.svg");
+                    background-image: url("./svg/right-arrow.svg");
                     background-repeat: no-repeat;
                     background-position: 80% 50%;
                   `)

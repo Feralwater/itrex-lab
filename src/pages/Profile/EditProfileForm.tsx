@@ -10,7 +10,7 @@ import { EditProfileData, EditProfileFormProps } from './EditProfile.types';
 import { EditForm } from './EditProfileForm.styles';
 import { EditImage, EditImageContainer } from './Profile.styles';
 
-const EditProfileForm: React.VFC<EditProfileFormProps> = ({ profilePhoto }) => {
+export const EditProfileForm: React.VFC<EditProfileFormProps> = ({ profilePhoto }) => {
   const dispatch = useAppDispatch();
 
   const handleSubmitForm = async (values: EditProfileData) => {
@@ -73,5 +73,3 @@ const EditProfileForm: React.VFC<EditProfileFormProps> = ({ profilePhoto }) => {
     </Formik>
   );
 };
-
-export default EditProfileForm;

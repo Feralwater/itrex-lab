@@ -3,10 +3,10 @@ import { useField } from 'formik';
 import { parseISO, format } from 'date-fns';
 import { TimeSlot, TimeSlotLabel, TimeSlotsContainer } from './TimeSlots.styles';
 import { TimeSlotsProps } from './TimeSlots.types';
-import TIME_SLOTS from '../../pages/constants/constants';
+import { TIME_SLOTS } from '../../pages/constants';
 import { timeForDisplayFormat } from './constants';
 
-const TimeSlots: React.VFC<TimeSlotsProps> = ({
+export const TimeSlots: React.VFC<TimeSlotsProps> = ({
   freeTime,
   ...props
 }) => {
@@ -43,5 +43,3 @@ const TimeSlots: React.VFC<TimeSlotsProps> = ({
     </TimeSlotsContainer>
   );
 };
-
-export default TimeSlots;

@@ -1,9 +1,9 @@
 import React from 'react';
-import Input from './Input';
+import { Input } from './Input';
 import { SearchContainer } from './Input.styles';
 import { InputProps } from './Input.types';
 
-const InputSearchContainer: React.VFC<InputProps> = ({
+export const InputSearchContainer: React.VFC<InputProps> = ({
   type,
   icon,
   iconURL,
@@ -13,5 +13,3 @@ const InputSearchContainer: React.VFC<InputProps> = ({
     <Input type={type} icon={icon} {...props} />
   </SearchContainer>
 );
-
-export default InputSearchContainer;

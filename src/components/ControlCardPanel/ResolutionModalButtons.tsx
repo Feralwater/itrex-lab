@@ -1,7 +1,7 @@
 import React from 'react';
 import { ResolutionModalButtonsProps } from './ControlCardPanel.types';
 import { ResolutionModalFooter } from './ControlCardPanel.styles';
-import Button from '../Button/Button';
+import { Button } from '../Button';
 
 export const ResolutionModalButtons: React.VFC<ResolutionModalButtonsProps> = ({
   cancelHandler,

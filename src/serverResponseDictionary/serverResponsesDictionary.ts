@@ -1,4 +1,4 @@
-import componentsDictionary from '../components/dictionary/componentsDictionary';
+import { componentsDictionary } from '../components';
 
 export function createErrorNotificationMessage(responseStatusCode: number) {
   switch (responseStatusCode) {

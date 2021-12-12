@@ -3,14 +3,14 @@ import { H1, H2, SubTitle } from 'components/CommonStyles/Topography';
 import pagesDictionary from '../dictionary/pagesDictionary';
 import { useAppSelector } from '../../hooks';
 import { selectProfile } from '../../redux/reducers';
-import Button from '../../components/Button/Button';
+import { Button } from '../../components';
 import {
   EditLink,
   ImageContainer, InfoContainer, ProfileContainer, TitlePanel,
 } from './Profile.styles';
 import { PATH } from '../../routes/constants';
 
-const Profile: React.VFC = () => {
+export const Profile: React.VFC = () => {
   const {
     firstName,
     lastName,
@@ -26,7 +26,7 @@ const Profile: React.VFC = () => {
           variant="primary"
           icon="left"
           type="button"
-          iconUrl="svgImages/pencil-icon.svg"
+          iconUrl="svg/pencil-icon.svg"
         >
           <EditLink to={PATH.EDIT_DOCTOR_PROFILE}>
             {pagesDictionary.profile.editButton}
@@ -47,7 +47,7 @@ const Profile: React.VFC = () => {
             variant="secondary"
             icon="left"
             type="button"
-            iconUrl="/svgImages/lock.svg"
+            iconUrl="/svg/lock.svg"
             isBorder
           >
             {pagesDictionary.profile.changePasswordButton}
@@ -57,5 +57,3 @@ const Profile: React.VFC = () => {
     </>
   );
 };
-
-export default Profile;

@@ -11,19 +11,17 @@ import {
   SelectTimeslotStep, LinksContainer, DisabledLink,
 } from 'components/AppointmentForm/MakeAnAppointment.styles';
 import { PatientsTitle } from 'components/NavigatePanel/NavigatePanel.styles';
-import AppointmentsSteps from 'components/AppointmentsSteps/AppointmentsSteps';
-import DatePicker from 'components/DatePicker/DatePicker';
-import TimeSlots from 'components/TimeSlots/TimeSlots';
+import { AppointmentsSteps, DatePicker, TimeSlots } from 'components';
 import pagesDictionary from 'pages/dictionary/pagesDictionary';
-import Button from '../Button/Button';
+import { Button } from '../Button';
 import appointmentValidationSchema from './validation/appointment.validation';
 import makeAppointmentsFieldsData from './fieldsData';
 import { appointmentValues, MakeAnAppointmentFormProps } from './form.types';
 import { PATH } from '../../routes/constants';
-import { ReactComponent as RightArrow } from '../../assets/svgImages/rightArrowGrey-icon.svg';
-import SelectForAppointmentFormContainer from '../Select/SelectForAppointmentFormContainer';
+import { ReactComponent as RightArrow } from '../../assets/svg/rightArrowGrey-icon.svg';
+import { SelectForAppointmentFormContainer } from '../Select';
 
-const MakeAnAppointmentForm: React.VFC<MakeAnAppointmentFormProps> = ({
+export const MakeAnAppointmentForm: React.VFC<MakeAnAppointmentFormProps> = ({
   handleSubmitForm,
   optionsForOccupationsSelect,
   setSelectedOccupationID,
@@ -144,5 +142,3 @@ const MakeAnAppointmentForm: React.VFC<MakeAnAppointmentFormProps> = ({
     </Formik>
   </>
 );
-
-export default MakeAnAppointmentForm;

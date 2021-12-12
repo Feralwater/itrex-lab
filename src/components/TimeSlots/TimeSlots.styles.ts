@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from '../CommonStyles/theme';
+import { colors } from '../CommonStyles';
 
 export const TimeSlotsContainer = styled.div`
   display: grid;

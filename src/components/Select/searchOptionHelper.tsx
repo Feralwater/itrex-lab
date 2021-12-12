@@ -3,7 +3,7 @@ import React from 'react';
 import { InputValueType, LabelType } from './Select.types';
 import { searchOptionHelperStyles } from './searchOptionHelper.styles';
 
-function searchOptionHelper({ label }:LabelType, { inputValue }:InputValueType) {
+export function searchOptionHelper({ label }:LabelType, { inputValue }:InputValueType) {
   return (
     <Highlighter
       highlightStyle={searchOptionHelperStyles}
@@ -12,5 +12,3 @@ function searchOptionHelper({ label }:LabelType, { inputValue }:InputValueType) 
     />
   );
 }
-
-export default searchOptionHelper;

@@ -3,7 +3,7 @@ import { ResolutionRowProps } from './Resolutions.types';
 import { SettingsButton } from '../../components/AppointmentCard/AppointmentCard.styles';
 import { ResolutionsTableCell, ResolutionsTableRow } from './Resolutions.styles';
 
-const ResolutionRow: React.VFC<ResolutionRowProps> = ({
+export const ResolutionRow: React.VFC<ResolutionRowProps> = ({
   firstName,
   lastName,
   resolution,
@@ -20,5 +20,3 @@ const ResolutionRow: React.VFC<ResolutionRowProps> = ({
     <ResolutionsTableCell><SettingsButton /></ResolutionsTableCell>
   </ResolutionsTableRow>
 );
-
-export default ResolutionRow;

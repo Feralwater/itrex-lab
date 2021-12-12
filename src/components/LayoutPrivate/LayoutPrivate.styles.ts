@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from '../CommonStyles/theme';
+import { colors } from '../CommonStyles';
 
 export const Body = styled.div`
   padding: 80px 0 0 0;

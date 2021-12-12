@@ -1,8 +1,8 @@
 import React from 'react';
-import Header from '../Header/Header';
+import { Header } from '../Header';
 import { Body, BodyDoctorView, Patients } from './LayoutPrivate.styles';
 
-const LayoutPrivate: React.FC = ({ children }) => (
+export const LayoutPrivate: React.FC = ({ children }) => (
   <>
     <Header />
     <Body>
@@ -14,5 +14,3 @@ const LayoutPrivate: React.FC = ({ children }) => (
     </Body>
   </>
 );
-
-export default LayoutPrivate;

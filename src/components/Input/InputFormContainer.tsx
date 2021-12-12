@@ -3,9 +3,9 @@ import {
   InputContainer, InputErrorMessage, InputPasswordIcon,
 } from './Input.styles';
 import { InputProps } from './Input.types';
-import Input from './Input';
+import { Input } from './Input';
 
-const InputFormContainer:React.VFC<InputProps> = ({
+export const InputFormContainer:React.VFC<InputProps> = ({
   type,
   icon,
   iconURL,
@@ -30,4 +30,3 @@ const InputFormContainer:React.VFC<InputProps> = ({
     </InputContainer>
   );
 };
-export default InputFormContainer;

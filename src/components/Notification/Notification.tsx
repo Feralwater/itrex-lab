@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { ReactComponent as SuccessIcon } from '../../assets/svgImages/check-circle.svg';
-import { ReactComponent as ErrorIcon } from '../../assets/svgImages/error-icon.svg';
-import { ReactComponent as Close } from '../../assets/svgImages/close-icon.svg';
+import { ReactComponent as SuccessIcon } from '../../assets/svg/check-circle.svg';
+import { ReactComponent as ErrorIcon } from '../../assets/svg/error-icon.svg';
+import { ReactComponent as Close } from '../../assets/svg/close-icon.svg';
 import {
   CloseButton,
   NotificationBody,
@@ -10,9 +10,9 @@ import {
   NotificationTitleText,
 } from './Notification.styles';
 import { NotificationProps } from './Notification.types';
-import componentsDictionary from '../dictionary/componentsDictionary';
+import { componentsDictionary } from '../dictionary/componentsDictionary';
 
-const Notification: React.VFC<NotificationProps> = ({
+export const Notification: React.VFC<NotificationProps> = ({
   isSuccess, message, showNotification, setShowNotification,
 }) => {
   useEffect(() => {
@@ -43,5 +43,3 @@ const Notification: React.VFC<NotificationProps> = ({
     </div>
   );
 };
-
-export default Notification;

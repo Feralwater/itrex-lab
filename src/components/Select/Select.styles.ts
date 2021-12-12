@@ -1,7 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import { StylesConfig } from 'react-select';
 import { Options } from './Select.types';
-import { colors } from '../CommonStyles/theme';
+import { colors } from '../CommonStyles';
 
 const SelectStyles: StylesConfig<Array<Options>> = {
   control: (styles) => ({

@@ -3,7 +3,7 @@ import {
 } from 'formik';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import Button from '../Button/Button';
+import { Button } from '../Button';
 import { PATH } from '../../routes/constants';
 import signUpValidationSchema from './validation/signUp.validation';
 import { useAppDispatch } from '../../hooks';
@@ -14,7 +14,7 @@ import { signUpFieldsData } from './fieldsData';
 import dictionary from '../../pages/dictionary/pagesDictionary';
 import { SignUpData } from '../../resources/auth/auth.types';
 
-const SignUpForm:React.VFC = () => {
+export const SignUpForm:React.VFC = () => {
   const history = useHistory();
   const dispatch = useAppDispatch();
   const handleSubmitForm = ({
@@ -83,4 +83,3 @@ const SignUpForm:React.VFC = () => {
     </Formik>
   );
 };
-export default SignUpForm;

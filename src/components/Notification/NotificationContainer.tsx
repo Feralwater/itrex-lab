@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import Notification from './Notification';
+import { Notification } from './Notification';
 import { useAppSelector } from '../../hooks';
 import { selectNotification } from '../../redux/reducers';
 
-const NotificationContainer = () => {
+export const NotificationContainer = () => {
   const [showNotification, setShowNotification] = useState<boolean>(false);
   const { isSuccess, successMessageText, errorMessageText } = useAppSelector(selectNotification);
 
@@ -21,5 +21,3 @@ const NotificationContainer = () => {
     />
   );
 };
-
-export default NotificationContainer;

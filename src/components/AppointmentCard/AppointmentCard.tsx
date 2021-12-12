@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ReactComponent as Clock } from '../../assets/svgImages/clock-icon.svg';
-import { ReactComponent as Board } from '../../assets/svgImages/board-icon.svg';
-import { ReactComponent as Heart } from '../../assets/svgImages/heart-icon.svg';
+import { ReactComponent as Clock } from '../../assets/svg/clock-icon.svg';
+import { ReactComponent as Board } from '../../assets/svg/board-icon.svg';
+import { ReactComponent as Heart } from '../../assets/svg/heart-icon.svg';
 
 import {
   AppointmentStatus,
@@ -23,9 +23,9 @@ import {
 import { UserImage } from '../Header/Header.styles';
 import { statusColor, statusDescription } from './constants';
 import { AppointmentCardProps } from './AppointmentCard.types';
-import ControlCardPanel from '../ControlCardPanel/ControlCardPanel';
+import { ControlCardPanel } from '../ControlCardPanel';
 import { ROLES } from '../../routes/constants';
-import componentsDictionary from '../dictionary/componentsDictionary';
+import { componentsDictionary } from '../dictionary/componentsDictionary';
 import { formatVisitTime } from './utils';
 import { useAppSelector } from '../../hooks';
 import { selectResolutions } from '../../redux/reducers';

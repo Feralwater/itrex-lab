@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Field, Form } from 'formik';
 import { Link } from 'react-router-dom';
-import { colors } from '../CommonStyles/theme';
+import { colors } from '../CommonStyles';
 
 export const ButtonWrapper = styled.div`
   position: relative;
@@ -41,7 +41,7 @@ export const FormTitle = styled.div`
 export const FormTitleLeftArrow = styled.span`
   width: 8px;
   height: 14px;
-  background: url("../../svgImages/left-arrow.svg") no-repeat center;
+  background: url("../../svg/left-arrow.svg") no-repeat center;
   display: inline-block;
   margin: 0 24px 2px 0;
 `;

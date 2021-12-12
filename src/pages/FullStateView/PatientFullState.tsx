@@ -4,7 +4,7 @@ import { AppointmentsForPatient } from '../../resources/appointments/appointment
 import { useAppSelector } from '../../hooks';
 import { selectProfile } from '../../redux/reducers';
 
-const PatientFullState: React.VFC<AppointmentsForPatient> = ({ appointments }) => {
+export const PatientFullState: React.VFC<AppointmentsForPatient> = ({ appointments }) => {
   const { roleName } = useAppSelector(selectProfile);
   return (
     <>
@@ -28,5 +28,3 @@ const PatientFullState: React.VFC<AppointmentsForPatient> = ({ appointments }) =
     </>
   );
 };
-
-export default PatientFullState;

@@ -1,9 +1,9 @@
 import React from 'react';
 import Select from 'react-select';
 import SelectStyles from './Select.styles';
-import searchOptionHelper from './searchOptionHelper';
+import { searchOptionHelper } from './searchOptionHelper';
 
-const CustomSelect = ({
+export const CustomSelect = ({
   labelText, id, name, options, placeholder, setSelectedValue, onChangeHandler, ...props
 }: any) => (
   <label htmlFor={id}>
@@ -19,5 +19,3 @@ const CustomSelect = ({
     />
   </label>
 );
-
-export default CustomSelect;

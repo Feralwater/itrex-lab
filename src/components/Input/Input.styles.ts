@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { colors } from '../CommonStyles/theme';
+import { colors } from '../CommonStyles';
 import { InputProps } from './Input.types';
 
 export const InputContainer = styled.div<InputProps>`
@@ -82,7 +82,7 @@ export const InputPasswordIcon = styled.i<InputPasswordIconProps>`
   right: 18px;
   cursor: pointer;
   -webkit-tap-highlight-color: ${colors.transparent};
-  background: ${(props) => (props.isVisible ? 'url("../../svgImages/eye-off-icon.svg") no-repeat' : 'url("../../svgImages/eye-icon.svg") no-repeat')};
+  background: ${(props) => (props.isVisible ? 'url("../../svg/eye-off-icon.svg") no-repeat' : 'url("../../svg/eye-icon.svg") no-repeat')};
 `;
 
 export const InputErrorMessage = styled.div`

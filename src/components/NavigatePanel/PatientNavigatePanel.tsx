@@ -10,10 +10,10 @@ import {
 } from './NavigatePanel.styles';
 import dictionary from '../../pages/dictionary/pagesDictionary';
 import { PATH } from '../../routes/constants';
-import isActiveTab from './helpers';
+import isActiveTab from './utils';
 import { NavigatePanelProps } from '../../pages/AppointmentsContainer/AppointmentsContainer.types';
 
-const PatientNavigatePanel:React.VFC<NavigatePanelProps> = ({ pageTitle }) => (
+export const PatientNavigatePanel:React.VFC<NavigatePanelProps> = ({ pageTitle }) => (
   <>
     <PatientsButtonsContainer>
       <PatientsButton to={PATH.PROFILE} $active={isActiveTab(dictionary.patientPage.buttonProfile)}>{dictionary.patientPage.buttonProfile}</PatientsButton>
@@ -36,5 +36,3 @@ const PatientNavigatePanel:React.VFC<NavigatePanelProps> = ({ pageTitle }) => (
     </UserPageTitle>
   </>
 );
-
-export default PatientNavigatePanel;

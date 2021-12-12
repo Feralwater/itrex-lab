@@ -1,5 +1,5 @@
 import { FormFieldData } from './Form.types';
-import InputFormContainer from '../Input/InputFormContainer';
+import { InputFormContainer } from '../Input';
 
 export const signInFieldsData:Array<FormFieldData> = [
   {
@@ -10,7 +10,7 @@ export const signInFieldsData:Array<FormFieldData> = [
     type: 'email',
     placeholder: 'Email',
     icon: 'left',
-    iconURL: 'svgImages/email.svg',
+    iconURL: '/svg/email.svg',
     inputSize: 'large',
   },
   {
@@ -21,7 +21,7 @@ export const signInFieldsData:Array<FormFieldData> = [
     placeholder: 'Password',
     type: 'password',
     icon: 'left',
-    iconURL: 'svgImages/lock.svg',
+    iconURL: '/svg/lock.svg',
     inputSize: 'large',
   },
 ];
@@ -35,7 +35,7 @@ export const signUpFieldsData:Array<FormFieldData> = [
     placeholder: 'First Name',
     type: 'text',
     icon: 'left',
-    iconURL: 'svgImages/user.svg',
+    iconURL: '/svg/user.svg',
     inputSize: 'large',
   },
   {
@@ -46,7 +46,7 @@ export const signUpFieldsData:Array<FormFieldData> = [
     placeholder: 'Last Name',
     type: 'text',
     icon: 'left',
-    iconURL: 'svgImages/user.svg',
+    iconURL: '/svg/user.svg',
     inputSize: 'large',
   },
   {
@@ -57,7 +57,7 @@ export const signUpFieldsData:Array<FormFieldData> = [
     placeholder: 'Email',
     type: 'email',
     icon: 'left',
-    iconURL: 'svgImages/email.svg',
+    iconURL: '/svg/email.svg',
     inputSize: 'large',
   },
   {
@@ -68,7 +68,7 @@ export const signUpFieldsData:Array<FormFieldData> = [
     placeholder: 'Password',
     type: 'password',
     icon: 'left',
-    iconURL: 'svgImages/lock.svg',
+    iconURL: '/svg/lock.svg',
     inputSize: 'large',
   },
   {
@@ -79,7 +79,7 @@ export const signUpFieldsData:Array<FormFieldData> = [
     placeholder: 'Confirm password',
     type: 'password',
     icon: 'left',
-    iconURL: 'svgImages/check-mark.svg',
+    iconURL: '/svg/check-mark.svg',
     inputSize: 'large',
   },
 ];
@@ -93,7 +93,7 @@ export const restoreFieldsData:Array<FormFieldData> = [
     type: 'email',
     placeholder: 'Email',
     icon: 'left',
-    iconURL: 'svgImages/email.svg',
+    iconURL: '/svg/email.svg',
     inputSize: 'large',
   },
 ];

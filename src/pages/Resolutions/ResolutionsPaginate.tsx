@@ -3,13 +3,13 @@ import ReactPaginate from 'react-paginate';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { resolutionsOnPage } from './constants';
 import { resolutions } from '../../redux/actions';
-import { ReactComponent as NextIcon } from '../../assets/svgImages/rightArrowGrey-icon.svg';
-import { ReactComponent as PrevIcon } from '../../assets/svgImages/leftArrowGrey-icon.svg';
+import { ReactComponent as NextIcon } from '../../assets/svg/rightArrowGrey-icon.svg';
+import { ReactComponent as PrevIcon } from '../../assets/svg/leftArrowGrey-icon.svg';
 import { Paginate, StyledPaginateContainer } from './ResolutionsPaginate.styles';
 import dictionary from '../dictionary/pagesDictionary';
 import { selectResolutions } from '../../redux/reducers';
 
-const ResolutionsPaginate: React.VFC = () => {
+export const ResolutionsPaginate: React.VFC = () => {
   const dispatch = useAppDispatch();
   const { total: totalCount } = useAppSelector(selectResolutions);
   const pagesCount = Math.ceil(totalCount / resolutionsOnPage);
@@ -41,5 +41,3 @@ const ResolutionsPaginate: React.VFC = () => {
     </Paginate>
   );
 };
-
-export default ResolutionsPaginate;

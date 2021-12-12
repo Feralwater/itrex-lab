@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Form } from 'formik';
 import { Link } from 'react-router-dom';
-import { colors } from '../CommonStyles/theme';
+import { colors } from '../CommonStyles';
 
 export const AppointmentStepsNumbers = styled.div`
   display: flex;

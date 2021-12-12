@@ -2,14 +2,13 @@ import {
   Formik, Field, FormikValues, FormikTouched, FormikErrors,
 } from 'formik';
 import React from 'react';
-
 import {
   ButtonWrapper,
   CustomForm,
   CustomLink,
   FormTitle,
 } from './AuthForm.styles';
-import Button from '../Button/Button';
+import { Button } from '../Button';
 import dictionary from '../../pages/dictionary/pagesDictionary';
 import { useAppDispatch } from '../../hooks';
 import login from '../../redux/actions/login.actions';
@@ -19,7 +18,7 @@ import { signInFieldsData } from './fieldsData';
 import { PATH } from '../../routes/constants';
 import { SignInData } from '../../resources/auth/auth.types';
 
-const SignInForm:React.VFC = () => {
+export const SignInForm:React.VFC = () => {
   const dispatch = useAppDispatch();
   const handleSubmitForm = ({ userName, password } : SignInData) => {
     dispatch(login.pending({ userName, password }));
@@ -79,5 +78,3 @@ const SignInForm:React.VFC = () => {
     </Formik>
   );
 };
-
-export default SignInForm;

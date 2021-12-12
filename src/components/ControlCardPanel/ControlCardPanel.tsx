@@ -3,12 +3,12 @@ import { ControlCardPanelProps } from './ControlCardPanel.types';
 import { useAppDispatch } from '../../hooks';
 import dictionary from '../../pages/dictionary/pagesDictionary';
 import { editResolution, resolution } from '../../redux/actions';
-import ModalWindow from '../Modal/Modal';
+import { ModalWindow } from '../Modal';
 import { CardControlList } from '..';
 import { ResolutionModal } from './ResolutionModal';
 import { ResolutionModalButtons } from './ResolutionModalButtons';
 
-const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
+export const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
   appointmentID,
   setIsMenuOpen,
   resolutionID,
@@ -56,8 +56,8 @@ const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
           saveHandler={saveHandler}
           passiveButtonText={dictionary.resolutionModal.cancelButtonText}
           activeButtonText={dictionary.resolutionModal.createButtonText}
-          activeButtonIcon="/svgImages/board-icon.svg"
-          passiveButtonIcon="/svgImages/close-icon.svg"
+          activeButtonIcon="/svg/board-icon.svg"
+          passiveButtonIcon="/svg/close-icon.svg"
         />
       </ModalWindow>
       <ModalWindow activeModal={activeEditResolutionModal} setActiveModal={setActiveEditResolutionModal}>
@@ -72,12 +72,10 @@ const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
           saveHandler={editHandler}
           passiveButtonText={dictionary.resolutionModal.cancelButtonText}
           activeButtonText={dictionary.resolutionModal.saveButtonText}
-          activeButtonIcon="/svgImages/save-icon.svg"
-          passiveButtonIcon="/svgImages/close-icon.svg"
+          activeButtonIcon="/svg/save-icon.svg"
+          passiveButtonIcon="/svg/close-icon.svg"
         />
       </ModalWindow>
     </>
   );
 };
-
-export default ControlCardPanel;

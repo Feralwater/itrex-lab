@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from '../CommonStyles/theme';
+import { colors } from '../CommonStyles';
 
 export const UserCard = styled.div`
   display: flex;
@@ -31,14 +31,14 @@ export const UserCardHeader = styled.div`
 export const SettingsButton = styled.div`
   width: 40px;
   height: 40px;
-  background: url("../../svgImages/settings-dots.svg") no-repeat center/24px;
+  background: url("../../svg/settings-dots.svg") no-repeat center/24px;
   border: none;
   outline: none;
   cursor: pointer;
   border-radius: 6px;
 
   &:hover {
-    background: ${colors.alabaster} url("../../svgImages/settings-dots-blue.svg") no-repeat center/24px;
+    background: ${colors.alabaster} url("../../svg/settings-dots-blue.svg") no-repeat center/24px;
   }
 `;
 

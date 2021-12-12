@@ -1,4 +1,4 @@
-const componentsDictionary = {
+export const componentsDictionary = {
   error404: {
     errorNumber: '404 Error',
     errorMessage: 'oops, the page you are looking for can`t be found!😭',
@@ -20,11 +20,9 @@ const componentsDictionary = {
     logoText: 'palm clinic',
   },
   appointmentCard: {
-    avatarAlt: 'Your Profile',
+    avatarAlt: '',
   },
   controlCardPanel: {
     selectedPatientImageAlt: '',
   },
 } as const;
-
-export default componentsDictionary;

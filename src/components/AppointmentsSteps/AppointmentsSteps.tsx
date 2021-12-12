@@ -2,7 +2,7 @@ import React from 'react';
 import { Step, StepDescription, StepNumber } from './AppointmentsSteps.styles';
 import { AppointmentStepsProps } from './AppointmentsSteps.types';
 
-const AppointmentsSteps: React.VFC<AppointmentStepsProps> = ({
+export const AppointmentsSteps: React.VFC<AppointmentStepsProps> = ({
   stepNumber,
   stepDescription,
 }) => (
@@ -11,5 +11,3 @@ const AppointmentsSteps: React.VFC<AppointmentStepsProps> = ({
     <StepDescription>{stepDescription}</StepDescription>
   </Step>
 );
-
-export default AppointmentsSteps;

@@ -2,13 +2,13 @@ import React from 'react';
 import Calendar, { CalendarTileProperties } from 'react-calendar';
 import { useField } from 'formik';
 import { isPast, addDays, format } from 'date-fns';
-import { ReactComponent as NextIcon } from '../../assets/svgImages/rightArrowGrey-icon.svg';
-import { ReactComponent as PrevIcon } from '../../assets/svgImages/leftArrowGrey-icon.svg';
+import { ReactComponent as NextIcon } from '../../assets/svg/rightArrowGrey-icon.svg';
+import { ReactComponent as PrevIcon } from '../../assets/svg/leftArrowGrey-icon.svg';
 import ReactCalendar from './DatePicker.styles';
 import { DatePickerProps } from './DatePicker.types';
 import { selectedDateFormatString, shortWeekdayFormatString } from './constants';
 
-const DatePicker:React.VFC<DatePickerProps> = ({
+export const DatePicker:React.VFC<DatePickerProps> = ({
   doctorId, disableDate, setSelectedDate, ...props
 }) => {
   const [, , { setValue }] = useField(props.field);
@@ -44,5 +44,3 @@ const DatePicker:React.VFC<DatePickerProps> = ({
     </ReactCalendar>
   );
 };
-
-export default DatePicker;

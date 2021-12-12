@@ -5,12 +5,12 @@ import {
 import dictionary from '../../pages/dictionary/pagesDictionary';
 import { PATH } from '../../routes/constants';
 import { NavigatePanelProps } from '../../pages/AppointmentsContainer/AppointmentsContainer.types';
-import isActiveTab from './helpers';
-import InputSearchContainer from '../Input/InputSearchContainer';
-import SelectForSortContainer from '../Select/SelectForSortContainer';
+import isActiveTab from './utils';
+import { InputSearchContainer } from '../Input';
+import { SelectForSortContainer } from '../Select';
 import { optionsForSearchSelect } from './constants';
 
-const DoctorNavigatePanel: React.VFC<NavigatePanelProps> = ({ pageTitle }) => (
+export const DoctorNavigatePanel: React.VFC<NavigatePanelProps> = ({ pageTitle }) => (
   <>
     <PatientsButtonsContainer>
       <PatientsButton
@@ -34,7 +34,7 @@ const DoctorNavigatePanel: React.VFC<NavigatePanelProps> = ({ pageTitle }) => (
           inputName="search"
           type="text"
           icon="left"
-          iconURL="/svgImages/search-icon.svg"
+          iconURL="/svg/search-icon.svg"
           placeholder="Search"
           inputSize="small"
         />
@@ -48,5 +48,3 @@ const DoctorNavigatePanel: React.VFC<NavigatePanelProps> = ({ pageTitle }) => (
     </UserPageTitle>
   </>
 );
-
-export default DoctorNavigatePanel;

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Loader from 'react-loader-spinner';
-import DoctorFullState from '../FullStateView/DoctorFullState';
-import DoctorEmptyState from '../EmptyStateView/DoctorEmptyState';
-import DoctorNavigatePanel from '../../components/NavigatePanel/DoctorNavigatePanel';
+import { DoctorFullState } from '../FullStateView';
+import { DoctorEmptyState } from '../EmptyStateView';
+import { DoctorNavigatePanel, colors } from '../../components';
 import AppointmentsWrapper from './AppointmentsContainer.styles';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { appointmentsForDoctor, resolutions } from '../../redux/actions';
@@ -11,9 +11,8 @@ import dictionary from '../dictionary/pagesDictionary';
 import {
   selectAppointmentsForDoctor, selectProfile, selectResolution,
 } from '../../redux/reducers';
-import { colors } from '../../components';
 
-const AppointmentsForDoctorContainer: React.VFC = () => {
+export const AppointmentsForDoctorContainer: React.VFC = () => {
   const dispatch = useAppDispatch();
   const { id: userId } = useAppSelector(selectProfile);
   const { total: totalAppointmentsCount, appointments, responseStatus } = useAppSelector(selectAppointmentsForDoctor);
@@ -27,8 +26,8 @@ const AppointmentsForDoctorContainer: React.VFC = () => {
         limit: 12,
       }));
       dispatch(resolutions.pending({
-        offset: (currentPage - 1) * 12,
-        limit: 12,
+        offset: 0,
+        limit: 120,
       }));
     }
   }, [userId, totalAppointmentsCount, currentPage, dispatch, totalResolutionsCount]);
@@ -82,5 +81,3 @@ const AppointmentsForDoctorContainer: React.VFC = () => {
     </>
   );
 };
-
-export default AppointmentsForDoctorContainer;

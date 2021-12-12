@@ -7,9 +7,9 @@ import appointments from '../../resources/appointments/appointments.api';
 import { useAppDispatch } from '../../hooks';
 import { appointmentValues } from './form.types';
 import appointment from '../../redux/actions/appointment.actions';
-import MakeAnAppointmentForm from './MakeAnAppointmentForm';
+import { MakeAnAppointmentForm } from './MakeAnAppointmentForm';
 
-const MakeAppointmentFormContainer:React.VFC = () => {
+export const MakeAppointmentFormContainer:React.VFC = () => {
   const [specializations, setSpecializations] = useState<Array<Specializations>>([]);
   const [doctorNames, setDoctorNames] = useState<Array<DoctorsBySpecializationIdResponse>>([]);
   const [selectedOccupationID, setSelectedOccupationID] = useState<string>('');
@@ -81,5 +81,3 @@ const MakeAppointmentFormContainer:React.VFC = () => {
     />
   );
 };
-
-export default MakeAppointmentFormContainer;
