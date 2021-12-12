@@ -43,7 +43,7 @@ const ResolutionsForDoctor = () => {
           ))}
         </tbody>
       </ResolutionsTable>
-      <ResolutionsPaginate />
+      {myResolutions.length > 0 && <ResolutionsPaginate />}
     </div>
   );
 };
