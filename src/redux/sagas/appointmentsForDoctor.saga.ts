@@ -7,7 +7,7 @@ import { appointmentsForDoctor } from '../actions';
 
 function* appointmentsForDoctorGet(action: ReturnType<typeof appointmentsForDoctor.pending>) {
   const { payload } = action;
-  const response: AxiosResponse<AppointmentsForDoctor> = yield call(appointments.getAppointmentsForDoctor, payload.offset, payload.limit);
+  const response: AxiosResponse<AppointmentsForDoctor> = yield call(appointments.fetchAppointmentsForDoctor, payload.offset, payload.limit);
   return response.data;
 }
 

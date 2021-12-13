@@ -7,7 +7,7 @@ import { AppointmentsForPatient } from '../../resources/appointments/appointment
 
 function* appointmentsForPatientGet(action: ReturnType<typeof appointmentsForPatient.pending>) {
   const { payload } = action;
-  const response: AxiosResponse<AppointmentsForPatient> = yield call(appointments.getAppointmentsForPatient, payload.offset, payload.limit);
+  const response: AxiosResponse<AppointmentsForPatient> = yield call(appointments.fetchAppointmentsForPatient, payload.offset, payload.limit);
   return response.data;
 }
 

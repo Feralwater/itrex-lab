@@ -8,7 +8,7 @@ import resolutionsAPI from '../../resources/resolutions/resolutions.api';
 
 function* resolutionsForPatientGet(action: ReturnType<typeof resolutionsForPatient.pending>) {
   const { payload } = action;
-  const response: AxiosResponse<ResolutionsForPatientResponse> = yield call(resolutionsAPI.getResolutionsForPatient, payload.offset, payload.limit);
+  const response: AxiosResponse<ResolutionsForPatientResponse> = yield call(resolutionsAPI.fetchResolutionsForPatient, payload.offset, payload.limit);
   yield put(notificationSuccess(createSuccessNotificationMessage(response.status)));
   return response.data;
 }

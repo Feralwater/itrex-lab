@@ -26,21 +26,21 @@ export const MakeAppointmentFormContainer:React.VFC = () => {
     label: [doctorName.first_name, doctorName.last_name].join(' '),
     value: doctorName.id,
   }));
-  const getOccupations = async () => {
-    const response = await occupations.getOccupations();
+  const fetchOccupations = async () => {
+    const response = await occupations.fetchOccupations();
     setSpecializations(response.data);
   };
   const getDoctors = async () => {
     if (selectedOccupationID) {
-      const { data } = await doctors.getDoctorsBySpecializationId(selectedOccupationID);
+      const { data } = await doctors.fetchDoctorsBySpecializationId(selectedOccupationID);
       setDoctorNames(data);
     } else {
       setDoctorNames([]);
     }
   };
-  const getFreeTime = async () => {
+  const fetchFreeTime = async () => {
     if (selectedOccupationID) {
-      const { data } = await appointments.getFreeTime(selectedDate, selectedDoctorID);
+      const { data } = await appointments.fetchFreeTime(selectedDate, selectedDoctorID);
       setFreeTime(data);
     } else {
       setFreeTime([]);
@@ -48,7 +48,7 @@ export const MakeAppointmentFormContainer:React.VFC = () => {
   };
 
   useEffect(() => {
-    getOccupations();
+    fetchOccupations();
   }, []);
   useEffect(() => {
     getDoctors();
@@ -57,7 +57,7 @@ export const MakeAppointmentFormContainer:React.VFC = () => {
     setDisableDate(!selectedDoctorID);
   }, [selectedDoctorID]);
   useEffect(() => {
-    getFreeTime();
+    fetchFreeTime();
   }, [selectedDate, selectedDoctorID]);
   const dispatch = useAppDispatch();
   const handleSubmitForm = (formValues: appointmentValues) => {
