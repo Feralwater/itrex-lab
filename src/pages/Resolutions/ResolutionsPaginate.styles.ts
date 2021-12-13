@@ -18,6 +18,9 @@ export const StyledPaginateContainer = styled.div`
     border-radius: 8px;
     color: ${colors.rock_blue};
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
     & a {
       padding: 5px;
