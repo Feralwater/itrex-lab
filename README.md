@@ -15,6 +15,8 @@ Clone down this repository. You will need `node` and `yarn` and `git` installed 
 3. Install [Node](https://nodejs.org/en/download/package-manager/)
 4. Run following command in terminal: `yarn`
 
+You may see API here: [Swagger UI](https://reactlabapi.herokuapp.com/api/docs/#/)
+
 To Run Test Suite:
  
 `yarn test`
