@@ -14,6 +14,7 @@ import restorePasswordValidationSchema from './validation/restorePassword.valida
 import { PATH } from '../../routes/constants';
 import { restoreFieldsData } from './fieldsData';
 import { RestoreEmail } from './Form.types';
+import { ButtonWithLoader } from './ButtonWithLoader';
 
 export const RestorePasswordForm:React.VFC<RestoreEmail> = ({ setRestorePassword }) => {
   const history = useHistory();

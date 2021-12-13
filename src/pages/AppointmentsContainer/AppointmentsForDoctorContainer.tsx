@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import InfiniteScroll from 'react-infinite-scroll-component';
+import React, { useEffect } from 'react';
 import Loader from 'react-loader-spinner';
 import { DoctorFullState } from '../FullStateView';
 import { DoctorEmptyState } from '../EmptyStateView';
@@ -18,20 +17,19 @@ export const AppointmentsForDoctorContainer: React.VFC = () => {
   const { id: userId } = useAppSelector(selectProfile);
   const { total: totalAppointmentsCount, appointments, responseStatus } = useAppSelector(selectAppointmentsForDoctor);
   const { total: totalResolutionsCount } = useAppSelector(selectResolution);
-  const [currentPage, setCurrentPage] = useState<number>(1);
 
   useEffect(() => {
     if (userId) {
       dispatch(appointmentsForDoctor.pending({
-        offset: (currentPage - 1) * 12,
-        limit: 12,
+        offset: 0,
+        limit: 50,
       }));
       dispatch(resolutions.pending({
         offset: 0,
-        limit: 120,
+        limit: 50,
       }));
     }
-  }, [userId, totalAppointmentsCount, currentPage, dispatch, totalResolutionsCount]);
+  }, [userId, totalAppointmentsCount, dispatch, totalResolutionsCount]);
   function chooseWhatToDisplay() {
     if (responseStatus !== FETCH_STATUS.LOADING) {
       return appointments.length > 0
@@ -59,26 +57,9 @@ export const AppointmentsForDoctorContainer: React.VFC = () => {
   return (
     <>
       <DoctorNavigatePanel pageTitle={dictionary.doctorPage.patientsTitle} />
-      <InfiniteScroll
-        dataLength={appointments.length}
-        next={() => setCurrentPage((prevPage) => prevPage + 1)}
-        hasMore
-        loader={(
-          <Loader
-            type="MutatingDots"
-            color={colors.cornflower_blue}
-            secondaryColor={colors.radical_red}
-            timeout={5000}
-            height={150}
-            width={150}
-          />
-)}
-        height="68vh"
-      >
-        <AppointmentsWrapper patientsLength={appointments.length}>
-          {chooseWhatToDisplay()}
-        </AppointmentsWrapper>
-      </InfiniteScroll>
+      <AppointmentsWrapper patientsLength={appointments.length}>
+        {chooseWhatToDisplay()}
+      </AppointmentsWrapper>
     </>
   );
 };

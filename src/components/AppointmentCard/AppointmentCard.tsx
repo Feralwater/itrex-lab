@@ -80,6 +80,9 @@ export const AppointmentCard: React.VFC<AppointmentCardProps> = ({
       document.removeEventListener('mousedown', handler);
     };
   });
+
+  const toggleMenuHandler = () => setIsMenuOpen(!isMenuOpen);
+
   return (
     <UserCard>
       <UserCardHeader>
@@ -95,7 +98,7 @@ export const AppointmentCard: React.VFC<AppointmentCardProps> = ({
           </UserInformation>
         </UserData>
         <div ref={menuRef}>
-          {role === ROLES.DOCTOR && <SettingsButton onClick={() => setIsMenuOpen(!isMenuOpen)} />}
+          {role === ROLES.DOCTOR && <SettingsButton onClick={toggleMenuHandler} />}
           {isMenuOpen && (
           <ControlCardPanel
             appointmentID={appointmentID}

@@ -37,6 +37,7 @@ export const LogoText = styled.span`
   color: ${colors.dark_jungle_green};
   font-weight: 500;
   margin: 0 0 0 14px;
+  user-select: none;
 `;
 
 export const User = styled.div`
@@ -70,7 +71,7 @@ export const UserImage = styled.img`
 `;
 
 interface NetworkStatusProps {
-    isOnline: boolean
+  isOnline: boolean;
 }
 
 export const NetworkStatus = styled.span<NetworkStatusProps>`
@@ -95,6 +96,7 @@ export const UserName = styled.p`
   text-overflow: ellipsis;
   white-space: nowrap;
   max-width: 130px;
+  line-height: 130%;
 `;
 
 export const UserRole = styled.p`

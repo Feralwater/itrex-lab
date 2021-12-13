@@ -58,7 +58,7 @@ export const UserCardBodyTime = styled.div`
   line-height: 150%;
 `;
 
-export const UserCardBodyTimeText = styled.div`
+export const UserCardBodyTimeText = styled.time`
   font-weight: 600;
   font-size: 15px;
   color: ${colors.dark_jungle_green};

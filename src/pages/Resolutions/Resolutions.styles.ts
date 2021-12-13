@@ -31,6 +31,7 @@ export const ResolutionsTableCell = styled.td`
     padding: 10px 12px 10px 0;
     display: flex;
     justify-content: flex-end;
+    border: none;
   }
 `;
 
@@ -63,7 +64,7 @@ export const ResolutionsTableHeaderCell = styled(ResolutionsTableCell)`
 
 export const ResolutionsTableRow = styled.tr`
   font-size: 17px;
-  line-height: 240%;
+  line-height: 110%;
   color: ${colors.dark_jungle_green};
   background-color: ${colors.white};
   box-shadow: 0px 4px 32px ${colors.link_water['024']};
