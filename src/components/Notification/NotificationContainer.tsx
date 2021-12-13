@@ -6,7 +6,6 @@ import { selectNotification } from '../../redux/reducers';
 export const NotificationContainer = () => {
   const [showNotification, setShowNotification] = useState<boolean>(false);
   const { isSuccess, successMessageText, errorMessageText } = useAppSelector(selectNotification);
-
   useEffect(() => {
     if (successMessageText || errorMessageText) {
       setShowNotification(true);

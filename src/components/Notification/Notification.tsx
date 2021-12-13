@@ -11,10 +11,13 @@ import {
 } from './Notification.styles';
 import { NotificationProps } from './Notification.types';
 import { componentsDictionary } from '../dictionary/componentsDictionary';
+import { useAppDispatch } from '../../hooks';
+import { notificationError, notificationSuccess } from '../../redux/actions';
 
 export const Notification: React.VFC<NotificationProps> = ({
   isSuccess, message, showNotification, setShowNotification,
 }) => {
+  const dispatch = useAppDispatch();
   useEffect(() => {
     if (showNotification) {
       setTimeout(() => {
@@ -22,6 +25,15 @@ export const Notification: React.VFC<NotificationProps> = ({
       }, 10000);
     }
   }, [showNotification]);
+
+  useEffect(() => {
+    if (!showNotification) {
+      dispatch(notificationError(''));
+      dispatch(notificationSuccess(''));
+    }
+  }, [dispatch, showNotification]);
+
+  const toggleNotificationHandler = () => setShowNotification(false);
 
   return (
     <div>
@@ -33,7 +45,7 @@ export const Notification: React.VFC<NotificationProps> = ({
               {isSuccess
                 ? <NotificationTitleText>{componentsDictionary.message.messageTitleSuccess}</NotificationTitleText>
                 : <NotificationTitleText>{componentsDictionary.message.messageTitleError}</NotificationTitleText>}
-              <CloseButton onClick={() => setShowNotification(false)}><Close /></CloseButton>
+              <CloseButton onClick={toggleNotificationHandler}><Close /></CloseButton>
             </NotificationTitle>
             <NotificationText>
               {message}
