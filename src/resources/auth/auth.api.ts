@@ -6,21 +6,22 @@ import {
   SignInData, SignUpData, SignUpInResponse,
 } from './auth.types';
 import { loginRepository } from '../loginRepository';
+import { AUTH_API } from './constants';
 
 const auth = {
   async SignUp(data: SignUpData) {
-    return instance.post<SignUpInResponse>('auth/registration', data);
+    return instance.post<SignUpInResponse>(AUTH_API.authRegistration(), data);
   },
 
   async SignIn(data:SignInData) {
-    return instance.post<SignUpInResponse>('auth/login', data);
+    return instance.post<SignUpInResponse>(AUTH_API.authLogin(), data);
   },
 
   async getMe() {
-    return instance.get<ProfileResponse>('auth/profile');
+    return instance.get<ProfileResponse>(AUTH_API.authProfile());
   },
   async refreshToken() {
-    return instance.post<SignUpInResponse>('auth/token/refresh');
+    return instance.post<SignUpInResponse>(AUTH_API.authTokenRefresh());
   },
 };
 

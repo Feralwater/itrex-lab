@@ -1,4 +1,3 @@
-import instance from '../../services/api/api';
 import {
   AppointmentData,
   AppointmentsForDoctor,
@@ -6,10 +5,12 @@ import {
   FreeTimeResponse,
   NewAppointmentResponse,
 } from './appointments.types';
+import { APPOINTMENTS_API } from './constants';
+import instance from '../../services/api/api';
 
 const appointments = {
   async getAppointmentsForPatient(offset:number, limit:number) {
-    return instance.get<AppointmentsForPatient>('appointments/patient/me', {
+    return instance.get<AppointmentsForPatient>(APPOINTMENTS_API.appointmentsPatientMe(), {
       params: {
         offset,
         limit,
@@ -17,7 +18,7 @@ const appointments = {
     });
   },
   async getAppointmentsForDoctor(offset:number, limit:number) {
-    return instance.get<AppointmentsForDoctor>('appointments/doctor/me', {
+    return instance.get<AppointmentsForDoctor>(APPOINTMENTS_API.appointmentsDoctorMe(), {
       params: {
         offset,
         limit,
@@ -25,7 +26,7 @@ const appointments = {
     });
   },
   async getFreeTime(date:string|null, doctorID:string) {
-    return instance.get<FreeTimeResponse>('appointments/time/free', {
+    return instance.get<FreeTimeResponse>(APPOINTMENTS_API.appointmentsTimeFree(), {
       params: {
         date,
         doctorID,
@@ -33,10 +34,10 @@ const appointments = {
     });
   },
   async addAppointment(data:AppointmentData) {
-    return instance.post<NewAppointmentResponse>('appointments', data);
+    return instance.post<NewAppointmentResponse>(APPOINTMENTS_API.appointments(), data);
   },
   async deleteAppointment(id:string) {
-    return instance.delete<string>(`appointments/${id}`);
+    return instance.delete<string>(APPOINTMENTS_API.appointmentsById(id));
   },
 };
 
