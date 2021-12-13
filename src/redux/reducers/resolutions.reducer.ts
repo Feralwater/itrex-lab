@@ -2,11 +2,12 @@ import { createSlice } from '@reduxjs/toolkit';
 import { resolutions } from '../actions';
 import { ResolutionsState } from './reducers.types';
 import { RootState } from '../store';
+import { FETCH_STATUS } from './constants';
 
 const initialState = {
   resolutions: [],
   total: 0,
-  status: 'idle',
+  status: FETCH_STATUS.IDLE,
 } as ResolutionsState;
 
 export const resolutionsSlice = createSlice({
@@ -15,20 +16,13 @@ export const resolutionsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(resolutions.fulfilled, (state, { payload }) => {
-        state.resolutions = payload.resolutions;
-        state.total = payload.total;
-        state.status = 'fulfilled';
-      });
-
+      .addCase(resolutions.fulfilled, (state, { payload }) => ({
+        ...state, resolutions: payload.resolutions, total: payload.total, status: FETCH_STATUS.FULFILLED,
+      }));
     builder
-      .addCase(resolutions.pending, (state) => {
-        state.status = 'loading';
-      });
+      .addCase(resolutions.pending, (state) => ({ ...state, responseStatus: FETCH_STATUS.LOADING }));
     builder
-      .addCase(resolutions.failed, (state) => {
-        state.status = 'failed';
-      });
+      .addCase(resolutions.failed, (state) => ({ ...state, responseStatus: FETCH_STATUS.FAILED }));
   },
 });
 

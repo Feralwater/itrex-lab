@@ -15,16 +15,9 @@ export const notificationSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(notificationSuccess, (state, { payload }) => {
-        state.isSuccess = true;
-        state.successMessageText = payload;
-      });
-
+      .addCase(notificationSuccess, (state, { payload }) => ({ ...state, isSuccess: true, successMessageText: payload }));
     builder
-      .addCase(notificationError, (state, { payload }) => {
-        state.isSuccess = false;
-        state.errorMessageText = payload;
-      });
+      .addCase(notificationError, (state, { payload }) => ({ ...state, isSuccess: false, errorMessageText: payload }));
   },
 });
 

@@ -13,7 +13,6 @@ export interface ResolutionResponse {
   appointment_id: string
   next_appointment_date: string
   resolution: string
-  id: string
 }
 
 export interface EditResolutionResponse {
@@ -50,3 +49,4 @@ export interface ResolutionsForPatientResponse {
   resolutions: Array<ResolutionForPatient>
   total: 0
 }
+

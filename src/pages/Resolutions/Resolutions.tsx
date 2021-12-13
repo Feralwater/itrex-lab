@@ -10,7 +10,7 @@ import { ResolutionsProps } from './Resolutions.types';
 
 export const Resolutions:React.VFC<ResolutionsProps> = ({ responseStatus, myResolutions }) => (
   <>
-    {responseStatus !== 'loading'
+    {responseStatus !== FETCH_STATUS.LOADING
       ? (
         <ResolutionsTable>
           <thead>

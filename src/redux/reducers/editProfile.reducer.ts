@@ -3,6 +3,7 @@ import { RootState } from '../store';
 import { EditProfileState } from './reducers.types';
 import { editProfile } from '../actions';
 import { NewDoctorProfileResponse } from '../../resources/profile/profile.types';
+import { FETCH_STATUS } from './constants';
 
 const initialState = {
   id: '',
@@ -11,7 +12,7 @@ const initialState = {
   photo: '',
   roleName: '',
   specializationName: '',
-  status: 'idle',
+  status: FETCH_STATUS.IDLE,
 } as EditProfileState;
 
 export const editProfileSlice = createSlice({
@@ -20,23 +21,20 @@ export const editProfileSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(editProfile.fulfilled, (state, { payload }: { payload :NewDoctorProfileResponse}) => {
-        state.id = payload.id;
-        state.firstName = payload.first_name;
-        state.lastName = payload.last_name;
-        state.photo = payload.photo;
-        state.roleName = payload.role_name;
-        state.specializationName = payload.specialization_name;
-        state.status = 'fulfilled';
-      });
+      .addCase(editProfile.fulfilled, (state, { payload }: { payload: NewDoctorProfileResponse }) => ({
+        ...state,
+        id: payload.id,
+        firstName: payload.first_name,
+        lastName: payload.last_name,
+        photo: payload.photo,
+        roleName: payload.role_name,
+        specializationName: payload.specialization_name,
+        status: FETCH_STATUS.FULFILLED,
+      }));
     builder
-      .addCase(editProfile.pending, (state) => {
-        state.status = 'loading';
-      });
+      .addCase(editProfile.pending, (state) => ({ ...state, status: FETCH_STATUS.LOADING }));
     builder
-      .addCase(editProfile.failed, (state) => {
-        state.status = 'failed';
-      });
+      .addCase(editProfile.failed, (state) => ({ ...state, status: FETCH_STATUS.FAILED }));
   },
 });
 

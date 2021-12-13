@@ -32,7 +32,7 @@ export const AppointmentsForDoctorContainer: React.VFC = () => {
     }
   }, [userId, totalAppointmentsCount, currentPage, dispatch, totalResolutionsCount]);
   function chooseWhatToDisplay() {
-    if (responseStatus !== 'loading') {
+    if (responseStatus !== FETCH_STATUS.LOADING) {
       return appointments.length > 0
         ? (
           <DoctorFullState

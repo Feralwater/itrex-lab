@@ -8,7 +8,7 @@ import {
   EditResolutionData,
   EditResolutionResponse,
   ResolutionData,
-  ResolutionResponse,
+  ResolutionResponse, ResolutionsForPatientResponse,
 } from '../../resources/resolutions/resolutions.types';
 import { EditProfileData } from '../../pages/Profile/EditProfile.types';
 
@@ -22,7 +22,7 @@ export type ResolutionPending = ResolutionData;
 export type EditResolutionPending = EditResolutionData;
 export type ResolutionFulfilled = ResolutionResponse;
 export type EditResolutionFulfilled = EditResolutionResponse;
-
+export type ResolutionsForPatientFulfilled = ResolutionsForPatientResponse;
 export type ResolutionsPending = AppointmentsForDoctorPending;
 
 export interface AppointmentPending {

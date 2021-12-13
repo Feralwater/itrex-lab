@@ -4,6 +4,7 @@ import { ROLES, ROLES_API } from '../../routes/constants';
 import { ProfileResponse } from '../../resources/auth/auth.types';
 import { RootState } from '../store';
 import { profile } from '../actions';
+import { FETCH_STATUS } from './constants';
 
 const initialState = {
   id: '',
@@ -12,7 +13,7 @@ const initialState = {
   photo: '',
   roleName: '',
   isAuth: false,
-  status: 'idle',
+  status: FETCH_STATUS.IDLE,
 } as ProfileState;
 
 export const profileSlice = createSlice({
@@ -29,21 +30,16 @@ export const profileSlice = createSlice({
           state.photo = payload.photo;
           state.roleName = ROLES_API[payload.role_name];
           state.isAuth = true;
-          state.status = 'fulfilled';
+          state.status = FETCH_STATUS.FULFILLED;
         } else {
-          state.status = 'failed';
+          state.status = FETCH_STATUS.FAILED;
           state.roleName = ROLES.PUBLIC;
         }
       });
     builder
-      .addCase(profile.pending, (state) => {
-        state.status = 'loading';
-      });
+      .addCase(profile.pending, (state) => ({ ...state, status: FETCH_STATUS.LOADING }));
     builder
-      .addCase(profile.failed, (state) => {
-        state.status = 'failed';
-        state.roleName = ROLES.PUBLIC;
-      });
+      .addCase(profile.failed, (state) => ({ ...state, status: FETCH_STATUS.FAILED, roleName: ROLES.PUBLIC }));
   },
 });
 

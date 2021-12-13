@@ -1,13 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { resolutionsForPatient } from '../actions';
 import { RootState } from '../store';
-import { ResolutionsState } from './reducers.types';
+import { ResolutionsForPatientState } from './reducers.types';
+import { FETCH_STATUS } from './constants';
 
 const initialState = {
   resolutions: [],
   total: 0,
-  status: 'idle',
-} as ResolutionsState;
+  status: FETCH_STATUS.IDLE,
+} as ResolutionsForPatientState;
 
 export const resolutionsForPatientSlice = createSlice({
   name: 'resolutionsForPatient',
@@ -16,12 +17,12 @@ export const resolutionsForPatientSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(resolutionsForPatient.fulfilled, (state, { payload }) => ({
-        ...state, resolutions: payload.resolutions, total: payload.total, status: 'fulfilled',
+        ...state, resolutions: payload.resolutions, total: payload.total, status: FETCH_STATUS.FULFILLED,
       }));
     builder
-      .addCase(resolutionsForPatient.pending, (state) => ({ ...state, status: 'loading' }));
+      .addCase(resolutionsForPatient.pending, (state) => ({ ...state, status: FETCH_STATUS.LOADING }));
     builder
-      .addCase(resolutionsForPatient.failed, (state) => ({ ...state, status: 'failed' }));
+      .addCase(resolutionsForPatient.failed, (state) => ({ ...state, status: FETCH_STATUS.FAILED }));
   },
 });
 

@@ -3,10 +3,11 @@ import { LoginState } from './reducers.types';
 import { loginRepository } from '../../resources/loginRepository';
 import login from '../actions/login.actions';
 import { RootState } from '../store';
+import { FETCH_STATUS } from './constants';
 
 const initialState: LoginState = {
   accessToken: loginRepository.getAccessToken() || '',
-  status: 'idle',
+  status: FETCH_STATUS.IDLE,
 };
 
 export const loginSlice = createSlice({
@@ -15,21 +16,13 @@ export const loginSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(login.fulfilled, (state, { payload }) => {
-        state.status = 'fulfilled';
-        state.accessToken = payload.access_token;
-        state.refreshToken = payload.refresh_token;
-      });
-
+      .addCase(login.fulfilled, (state, { payload }) => ({
+        ...state, accessToken: payload.access_token, refreshToken: payload.refresh_token, status: FETCH_STATUS.FULFILLED,
+      }));
     builder
-      .addCase(login.pending, (state) => {
-        state.status = 'loading';
-      });
-
+      .addCase(login.pending, (state) => ({ ...state, status: FETCH_STATUS.LOADING }));
     builder
-      .addCase(login.failed, (state) => {
-        state.status = 'failed';
-      });
+      .addCase(login.failed, (state) => ({ ...state, status: FETCH_STATUS.FAILED }));
   },
 });
 

@@ -78,6 +78,10 @@ export interface ResolutionsState extends ResolutionsResponse{
   status: Status
 }
 
+export interface ResolutionsForPatientState extends ResolutionsForPatientResponse{
+  status: Status
+}
+
 export interface AppointmentsForPatientState extends AppointmentsForPatient{
   responseStatus: Status
 }

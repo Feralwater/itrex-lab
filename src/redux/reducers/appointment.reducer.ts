@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { AppointmentState } from './reducers.types';
 import appointment from '../actions/appointment.actions';
+import { FETCH_STATUS } from './constants';
 
 const initialState = {
   id: '',
@@ -10,7 +11,7 @@ const initialState = {
   reason: '',
   note: '',
   status: '',
-  responseStatus: 'idle',
+  responseStatus: FETCH_STATUS.IDLE,
 } as AppointmentState;
 
 export const appointmentSlice = createSlice({
@@ -19,25 +20,22 @@ export const appointmentSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(appointment.fulfilled, (state, { payload }) => {
-        state.id = payload.id;
-        state.patientID = payload.patient_id;
-        state.doctorID = payload.doctor_id;
-        state.visitDate = payload.visit_date;
-        state.reason = payload.reason;
-        state.note = payload.note;
-        state.status = payload.status;
-        state.responseStatus = 'fulfilled';
-      });
+      .addCase(appointment.fulfilled, (state, { payload }) => ({
+        ...state,
+        id: payload.id,
+        patientID: payload.patient_id,
+        doctorID: payload.doctor_id,
+        visitDate: payload.visit_date,
+        reason: payload.reason,
+        note: payload.note,
+        status: payload.status,
+        responseStatus: FETCH_STATUS.FULFILLED,
+      }));
 
     builder
-      .addCase(appointment.pending, (state) => {
-        state.responseStatus = 'loading';
-      });
+      .addCase(appointment.pending, (state) => ({ ...state, responseStatus: FETCH_STATUS.LOADING }));
     builder
-      .addCase(appointment.failed, (state) => {
-        state.responseStatus = 'failed';
-      });
+      .addCase(appointment.failed, (state) => ({ ...state, responseStatus: FETCH_STATUS.FAILED }));
   },
 });
 
