@@ -24,17 +24,18 @@ export const profileSlice = createSlice({
     builder
       .addCase(profile.fulfilled, (state, { payload }: { payload :ProfileResponse}) => {
         if (payload) {
-          state.id = payload.id;
-          state.firstName = payload.first_name;
-          state.lastName = payload.last_name;
-          state.photo = payload.photo;
-          state.roleName = ROLES_API[payload.role_name];
-          state.isAuth = true;
-          state.status = FETCH_STATUS.FULFILLED;
-        } else {
-          state.status = FETCH_STATUS.FAILED;
-          state.roleName = ROLES.PUBLIC;
+          return {
+            ...state,
+            id: payload.id,
+            firstName: payload.first_name,
+            lastName: payload.last_name,
+            photo: payload.photo,
+            roleName: ROLES_API[payload.role_name],
+            isAuth: true,
+            status: FETCH_STATUS.FULFILLED,
+          };
         }
+        return { ...state, status: FETCH_STATUS.FAILED, roleName: ROLES.PUBLIC };
       });
     builder
       .addCase(profile.pending, (state) => ({ ...state, status: FETCH_STATUS.LOADING }));

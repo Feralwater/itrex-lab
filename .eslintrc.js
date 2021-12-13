@@ -22,16 +22,13 @@ module.exports = {
   ],
   rules: {
     'import/extensions': 'off',
-    'default-param-last': 'off',
     'react/function-component-definition': 'off',
     'react/prop-types': 'off',
-    'react/jsx-no-bind': 'off',
     'react/jsx-props-no-spreading': 'off',
     'react/jsx-filename-extension': [1, { extensions: ['.tsx', '.ts'] }],
     'no-use-before-define': 'off',
     'max-len': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
-    'no-param-reassign': 'off',
     'import/prefer-default-export': 'off',
   },
   settings: {
