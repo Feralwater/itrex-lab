@@ -2,16 +2,21 @@ import { Status } from '../../redux/reducers/reducers.types';
 import { ResolutionForDoctor, ResolutionForPatient } from '../../resources/resolutions/resolutions.types';
 
 export interface ResolutionRowProps {
-  firstName: string
-  lastName: string
-  resolution: string
-  visitDate: string
-  nextAppointmentDate: string
+  firstName: string;
+  lastName: string;
+  resolution: string;
+  visitDate: string;
+  nextAppointmentDate: string;
 }
 
-export type Resolutions = Array<ResolutionForDoctor> | Array<ResolutionForPatient>
-
 export interface ResolutionsProps {
-  responseStatus: Status
-  myResolutions: Resolutions
+  responseStatus: Status;
+  myResolutions: Array<ResolutionForPatient> | Array<ResolutionForDoctor>
+  role: 'Doctor' | 'Patient'
+}
+
+export interface ResolutionsPaginateProps{
+  totalCount: number
+  // eslint-disable-next-line no-unused-vars
+  handleClick: (currentPageNumber: { selected: number })=>void
 }

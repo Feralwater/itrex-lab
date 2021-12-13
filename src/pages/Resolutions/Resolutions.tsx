@@ -5,10 +5,30 @@ import { ResolutionsTable, ResolutionsTableHead, ResolutionsTableHeaderCell } fr
 import { columnsNames, visitDate } from './constants';
 import { ResolutionRow } from './ResolutionRow';
 import { colors } from '../../components';
-import { ResolutionsPaginate } from './ResolutionsPaginate';
 import { ResolutionsProps } from './Resolutions.types';
+import { FETCH_STATUS } from '../../redux/reducers/constants';
+import { ResolutionsForPatientPaginateContainer, ResolutionsForDoctorPaginateContainer } from '..';
+import { ROLES } from '../../routes/constants';
+import { ResolutionForDoctor, ResolutionForPatient } from '../../resources/resolutions/resolutions.types';
 
-export const Resolutions:React.VFC<ResolutionsProps> = ({ responseStatus, myResolutions }) => (
+function createResolutionsTableBody(myResolutions: Array<ResolutionForPatient> | Array<ResolutionForDoctor>) {
+  return (
+    <tbody>
+      {myResolutions.map((resolution) => (
+        <ResolutionRow
+          key={resolution.id}
+          firstName={'doctor' in resolution ? resolution.doctor.first_name : resolution.patient.first_name}
+          lastName={'doctor' in resolution ? resolution.doctor.last_name : resolution.patient.last_name}
+          resolution={resolution.resolution}
+          visitDate={format(new Date(resolution.visit_date), visitDate)}
+          nextAppointmentDate={format(new Date(resolution.next_appointment_date), visitDate)}
+        />
+      ))}
+    </tbody>
+  );
+}
+
+export const Resolutions:React.VFC<ResolutionsProps> = ({ responseStatus, myResolutions, role }) => (
   <>
     {responseStatus !== FETCH_STATUS.LOADING
       ? (
@@ -26,18 +46,7 @@ export const Resolutions:React.VFC<ResolutionsProps> = ({ responseStatus, myReso
                 ))}
             </ResolutionsTableHead>
           </thead>
-          <tbody>
-            {myResolutions.map((resolution) => (
-              <ResolutionRow
-                key={resolution.id}
-                firstName={resolution.patient ? resolution.patient.first_name : resolution.doctor.first_name}
-                lastName={resolution.patient ? resolution.patient.last_name : resolution.doctor.last_name}
-                resolution={resolution.resolution}
-                visitDate={format(new Date(resolution.visit_date), visitDate)}
-                nextAppointmentDate={format(new Date(resolution.next_appointment_date), visitDate)}
-              />
-            ))}
-          </tbody>
+          {createResolutionsTableBody(myResolutions)}
         </ResolutionsTable>
       )
       : (
@@ -50,6 +59,8 @@ export const Resolutions:React.VFC<ResolutionsProps> = ({ responseStatus, myReso
           width={150}
         />
       )}
-    {myResolutions.length > 0 && <ResolutionsPaginate />}
+    {role === ROLES.PATIENT
+      ? (myResolutions.length > 0 && <ResolutionsForPatientPaginateContainer />)
+      : (myResolutions.length > 0 && <ResolutionsForDoctorPaginateContainer />)}
   </>
 );

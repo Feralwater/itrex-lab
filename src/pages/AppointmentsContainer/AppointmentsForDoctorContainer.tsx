@@ -11,6 +11,7 @@ import dictionary from '../dictionary/pagesDictionary';
 import {
   selectAppointmentsForDoctor, selectProfile, selectResolution,
 } from '../../redux/reducers';
+import { FETCH_STATUS } from '../../redux/reducers/constants';
 
 export const AppointmentsForDoctorContainer: React.VFC = () => {
   const dispatch = useAppDispatch();

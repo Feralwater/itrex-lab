@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 import { resolutionsForPatient } from '../../redux/actions';
 import { Resolutions } from './Resolutions';
 import { selectResolutionsForPatient } from '../../redux/reducers/resolutionsForPatient.reducer';
+import { ROLES } from '../../routes/constants';
 
 export const ResolutionsForPatientContainer = () => {
   const dispatch = useAppDispatch();
@@ -20,7 +21,7 @@ export const ResolutionsForPatientContainer = () => {
   return (
     <div>
       <PatientNavigatePanel pageTitle={dictionary.patientPage.resolutionsTitle} />
-      <Resolutions responseStatus={responseStatus} myResolutions={myResolutions} />
+      <Resolutions responseStatus={responseStatus} myResolutions={myResolutions} role={ROLES.PATIENT} />
     </div>
   );
 };
