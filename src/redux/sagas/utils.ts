@@ -1,7 +1,7 @@
 import { PayloadActionCreator } from '@reduxjs/toolkit/src/createAction';
 import { put } from 'redux-saga/effects';
 import { AnyFunction, AsyncAction } from './saga.types';
-import { notificationError } from '../actions/notification.actions';
+import { notificationError } from '../actions';
 import { createErrorNotificationMessage } from '../../serverResponseDictionary/serverResponsesDictionary';
 
 function* utils(action: AsyncAction, saga: AnyFunction, pendingAction?: PayloadActionCreator<any>):any {

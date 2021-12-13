@@ -6,7 +6,7 @@ import utils from './utils';
 import { EditResolutionResponse } from '../../resources/resolutions/resolutions.types';
 import resolutionsAPI from '../../resources/resolutions/resolutions.api';
 
-function* editResolutionPost(action: ReturnType<typeof editResolution.pending>) {
+function* editResolutionPatch(action: ReturnType<typeof editResolution.pending>) {
   const { payload } = action;
   const response: AxiosResponse<EditResolutionResponse> = yield call(resolutionsAPI.editResolution, {
     resolution: payload.resolution,
@@ -16,14 +16,14 @@ function* editResolutionPost(action: ReturnType<typeof editResolution.pending>) 
   return response.data;
 }
 
-const editResolutionPostSaga = utils.bind(null, editResolution, editResolutionPost);
+const editResolutionPatchSaga = utils.bind(null, editResolution, editResolutionPatch);
 
-function* editResolutionPostWatcher() {
-  yield takeEvery(editResolution.pending, editResolutionPostSaga);
+function* editResolutionPatchWatcher() {
+  yield takeEvery(editResolution.pending, editResolutionPatchSaga);
 }
 
 function* editResolutionSaga() {
-  yield editResolutionPostWatcher();
+  yield editResolutionPatchWatcher();
 }
 
 export default editResolutionSaga;

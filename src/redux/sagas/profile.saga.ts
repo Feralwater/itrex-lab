@@ -6,21 +6,21 @@ import { profile } from '../actions';
 import { loginRepository } from '../../resources/loginRepository';
 import utils from './utils';
 
-function* profilePost() {
+function* profileGet() {
   const token = loginRepository.getAccessToken();
   const me: AxiosResponse<ProfileResponse> = token ? yield call(auth.getMe) : null;
 
   return me?.data || null;
 }
 
-const profilePostSaga = utils.bind(null, profile, profilePost);
+const profileGetSaga = utils.bind(null, profile, profileGet);
 
-function* profilePostWatcher() {
-  yield takeEvery(profile.pending, profilePostSaga);
+function* profileGetWatcher() {
+  yield takeEvery(profile.pending, profileGetSaga);
 }
 
 function* profileSaga() {
-  yield profilePostWatcher();
+  yield profileGetWatcher();
 }
 
 export default profileSaga;

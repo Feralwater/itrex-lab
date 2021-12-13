@@ -5,20 +5,20 @@ import appointmentsForPatient from '../actions/appointmentsForPatient.actions';
 import appointments from '../../resources/appointments/appointments.api';
 import { AppointmentsForPatient } from '../../resources/appointments/appointments.types';
 
-function* appointmentsForPatientPost(action: ReturnType<typeof appointmentsForPatient.pending>) {
+function* appointmentsForPatientGet(action: ReturnType<typeof appointmentsForPatient.pending>) {
   const { payload } = action;
   const response: AxiosResponse<AppointmentsForPatient> = yield call(appointments.getAppointmentsForPatient, payload.offset, payload.limit);
   return response.data;
 }
 
-const appointmentsForPatientPostSaga = utils.bind(null, appointmentsForPatient, appointmentsForPatientPost);
+const appointmentsForPatientGetSaga = utils.bind(null, appointmentsForPatient, appointmentsForPatientGet);
 
-function* appointmentsForPatientPostWatcher() {
-  yield takeEvery(appointmentsForPatient.pending, appointmentsForPatientPostSaga);
+function* appointmentsForPatientGetWatcher() {
+  yield takeEvery(appointmentsForPatient.pending, appointmentsForPatientGetSaga);
 }
 
 function* appointmentsForPatientSaga() {
-  yield appointmentsForPatientPostWatcher();
+  yield appointmentsForPatientGetWatcher();
 }
 
 export default appointmentsForPatientSaga;

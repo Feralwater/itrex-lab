@@ -5,7 +5,7 @@ import utils from './utils';
 import { NewDoctorProfileResponse } from '../../resources/profile/profile.types';
 import profile from '../../resources/profile/profile.api';
 
-function* editProfilePost(action: ReturnType<typeof editProfile.pending>) {
+function* editProfilePatch(action: ReturnType<typeof editProfile.pending>) {
   const { payload } = action;
   const response: AxiosResponse<NewDoctorProfileResponse> = yield call(
     profile.editProfile,
@@ -19,14 +19,14 @@ function* editProfilePost(action: ReturnType<typeof editProfile.pending>) {
   return response.data;
 }
 
-const editProfilePostSaga = utils.bind(null, editProfile, editProfilePost);
+const editProfilePatchSaga = utils.bind(null, editProfile, editProfilePatch);
 
-function* editProfilePostWatcher() {
-  yield takeEvery(editProfile.pending, editProfilePostSaga);
+function* editProfilePatchWatcher() {
+  yield takeEvery(editProfile.pending, editProfilePatchSaga);
 }
 
 function* editProfileSaga() {
-  yield editProfilePostWatcher();
+  yield editProfilePatchWatcher();
 }
 
 export default editProfileSaga;

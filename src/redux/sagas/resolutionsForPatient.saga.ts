@@ -6,21 +6,21 @@ import utils from './utils';
 import { ResolutionsForPatientResponse } from '../../resources/resolutions/resolutions.types';
 import resolutionsAPI from '../../resources/resolutions/resolutions.api';
 
-function* resolutionsForPatientPost(action: ReturnType<typeof resolutionsForPatient.pending>) {
+function* resolutionsForPatientGet(action: ReturnType<typeof resolutionsForPatient.pending>) {
   const { payload } = action;
   const response: AxiosResponse<ResolutionsForPatientResponse> = yield call(resolutionsAPI.getResolutionsForPatient, payload.offset, payload.limit);
   yield put(notificationSuccess(createSuccessNotificationMessage(response.status)));
   return response.data;
 }
 
-const resolutionsForPatientPostSaga = utils.bind(null, resolutionsForPatient, resolutionsForPatientPost);
+const resolutionsForPatientGetSaga = utils.bind(null, resolutionsForPatient, resolutionsForPatientGet);
 
-function* resolutionsForPatientPostWatcher() {
-  yield takeEvery(resolutionsForPatient.pending, resolutionsForPatientPostSaga);
+function* resolutionsForPatientGetWatcher() {
+  yield takeEvery(resolutionsForPatient.pending, resolutionsForPatientGetSaga);
 }
 
 function* resolutionsForPatientSaga() {
-  yield resolutionsForPatientPostWatcher();
+  yield resolutionsForPatientGetWatcher();
 }
 
 export default resolutionsForPatientSaga;
