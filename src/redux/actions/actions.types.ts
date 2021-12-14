@@ -55,3 +55,8 @@ export type AppointmentsForDoctorFulfilled = AppointmentsForDoctor;
 export type DeleteAppointmentFulfilled = DeleteAppointment;
 
 export type EditProfilePending = EditProfileData;
+
+export interface FreeTimePending {
+  date: string|null
+  doctorID: string
+}

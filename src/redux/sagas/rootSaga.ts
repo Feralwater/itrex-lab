@@ -13,6 +13,7 @@ import editResolutionSaga from './editResolution.saga';
 import resolutionsForPatientSaga from './resolutionsForPatient.saga';
 import occupationsSaga from './occupations.saga';
 import doctorsByIDSaga from './doctorsByID.saga';
+import freeDoctorTimeSaga from './freeTimeSaga';
 
 function* rootSaga() {
   yield all([
@@ -30,6 +31,7 @@ function* rootSaga() {
     resolutionsForPatientSaga(),
     occupationsSaga(),
     doctorsByIDSaga(),
+    freeDoctorTimeSaga(),
   ]);
 }
 

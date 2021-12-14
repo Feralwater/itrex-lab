@@ -110,3 +110,8 @@ export interface DoctorsByIDState {
   doctors: Array<DoctorByID>
   status: Status
 }
+
+export interface FreeTimeState {
+  freeTime: Array<string>
+  status: Status
+}
