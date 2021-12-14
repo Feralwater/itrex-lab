@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { AppointmentState } from './reducers.types';
 import { appointment } from '../actions';
 import { FETCH_STATUS } from './constants';
+import { RootState } from '../store';
 
 const initialState = {
   id: '',
@@ -38,5 +39,7 @@ export const appointmentSlice = createSlice({
       .addCase(appointment.failed, (state) => ({ ...state, responseStatus: FETCH_STATUS.FAILED }));
   },
 });
+
+export const selectAppointment = (state: RootState) => state.appointments;
 
 export const appointmentReducer = appointmentSlice.reducer;

@@ -11,15 +11,17 @@ import {
   SelectTimeslotStep, LinksContainer, DisabledLink,
 } from 'components/AppointmentForm/MakeAppointment.styles';
 import { PatientsTitle } from 'components/NavigatePanel/NavigatePanel.styles';
-import { AppointmentsSteps, DatePicker, TimeSlots } from 'components';
+import {
+  AppointmentsSteps, ButtonWithLoader, DatePicker, TimeSlots,
+} from 'components';
 import pagesDictionary from 'pages/dictionary/pagesDictionary';
-import { Button } from '../Button';
 import appointmentValidationSchema from './validation/appointment.validation';
 import makeAppointmentsFieldsData from './fieldsData';
-import { appointmentValues, MakeAppointmentFormProps } from './form.types';
+import { MakeAppointmentFormProps } from './form.types';
 import { PATH } from '../../routes/constants';
 import { ReactComponent as RightArrow } from '../../assets/svg/rightArrowGrey-icon.svg';
 import { SelectForAppointmentFormContainer } from '../Select';
+import { initialValuesForAppointmentForm } from './constants';
 
 export const MakeAppointmentForm: React.VFC<MakeAppointmentFormProps> = ({
   handleSubmitForm,
@@ -30,6 +32,7 @@ export const MakeAppointmentForm: React.VFC<MakeAppointmentFormProps> = ({
   disableDate,
   setSelectedDate,
   freeTime,
+  makeAppointmentFetchStatus,
 }) => (
   <>
     <LinksContainer>
@@ -39,20 +42,7 @@ export const MakeAppointmentForm: React.VFC<MakeAppointmentFormProps> = ({
     </LinksContainer>
     <PatientsTitle>{pagesDictionary.form.makeAppointmentTitle}</PatientsTitle>
     <Formik
-      initialValues={{
-        occupation: {
-          label: '',
-          value: '',
-        },
-        doctorName: {
-          label: '',
-          value: '',
-        },
-        reason: '',
-        note: '',
-        date: '',
-        time: '',
-      } as appointmentValues}
+      initialValues={initialValuesForAppointmentForm}
       validationSchema={appointmentValidationSchema}
       onSubmit={(values, actions) => {
         handleSubmitForm(values);
@@ -127,15 +117,7 @@ export const MakeAppointmentForm: React.VFC<MakeAppointmentFormProps> = ({
             </SelectTimeslotStep>
           </AppointmentStepsContainer>
           <MakeAppointmentButtonContainer>
-            <Button
-              type="submit"
-              size="large"
-              variant="primary"
-              icon="default"
-              disabled={!(isValid && dirty)}
-            >
-              {pagesDictionary.form.submitTitle}
-            </Button>
+            <ButtonWithLoader dirty={dirty} isValid={isValid} status={makeAppointmentFetchStatus}>{pagesDictionary.form.submitTitle}</ButtonWithLoader>
           </MakeAppointmentButtonContainer>
         </AppointmentFormContainer>
       )}

@@ -4,14 +4,12 @@ import {
   loginReducer, appointmentReducer, registrationReducer,
   profileReducer, notificationReducer, appointmentsForPatientReducer,
   appointmentsForDoctorReducer, resolutionReducer, resolutionsReducer,
+  occupationsReducer, doctorsByIDReducer, freeDoctorTimeReducer,
 } from './reducers';
 import rootSaga from './sagas/rootSaga';
 import { editProfileReducer } from './reducers/editProfile.reducer';
 import { editResolutionReducer } from './reducers/editResolution.reducer';
 import { resolutionsForPatientReducer } from './reducers/resolutionsForPatient.reducer';
-import { occupationsReducer } from './reducers/occupations.reducer';
-import { doctorsByIDReducer } from './reducers/doctorsByID.reducer';
-import { freeDoctorTimeReducer } from './reducers/freeTime.reducer';
 
 const sagaMiddleware = createSagaMiddleware();
 

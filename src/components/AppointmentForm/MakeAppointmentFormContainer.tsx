@@ -5,7 +5,9 @@ import {
   appointment, doctorsByID, freeDoctorTime, occupations,
 } from '../../redux/actions';
 import { MakeAppointmentForm } from './MakeAppointmentForm';
-import { selectOccupations, selectDoctorsByID, selectFreeDoctorTime } from '../../redux/reducers';
+import {
+  selectOccupations, selectDoctorsByID, selectFreeDoctorTime, selectAppointment,
+} from '../../redux/reducers';
 
 export const MakeAppointmentFormContainer:React.VFC = () => {
   const [selectedOccupationID, setSelectedOccupationID] = useState<string>('');
@@ -16,6 +18,7 @@ export const MakeAppointmentFormContainer:React.VFC = () => {
   const { occupations: specializations } = useAppSelector(selectOccupations);
   const { doctors: doctorNames } = useAppSelector(selectDoctorsByID);
   const { freeTime } = useAppSelector(selectFreeDoctorTime);
+  const { responseStatus: makeAppointmentFetchStatus } = useAppSelector(selectAppointment);
   useEffect(() => {
     dispatch(occupations.pending());
   }, [dispatch]);
@@ -61,6 +64,7 @@ export const MakeAppointmentFormContainer:React.VFC = () => {
       disableDate={disableDate}
       setSelectedDate={setSelectedDate}
       freeTime={freeTime}
+      makeAppointmentFetchStatus={makeAppointmentFetchStatus}
     />
   );
 };

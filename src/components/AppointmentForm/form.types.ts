@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
+import { Status } from '../../redux/reducers/reducers.types';
 
 export interface appointmentValues {
   occupation: {
@@ -25,4 +26,5 @@ export interface MakeAppointmentFormProps {
   disableDate: boolean;
   setSelectedDate: Dispatch<SetStateAction<string>>;
   freeTime: Array<string>;
+  makeAppointmentFetchStatus: Status
 }
