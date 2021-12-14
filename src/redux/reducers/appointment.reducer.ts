@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { AppointmentState } from './reducers.types';
-import appointment from '../actions/appointment.actions';
+import { appointment } from '../actions';
 import { FETCH_STATUS } from './constants';
 
 const initialState = {

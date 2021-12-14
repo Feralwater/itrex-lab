@@ -5,7 +5,7 @@ import { PatientFullState } from '../FullStateView';
 import { PatientEmptyState } from '../EmptyStateView';
 import { colors, PatientNavigatePanel } from '../../components';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import appointmentsForPatient from '../../redux/actions/appointmentsForPatient.actions';
+import { appointmentsForPatient } from '../../redux/actions';
 import dictionary from '../dictionary/pagesDictionary';
 import { selectAppointmentsForPatient, selectProfile } from '../../redux/reducers';
 import { FETCH_STATUS } from '../../redux/reducers/constants';

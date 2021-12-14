@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { LoginState } from './reducers.types';
 import { loginRepository } from '../../resources/loginRepository';
-import login from '../actions/login.actions';
+import { login } from '../actions';
 import { RootState } from '../store';
 import { FETCH_STATUS } from './constants';
 

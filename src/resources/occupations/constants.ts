@@ -1,3 +1,3 @@
-export const SPECIALIZATIONS_API = {
-  specializations: () => 'specializations',
+export const OCCUPATIONS_API = {
+  occupations: () => 'specializations',
 };

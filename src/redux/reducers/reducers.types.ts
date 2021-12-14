@@ -1,59 +1,60 @@
 import { AppointmentsForDoctor, AppointmentsForPatient } from '../../resources/appointments/appointments.types';
 import { ResolutionsForPatientResponse, ResolutionsResponse } from '../../resources/resolutions/resolutions.types';
+import { OccupationsResponse } from '../../resources/occupations/occupations.types';
 
 export type Status = 'idle' | 'loading' | 'failed' | 'fulfilled'
 export type RoleName = 'Doctor' | 'Patient' | 'Public' | ''
 
 interface Request {
-  status: Status;
+  status: Status
 }
 
 export interface LoginState extends Request {
-  accessToken: string;
-  refreshToken?: string;
+  accessToken: string
+  refreshToken?: string
 }
 
 export interface ProfileState extends Request {
-  id: string;
-  firstName: string;
-  lastName: string;
-  photo: string;
-  roleName: RoleName;
-  isAuth: boolean;
+  id: string
+  firstName: string
+  lastName: string
+  photo: string
+  roleName: RoleName
+  isAuth: boolean
 }
 
 export interface AppointmentState {
-  id: string;
-  patientID: string;
-  doctorID: string;
-  visitDate: string;
-  reason: string;
-  note: string;
-  status: string;
-  responseStatus: Status;
+  id: string
+  patientID: string
+  doctorID: string
+  visitDate: string
+  reason: string
+  note: string
+  status: string
+  responseStatus: Status
 }
 
 export interface EditProfileState extends Request{
-  id: string,
-  firstName: string,
-  lastName: string,
-  photo: string,
-  roleName: string,
+  id: string
+  firstName: string
+  lastName: string
+  photo: string
+  roleName: string
   specializationName: string
 }
 
 export interface RegistrationState extends Request {
-  accessToken: string;
-  refreshToken?: string;
+  accessToken: string
+  refreshToken?: string
 }
 
 export interface RestoreState {
-  password: string;
+  password: string
 }
 
 export interface DeleteAppointmentState {
-  deleteAppointmentID: string;
-  status: Status;
+  deleteAppointmentID: string
+  status: Status
 }
 
 export interface NotificationState {
@@ -68,7 +69,7 @@ export interface ResolutionState {
   resolution: string
   resolutionID: string
   total: number
-  status: Status,
+  status: Status
 }
 export interface EditResolutionState {
   resolutionID: string
@@ -88,4 +89,14 @@ export interface AppointmentsForPatientState extends AppointmentsForPatient{
 
 export interface AppointmentsForDoctorState extends AppointmentsForDoctor{
   responseStatus: Status
+}
+
+export interface Occupation {
+  occupationName: string
+  occupationID: string
+}
+
+export interface OccupationState {
+  occupations: Array<Occupation>
+  status: Status
 }

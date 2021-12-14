@@ -15,7 +15,7 @@ export interface appointmentValues {
   time: string,
 }
 
-export interface MakeAnAppointmentFormProps {
+export interface MakeAppointmentFormProps {
   // eslint-disable-next-line no-unused-vars
   handleSubmitForm: (formValues: appointmentValues)=>void;
   optionsForOccupationsSelect: { label: string, value: string, }[];

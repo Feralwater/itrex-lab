@@ -9,19 +9,19 @@ import {
   MakeAppointmentButtonContainer, NoUnderlineLink,
   SelectDoctorStep,
   SelectTimeslotStep, LinksContainer, DisabledLink,
-} from 'components/AppointmentForm/MakeAnAppointment.styles';
+} from 'components/AppointmentForm/MakeAppointment.styles';
 import { PatientsTitle } from 'components/NavigatePanel/NavigatePanel.styles';
 import { AppointmentsSteps, DatePicker, TimeSlots } from 'components';
 import pagesDictionary from 'pages/dictionary/pagesDictionary';
 import { Button } from '../Button';
 import appointmentValidationSchema from './validation/appointment.validation';
 import makeAppointmentsFieldsData from './fieldsData';
-import { appointmentValues, MakeAnAppointmentFormProps } from './form.types';
+import { appointmentValues, MakeAppointmentFormProps } from './form.types';
 import { PATH } from '../../routes/constants';
 import { ReactComponent as RightArrow } from '../../assets/svg/rightArrowGrey-icon.svg';
 import { SelectForAppointmentFormContainer } from '../Select';
 
-export const MakeAnAppointmentForm: React.VFC<MakeAnAppointmentFormProps> = ({
+export const MakeAppointmentForm: React.VFC<MakeAppointmentFormProps> = ({
   handleSubmitForm,
   optionsForOccupationsSelect,
   setSelectedOccupationID,

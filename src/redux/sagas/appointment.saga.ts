@@ -1,10 +1,9 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
-import appointment from '../actions/appointment.actions';
+import { appointment, notificationSuccess } from '../actions';
 import { NewAppointmentResponse } from '../../resources/appointments/appointments.types';
 import appointments from '../../resources/appointments/appointments.api';
 import utils from './utils';
-import { notificationSuccess } from '../actions';
 import { createSuccessNotificationMessage } from '../../serverResponseDictionary/serverResponsesDictionary';
 
 function* appointmentPost(action: ReturnType<typeof appointment.pending>) {

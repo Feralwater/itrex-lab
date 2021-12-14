@@ -1,6 +1,7 @@
-export interface Specializations {
+/* eslint-disable camelcase */
+export interface OccupationResponse {
   specialization_name: string
   id: string
 }
 
-export type SpecializationsResponse = Array<Specializations>
+export type OccupationsResponse = Array<OccupationResponse>

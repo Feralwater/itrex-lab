@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RegistrationState } from './reducers.types';
 import { loginRepository } from '../../resources/loginRepository';
-import registration from '../actions/registration.actions';
+import { registration } from '../actions';
 import { FETCH_STATUS } from './constants';
 
 const initialState = {

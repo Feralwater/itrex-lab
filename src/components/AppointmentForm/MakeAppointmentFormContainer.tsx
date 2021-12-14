@@ -1,35 +1,34 @@
 import React, { useEffect, useState } from 'react';
-import { Specializations } from '../../resources/occupations/occupations.types';
 import { DoctorsBySpecializationIdResponse } from '../../resources/doctors/doctors.types';
-import occupations from '../../resources/occupations/occupations.api';
 import doctors from '../../resources/doctors/doctors.api';
 import appointments from '../../resources/appointments/appointments.api';
-import { useAppDispatch } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import { appointmentValues } from './form.types';
-import appointment from '../../redux/actions/appointment.actions';
-import { MakeAnAppointmentForm } from './MakeAnAppointmentForm';
+import { appointment, occupations } from '../../redux/actions';
+import { MakeAppointmentForm } from './MakeAppointmentForm';
+import { selectOccupations } from '../../redux/reducers/occupations.reducer';
 
 export const MakeAppointmentFormContainer:React.VFC = () => {
-  const [specializations, setSpecializations] = useState<Array<Specializations>>([]);
   const [doctorNames, setDoctorNames] = useState<Array<DoctorsBySpecializationIdResponse>>([]);
   const [selectedOccupationID, setSelectedOccupationID] = useState<string>('');
   const [selectedDoctorID, setSelectedDoctorID] = useState<string>('');
   const [disableDate, setDisableDate] = useState<boolean>(true);
   const [selectedDate, setSelectedDate] = useState<string>('');
   const [freeTime, setFreeTime] = useState<Array<string>>([]);
-
-  const optionsForOccupationsSelect = specializations.map((specialization: Specializations) => ({
-    label: specialization.specialization_name,
-    value: specialization.id,
+  const dispatch = useAppDispatch();
+  const { occupations: specializations } = useAppSelector(selectOccupations);
+  useEffect(() => {
+    dispatch(occupations.pending());
+  }, []);
+  const optionsForOccupationsSelect = specializations.map((specialization) => ({
+    label: specialization.occupationName,
+    value: specialization.occupationID,
   }));
   const optionsForDoctorNamesSelect = doctorNames.map((doctorName: DoctorsBySpecializationIdResponse) => ({
     label: [doctorName.first_name, doctorName.last_name].join(' '),
     value: doctorName.id,
   }));
-  const fetchOccupations = async () => {
-    const response = await occupations.fetchOccupations();
-    setSpecializations(response.data);
-  };
+
   const getDoctors = async () => {
     if (selectedOccupationID) {
       const { data } = await doctors.fetchDoctorsBySpecializationId(selectedOccupationID);
@@ -48,9 +47,6 @@ export const MakeAppointmentFormContainer:React.VFC = () => {
   };
 
   useEffect(() => {
-    fetchOccupations();
-  }, []);
-  useEffect(() => {
     getDoctors();
   }, [selectedOccupationID]);
   useEffect(() => {
@@ -59,7 +55,7 @@ export const MakeAppointmentFormContainer:React.VFC = () => {
   useEffect(() => {
     fetchFreeTime();
   }, [selectedDate, selectedDoctorID]);
-  const dispatch = useAppDispatch();
+
   const handleSubmitForm = (formValues: appointmentValues) => {
     const {
       time: date, reason, note, doctorName: { value: doctorID },
@@ -69,7 +65,7 @@ export const MakeAppointmentFormContainer:React.VFC = () => {
     }));
   };
   return (
-    <MakeAnAppointmentForm
+    <MakeAppointmentForm
       handleSubmitForm={handleSubmitForm}
       optionsForOccupationsSelect={optionsForOccupationsSelect}
       setSelectedOccupationID={setSelectedOccupationID}

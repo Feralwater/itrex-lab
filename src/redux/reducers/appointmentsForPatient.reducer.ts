@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import appointmentsForPatient from '../actions/appointmentsForPatient.actions';
+import { appointmentsForPatient } from '../actions';
 import { AppointmentsForPatientState } from './reducers.types';
 import { RootState } from '../store';
 import { FETCH_STATUS } from './constants';

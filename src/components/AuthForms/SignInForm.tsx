@@ -9,7 +9,7 @@ import {
 } from './AuthForm.styles';
 import dictionary from '../../pages/dictionary/pagesDictionary';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import login from '../../redux/actions/login.actions';
+import { login } from '../../redux/actions';
 import singInValidationSchema from './validation/singIn.validation';
 import { SignInValues } from './Form.types';
 import { signInFieldsData } from './fieldsData';
