@@ -1,6 +1,5 @@
 import { AppointmentsForDoctor, AppointmentsForPatient } from '../../resources/appointments/appointments.types';
 import { ResolutionsForPatientResponse, ResolutionsResponse } from '../../resources/resolutions/resolutions.types';
-import { OccupationsResponse } from '../../resources/occupations/occupations.types';
 
 export type Status = 'idle' | 'loading' | 'failed' | 'fulfilled'
 export type RoleName = 'Doctor' | 'Patient' | 'Public' | ''
@@ -98,5 +97,16 @@ export interface Occupation {
 
 export interface OccupationState {
   occupations: Array<Occupation>
+  status: Status
+}
+
+export interface DoctorByID {
+  firstName: string,
+  lastName: string,
+  doctorID: string
+}
+
+export interface DoctorsByIDState {
+  doctors: Array<DoctorByID>
   status: Status
 }

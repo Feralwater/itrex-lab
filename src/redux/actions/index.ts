@@ -8,3 +8,4 @@ export * from './profile.actions';
 export * from './registration.actions';
 export * from './resolution.actions';
 export * from './occupations.actions';
+export * from './doctorsByID.actions';
