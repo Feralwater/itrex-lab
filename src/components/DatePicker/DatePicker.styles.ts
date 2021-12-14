@@ -9,7 +9,7 @@ const ReactCalendar = styled.div`
     box-shadow: 0px 4px 32px ${colors.link_water['024']};
     border-radius: 12px;
     box-sizing: border-box;
-    padding: 0 32px 32px 32px;
+    padding: 0 32px 6px 32px;
   }
 
   & button {
@@ -28,11 +28,11 @@ const ReactCalendar = styled.div`
     justify-content: space-between;
     border-bottom: 1px solid ${colors.platinum['050']};
     margin: 0 0 30px 0;
-    padding: 25px 0;
+    padding: 17px 0;
 
     & button {
       background: none;
-      color: ${colors.black};
+      color: ${colors.black['1']};
       font-weight: 600;
       font-size: 17px;
       line-height: 240%;
@@ -70,7 +70,8 @@ const ReactCalendar = styled.div`
 
     &:enabled:hover,
     &:enabled:focus {
-      border: 1px solid ${colors.cornflower_blue};
+      background: ${colors.cornflower_blue};
+      color: ${colors.white};
     }
   }
 
@@ -87,14 +88,13 @@ const ReactCalendar = styled.div`
 }
 
 & button.react-calendar__tile--active {
-  color: ${colors.cornflower_blue};
-
-  border: 1px solid ${colors.cornflower_blue};
+  background: ${colors.cornflower_blue};
+  color: ${colors.white};
 }
 
 & button.react-calendar__tile--now {
-  background: ${colors.cornflower_blue};
-  color: ${colors.white};
+  color: ${colors.cornflower_blue};
+  border: 1px solid ${colors.cornflower_blue};
 `;
 
 export default ReactCalendar;

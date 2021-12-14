@@ -5,7 +5,7 @@ export const signInFieldsData:Array<FormFieldData> = [
   {
     component: InputFormContainer,
     name: 'email',
-    inputName: 'email',
+    id: 'email',
     label: '',
     type: 'email',
     placeholder: 'Email',
@@ -16,7 +16,7 @@ export const signInFieldsData:Array<FormFieldData> = [
   {
     component: InputFormContainer,
     name: 'password',
-    inputName: 'password',
+    id: 'password',
     label: '',
     placeholder: 'Password',
     type: 'password',
@@ -30,7 +30,7 @@ export const signUpFieldsData:Array<FormFieldData> = [
   {
     component: InputFormContainer,
     name: 'firstName',
-    inputName: 'firstName',
+    id: 'firstName',
     label: '',
     placeholder: 'First Name',
     type: 'text',
@@ -41,7 +41,7 @@ export const signUpFieldsData:Array<FormFieldData> = [
   {
     component: InputFormContainer,
     name: 'lastName',
-    inputName: 'lastName',
+    id: 'lastName',
     label: '',
     placeholder: 'Last Name',
     type: 'text',
@@ -52,7 +52,7 @@ export const signUpFieldsData:Array<FormFieldData> = [
   {
     component: InputFormContainer,
     name: 'email',
-    inputName: 'email',
+    id: 'email',
     label: '',
     placeholder: 'Email',
     type: 'email',
@@ -63,7 +63,7 @@ export const signUpFieldsData:Array<FormFieldData> = [
   {
     component: InputFormContainer,
     name: 'password',
-    inputName: 'password',
+    id: 'password',
     label: '',
     placeholder: 'Password',
     type: 'password',
@@ -74,7 +74,7 @@ export const signUpFieldsData:Array<FormFieldData> = [
   {
     component: InputFormContainer,
     name: 'confirmPassword',
-    inputName: 'confirmPassword',
+    id: 'confirmPassword',
     label: '',
     placeholder: 'Confirm password',
     type: 'password',
@@ -88,7 +88,7 @@ export const restoreFieldsData:Array<FormFieldData> = [
   {
     component: InputFormContainer,
     name: 'email',
-    inputName: 'email',
+    id: 'email',
     label: '',
     type: 'email',
     placeholder: 'Email',

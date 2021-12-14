@@ -5,7 +5,7 @@ import {
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { BrowserRouter } from 'react-router-dom';
-import SignUpForm from '../singUpForm';
+import { SignUpForm } from '../singUpForm';
 
 let inputNodeFirsName:HTMLInputElement;
 let inputNodeLastName:HTMLInputElement;

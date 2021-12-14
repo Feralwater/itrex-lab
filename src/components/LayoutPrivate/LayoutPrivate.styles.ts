@@ -21,7 +21,7 @@ export const BodyDoctorView = styled.main`
 export const Patients = styled.div`
   max-width: 1792px;
   height: 100%;
-  padding: 40px 16px 0 48px;
+  padding: 32px 16px 0 48px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;

@@ -1,9 +1,10 @@
 /* eslint-disable no-nested-ternary */
 import { StylesConfig } from 'react-select';
+import styled from 'styled-components';
 import { Options } from './Select.types';
 import { colors } from '../CommonStyles';
 
-const SelectStyles: StylesConfig<Array<Options>> = {
+export const SelectStyles: StylesConfig<Array<Options>> = {
   control: (styles) => ({
     ...styles,
     backgroundColor: `${colors.white}`,
@@ -84,4 +85,13 @@ const SelectStyles: StylesConfig<Array<Options>> = {
   }),
 };
 
-export default SelectStyles;
+export const SelectLabel = styled.label`
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 130%;
+  color: ${colors.black['1']};
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0 0 26px 0;
+`;

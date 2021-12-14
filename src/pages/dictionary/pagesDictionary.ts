@@ -69,9 +69,9 @@ const pagesDictionary = {
   },
   makeAppointmentsForm: {
     occupationPlaceholder: 'Choose an occupation',
-    occupationLabelText: 'Occupation',
+    occupationLabelText: 'Occupation*',
     doctorNamePlaceholder: 'Choose a doctor',
-    doctorNameLabelText: 'Doctor`s name',
+    doctorNameLabelText: 'Doctor`s name*',
   },
 } as const;
 

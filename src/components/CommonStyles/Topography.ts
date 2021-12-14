@@ -7,6 +7,11 @@ export const H1 = styled.h1`
   line-height: 110%;
   color: ${colors.dark_jungle_green};
   margin: 0;
+  
+  @media only screen and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3),
+  (max-device-width: 767px) {
+    font-size: 20px;
+  }
 `;
 
 export const H2 = styled.h2`

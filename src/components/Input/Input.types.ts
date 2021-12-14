@@ -1,6 +1,6 @@
 export interface InputProps {
   label: string;
-  inputName: string;
+  id: string;
   type: string;
   icon: 'default' | 'left';
   iconURL?: string;

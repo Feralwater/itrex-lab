@@ -4,7 +4,7 @@ import { InputProps } from './Input.types';
 
 export const Input:React.VFC<InputProps> = ({
   label,
-  inputName,
+  id,
   type,
   icon,
   iconURL,
@@ -19,9 +19,9 @@ export const Input:React.VFC<InputProps> = ({
     return inputType;
   }
   return (
-    <label htmlFor={inputName}>
+    <label htmlFor={id}>
       {label}
-      <StyledInput isError={isError} icon={icon} name={inputName} type={chooseInputType(type)} {...restProps} />
+      <StyledInput id={id} isError={isError} icon={icon} type={chooseInputType(type)} {...restProps} />
     </label>
   );
 };

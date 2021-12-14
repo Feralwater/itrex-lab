@@ -44,19 +44,9 @@ export const SearchAndFilter = styled.div`
   align-items: center;
   flex-wrap: nowrap;
   gap: 18px;
-  //max-width: 275px;
   padding: 0 50px 0 0;
 `;
-export const PatientsTitle = styled.h1`
-  font-weight: 600;
-  font-size: 24px;
-  color: ${colors.dark_jungle_green};
 
-  @media only screen and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3),
-  (max-device-width: 767px) {
-    font-size: 20px;
-  }
-`;
 export const CreateAppointmentButton = styled(Link)`
   display: inline-flex;
   align-items: center;
@@ -77,7 +67,7 @@ export const CreateAppointmentButton = styled(Link)`
     width: 20px;
     height: 20px;
     padding: 0;
-    background: url("../../svg/filter-icon.svg") no-repeat center;
+    background: url("/svg/filter-icon.svg") no-repeat center;
     font-size: 0;
   }
 `;
@@ -85,7 +75,7 @@ export const CreateAppointmentButton = styled(Link)`
 export const ButtonLeftPlusIcon = styled.span`
   width: 16px;
   height: 16px;
-  background: url("../../svg/plus-icon.svg") no-repeat center;
+  background: url("/svg/plus-icon.svg") no-repeat center;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);

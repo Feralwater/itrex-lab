@@ -5,7 +5,7 @@ import {
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { BrowserRouter } from 'react-router-dom';
-import MakeAppointmentFormContainer from '../MakeAppointmentFormContainer';
+import { MakeAppointmentFormContainer } from '../MakeAppointmentFormContainer';
 
 let inputNodeOccupations:HTMLDivElement;
 let inputNodeDoctorsNames:HTMLDivElement;

@@ -28,10 +28,10 @@ export const InputContainer = styled.div<InputProps>`
     font-weight: 500;
     font-size: 13px;
     line-height: 130%;
-    color: ${colors.black};
+    color: ${colors.black['1']};
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 10px;
   }
 `;
 
@@ -44,7 +44,7 @@ export const StyledInput = styled.input<InputProps>`
   outline: none;
   max-width: 100%;
   font-size: ${(props) => (props.inputSize === 'large' ? '17px' : '15px')};
-  line-height: ${(props) => (props.inputSize === 'large' ? '240%' : '140%')};
+  line-height: ${(props) => (props.inputSize === 'large' ? '140%' : '90%')};
 
   ${(props) => props.icon === 'default' && props.inputSize === 'large' && css`
     padding: 16px 24px;

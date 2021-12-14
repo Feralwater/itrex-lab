@@ -13,13 +13,12 @@ export const AppointmentStepsNumbers = styled.div`
 export const AppointmentFormContainer = styled(Form)`
   display: flex;
   flex-direction: column;
-  gap: 50px 0;
+  margin: 38px 33px 0 0;
 `;
 
 export const AppointmentStepsContainer = styled.div`
   display: flex;
-  gap: 0 104px;
-  margin: 25px 33px 0 0;
+  gap: 0 95px;
 `;
 
 export const ChooseDayStep = styled.div`
@@ -39,14 +38,13 @@ export const SelectTimeslotStep = styled.div`
 export const SelectDoctorStep = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 10px;
   flex-grow: 1;
 `;
 
 export const MakeAppointmentButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;
-  margin: 0 32px 0 0;
 `;
 
 export const NoUnderlineLink = styled(Link)`
@@ -61,7 +59,7 @@ export const LinksContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 16px;
-  margin: 0px 0 20px 0;
+  margin: 0 0 67px 0;
   width: fit-content;
 `;
 

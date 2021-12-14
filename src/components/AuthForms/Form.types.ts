@@ -17,7 +17,7 @@ export interface SignUpValues {
 export interface FormFieldData {
   component: React.VFC<InputProps>,
   name: string
-  inputName: string
+  id: string
   label: string
   type: string
   placeholder: string

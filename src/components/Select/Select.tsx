@@ -1,12 +1,12 @@
 import React from 'react';
 import Select from 'react-select';
-import SelectStyles from './Select.styles';
+import { SelectLabel, SelectStyles } from './Select.styles';
 import { searchOptionHelper } from './searchOptionHelper';
 
 export const CustomSelect = ({
   labelText, id, name, options, placeholder, setSelectedValue, onChangeHandler, ...props
 }: any) => (
-  <label htmlFor={id}>
+  <SelectLabel htmlFor={id}>
     {labelText}
     <Select
       {...props}
@@ -17,5 +17,5 @@ export const CustomSelect = ({
       options={options}
       onChange={onChangeHandler}
     />
-  </label>
+  </SelectLabel>
 );

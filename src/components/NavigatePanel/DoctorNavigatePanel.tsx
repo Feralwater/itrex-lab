@@ -1,7 +1,8 @@
 import React from 'react';
 import {
-  PatientsButton, PatientsButtonsContainer, UserPageTitle, PatientsTitle, SearchAndFilter,
+  PatientsButton, PatientsButtonsContainer, UserPageTitle, SearchAndFilter,
 } from 'components/NavigatePanel/NavigatePanel.styles';
+import { H1 } from 'components/CommonStyles/Topography';
 import dictionary from '../../pages/dictionary/pagesDictionary';
 import { PATH } from '../../routes/constants';
 import { NavigatePanelProps } from '../../pages/AppointmentsContainer/AppointmentsContainer.types';
@@ -27,11 +28,11 @@ export const DoctorNavigatePanel: React.VFC<NavigatePanelProps> = ({ pageTitle }
       </PatientsButton>
     </PatientsButtonsContainer>
     <UserPageTitle>
-      <PatientsTitle>{pageTitle}</PatientsTitle>
+      <H1>{pageTitle}</H1>
       <SearchAndFilter>
         <InputSearchContainer
           label=""
-          inputName="search"
+          id="search"
           type="text"
           icon="left"
           iconURL="/svg/search-icon.svg"

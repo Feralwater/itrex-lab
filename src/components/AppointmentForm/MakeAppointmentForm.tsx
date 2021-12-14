@@ -6,13 +6,12 @@ import {
   AppointmentFormContainer,
   AppointmentStepsContainer,
   ChooseDayStep,
-  MakeAppointmentButtonContainer, NoUnderlineLink,
+  NoUnderlineLink,
   SelectDoctorStep,
   SelectTimeslotStep, LinksContainer, DisabledLink,
 } from 'components/AppointmentForm/MakeAppointment.styles';
-import { PatientsTitle } from 'components/NavigatePanel/NavigatePanel.styles';
 import {
-  AppointmentsSteps, ButtonWithLoader, DatePicker, TimeSlots,
+  AppointmentsSteps, DatePicker, H1, SubmitOrLoader, TimeSlots,
 } from 'components';
 import pagesDictionary from 'pages/dictionary/pagesDictionary';
 import appointmentValidationSchema from './validation/appointment.validation';
@@ -40,7 +39,7 @@ export const MakeAppointmentForm: React.VFC<MakeAppointmentFormProps> = ({
       <RightArrow />
       <DisabledLink to={PATH.CREATE_APPOINTMENT}>{pagesDictionary.form.makeAppointmentTitle}</DisabledLink>
     </LinksContainer>
-    <PatientsTitle>{pagesDictionary.form.makeAppointmentTitle}</PatientsTitle>
+    <H1>{pagesDictionary.form.makeAppointmentTitle}</H1>
     <Formik
       initialValues={initialValuesForAppointmentForm}
       validationSchema={appointmentValidationSchema}
@@ -116,9 +115,7 @@ export const MakeAppointmentForm: React.VFC<MakeAppointmentFormProps> = ({
               />
             </SelectTimeslotStep>
           </AppointmentStepsContainer>
-          <MakeAppointmentButtonContainer>
-            <ButtonWithLoader dirty={dirty} isValid={isValid} status={makeAppointmentFetchStatus}>{pagesDictionary.form.submitTitle}</ButtonWithLoader>
-          </MakeAppointmentButtonContainer>
+          <SubmitOrLoader dirty={dirty} isValid={isValid} status={makeAppointmentFetchStatus}>{pagesDictionary.form.submitTitle}</SubmitOrLoader>
         </AppointmentFormContainer>
       )}
     </Formik>
