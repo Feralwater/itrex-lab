@@ -1,19 +1,22 @@
+/* eslint-disable no-unused-vars */
 import { Dispatch, SetStateAction } from 'react';
+import { FieldProps, FormikHandlers } from 'formik';
 
 export interface Options {
   value: string;
   label: string;
 }
 
-export interface CustomSelectPropsType {
+export interface CustomSelectProps {
   labelText: string;
   id: string;
   name: string;
   options: Options[];
   placeholder?: string;
   setSelectedValue?: Dispatch<SetStateAction<string>>;
-  [x: string]: any;
 }
+
+export type SelectProps = CustomSelectProps & FieldProps
 
 export interface LabelType {
   label: string;

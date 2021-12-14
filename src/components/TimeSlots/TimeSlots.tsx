@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, useEffect } from 'react';
 import { useField } from 'formik';
 import { parseISO, format } from 'date-fns';
 import { TimeSlot, TimeSlotLabel, TimeSlotsContainer } from './TimeSlots.styles';
@@ -8,6 +8,7 @@ import { timeForDisplayFormat } from './constants';
 
 export const TimeSlots: React.VFC<TimeSlotsProps> = ({
   freeTime,
+  date,
   ...props
 }) => {
   const [, , { setValue }] = useField(props.field);
@@ -17,15 +18,22 @@ export const TimeSlots: React.VFC<TimeSlotsProps> = ({
     timeForServer: time,
   }));
 
-  const handlerClick = (e: ChangeEvent<HTMLInputElement>) => {
-    const selectedTimeSlot = freeTimeSlots.filter((k) => k.timeForDisplay === e.currentTarget.value);
-    setValue(selectedTimeSlot[0].timeForServer);
-  };
+  useEffect(() => {
+    setValue(null);
+  }, [date]);
 
+  function getTimeForServer(time: string) {
+    return freeTimeSlots.filter((timeSlot) => timeSlot.timeForDisplay === time)?.[0]?.timeForServer;
+  }
+  const isChecked = (time:string) => props.value === getTimeForServer(time);
+
+  const handlerClick = (e: ChangeEvent<HTMLInputElement>) => {
+    setValue(getTimeForServer(e.currentTarget.value));
+  };
   return (
     <TimeSlotsContainer>
       {TIME_SLOTS.map((time: string) => {
-        const disabled = !freeTimeSlots.some((timeSlot) => timeSlot.timeForDisplay === time);
+        const disabled = freeTimeSlots.every((timeSlot) => timeSlot.timeForDisplay !== time) || date === '';
         return (
           <div key={time}>
             <TimeSlot
@@ -33,6 +41,7 @@ export const TimeSlots: React.VFC<TimeSlotsProps> = ({
               type="radio"
               name="radio"
               value={time}
+              checked={isChecked(time)}
               onChange={handlerClick}
               disabled={disabled}
             />

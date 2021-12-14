@@ -88,8 +88,10 @@ const ReactCalendar = styled.div`
 }
 
 & button.react-calendar__tile--active {
-  background: ${colors.cornflower_blue};
-  color: ${colors.white};
+  &:not(:disabled) {
+    background: ${colors.cornflower_blue};
+    color: ${colors.white};
+  }
 }
 
 & button.react-calendar__tile--now {

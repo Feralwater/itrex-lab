@@ -17,7 +17,7 @@ export const AppointmentsForPatientContainer:React.VFC = () => {
 
   useEffect(() => {
     if (userId) {
-      dispatch(appointmentsForPatient.pending({ offset: 0, limit: 50 }));
+      dispatch(appointmentsForPatient.pending({ offset: 0, limit: 100 }));
     }
   }, [userId]);
 

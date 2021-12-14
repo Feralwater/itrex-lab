@@ -28,6 +28,7 @@ export const TimeSlot = styled.input`
       background: ${colors.link_water['1']};
       color: ${colors.alabaster};
       pointer-events: none;
+      border: none;
     }
   }
 `;

@@ -45,6 +45,8 @@ export const MakeAppointmentForm: React.VFC<MakeAppointmentFormProps> = ({
       validationSchema={appointmentValidationSchema}
       onSubmit={(values, actions) => {
         handleSubmitForm(values);
+        setSelectedDoctorID('');
+        actions.resetForm();
         actions.setSubmitting(false);
       }}
     >
@@ -73,6 +75,7 @@ export const MakeAppointmentForm: React.VFC<MakeAppointmentFormProps> = ({
                 placeholder={pagesDictionary.makeAppointmentsForm.occupationPlaceholder}
                 labelText={pagesDictionary.makeAppointmentsForm.occupationLabelText}
                 setSelectedValue={setSelectedOccupationID}
+                value={values.occupation.value ? values.occupation : ''}
               />
               <Field
                 component={SelectForAppointmentFormContainer}
@@ -82,6 +85,7 @@ export const MakeAppointmentForm: React.VFC<MakeAppointmentFormProps> = ({
                 labelText={pagesDictionary.makeAppointmentsForm.doctorNameLabelText}
                 options={optionsForDoctorNamesSelect}
                 setSelectedValue={setSelectedDoctorID}
+                value={values.doctorName.value ? values.doctorName : ''}
               />
               {makeAppointmentsFieldsData.map((data) => (
                 <Field
@@ -104,6 +108,7 @@ export const MakeAppointmentForm: React.VFC<MakeAppointmentFormProps> = ({
                 doctorId={values.doctorName}
                 disableDate={disableDate}
                 setSelectedDate={setSelectedDate}
+                value={values.date}
               />
             </ChooseDayStep>
             <SelectTimeslotStep>
@@ -112,6 +117,8 @@ export const MakeAppointmentForm: React.VFC<MakeAppointmentFormProps> = ({
                 name="time"
                 component={TimeSlots}
                 freeTime={freeTime}
+                value={values.time}
+                date={values.date}
               />
             </SelectTimeslotStep>
           </AppointmentStepsContainer>

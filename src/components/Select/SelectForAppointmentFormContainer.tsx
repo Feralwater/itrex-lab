@@ -1,9 +1,9 @@
 import React from 'react';
 import { useField } from 'formik';
-import { CustomSelectPropsType, Options } from './Select.types';
+import { Options, SelectProps } from './Select.types';
 import { CustomSelect } from './Select';
 
-export const SelectForAppointmentFormContainer: React.VFC<CustomSelectPropsType> = ({
+export const SelectForAppointmentFormContainer: React.VFC<SelectProps> = ({
   setSelectedValue,
   ...props
 }) => {
