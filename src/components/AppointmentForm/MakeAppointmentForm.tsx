@@ -115,7 +115,14 @@ export const MakeAppointmentForm: React.VFC<MakeAppointmentFormProps> = ({
               />
             </SelectTimeslotStep>
           </AppointmentStepsContainer>
-          <SubmitOrLoader dirty={dirty} isValid={isValid} status={makeAppointmentFetchStatus}>{pagesDictionary.form.submitTitle}</SubmitOrLoader>
+          <SubmitOrLoader
+            dirty={dirty}
+            isValid={isValid}
+            status={makeAppointmentFetchStatus}
+            pickedTime={!!values.time}
+          >
+            {pagesDictionary.form.submitTitle}
+          </SubmitOrLoader>
         </AppointmentFormContainer>
       )}
     </Formik>
