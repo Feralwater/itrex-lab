@@ -6,20 +6,24 @@ export const ResolutionsTable = styled.table`
   border-collapse: separate;
   text-align: left;
   border-spacing: 0 4px;
+  table-layout: fixed;
 `;
 
 export const ResolutionsTableHead = styled.tr`
   font-size: 15px;
-  line-height: 240%;
+  line-height: 140%;
   color: ${colors.rock_blue};
   background-color: ${colors.white};
   box-shadow: 0px 4px 32px ${colors.link_water['024']};
 `;
 
 export const ResolutionsTableCell = styled.td`
-  padding: 10px 0 10px 0;
+  padding: 10px 25px 10px 0;
   border-bottom: solid ${colors.link_water['032']};
   box-sizing: border-box;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 
   &:first-child {
     border-radius: 4px 0 0 4px;
