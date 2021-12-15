@@ -43,35 +43,29 @@ describe('Sign In form tests', () => {
     fireEvent.change(inputNodeEmail, { target: { value: 'email@email.com' } });
     fireEvent.change(inputNodePassword, { target: { value: 'password' } });
     // Assert
-    await waitFor(() => expect(inputNodeEmail.value)
-      .toMatch('email@email.com'));
-    await waitFor(() => expect(inputNodePassword.value)
-      .toMatch('password'));
+    await waitFor(() => expect(inputNodeEmail.value).toMatch('email@email.com'));
+    await waitFor(() => expect(inputNodePassword.value).toMatch('password'));
   });
   it('button should be disable if inputs was not focused', async () => {
     // Act
     inputNodeEmail.focus();
     inputNodePassword.focus();
     // Assert
-    await waitFor(() => expect(buttonNode)
-      .toBeDisabled());
+    await waitFor(() => expect(buttonNode).toBeDisabled());
   });
   it('initial inputs should be empty', () => {
     // Assert
-    expect(inputNodeEmail)
-      .toBeEmptyDOMElement();
-    expect(inputNodePassword)
-      .toBeEmptyDOMElement();
+    expect(inputNodeEmail).toBeEmptyDOMElement();
+    expect(inputNodePassword).toBeEmptyDOMElement();
   });
   it('button should be disable if inputs values are incorrect', async () => {
     // Act
     fireEvent.change(inputNodeEmail, { target: { value: 'email.com' } });
     fireEvent.change(inputNodePassword, { target: { value: 'p' } });
     // Assert
-    await waitFor(() => expect(buttonNode)
-      .toBeDisabled());
+    await waitFor(() => expect(buttonNode).toBeDisabled());
   });
-  it('rendering and submitting a basic Formik form', async () => {
+  it('rendering and submitting form is correct', async () => {
     // Act
     fireEvent.change(inputNodeEmail, { target: { value: 'email@email.com' } });
     fireEvent.change(inputNodePassword, { target: { value: 'password' } });

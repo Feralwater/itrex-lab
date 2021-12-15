@@ -11,11 +11,7 @@ const SignInFormContainer:React.VFC = () => {
     dispatch(login.pending({ userName, password }));
   };
   const { status } = useAppSelector(selectProfile);
-  return (
-    <div>
-      <SignInForm handleSubmitForm={handleSubmitForm} status={status} />
-    </div>
-  );
+  return (<SignInForm handleSubmitForm={handleSubmitForm} status={status} />);
 };
 
 export default SignInFormContainer;

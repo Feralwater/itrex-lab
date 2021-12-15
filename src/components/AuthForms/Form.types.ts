@@ -2,12 +2,13 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import { InputProps } from '../Input/Input.types';
 import { Status } from '../../redux/reducers/reducers.types';
-import { SignInData } from '../../resources/auth/auth.types';
+import { SignInData, SignUpData } from '../../resources/auth/auth.types';
 
 export interface SignInValues {
   email: string
   password: string
 }
+
 export interface SignInFormProps {
   status: Status
   handleSubmitForm: ({
@@ -15,6 +16,13 @@ export interface SignInFormProps {
     password,
   }: SignInData) => void
 }
+
+export interface SignUpFormProps {
+  handleSubmitForm: ({
+    userName, password, firstName, lastName,
+  }: SignUpData) => void
+}
+
 export interface SignUpValues {
   firstName: string
   lastName: string
