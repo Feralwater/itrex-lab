@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState, ChangeEvent } from 'react';
+import * as Yup from 'yup';
 import {
+  ModalErrorMessage,
   ResolutionModalBody, ResolutionModalTextArea,
   ResolutionModalTitle, ResolutionTextareaTitle,
   SelectedPatientImage,
@@ -19,6 +21,23 @@ export const ResolutionModal:React.VFC<ResolutionModalProps> = ({
 }) => {
   const { appointments } = useAppSelector(selectAppointmentsForDoctor);
   const selectedAppointment = appointments.find((appointment) => appointment.id === appointmentID);
+  const validationSchema = Yup.object({
+    resolutionText: Yup.string()
+      .min(2, 'Must be 2 characters or more')
+      .max(200, 'Must be 200 characters or less')
+      .required('Required'),
+  });
+  const [isValidResolution, setIsValidResolution] = useState<boolean>(true);
+
+  const onChangeHandler = (event:ChangeEvent<HTMLTextAreaElement>) => {
+    setResolutionText(event.currentTarget.value);
+    validationSchema
+      .isValid({ resolutionText: event.currentTarget.value })
+      .then((valid) => {
+        setIsValidResolution(valid);
+      });
+  };
+
   return (
     <ResolutionModalBody>
       <ResolutionModalTitle>{resolutionModalTitle}</ResolutionModalTitle>
@@ -33,11 +52,14 @@ export const ResolutionModal:React.VFC<ResolutionModalProps> = ({
           {selectedAppointment?.patient.last_name}
         </span>
       </SelectedPatientInfo>
-      <ResolutionTextareaTitle>{dictionary.resolutionModal.resolutionTextareaTitle}</ResolutionTextareaTitle>
-      <ResolutionModalTextArea
-        value={resolutionText}
-        onChange={(event) => setResolutionText(event.currentTarget.value)}
-      />
+      <ResolutionTextareaTitle>
+        {dictionary.resolutionModal.resolutionTextareaTitle}
+        <ResolutionModalTextArea
+          value={resolutionText}
+          onChange={onChangeHandler}
+        />
+      </ResolutionTextareaTitle>
+      <ModalErrorMessage isError={isValidResolution}>{componentsDictionary.controlCardPanel.errorMessage}</ModalErrorMessage>
     </ResolutionModalBody>
   );
 };

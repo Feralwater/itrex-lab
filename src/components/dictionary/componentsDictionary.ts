@@ -24,5 +24,6 @@ export const componentsDictionary = {
   },
   controlCardPanel: {
     selectedPatientImageAlt: '',
+    errorMessage: 'Must be 2-200 characters',
   },
 } as const;

@@ -69,8 +69,8 @@ export const EditProfileForm: React.VFC = () => {
                 name="avatar"
                 type="file"
                 onChange={(event) => {
-                  if (event.currentTarget.files) {
-                    setFieldValue('avatar', event.currentTarget.files[0]);
+                  if (event.target.files) {
+                    setFieldValue('avatar', event.target.files[0]);
                   }
                 }}
               />

@@ -13,7 +13,7 @@ function* editProfilePatch(action: ReturnType<typeof editProfile.pending>) {
     {
       firstName: payload.firstName,
       lastName: payload.lastName,
-      avatar: payload.avatar || undefined,
+      avatar: payload.avatar,
     },
   );
   yield put(notificationSuccess(createSuccessNotificationMessage(response.status)));

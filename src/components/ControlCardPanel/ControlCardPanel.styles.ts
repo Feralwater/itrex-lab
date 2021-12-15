@@ -55,12 +55,14 @@ export const SelectedPatientInfo = styled.div`
   margin: 0 0 26px 0;
 `;
 
-export const ResolutionTextareaTitle = styled.div`
+export const ResolutionTextareaTitle = styled.label`
   font-weight: 500;
   font-size: 13px;
   line-height: 130%;
   color: ${colors.rock_blue};
-  margin: 0 0 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 `;
 
 export const ResolutionModalBody = styled.div`
@@ -74,6 +76,20 @@ export const ResolutionModalFooter = styled.div`
   justify-content: space-between;
   background: ${colors.alabaster};
   border-radius: 0 0 8px 8px;
+`;
+
+export interface ModalErrorMessageProps{
+  isError: boolean
+}
+
+export const ModalErrorMessage = styled.div<ModalErrorMessageProps>`
+  display: ${((props) => (!props.isError ? 'inline-block' : 'none'))};
+  font-weight: 400;
+  font-size: 14px;
+  color: ${colors.brink_pink};
+  position: absolute;
+  top: 70%;
+  left: 10%;
 `;
 
 export const ResolutionModalTextArea = styled.textarea`
