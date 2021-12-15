@@ -1,11 +1,20 @@
+/* eslint-disable no-unused-vars */
 import React, { Dispatch, SetStateAction } from 'react';
 import { InputProps } from '../Input/Input.types';
+import { Status } from '../../redux/reducers/reducers.types';
+import { SignInData } from '../../resources/auth/auth.types';
 
 export interface SignInValues {
   email: string
   password: string
 }
-
+export interface SignInFormProps {
+  status: Status
+  handleSubmitForm: ({
+    userName,
+    password,
+  }: SignInData) => void
+}
 export interface SignUpValues {
   firstName: string
   lastName: string
