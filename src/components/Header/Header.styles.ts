@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { colors } from '../CommonStyles';
 
 export const HeaderWrapper = styled.header`
@@ -27,9 +28,11 @@ export const HeaderContainer = styled.div`
   }
 `;
 
-export const HeaderLogo = styled.div`
+export const HeaderLogo = styled(Link)`
   display: flex;
   align-items: center;
+  cursor: pointer;
+  text-decoration: none;
 `;
 
 export const LogoText = styled.span`

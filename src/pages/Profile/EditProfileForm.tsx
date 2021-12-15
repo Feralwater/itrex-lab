@@ -1,7 +1,7 @@
 import {
   Formik, Field, FormikValues, FormikTouched, FormikErrors,
 } from 'formik';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import editProfileValidationSchema from './validation/signUp.validation';

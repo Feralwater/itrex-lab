@@ -17,7 +17,7 @@ import {
 import { useAppSelector } from '../../hooks';
 import { componentsDictionary } from '../dictionary/componentsDictionary';
 import { selectProfile } from '../../redux/reducers';
-import { PATH } from '../../routes/constants';
+import { PATH, ROLES } from '../../routes/constants';
 import { selectEditProfile } from '../../redux/reducers/editProfile.reducer';
 
 export const Header: React.VFC = () => {
@@ -35,7 +35,7 @@ export const Header: React.VFC = () => {
   return (
     <HeaderWrapper>
       <HeaderContainer>
-        <HeaderLogo>
+        <HeaderLogo to={roleName === ROLES.DOCTOR ? PATH.PATIENTS : PATH.APPOINTMENTS}>
           <Logo />
           <LogoText>{componentsDictionary.header.logoText}</LogoText>
         </HeaderLogo>

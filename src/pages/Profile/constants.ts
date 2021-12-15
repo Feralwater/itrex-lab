@@ -1,5 +1,5 @@
 export const EditProfileInitial = {
   firstName: '',
   lastName: '',
-  avatar: undefined,
+  avatar: null,
 };
