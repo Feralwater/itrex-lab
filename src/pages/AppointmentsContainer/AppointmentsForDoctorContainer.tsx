@@ -17,7 +17,7 @@ export const AppointmentsForDoctorContainer: React.VFC = () => {
   const { id: userId } = useAppSelector(selectProfile);
   const { total: totalAppointmentsCount, appointments, responseStatus } = useAppSelector(selectAppointmentsForDoctor);
   const { total: totalResolutionsCount } = useAppSelector(selectResolution);
-
+  const { roleName } = useAppSelector(selectProfile);
   useEffect(() => {
     if (userId) {
       dispatch(appointmentsForDoctor.pending({
@@ -35,6 +35,7 @@ export const AppointmentsForDoctorContainer: React.VFC = () => {
       return appointments.length > 0
         ? (
           <DoctorFullState
+            roleName={roleName}
             appointments={appointments}
             total={totalAppointmentsCount}
           />

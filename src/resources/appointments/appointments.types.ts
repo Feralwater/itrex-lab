@@ -1,4 +1,6 @@
 /* eslint-disable camelcase */
+import { RoleName } from '../../redux/reducers/reducers.types';
+
 export interface Appointment {
   id: 'string',
   reason: 'string',
@@ -31,11 +33,13 @@ export interface AppointmentForDoctor extends Appointment {
 export interface AppointmentsForPatient {
   appointments: Array<AppointmentForPatient>,
   total: number
+  roleName: RoleName
 }
 
 export interface AppointmentsForDoctor {
   appointments: Array<AppointmentForDoctor>,
   total: number
+  roleName: RoleName
 }
 
 export interface DeleteAppointment {

@@ -1,14 +1,10 @@
 import { AppointmentCard } from 'components';
 import React from 'react';
 import { AppointmentsForPatient } from '../../resources/appointments/appointments.types';
-import { useAppSelector } from '../../hooks';
-import { selectProfile } from '../../redux/reducers';
 
-export const PatientFullState: React.VFC<AppointmentsForPatient> = ({ appointments }) => {
-  const { roleName } = useAppSelector(selectProfile);
-  return (
-    <>
-      {
+export const PatientFullState: React.VFC<AppointmentsForPatient> = ({ appointments, roleName }) => (
+  <>
+    {
         appointments.map((appointment) => (
           <AppointmentCard
             key={appointment.id}
@@ -25,6 +21,5 @@ export const PatientFullState: React.VFC<AppointmentsForPatient> = ({ appointmen
           />
         ))
       }
-    </>
-  );
-};
+  </>
+);

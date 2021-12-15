@@ -4,7 +4,7 @@ import { colors } from '../CommonStyles';
 export const UserCard = styled.div`
   display: flex;
   flex-direction: column;
-  background: #FFFFFF;
+  background: ${colors.white};
   min-height: 217px;
   box-shadow: 0px 4px 32px ${colors.link_water['024']};
   border-radius: 12px;

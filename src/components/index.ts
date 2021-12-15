@@ -2,8 +2,6 @@ export * from './AppointmentForm';
 export * from './AppointmentsSteps';
 export * from './AppointmentCard';
 export * from './AuthForms';
-export * from './AuthForms';
-export * from './AuthForms';
 export * from './Button';
 export * from './CommonStyles';
 export * from './ControlCardPanel';

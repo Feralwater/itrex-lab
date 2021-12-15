@@ -12,7 +12,7 @@ import { FETCH_STATUS } from '../../redux/reducers/constants';
 
 export const AppointmentsForPatientContainer:React.VFC = () => {
   const dispatch = useAppDispatch();
-  const { id: userId } = useAppSelector(selectProfile);
+  const { id: userId, roleName } = useAppSelector(selectProfile);
   const { appointments, total: totalAppointmentsCount, responseStatus } = useAppSelector(selectAppointmentsForPatient);
 
   useEffect(() => {
@@ -26,6 +26,7 @@ export const AppointmentsForPatientContainer:React.VFC = () => {
       return appointments.length > 0
         ? (
           <PatientFullState
+            roleName={roleName}
             appointments={appointments}
             total={totalAppointmentsCount}
           />
