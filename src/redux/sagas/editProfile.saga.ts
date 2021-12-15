@@ -1,9 +1,10 @@
-import { call, takeEvery } from 'redux-saga/effects';
+import { call, put, takeEvery } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
-import { editProfile } from '../actions';
+import { editProfile, notificationSuccess } from '../actions';
 import utils from './utils';
 import { NewDoctorProfileResponse } from '../../resources/profile/profile.types';
 import profile from '../../resources/profile/profile.api';
+import { createSuccessNotificationMessage } from '../../serverResponseDictionary/serverResponsesDictionary';
 
 function* editProfilePatch(action: ReturnType<typeof editProfile.pending>) {
   const { payload } = action;
@@ -15,7 +16,7 @@ function* editProfilePatch(action: ReturnType<typeof editProfile.pending>) {
       avatar: payload.avatar || undefined,
     },
   );
-
+  yield put(notificationSuccess(createSuccessNotificationMessage(response.status)));
   return response.data;
 }
 

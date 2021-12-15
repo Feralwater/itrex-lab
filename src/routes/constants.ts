@@ -9,7 +9,7 @@ export const PATH = {
   CREATE_APPOINTMENT: '/create-an-appointment',
   PROFILE: '/profile',
   MY_RESOLUTIONS: '/patient/resolutions',
-  EDIT_DOCTOR_PROFILE: '/doctor/edit-profile',
+  EDIT_PROFILE: '/profile/edit',
 };
 
 export const ROLES = {
@@ -34,13 +34,14 @@ export const ROLES_ACCESS = {
   [ROLES.DOCTOR]: new Set([PATH.PATIENTS,
     PATH.RESOLUTIONS,
     PATH.PROFILE,
-    PATH.EDIT_DOCTOR_PROFILE,
+    PATH.EDIT_PROFILE,
   ]),
   [ROLES.PATIENT]: new Set([
     PATH.APPOINTMENTS,
     PATH.CREATE_APPOINTMENT,
     PATH.PROFILE,
     PATH.MY_RESOLUTIONS,
+    PATH.EDIT_PROFILE,
   ]),
   [ROLES.PUBLIC]: new Set([PATH.SIGN_IN, PATH.SIGN_UP, PATH.RESTORE_PASSWORD, PATH.SEND_EMAIL]),
 };

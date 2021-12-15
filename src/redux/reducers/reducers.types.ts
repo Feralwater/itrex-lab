@@ -1,4 +1,8 @@
-import { AppointmentsForDoctor, AppointmentsForPatient } from '../../resources/appointments/appointments.types';
+import {
+  AppointmentForDoctor, AppointmentForPatient,
+  AppointmentsForDoctor,
+  AppointmentsForPatient
+} from '../../resources/appointments/appointments.types';
 import { ResolutionsForPatientResponse, ResolutionsResponse } from '../../resources/resolutions/resolutions.types';
 
 export type Status = 'idle' | 'loading' | 'failed' | 'fulfilled'
@@ -82,11 +86,15 @@ export interface ResolutionsForPatientState extends ResolutionsForPatientRespons
   status: Status
 }
 
-export interface AppointmentsForPatientState extends AppointmentsForPatient{
+export interface AppointmentsForPatientState {
+  appointments: Array<AppointmentForPatient>,
+  total: number
   responseStatus: Status
 }
 
-export interface AppointmentsForDoctorState extends AppointmentsForDoctor{
+export interface AppointmentsForDoctorState {
+  appointments: Array<AppointmentForDoctor>,
+  total: number
   responseStatus: Status
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledInput } from './Input.styles';
+import { Label, StyledInput } from './Input.styles';
 import { InputProps } from './Input.types';
 
 export const Input:React.VFC<InputProps> = ({
@@ -19,9 +19,9 @@ export const Input:React.VFC<InputProps> = ({
     return inputType;
   }
   return (
-    <label htmlFor={id}>
+    <Label htmlFor={id}>
       {label}
       <StyledInput id={id} isError={isError} icon={icon} type={chooseInputType(type)} {...restProps} />
-    </label>
+    </Label>
   );
 };

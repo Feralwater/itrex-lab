@@ -23,16 +23,6 @@ export const InputContainer = styled.div<InputProps>`
       left: 18px;
     }
   }
-
-  & label {
-    font-weight: 500;
-    font-size: 13px;
-    line-height: 130%;
-    color: ${colors.black['1']};
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
 `;
 
 export const StyledInput = styled.input<InputProps>`
@@ -107,4 +97,14 @@ export const SearchContainer = styled(InputContainer)`
     padding: 10px 10px 10px 58px;
     box-shadow: none;
   }
+`;
+
+export const Label = styled.label`
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 130%;
+    color: ${colors.black['1']};
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 `;

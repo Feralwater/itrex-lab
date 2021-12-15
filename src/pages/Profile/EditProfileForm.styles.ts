@@ -3,6 +3,6 @@ import { Form } from 'formik';
 
 export const EditForm = styled(Form)`
   display: flex;
-  align-items: flex-end;
-  gap: 40px;
+  flex-direction: column;
+  gap: 32px;
 `;

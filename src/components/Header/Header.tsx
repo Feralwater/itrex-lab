@@ -18,6 +18,7 @@ import { useAppSelector } from '../../hooks';
 import { componentsDictionary } from '../dictionary/componentsDictionary';
 import { selectProfile } from '../../redux/reducers';
 import { PATH } from '../../routes/constants';
+import { selectEditProfile } from '../../redux/reducers/editProfile.reducer';
 
 export const Header: React.VFC = () => {
   const {
@@ -26,7 +27,11 @@ export const Header: React.VFC = () => {
     roleName,
     photo,
   } = useAppSelector(selectProfile);
-
+  const {
+    firstName: editFirstName,
+    lastName: editLastName,
+    photo: editPhoto,
+  } = useAppSelector(selectEditProfile);
   return (
     <HeaderWrapper>
       <HeaderContainer>
@@ -36,12 +41,12 @@ export const Header: React.VFC = () => {
         </HeaderLogo>
         <User>
           <UserInfo>
-            <UserName>{`${firstName} ${lastName}`}</UserName>
+            <UserName>{`${editFirstName || firstName} ${editLastName || lastName}`}</UserName>
             <UserRole>{roleName}</UserRole>
           </UserInfo>
           <UserImageContainer>
             <Link to={PATH.PROFILE}>
-              <UserImage src={photo} alt={componentsDictionary.header.avatarAlt} />
+              <UserImage src={editPhoto || photo} alt={componentsDictionary.header.avatarAlt} />
             </Link>
             <NetworkStatus isOnline />
           </UserImageContainer>

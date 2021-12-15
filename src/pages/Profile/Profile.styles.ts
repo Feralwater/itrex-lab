@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { colors } from '../../components';
-import { EditProfileFormProps } from './EditProfile.types';
 
 export const TitlePanel = styled.div`
   display: flex;
@@ -45,7 +44,11 @@ export const EditImage = styled.input`
   opacity: 0;
 `;
 
-export const EditImageContainer = styled.div<EditProfileFormProps>`
+export interface EditImageContainerProps {
+  profilePhoto: string;
+}
+
+export const EditImageContainer = styled.div<EditImageContainerProps>`
   width: 136px;
   height: 136px;
   background: ${(props) => (props.profilePhoto && `linear-gradient(0deg, ${colors.black['040']}, ${colors.black['040']}), url(${props.profilePhoto}) no-repeat center center/contain`)};
@@ -78,4 +81,10 @@ export const ImageContainer = styled.div`
     height: 100%;
     border-radius: 16px;
   }
+`;
+
+export const EditFormElements = styled.div`
+  display: flex;
+  align-items: end;
+  gap: 32px;
 `;

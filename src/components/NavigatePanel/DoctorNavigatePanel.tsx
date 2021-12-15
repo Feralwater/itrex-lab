@@ -8,8 +8,6 @@ import { PATH } from '../../routes/constants';
 import { NavigatePanelProps } from '../../pages/AppointmentsContainer/AppointmentsContainer.types';
 import isActiveTab from './utils';
 import { InputSearchContainer } from '../Input';
-import { SelectForSortContainer } from '../Select';
-import { optionsForSearchSelect } from './constants';
 
 export const DoctorNavigatePanel: React.VFC<NavigatePanelProps> = ({ pageTitle }) => (
   <>
@@ -38,12 +36,6 @@ export const DoctorNavigatePanel: React.VFC<NavigatePanelProps> = ({ pageTitle }
           iconURL="/svg/search-icon.svg"
           placeholder="Search"
           inputSize="small"
-        />
-        <SelectForSortContainer
-          labelText=""
-          id=""
-          name=""
-          options={optionsForSearchSelect}
         />
       </SearchAndFilter>
     </UserPageTitle>

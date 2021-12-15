@@ -3,6 +3,3 @@ export interface EditProfileData{
   lastName: string
   avatar?: File
 }
-export interface EditProfileFormProps{
-   profilePhoto: string
- }
