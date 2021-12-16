@@ -27,6 +27,7 @@ export const InfoContainer = styled.div`
 export const EditLink = styled(Link)`
   color: ${colors.white};
   text-decoration: none;
+  margin: 0 0 0 32px;
 `;
 
 export const CancelLink = styled(Link)`

@@ -1,10 +1,9 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
+import { call, takeEvery } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
-import { login, notificationSuccess } from '../actions';
+import { login } from '../actions';
 import { SignUpInResponse } from '../../resources/auth/auth.types';
 import auth from '../../resources/auth/auth.api';
 import { loginRepository } from '../../resources/loginRepository';
-import { createSuccessNotificationMessage } from '../../serverResponseDictionary/serverResponsesDictionary';
 import utils from './utils';
 
 function* loginPost(action: ReturnType<typeof login.pending>) {
@@ -14,13 +13,11 @@ function* loginPost(action: ReturnType<typeof login.pending>) {
     { userName: payload.userName, password: payload.password },
   );
 
-  const { data, status } = response;
+  const { data } = response;
   if (data.access_token) {
     loginRepository
       .setAccessToken(data.access_token)
       .setRefreshToken(data.refresh_token);
-
-    yield put(notificationSuccess(createSuccessNotificationMessage(status)));
   }
 
   return response.data;

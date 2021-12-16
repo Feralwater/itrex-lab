@@ -24,6 +24,11 @@ export class LoginRepository {
     return this;
   }
 
+  removeRefreshToken() {
+    this.client.removeItem(this.refreshTokenKey);
+    return this;
+  }
+
   getRefreshToken() {
     return this.client.getItem(this.refreshTokenKey);
   }
