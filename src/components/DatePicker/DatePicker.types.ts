@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction } from 'react';
+import { FieldHookConfig } from 'formik';
 
 export interface DatePickerProps {
-  doctorId: string
   disableDate: boolean
   setSelectedDate: Dispatch<SetStateAction<string>>;
-  [x: string]: any;
+  field: FieldHookConfig<Date | null>;
 }

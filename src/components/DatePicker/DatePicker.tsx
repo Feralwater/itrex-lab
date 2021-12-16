@@ -9,9 +9,9 @@ import { DatePickerProps } from './DatePicker.types';
 import { selectedDateFormatString, shortWeekdayFormatString } from './constants';
 
 export const DatePicker:React.VFC<DatePickerProps> = ({
-  doctorId, disableDate, setSelectedDate, ...props
+  disableDate, setSelectedDate, field,
 }) => {
-  const [, , { setValue }] = useField(props.field);
+  const [, , { setValue }] = useField(field);
   const handlerClickDay = (checkedDate: Date) => {
     setValue(checkedDate);
     setSelectedDate(format(checkedDate, selectedDateFormatString));
