@@ -52,6 +52,7 @@ export const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
           resolutionModalTitle={dictionary.resolutionModal.createResolutionTitle}
         />
         <ResolutionModalButtons
+          activeButtonType="button"
           cancelHandler={cancelHandler}
           saveHandler={saveHandler}
           passiveButtonText={dictionary.resolutionModal.cancelButtonText}
@@ -68,6 +69,7 @@ export const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
           resolutionModalTitle={dictionary.resolutionModal.editResolutionTitle}
         />
         <ResolutionModalButtons
+          activeButtonType="button"
           cancelHandler={cancelHandler}
           saveHandler={editHandler}
           passiveButtonText={dictionary.resolutionModal.cancelButtonText}

@@ -4,7 +4,7 @@ import {
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import editProfileValidationSchema from './validation/signUp.validation';
+import editProfileValidationSchema from './validation/editProfile.validation';
 import { signUpFieldsData } from './editFormFieldsData';
 import { editProfile } from '../../redux/actions';
 import { EditForm } from './EditProfileForm.styles';

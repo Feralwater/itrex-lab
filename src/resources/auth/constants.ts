@@ -3,4 +3,5 @@ export const AUTH_API = {
   authLogin: () => 'auth/login',
   authProfile: () => 'auth/profile',
   authTokenRefresh: () => 'auth/token/refresh',
+  authChangePassword: () => 'auth/password',
 };

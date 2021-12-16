@@ -1,6 +1,8 @@
 import jwt from 'jwt-decode';
 import instance from '../../services/api/api';
 import {
+  ChangePasswordData,
+  ChangePasswordResponse,
   JWTToken,
   ProfileResponse,
   SignInData, SignUpData, SignUpInResponse,
@@ -22,6 +24,9 @@ const auth = {
   },
   async refreshToken() {
     return instance.post<SignUpInResponse>(AUTH_API.authTokenRefresh());
+  },
+  async changePassword(data:ChangePasswordData) {
+    return instance.patch<ChangePasswordResponse>(AUTH_API.authChangePassword(), data);
   },
 };
 

@@ -2,7 +2,12 @@ import styled, { css } from 'styled-components';
 import { colors } from '../CommonStyles';
 import { InputProps } from './Input.types';
 
-export const InputContainer = styled.div<InputProps>`
+export interface InputContainerProps{
+  icon: 'default' | 'left';
+  iconURL?: string;
+}
+
+export const InputContainer = styled.div<InputContainerProps>`
   position: relative;
   margin: 0 0 26px 0;
 

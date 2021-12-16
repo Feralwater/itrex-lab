@@ -9,7 +9,7 @@ export const InputSearchContainer: React.VFC<InputProps> = ({
   iconURL,
   ...props
 }) => (
-  <SearchContainer iconURL={iconURL} {...props}>
+  <SearchContainer iconURL={iconURL} icon={icon}>
     <Input type={type} icon={icon} {...props} />
   </SearchContainer>
 );

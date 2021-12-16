@@ -8,6 +8,7 @@ const pagesDictionary = {
     signInTitle: 'Sign In',
     signUpTitle: 'Sign Up',
     submitTitle: 'Submit',
+    changePasswordTitle: 'Change Password',
   },
   authorisedPages: {
     sendEmailMessage1: 'An email has been sent to',

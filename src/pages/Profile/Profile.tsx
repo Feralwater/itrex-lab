@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { H1, H2, SubTitle } from 'components/CommonStyles/Topography';
 import pagesDictionary from '../dictionary/pagesDictionary';
 import { useAppSelector } from '../../hooks';
 import { selectProfile } from '../../redux/reducers';
-import { Button } from '../../components';
+import { Button, ModalWindow } from '../../components';
 import {
   EditLink,
   ImageContainer, InfoContainer, ProfileContainer, TitlePanel,
 } from './Profile.styles';
 import { PATH } from '../../routes/constants';
 import { selectEditProfile } from '../../redux/reducers/editProfile.reducer';
+import ChangePasswordModal from './ChangePasswordModal';
 
 export const Profile: React.VFC = () => {
   const {
@@ -23,6 +24,10 @@ export const Profile: React.VFC = () => {
     roleName,
     photo,
   } = useAppSelector(selectProfile);
+  const [activeChangePasswordModal, setActiveChangePasswordModal] = useState<boolean>(true);
+
+  const closeModalHandler = () => setActiveChangePasswordModal(true);
+
   return (
     <>
       <TitlePanel>
@@ -55,11 +60,15 @@ export const Profile: React.VFC = () => {
             type="button"
             iconUrl="/svg/lock.svg"
             isBorder
+            onClick={closeModalHandler}
           >
             {pagesDictionary.profile.changePasswordButton}
           </Button>
         </InfoContainer>
       </ProfileContainer>
+      <ModalWindow activeModal={activeChangePasswordModal} setActiveModal={setActiveChangePasswordModal}>
+        <ChangePasswordModal setActiveChangePasswordModal={setActiveChangePasswordModal} />
+      </ModalWindow>
     </>
   );
 };

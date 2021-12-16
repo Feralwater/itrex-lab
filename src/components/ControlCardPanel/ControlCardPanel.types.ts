@@ -21,9 +21,10 @@ export interface ResolutionModalProps {
 
 export interface ResolutionModalButtonsProps{
   cancelHandler: () => void
-  saveHandler: () => void
+  saveHandler?: () => void
   activeButtonText: string
   passiveButtonText: string
   activeButtonIcon: string
   passiveButtonIcon: string
+  activeButtonType: 'button' | 'submit' | 'reset' | undefined
 }

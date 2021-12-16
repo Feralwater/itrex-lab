@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { SignInData, SignUpData, SignUpInResponse } from '../../resources/auth/auth.types';
 import {
   AppointmentsForDoctor,
@@ -10,7 +11,6 @@ import {
   ResolutionData,
   ResolutionResponse, ResolutionsForPatientResponse,
 } from '../../resources/resolutions/resolutions.types';
-import { EditProfileData } from '../../pages/Profile/EditProfile.types';
 
 export type LoginPending = SignInData;
 export type LoginFulfilled = SignUpInResponse;
@@ -26,10 +26,10 @@ export type ResolutionsForPatientFulfilled = ResolutionsForPatientResponse;
 export type ResolutionsPending = AppointmentsForDoctorPending;
 
 export interface AppointmentPending {
-  date: string
-  reason: string
-  note: string
-  doctorID: string
+  date: string;
+  reason: string;
+  note: string;
+  doctorID: string;
 }
 
 export interface AppointmentsForPatientPending {
@@ -46,6 +46,20 @@ export interface DeleteAppointmentPending {
   id: string;
 }
 
+export interface ChangePasswordPending {
+  oldPassword: string;
+  newPassword: string;
+}
+
+export interface ChangePasswordFulfilled {
+  id: string,
+  first_name: string,
+  last_name: string,
+  password: string,
+  photo: string,
+  role_id: string
+}
+
 export type AppointmentFulfilled = NewAppointmentResponse;
 
 export type AppointmentsForPatientFulfilled = AppointmentsForPatient;
@@ -55,6 +69,6 @@ export type AppointmentsForDoctorFulfilled = AppointmentsForDoctor;
 export type DeleteAppointmentFulfilled = DeleteAppointment;
 
 export interface FreeTimePending {
-  date: string|null
-  doctorID: string
+  date: string | null;
+  doctorID: string;
 }

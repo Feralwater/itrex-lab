@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
 import { RoleName } from 'redux/reducers/reducers.types';
+import { ChangePasswordFulfilled, ChangePasswordPending } from '../../redux/actions/actions.types';
 
 export interface SignUpInResponse {
   access_token: string;
@@ -18,6 +19,8 @@ export interface SignInData {
   password: string;
 }
 
+export type ChangePasswordData = ChangePasswordPending
+
 export interface ProfileResponse {
   id: string,
   first_name: string,
@@ -26,9 +29,11 @@ export interface ProfileResponse {
   role_name: RoleName
 }
 
-export interface EditProfileResponse extends ProfileResponse{
-  specialization_name: string
+export interface EditProfileResponse extends ProfileResponse {
+  specialization_name: string;
 }
+
+export type ChangePasswordResponse = ChangePasswordFulfilled
 
 export interface JWTToken {
   name: string;
