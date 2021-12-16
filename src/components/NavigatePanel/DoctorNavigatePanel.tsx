@@ -35,6 +35,7 @@ export const DoctorNavigatePanel: React.VFC<NavigatePanelProps> = ({ pageTitle }
           icon="left"
           iconURL="/svg/search-icon.svg"
           placeholder="Search"
+          isRequire={false}
           inputSize="small"
         />
       </SearchAndFilter>

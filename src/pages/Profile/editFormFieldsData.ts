@@ -10,6 +10,7 @@ export const signUpFieldsData:Array<FormFieldData> = [
     placeholder: 'First Name',
     type: 'text',
     icon: 'default',
+    isRequire: false,
     inputSize: 'small',
   },
   {
@@ -20,6 +21,7 @@ export const signUpFieldsData:Array<FormFieldData> = [
     placeholder: 'Last Name',
     type: 'text',
     icon: 'default',
+    isRequire: false,
     inputSize: 'small',
   },
 ];

@@ -1,6 +1,6 @@
 import React from 'react';
 import Select from 'react-select';
-import { SelectLabel, SelectStyles } from './Select.styles';
+import { RequireSign, SelectLabel, SelectStyles } from './Select.styles';
 import { searchOptionHelper } from './searchOptionHelper';
 
 export const CustomSelect: React.VFC<any> = ({
@@ -9,10 +9,16 @@ export const CustomSelect: React.VFC<any> = ({
   options,
   placeholder,
   onChangeHandler,
+  isRequire,
   ...props
 }) => (
   <SelectLabel htmlFor={id}>
-    {labelText}
+    <span>
+      {labelText}
+      <RequireSign isRequire={isRequire}>
+        *
+      </RequireSign>
+    </span>
     <Select
       {...props}
       id={id}

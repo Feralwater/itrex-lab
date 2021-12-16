@@ -95,3 +95,15 @@ export const SelectLabel = styled.label`
   gap: 10px;
   margin: 0 0 26px 0;
 `;
+
+interface RequireSignProps{
+  isRequire: boolean
+}
+
+export const RequireSign = styled.i<RequireSignProps>`
+  display: ${(props) => (props.isRequire ? 'inline' : 'none')};
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 140%;
+  color: ${colors.brink_pink};
+`;

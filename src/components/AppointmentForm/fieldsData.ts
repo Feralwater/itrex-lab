@@ -6,10 +6,11 @@ const makeAppointmentsFieldsData: Array<FormFieldData> = [
     component: InputFormContainer,
     name: 'reason',
     id: 'reason',
-    label: 'Reason for the visit*',
+    label: 'Reason for the visit',
     type: 'text',
     placeholder: 'Leave a reason for the visit',
     icon: 'default',
+    isRequire: true,
     inputSize: 'large',
   },
   {
@@ -20,6 +21,7 @@ const makeAppointmentsFieldsData: Array<FormFieldData> = [
     type: 'text',
     placeholder: 'Leave a note if needed',
     icon: 'default',
+    isRequire: false,
     inputSize: 'large',
   },
 ];

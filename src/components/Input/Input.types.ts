@@ -9,6 +9,7 @@ export interface InputProps {
   errorText?: string;
   inputSize: 'large' | 'small';
   isSecurePassword?: boolean;
+  isRequire: boolean;
 
   [x: string]: any;
 }

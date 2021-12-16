@@ -11,6 +11,7 @@ export const signInFieldsData:Array<FormFieldData> = [
     placeholder: 'Email',
     icon: 'left',
     iconURL: '/svg/email.svg',
+    isRequire: false,
     inputSize: 'large',
   },
   {
@@ -22,6 +23,7 @@ export const signInFieldsData:Array<FormFieldData> = [
     type: 'password',
     icon: 'left',
     iconURL: '/svg/lock.svg',
+    isRequire: false,
     inputSize: 'large',
   },
 ];
@@ -36,6 +38,7 @@ export const signUpFieldsData:Array<FormFieldData> = [
     type: 'text',
     icon: 'left',
     iconURL: '/svg/user.svg',
+    isRequire: false,
     inputSize: 'large',
   },
   {
@@ -47,6 +50,7 @@ export const signUpFieldsData:Array<FormFieldData> = [
     type: 'text',
     icon: 'left',
     iconURL: '/svg/user.svg',
+    isRequire: false,
     inputSize: 'large',
   },
   {
@@ -58,6 +62,7 @@ export const signUpFieldsData:Array<FormFieldData> = [
     type: 'email',
     icon: 'left',
     iconURL: '/svg/email.svg',
+    isRequire: false,
     inputSize: 'large',
   },
   {
@@ -69,6 +74,7 @@ export const signUpFieldsData:Array<FormFieldData> = [
     type: 'password',
     icon: 'left',
     iconURL: '/svg/lock.svg',
+    isRequire: false,
     inputSize: 'large',
   },
   {
@@ -80,6 +86,7 @@ export const signUpFieldsData:Array<FormFieldData> = [
     type: 'password',
     icon: 'left',
     iconURL: '/svg/check-mark.svg',
+    isRequire: false,
     inputSize: 'large',
   },
 ];
@@ -94,6 +101,7 @@ export const restoreFieldsData:Array<FormFieldData> = [
     placeholder: 'Email',
     icon: 'left',
     iconURL: '/svg/email.svg',
+    isRequire: false,
     inputSize: 'large',
   },
 ];

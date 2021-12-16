@@ -21,6 +21,7 @@ export const changePasswordFieldsData:Array<FormFieldData> = [
     placeholder: 'Enter your old password',
     icon: 'left',
     iconURL: '/svg/email.svg',
+    isRequire: false,
     inputSize: 'large',
   },
   {
@@ -32,6 +33,7 @@ export const changePasswordFieldsData:Array<FormFieldData> = [
     type: 'password',
     icon: 'left',
     iconURL: '/svg/lock.svg',
+    isRequire: false,
     inputSize: 'large',
   },
 ];

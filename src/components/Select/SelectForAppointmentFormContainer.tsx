@@ -16,5 +16,5 @@ export const SelectForAppointmentFormContainer: React.VFC<SelectProps> = ({
     }
   };
 
-  return (<CustomSelect onChangeHandler={onChangeHandler} {...props} />);
+  return (<CustomSelect onChangeHandler={onChangeHandler} isRequire {...props} />);
 };

@@ -11,6 +11,7 @@ export const InputFormContainer:React.VFC<InputProps> = ({
   iconURL,
   isError,
   errorText,
+  isRequire,
   ...props
 }) => {
   const [isSecurePassword, setIsSecurePassword] = useState<boolean>(true);
@@ -19,7 +20,7 @@ export const InputFormContainer:React.VFC<InputProps> = ({
 
   return (
     <InputContainer icon={icon} iconURL={iconURL}>
-      <Input type={type} icon={icon} {...props} />
+      <Input type={type} icon={icon} isRequire={isRequire} {...props} />
       {type === 'password' && (
         <InputPasswordIcon
           isVisible={isSecurePassword}
