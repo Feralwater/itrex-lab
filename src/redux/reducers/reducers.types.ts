@@ -1,7 +1,5 @@
 import {
   AppointmentForDoctor, AppointmentForPatient,
-  AppointmentsForDoctor,
-  AppointmentsForPatient
 } from '../../resources/appointments/appointments.types';
 import { ResolutionsForPatientResponse, ResolutionsResponse } from '../../resources/resolutions/resolutions.types';
 

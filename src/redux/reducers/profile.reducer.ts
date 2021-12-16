@@ -3,9 +3,8 @@ import { ProfileState } from './reducers.types';
 import { ROLES, ROLES_API } from '../../routes/constants';
 import { ProfileResponse } from '../../resources/auth/auth.types';
 import { RootState } from '../store';
-import { editProfile, profile } from '../actions';
+import { profile } from '../actions';
 import { FETCH_STATUS } from './constants';
-import { NewDoctorProfileResponse } from '../../resources/profile/profile.types';
 
 const initialState = {
   id: '',

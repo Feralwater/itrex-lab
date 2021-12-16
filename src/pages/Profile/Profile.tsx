@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { H1, H2, SubTitle } from 'components/CommonStyles/Topography';
 import pagesDictionary from '../dictionary/pagesDictionary';
 import { useAppSelector } from '../../hooks';
