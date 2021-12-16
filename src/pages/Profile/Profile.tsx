@@ -33,7 +33,7 @@ export const Profile: React.VFC = () => {
             variant="primary"
             icon="left"
             type="button"
-            iconUrl="svg/pencil-icon.svg"
+            iconUrl="/svg/pencil-icon.svg"
           >
             {pagesDictionary.profile.editButton}
           </Button>

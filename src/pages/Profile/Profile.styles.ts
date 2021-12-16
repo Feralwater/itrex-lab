@@ -51,7 +51,7 @@ export interface EditImageContainerProps {
 export const EditImageContainer = styled.div<EditImageContainerProps>`
   width: 136px;
   height: 136px;
-  background: ${(props) => (props.profilePhoto && `linear-gradient(0deg, ${colors.black['040']}, ${colors.black['040']}), url(${props.profilePhoto}) no-repeat center center/contain`)};
+  background: ${(props) => (props.profilePhoto && `linear-gradient(0deg, ${colors.black['040']}, ${colors.black['040']}), url(${props.profilePhoto}) no-repeat center center/cover`)};
   border-radius: 16px;
   display: flex;
   align-items: center;
@@ -80,6 +80,7 @@ export const ImageContainer = styled.div`
     width: 100%;
     height: 100%;
     border-radius: 16px;
+    object-fit: cover;
   }
 `;
 
