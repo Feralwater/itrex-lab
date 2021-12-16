@@ -1,7 +1,6 @@
 import { AxiosResponse } from 'axios';
-import { call, put, takeEvery } from 'redux-saga/effects';
-import { notificationSuccess, resolutionsForPatient } from '../actions';
-import { createSuccessNotificationMessage } from '../../serverResponseDictionary/serverResponsesDictionary';
+import { call, takeEvery } from 'redux-saga/effects';
+import { resolutionsForPatient } from '../actions';
 import utils from './utils';
 import { ResolutionsForPatientResponse } from '../../resources/resolutions/resolutions.types';
 import resolutionsAPI from '../../resources/resolutions/resolutions.api';
@@ -9,7 +8,6 @@ import resolutionsAPI from '../../resources/resolutions/resolutions.api';
 function* resolutionsForPatientGet(action: ReturnType<typeof resolutionsForPatient.pending>) {
   const { payload } = action;
   const response: AxiosResponse<ResolutionsForPatientResponse> = yield call(resolutionsAPI.fetchResolutionsForPatient, payload.offset, payload.limit);
-  yield put(notificationSuccess(createSuccessNotificationMessage(response.status)));
   return response.data;
 }
 
