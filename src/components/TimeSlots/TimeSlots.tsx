@@ -9,9 +9,10 @@ import { timeForDisplayFormat } from './constants';
 export const TimeSlots: React.VFC<TimeSlotsProps> = ({
   freeTime,
   date,
-  ...props
+  value,
+  field,
 }) => {
-  const [, , { setValue }] = useField(props.field);
+  const [, , { setValue }] = useField(field);
 
   const freeTimeSlots = freeTime.map((time) => ({
     timeForDisplay: format(parseISO(time), timeForDisplayFormat),
@@ -25,7 +26,7 @@ export const TimeSlots: React.VFC<TimeSlotsProps> = ({
   function getTimeForServer(time: string) {
     return freeTimeSlots.filter((timeSlot) => timeSlot.timeForDisplay === time)?.[0]?.timeForServer;
   }
-  const isChecked = (time:string) => props.value === getTimeForServer(time);
+  const isChecked = (time:string) => value === getTimeForServer(time);
 
   const handlerClick = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(getTimeForServer(e.currentTarget.value));
