@@ -1,10 +1,10 @@
 /* eslint-disable no-nested-ternary */
-import { StylesConfig } from 'react-select';
+import { GroupBase, StylesConfig } from 'react-select';
 import styled from 'styled-components';
-import { Options } from './Select.types';
+import { LabelType } from './Select.types';
 import { colors } from '../CommonStyles';
 
-export const SelectStyles: StylesConfig<Array<Options>> = {
+export const SelectStyles: StylesConfig<LabelType, false, GroupBase<LabelType>> = {
   control: (styles) => ({
     ...styles,
     backgroundColor: `${colors.white}`,

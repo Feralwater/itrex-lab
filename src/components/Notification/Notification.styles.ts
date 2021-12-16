@@ -14,7 +14,7 @@ export const NotificationBody = styled.div<NotificationBodyType>`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  color: #ffffff;
+  color: ${colors.white};
   border-radius: 12px;
   width: 457px;
   min-height: 122px;

@@ -3,9 +3,14 @@ import Select from 'react-select';
 import { SelectLabel, SelectStyles } from './Select.styles';
 import { searchOptionHelper } from './searchOptionHelper';
 
-export const CustomSelect = ({
-  labelText, id, name, options, placeholder, setSelectedValue, onChangeHandler, ...props
-}: any) => (
+export const CustomSelect: React.VFC<any> = ({
+  labelText,
+  id,
+  options,
+  placeholder,
+  onChangeHandler,
+  ...props
+}) => (
   <SelectLabel htmlFor={id}>
     {labelText}
     <Select
