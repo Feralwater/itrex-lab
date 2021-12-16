@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { colors } from '../CommonStyles';
 import { InputProps } from './Input.types';
 
-export interface InputContainerProps{
+export interface InputContainerProps {
   icon: 'default' | 'left';
   iconURL?: string;
 }
@@ -37,7 +37,7 @@ export const StyledInput = styled.input<InputProps>`
   box-shadow: 0px 4px 32px ${colors.link_water['016']};
   border-radius: 8px;
   outline: none;
-  max-width: 100%;
+  width: 100%;
   font-size: ${(props) => (props.inputSize === 'large' ? '17px' : '15px')};
   line-height: ${(props) => (props.inputSize === 'large' ? '140%' : '90%')};
 
@@ -77,7 +77,16 @@ export const InputPasswordIcon = styled.i<InputPasswordIconProps>`
   right: 18px;
   cursor: pointer;
   -webkit-tap-highlight-color: ${colors.transparent};
-  background: ${(props) => (props.isVisible ? 'url("../../svg/eye-off-icon.svg") no-repeat' : 'url("../../svg/eye-icon.svg") no-repeat')};
+`;
+
+export const InputPasswordIconNotVisible = styled(InputPasswordIcon)`
+  background: url("../../svg/eye-off-icon.svg") no-repeat;
+  visibility: ${(props) => (props.isVisible ? 'hidden' : 'visible')};
+`;
+
+export const InputPasswordIconVisible = styled(InputPasswordIcon)`
+  background: url("../../svg/eye-icon.svg") no-repeat;
+  visibility: ${(props) => (props.isVisible ? 'visible' : 'hidden')};
 `;
 
 export const InputErrorMessage = styled.div`
@@ -105,11 +114,9 @@ export const SearchContainer = styled(InputContainer)`
 `;
 
 export const Label = styled.label`
-    font-weight: 500;
-    font-size: 13px;
-    line-height: 130%;
-    color: ${colors.black['1']};
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 130%;
+  color: ${colors.black['1']};
+  margin: 0 0 10px 0;
 `;

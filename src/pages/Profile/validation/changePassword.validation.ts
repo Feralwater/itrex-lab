@@ -4,11 +4,11 @@ const changePasswordValidationSchema = Yup.object({
   oldPassword: Yup.string()
     .min(2, 'Password must be at least 2 characters')
     .max(30, 'Password must be 30 characters or less')
-    .required('Password is required'),
+    .required('Old password is required'),
   newPassword: Yup.string()
     .min(2, 'Password must be at least 2 characters')
     .max(30, 'Password must be 30 characters or less')
-    .required('Password is required'),
+    .required('New password is required'),
 });
 
 export default changePasswordValidationSchema;

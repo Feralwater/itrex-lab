@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import {
-  InputContainer, InputErrorMessage, InputPasswordIcon,
+  InputContainer, InputErrorMessage, InputPasswordIconNotVisible, InputPasswordIconVisible, Label,
 } from './Input.styles';
 import { InputProps } from './Input.types';
 import { Input } from './Input';
+import { RequireSign } from '../Select/Select.styles';
 
 export const InputFormContainer:React.VFC<InputProps> = ({
   type,
@@ -12,6 +13,8 @@ export const InputFormContainer:React.VFC<InputProps> = ({
   isError,
   errorText,
   isRequire,
+  id,
+  label,
   ...props
 }) => {
   const [isSecurePassword, setIsSecurePassword] = useState<boolean>(true);
@@ -19,15 +22,31 @@ export const InputFormContainer:React.VFC<InputProps> = ({
   const onEyeIconClickHandler = () => setIsSecurePassword((prevState) => !prevState);
 
   return (
-    <InputContainer icon={icon} iconURL={iconURL}>
-      <Input type={type} icon={icon} isRequire={isRequire} {...props} />
-      {type === 'password' && (
-        <InputPasswordIcon
-          isVisible={isSecurePassword}
-          onClick={onEyeIconClickHandler}
-        />
-      )}
-      {isError && <InputErrorMessage>{errorText}</InputErrorMessage>}
-    </InputContainer>
+    <>
+      <Label htmlFor={id}>
+        <span>
+          {label}
+          <RequireSign isRequire={isRequire}>
+            *
+          </RequireSign>
+        </span>
+      </Label>
+      <InputContainer icon={icon} iconURL={iconURL}>
+        <Input type={type} icon={icon} label={label} id={id} isRequire={isRequire} isSecurePassword={isSecurePassword} {...props} />
+        {type === 'password' && (
+        <>
+          <InputPasswordIconNotVisible
+            isVisible={isSecurePassword}
+            onClick={onEyeIconClickHandler}
+          />
+          <InputPasswordIconVisible
+            isVisible={isSecurePassword}
+            onClick={onEyeIconClickHandler}
+          />
+        </>
+        )}
+        {isError && <InputErrorMessage>{errorText}</InputErrorMessage>}
+      </InputContainer>
+    </>
   );
 };

@@ -26,7 +26,7 @@ export const Profile: React.VFC = () => {
     roleName,
     photo,
   } = useAppSelector(selectProfile);
-  const [activeChangePasswordModal, setActiveChangePasswordModal] = useState<boolean>(true);
+  const [activeChangePasswordModal, setActiveChangePasswordModal] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const closeModalHandler = () => setActiveChangePasswordModal(true);
   const logoutHandler = () => {

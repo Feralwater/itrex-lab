@@ -49,7 +49,7 @@ export const SignInForm:React.VFC<SignInFormProps> = ({ status, handleSubmitForm
             {...data}
           />
         ))}
-        <ButtonWithLoader status={status} isValid={isValid} dirty={dirty}>{dictionary.form.signUpTitle}</ButtonWithLoader>
+        <ButtonWithLoader status={status} isValid={isValid} dirty={dirty}>{dictionary.form.signInTitle}</ButtonWithLoader>
         <CustomLink to={PATH.RESTORE_PASSWORD}>{dictionary.form.forgotLinkText}</CustomLink>
       </CustomForm>
     )}
