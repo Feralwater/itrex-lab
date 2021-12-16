@@ -69,8 +69,8 @@ export const AppointmentCard: React.VFC<AppointmentCardProps> = ({
   }
 
   useEffect(() => {
-    const handler = (event:any) => {
-      if (menuRef?.current && !menuRef.current.contains(event.target)) {
+    const handler = (event:Event) => {
+      if (menuRef?.current && !menuRef.current.contains(event.target as Element)) {
         setIsMenuOpen(false);
       }
     };
