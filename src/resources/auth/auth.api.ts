@@ -41,6 +41,7 @@ instance.interceptors.request.use(
       request.headers = {
         ...request.headers,
         Authorization: `Bearer ${token}`,
+        Accept: 'application/json',
       };
     }
     return request;

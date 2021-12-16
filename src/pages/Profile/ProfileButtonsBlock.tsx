@@ -4,6 +4,7 @@ import { CancelLink, EditButtons } from './Profile.styles';
 import { Button, ButtonWithLoaderProps, colors } from '../../components';
 import { PATH } from '../../routes/constants';
 import pagesDictionary from '../dictionary/pagesDictionary';
+import { FETCH_STATUS } from '../../redux/reducers/constants';
 
 export const ProfileButtonsBlock: React.VFC<ButtonWithLoaderProps> = ({
   status,
@@ -24,7 +25,7 @@ export const ProfileButtonsBlock: React.VFC<ButtonWithLoaderProps> = ({
       </Button>
     </CancelLink>
     {
-      status !== 'loading'
+      status !== FETCH_STATUS.LOADING
         ? (
           <Button
             type="submit"

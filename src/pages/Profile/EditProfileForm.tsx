@@ -7,7 +7,6 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 import editProfileValidationSchema from './validation/signUp.validation';
 import { signUpFieldsData } from './editFormFieldsData';
 import { editProfile } from '../../redux/actions';
-import { EditProfileData } from './EditProfile.types';
 import { EditForm } from './EditProfileForm.styles';
 import {
   EditFormElements, EditImage, EditImageContainer, TitlePanel,
@@ -19,6 +18,8 @@ import { selectProfile } from '../../redux/reducers';
 import { EditProfileInitial } from './constants';
 import { selectEditProfile } from '../../redux/reducers/editProfile.reducer';
 import { PATH } from '../../routes/constants';
+import { EditProfileData } from './EditProfile.types';
+import { FETCH_STATUS } from '../../redux/reducers/constants';
 
 export const EditProfileForm: React.VFC = () => {
   const dispatch = useAppDispatch();
@@ -27,16 +28,15 @@ export const EditProfileForm: React.VFC = () => {
   const history = useHistory();
 
   const handleSubmitForm = (values: EditProfileData) => {
-    dispatch(editProfile.pending({
-      firstName: values.firstName,
-      lastName: values.lastName,
-      avatar: values.avatar,
-    }));
-    if (status !== 'failed') {
+    const data = new FormData();
+    data.append('firstName', values.firstName);
+    data.append('lastName', values.lastName);
+    data.append('avatar', values.avatar);
+    dispatch(editProfile.pending(data));
+    if (status !== FETCH_STATUS.FAILED) {
       history.push(PATH.PROFILE);
     }
   };
-
   return (
     <Formik
       initialValues={EditProfileInitial}

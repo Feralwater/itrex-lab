@@ -4,6 +4,7 @@ import { Button } from '../Button';
 import { colors } from '../CommonStyles';
 import { Status } from '../../redux/reducers/reducers.types';
 import { MakeAppointmentButtonContainer } from './MakeAppointment.styles';
+import { FETCH_STATUS } from '../../redux/reducers/constants';
 
 export interface SubmitOrLoaderProps {
   status: Status;
@@ -21,7 +22,7 @@ export const SubmitOrLoader: React.FC<SubmitOrLoaderProps> = ({
 }) => (
   <div>
     {
-        status !== 'loading'
+        status !== FETCH_STATUS.LOADING
           ? (
             <MakeAppointmentButtonContainer>
               <Button

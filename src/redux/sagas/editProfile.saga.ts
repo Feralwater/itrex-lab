@@ -8,14 +8,7 @@ import { createSuccessNotificationMessage } from '../../serverResponseDictionary
 
 function* editProfilePatch(action: ReturnType<typeof editProfile.pending>) {
   const { payload } = action;
-  const response: AxiosResponse<NewDoctorProfileResponse> = yield call(
-    profile.editProfile,
-    {
-      firstName: payload.firstName,
-      lastName: payload.lastName,
-      avatar: payload.avatar,
-    },
-  );
+  const response: AxiosResponse<NewDoctorProfileResponse> = yield call(profile.editProfile, payload);
   yield put(notificationSuccess(createSuccessNotificationMessage(response.status)));
   return response.data;
 }

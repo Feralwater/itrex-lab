@@ -4,6 +4,7 @@ import { ButtonWrapper } from './AuthForm.styles';
 import { Button } from '../Button';
 import { colors } from '../CommonStyles';
 import { Status } from '../../redux/reducers/reducers.types';
+import { FETCH_STATUS } from '../../redux/reducers/constants';
 
 export interface ButtonWithLoaderProps{
   status: Status
@@ -16,7 +17,7 @@ export const ButtonWithLoader:React.FC<ButtonWithLoaderProps> = ({
 }) => (
   <div>
     {
-        status !== 'loading'
+        status !== FETCH_STATUS.LOADING
           ? (
             <ButtonWrapper>
               <Button

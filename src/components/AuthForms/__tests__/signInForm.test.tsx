@@ -7,12 +7,13 @@ import configureStore from 'redux-mock-store';
 import { BrowserRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
 import { SignInForm } from '../SignInForm';
+import { FETCH_STATUS } from '../../../redux/reducers/constants';
 
 // Arrange
 let inputNodeEmail:HTMLInputElement;
 let inputNodePassword:HTMLInputElement;
 let buttonNode:HTMLButtonElement;
-const status = 'fulfilled';
+const status = FETCH_STATUS.FULFILLED;
 const initialState = { };
 let store;
 
