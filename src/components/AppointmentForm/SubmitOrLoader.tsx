@@ -11,6 +11,7 @@ export interface SubmitOrLoaderProps {
   isValid: boolean;
   dirty: boolean;
   pickedTime: boolean;
+  disable: boolean;
 }
 
 export const SubmitOrLoader: React.FC<SubmitOrLoaderProps> = ({
@@ -19,36 +20,36 @@ export const SubmitOrLoader: React.FC<SubmitOrLoaderProps> = ({
   dirty,
   pickedTime,
   children,
+  disable,
 }) => (
   <div>
     {
-        status !== FETCH_STATUS.LOADING
-          ? (
-            <MakeAppointmentButtonContainer>
-              <Button
-                type="submit"
-                disabled={!(isValid && dirty && pickedTime)}
-                size="large"
-                icon="default"
-                variant="primary"
-                // onClick={handleRedirect}
-              >
-                {children}
-              </Button>
-            </MakeAppointmentButtonContainer>
-          )
-          : (
-            <MakeAppointmentButtonContainer>
-              <Loader
-                type="MutatingDots"
-                color={colors.cornflower_blue}
-                secondaryColor={colors.radical_red}
-                timeout={5000}
-                height={100}
-                width={100}
-              />
-            </MakeAppointmentButtonContainer>
-          )
-      }
+      status !== FETCH_STATUS.LOADING
+        ? (
+          <MakeAppointmentButtonContainer>
+            <Button
+              type="submit"
+              disabled={!(isValid && dirty && pickedTime && disable)}
+              size="large"
+              icon="default"
+              variant="primary"
+            >
+              {children}
+            </Button>
+          </MakeAppointmentButtonContainer>
+        )
+        : (
+          <MakeAppointmentButtonContainer>
+            <Loader
+              type="MutatingDots"
+              color={colors.cornflower_blue}
+              secondaryColor={colors.radical_red}
+              timeout={5000}
+              height={100}
+              width={100}
+            />
+          </MakeAppointmentButtonContainer>
+        )
+    }
   </div>
 );

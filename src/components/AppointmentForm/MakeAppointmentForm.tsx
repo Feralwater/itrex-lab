@@ -21,6 +21,7 @@ import { PATH } from '../../routes/constants';
 import { ReactComponent as RightArrow } from '../../assets/svg/rightArrowGrey-icon.svg';
 import { SelectForAppointmentFormContainer } from '../Select';
 import { initialValuesForAppointmentForm } from './constants';
+import { resetDoctorName } from './utils';
 
 export const MakeAppointmentForm: React.VFC<MakeAppointmentFormProps> = ({
   handleSubmitForm,
@@ -59,6 +60,7 @@ export const MakeAppointmentForm: React.VFC<MakeAppointmentFormProps> = ({
         handleSubmit,
         handleBlur,
         handleChange,
+        setFieldValue,
       }) => (
         <AppointmentFormContainer onSubmit={handleSubmit}>
           <AppointmentStepsContainer>
@@ -85,8 +87,14 @@ export const MakeAppointmentForm: React.VFC<MakeAppointmentFormProps> = ({
                 labelText={pagesDictionary.makeAppointmentsForm.doctorNameLabelText}
                 options={optionsForDoctorNamesSelect}
                 setSelectedValue={setSelectedDoctorID}
-                value={values.doctorName.value && (optionsForDoctorNamesSelect.some(({ value }) => value === values.doctorName.value)) ? values.doctorName : ''}
+                value={values.doctorName.value ? values.doctorName : ''}
               />
+              {resetDoctorName({
+                optionsForDoctorNamesSelect,
+                values,
+                setFieldValue,
+                setSelectedDoctorID,
+              })}
               {makeAppointmentsFieldsData.map((data) => (
                 <Field
                   key={data.name}
@@ -125,6 +133,7 @@ export const MakeAppointmentForm: React.VFC<MakeAppointmentFormProps> = ({
             </SelectTimeslotStep>
           </AppointmentStepsContainer>
           <SubmitOrLoader
+            disable={!!values.doctorName.value}
             dirty={dirty}
             isValid={isValid}
             status={makeAppointmentFetchStatus}

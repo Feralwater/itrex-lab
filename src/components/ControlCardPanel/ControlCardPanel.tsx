@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
 import { ControlCardPanelProps } from './ControlCardPanel.types';
-import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useAppDispatch } from '../../hooks';
 import dictionary from '../../pages/dictionary/pagesDictionary';
 import {
-  editResolution, profile, resolution, resolutions,
+  editResolution, resolution, resolutions,
 } from '../../redux/actions';
 import { ModalWindow } from '../Modal';
 import { CardControlList } from '..';
 import { ResolutionModal } from './ResolutionModal';
 import { ResolutionModalButtons } from './ResolutionModalButtons';
-import { ROLES } from '../../routes/constants';
-import { selectProfile } from '../../redux/reducers';
 import { resolutionsOnPage, resolutionsOnPageOffset } from '../../pages/Resolutions/constants';
 
 export const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
@@ -63,6 +61,7 @@ export const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
           resolutionModalTitle={dictionary.resolutionModal.createResolutionTitle}
         />
         <ResolutionModalButtons
+          disabled={resolutionText.length < 2}
           activeButtonType="button"
           cancelHandler={cancelHandler}
           saveHandler={saveHandler}
@@ -80,6 +79,7 @@ export const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
           resolutionModalTitle={dictionary.resolutionModal.editResolutionTitle}
         />
         <ResolutionModalButtons
+          disabled={resolutionText.length < 2}
           activeButtonType="button"
           cancelHandler={cancelHandler}
           saveHandler={editHandler}
