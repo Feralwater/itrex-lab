@@ -85,7 +85,7 @@ export const MakeAppointmentForm: React.VFC<MakeAppointmentFormProps> = ({
                 labelText={pagesDictionary.makeAppointmentsForm.doctorNameLabelText}
                 options={optionsForDoctorNamesSelect}
                 setSelectedValue={setSelectedDoctorID}
-                value={values.doctorName.value ? values.doctorName : ''}
+                value={values.doctorName.value && (optionsForDoctorNamesSelect.some(({ value }) => value === values.doctorName.value)) ? values.doctorName : ''}
               />
               {makeAppointmentsFieldsData.map((data) => (
                 <Field
