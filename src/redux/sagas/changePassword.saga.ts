@@ -1,18 +1,15 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
 import { notificationSuccess, changePassword } from '../actions';
-import { createSuccessNotificationMessage } from '../../serverResponseDictionary/serverResponsesDictionary';
 import utils from './utils';
 import { ChangePasswordResponse } from '../../resources/auth/auth.types';
 import auth from '../../resources/auth/auth.api';
+import { componentsDictionary } from '../../components';
 
 function* changePasswordPatch(action: ReturnType<typeof changePassword.pending>) {
   const { payload } = action;
-  const response: AxiosResponse<ChangePasswordResponse> = yield call(auth.changePassword, {
-    oldPassword: payload.oldPassword,
-    newPassword: payload.newPassword,
-  });
-  yield put(notificationSuccess(createSuccessNotificationMessage(response.status)));
+  const response: AxiosResponse<ChangePasswordResponse> = yield call(auth.changePassword, { ...payload });
+  yield put(notificationSuccess(componentsDictionary.message.successMessageBodyChangePassword));
   return response.data;
 }
 
