@@ -24,6 +24,7 @@ export const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
       appointmentID,
     }));
     setActiveCreateResolutionModal(false);
+    setIsMenuOpen(false);
   };
   const editHandler = () => {
     dispatch(editResolution.pending({
@@ -31,6 +32,7 @@ export const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
       resolutionID,
     }));
     setActiveEditResolutionModal(false);
+    setIsMenuOpen(false);
   };
   const cancelHandler = () => {
     setActiveEditResolutionModal(false);
