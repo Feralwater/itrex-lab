@@ -10,6 +10,8 @@ export const TimeSlots: React.VFC<TimeSlotsProps> = ({
   freeTime,
   date,
   value,
+  occupation,
+  doctorName,
   field,
 }) => {
   const [, , { setValue }] = useField(field);
@@ -21,7 +23,7 @@ export const TimeSlots: React.VFC<TimeSlotsProps> = ({
 
   useEffect(() => {
     setValue(null);
-  }, [date]);
+  }, [date, occupation, doctorName]);
 
   function getTimeForServer(time: string) {
     return freeTimeSlots.filter((timeSlot) => timeSlot.timeForDisplay === time)?.[0]?.timeForServer;

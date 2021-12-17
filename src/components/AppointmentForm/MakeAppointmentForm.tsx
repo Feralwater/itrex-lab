@@ -119,6 +119,8 @@ export const MakeAppointmentForm: React.VFC<MakeAppointmentFormProps> = ({
                 freeTime={freeTime}
                 value={values.time}
                 date={values.date}
+                occupation={values.occupation}
+                doctorName={values.doctorName}
               />
             </SelectTimeslotStep>
           </AppointmentStepsContainer>
