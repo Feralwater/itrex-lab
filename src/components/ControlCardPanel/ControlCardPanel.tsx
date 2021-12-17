@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import { ControlCardPanelProps } from './ControlCardPanel.types';
-import { useAppDispatch } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import dictionary from '../../pages/dictionary/pagesDictionary';
-import { editResolution, resolution } from '../../redux/actions';
+import {
+  editResolution, profile, resolution, resolutions,
+} from '../../redux/actions';
 import { ModalWindow } from '../Modal';
 import { CardControlList } from '..';
 import { ResolutionModal } from './ResolutionModal';
 import { ResolutionModalButtons } from './ResolutionModalButtons';
+import { ROLES } from '../../routes/constants';
+import { selectProfile } from '../../redux/reducers';
+import { resolutionsOnPage, resolutionsOnPageOffset } from '../../pages/Resolutions/constants';
 
 export const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
   appointmentID,
@@ -30,6 +35,10 @@ export const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
     dispatch(editResolution.pending({
       resolution: resolutionText,
       resolutionID,
+    }));
+    dispatch(resolutions.pending({
+      offset: resolutionsOnPageOffset,
+      limit: resolutionsOnPage,
     }));
     setActiveEditResolutionModal(false);
     setIsMenuOpen(false);
