@@ -1,11 +1,6 @@
 import { FormFieldData } from '../../components/AuthForms/Form.types';
 import { InputFormContainer } from '../../components';
 
-export const EditProfileInitial = {
-  firstName: '',
-  lastName: '',
-  avatar: '',
-};
 export const changePasswordInitial = {
   oldPassword: '',
   newPassword: '',

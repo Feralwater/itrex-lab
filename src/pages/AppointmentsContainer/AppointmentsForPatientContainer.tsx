@@ -9,6 +9,7 @@ import { appointmentsForPatient } from '../../redux/actions';
 import dictionary from '../dictionary/pagesDictionary';
 import { selectAppointmentsForPatient, selectProfile } from '../../redux/reducers';
 import { FETCH_STATUS } from '../../redux/reducers/constants';
+import { AppLoaderContainer } from '../../App';
 
 export const AppointmentsForPatientContainer:React.VFC = () => {
   const dispatch = useAppDispatch();
@@ -36,14 +37,16 @@ export const AppointmentsForPatientContainer:React.VFC = () => {
         );
     }
     return (
-      <Loader
-        type="MutatingDots"
-        color={colors.cornflower_blue}
-        secondaryColor={colors.radical_red}
-        timeout={5000}
-        height={150}
-        width={150}
-      />
+      <AppLoaderContainer>
+        <Loader
+          type="MutatingDots"
+          color={colors.cornflower_blue}
+          secondaryColor={colors.radical_red}
+          timeout={5000}
+          height={150}
+          width={150}
+        />
+      </AppLoaderContainer>
     );
   }
 

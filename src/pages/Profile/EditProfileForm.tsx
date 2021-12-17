@@ -15,7 +15,6 @@ import { ProfileButtonsBlock } from './ProfileButtonsBlock';
 import { FormTitle } from '../../components/AuthForms/AuthForm.styles';
 import pagesDictionary from '../dictionary/pagesDictionary';
 import { selectProfile } from '../../redux/reducers';
-import { EditProfileInitial } from './constants';
 import { selectEditProfile } from '../../redux/reducers/editProfile.reducer';
 import { PATH } from '../../routes/constants';
 import { EditProfileData } from './EditProfile.types';
@@ -23,8 +22,8 @@ import { FETCH_STATUS } from '../../redux/reducers/constants';
 
 export const EditProfileForm: React.VFC = () => {
   const dispatch = useAppDispatch();
-  const { status } = useAppSelector(selectEditProfile);
-  const { photo: profilePhoto } = useAppSelector(selectProfile);
+  const { status, lastName: newLastName, firstName: newFirstName } = useAppSelector(selectEditProfile);
+  const { photo: profilePhoto, firstName, lastName } = useAppSelector(selectProfile);
   const history = useHistory();
 
   const handleSubmitForm = (values: EditProfileData) => {
@@ -39,7 +38,11 @@ export const EditProfileForm: React.VFC = () => {
   };
   return (
     <Formik
-      initialValues={EditProfileInitial}
+      initialValues={{
+        firstName: newFirstName || lastName,
+        lastName: newLastName || firstName,
+        avatar: '',
+      }}
       onSubmit={(values, actions) => {
         handleSubmitForm(values);
         actions.setSubmitting(false);
