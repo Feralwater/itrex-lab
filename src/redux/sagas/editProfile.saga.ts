@@ -1,16 +1,21 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
-import { editProfile, notificationSuccess } from '../actions';
-import { utils } from './utils';
+import { editProfile, notificationError, notificationSuccess } from '../actions';
+import { createErrorNotificationMessage, utils } from './utils';
 import { NewDoctorProfileResponse } from '../../resources/profile/profile.types';
 import profile from '../../resources/profile/profile.api';
 import { componentsDictionary } from '../../components';
 
 function* editProfilePatch(action: ReturnType<typeof editProfile.pending>) {
-  const { payload } = action;
-  const response: AxiosResponse<NewDoctorProfileResponse> = yield call(profile.editProfile, payload);
-  yield put(notificationSuccess(componentsDictionary.message.successMessageBodyEditProfile));
-  return response.data;
+  try {
+    const { payload } = action;
+    const response: AxiosResponse<NewDoctorProfileResponse> = yield call(profile.editProfile, payload);
+    yield put(notificationSuccess(componentsDictionary.message.successMessageBodyEditProfile));
+    return response.data;
+  } catch (error:any) {
+    yield put(notificationError(createErrorNotificationMessage(error.response.data)));
+    throw error;
+  }
 }
 
 const editProfilePatchSaga = utils.bind(null, editProfile, editProfilePatch);

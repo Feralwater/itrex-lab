@@ -1,15 +1,20 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
 import appointments from '../../resources/appointments/appointments.api';
-import { notificationSuccess, deleteAppointment } from '../actions';
-import { utils } from './utils';
+import { notificationSuccess, deleteAppointment, notificationError } from '../actions';
+import { createErrorNotificationMessage, utils } from './utils';
 import { componentsDictionary } from '../../components';
 
 function* appointmentDelete(action: ReturnType<typeof deleteAppointment.pending>) {
-  const { payload } = action;
-  const response: AxiosResponse<string> = yield call(appointments.deleteAppointment, payload.id);
-  yield put(notificationSuccess(componentsDictionary.message.successMessageBodyDeleteAppointment));
-  return response.data;
+  try {
+    const { payload } = action;
+    const response: AxiosResponse<string> = yield call(appointments.deleteAppointment, payload.id);
+    yield put(notificationSuccess(componentsDictionary.message.successMessageBodyDeleteAppointment));
+    return response.data;
+  } catch (error:any) {
+    yield put(notificationError(createErrorNotificationMessage(error.response.data)));
+    throw error;
+  }
 }
 
 const appointmentDeleteSaga = utils.bind(null, deleteAppointment, appointmentDelete);

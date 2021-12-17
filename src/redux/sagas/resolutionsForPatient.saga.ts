@@ -1,14 +1,19 @@
 import { AxiosResponse } from 'axios';
-import { call, takeEvery } from 'redux-saga/effects';
-import { resolutionsForPatient } from '../actions';
-import { utils } from './utils';
+import { call, put, takeEvery } from 'redux-saga/effects';
+import { notificationError, resolutionsForPatient } from '../actions';
+import { createErrorNotificationMessage, utils } from './utils';
 import { ResolutionsForPatientResponse } from '../../resources/resolutions/resolutions.types';
 import resolutionsAPI from '../../resources/resolutions/resolutions.api';
 
 function* resolutionsForPatientGet(action: ReturnType<typeof resolutionsForPatient.pending>) {
-  const { payload } = action;
-  const response: AxiosResponse<ResolutionsForPatientResponse> = yield call(resolutionsAPI.fetchResolutionsForPatient, payload.offset, payload.limit);
-  return response.data;
+  try {
+    const { payload } = action;
+    const response: AxiosResponse<ResolutionsForPatientResponse> = yield call(resolutionsAPI.fetchResolutionsForPatient, payload.offset, payload.limit);
+    return response.data;
+  } catch (error:any) {
+    yield put(notificationError(createErrorNotificationMessage(error.response.data)));
+    throw error;
+  }
 }
 
 const resolutionsForPatientGetSaga = utils.bind(null, resolutionsForPatient, resolutionsForPatientGet);
