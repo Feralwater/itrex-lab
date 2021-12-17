@@ -75,7 +75,7 @@ const ChangePasswordModal: React.VFC<ChangePasswordProps> = ({ setActiveChangePa
             activeButtonText={dictionary.resolutionModal.saveButtonText}
             activeButtonIcon="/svg/save-icon.svg"
             passiveButtonIcon="/svg/close-icon.svg"
-            saveHandler={handleSubmit}
+            saveHandler={() => setActiveChangePasswordModal(false)}
           />
         </ChangePasswordForm>
       )}
