@@ -4,12 +4,12 @@ import { editProfile, notificationSuccess } from '../actions';
 import utils from './utils';
 import { NewDoctorProfileResponse } from '../../resources/profile/profile.types';
 import profile from '../../resources/profile/profile.api';
-import { createSuccessNotificationMessage } from '../../serverResponseDictionary/serverResponsesDictionary';
+import { componentsDictionary } from '../../components';
 
 function* editProfilePatch(action: ReturnType<typeof editProfile.pending>) {
   const { payload } = action;
   const response: AxiosResponse<NewDoctorProfileResponse> = yield call(profile.editProfile, payload);
-  yield put(notificationSuccess(createSuccessNotificationMessage(response.status)));
+  yield put(notificationSuccess(componentsDictionary.message.successMessageBodyEditProfile));
   return response.data;
 }
 
