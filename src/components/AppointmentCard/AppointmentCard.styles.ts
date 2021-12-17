@@ -1,5 +1,7 @@
 import styled from 'styled-components';
-import { colors, H4, SubTitle, Title } from '../CommonStyles';
+import {
+  colors, H4, SubTitle, Title,
+} from '../CommonStyles';
 
 export const UserCard = styled.div`
   display: flex;

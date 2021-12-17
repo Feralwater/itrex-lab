@@ -4,7 +4,7 @@ import { ProfileResponse } from '../../resources/auth/auth.types';
 import auth from '../../resources/auth/auth.api';
 import { profile } from '../actions';
 import { loginRepository } from '../../resources/loginRepository';
-import utils from './utils';
+import { utils } from './utils';
 
 function* profileGet() {
   const token = loginRepository.getAccessToken();

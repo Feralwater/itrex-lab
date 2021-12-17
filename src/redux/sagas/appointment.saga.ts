@@ -3,7 +3,7 @@ import { AxiosResponse } from 'axios';
 import { appointment, notificationSuccess } from '../actions';
 import { NewAppointmentResponse } from '../../resources/appointments/appointments.types';
 import appointments from '../../resources/appointments/appointments.api';
-import utils from './utils';
+import { utils } from './utils';
 import { componentsDictionary } from '../../components';
 
 function* appointmentPost(action: ReturnType<typeof appointment.pending>) {

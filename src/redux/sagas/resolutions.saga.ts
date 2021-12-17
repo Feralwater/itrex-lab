@@ -1,7 +1,7 @@
 import { AxiosResponse } from 'axios';
 import { call, takeEvery } from 'redux-saga/effects';
 import { resolutions } from '../actions';
-import utils from './utils';
+import { utils } from './utils';
 import { ResolutionsResponse } from '../../resources/resolutions/resolutions.types';
 import resolutionsAPI from '../../resources/resolutions/resolutions.api';
 

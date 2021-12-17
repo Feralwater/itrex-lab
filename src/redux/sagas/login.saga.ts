@@ -4,14 +4,11 @@ import { login } from '../actions';
 import { SignUpInResponse } from '../../resources/auth/auth.types';
 import auth from '../../resources/auth/auth.api';
 import { loginRepository } from '../../resources/loginRepository';
-import utils from './utils';
+import { utils } from './utils';
 
 function* loginPost(action: ReturnType<typeof login.pending>) {
   const { payload } = action;
-  const response: AxiosResponse<SignUpInResponse> = yield call(
-    auth.SignIn,
-    { userName: payload.userName, password: payload.password },
-  );
+  const response: AxiosResponse<SignUpInResponse> = yield call(auth.SignIn, { ...payload });
 
   const { data } = response;
   if (data.access_token) {

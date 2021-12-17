@@ -1,7 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
 import { editProfile, notificationSuccess } from '../actions';
-import utils from './utils';
+import { utils } from './utils';
 import { NewDoctorProfileResponse } from '../../resources/profile/profile.types';
 import profile from '../../resources/profile/profile.api';
 import { componentsDictionary } from '../../components';

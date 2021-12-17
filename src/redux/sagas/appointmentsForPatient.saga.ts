@@ -1,6 +1,6 @@
 import { call, takeEvery } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
-import utils from './utils';
+import { utils } from './utils';
 import { appointmentsForPatient } from '../actions';
 import appointments from '../../resources/appointments/appointments.api';
 import { AppointmentsForPatient } from '../../resources/appointments/appointments.types';

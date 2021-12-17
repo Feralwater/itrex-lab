@@ -1,7 +1,7 @@
 import { AxiosResponse } from 'axios';
 import { call, takeEvery } from 'redux-saga/effects';
 import { doctorsByID } from '../actions';
-import utils from './utils';
+import { utils } from './utils';
 import doctors from '../../resources/doctors/doctors.api';
 import { DoctorsBySpecializationIdResponse } from '../../resources/doctors/doctors.types';
 

@@ -4,19 +4,11 @@ import { registration } from '../actions';
 import { ProfileResponse, SignUpInResponse } from '../../resources/auth/auth.types';
 import auth from '../../resources/auth/auth.api';
 import { loginRepository } from '../../resources/loginRepository';
-import utils from './utils';
+import { utils } from './utils';
 
 function* registrationPost(action: ReturnType<typeof registration.pending>) {
   const { payload } = action;
-  const response: AxiosResponse<SignUpInResponse> = yield call(
-    auth.SignUp,
-    {
-      userName: payload.userName,
-      password: payload.password,
-      firstName: payload.firstName,
-      lastName: payload.lastName,
-    },
-  );
+  const response: AxiosResponse<SignUpInResponse> = yield call(auth.SignUp, { ...payload });
 
   const { data } = response;
 

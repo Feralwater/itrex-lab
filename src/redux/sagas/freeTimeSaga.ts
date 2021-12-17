@@ -1,7 +1,7 @@
 import { AxiosResponse } from 'axios';
 import { call, takeEvery } from 'redux-saga/effects';
 import { freeDoctorTime } from '../actions';
-import utils from './utils';
+import { utils } from './utils';
 import appointments from '../../resources/appointments/appointments.api';
 import { FreeTimeResponse } from '../../resources/appointments/appointments.types';
 

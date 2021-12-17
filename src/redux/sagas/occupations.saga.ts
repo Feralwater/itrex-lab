@@ -1,7 +1,7 @@
 import { AxiosResponse } from 'axios';
 import { call, takeEvery } from 'redux-saga/effects';
 import { occupations } from '../actions';
-import utils from './utils';
+import { utils } from './utils';
 import occupationsAPI from '../../resources/occupations/occupations.api';
 import { OccupationsResponse } from '../../resources/occupations/occupations.types';
 

@@ -3,7 +3,7 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import { resolution, notificationSuccess } from '../actions';
 import { ResolutionResponse } from '../../resources/resolutions/resolutions.types';
 import resolutionsAPI from '../../resources/resolutions/resolutions.api';
-import utils from './utils';
+import { utils } from './utils';
 import { componentsDictionary } from '../../components';
 
 function* resolutionPost(action: ReturnType<typeof resolution.pending>) {
