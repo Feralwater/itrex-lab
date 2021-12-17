@@ -5,8 +5,8 @@ export const componentsDictionary = {
   },
   message: {
     messageTitleSuccess: 'Success message goes here',
+    successMessageBodyMakeAppointment: 'You have created a new appointment. Please, wait for doctor\'s confirmation.',
     messageTitleError: 'Error message goes here',
-    successMessageText: 'We show this message if something awesome has happened. You are awesome too',
     errorMessageText: 'We show this message if something irreparable has happened. But there is nothing irreparable',
     error400Text: 'Validation error. Please check data and try again',
     error401Text: 'Wrong data. Please check it and try again',

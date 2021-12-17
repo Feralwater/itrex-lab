@@ -30,6 +30,7 @@ export const NotificationTitle = styled.div`
 
 export const NotificationTitleText = styled(H3)`
   margin: 0 0 0 18px;
+  color: ${colors.white};
 `;
 
 export const NotificationText = styled(SubTitle)`
@@ -38,6 +39,7 @@ export const NotificationText = styled(SubTitle)`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  color: ${colors.white};
 `;
 
 export const CloseButton = styled.div`

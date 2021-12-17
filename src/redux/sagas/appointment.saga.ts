@@ -4,17 +4,12 @@ import { appointment, notificationSuccess } from '../actions';
 import { NewAppointmentResponse } from '../../resources/appointments/appointments.types';
 import appointments from '../../resources/appointments/appointments.api';
 import utils from './utils';
-import { createSuccessNotificationMessage } from '../../serverResponseDictionary/serverResponsesDictionary';
+import { componentsDictionary } from '../../components';
 
 function* appointmentPost(action: ReturnType<typeof appointment.pending>) {
   const { payload } = action;
-  const response: AxiosResponse<NewAppointmentResponse> = yield call(appointments.addAppointment, {
-    date: payload.date,
-    reason: payload.reason,
-    note: payload.note,
-    doctorID: payload.doctorID,
-  });
-  yield put(notificationSuccess(createSuccessNotificationMessage(response.status)));
+  const response: AxiosResponse<NewAppointmentResponse> = yield call(appointments.addAppointment, { ...payload });
+  yield put(notificationSuccess(componentsDictionary.message.successMessageBodyMakeAppointment));
   return response.data;
 }
 
