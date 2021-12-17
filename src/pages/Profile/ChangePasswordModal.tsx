@@ -36,6 +36,7 @@ const ChangePasswordModal: React.VFC<ChangePasswordProps> = ({ setActiveChangePa
             oldPassword,
             newPassword,
           });
+          actions.resetForm();
           actions.setSubmitting(false);
         }
       }
