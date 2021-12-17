@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from '../CommonStyles';
+import { colors, H1 } from '../CommonStyles';
 
 export const Error = styled.section`
   width: 100%;
@@ -18,9 +18,6 @@ export const ErrorNumber = styled.div`
   margin: 0 0 90px 0;
 `;
 
-export const ErrorMessage = styled.div`
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 110%;
+export const ErrorMessage = styled(H1)`
   color: ${colors.rock_blue};
 `;

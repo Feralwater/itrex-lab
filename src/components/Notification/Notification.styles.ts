@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from '../CommonStyles';
+import { colors, H3, SubTitle } from '../CommonStyles';
 
 interface NotificationBodyType {
   isSuccess: boolean;
@@ -28,16 +28,11 @@ export const NotificationTitle = styled.div`
   margin: 0 0 8px 0;
 `;
 
-export const NotificationTitleText = styled.h2`
-  font-weight: 600;
-  font-size: 17px;
+export const NotificationTitleText = styled(H3)`
   margin: 0 0 0 18px;
 `;
 
-export const NotificationText = styled.div`
-  font-weight: 500;
-  font-size: 13px;
-  line-height: 130%;
+export const NotificationText = styled(SubTitle)`
   padding: 0 24px 0 40px;
   display: -webkit-box;
   -webkit-line-clamp: 2;

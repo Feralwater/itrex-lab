@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from '../../components';
+import { colors, Title } from '../../components';
 
 export const MedicalHistoryContainer = styled.div`
   display: flex;
@@ -10,10 +10,7 @@ export const MedicalHistoryContainer = styled.div`
   text-align: center;
   gap: 40px;
 `;
-export const MedicalHistoryText = styled.div`
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 140%;
+export const MedicalHistoryText = styled(Title)`
   color: ${colors.rock_blue};
   display: flex;
   flex-direction: column;

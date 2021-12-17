@@ -118,5 +118,9 @@ export const Label = styled.label`
   font-size: 13px;
   line-height: 130%;
   color: ${colors.black['1']};
-  margin: 0 0 10px 0;
+
+  & span {
+    display: inline-block;
+    margin: 0 0 10px 0;
+  }
 `;

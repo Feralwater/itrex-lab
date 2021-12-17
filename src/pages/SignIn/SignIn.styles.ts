@@ -1,12 +1,8 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { colors } from '../../components';
+import { colors, Title } from '../../components';
 
-export const SignInUpMessage = styled.div`
-  font-weight: 400;
-  font-size: 15px;
-  display: flex;
-  align-items: center;
+export const SignInUpMessage = styled(Title)`
   color: ${colors.rock_blue};
   grid-area: footer;
   margin: 20px 0 0 0;

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from '../CommonStyles';
+import { colors, H2 } from '../CommonStyles';
 
 export const CommandsList = styled.ul`
   list-style-type: none;
@@ -41,11 +41,7 @@ export const SelectedPatientImage = styled.img`
   object-fit: contain;
 `;
 
-export const ResolutionModalTitle = styled.h4`
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 240%;
-  color: ${colors.dark_jungle_green};
+export const ResolutionModalTitle = styled(H2)`
   margin: 0 0 24px 0;
 `;
 

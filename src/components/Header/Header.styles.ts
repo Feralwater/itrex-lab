@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { colors } from '../CommonStyles';
+import { colors, H6, SubTitle } from '../CommonStyles';
 
 export const HeaderWrapper = styled.header`
   position: fixed;
@@ -89,22 +89,16 @@ export const NetworkStatus = styled.span<NetworkStatusProps>`
   right: -3px;
 `;
 
-export const UserName = styled.p`
-  font-weight: 600;
-  font-size: 15px;
-  color: ${colors.dark_jungle_green};
+export const UserName = styled(H6)`
   text-transform: capitalize;
   margin: 0 0 4px 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   max-width: 130px;
-  line-height: 130%;
 `;
 
-export const UserRole = styled.p`
-  font-weight: 500;
-  font-size: 13px;
+export const UserRole = styled(SubTitle)`
   color: ${colors.rock_blue};
   text-transform: capitalize;
   margin: 0;

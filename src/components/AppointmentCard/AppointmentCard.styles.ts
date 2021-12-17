@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from '../CommonStyles';
+import { colors, H4, SubTitle, Title } from '../CommonStyles';
 
 export const UserCard = styled.div`
   display: flex;
@@ -73,10 +73,7 @@ export const UserCardBodyDescription = styled(UserCardBodyTime)<UserCardBodyDesc
   display: ${(props) => (props.isDescription ? 'flex' : 'none')};
 `;
 
-export const UserCardBodyDescriptionText = styled.div`
-  font-weight: 400;
-  font-size: 15px;
-  color: ${colors.dark_jungle_green};
+export const UserCardBodyDescriptionText = styled(Title)`
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -96,19 +93,12 @@ export const UserCardBodyAppointmentConfirm = styled.div<UserCardBodyAppointment
   background-color: ${(props) => props.color};
 `;
 
-export const AppointmentStatus = styled.div`
-  display: flex;
-  align-items: center;
-  font-weight: 500;
-  font-size: 13px;
+export const AppointmentStatus = styled(SubTitle)`
   color: ${colors.rock_blue};
   margin: 0;
 `;
 
-export const DoctorSpecializationName = styled.div`
-  font-weight: 500;
-  font-size: 13px;
-  line-height: 130%;
+export const DoctorSpecializationName = styled(SubTitle)`
   color: ${colors.rock_blue};
   text-transform: capitalize;
 `;
@@ -132,11 +122,7 @@ export const UserCardImageContainer = styled.div`
   border-radius: 100%;
 `;
 
-export const UserCardName = styled.div`
-  font-weight: 600;
-  font-size: 17px;
-  align-items: center;
-  color: ${colors.dark_jungle_green};
+export const UserCardName = styled(H4)`
   margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;

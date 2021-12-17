@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from '../../components';
+import { colors, Title } from '../../components';
 
 export const StyledPaginateContainer = styled.div`
   & ul {
@@ -67,12 +67,8 @@ export const StyledPaginateContainer = styled.div`
 }
 `;
 
-export const Paginate = styled.div`
-  display: flex;
-  align-items: center;
+export const Paginate = styled(Title)`
   justify-content: flex-end;
-  font-size: 15px;
-  line-height: 140%;
   color: ${colors.rock_blue};
   gap: 64px;
 `;

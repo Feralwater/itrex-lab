@@ -49,7 +49,7 @@ export const MakeAppointmentButtonContainer = styled.div`
 
 export const NoUnderlineLink = styled(Link)`
   font-size: 17px;
-  line-height: 240%;
+  line-height: 140%;
   text-decoration-line: none;
   color: ${colors.cornflower_blue};
   width: fit-content;
