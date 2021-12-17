@@ -16,12 +16,3 @@ export function createErrorNotificationMessage(responseStatusCode: number) {
       return componentsDictionary.message.errorMessageText;
   }
 }
-
-export function createSuccessNotificationMessage(responseStatusCode: number) {
-  switch (responseStatusCode) {
-    case 201:
-      return componentsDictionary.message.errorMessageText;
-    default:
-      return componentsDictionary.message.errorMessageText;
-  }
-}

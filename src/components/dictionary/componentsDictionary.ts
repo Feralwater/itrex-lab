@@ -6,6 +6,7 @@ export const componentsDictionary = {
     successMessageBodyEditProfile: 'You have successfully updated your profile.',
     successMessageBodyCreateResolution: 'You have successfully created new resolution.',
     successMessageBodyEditResolution: 'You have successfully edited resolution.',
+    successMessageBodyDeleteAppointment: 'You have successfully deleted appointment.',
     messageTitleError: 'Error message goes here',
     errorMessageText: 'We show this message if something irreparable has happened. But there is nothing irreparable',
     error400Text: 'Validation error. Please check data and try again',
