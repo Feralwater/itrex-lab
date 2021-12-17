@@ -3,16 +3,13 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import { resolution, notificationSuccess } from '../actions';
 import { ResolutionResponse } from '../../resources/resolutions/resolutions.types';
 import resolutionsAPI from '../../resources/resolutions/resolutions.api';
-import { createSuccessNotificationMessage } from '../../serverResponseDictionary/serverResponsesDictionary';
 import utils from './utils';
+import { componentsDictionary } from '../../components';
 
 function* resolutionPost(action: ReturnType<typeof resolution.pending>) {
   const { payload } = action;
-  const response: AxiosResponse<ResolutionResponse> = yield call(resolutionsAPI.createResolution, {
-    resolution: payload.resolution,
-    appointmentID: payload.appointmentID,
-  });
-  yield put(notificationSuccess(createSuccessNotificationMessage(response.status)));
+  const response: AxiosResponse<ResolutionResponse> = yield call(resolutionsAPI.createResolution, { ...payload });
+  yield put(notificationSuccess(componentsDictionary.message.successMessageBodyCreateResolution));
   return response.data;
 }
 
