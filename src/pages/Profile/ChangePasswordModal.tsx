@@ -50,6 +50,8 @@ const ChangePasswordModal: React.VFC<ChangePasswordProps> = ({ setActiveChangePa
         handleBlur,
         handleSubmit,
         handleReset,
+        isValid,
+        dirty,
       }) => (
         <ChangePasswordForm onSubmit={handleSubmit}>
           <ChangePasswordFormBody>
@@ -67,6 +69,7 @@ const ChangePasswordModal: React.VFC<ChangePasswordProps> = ({ setActiveChangePa
             ))}
           </ChangePasswordFormBody>
           <ResolutionModalButtons
+            disabled={!(isValid && dirty)}
             activeButtonType="submit"
             cancelHandler={() => {
               setActiveChangePasswordModal(false);

@@ -11,6 +11,7 @@ export const ResolutionModalButtons: React.VFC<ResolutionModalButtonsProps> = ({
   activeButtonIcon,
   passiveButtonIcon,
   activeButtonType,
+  disabled,
 }) => (
   <ResolutionModalFooter>
     <Button
@@ -31,6 +32,7 @@ export const ResolutionModalButtons: React.VFC<ResolutionModalButtonsProps> = ({
       variant="primary"
       iconUrl={activeButtonIcon}
       onClick={saveHandler}
+      disabled={disabled}
     >
       {activeButtonText}
     </Button>
