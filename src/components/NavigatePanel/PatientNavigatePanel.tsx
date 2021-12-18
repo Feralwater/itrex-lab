@@ -11,7 +11,7 @@ import {
 import dictionary from '../../pages/dictionary/pagesDictionary';
 import { PATH } from '../../routes/constants';
 import isActiveTab from './utils';
-import { NavigatePanelProps } from '../../pages/AppointmentsContainer/AppointmentsContainer.types';
+import { NavigatePanelProps } from '../../pages/Appointments/AppointmentsContainer.types';
 
 export const PatientNavigatePanel:React.VFC<NavigatePanelProps> = ({ pageTitle }) => (
   <>

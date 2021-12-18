@@ -9,9 +9,10 @@ import {
   NoUnderlineLink,
   SelectDoctorStep,
   SelectTimeslotStep, LinksContainer, DisabledLink,
-} from 'components/AppointmentForm/MakeAppointment.styles';
+} from 'pages/MakeAppointment/MakeAppointment.styles';
 import {
   AppointmentsSteps, DatePicker, H1, SubmitOrLoader, TimeSlots,
+  SelectForAppointmentFormContainer,
 } from 'components';
 import pagesDictionary from 'pages/dictionary/pagesDictionary';
 import appointmentValidationSchema from './validation/appointment.validation';
@@ -19,7 +20,6 @@ import makeAppointmentsFieldsData from './fieldsData';
 import { MakeAppointmentFormProps } from './form.types';
 import { PATH } from '../../routes/constants';
 import { ReactComponent as RightArrow } from '../../assets/svg/rightArrowGrey-icon.svg';
-import { SelectForAppointmentFormContainer } from '../Select';
 import { initialValuesForAppointmentForm } from './constants';
 import { resetDoctorName } from './utils';
 

@@ -1,5 +1,5 @@
-export * from './AppointmentForm';
-export * from './AppointmentsSteps';
+export * from '../pages/MakeAppointment';
+export * from '../pages/MakeAppointment/AppointmentsSteps';
 export * from './AppointmentCard';
 export * from './AuthForms';
 export * from './Button';
@@ -7,7 +7,7 @@ export * from './CommonStyles';
 export * from './ControlCardPanel';
 export * from './DatePicker';
 export * from './dictionary/componentsDictionary';
-export * from './Error404';
+export * from '../pages/Error404';
 export * from './Header';
 export * from './Input';
 export * from './LayoutAuthorised';

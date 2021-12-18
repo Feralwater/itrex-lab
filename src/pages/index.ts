@@ -1,5 +1,5 @@
-export * from './AppointmentsContainer';
-export * from './AppointmentsContainer';
+export * from './Appointments';
+export * from './Appointments';
 export * from './dictionary/pagesDictionary';
 export * from './EmptyStateView';
 export * from './EmptyStateView';

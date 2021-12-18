@@ -5,8 +5,8 @@ import {
 import { SendEmail } from 'pages/SendEmail/SendEmail';
 import { SignIn } from 'pages/SignIn/SignIn';
 import { SignUp } from 'pages/SignUp/SignUp';
-import { AppointmentsForDoctorContainer } from 'pages/AppointmentsContainer/AppointmentsForDoctorContainer';
-import { AppointmentsForPatientContainer } from 'pages/AppointmentsContainer/AppointmentsForPatientContainer';
+import { AppointmentsForDoctorContainer } from 'pages/Appointments/AppointmentsForDoctorContainer';
+import { AppointmentsForPatientContainer } from 'pages/Appointments/AppointmentsForPatientContainer';
 import {
   Error404, AuthorisedLayout, LayoutPrivate, RestorePasswordForm, MakeAppointmentFormContainer,
 } from '../components';

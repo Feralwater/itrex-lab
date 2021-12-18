@@ -17,7 +17,7 @@ let buttonNode:HTMLButtonElement;
 let store;
 const initialState = { };
 
-describe('Make an AppointmentForm form tests', () => {
+describe('Make an MakeAppointment form tests', () => {
   // Act
   const mockSubmitFunction = jest.fn();
   const setStateMock = jest.fn();

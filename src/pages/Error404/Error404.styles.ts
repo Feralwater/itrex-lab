@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors, H1 } from '../CommonStyles';
+import { colors, H1 } from '../../components/CommonStyles';
 
 export const Error = styled.section`
   width: 100%;

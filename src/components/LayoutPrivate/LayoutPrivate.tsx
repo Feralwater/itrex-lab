@@ -1,16 +1,16 @@
 import React from 'react';
 import { HeaderContainer } from '../Header';
-import { Body, BodyDoctorView, Patients } from './LayoutPrivate.styles';
+import { Body, BodyView, Patients } from './LayoutPrivate.styles';
 
 export const LayoutPrivate: React.FC = ({ children }) => (
   <>
     <HeaderContainer />
     <Body>
-      <BodyDoctorView>
+      <BodyView>
         <Patients>
           {children}
         </Patients>
-      </BodyDoctorView>
+      </BodyView>
     </Body>
   </>
 );

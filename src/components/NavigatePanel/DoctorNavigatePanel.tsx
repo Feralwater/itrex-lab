@@ -5,7 +5,7 @@ import {
 import { H1 } from 'components/CommonStyles/Topography';
 import dictionary from '../../pages/dictionary/pagesDictionary';
 import { PATH } from '../../routes/constants';
-import { NavigatePanelProps } from '../../pages/AppointmentsContainer/AppointmentsContainer.types';
+import { NavigatePanelProps } from '../../pages/Appointments/AppointmentsContainer.types';
 import isActiveTab from './utils';
 import { InputSearchContainer } from '../Input';
 

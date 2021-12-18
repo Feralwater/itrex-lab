@@ -5,7 +5,7 @@ export const Body = styled.div`
   padding: 80px 0 0 0;
 `;
 
-export const BodyDoctorView = styled.main`
+export const BodyView = styled.main`
   background-color: ${colors.blue_chalk};
   margin: 0;
   padding: 0 64px 48px;

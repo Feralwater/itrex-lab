@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { FormikValues } from 'formik';
 import { Dispatch, SetStateAction } from 'react';
-import { Options } from '../Select/Select.types';
+import { Options } from '../../components/Select/Select.types';
 
 export interface resetDoctorNameProps {
   optionsForDoctorNamesSelect: Array<Options>;

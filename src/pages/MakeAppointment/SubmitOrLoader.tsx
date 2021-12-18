@@ -1,7 +1,7 @@
 import Loader from 'react-loader-spinner';
 import React from 'react';
-import { Button } from '../Button';
-import { colors } from '../CommonStyles';
+import { Button } from '../../components/Button';
+import { colors } from '../../components/CommonStyles';
 import { Status } from '../../redux/reducers/reducers.types';
 import { MakeAppointmentButtonContainer } from './MakeAppointment.styles';
 import { FETCH_STATUS } from '../../redux/reducers/constants';
