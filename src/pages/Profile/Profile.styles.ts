@@ -90,3 +90,9 @@ export const EditFormElements = styled.div`
   align-items: end;
   gap: 32px;
 `;
+
+export const InputContainer = styled.div`
+  & > div {
+    margin: 0;
+  }
+`;

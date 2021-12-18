@@ -1,9 +1,9 @@
 import { FormFieldData } from '../../components/AuthForms/Form.types';
-import { Input } from '../../components';
+import { InputFormContainer } from '../../components';
 
 export const signUpFieldsData:Array<FormFieldData> = [
   {
-    component: Input,
+    component: InputFormContainer,
     name: 'firstName',
     id: 'firstName',
     label: 'First Name',
@@ -14,7 +14,7 @@ export const signUpFieldsData:Array<FormFieldData> = [
     inputSize: 'small',
   },
   {
-    component: Input,
+    component: InputFormContainer,
     name: 'lastName',
     id: 'lastName',
     label: 'Last Name',

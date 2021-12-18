@@ -7,7 +7,7 @@ import editProfileValidationSchema from './validation/editProfile.validation';
 import { signUpFieldsData } from './editFormFieldsData';
 import { EditForm } from './EditProfileForm.styles';
 import {
-  EditFormElements, EditImage, EditImageContainer, TitlePanel,
+  EditFormElements, EditImage, EditImageContainer, InputContainer, TitlePanel,
 } from './Profile.styles';
 import { ProfileButtonsBlock } from './ProfileButtonsBlock';
 import { FormTitle } from '../../components/AuthForms/AuthForm.styles';
@@ -64,16 +64,19 @@ export const EditProfileForm: React.VFC<EditProfileFormProps> = ({
                 }}
               />
             </EditImageContainer>
+
             {signUpFieldsData.map((data) => (
-              <Field
-                key={data.name}
-                value={(values as FormikValues)[data.name]}
-                isError={(touched as FormikTouched<FormikValues>)[data.name] && (errors as FormikErrors<FormikValues>)[data.name]}
-                errorText={(errors as FormikErrors<FormikValues>)[data.name]}
-                onBlur={handleBlur}
-                onChange={handleChange}
-                {...data}
-              />
+              <InputContainer>
+                <Field
+                  key={data.name}
+                  value={(values as FormikValues)[data.name]}
+                  isError={(touched as FormikTouched<FormikValues>)[data.name] && (errors as FormikErrors<FormikValues>)[data.name]}
+                  errorText={(errors as FormikErrors<FormikValues>)[data.name]}
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  {...data}
+                />
+              </InputContainer>
             ))}
           </EditFormElements>
         </EditForm>
