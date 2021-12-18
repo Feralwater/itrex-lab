@@ -3,10 +3,8 @@ import {
 } from 'formik';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../hooks';
 import editProfileValidationSchema from './validation/editProfile.validation';
 import { signUpFieldsData } from './editFormFieldsData';
-import { editProfile } from '../../redux/actions';
 import { EditForm } from './EditProfileForm.styles';
 import {
   EditFormElements, EditImage, EditImageContainer, TitlePanel,
@@ -14,37 +12,24 @@ import {
 import { ProfileButtonsBlock } from './ProfileButtonsBlock';
 import { FormTitle } from '../../components/AuthForms/AuthForm.styles';
 import pagesDictionary from '../dictionary/pagesDictionary';
-import { selectProfile } from '../../redux/reducers';
-import { selectEditProfile } from '../../redux/reducers/editProfile.reducer';
 import { PATH } from '../../routes/constants';
-import { EditProfileData } from './EditProfile.types';
 import { FETCH_STATUS } from '../../redux/reducers/constants';
 
-export const EditProfileForm: React.VFC = () => {
-  const dispatch = useAppDispatch();
-  const { status, lastName: newLastName, firstName: newFirstName } = useAppSelector(selectEditProfile);
-  const { photo: profilePhoto, firstName, lastName } = useAppSelector(selectProfile);
+export const EditProfileForm: React.VFC<any> = ({
+  handleSubmitForm,
+  status,
+  initialValues,
+  profilePhoto,
+}) => {
   const history = useHistory();
-
-  const handleSubmitForm = (values: EditProfileData) => {
-    const data = new FormData();
-    data.append('firstName', values.firstName);
-    data.append('lastName', values.lastName);
-    data.append('avatar', values.avatar);
-    dispatch(editProfile.pending(data));
-    if (status !== FETCH_STATUS.FAILED) {
-      history.push(PATH.PROFILE);
-    }
-  };
   return (
     <Formik
-      initialValues={{
-        firstName: newFirstName || lastName,
-        lastName: newLastName || firstName,
-        avatar: '',
-      }}
+      initialValues={initialValues}
       onSubmit={(values, actions) => {
         handleSubmitForm(values);
+        if (status !== FETCH_STATUS.FAILED) {
+          history.push(PATH.PROFILE);
+        }
         actions.setSubmitting(false);
       }}
       validationSchema={editProfileValidationSchema}
@@ -60,14 +45,7 @@ export const EditProfileForm: React.VFC = () => {
         isValid,
         dirty,
       }) => (
-        <EditForm
-          onSubmit={handleSubmit}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              handleSubmit();
-            }
-          }}
-        >
+        <EditForm onSubmit={handleSubmit}>
           <TitlePanel>
             <FormTitle as="h1">{pagesDictionary.profile.pageTitle}</FormTitle>
             <ProfileButtonsBlock status={status} isValid={isValid} dirty={dirty} />

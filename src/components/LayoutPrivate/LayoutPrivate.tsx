@@ -1,10 +1,10 @@
 import React from 'react';
-import { Header } from '../Header';
+import { HeaderContainer } from '../Header';
 import { Body, BodyDoctorView, Patients } from './LayoutPrivate.styles';
 
 export const LayoutPrivate: React.FC = ({ children }) => (
   <>
-    <Header />
+    <HeaderContainer />
     <Body>
       <BodyDoctorView>
         <Patients>

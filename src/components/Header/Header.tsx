@@ -14,44 +14,33 @@ import {
   UserName,
   UserRole,
 } from './Header.styles';
-import { useAppSelector } from '../../hooks';
 import { componentsDictionary } from '../dictionary/componentsDictionary';
-import { selectProfile } from '../../redux/reducers';
 import { PATH, ROLES } from '../../routes/constants';
-import { selectEditProfile } from '../../redux/reducers/editProfile.reducer';
 
-export const Header: React.VFC = () => {
-  const {
-    firstName,
-    lastName,
-    roleName,
-    photo,
-  } = useAppSelector(selectProfile);
-  const {
-    firstName: editFirstName,
-    lastName: editLastName,
-    photo: editPhoto,
-  } = useAppSelector(selectEditProfile);
-  return (
-    <HeaderWrapper>
-      <HeaderContainer>
-        <HeaderLogo to={roleName === ROLES.DOCTOR ? PATH.PATIENTS : PATH.APPOINTMENTS}>
-          <Logo />
-          <LogoText>{componentsDictionary.header.logoText}</LogoText>
-        </HeaderLogo>
-        <User>
-          <UserInfo>
-            <UserName>{`${editFirstName || firstName} ${editLastName || lastName}`}</UserName>
-            <UserRole>{roleName}</UserRole>
-          </UserInfo>
-          <UserImageContainer>
-            <Link to={PATH.PROFILE}>
-              <UserImage src={editPhoto || photo} alt={componentsDictionary.header.avatarAlt} />
-            </Link>
-            <NetworkStatus isOnline />
-          </UserImageContainer>
-        </User>
-      </HeaderContainer>
-    </HeaderWrapper>
-  );
-};
+export const Header: React.VFC<any> = ({
+  firstName,
+  lastName,
+  roleName,
+  photo,
+}) => (
+  <HeaderWrapper>
+    <HeaderContainer>
+      <HeaderLogo to={roleName === ROLES.DOCTOR ? PATH.PATIENTS : PATH.APPOINTMENTS}>
+        <Logo />
+        <LogoText>{componentsDictionary.header.logoText}</LogoText>
+      </HeaderLogo>
+      <User>
+        <UserInfo>
+          <UserName>{`${firstName} ${lastName}`}</UserName>
+          <UserRole>{roleName}</UserRole>
+        </UserInfo>
+        <UserImageContainer>
+          <Link to={PATH.PROFILE}>
+            <UserImage src={photo} alt={componentsDictionary.header.avatarAlt} />
+          </Link>
+          <NetworkStatus isOnline />
+        </UserImageContainer>
+      </User>
+    </HeaderContainer>
+  </HeaderWrapper>
+);

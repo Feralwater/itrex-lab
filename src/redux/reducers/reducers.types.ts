@@ -44,6 +44,14 @@ export interface EditProfileState extends Request {
   specializationName: string;
 }
 
+export interface EditPatientProfileState extends Request {
+  id: string;
+  firstName: string;
+  lastName: string;
+  photo: string;
+  roleName: string;
+}
+
 export interface RegistrationState extends Request {
   accessToken: string;
   refreshToken?: string;

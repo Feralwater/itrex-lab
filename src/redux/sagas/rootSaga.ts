@@ -15,6 +15,7 @@ import occupationsSaga from './occupations.saga';
 import doctorsByIDSaga from './doctorsByID.saga';
 import freeDoctorTimeSaga from './freeTimeSaga';
 import changePasswordSaga from './changePassword.saga';
+import editPatientProfileSaga from './editPatientProfile.saga';
 
 function* rootSaga() {
   yield all([
@@ -34,6 +35,7 @@ function* rootSaga() {
     doctorsByIDSaga(),
     freeDoctorTimeSaga(),
     changePasswordSaga(),
+    editPatientProfileSaga(),
   ]);
 }
 
