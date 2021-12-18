@@ -53,7 +53,15 @@ const ChangePasswordModal: React.VFC<ChangePasswordProps> = ({ setActiveChangePa
         isValid,
         dirty,
       }) => (
-        <ChangePasswordForm onSubmit={handleSubmit}>
+        <ChangePasswordForm
+          onSubmit={handleSubmit}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              handleSubmit();
+              setActiveChangePasswordModal(false);
+            }
+          }}
+        >
           <ChangePasswordFormBody>
             <ResolutionModalTitle>{dictionary.form.changePasswordTitle}</ResolutionModalTitle>
             {changePasswordFieldsData.map((data) => (

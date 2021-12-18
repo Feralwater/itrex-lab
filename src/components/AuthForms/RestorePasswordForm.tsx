@@ -42,7 +42,14 @@ export const RestorePasswordForm:React.VFC<RestoreEmail> = ({ setRestorePassword
         handleSubmit,
         dirty,
       }) => (
-        <CustomForm onSubmit={handleSubmit}>
+        <CustomForm
+          onSubmit={handleSubmit}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              handleSubmit();
+            }
+          }}
+        >
           <FormTitle as={Link} to={PATH.SIGN_IN}>
             <FormTitleLeftArrow />
             {dictionary.form.restoreTitle}

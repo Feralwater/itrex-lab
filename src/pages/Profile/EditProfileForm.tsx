@@ -60,7 +60,14 @@ export const EditProfileForm: React.VFC = () => {
         isValid,
         dirty,
       }) => (
-        <EditForm onSubmit={handleSubmit}>
+        <EditForm
+          onSubmit={handleSubmit}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              handleSubmit();
+            }
+          }}
+        >
           <TitlePanel>
             <FormTitle as="h1">{pagesDictionary.profile.pageTitle}</FormTitle>
             <ProfileButtonsBlock status={status} isValid={isValid} dirty={dirty} />

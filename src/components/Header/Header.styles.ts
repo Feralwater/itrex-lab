@@ -95,7 +95,7 @@ export const UserName = styled(H6)`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  max-width: 130px;
+  max-width: 150px;
 `;
 
 export const UserRole = styled(SubTitle)`

@@ -33,7 +33,14 @@ export const SignUpForm:React.VFC<SignUpFormProps> = ({ handleSubmitForm }) => (
       handleSubmit,
       dirty,
     }) => (
-      <CustomForm onSubmit={handleSubmit}>
+      <CustomForm
+        onSubmit={handleSubmit}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            handleSubmit();
+          }
+        }}
+      >
         <FormTitle as="h1">{dictionary.form.signUpTitle}</FormTitle>
         {signUpFieldsData.map((data) => (
           <Field

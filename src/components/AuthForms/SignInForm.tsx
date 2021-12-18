@@ -36,7 +36,14 @@ export const SignInForm:React.VFC<SignInFormProps> = ({ status, handleSubmitForm
       handleSubmit,
       dirty,
     }) => (
-      <CustomForm onSubmit={handleSubmit}>
+      <CustomForm
+        onSubmit={handleSubmit}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            handleSubmit();
+          }
+        }}
+      >
         <FormTitle as="h1">{dictionary.form.signInTitle}</FormTitle>
         {signInFieldsData.map((data) => (
           <Field
