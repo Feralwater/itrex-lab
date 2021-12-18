@@ -16,8 +16,16 @@ import {
 } from './Header.styles';
 import { componentsDictionary } from '../dictionary/componentsDictionary';
 import { PATH, ROLES } from '../../routes/constants';
+import { RoleName } from '../../redux/reducers/reducers.types';
 
-export const Header: React.VFC<any> = ({
+export interface HeaderProps {
+  roleName: RoleName;
+  firstName: string;
+  lastName: string;
+  photo: string;
+}
+
+export const Header: React.VFC<HeaderProps> = ({
   firstName,
   lastName,
   roleName,

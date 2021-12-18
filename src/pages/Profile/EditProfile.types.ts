@@ -1,11 +1,35 @@
+/* eslint-disable no-unused-vars */
 import { Dispatch, SetStateAction } from 'react';
+import { RoleName, Status } from '../../redux/reducers/reducers.types';
 
-export interface EditProfileData{
-  firstName: string
-  lastName: string
-  avatar: File | string
+export interface EditProfileData {
+  firstName: string;
+  lastName: string;
+  avatar: File | string;
 }
 
-export interface ChangePasswordProps{
+export interface ChangePasswordProps {
   setActiveChangePasswordModal: Dispatch<SetStateAction<boolean>>;
+}
+
+export interface EditProfileFormProps {
+  handleSubmitForm: ({
+    firstName,
+    lastName,
+    avatar,
+  }: EditProfileData) => void;
+  status: Status;
+  initialValues: EditProfileData;
+  profilePhoto: string;
+}
+
+export interface ProfileProps {
+  roleName: RoleName;
+  firstName: string;
+  lastName: string;
+  photo: string;
+  activeChangePasswordModal: boolean;
+  setActiveChangePasswordModal: Dispatch<SetStateAction<boolean>>;
+  closeModalHandler: () => void;
+  logoutHandler: () => void;
 }

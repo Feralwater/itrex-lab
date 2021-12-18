@@ -8,8 +8,9 @@ import {
 } from './Profile.styles';
 import { PATH } from '../../routes/constants';
 import ChangePasswordModal from './ChangePasswordModal';
+import { ProfileProps } from './EditProfile.types';
 
-export const Profile: React.VFC<any> = ({
+export const Profile: React.VFC<ProfileProps> = ({
   roleName,
   firstName,
   lastName,

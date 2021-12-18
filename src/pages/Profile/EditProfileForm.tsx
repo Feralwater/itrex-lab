@@ -14,8 +14,9 @@ import { FormTitle } from '../../components/AuthForms/AuthForm.styles';
 import pagesDictionary from '../dictionary/pagesDictionary';
 import { PATH } from '../../routes/constants';
 import { FETCH_STATUS } from '../../redux/reducers/constants';
+import { EditProfileFormProps } from './EditProfile.types';
 
-export const EditProfileForm: React.VFC<any> = ({
+export const EditProfileForm: React.VFC<EditProfileFormProps> = ({
   handleSubmitForm,
   status,
   initialValues,
