@@ -11,6 +11,7 @@ import {
   selectAppointmentsForDoctor, selectProfile, selectResolution,
 } from '../../redux/reducers';
 import { FETCH_STATUS } from '../../redux/reducers/constants';
+import { selectEditResolution } from '../../redux/reducers/editResolution.reducer';
 
 export const AppointmentsForDoctorContainer: React.VFC = () => {
   const dispatch = useAppDispatch();
@@ -18,6 +19,8 @@ export const AppointmentsForDoctorContainer: React.VFC = () => {
   const { total: totalAppointmentsCount, appointments, responseStatus } = useAppSelector(selectAppointmentsForDoctor);
   const { total: totalResolutionsCount } = useAppSelector(selectResolution);
   const { roleName } = useAppSelector(selectProfile);
+  const { status } = useAppSelector(selectEditResolution);
+
   useEffect(() => {
     if (userId) {
       dispatch(appointmentsForDoctor.pending({
@@ -29,7 +32,7 @@ export const AppointmentsForDoctorContainer: React.VFC = () => {
         limit: 50,
       }));
     }
-  }, [userId, totalAppointmentsCount, dispatch, totalResolutionsCount]);
+  }, [userId, totalAppointmentsCount, dispatch, totalResolutionsCount, status]);
   function chooseWhatToDisplay() {
     if (responseStatus !== FETCH_STATUS.LOADING) {
       return appointments.length > 0

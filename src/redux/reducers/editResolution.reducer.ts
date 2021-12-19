@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { editResolution } from '../actions';
 import { EditResolutionState } from './reducers.types';
 import { FETCH_STATUS } from './constants';
+import { RootState } from '../store';
 
 const initialState = {
   resolutionID: '',
@@ -26,4 +27,5 @@ export const editResolutionSlice = createSlice({
   },
 });
 
+export const selectEditResolution = (state: RootState) => state.editResolution;
 export const editResolutionReducer = editResolutionSlice.reducer;
