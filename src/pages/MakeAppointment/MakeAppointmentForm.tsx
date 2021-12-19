@@ -11,8 +11,9 @@ import {
   SelectTimeslotStep, LinksContainer, DisabledLink,
 } from 'pages/MakeAppointment/MakeAppointment.styles';
 import {
-  AppointmentsSteps, DatePicker, H1, SubmitOrLoader, TimeSlots,
+  AppointmentsSteps, H1, SubmitOrLoader, TimeSlots,
   SelectForAppointmentFormContainer,
+  DatePickerContainer,
 } from 'components';
 import pagesDictionary from 'pages/dictionary/pagesDictionary';
 import appointmentValidationSchema from './validation/appointment.validation';
@@ -112,7 +113,7 @@ export const MakeAppointmentForm: React.VFC<MakeAppointmentFormProps> = ({
               <Field
                 name="date"
                 id="date"
-                component={DatePicker}
+                component={DatePickerContainer}
                 doctorId={values.doctorName}
                 disableDate={disableDate}
                 setSelectedDate={setSelectedDate}

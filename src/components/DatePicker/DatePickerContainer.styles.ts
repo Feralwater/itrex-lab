@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { colors } from '../CommonStyles';
 
-const ReactCalendar = styled.div`
+const ReactCalendarContainer = styled.div`
   & div.react-calendar {
     width: 400px;
     max-width: 100%;
@@ -99,4 +99,4 @@ const ReactCalendar = styled.div`
   border: 1px solid ${colors.cornflower_blue};
 `;
 
-export default ReactCalendar;
+export default ReactCalendarContainer;
