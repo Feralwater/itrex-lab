@@ -29,10 +29,10 @@ const ProfileContainer:React.VFC = () => {
   const userPhoto = roleName === ROLES.DOCTOR ? (editDoctorPhoto || photo) : (editPatientPhoto || photo);
   const [activeChangePasswordModal, setActiveChangePasswordModal] = useState<boolean>(false);
   const closeModalHandler = () => setActiveChangePasswordModal(true);
+  const { initProfile } = useProfile();
   const logoutHandler = () => {
     loginRepository.removeAccessToken();
     loginRepository.removeRefreshToken();
-    const { initProfile } = useProfile();
     initProfile();
   };
   return (

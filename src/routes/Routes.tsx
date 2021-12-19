@@ -19,7 +19,7 @@ import {
 import { selectProfile } from '../redux/reducers';
 import ProfileContainer from '../pages/Profile/ProfileContainer';
 
-export const AppRouter = () => {
+export const AppRouter:React.VFC = () => {
   const { roleName } = useAppSelector(selectProfile);
   const history = useNavigate();
   const location = useLocation();
