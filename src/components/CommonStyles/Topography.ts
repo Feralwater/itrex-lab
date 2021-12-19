@@ -37,8 +37,6 @@ export const H4 = styled.h4`
   font-weight: 600;
   font-size: 17px;
   line-height: 140%;
-  display: flex;
-  align-items: center;
   color: ${colors.dark_jungle_green};
   margin: 0;
 `;
@@ -56,8 +54,6 @@ export const H6 = styled.h6`
   font-weight: 600;
   font-size: 15px;
   line-height: 130%;
-  display: flex;
-  align-items: center;
   color: ${colors.dark_jungle_green};
 `;
 
