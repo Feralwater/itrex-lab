@@ -17,7 +17,7 @@ export const InputFormContainer:React.VFC<InputProps> = ({
   label,
   ...props
 }) => {
-  const [isSecurePassword, setIsSecurePassword] = useState<boolean>(true);
+  const [isSecurePassword, setIsSecurePassword] = useState<boolean>(false);
 
   const onEyeIconClickHandler = () => setIsSecurePassword((prevState) => !prevState);
 
