@@ -27,9 +27,7 @@ To Start Server:
 
 `yarn run`
 
-To Visit App:
-
-`https://itrex-lab.vercel.app/sign-in`
+To Visit App: [deploy](https://itrex-lab.vercel.app/sign-in)
 
 ## Reflection
 
