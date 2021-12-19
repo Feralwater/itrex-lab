@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ControlCardPanelProps } from './ControlCardPanel.types';
-import { useAppDispatch } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import dictionary from '../../pages/dictionary/pagesDictionary';
 import {
   editResolution, resolution, resolutions,
@@ -10,6 +10,7 @@ import { CardControlList } from '..';
 import { ResolutionModal } from './ResolutionModal';
 import { ResolutionModalButtons } from './ResolutionModalButtons';
 import { resolutionsOnPage, resolutionsOnPageOffset } from '../../pages/Resolutions/constants';
+import { selectResolutions } from '../../redux/reducers';
 
 export const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
   appointmentID,
@@ -20,6 +21,9 @@ export const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
   const [activeCreateResolutionModal, setActiveCreateResolutionModal] = useState<boolean>(false);
   const [activeEditResolutionModal, setActiveEditResolutionModal] = useState<boolean>(false);
   const [resolutionText, setResolutionText] = useState<string>('');
+  const { resolutions: resolutionForDoctor } = useAppSelector(selectResolutions);
+  const editResolutionInitialText = resolutionForDoctor?.find((res) => res?.appointment_id === appointmentID)?.resolution;
+  const [editResolutionText, setEditResolutionText] = useState<string>(editResolutionInitialText || '');
 
   const saveHandler = () => {
     dispatch(resolution.pending({
@@ -31,7 +35,7 @@ export const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
   };
   const editHandler = () => {
     dispatch(editResolution.pending({
-      resolution: resolutionText,
+      resolution: editResolutionText,
       resolutionID,
     }));
     dispatch(resolutions.pending({
@@ -73,13 +77,13 @@ export const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
       </ModalWindow>
       <ModalWindow activeModal={activeEditResolutionModal} setActiveModal={setActiveEditResolutionModal}>
         <ResolutionModal
-          resolutionText={resolutionText}
-          setResolutionText={setResolutionText}
+          resolutionText={editResolutionText}
+          setResolutionText={setEditResolutionText}
           appointmentID={appointmentID}
           resolutionModalTitle={dictionary.resolutionModal.editResolutionTitle}
         />
         <ResolutionModalButtons
-          disabled={resolutionText.length < 2}
+          disabled={editResolutionText.length < 2}
           activeButtonType="button"
           cancelHandler={cancelHandler}
           saveHandler={editHandler}

@@ -66,9 +66,8 @@ export const EditProfileForm: React.VFC<EditProfileFormProps> = ({
             </EditImageContainer>
 
             {signUpFieldsData.map((data) => (
-              <InputContainer>
+              <InputContainer key={data.name}>
                 <Field
-                  key={data.name}
                   value={(values as FormikValues)[data.name]}
                   isError={(touched as FormikTouched<FormikValues>)[data.name] && (errors as FormikErrors<FormikValues>)[data.name]}
                   errorText={(errors as FormikErrors<FormikValues>)[data.name]}
