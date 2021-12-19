@@ -2,7 +2,7 @@ import {
   Formik, Field, FormikValues, FormikTouched, FormikErrors,
 } from 'formik';
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import editProfileValidationSchema from './validation/editProfile.validation';
 import { signUpFieldsData } from './editFormFieldsData';
 import { EditForm } from './EditProfileForm.styles';
@@ -22,14 +22,14 @@ export const EditProfileForm: React.VFC<EditProfileFormProps> = ({
   initialValues,
   profilePhoto,
 }) => {
-  const history = useHistory();
+  const history = useNavigate();
   return (
     <Formik
       initialValues={initialValues}
       onSubmit={(values, actions) => {
         handleSubmitForm(values);
         if (status !== FETCH_STATUS.FAILED) {
-          history.push(PATH.PROFILE);
+          history(PATH.PROFILE);
         }
         actions.setSubmitting(false);
       }}

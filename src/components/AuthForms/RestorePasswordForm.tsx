@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Field, Formik, FormikErrors, FormikTouched, FormikValues,
 } from 'formik';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   ButtonWrapper,
   CustomForm, FormTitle, FormTitleLeftArrow,
@@ -16,10 +16,10 @@ import { restoreFieldsData } from './fieldsData';
 import { RestoreEmail } from './Form.types';
 
 export const RestorePasswordForm:React.VFC<RestoreEmail> = ({ setRestorePassword }) => {
-  const history = useHistory();
+  const history = useNavigate();
   const handleSubmitForm = (email:string) => {
     setRestorePassword(email);
-    history.push(PATH.SEND_EMAIL);
+    history(PATH.SEND_EMAIL);
   };
   return (
     <Formik

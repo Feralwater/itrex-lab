@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Redirect, Route, Switch, useHistory, useLocation,
+  Route, useLocation, Routes, Navigate, useNavigate,
 } from 'react-router-dom';
 import { SendEmail } from 'pages/SendEmail/SendEmail';
 import { SignIn } from 'pages/SignIn/SignIn';
@@ -19,50 +19,48 @@ import {
 import { selectProfile } from '../redux/reducers';
 import ProfileContainer from '../pages/Profile/ProfileContainer';
 
-function Routes() {
+export const AppRouter = () => {
   const { roleName } = useAppSelector(selectProfile);
-  const history = useHistory();
+  const history = useNavigate();
   const location = useLocation();
   const [restorePassword, setRestorePassword] = useState<string>('');
   useEffect(() => {
     checkUserRole(history, roleName, location.pathname);
   }, [roleName, location.pathname]);
   return (
-    <Switch>
-      <Route path="/" exact render={() => <Redirect to={PATH.SIGN_IN} />} />
+    <Routes>
+      <Route path="/" element={<Navigate to={PATH.SIGN_IN} />} />
       <Route
         path={PATH.RESTORE_PASSWORD}
-        render={
-        () => <AuthorisedLayout><RestorePasswordForm setRestorePassword={setRestorePassword} /></AuthorisedLayout>
+        element={
+          <AuthorisedLayout><RestorePasswordForm setRestorePassword={setRestorePassword} /></AuthorisedLayout>
 }
       />
       <Route
         path={PATH.SEND_EMAIL}
-        render={() => (
+        element={(
           <AuthorisedLayout>
             <SendEmail email={restorePassword} />
           </AuthorisedLayout>
         )}
       />
-      <Route path={PATH.SIGN_IN} render={() => <AuthorisedLayout><SignIn /></AuthorisedLayout>} />
-      <Route path={PATH.SIGN_UP} render={() => <AuthorisedLayout><SignUp /></AuthorisedLayout>} />
-      <Route path={PATH.PATIENTS} render={() => <LayoutPrivate><AppointmentsForDoctorContainer /></LayoutPrivate>} />
-      <Route path={PATH.APPOINTMENTS} render={() => <LayoutPrivate><AppointmentsForPatientContainer /></LayoutPrivate>} />
-      <Route path={PATH.RESOLUTIONS} render={() => <LayoutPrivate><ResolutionsForDoctorContainer /></LayoutPrivate>} />
-      <Route exact path={PATH.PROFILE} render={() => <LayoutPrivate><ProfileContainer /></LayoutPrivate>} />
-      <Route path={PATH.EDIT_PROFILE} render={() => <LayoutPrivate><EditProfileFormContainer /></LayoutPrivate>} />
-      <Route path={PATH.MY_RESOLUTIONS} render={() => <LayoutPrivate><ResolutionsForPatientContainer /></LayoutPrivate>} />
+      <Route path={PATH.SIGN_IN} element={<AuthorisedLayout><SignIn /></AuthorisedLayout>} />
+      <Route path={PATH.SIGN_UP} element={<AuthorisedLayout><SignUp /></AuthorisedLayout>} />
+      <Route path={PATH.PATIENTS} element={<LayoutPrivate><AppointmentsForDoctorContainer /></LayoutPrivate>} />
+      <Route path={PATH.APPOINTMENTS} element={<LayoutPrivate><AppointmentsForPatientContainer /></LayoutPrivate>} />
+      <Route path={PATH.RESOLUTIONS} element={<LayoutPrivate><ResolutionsForDoctorContainer /></LayoutPrivate>} />
+      <Route path={PATH.PROFILE} element={<LayoutPrivate><ProfileContainer /></LayoutPrivate>} />
+      <Route path={PATH.EDIT_PROFILE} element={<LayoutPrivate><EditProfileFormContainer /></LayoutPrivate>} />
+      <Route path={PATH.MY_RESOLUTIONS} element={<LayoutPrivate><ResolutionsForPatientContainer /></LayoutPrivate>} />
       <Route
         path={PATH.CREATE_APPOINTMENT}
-        render={() => (
+        element={(
           <LayoutPrivate>
             <MakeAppointmentFormContainer />
           </LayoutPrivate>
         )}
       />
-      <Route render={() => <Error404 />} />
-    </Switch>
+      <Route element={<Error404 />} />
+    </Routes>
   );
-}
-
-export default Routes;
+};
