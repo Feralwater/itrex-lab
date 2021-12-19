@@ -17,9 +17,11 @@ Clone down this repository. You will need `node` and `yarn` and `git` installed 
 
 You may see API here: [Swagger UI](https://reactlabapi.herokuapp.com/api/docs/#/)
 
-To Run Test Suite:
- 
-`yarn test`
+You may handle test application with this credentials:
+
+login: `email@mail.ru` (for patient view) or `email@gmail.com` (for doctor view)
+
+password: `password`
 
 To Start Server:
 
