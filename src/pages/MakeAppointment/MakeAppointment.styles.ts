@@ -84,6 +84,8 @@ export const StepNumber = styled(H4)`
   border-radius: 100%;
   justify-content: center;
   color: ${colors.rock_blue};
+  display: flex;
+  align-items: center;
   flex-shrink: 0;
 `;
 
