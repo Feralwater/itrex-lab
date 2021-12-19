@@ -13,7 +13,7 @@ export const TimeSlotsContainer = styled.div`
   margin: 0;
 `;
 
-export const TimeSlot = styled.input`
+export const TimeSlotContainer = styled.input`
   display: none;
 
   &:checked {

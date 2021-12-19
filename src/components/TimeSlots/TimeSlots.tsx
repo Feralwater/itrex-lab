@@ -1,10 +1,11 @@
 import React, { ChangeEvent, useEffect } from 'react';
 import { useField } from 'formik';
 import { parseISO, format } from 'date-fns';
-import { TimeSlot, TimeSlotLabel, TimeSlotsContainer } from './TimeSlots.styles';
+import { TimeSlotsContainer } from './TimeSlots.styles';
 import { TimeSlotsProps } from './TimeSlots.types';
 import { TIME_SLOTS } from '../../pages/constants';
 import { timeForDisplayFormat } from './constants';
+import { TimeSlot } from './TimeSlot';
 
 export const TimeSlots: React.VFC<TimeSlotsProps> = ({
   freeTime,
@@ -25,31 +26,22 @@ export const TimeSlots: React.VFC<TimeSlotsProps> = ({
     setValue(null);
   }, [date, occupation, doctorName]);
 
-  function getTimeForServer(time: string) {
-    return freeTimeSlots.filter((timeSlot) => timeSlot.timeForDisplay === time)?.[0]?.timeForServer;
-  }
+  const getTimeForServer = (time: string) => freeTimeSlots.filter((timeSlot) => timeSlot.timeForDisplay === time)?.[0]?.timeForServer;
   const isChecked = (time:string) => value === getTimeForServer(time);
+  const handleClick = (e: ChangeEvent<HTMLInputElement>) => setValue(getTimeForServer(e.currentTarget.value));
 
-  const handlerClick = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(getTimeForServer(e.currentTarget.value));
-  };
   return (
     <TimeSlotsContainer>
       {TIME_SLOTS.map((time: string) => {
         const disabled = freeTimeSlots.every((timeSlot) => timeSlot.timeForDisplay !== time) || date === '';
         return (
-          <div key={time}>
-            <TimeSlot
-              id={time}
-              type="radio"
-              name="radio"
-              value={time}
-              checked={isChecked(time)}
-              onChange={handlerClick}
-              disabled={disabled}
-            />
-            <TimeSlotLabel htmlFor={time}>{time}</TimeSlotLabel>
-          </div>
+          <TimeSlot
+            key={time}
+            time={time}
+            isChecked={isChecked}
+            handleClick={handleClick}
+            disabled={disabled}
+          />
         );
       })}
     </TimeSlotsContainer>
