@@ -2,11 +2,9 @@ import React, { useEffect } from 'react';
 import Loader from 'react-loader-spinner';
 import styled from 'styled-components';
 import Routes from './routes/Routes';
-import { profile } from './redux/actions';
-import { useAppDispatch, useAppSelector } from './hooks';
+import { useAppSelector, useProfile } from './hooks';
 import { colors, NotificationContainer } from './components';
-import { ROLES } from './routes/constants';
-import { selectAccessToken, selectProfile } from './redux/reducers';
+import { selectAccessToken } from './redux/reducers';
 
 export const AppLoaderContainer = styled.div`
   width: 100%;
@@ -18,18 +16,11 @@ export const AppLoaderContainer = styled.div`
 
 const App:React.VFC = () => {
   const accessToken = useAppSelector(selectAccessToken);
-  const { roleName } = useAppSelector(selectProfile);
-  const dispatch = useAppDispatch();
 
+  const { initProfile, roleName } = useProfile();
   useEffect(() => {
-    dispatch(profile.pending({
-      first_name: '',
-      id: '',
-      last_name: '',
-      photo: '',
-      role_name: ROLES.PUBLIC,
-    }));
-  }, [dispatch, accessToken]);
+    initProfile();
+  }, [accessToken]);
 
   return (
     <>

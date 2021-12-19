@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { Profile } from './Profile';
-import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useAppSelector, useProfile } from '../../hooks';
 import { selectEditProfile } from '../../redux/reducers/editProfile.reducer';
 import { selectProfile } from '../../redux/reducers';
 import { loginRepository } from '../../resources/loginRepository';
-import { profile } from '../../redux/actions';
 import { ROLES } from '../../routes/constants';
 import { selectEditPatientProfile } from '../../redux/reducers/editPatientProfile.reducer';
 
@@ -29,18 +28,12 @@ const ProfileContainer:React.VFC = () => {
   const userLastName = roleName === ROLES.DOCTOR ? (editDoctorLastName || lastName) : (editPatientLastName || lastName);
   const userPhoto = roleName === ROLES.DOCTOR ? (editDoctorPhoto || photo) : (editPatientPhoto || photo);
   const [activeChangePasswordModal, setActiveChangePasswordModal] = useState<boolean>(false);
-  const dispatch = useAppDispatch();
   const closeModalHandler = () => setActiveChangePasswordModal(true);
   const logoutHandler = () => {
     loginRepository.removeAccessToken();
     loginRepository.removeRefreshToken();
-    dispatch(profile.pending({
-      first_name: '',
-      id: '',
-      last_name: '',
-      photo: '',
-      role_name: ROLES.PUBLIC,
-    }));
+    const { initProfile } = useProfile();
+    initProfile();
   };
   return (
     <Profile
