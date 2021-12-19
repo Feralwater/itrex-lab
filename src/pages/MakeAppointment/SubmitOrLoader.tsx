@@ -45,8 +45,7 @@ export const SubmitOrLoader: React.FC<SubmitOrLoaderProps> = ({
               color={colors.cornflower_blue}
               secondaryColor={colors.radical_red}
               timeout={5000}
-              height={100}
-              width={100}
+              width={120}
             />
           </MakeAppointmentButtonContainer>
         )
