@@ -1,7 +1,12 @@
 import { format } from 'date-fns';
 import Loader from 'react-loader-spinner';
 import React from 'react';
-import { ResolutionsTable, ResolutionsTableHead, ResolutionsTableHeaderCell } from './Resolutions.styles';
+import {
+  ResolutionsLoaderContainer,
+  ResolutionsTable,
+  ResolutionsTableHead,
+  ResolutionsTableHeaderCell,
+} from './Resolutions.styles';
 import { columnsNames, visitDate } from './constants';
 import { ResolutionRow } from './ResolutionRow';
 import { colors } from '../../components';
@@ -50,14 +55,16 @@ export const Resolutions:React.VFC<ResolutionsProps> = ({ responseStatus, myReso
         </ResolutionsTable>
       )
       : (
-        <Loader
-          type="MutatingDots"
-          color={colors.cornflower_blue}
-          secondaryColor={colors.radical_red}
-          timeout={5000}
-          height={150}
-          width={150}
-        />
+        <ResolutionsLoaderContainer>
+          <Loader
+            type="MutatingDots"
+            color={colors.cornflower_blue}
+            secondaryColor={colors.radical_red}
+            timeout={5000}
+            height={150}
+            width={150}
+          />
+        </ResolutionsLoaderContainer>
       )}
     {role === ROLES.PATIENT
       ? (myResolutions.length > 0 && <ResolutionsForPatientPaginateContainer />)
