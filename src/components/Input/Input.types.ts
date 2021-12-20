@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from 'react';
+
 export interface InputProps {
   label: string;
   id: string;
@@ -9,6 +11,7 @@ export interface InputProps {
   errorText?: string;
   inputSize: 'large' | 'small';
   isSecurePassword?: boolean;
+  setSearchTerm?: Dispatch<SetStateAction<string>>;
   isRequire: boolean;
 
   [x: string]: any;

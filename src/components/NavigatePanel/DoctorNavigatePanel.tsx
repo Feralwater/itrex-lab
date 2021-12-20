@@ -9,7 +9,7 @@ import { NavigatePanelProps } from '../../pages/Appointments/AppointmentsContain
 import isActiveTab from './utils';
 import { InputSearchContainer } from '../Input';
 
-export const DoctorNavigatePanel: React.VFC<NavigatePanelProps> = ({ pageTitle }) => (
+export const DoctorNavigatePanel: React.VFC<NavigatePanelProps> = ({ pageTitle, setSearchTerm }) => (
   <>
     <PatientsButtonsContainer>
       <PatientsButton
@@ -37,6 +37,7 @@ export const DoctorNavigatePanel: React.VFC<NavigatePanelProps> = ({ pageTitle }
           placeholder="Search"
           isRequire={false}
           inputSize="small"
+          setSearchTerm={setSearchTerm}
         />
       </SearchAndFilter>
     </UserPageTitle>

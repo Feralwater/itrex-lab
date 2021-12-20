@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Loader from 'react-loader-spinner';
 import { DoctorFullState } from '../FullStateView';
 import { DoctorEmptyState } from '../EmptyStateView';
@@ -20,6 +20,11 @@ export const AppointmentsForDoctorContainer: React.VFC = () => {
   const { total: totalResolutionsCount } = useAppSelector(selectResolution);
   const { roleName } = useAppSelector(selectProfile);
   const { status } = useAppSelector(selectEditResolution);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const searchTermToLocaleLowerCase = searchTerm.toLocaleLowerCase();
+  const filteredAppointments = appointments.filter(({ patient }) => [patient.first_name,
+    patient.last_name].some((string) => string.toLocaleLowerCase().includes(searchTermToLocaleLowerCase)));
 
   useEffect(() => {
     if (userId) {
@@ -39,7 +44,7 @@ export const AppointmentsForDoctorContainer: React.VFC = () => {
         ? (
           <DoctorFullState
             roleName={roleName}
-            appointments={appointments}
+            appointments={filteredAppointments}
             total={totalAppointmentsCount}
           />
         )
@@ -60,7 +65,7 @@ export const AppointmentsForDoctorContainer: React.VFC = () => {
   }
   return (
     <>
-      <DoctorNavigatePanel pageTitle={dictionary.doctorPage.patientsTitle} />
+      <DoctorNavigatePanel pageTitle={dictionary.doctorPage.patientsTitle} setSearchTerm={setSearchTerm} />
       <AppointmentsWrapper patientsLength={appointments.length}>
         {chooseWhatToDisplay()}
       </AppointmentsWrapper>
