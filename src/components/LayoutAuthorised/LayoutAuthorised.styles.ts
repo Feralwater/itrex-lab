@@ -8,7 +8,7 @@ export const BodyAuth = styled.div`
   width: 100%;
   display: flex;
   align-items: stretch;
-  background: url("../../img/bg.png") no-repeat 0 0;
+  background: url("/img/bg.jpg") no-repeat 0 0;
   background-size: cover;
 
   @media only screen and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3),

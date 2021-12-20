@@ -12,7 +12,7 @@ export const Error = styled.section`
 `;
 
 export const ErrorNumber = styled.div`
-  background: url("../../img/404.png") no-repeat center center/contain;
+  background: url("/img/404.png") no-repeat center center/contain;
   width: 800px;
   height: 300px;
   margin: 0 0 90px 0;
