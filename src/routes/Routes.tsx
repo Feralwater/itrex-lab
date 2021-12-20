@@ -60,7 +60,7 @@ export const AppRouter:React.VFC = () => {
           </LayoutPrivate>
         )}
       />
-      <Route element={<Error404 />} />
+      <Route path="*" element={<Error404 />} />
     </Routes>
   );
 };
