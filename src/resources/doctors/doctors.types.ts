@@ -5,4 +5,4 @@ export interface DoctorsBySpecializationId {
   id: string
 }
 
-export type DoctorsBySpecializationIdResponse=Array<DoctorsBySpecializationId>
+export type DoctorsBySpecializationIdResponse = Array<DoctorsBySpecializationId>;

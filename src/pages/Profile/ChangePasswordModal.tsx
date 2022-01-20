@@ -3,7 +3,7 @@ import {
   Field, Formik, FormikErrors, FormikTouched, FormikValues,
 } from 'formik';
 import { ResolutionModalTitle } from 'components/ControlCardPanel/ControlCardPanel.styles';
-import dictionary from '../dictionary/pagesDictionary';
+import { dictionary } from '../dictionary/pagesDictionary';
 import { ResolutionModalButtons } from '../../components';
 import { changePasswordFieldsData, changePasswordInitial } from './constants';
 import { useAppDispatch } from '../../hooks';
@@ -13,7 +13,7 @@ import { ChangePasswordPending } from '../../redux/actions/actions.types';
 import changePasswordValidationSchema from './validation/changePassword.validation';
 import { ChangePasswordForm, ChangePasswordFormBody } from './ChangePassword.styles';
 
-const ChangePasswordModal: React.VFC<ChangePasswordProps> = ({ setActiveChangePasswordModal }) => {
+export const ChangePasswordModal: React.VFC<ChangePasswordProps> = ({ setActiveChangePasswordModal }) => {
   const dispatch = useAppDispatch();
   const handleSubmitForm = ({
     oldPassword,
@@ -94,5 +94,3 @@ const ChangePasswordModal: React.VFC<ChangePasswordProps> = ({ setActiveChangePa
     </Formik>
   );
 };
-
-export default ChangePasswordModal;

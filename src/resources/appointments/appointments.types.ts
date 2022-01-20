@@ -46,7 +46,7 @@ export interface DeleteAppointment {
   id: string;
 }
 
-export type FreeTimeResponse = Array<string>
+export type FreeTimeResponse = Array<string>;
 
 export interface AppointmentData {
   date: string;

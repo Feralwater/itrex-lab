@@ -1,6 +1,6 @@
-import { appointmentValues } from './form.types';
+import { AppointmentValues } from './form.types';
 
-export const initialValuesForAppointmentForm: appointmentValues = {
+export const initialValuesForAppointmentForm: AppointmentValues = {
   occupation: {
     label: '',
     value: '',

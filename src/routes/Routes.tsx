@@ -14,10 +14,9 @@ import { useAppSelector } from '../hooks';
 import { PATH } from './constants';
 import checkUserRole from './utils';
 import {
-  ResolutionsForDoctorContainer, ResolutionsForPatientContainer, EditProfileFormContainer,
+  ResolutionsForDoctorContainer, ResolutionsForPatientContainer, EditProfileFormContainer, ProfileContainer,
 } from '../pages';
 import { selectProfile } from '../redux/reducers';
-import ProfileContainer from '../pages/Profile/ProfileContainer';
 
 export const AppRouter:React.VFC = () => {
   const { roleName } = useAppSelector(selectProfile);
@@ -26,7 +25,7 @@ export const AppRouter:React.VFC = () => {
   const [restorePassword, setRestorePassword] = useState<string>('');
   useEffect(() => {
     checkUserRole(history, roleName, location.pathname);
-  }, [roleName, location.pathname]);
+  }, [history, roleName, location.pathname]);
   return (
     <Routes>
       <Route path="/" element={<Navigate to={PATH.SIGN_IN} />} />

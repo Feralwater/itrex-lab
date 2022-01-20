@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from '../../components';
+import { colors } from '../../components/CommonStyles';
 
 export const ResolutionsTable = styled.table`
   width: 100%;

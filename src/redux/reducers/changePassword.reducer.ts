@@ -22,7 +22,7 @@ export const changePasswordSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(changePassword.fulfilled, (state, { payload }: { payload: ChangePasswordFulfilled}) => ({
+      .addCase(changePassword.fulfilled, (state, { payload }: { payload: ChangePasswordFulfilled }) => ({
         ...state,
         userID: payload.id,
         firstName: payload.first_name,

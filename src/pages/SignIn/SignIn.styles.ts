@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { colors, Title } from '../../components';
+import { colors, Title } from '../../components/CommonStyles';
 
 export const SignInUpMessage = styled(Title)`
   color: ${colors.rock_blue};

@@ -3,8 +3,8 @@ import {
 } from '../../resources/appointments/appointments.types';
 import { ResolutionsForPatientResponse, ResolutionsResponse } from '../../resources/resolutions/resolutions.types';
 
-export type Status = 'idle' | 'loading' | 'failed' | 'fulfilled'
-export type RoleName = 'Doctor' | 'Patient' | 'Public' | ''
+export type Status = 'idle' | 'loading' | 'failed' | 'fulfilled';
+export type RoleName = 'Doctor' | 'Patient' | 'Public' | '';
 
 interface Request {
   status: Status;

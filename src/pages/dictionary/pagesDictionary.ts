@@ -1,4 +1,4 @@
-const pagesDictionary = {
+export const dictionary = {
   form: {
     restoreTitle: 'Restore Password',
     makeAppointmentTitle: 'Make an appointment',
@@ -74,6 +74,4 @@ const pagesDictionary = {
     doctorNamePlaceholder: 'Choose a doctor',
     doctorNameLabelText: 'Doctor`s name',
   },
-} as const;
-
-export default pagesDictionary;
+};

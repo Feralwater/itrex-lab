@@ -6,7 +6,7 @@ import { registration } from '../../redux/actions';
 import { PATH } from '../../routes/constants';
 import { SignUpForm } from './singUpForm';
 
-const SignUpFormContainer:React.VFC = () => {
+export const SignUpFormContainer:React.VFC = () => {
   const history = useNavigate();
   const dispatch = useAppDispatch();
   const handleSubmitForm = ({
@@ -19,5 +19,3 @@ const SignUpFormContainer:React.VFC = () => {
   };
   return (<SignUpForm handleSubmitForm={handleSubmitForm} />);
 };
-
-export default SignUpFormContainer;

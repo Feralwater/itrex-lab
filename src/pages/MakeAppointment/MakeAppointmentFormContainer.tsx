@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { appointmentValues } from './form.types';
+import { AppointmentValues } from './form.types';
 import {
   appointment, doctorsByID, freeDoctorTime, occupations,
 } from '../../redux/actions';
@@ -46,7 +46,7 @@ export const MakeAppointmentFormContainer:React.VFC = () => {
     label: [doctorName.firstName, doctorName.lastName].join(' '),
     value: doctorName.doctorID,
   }));
-  const handleSubmitForm = (formValues: appointmentValues) => {
+  const handleSubmitForm = (formValues: AppointmentValues) => {
     const {
       time: date, reason, note, doctorName: { value: doctorID },
     } = formValues;

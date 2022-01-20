@@ -8,7 +8,7 @@ import {
   PatientsButtonsContainer,
   UserPageTitle,
 } from './NavigatePanel.styles';
-import dictionary from '../../pages/dictionary/pagesDictionary';
+import { dictionary } from '../../pages';
 import { PATH } from '../../routes/constants';
 import isActiveTab from './utils';
 import { NavigatePanelProps } from '../../pages/Appointments/AppointmentsContainer.types';

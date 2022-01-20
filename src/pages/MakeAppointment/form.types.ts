@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from 'react';
 import { Status } from '../../redux/reducers/reducers.types';
 
-export interface appointmentValues {
+export interface AppointmentValues {
   occupation: {
     label: string,
     value: string,
@@ -17,8 +17,7 @@ export interface appointmentValues {
 }
 
 export interface MakeAppointmentFormProps {
-  // eslint-disable-next-line no-unused-vars
-  handleSubmitForm: (formValues: appointmentValues)=>void;
+  handleSubmitForm: (formValues: AppointmentValues)=>void;
   optionsForOccupationsSelect: { label: string, value: string, }[];
   setSelectedOccupationID: Dispatch<SetStateAction<string>>;
   setSelectedDoctorID: Dispatch<SetStateAction<string>>;

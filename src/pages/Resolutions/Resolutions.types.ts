@@ -17,6 +17,5 @@ export interface ResolutionsProps {
 
 export interface ResolutionsPaginateProps{
   totalCount: number
-  // eslint-disable-next-line no-unused-vars
   handleClick: (currentPageNumber: { selected: number })=>void
 }

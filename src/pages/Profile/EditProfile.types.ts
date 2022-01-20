@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { Dispatch, SetStateAction } from 'react';
 import { RoleName, Status } from '../../redux/reducers/reducers.types';
 

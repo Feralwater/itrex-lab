@@ -1,10 +1,11 @@
 import React from 'react';
 import Loader from 'react-loader-spinner';
 import { CancelLink, EditButtons } from './Profile.styles';
-import { Button, ButtonWithLoaderProps, colors } from '../../components';
+import { Button, ButtonWithLoaderProps } from '../../components';
 import { PATH } from '../../routes/constants';
-import pagesDictionary from '../dictionary/pagesDictionary';
+import { dictionary as pagesDictionary } from '../dictionary/pagesDictionary';
 import { FETCH_STATUS } from '../../redux/reducers/constants';
+import { colors } from '../../components/CommonStyles';
 
 export const ProfileButtonsBlock: React.VFC<ButtonWithLoaderProps> = ({
   status,

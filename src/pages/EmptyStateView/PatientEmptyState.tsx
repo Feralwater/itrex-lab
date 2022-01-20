@@ -1,7 +1,7 @@
-import dictionary from 'pages/dictionary/pagesDictionary';
+import { dictionary } from 'pages/dictionary/pagesDictionary';
 import React from 'react';
-import { MedicalHistoryContainer, MedicalHistoryText } from './EmptyState.styles';
 import { ReactComponent as AppointmentHistory } from '../../assets/svg/appintments-history.svg';
+import { MedicalHistoryContainer, MedicalHistoryText } from './EmptyState.styles';
 
 export const PatientEmptyState:React.VFC = () => (
   <MedicalHistoryContainer>

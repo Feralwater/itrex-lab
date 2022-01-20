@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAppDispatch } from '../../hooks';
 import { CommandsList, ControlCommand } from './ControlCardPanel.styles';
-import dictionary from '../../pages/dictionary/pagesDictionary';
+import { dictionary } from '../../pages';
 import { deleteAppointment } from '../../redux/actions';
 import { CardControlListProps } from './ControlCardPanel.types';
 

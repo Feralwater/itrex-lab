@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ControlCardPanelProps } from './ControlCardPanel.types';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import dictionary from '../../pages/dictionary/pagesDictionary';
+import { dictionary } from '../../pages';
 import {
   editResolution, resolution, resolutions,
 } from '../../redux/actions';

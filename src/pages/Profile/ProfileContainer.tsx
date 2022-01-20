@@ -7,7 +7,7 @@ import { loginRepository } from '../../resources/loginRepository';
 import { ROLES } from '../../routes/constants';
 import { selectEditPatientProfile } from '../../redux/reducers/editPatientProfile.reducer';
 
-const ProfileContainer:React.VFC = () => {
+export const ProfileContainer:React.VFC = () => {
   const {
     firstName,
     lastName,
@@ -48,5 +48,3 @@ const ProfileContainer:React.VFC = () => {
     />
   );
 };
-
-export default ProfileContainer;

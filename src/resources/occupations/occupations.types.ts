@@ -4,4 +4,4 @@ export interface OccupationResponse {
   id: string
 }
 
-export type OccupationsResponse = Array<OccupationResponse>
+export type OccupationsResponse = Array<OccupationResponse>;
