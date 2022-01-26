@@ -4,7 +4,7 @@ import { resolutionsOnPage } from './constants';
 import { ReactComponent as NextIcon } from '../../assets/svg/rightArrowGrey-icon.svg';
 import { ReactComponent as PrevIcon } from '../../assets/svg/leftArrowGrey-icon.svg';
 import { Paginate, StyledPaginateContainer } from './ResolutionsPaginate.styles';
-import dictionary from '../dictionary/pagesDictionary';
+import { dictionary } from '../dictionary/pagesDictionary';
 import { ResolutionsPaginateProps } from './Resolutions.types';
 
 export const ResolutionsPaginate: React.VFC<ResolutionsPaginateProps> = ({ totalCount, handleClick }) => {

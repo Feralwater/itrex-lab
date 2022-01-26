@@ -7,7 +7,7 @@ import signUpValidationSchema from './validation/signUp.validation';
 import { SignUpFormProps, SignUpValues } from './Form.types';
 import { ButtonWrapper, CustomForm, FormTitle } from './AuthForm.styles';
 import { signUpFieldsData } from './fieldsData';
-import dictionary from '../../pages/dictionary/pagesDictionary';
+import { dictionary } from '../../pages';
 import { signUpInitial } from './constants';
 
 export const SignUpForm:React.VFC<SignUpFormProps> = ({ handleSubmitForm }) => (

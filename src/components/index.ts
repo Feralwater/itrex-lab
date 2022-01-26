@@ -1,9 +1,7 @@
 export * from '../pages/MakeAppointment';
-export * from '../pages/MakeAppointment/AppointmentsSteps';
 export * from './AppointmentCard';
 export * from './AuthForms';
 export * from './Button';
-export * from './CommonStyles';
 export * from './ControlCardPanel';
 export * from './DatePicker';
 export * from './dictionary/componentsDictionary';
@@ -17,4 +15,3 @@ export * from './NavigatePanel';
 export * from './Notification';
 export * from './Select';
 export * from './TimeSlots';
-export * from './ControlCardPanel';

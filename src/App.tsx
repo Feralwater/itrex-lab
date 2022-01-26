@@ -2,9 +2,10 @@ import React, { useEffect } from 'react';
 import Loader from 'react-loader-spinner';
 import styled from 'styled-components';
 import { useAppSelector, useProfile } from './hooks';
-import { colors, NotificationContainer } from './components';
+import { NotificationContainer } from './components';
 import { selectAccessToken } from './redux/reducers';
 import { AppRouter } from './routes/Routes';
+import { colors } from './components/CommonStyles';
 
 export const AppLoaderContainer = styled.div`
   width: 100%;

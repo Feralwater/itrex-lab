@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { DoctorNavigatePanel } from '../../components';
-import dictionary from '../dictionary/pagesDictionary';
+import { dictionary } from '../dictionary/pagesDictionary';
 import { resolutionsOnPage, resolutionsOnPageOffset } from './constants';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { resolutions } from '../../redux/actions';

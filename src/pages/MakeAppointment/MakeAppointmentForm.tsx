@@ -11,11 +11,12 @@ import {
   SelectTimeslotStep, LinksContainer, DisabledLink,
 } from 'pages/MakeAppointment/MakeAppointment.styles';
 import {
-  AppointmentsSteps, H1, SubmitOrLoader, TimeSlots,
+  AppointmentsSteps, SubmitOrLoader, TimeSlots,
   SelectForAppointmentFormContainer,
   DatePickerContainer,
 } from 'components';
-import pagesDictionary from 'pages/dictionary/pagesDictionary';
+import { dictionary as pagesDictionary } from 'pages/dictionary/pagesDictionary';
+import { H1 } from 'components/CommonStyles';
 import appointmentValidationSchema from './validation/appointment.validation';
 import makeAppointmentsFieldsData from './fieldsData';
 import { MakeAppointmentFormProps } from './form.types';

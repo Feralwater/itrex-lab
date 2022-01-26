@@ -47,7 +47,7 @@ export const RestoreMessage = styled(Title)`
 `;
 
 interface CustomFieldProps {
-    error: boolean
+  error: boolean
 }
 
 export const CustomField = styled(Field)<CustomFieldProps>`

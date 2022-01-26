@@ -22,7 +22,7 @@ export const profileSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(profile.fulfilled, (state, { payload }: { payload :ProfileResponse}) => ({
+      .addCase(profile.fulfilled, (state, { payload }: { payload :ProfileResponse }) => ({
         ...state,
         id: payload.id,
         firstName: payload.first_name,

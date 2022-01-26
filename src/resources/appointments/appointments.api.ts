@@ -25,7 +25,7 @@ const appointments = {
       },
     });
   },
-  async fetchFreeTime(date:string|null, doctorID:string) {
+  async fetchFreeTime(date:string | null, doctorID:string) {
     return instance.get<FreeTimeResponse>(APPOINTMENTS_API.appointmentsTimeFree(), {
       params: {
         date,

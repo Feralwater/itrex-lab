@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import Calendar, { CalendarTileProperties } from 'react-calendar';
 import React from 'react';
 import ReactCalendarContainer from './DatePickerContainer.styles';

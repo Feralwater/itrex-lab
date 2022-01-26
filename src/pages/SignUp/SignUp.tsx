@@ -1,8 +1,8 @@
 import React from 'react';
 import { SignInUpLink, SignInUpMessage } from '../SignIn/SignIn.styles';
-import dictionary from '../dictionary/pagesDictionary';
+import { dictionary } from '../dictionary/pagesDictionary';
 import { PATH } from '../../routes/constants';
-import SignUpFormContainer from '../../components/AuthForms/SignUpFormContainer';
+import { SignUpFormContainer } from '../../components';
 
 export const SignUp = () => (
   <>

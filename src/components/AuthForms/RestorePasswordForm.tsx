@@ -9,7 +9,7 @@ import {
   RestoreMessage,
 } from './AuthForm.styles';
 import { Button } from '../Button';
-import dictionary from '../../pages/dictionary/pagesDictionary';
+import { dictionary } from '../../pages';
 import restorePasswordValidationSchema from './validation/restorePassword.validation';
 import { PATH } from '../../routes/constants';
 import { restoreFieldsData } from './fieldsData';

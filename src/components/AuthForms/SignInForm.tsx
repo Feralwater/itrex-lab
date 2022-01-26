@@ -7,7 +7,7 @@ import {
   CustomLink,
   FormTitle,
 } from './AuthForm.styles';
-import dictionary from '../../pages/dictionary/pagesDictionary';
+import { dictionary } from '../../pages';
 import singInValidationSchema from './validation/singIn.validation';
 import { signInFieldsData } from './fieldsData';
 import { PATH } from '../../routes/constants';

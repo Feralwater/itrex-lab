@@ -5,7 +5,7 @@ import { DoctorNavigatePanel } from '../../components';
 import AppointmentsWrapper from './AppointmentsContainer.styles';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { appointmentsForDoctor, resolutions } from '../../redux/actions';
-import dictionary from '../dictionary/pagesDictionary';
+import { dictionary } from '../dictionary/pagesDictionary';
 import {
   selectAppointmentsForDoctor, selectProfile, selectResolution,
 } from '../../redux/reducers';

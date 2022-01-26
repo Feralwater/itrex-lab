@@ -7,7 +7,7 @@ import {
   SelectedPatientImage,
   SelectedPatientInfo,
 } from './ControlCardPanel.styles';
-import dictionary from '../../pages/dictionary/pagesDictionary';
+import { dictionary } from '../../pages';
 import { componentsDictionary } from '../dictionary/componentsDictionary';
 import { useAppSelector } from '../../hooks';
 import { selectAppointmentsForDoctor } from '../../redux/reducers';

@@ -19,7 +19,7 @@ export interface SignInData {
   password: string;
 }
 
-export type ChangePasswordData = ChangePasswordPending
+export type ChangePasswordData = ChangePasswordPending;
 
 export interface ProfileResponse {
   id: string,
@@ -33,7 +33,7 @@ export interface EditProfileResponse extends ProfileResponse {
   specialization_name: string;
 }
 
-export type ChangePasswordResponse = ChangePasswordFulfilled
+export type ChangePasswordResponse = ChangePasswordFulfilled;
 
 export interface JWTToken {
   name: string;

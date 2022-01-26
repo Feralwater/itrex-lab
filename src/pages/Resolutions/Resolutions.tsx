@@ -9,7 +9,7 @@ import {
 } from './Resolutions.styles';
 import { columnsNames, visitDate } from './constants';
 import { ResolutionRow } from './ResolutionRow';
-import { colors } from '../../components';
+import { colors } from '../../components/CommonStyles';
 import { ResolutionsProps } from './Resolutions.types';
 import { FETCH_STATUS } from '../../redux/reducers/constants';
 import { ResolutionsForPatientPaginateContainer, ResolutionsForDoctorPaginateContainer } from '..';

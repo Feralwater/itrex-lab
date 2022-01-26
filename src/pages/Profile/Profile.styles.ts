@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { colors } from '../../components';
+import { colors } from '../../components/CommonStyles';
 
 export const TitlePanel = styled.div`
   display: flex;

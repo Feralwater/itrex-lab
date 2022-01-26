@@ -17,7 +17,7 @@ export const occupationsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(occupations.fulfilled, (state, { payload }: { payload: OccupationsResponse}) => ({
+      .addCase(occupations.fulfilled, (state, { payload }: { payload: OccupationsResponse }) => ({
         ...state,
         occupations: payload.map((occupation) => ({ occupationName: occupation.specialization_name, occupationID: occupation.id })),
         status: FETCH_STATUS.FULFILLED,

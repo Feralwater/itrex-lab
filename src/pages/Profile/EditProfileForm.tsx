@@ -11,10 +11,10 @@ import {
 } from './Profile.styles';
 import { ProfileButtonsBlock } from './ProfileButtonsBlock';
 import { FormTitle } from '../../components/AuthForms/AuthForm.styles';
-import pagesDictionary from '../dictionary/pagesDictionary';
 import { PATH } from '../../routes/constants';
 import { FETCH_STATUS } from '../../redux/reducers/constants';
 import { EditProfileFormProps } from './EditProfile.types';
+import { dictionary as pagesDictionary } from '../dictionary/pagesDictionary';
 
 export const EditProfileForm: React.VFC<EditProfileFormProps> = ({
   handleSubmitForm,

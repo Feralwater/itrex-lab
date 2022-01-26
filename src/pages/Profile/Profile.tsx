@@ -1,14 +1,14 @@
 import React from 'react';
 import { H1, H2, SubTitle } from 'components/CommonStyles/Topography';
-import pagesDictionary from '../dictionary/pagesDictionary';
+import { dictionary as pagesDictionary } from '../dictionary/pagesDictionary';
 import { Button, ModalWindow } from '../../components';
 import {
   EditLink,
   ImageContainer, InfoContainer, ProfileContainer, TitlePanel,
 } from './Profile.styles';
 import { PATH } from '../../routes/constants';
-import ChangePasswordModal from './ChangePasswordModal';
 import { ProfileProps } from './EditProfile.types';
+import { ChangePasswordModal } from '..';
 
 export const Profile: React.VFC<ProfileProps> = ({
   roleName,
