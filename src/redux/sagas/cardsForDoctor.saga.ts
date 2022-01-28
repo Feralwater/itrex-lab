@@ -9,7 +9,7 @@ import resolutionsAPI from '../../resources/resolutions/resolutions.api';
 
 function createCardsForDoctorState(appointmentsResponse: AxiosResponse<AppointmentsForDoctor>, resolutionResponse: AxiosResponse<ResolutionsResponse>) {
   return {
-    cards: [...appointmentsResponse.data.appointments.map((appointment) => ({
+    cards: appointmentsResponse.data.appointments.map((appointment) => ({
       visitDate: appointment.visit_date,
       firstName: appointment.patient.first_name,
       lastName: appointment.patient.last_name,
@@ -18,7 +18,6 @@ function createCardsForDoctorState(appointmentsResponse: AxiosResponse<Appointme
       status: appointment.status,
       resolution: resolutionResponse.data.resolutions.find((resolution) => (resolution.appointment_id === appointment.id)),
     })),
-    ],
     total: appointmentsResponse.data.total,
   };
 }
