@@ -5,7 +5,7 @@ import { createErrorNotificationMessage, utils } from './utils';
 import occupationsAPI from '../../resources/occupations/occupations.api';
 import { OccupationsResponse } from '../../resources/occupations/occupations.types';
 
-function* occupationsGet() {
+function* getOccupations() {
   try {
     const response: AxiosResponse<OccupationsResponse> = yield call(occupationsAPI.fetchOccupations);
     return response.data;
@@ -15,14 +15,14 @@ function* occupationsGet() {
   }
 }
 
-const occupationsGetSaga = utils.bind(null, occupations, occupationsGet);
+const getOccupationsSaga = utils.bind(null, occupations, getOccupations);
 
-function* occupationsGetWatcher() {
-  yield takeEvery(occupations.pending, occupationsGetSaga);
+function* getOccupationsWatcher() {
+  yield takeEvery(occupations.pending, getOccupationsSaga);
 }
 
 function* occupationsSaga() {
-  yield occupationsGetWatcher();
+  yield getOccupationsWatcher();
 }
 
 export default occupationsSaga;

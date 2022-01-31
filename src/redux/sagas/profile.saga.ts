@@ -6,7 +6,7 @@ import { notificationError, profile } from '../actions';
 import { loginRepository } from '../../resources/loginRepository';
 import { createErrorNotificationMessage, utils } from './utils';
 
-function* profileGet() {
+function* getProfile() {
   try {
     const token = loginRepository.getAccessToken();
     const me: AxiosResponse<ProfileResponse> = token ? yield call(auth.getMe) : null;
@@ -18,14 +18,14 @@ function* profileGet() {
   }
 }
 
-const profileGetSaga = utils.bind(null, profile, profileGet);
+const getProfileSaga = utils.bind(null, profile, getProfile);
 
-function* profileGetWatcher() {
-  yield takeEvery(profile.pending, profileGetSaga);
+function* getProfileWatcher() {
+  yield takeEvery(profile.pending, getProfileSaga);
 }
 
 function* profileSaga() {
-  yield profileGetWatcher();
+  yield getProfileWatcher();
 }
 
 export default profileSaga;

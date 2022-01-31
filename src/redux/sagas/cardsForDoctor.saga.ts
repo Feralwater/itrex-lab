@@ -22,7 +22,7 @@ function createCardsForDoctorState(appointmentsResponse: AxiosResponse<Appointme
   };
 }
 
-function* cardsForDoctorGet(action: ReturnType<typeof cardsForDoctor.pending>) {
+function* getCardsForDoctor(action: ReturnType<typeof cardsForDoctor.pending>) {
   try {
     const { payload } = action;
     const appointmentsResponse: AxiosResponse<AppointmentsForDoctor> = yield call(appointments.fetchAppointmentsForDoctor, payload.offset, payload.limit);
@@ -34,14 +34,14 @@ function* cardsForDoctorGet(action: ReturnType<typeof cardsForDoctor.pending>) {
   }
 }
 
-const cardsForDoctorGetSaga = utils.bind(null, cardsForDoctor, cardsForDoctorGet);
+const getCardsForDoctorSaga = utils.bind(null, cardsForDoctor, getCardsForDoctor);
 
-function* cardsForDoctorGetWatcher() {
-  yield takeEvery(cardsForDoctor.pending, cardsForDoctorGetSaga);
+function* getCardsForDoctorWatcher() {
+  yield takeEvery(cardsForDoctor.pending, getCardsForDoctorSaga);
 }
 
 function* cardsForDoctorSaga() {
-  yield cardsForDoctorGetWatcher();
+  yield getCardsForDoctorWatcher();
 }
 
 export default cardsForDoctorSaga;

@@ -5,7 +5,7 @@ import { createErrorNotificationMessage, utils } from './utils';
 import { ResolutionsForPatientResponse } from '../../resources/resolutions/resolutions.types';
 import resolutionsAPI from '../../resources/resolutions/resolutions.api';
 
-function* resolutionsForPatientGet(action: ReturnType<typeof resolutionsForPatient.pending>) {
+function* getResolutionsForPatient(action: ReturnType<typeof resolutionsForPatient.pending>) {
   try {
     const { payload } = action;
     const response: AxiosResponse<ResolutionsForPatientResponse> = yield call(resolutionsAPI.fetchResolutionsForPatient, payload.offset, payload.limit);
@@ -16,14 +16,14 @@ function* resolutionsForPatientGet(action: ReturnType<typeof resolutionsForPatie
   }
 }
 
-const resolutionsForPatientGetSaga = utils.bind(null, resolutionsForPatient, resolutionsForPatientGet);
+const getResolutionsForPatientSaga = utils.bind(null, resolutionsForPatient, getResolutionsForPatient);
 
-function* resolutionsForPatientGetWatcher() {
-  yield takeEvery(resolutionsForPatient.pending, resolutionsForPatientGetSaga);
+function* getResolutionsForPatientWatcher() {
+  yield takeEvery(resolutionsForPatient.pending, getResolutionsForPatientSaga);
 }
 
 function* resolutionsForPatientSaga() {
-  yield resolutionsForPatientGetWatcher();
+  yield getResolutionsForPatientWatcher();
 }
 
 export default resolutionsForPatientSaga;
