@@ -5,7 +5,7 @@ import { appointmentsForPatient, notificationError } from '../actions';
 import appointments from '../../resources/appointments/appointments.api';
 import { AppointmentsForPatient } from '../../resources/appointments/appointments.types';
 
-function* appointmentsForPatientGet(action: ReturnType<typeof appointmentsForPatient.pending>) {
+function* getAppointmentsForPatient(action: ReturnType<typeof appointmentsForPatient.pending>) {
   try {
     const { payload } = action;
     const response: AxiosResponse<AppointmentsForPatient> = yield call(appointments.fetchAppointmentsForPatient, payload.offset, payload.limit);
@@ -16,14 +16,14 @@ function* appointmentsForPatientGet(action: ReturnType<typeof appointmentsForPat
   }
 }
 
-const appointmentsForPatientGetSaga = utils.bind(null, appointmentsForPatient, appointmentsForPatientGet);
+const getAppointmentsForPatientSaga = utils.bind(null, appointmentsForPatient, getAppointmentsForPatient);
 
-function* appointmentsForPatientGetWatcher() {
-  yield takeEvery(appointmentsForPatient.pending, appointmentsForPatientGetSaga);
+function* getAppointmentsForPatientWatcher() {
+  yield takeEvery(appointmentsForPatient.pending, getAppointmentsForPatientSaga);
 }
 
 function* appointmentsForPatientSaga() {
-  yield appointmentsForPatientGetWatcher();
+  yield getAppointmentsForPatientWatcher();
 }
 
 export default appointmentsForPatientSaga;

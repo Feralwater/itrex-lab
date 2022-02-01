@@ -3,8 +3,8 @@ import createSagaMiddleware from 'redux-saga';
 import {
   loginReducer, appointmentReducer, registrationReducer,
   profileReducer, notificationReducer, appointmentsForPatientReducer,
-  appointmentsForDoctorReducer, resolutionReducer, resolutionsReducer,
-  occupationsReducer, doctorsByIDReducer, freeDoctorTimeReducer,
+  resolutionReducer, resolutionsReducer,
+  occupationsReducer, doctorsByIDReducer, freeDoctorTimeReducer, cardsForDoctorReducer,
 } from './reducers';
 import rootSaga from './sagas/rootSaga';
 import { editProfileReducer } from './reducers/editProfile.reducer';
@@ -23,7 +23,6 @@ export const store = configureStore({
     profile: profileReducer,
     notification: notificationReducer,
     appointmentsForPatient: appointmentsForPatientReducer,
-    appointmentsForDoctor: appointmentsForDoctorReducer,
     resolution: resolutionReducer,
     resolutions: resolutionsReducer,
     editProfile: editProfileReducer,
@@ -34,6 +33,7 @@ export const store = configureStore({
     freeDoctorTime: freeDoctorTimeReducer,
     changePassword: changePasswordReducer,
     editPatientProfile: editPatientProfileReducer,
+    cardsForDoctor: cardsForDoctorReducer,
   },
   middleware: (getDefaultMiddleware) => [...getDefaultMiddleware({
     serializableCheck: {

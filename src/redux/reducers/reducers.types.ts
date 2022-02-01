@@ -1,5 +1,5 @@
 import {
-  AppointmentForDoctor, AppointmentForPatient,
+  AppointmentForDoctor, AppointmentForPatient, CardForDoctor,
 } from '../../resources/appointments/appointments.types';
 import { ResolutionsForPatientResponse, ResolutionsResponse } from '../../resources/resolutions/resolutions.types';
 
@@ -140,4 +140,10 @@ export interface ChangePasswordState {
   photo: string,
   roleID: string
   status: Status;
+}
+
+export interface CardsForDoctorState {
+  cards: Array<CardForDoctor>,
+  total: number,
+  status: Status,
 }

@@ -6,7 +6,7 @@ import auth from '../../resources/auth/auth.api';
 import { componentsDictionary } from '../../components';
 import { createErrorNotificationMessage, utils } from './utils';
 
-function* changePasswordPatch(action: ReturnType<typeof changePassword.pending>) {
+function* updatePassword(action: ReturnType<typeof changePassword.pending>) {
   try {
     const { payload } = action;
     const response: AxiosResponse<ChangePasswordResponse> = yield call(auth.changePassword, { ...payload });
@@ -18,10 +18,10 @@ function* changePasswordPatch(action: ReturnType<typeof changePassword.pending>)
   }
 }
 
-const changePasswordPatchSaga = utils.bind(null, changePassword, changePasswordPatch);
+const updatePasswordSaga = utils.bind(null, changePassword, updatePassword);
 
 function* changePasswordWatcher() {
-  yield takeEvery(changePassword.pending, changePasswordPatchSaga);
+  yield takeEvery(changePassword.pending, updatePasswordSaga);
 }
 
 function* changePasswordSaga() {

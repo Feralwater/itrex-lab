@@ -5,7 +5,7 @@ import { createErrorNotificationMessage, utils } from './utils';
 import appointments from '../../resources/appointments/appointments.api';
 import { FreeTimeResponse } from '../../resources/appointments/appointments.types';
 
-function* freeDoctorTimeGet(action: ReturnType<typeof freeDoctorTime.pending>) {
+function* getFreeDoctorTime(action: ReturnType<typeof freeDoctorTime.pending>) {
   try {
     const { payload } = action;
     const response: AxiosResponse<FreeTimeResponse> = yield call(appointments.fetchFreeTime, payload.date, payload.doctorID);
@@ -16,14 +16,14 @@ function* freeDoctorTimeGet(action: ReturnType<typeof freeDoctorTime.pending>) {
   }
 }
 
-const freeDoctorTimeGetSaga = utils.bind(null, freeDoctorTime, freeDoctorTimeGet);
+const getFreeDoctorTimeSaga = utils.bind(null, freeDoctorTime, getFreeDoctorTime);
 
-function* freeDoctorTimeGetWatcher() {
-  yield takeEvery(freeDoctorTime.pending, freeDoctorTimeGetSaga);
+function* getFreeDoctorTimeWatcher() {
+  yield takeEvery(freeDoctorTime.pending, getFreeDoctorTimeSaga);
 }
 
 function* freeDoctorTimeSaga() {
-  yield freeDoctorTimeGetWatcher();
+  yield getFreeDoctorTimeWatcher();
 }
 
 export default freeDoctorTimeSaga;

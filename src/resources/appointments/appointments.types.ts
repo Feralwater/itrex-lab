@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
-import { RoleName } from '../../redux/reducers/reducers.types';
+import { RoleName, Status } from '../../redux/reducers/reducers.types';
+import { ResolutionForDoctor } from '../resolutions/resolutions.types';
 
 export interface Appointment {
   id: 'string',
@@ -63,4 +64,25 @@ export interface NewAppointmentResponse {
   reason: 'string',
   note: 'string',
   status: 'string'
+}
+
+export interface CardForDoctor {
+  visitDate: string
+  firstName: string
+  lastName: string
+  photo: string
+  appointmentID: string
+  status: string
+  resolution: ResolutionForDoctor
+}
+
+export interface CardsForDoctor {
+  appointments: Array<CardForDoctor>,
+  roleName: RoleName
+}
+
+export interface CardsForDoctorResponse {
+  cards: Array<CardForDoctor>,
+  total: number
+  status: Status
 }

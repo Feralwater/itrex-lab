@@ -5,7 +5,7 @@ import { createErrorNotificationMessage, utils } from './utils';
 import doctors from '../../resources/doctors/doctors.api';
 import { DoctorsBySpecializationIdResponse } from '../../resources/doctors/doctors.types';
 
-function* doctorsByIDGet(action: ReturnType<typeof doctorsByID.pending>) {
+function* getDoctorsByID(action: ReturnType<typeof doctorsByID.pending>) {
   try {
     const { payload } = action;
     const response: AxiosResponse<DoctorsBySpecializationIdResponse> = yield call(doctors.fetchDoctorsBySpecializationId, payload);
@@ -16,14 +16,14 @@ function* doctorsByIDGet(action: ReturnType<typeof doctorsByID.pending>) {
   }
 }
 
-const doctorsByIDGetSaga = utils.bind(null, doctorsByID, doctorsByIDGet);
+const getDoctorsByIDSaga = utils.bind(null, doctorsByID, getDoctorsByID);
 
-function* doctorsByIDGetWatcher() {
-  yield takeEvery(doctorsByID.pending, doctorsByIDGetSaga);
+function* getDoctorsByIDWatcher() {
+  yield takeEvery(doctorsByID.pending, getDoctorsByIDSaga);
 }
 
 function* doctorsByIDSaga() {
-  yield doctorsByIDGetWatcher();
+  yield getDoctorsByIDWatcher();
 }
 
 export default doctorsByIDSaga;

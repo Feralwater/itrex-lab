@@ -10,7 +10,7 @@ import {
 import { dictionary } from '../../pages';
 import { componentsDictionary } from '../dictionary/componentsDictionary';
 import { useAppSelector } from '../../hooks';
-import { selectAppointmentsForDoctor } from '../../redux/reducers';
+import { selectCardsForDoctor } from '../../redux/reducers';
 import { ResolutionModalProps } from './ControlCardPanel.types';
 
 export const ResolutionModal:React.VFC<ResolutionModalProps> = ({
@@ -19,8 +19,8 @@ export const ResolutionModal:React.VFC<ResolutionModalProps> = ({
   appointmentID,
   resolutionModalTitle,
 }) => {
-  const { appointments } = useAppSelector(selectAppointmentsForDoctor);
-  const selectedAppointment = appointments.find((appointment) => appointment.id === appointmentID);
+  const { cards: appointments } = useAppSelector(selectCardsForDoctor);
+  const selectedAppointment = appointments.find((appointment) => appointment.appointmentID === appointmentID);
   const validationSchema = Yup.object({
     resolutionText: Yup.string()
       .min(2, 'Must be 2 characters or more')
@@ -43,13 +43,13 @@ export const ResolutionModal:React.VFC<ResolutionModalProps> = ({
       <ResolutionModalTitle>{resolutionModalTitle}</ResolutionModalTitle>
       <SelectedPatientInfo>
         <SelectedPatientImage
-          src={selectedAppointment?.patient.photo}
+          src={selectedAppointment?.photo}
           alt={componentsDictionary.controlCardPanel.selectedPatientImageAlt}
         />
         <span>
-          {selectedAppointment?.patient.first_name}
+          {selectedAppointment?.firstName}
           {' '}
-          {selectedAppointment?.patient.last_name}
+          {selectedAppointment?.lastName}
         </span>
       </SelectedPatientInfo>
       <ResolutionTextareaTitle>

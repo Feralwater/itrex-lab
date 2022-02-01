@@ -5,7 +5,7 @@ import { notificationSuccess, deleteAppointment, notificationError } from '../ac
 import { createErrorNotificationMessage, utils } from './utils';
 import { componentsDictionary } from '../../components';
 
-function* appointmentDelete(action: ReturnType<typeof deleteAppointment.pending>) {
+function* removeAppointment(action: ReturnType<typeof deleteAppointment.pending>) {
   try {
     const { payload } = action;
     const response: AxiosResponse<string> = yield call(appointments.deleteAppointment, payload.id);
@@ -17,14 +17,14 @@ function* appointmentDelete(action: ReturnType<typeof deleteAppointment.pending>
   }
 }
 
-const appointmentDeleteSaga = utils.bind(null, deleteAppointment, appointmentDelete);
+const removeAppointmentSaga = utils.bind(null, deleteAppointment, removeAppointment);
 
-function* appointmentDeleteWatcher() {
-  yield takeEvery(deleteAppointment.pending, appointmentDeleteSaga);
+function* removeAppointmentWatcher() {
+  yield takeEvery(deleteAppointment.pending, removeAppointmentSaga);
 }
 
 function* deleteAppointmentSaga() {
-  yield appointmentDeleteWatcher();
+  yield removeAppointmentWatcher();
 }
 
 export default deleteAppointmentSaga;
