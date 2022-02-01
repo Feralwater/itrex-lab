@@ -34,7 +34,6 @@ export interface AppointmentForDoctor extends Appointment {
 export interface AppointmentsForPatient {
   appointments: Array<AppointmentForPatient>,
   total: number
-  roleName: RoleName
 }
 
 export interface AppointmentsForDoctor {
@@ -78,7 +77,6 @@ export interface CardForDoctor {
 
 export interface CardsForDoctor {
   appointments: Array<CardForDoctor>,
-  roleName: RoleName
 }
 
 export interface CardsForDoctorResponse {

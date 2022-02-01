@@ -1,7 +1,6 @@
 /* eslint-disable camelcase */
 import { SignInData, SignUpData, SignUpInResponse } from '../../resources/auth/auth.types';
 import {
-  AppointmentsForDoctor,
   AppointmentsForPatient, DeleteAppointment,
   NewAppointmentResponse,
 } from '../../resources/appointments/appointments.types';
@@ -63,8 +62,6 @@ export interface ChangePasswordFulfilled {
 export type AppointmentFulfilled = NewAppointmentResponse;
 
 export type AppointmentsForPatientFulfilled = AppointmentsForPatient;
-
-export type AppointmentsForDoctorFulfilled = AppointmentsForDoctor;
 
 export type DeleteAppointmentFulfilled = DeleteAppointment;
 

@@ -1,44 +1,33 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import AppointmentsWrapper from './AppointmentsContainer.styles';
 import { PatientFullState } from '../FullStateView';
 import { PatientEmptyState } from '../EmptyStateView';
 import { PatientNavigatePanel } from '../../components';
-import { useAppDispatch, useAppSelector } from '../../hooks';
-import { appointmentsForPatient } from '../../redux/actions';
 import { dictionary } from '../dictionary/pagesDictionary';
-import { selectAppointmentsForPatient, selectProfile } from '../../redux/reducers';
 import { FETCH_STATUS } from '../../redux/reducers/constants';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { SkeletonCards } from '../../components/Skeleton';
+import { useFetchPatientsCards } from './useFetchPatientsCards';
+import { useAppointmentRef } from './useLastAppointmentRef';
 
 export const AppointmentsForPatientContainer:React.VFC = () => {
-  const dispatch = useAppDispatch();
-  const { id: userId, roleName } = useAppSelector(selectProfile);
-  const { appointments, total: totalAppointmentsCount, responseStatus } = useAppSelector(selectAppointmentsForPatient);
-
-  useEffect(() => {
-    if (userId) {
-      dispatch(appointmentsForPatient.pending({ offset: 0, limit: 100 }));
-    }
-  }, [userId]);
-
+  const [pageNumber, setPageNumber] = useState(1);
+  const { responseStatus, appointments, isMoreAppointments } = useFetchPatientsCards(pageNumber);
+  const { lastAppointmentRef } = useAppointmentRef({ responseStatus, isMoreAppointments, setPageNumber });
   return (
     <>
       <PatientNavigatePanel pageTitle={dictionary.patientPage.title} />
-      {responseStatus === FETCH_STATUS.LOADING ? <SkeletonCards />
-        : (
-          <AppointmentsWrapper patientsLength={appointments.length}>
-            {appointments.length > 0
-              ? (
-                <PatientFullState
-                  roleName={roleName}
-                  appointments={appointments}
-                  total={totalAppointmentsCount}
-                />
-              )
-              : (<PatientEmptyState />)}
-          </AppointmentsWrapper>
-        )}
+      <AppointmentsWrapper patientsLength={appointments.length}>
+        {responseStatus === FETCH_STATUS.FULFILLED && (appointments.length > 0
+          ? (
+            <PatientFullState
+              appointments={appointments}
+              ref={lastAppointmentRef}
+            />
+          )
+          : <PatientEmptyState />)}
+      </AppointmentsWrapper>
+      {responseStatus === FETCH_STATUS.LOADING && <SkeletonCards />}
     </>
   );
 };

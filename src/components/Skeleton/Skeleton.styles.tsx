@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { colors } from '../CommonStyles';
 
 export const SkeletonCardContainer = styled.div`
-  width: calc(25% - 20px);
+  width: calc(25% - 29px);
   height: 264px;
   border-radius: 12px;
   background-color: ${colors.white};
@@ -37,6 +37,6 @@ export const SkeletonBodyWrapper = styled.div`
 
 export const SkeletonBody = styled.div`
   display: flex;
-  gap: 20px 24px;
+  gap: 25px 24px;
   flex-wrap: wrap;
 `;

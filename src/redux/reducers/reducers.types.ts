@@ -97,6 +97,7 @@ export interface ResolutionsForPatientState extends ResolutionsForPatientRespons
 export interface AppointmentsForPatientState {
   appointments: Array<AppointmentForPatient>,
   total: number
+  isMore: boolean,
   responseStatus: Status
 }
 
@@ -145,5 +146,6 @@ export interface ChangePasswordState {
 export interface CardsForDoctorState {
   cards: Array<CardForDoctor>,
   total: number,
+  isMore: boolean,
   status: Status,
 }

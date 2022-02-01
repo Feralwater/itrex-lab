@@ -7,6 +7,7 @@ import { CardsForDoctorState } from './reducers.types';
 const initialState = {
   cards: [],
   total: 0,
+  isMore: false,
   status: FETCH_STATUS.IDLE,
 } as CardsForDoctorState;
 
@@ -17,9 +18,9 @@ export const cardsForDoctorSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(cardsForDoctor.fulfilled, (state, { payload }) => ({
-        ...state,
         cards: [...state.cards, ...payload.cards],
         total: payload.total,
+        isMore: payload.total > payload.cards.length,
         status: FETCH_STATUS.FULFILLED,
       }));
     builder

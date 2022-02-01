@@ -1,2 +1,1 @@
-export const appointmentsOnPage = 12;
-export const appointmentsOnPageOffset = 0;
+export const appointmentsPerPage = 16;

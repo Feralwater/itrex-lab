@@ -7,6 +7,7 @@ import { FETCH_STATUS } from './constants';
 const initialState = {
   appointments: [],
   total: 0,
+  isMore: false,
   responseStatus: FETCH_STATUS.IDLE,
 } as AppointmentsForPatientState;
 
@@ -17,7 +18,10 @@ export const appointmentsForPatientSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(appointmentsForPatient.fulfilled, (state, { payload }) => ({
-        ...state, appointments: payload.appointments, total: payload.total, responseStatus: FETCH_STATUS.FULFILLED,
+        appointments: [...state.appointments, ...payload.appointments],
+        total: payload.total,
+        isMore: payload.total > payload.appointments.length,
+        responseStatus: FETCH_STATUS.FULFILLED,
       }));
     builder
       .addCase(appointmentsForPatient.pending, (state) => ({ ...state, responseStatus: FETCH_STATUS.LOADING }));
