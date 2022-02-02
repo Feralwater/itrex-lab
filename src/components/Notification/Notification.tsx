@@ -12,7 +12,7 @@ import {
 import { NotificationProps } from './Notification.types';
 import { componentsDictionary } from '../dictionary/componentsDictionary';
 import { useAppDispatch } from '../../hooks';
-import { notificationError, notificationSuccess } from '../../redux/actions';
+import { notificationSlice } from '../../redux/reducers';
 
 export const Notification: React.VFC<NotificationProps> = ({
   isSuccess, message, showNotification, setShowNotification,
@@ -28,8 +28,8 @@ export const Notification: React.VFC<NotificationProps> = ({
 
   useEffect(() => {
     if (!showNotification) {
-      dispatch(notificationError(''));
-      dispatch(notificationSuccess(''));
+      dispatch(notificationSlice.actions.notificationError(''));
+      dispatch(notificationSlice.actions.notificationSuccess(''));
     }
   }, [dispatch, showNotification]);
 

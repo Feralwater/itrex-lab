@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppointmentsForPatientState } from './reducers.types';
 import { RootState } from '../store';
 import { FETCH_STATUS } from './constants';
-import { AppointmentsForPatientFulfilled, AppointmentsForPatientPending } from '../actions/actions.types';
+import { AppointmentsForPatientFulfilled, AppointmentsForPatientPending } from '../actions.types';
 
 const initialState = {
   appointments: [],

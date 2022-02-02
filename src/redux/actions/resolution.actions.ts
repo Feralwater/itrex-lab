@@ -4,7 +4,7 @@ import {
   ResolutionFulfilled,
   ResolutionPending, ResolutionsForPatientFulfilled,
   ResolutionsPending,
-} from './actions.types';
+} from '../actions.types';
 import { ResolutionsResponse } from '../../resources/resolutions/resolutions.types';
 import { createSagaActions } from './createSaga.actions';
 

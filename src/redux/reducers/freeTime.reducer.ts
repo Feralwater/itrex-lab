@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 import { FETCH_STATUS } from './constants';
 import { FreeTimeState } from './reducers.types';
-import { FreeTimePending } from '../actions/actions.types';
+import { FreeTimePending } from '../actions.types';
 import { FreeTimeResponse } from '../../resources/appointments/appointments.types';
 
 const initialState = {

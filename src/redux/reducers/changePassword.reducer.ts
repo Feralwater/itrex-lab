@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ChangePasswordState } from './reducers.types';
 import { RootState } from '../store';
 import { FETCH_STATUS } from './constants';
-import { ChangePasswordFulfilled, ChangePasswordPending } from '../actions/actions.types';
+import { ChangePasswordFulfilled, ChangePasswordPending } from '../actions.types';
 
 const initialState = {
   status: FETCH_STATUS.IDLE,

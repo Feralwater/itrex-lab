@@ -1,17 +1,17 @@
 /* eslint-disable camelcase */
-import { SignInData, SignUpData, SignUpInResponse } from '../../resources/auth/auth.types';
+import { SignInData, SignUpData, SignUpInResponse } from '../resources/auth/auth.types';
 import {
   AppointmentsForPatient,
   DeleteAppointment,
   NewAppointmentResponse,
-} from '../../resources/appointments/appointments.types';
+} from '../resources/appointments/appointments.types';
 import {
   EditResolutionData,
   EditResolutionResponse,
   ResolutionData, ResolutionForDoctor,
   ResolutionResponse, ResolutionsForPatientResponse,
-} from '../../resources/resolutions/resolutions.types';
-import { Status } from '../reducers/reducers.types';
+} from '../resources/resolutions/resolutions.types';
+import { Status } from './reducers/reducers.types';
 
 export type LoginPending = SignInData;
 export type LoginFulfilled = SignUpInResponse;

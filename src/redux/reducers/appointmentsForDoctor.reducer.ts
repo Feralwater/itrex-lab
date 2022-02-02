@@ -6,7 +6,7 @@ import {
   AppointmentsForDoctorFulfilled,
   AppointmentsForDoctorPending, DeleteAppointmentFulfilled,
   DeleteAppointmentPending,
-} from '../actions/actions.types';
+} from '../actions.types';
 
 const initialState = {
   appointments: [],

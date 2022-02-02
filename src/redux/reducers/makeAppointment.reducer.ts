@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Status } from './reducers.types';
 import { FETCH_STATUS } from './constants';
 import { RootState } from '../store';
-import { AppointmentPending, MakeAppointmentFulfilled } from '../actions/actions.types';
+import { AppointmentPending, MakeAppointmentFulfilled } from '../actions.types';
 
 export const makeAppointmentSlice = createSlice({
   name: 'makeAppointment',

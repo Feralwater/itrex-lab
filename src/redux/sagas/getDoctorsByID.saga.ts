@@ -3,8 +3,7 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import { createErrorNotificationMessage, utils } from './utils';
 import doctors from '../../resources/doctors/doctors.api';
 import { DoctorsBySpecializationIdResponse } from '../../resources/doctors/doctors.types';
-import { notificationError } from '../actions';
-import { getDoctorsByIDSlice } from '../reducers';
+import { getDoctorsByIDSlice, notificationSlice } from '../reducers';
 
 function* getDoctorsByID(action: ReturnType<typeof getDoctorsByIDSlice.actions.pending>) {
   try {
@@ -12,7 +11,7 @@ function* getDoctorsByID(action: ReturnType<typeof getDoctorsByIDSlice.actions.p
     const response: AxiosResponse<DoctorsBySpecializationIdResponse> = yield call(doctors.fetchDoctorsBySpecializationId, payload);
     return response.data;
   } catch (error:any) {
-    yield put(notificationError(createErrorNotificationMessage(error.response.data)));
+    yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.response.data)));
     throw error;
   }
 }

@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RegistrationState } from './reducers.types';
 import { loginRepository } from '../../resources/loginRepository';
 import { FETCH_STATUS } from './constants';
-import { RegistrationFulfilled, RegistrationPending } from '../actions/actions.types';
+import { RegistrationFulfilled, RegistrationPending } from '../actions.types';
 
 const initialState = {
   accessToken: loginRepository.getAccessToken() || '',

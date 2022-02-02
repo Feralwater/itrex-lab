@@ -1,17 +1,16 @@
 import { AxiosResponse } from 'axios';
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { notificationError } from '../actions';
 import { createErrorNotificationMessage, utils } from './utils';
 import occupationsAPI from '../../resources/occupations/occupations.api';
 import { OccupationsResponse } from '../../resources/occupations/occupations.types';
-import { occupationsSlice } from '../reducers';
+import { notificationSlice, occupationsSlice } from '../reducers';
 
 function* getOccupations() {
   try {
     const response: AxiosResponse<OccupationsResponse> = yield call(occupationsAPI.fetchOccupations);
     return response.data;
   } catch (error:any) {
-    yield put(notificationError(createErrorNotificationMessage(error.response.data)));
+    yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.response.data)));
     throw error;
   }
 }

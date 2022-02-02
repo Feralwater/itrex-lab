@@ -2,9 +2,10 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
 import { ProfileResponse } from '../../resources/auth/auth.types';
 import auth from '../../resources/auth/auth.api';
-import { notificationError, profile } from '../actions';
+import { profile } from '../actions';
 import { loginRepository } from '../../resources/loginRepository';
 import { createErrorNotificationMessage, utils } from './utils';
+import { notificationSlice } from '../reducers';
 
 function* getProfile() {
   try {
@@ -13,7 +14,7 @@ function* getProfile() {
 
     return me?.data || null;
   } catch (error:any) {
-    yield put(notificationError(createErrorNotificationMessage(error.response.data)));
+    yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.response.data)));
     throw error;
   }
 }

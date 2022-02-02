@@ -1,11 +1,10 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
-import { notificationError } from '../actions';
 import { SignUpInResponse } from '../../resources/auth/auth.types';
 import auth from '../../resources/auth/auth.api';
 import { loginRepository } from '../../resources/loginRepository';
 import { createErrorNotificationMessage, utils } from './utils';
-import { registrationSlice } from '../reducers';
+import { notificationSlice, registrationSlice } from '../reducers';
 
 function* registrationPost(action: ReturnType<typeof registrationSlice.actions.pending>) {
   try {
@@ -22,7 +21,7 @@ function* registrationPost(action: ReturnType<typeof registrationSlice.actions.p
 
     return response.data;
   } catch (error:any) {
-    yield put(notificationError(createErrorNotificationMessage(error.response.data)));
+    yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.response.data)));
     throw error;
   }
 }

@@ -1,6 +1,6 @@
 import { AppointmentForDoctor, AppointmentForPatient } from '../../resources/appointments/appointments.types';
 import { ResolutionsForPatientResponse, ResolutionsResponse } from '../../resources/resolutions/resolutions.types';
-import { AppointmentForDoctorFulfilled } from '../actions/actions.types';
+import { AppointmentForDoctorFulfilled } from '../actions.types';
 
 export type Status = 'idle' | 'loading' | 'failed' | 'fulfilled';
 export type RoleName = 'Doctor' | 'Patient' | 'Public' | '';

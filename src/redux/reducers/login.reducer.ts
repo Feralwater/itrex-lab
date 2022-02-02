@@ -3,7 +3,7 @@ import { LoginState } from './reducers.types';
 import { loginRepository } from '../../resources/loginRepository';
 import { RootState } from '../store';
 import { FETCH_STATUS } from './constants';
-import { LoginFulfilled, LoginPending } from '../actions/actions.types';
+import { LoginFulfilled, LoginPending } from '../actions.types';
 
 const initialState: LoginState = {
   accessToken: loginRepository.getAccessToken() || '',

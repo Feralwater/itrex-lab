@@ -1,6 +1,6 @@
 import { AppointmentCard } from 'components';
 import React from 'react';
-import { AppointmentForDoctorFulfilled } from '../../redux/actions/actions.types';
+import { AppointmentForDoctorFulfilled } from '../../redux/actions.types';
 import { RoleName } from '../../redux/reducers/reducers.types';
 
 export interface DoctorFullStateProps{

@@ -1,9 +1,10 @@
 import { AxiosResponse } from 'axios';
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { notificationError, resolutionsForPatient } from '../actions';
+import { resolutionsForPatient } from '../actions';
 import { createErrorNotificationMessage, utils } from './utils';
 import { ResolutionsForPatientResponse } from '../../resources/resolutions/resolutions.types';
 import resolutionsAPI from '../../resources/resolutions/resolutions.api';
+import { notificationSlice } from '../reducers';
 
 function* getResolutionsForPatient(action: ReturnType<typeof resolutionsForPatient.pending>) {
   try {
@@ -11,7 +12,7 @@ function* getResolutionsForPatient(action: ReturnType<typeof resolutionsForPatie
     const response: AxiosResponse<ResolutionsForPatientResponse> = yield call(resolutionsAPI.fetchResolutionsForPatient, payload.offset, payload.limit);
     return response.data;
   } catch (error:any) {
-    yield put(notificationError(createErrorNotificationMessage(error.response.data)));
+    yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.response.data)));
     throw error;
   }
 }

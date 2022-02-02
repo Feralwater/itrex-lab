@@ -1,11 +1,10 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
-import { notificationError } from '../actions';
 import { SignUpInResponse } from '../../resources/auth/auth.types';
 import auth from '../../resources/auth/auth.api';
 import { loginRepository } from '../../resources/loginRepository';
 import { createErrorNotificationMessage, utils } from './utils';
-import { loginSlice } from '../reducers';
+import { loginSlice, notificationSlice } from '../reducers';
 
 function* loginPost(action: ReturnType<typeof loginSlice.actions.pending>) {
   try {
@@ -21,7 +20,7 @@ function* loginPost(action: ReturnType<typeof loginSlice.actions.pending>) {
 
     return response.data;
   } catch (error:any) {
-    yield put(notificationError(createErrorNotificationMessage(error.response.data)));
+    yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.response.data)));
     throw error;
   }
 }

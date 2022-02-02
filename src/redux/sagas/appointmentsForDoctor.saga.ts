@@ -1,11 +1,10 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
 import { createErrorNotificationMessage, utils } from './utils';
-import { notificationError } from '../actions';
 import appointments from '../../resources/appointments/appointments.api';
 import { ResolutionsResponse } from '../../resources/resolutions/resolutions.types';
 import resolutionsAPI from '../../resources/resolutions/resolutions.api';
-import { appointmentsForDoctorSlice } from '../reducers';
+import { appointmentsForDoctorSlice, notificationSlice } from '../reducers';
 import { AppointmentForDoctor, AppointmentsForDoctor } from '../../resources/appointments/appointments.types';
 
 function generateAppointmentForDoctor(resolutionResponse: AxiosResponse<ResolutionsResponse>) {
@@ -34,7 +33,7 @@ function* getAppointmentsForDoctor(action: ReturnType<typeof appointmentsForDoct
     const resolutionResponse: AxiosResponse<ResolutionsResponse> = yield call(resolutionsAPI.fetchResolutions, payload.offset, payload.limit);
     return generateAppointmentsForDoctor(appointmentsResponse, resolutionResponse);
   } catch (error:any) {
-    yield put(notificationError(createErrorNotificationMessage(error.response.data)));
+    yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.response.data)));
     throw error;
   }
 }

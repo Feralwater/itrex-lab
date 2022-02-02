@@ -8,7 +8,7 @@ import { ResolutionModalButtons } from '../../components';
 import { changePasswordFieldsData, changePasswordInitial } from './constants';
 import { useAppDispatch } from '../../hooks';
 import { ChangePasswordProps } from './EditProfile.types';
-import { ChangePasswordPending } from '../../redux/actions/actions.types';
+import { ChangePasswordPending } from '../../redux/actions.types';
 import changePasswordValidationSchema from './validation/changePassword.validation';
 import { ChangePasswordForm, ChangePasswordFormBody } from './ChangePassword.styles';
 import { changePasswordSlice } from '../../redux/reducers/changePassword.reducer';
