@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { AppointmentValues } from './form.types';
-import { freeDoctorTime, occupations } from '../../redux/actions';
+import { occupations } from '../../redux/actions';
 import { MakeAppointmentForm } from './MakeAppointmentForm';
 import {
   selectOccupations,
@@ -9,7 +9,7 @@ import {
   selectFreeDoctorTime,
   selectMakeAppointment,
   makeAppointmentSlice,
-  getDoctorsByIDSlice,
+  getDoctorsByIDSlice, freeDoctorTimeSlice,
 } from '../../redux/reducers';
 
 export const MakeAppointmentFormContainer:React.VFC = () => {
@@ -35,7 +35,7 @@ export const MakeAppointmentFormContainer:React.VFC = () => {
   }, [selectedDoctorID]);
   useEffect(() => {
     if (selectedDate) {
-      dispatch(freeDoctorTime.pending({
+      dispatch(freeDoctorTimeSlice.actions.pending({
         date: selectedDate,
         doctorID: selectedDoctorID,
       }));

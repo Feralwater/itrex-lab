@@ -1,11 +1,12 @@
 import { AxiosResponse } from 'axios';
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { freeDoctorTime, notificationError } from '../actions';
+import { notificationError } from '../actions';
 import { createErrorNotificationMessage, utils } from './utils';
 import appointments from '../../resources/appointments/appointments.api';
 import { FreeTimeResponse } from '../../resources/appointments/appointments.types';
+import { freeDoctorTimeSlice } from '../reducers';
 
-function* getFreeDoctorTime(action: ReturnType<typeof freeDoctorTime.pending>) {
+function* getFreeDoctorTime(action: ReturnType<typeof freeDoctorTimeSlice.actions.pending>) {
   try {
     const { payload } = action;
     const response: AxiosResponse<FreeTimeResponse> = yield call(appointments.fetchFreeTime, payload.date, payload.doctorID);
@@ -16,10 +17,10 @@ function* getFreeDoctorTime(action: ReturnType<typeof freeDoctorTime.pending>) {
   }
 }
 
-const getFreeDoctorTimeSaga = utils.bind(null, freeDoctorTime, getFreeDoctorTime);
+const getFreeDoctorTimeSaga = utils.bind(null, freeDoctorTimeSlice.actions, getFreeDoctorTime);
 
 function* getFreeDoctorTimeWatcher() {
-  yield takeEvery(freeDoctorTime.pending, getFreeDoctorTimeSaga);
+  yield takeEvery(freeDoctorTimeSlice.actions.pending, getFreeDoctorTimeSaga);
 }
 
 function* freeDoctorTimeSaga() {
