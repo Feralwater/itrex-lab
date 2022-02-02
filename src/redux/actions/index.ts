@@ -8,5 +8,4 @@ export * from './resolution.actions';
 export * from './occupations.actions';
 export * from './doctorsByID.actions';
 export * from './freeTime.actions';
-export * from './changePassword.actions';
 export * from './cardsForDoctor.action';

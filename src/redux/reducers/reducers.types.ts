@@ -114,12 +114,12 @@ export interface FreeTimeState {
 }
 
 export interface ChangePasswordState {
-  userID: string,
-  firstName: string,
-  lastName: string,
+  id: string,
+  first_name: string,
+  last_name: string,
   password: string,
   photo: string,
-  roleID: string
+  role_id: string
   status: Status;
 }
 

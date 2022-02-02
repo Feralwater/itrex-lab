@@ -33,7 +33,7 @@ export interface EditProfileResponse extends ProfileResponse {
   specialization_name: string;
 }
 
-export type ChangePasswordResponse = ChangePasswordFulfilled;
+export type ChangePasswordResponse = ChangePasswordFulfilled[];
 
 export interface JWTToken {
   name: string;

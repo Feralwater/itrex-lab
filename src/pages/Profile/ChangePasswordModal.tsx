@@ -8,10 +8,10 @@ import { ResolutionModalButtons } from '../../components';
 import { changePasswordFieldsData, changePasswordInitial } from './constants';
 import { useAppDispatch } from '../../hooks';
 import { ChangePasswordProps } from './EditProfile.types';
-import { changePassword } from '../../redux/actions';
 import { ChangePasswordPending } from '../../redux/actions/actions.types';
 import changePasswordValidationSchema from './validation/changePassword.validation';
 import { ChangePasswordForm, ChangePasswordFormBody } from './ChangePassword.styles';
+import { changePasswordSlice } from '../../redux/reducers/changePassword.reducer';
 
 export const ChangePasswordModal: React.VFC<ChangePasswordProps> = ({ setActiveChangePasswordModal }) => {
   const dispatch = useAppDispatch();
@@ -19,7 +19,7 @@ export const ChangePasswordModal: React.VFC<ChangePasswordProps> = ({ setActiveC
     oldPassword,
     newPassword,
   }: ChangePasswordPending) => {
-    dispatch(changePassword.pending({
+    dispatch(changePasswordSlice.actions.pending({
       oldPassword,
       newPassword,
     }));

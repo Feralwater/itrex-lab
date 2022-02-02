@@ -1,10 +1,6 @@
 /* eslint-disable camelcase */
 import { SignInData, SignUpData, SignUpInResponse } from '../../resources/auth/auth.types';
-import {
-  AppointmentsForDoctor,
-  AppointmentsForPatient, DeleteAppointment,
-  NewAppointmentResponse,
-} from '../../resources/appointments/appointments.types';
+import { DeleteAppointment } from '../../resources/appointments/appointments.types';
 import {
   EditResolutionData,
   EditResolutionResponse,
@@ -60,11 +56,7 @@ export interface ChangePasswordFulfilled {
   role_id: string
 }
 
-export type AppointmentFulfilled = NewAppointmentResponse;
-
-export type AppointmentsForPatientFulfilled = AppointmentsForPatient;
-
-export type AppointmentsForDoctorFulfilled = AppointmentsForDoctor;
+export type A = Array<ChangePasswordFulfilled>;
 
 export type DeleteAppointmentFulfilled = DeleteAppointment;
 
