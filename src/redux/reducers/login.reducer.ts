@@ -1,9 +1,9 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { LoginState } from './reducers.types';
 import { loginRepository } from '../../resources/loginRepository';
-import { login } from '../actions';
 import { RootState } from '../store';
 import { FETCH_STATUS } from './constants';
+import { LoginFulfilled, LoginPending } from '../actions/actions.types';
 
 const initialState: LoginState = {
   accessToken: loginRepository.getAccessToken() || '',
@@ -13,19 +13,17 @@ const initialState: LoginState = {
 export const loginSlice = createSlice({
   name: 'login',
   initialState,
-  reducers: {},
-  extraReducers: (builder) => {
-    builder
-      .addCase(login.fulfilled, (state, { payload }) => ({
-        ...state, accessToken: payload.access_token, refreshToken: payload.refresh_token, status: FETCH_STATUS.FULFILLED,
-      }));
-    builder
-      .addCase(login.pending, (state) => ({ ...state, status: FETCH_STATUS.LOADING }));
-    builder
-      .addCase(login.failed, (state) => ({ ...state, status: FETCH_STATUS.FAILED }));
+  reducers: {
+    fulfilled: (state, action: PayloadAction<LoginFulfilled>) => ({
+      ...state,
+      accessToken: action.payload.access_token,
+      refreshToken: action.payload.refresh_token,
+      status: FETCH_STATUS.FULFILLED,
+    }),
+    pending: (state, action: PayloadAction<LoginPending>) => ({ ...state, ...action.payload, status: FETCH_STATUS.LOADING }),
+    failed: (state) => ({ ...state, status: FETCH_STATUS.FAILED }),
   },
 });
 
 export const selectAccessToken = (state: RootState) => state.login.accessToken;
-
 export const loginReducer = loginSlice.reducer;

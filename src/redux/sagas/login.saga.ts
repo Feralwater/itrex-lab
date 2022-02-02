@@ -1,12 +1,13 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
-import { login, notificationError } from '../actions';
+import { notificationError } from '../actions';
 import { SignUpInResponse } from '../../resources/auth/auth.types';
 import auth from '../../resources/auth/auth.api';
 import { loginRepository } from '../../resources/loginRepository';
 import { createErrorNotificationMessage, utils } from './utils';
+import { loginSlice } from '../reducers';
 
-function* loginPost(action: ReturnType<typeof login.pending>) {
+function* loginPost(action: ReturnType<typeof loginSlice.actions.pending>) {
   try {
     const { payload } = action;
     const response: AxiosResponse<SignUpInResponse> = yield call(auth.SignIn, { ...payload });
@@ -25,10 +26,10 @@ function* loginPost(action: ReturnType<typeof login.pending>) {
   }
 }
 
-const loginPostSaga = utils.bind(null, login, loginPost);
+const loginPostSaga = utils.bind(null, loginSlice.actions, loginPost);
 
 function* loginPostWatcher() {
-  yield takeEvery(login.pending, loginPostSaga);
+  yield takeEvery(loginSlice.actions.pending, loginPostSaga);
 }
 
 function* loginSaga() {
