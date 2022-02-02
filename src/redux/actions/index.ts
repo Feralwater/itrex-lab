@@ -3,6 +3,5 @@ export * from './createSaga.actions';
 export * from './login.actions';
 export * from './notification.actions';
 export * from './profile.actions';
-export * from './registration.actions';
 export * from './resolution.actions';
 export * from './cardsForDoctor.action';

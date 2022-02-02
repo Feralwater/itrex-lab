@@ -1,12 +1,13 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
-import { notificationError, registration } from '../actions';
-import { ProfileResponse, SignUpInResponse } from '../../resources/auth/auth.types';
+import { notificationError } from '../actions';
+import { SignUpInResponse } from '../../resources/auth/auth.types';
 import auth from '../../resources/auth/auth.api';
 import { loginRepository } from '../../resources/loginRepository';
 import { createErrorNotificationMessage, utils } from './utils';
+import { registrationSlice } from '../reducers';
 
-function* registrationPost(action: ReturnType<typeof registration.pending>) {
+function* registrationPost(action: ReturnType<typeof registrationSlice.actions.pending>) {
   try {
     const { payload } = action;
     const response: AxiosResponse<SignUpInResponse> = yield call(auth.SignUp, { ...payload });
@@ -19,19 +20,17 @@ function* registrationPost(action: ReturnType<typeof registration.pending>) {
         .setRefreshToken(data.refresh_token);
     }
 
-    const profile: AxiosResponse<ProfileResponse> = yield call(auth.getMe);
-
-    return { ...response.data, ...profile.data };
+    return response.data;
   } catch (error:any) {
     yield put(notificationError(createErrorNotificationMessage(error.response.data)));
     throw error;
   }
 }
 
-const registrationPostSaga = utils.bind(null, registration, registrationPost);
+const registrationPostSaga = utils.bind(null, registrationSlice.actions, registrationPost);
 
 function* registrationPostWatcher() {
-  yield takeEvery(registration.pending, registrationPostSaga);
+  yield takeEvery(registrationSlice.actions.pending, registrationPostSaga);
 }
 
 function* registrationSaga() {
