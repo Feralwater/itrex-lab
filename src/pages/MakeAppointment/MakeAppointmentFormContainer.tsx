@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { AppointmentValues } from './form.types';
-import { occupations } from '../../redux/actions';
 import { MakeAppointmentForm } from './MakeAppointmentForm';
 import {
   selectOccupations,
@@ -9,7 +8,7 @@ import {
   selectFreeDoctorTime,
   selectMakeAppointment,
   makeAppointmentSlice,
-  getDoctorsByIDSlice, freeDoctorTimeSlice,
+  getDoctorsByIDSlice, freeDoctorTimeSlice, occupationsSlice,
 } from '../../redux/reducers';
 
 export const MakeAppointmentFormContainer:React.VFC = () => {
@@ -23,7 +22,7 @@ export const MakeAppointmentFormContainer:React.VFC = () => {
   const { freeTime } = useAppSelector(selectFreeDoctorTime);
   const { responseStatus: makeAppointmentFetchStatus } = useAppSelector(selectMakeAppointment);
   useEffect(() => {
-    dispatch(occupations.pending());
+    dispatch(occupationsSlice.actions.pending());
   }, [dispatch]);
   useEffect(() => {
     if (selectedOccupationID) {

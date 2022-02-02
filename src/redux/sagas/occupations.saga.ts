@@ -1,9 +1,10 @@
 import { AxiosResponse } from 'axios';
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { notificationError, occupations } from '../actions';
+import { notificationError } from '../actions';
 import { createErrorNotificationMessage, utils } from './utils';
 import occupationsAPI from '../../resources/occupations/occupations.api';
 import { OccupationsResponse } from '../../resources/occupations/occupations.types';
+import { occupationsSlice } from '../reducers';
 
 function* getOccupations() {
   try {
@@ -15,10 +16,10 @@ function* getOccupations() {
   }
 }
 
-const getOccupationsSaga = utils.bind(null, occupations, getOccupations);
+const getOccupationsSaga = utils.bind(null, occupationsSlice.actions, getOccupations);
 
 function* getOccupationsWatcher() {
-  yield takeEvery(occupations.pending, getOccupationsSaga);
+  yield takeEvery(occupationsSlice.actions.pending, getOccupationsSaga);
 }
 
 function* occupationsSaga() {
