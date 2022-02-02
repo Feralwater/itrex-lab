@@ -1,6 +1,6 @@
 import { all } from 'redux-saga/effects';
 import loginSaga from './login.saga';
-import appointmentSaga from './appointment.saga';
+import makeAppointmentSaga from './makeAppointment.saga';
 import registrationSaga from './registration.saga';
 import profileSaga from './profile.saga';
 import appointmentsForPatientSaga from './appointmentsForPatient.saga';
@@ -20,7 +20,7 @@ import cardsForDoctorSaga from './cardsForDoctor.saga';
 function* rootSaga() {
   yield all([
     loginSaga(),
-    appointmentSaga(),
+    makeAppointmentSaga(),
     registrationSaga(),
     profileSaga(),
     appointmentsForPatientSaga(),

@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { AppointmentValues } from './form.types';
-import {
-  appointment, doctorsByID, freeDoctorTime, occupations,
-} from '../../redux/actions';
+import { doctorsByID, freeDoctorTime, occupations } from '../../redux/actions';
 import { MakeAppointmentForm } from './MakeAppointmentForm';
 import {
-  selectOccupations, selectDoctorsByID, selectFreeDoctorTime, selectAppointment,
+  selectOccupations, selectDoctorsByID, selectFreeDoctorTime, selectMakeAppointment, makeAppointmentSlice,
 } from '../../redux/reducers';
 
 export const MakeAppointmentFormContainer:React.VFC = () => {
@@ -18,7 +16,7 @@ export const MakeAppointmentFormContainer:React.VFC = () => {
   const { occupations: specializations } = useAppSelector(selectOccupations);
   const { doctors: doctorNames } = useAppSelector(selectDoctorsByID);
   const { freeTime } = useAppSelector(selectFreeDoctorTime);
-  const { responseStatus: makeAppointmentFetchStatus } = useAppSelector(selectAppointment);
+  const { responseStatus: makeAppointmentFetchStatus } = useAppSelector(selectMakeAppointment);
   useEffect(() => {
     dispatch(occupations.pending());
   }, [dispatch]);
@@ -50,7 +48,7 @@ export const MakeAppointmentFormContainer:React.VFC = () => {
     const {
       time: date, reason, note, doctorName: { value: doctorID },
     } = formValues;
-    dispatch(appointment.pending({
+    dispatch(makeAppointmentSlice.actions.pending({
       date, reason, note, doctorID,
     }));
   };

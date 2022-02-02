@@ -24,17 +24,6 @@ export interface ProfileState extends Request {
   isAuth: boolean;
 }
 
-export interface AppointmentState {
-  id: string;
-  patientID: string;
-  doctorID: string;
-  visitDate: string;
-  reason: string;
-  note: string;
-  status: string;
-  responseStatus: Status;
-}
-
 export interface EditProfileState extends Request {
   id: string;
   firstName: string;

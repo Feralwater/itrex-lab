@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 import {
-  loginReducer, appointmentReducer, registrationReducer,
+  loginReducer, makeAppointmentReducer, registrationReducer,
   profileReducer, notificationReducer, appointmentsForPatientReducer,
   resolutionReducer, resolutionsReducer,
   occupationsReducer, doctorsByIDReducer, freeDoctorTimeReducer, cardsForDoctorReducer,
@@ -18,7 +18,7 @@ const sagaMiddleware = createSagaMiddleware();
 export const store = configureStore({
   reducer: {
     login: loginReducer,
-    appointments: appointmentReducer,
+    makeAppointment: makeAppointmentReducer,
     registration: registrationReducer,
     profile: profileReducer,
     notification: notificationReducer,

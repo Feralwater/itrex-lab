@@ -26,6 +26,6 @@ export const appointmentsForPatientSlice = createSlice({
   },
 });
 
-export const selectAppointmentsForPatient = (state: RootState) => state.appointmentsForPatient;
+export const selectMakeAppointmentsForPatient = (state: RootState) => state.appointmentsForPatient;
 
 export const appointmentsForPatientReducer = appointmentsForPatientSlice.reducer;

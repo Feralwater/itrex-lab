@@ -6,7 +6,7 @@ import { PatientNavigatePanel } from '../../components';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { appointmentsForPatient } from '../../redux/actions';
 import { dictionary } from '../dictionary/pagesDictionary';
-import { selectAppointmentsForPatient, selectProfile } from '../../redux/reducers';
+import { selectMakeAppointmentsForPatient, selectProfile } from '../../redux/reducers';
 import { FETCH_STATUS } from '../../redux/reducers/constants';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { SkeletonCards } from '../../components/Skeleton';
@@ -14,7 +14,7 @@ import { SkeletonCards } from '../../components/Skeleton';
 export const AppointmentsForPatientContainer:React.VFC = () => {
   const dispatch = useAppDispatch();
   const { id: userId, roleName } = useAppSelector(selectProfile);
-  const { appointments, total: totalAppointmentsCount, responseStatus } = useAppSelector(selectAppointmentsForPatient);
+  const { appointments, total: totalAppointmentsCount, responseStatus } = useAppSelector(selectMakeAppointmentsForPatient);
 
   useEffect(() => {
     if (userId) {

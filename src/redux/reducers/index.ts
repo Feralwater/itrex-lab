@@ -1,4 +1,4 @@
-export * from './appointment.reducer';
+export * from './makeAppointment.reducer';
 export * from './appointmentsForPatient.reducer';
 export * from './login.reducer';
 export * from './notification.reducer';

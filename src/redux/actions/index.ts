@@ -1,4 +1,3 @@
-export * from './appointment.actions';
 export * from './appointmentsForDoctors.actions';
 export * from './appointmentsForPatient.actions';
 export * from './createSaga.actions';

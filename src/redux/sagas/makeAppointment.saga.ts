@@ -1,12 +1,13 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
-import { appointment, notificationError, notificationSuccess } from '../actions';
+import { notificationError, notificationSuccess } from '../actions';
 import { NewAppointmentResponse } from '../../resources/appointments/appointments.types';
 import appointments from '../../resources/appointments/appointments.api';
 import { createErrorNotificationMessage, utils } from './utils';
 import { componentsDictionary } from '../../components';
+import { makeAppointmentSlice } from '../reducers';
 
-function* appointmentPost(action: ReturnType<typeof appointment.pending>) {
+function* appointmentPost(action: ReturnType<typeof makeAppointmentSlice.actions.pending>) {
   try {
     const { payload } = action;
     const response: AxiosResponse<NewAppointmentResponse> = yield call(appointments.addAppointment, { ...payload });
@@ -18,14 +19,14 @@ function* appointmentPost(action: ReturnType<typeof appointment.pending>) {
   }
 }
 
-const appointmentPostSaga = utils.bind(null, appointment, appointmentPost);
+const appointmentPostSaga = utils.bind(null, makeAppointmentSlice.actions, appointmentPost);
 
 function* appointmentPostWatcher() {
-  yield takeEvery(appointment.pending, appointmentPostSaga);
+  yield takeEvery(makeAppointmentSlice.actions.pending, appointmentPostSaga);
 }
 
-function* appointmentSaga() {
+function* makeAppointmentSaga() {
   yield appointmentPostWatcher();
 }
 
-export default appointmentSaga;
+export default makeAppointmentSaga;
