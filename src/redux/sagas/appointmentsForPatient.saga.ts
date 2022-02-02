@@ -1,11 +1,12 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
 import { createErrorNotificationMessage, utils } from './utils';
-import { appointmentsForPatient, notificationError } from '../actions';
+import { notificationError } from '../actions';
 import appointments from '../../resources/appointments/appointments.api';
 import { AppointmentsForPatient } from '../../resources/appointments/appointments.types';
+import { appointmentsForPatientSlice } from '../reducers';
 
-function* getAppointmentsForPatient(action: ReturnType<typeof appointmentsForPatient.pending>) {
+function* getAppointmentsForPatient(action: ReturnType<typeof appointmentsForPatientSlice.actions.pending>) {
   try {
     const { payload } = action;
     const response: AxiosResponse<AppointmentsForPatient> = yield call(appointments.fetchAppointmentsForPatient, payload.offset, payload.limit);
@@ -16,10 +17,10 @@ function* getAppointmentsForPatient(action: ReturnType<typeof appointmentsForPat
   }
 }
 
-const getAppointmentsForPatientSaga = utils.bind(null, appointmentsForPatient, getAppointmentsForPatient);
+const getAppointmentsForPatientSaga = utils.bind(null, appointmentsForPatientSlice.actions, getAppointmentsForPatient);
 
 function* getAppointmentsForPatientWatcher() {
-  yield takeEvery(appointmentsForPatient.pending, getAppointmentsForPatientSaga);
+  yield takeEvery(appointmentsForPatientSlice.actions.pending, getAppointmentsForPatientSaga);
 }
 
 function* appointmentsForPatientSaga() {

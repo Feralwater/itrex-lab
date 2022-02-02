@@ -4,9 +4,8 @@ import { PatientFullState } from '../FullStateView';
 import { PatientEmptyState } from '../EmptyStateView';
 import { PatientNavigatePanel } from '../../components';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { appointmentsForPatient } from '../../redux/actions';
 import { dictionary } from '../dictionary/pagesDictionary';
-import { selectMakeAppointmentsForPatient, selectProfile } from '../../redux/reducers';
+import { appointmentsForPatientSlice, selectMakeAppointmentsForPatient, selectProfile } from '../../redux/reducers';
 import { FETCH_STATUS } from '../../redux/reducers/constants';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { SkeletonCards } from '../../components/Skeleton';
@@ -18,7 +17,7 @@ export const AppointmentsForPatientContainer:React.VFC = () => {
 
   useEffect(() => {
     if (userId) {
-      dispatch(appointmentsForPatient.pending({ offset: 0, limit: 100 }));
+      dispatch(appointmentsForPatientSlice.actions.pending({ offset: 0, limit: 100 }));
     }
   }, [userId]);
 

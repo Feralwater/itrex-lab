@@ -1,5 +1,4 @@
 export * from './appointmentsForDoctors.actions';
-export * from './appointmentsForPatient.actions';
 export * from './createSaga.actions';
 export * from './login.actions';
 export * from './notification.actions';
