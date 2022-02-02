@@ -1,11 +1,12 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
 import appointments from '../../resources/appointments/appointments.api';
-import { notificationSuccess, deleteAppointment, notificationError } from '../actions';
+import { notificationSuccess, notificationError } from '../actions';
 import { createErrorNotificationMessage, utils } from './utils';
 import { componentsDictionary } from '../../components';
+import { appointmentsForDoctorSlice } from '../reducers';
 
-function* removeAppointment(action: ReturnType<typeof deleteAppointment.pending>) {
+function* removeAppointment(action: ReturnType<typeof appointmentsForDoctorSlice.actions.deleteAppointmentPending>) {
   try {
     const { payload } = action;
     const response: AxiosResponse<string> = yield call(appointments.deleteAppointment, payload.id);
@@ -17,10 +18,10 @@ function* removeAppointment(action: ReturnType<typeof deleteAppointment.pending>
   }
 }
 
-const removeAppointmentSaga = utils.bind(null, deleteAppointment, removeAppointment);
+const removeAppointmentSaga = utils.bind(null, appointmentsForDoctorSlice.actions, removeAppointment);
 
 function* removeAppointmentWatcher() {
-  yield takeEvery(deleteAppointment.pending, removeAppointmentSaga);
+  yield takeEvery(appointmentsForDoctorSlice.actions.deleteAppointmentPending, removeAppointmentSaga);
 }
 
 function* deleteAppointmentSaga() {

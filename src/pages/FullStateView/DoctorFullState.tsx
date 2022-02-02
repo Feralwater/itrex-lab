@@ -1,8 +1,14 @@
 import { AppointmentCard } from 'components';
 import React from 'react';
-import { CardsForDoctor } from '../../resources/appointments/appointments.types';
+import { AppointmentForDoctorFulfilled } from '../../redux/actions/actions.types';
+import { RoleName } from '../../redux/reducers/reducers.types';
 
-export const DoctorFullState: React.VFC<CardsForDoctor> = ({ appointments, roleName }) => (
+export interface DoctorFullStateProps{
+  appointments: Array<AppointmentForDoctorFulfilled>
+  roleName: RoleName
+}
+
+export const DoctorFullState: React.VFC<DoctorFullStateProps> = ({ appointments, roleName }) => (
   <>
     { appointments.map((appointment) => (
       <AppointmentCard

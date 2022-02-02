@@ -9,4 +9,4 @@ export * from './resolutions.reducer';
 export * from './occupations.reducer';
 export * from './getDoctorsByID.reducer';
 export * from './freeTime.reducer';
-export * from './cardsForDoctor.reducer';
+export * from './appointmentsForDoctor.reducer';

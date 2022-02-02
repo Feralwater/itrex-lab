@@ -4,7 +4,7 @@ import {
   loginReducer, makeAppointmentReducer, registrationReducer,
   profileReducer, notificationReducer, appointmentsForPatientReducer,
   resolutionReducer, resolutionsReducer,
-  occupationsReducer, getDoctorsByIDReducer, freeDoctorTimeReducer, cardsForDoctorReducer,
+  occupationsReducer, getDoctorsByIDReducer, freeDoctorTimeReducer, appointmentsForDoctorReducer,
 } from './reducers';
 import rootSaga from './sagas/rootSaga';
 import { editProfileReducer } from './reducers/editProfile.reducer';
@@ -33,7 +33,7 @@ export const store = configureStore({
     freeDoctorTime: freeDoctorTimeReducer,
     changePassword: changePasswordReducer,
     editPatientProfile: editPatientProfileReducer,
-    cardsForDoctor: cardsForDoctorReducer,
+    appointmentsForDoctor: appointmentsForDoctorReducer,
   },
   middleware: (getDefaultMiddleware) => [...getDefaultMiddleware({
     serializableCheck: {

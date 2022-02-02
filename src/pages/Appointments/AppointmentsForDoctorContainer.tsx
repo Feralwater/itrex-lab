@@ -4,9 +4,8 @@ import { DoctorEmptyState } from '../EmptyStateView';
 import { DoctorNavigatePanel } from '../../components';
 import AppointmentsWrapper from './AppointmentsContainer.styles';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { cardsForDoctor } from '../../redux/actions';
 import { dictionary } from '../dictionary/pagesDictionary';
-import { selectCardsForDoctor, selectProfile } from '../../redux/reducers';
+import { appointmentsForDoctorSlice, selectAppointmentsForDoctor, selectProfile } from '../../redux/reducers';
 import { FETCH_STATUS } from '../../redux/reducers/constants';
 import { SkeletonCards } from '../../components/Skeleton';
 import { appointmentsOnPage, appointmentsOnPageOffset } from './constants';
@@ -14,13 +13,13 @@ import { appointmentsOnPage, appointmentsOnPageOffset } from './constants';
 export const AppointmentsForDoctorContainer: React.VFC = () => {
   const dispatch = useAppDispatch();
   const { id: userId } = useAppSelector(selectProfile);
-  const { cards: appointments, status: responseStatus } = useAppSelector(selectCardsForDoctor);
+  const { appointments, status: responseStatus } = useAppSelector(selectAppointmentsForDoctor);
   const { roleName } = useAppSelector(selectProfile);
   const [, setSearchTerm] = useState('');
 
   useEffect(() => {
     if (userId) {
-      dispatch(cardsForDoctor.pending({
+      dispatch(appointmentsForDoctorSlice.actions.pending({
         offset: appointmentsOnPageOffset,
         limit: appointmentsOnPage,
       }));

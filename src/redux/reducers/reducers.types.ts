@@ -1,5 +1,6 @@
-import { AppointmentForPatient, CardForDoctor } from '../../resources/appointments/appointments.types';
+import { AppointmentForDoctor, AppointmentForPatient } from '../../resources/appointments/appointments.types';
 import { ResolutionsForPatientResponse, ResolutionsResponse } from '../../resources/resolutions/resolutions.types';
+import { AppointmentForDoctorFulfilled } from '../actions/actions.types';
 
 export type Status = 'idle' | 'loading' | 'failed' | 'fulfilled';
 export type RoleName = 'Doctor' | 'Patient' | 'Public' | '';
@@ -123,8 +124,9 @@ export interface ChangePasswordState {
   status: Status;
 }
 
-export interface CardsForDoctorState {
-  cards: Array<CardForDoctor>,
+export interface AppointmentsForDoctorState {
+  appointments: Array<AppointmentForDoctorFulfilled>,
   total: number,
   status: Status,
+  entityStatus: Status,
 }

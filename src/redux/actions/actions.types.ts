@@ -1,7 +1,6 @@
 /* eslint-disable camelcase */
 import { SignInData, SignUpData, SignUpInResponse } from '../../resources/auth/auth.types';
 import {
-  AppointmentsForDoctor,
   AppointmentsForPatient,
   DeleteAppointment,
   NewAppointmentResponse,
@@ -9,9 +8,10 @@ import {
 import {
   EditResolutionData,
   EditResolutionResponse,
-  ResolutionData,
+  ResolutionData, ResolutionForDoctor,
   ResolutionResponse, ResolutionsForPatientResponse,
 } from '../../resources/resolutions/resolutions.types';
+import { Status } from '../reducers/reducers.types';
 
 export type LoginPending = SignInData;
 export type LoginFulfilled = SignUpInResponse;
@@ -65,7 +65,21 @@ export type MakeAppointmentFulfilled = NewAppointmentResponse;
 
 export type AppointmentsForPatientFulfilled = AppointmentsForPatient;
 
-export type AppointmentsForDoctorFulfilled = AppointmentsForDoctor;
+export interface AppointmentForDoctorFulfilled{
+  visitDate: string
+  firstName: string
+  lastName: string
+  photo: string
+  appointmentID: string
+  status: string
+  resolution: ResolutionForDoctor
+}
+
+export interface AppointmentsForDoctorFulfilled {
+  appointments: Array<AppointmentForDoctorFulfilled>
+  total: number
+  status: Status
+}
 
 export type DeleteAppointmentFulfilled = DeleteAppointment;
 

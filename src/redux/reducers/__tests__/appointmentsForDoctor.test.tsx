@@ -1,14 +1,14 @@
 import { FETCH_STATUS } from '../constants';
-import { cardsForDoctor } from '../../actions';
-import { CardsForDoctorState } from '../reducers.types';
-import { cardsForDoctorReducer } from '../cardsForDoctor.reducer';
+import { appointmentsForDoctor } from '../../actions';
+import { appointmentsForDoctorState } from '../reducers.types';
+import { appointmentsForDoctorReducer } from '../appointmentsForDoctor.reducer';
 
 // Arrange
 const startState = {
   cards: [],
   total: 0,
   status: FETCH_STATUS.IDLE,
-} as CardsForDoctorState;
+} as appointmentsForDoctorState;
 const data: any = {
   cards: [
     {
@@ -52,7 +52,7 @@ const endState = {
 
 it('should return the initial state', () => {
   // Assert
-  expect(cardsForDoctorReducer(undefined, { type: undefined }))
+  expect(appointmentsForDoctorReducer(undefined, { type: undefined }))
     .toEqual(
       { ...startState },
     );
@@ -60,7 +60,7 @@ it('should return the initial state', () => {
 
 it('should handle list of appointments being added', () => {
   // Assert
-  expect(cardsForDoctorReducer({ ...startState }, cardsForDoctor.fulfilled(data)))
+  expect(appointmentsForDoctorReducer({ ...startState }, appointmentsForDoctor.fulfilled(data)))
     .toEqual(
       { ...endState },
     );
