@@ -1,11 +1,12 @@
 import { AxiosResponse } from 'axios';
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { doctorsByID, notificationError } from '../actions';
 import { createErrorNotificationMessage, utils } from './utils';
 import doctors from '../../resources/doctors/doctors.api';
 import { DoctorsBySpecializationIdResponse } from '../../resources/doctors/doctors.types';
+import { notificationError } from '../actions';
+import { getDoctorsByIDSlice } from '../reducers';
 
-function* getDoctorsByID(action: ReturnType<typeof doctorsByID.pending>) {
+function* getDoctorsByID(action: ReturnType<typeof getDoctorsByIDSlice.actions.pending>) {
   try {
     const { payload } = action;
     const response: AxiosResponse<DoctorsBySpecializationIdResponse> = yield call(doctors.fetchDoctorsBySpecializationId, payload);
@@ -16,10 +17,10 @@ function* getDoctorsByID(action: ReturnType<typeof doctorsByID.pending>) {
   }
 }
 
-const getDoctorsByIDSaga = utils.bind(null, doctorsByID, getDoctorsByID);
+const getDoctorsByIDSaga = utils.bind(null, getDoctorsByIDSlice.actions, getDoctorsByID);
 
 function* getDoctorsByIDWatcher() {
-  yield takeEvery(doctorsByID.pending, getDoctorsByIDSaga);
+  yield takeEvery(getDoctorsByIDSlice.actions.pending, getDoctorsByIDSaga);
 }
 
 function* doctorsByIDSaga() {

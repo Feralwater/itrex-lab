@@ -11,7 +11,7 @@ import editProfileSaga from './editProfile.saga';
 import editResolutionSaga from './editResolution.saga';
 import resolutionsForPatientSaga from './resolutionsForPatient.saga';
 import occupationsSaga from './occupations.saga';
-import doctorsByIDSaga from './doctorsByID.saga';
+import getDoctorsByIDSaga from './getDoctorsByID.saga';
 import freeDoctorTimeSaga from './freeTimeSaga';
 import changePasswordSaga from './changePassword.saga';
 import editPatientProfileSaga from './editPatientProfile.saga';
@@ -31,7 +31,7 @@ function* rootSaga() {
     editResolutionSaga(),
     resolutionsForPatientSaga(),
     occupationsSaga(),
-    doctorsByIDSaga(),
+    getDoctorsByIDSaga(),
     freeDoctorTimeSaga(),
     changePasswordSaga(),
     editPatientProfileSaga(),
