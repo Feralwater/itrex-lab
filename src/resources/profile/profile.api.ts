@@ -3,7 +3,7 @@ import { NewProfileResponse } from './profile.types';
 import { PROFILE_API } from './constants';
 
 const profile = {
-  async editProfile(data: FormData) {
+  async editDoctorProfile(data: FormData) {
     return instance.patch<NewProfileResponse>(PROFILE_API.doctorsMe(), data);
   },
   async editPatientProfile(data: FormData) {
