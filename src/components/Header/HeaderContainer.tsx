@@ -3,8 +3,6 @@ import { Header } from './Header';
 import { useAppSelector } from '../../hooks';
 import { selectProfile } from '../../redux/reducers';
 import { selectEditProfile } from '../../redux/reducers/editProfile.reducer';
-import { selectEditPatientProfile } from '../../redux/reducers/editPatientProfile.reducer';
-import { ROLES } from '../../routes/constants';
 
 export const HeaderContainer:React.VFC = () => {
   const {
@@ -14,18 +12,14 @@ export const HeaderContainer:React.VFC = () => {
     photo,
   } = useAppSelector(selectProfile);
   const {
-    firstName: editDoctorFirstName,
-    lastName: editDoctorLastName,
-    photo: editDoctorPhoto,
+    firstName: editFirstName,
+    lastName: editLastName,
+    photo: editPhoto,
   } = useAppSelector(selectEditProfile);
-  const {
-    firstName: editPatientFirstName,
-    lastName: editPatientLastName,
-    photo: editPatientPhoto,
-  } = useAppSelector(selectEditPatientProfile);
-  const userFirstName = roleName === ROLES.DOCTOR ? (editDoctorFirstName || firstName) : (editPatientFirstName || firstName);
-  const userLastName = roleName === ROLES.DOCTOR ? (editDoctorLastName || lastName) : (editPatientLastName || lastName);
-  const userPhoto = roleName === ROLES.DOCTOR ? (editDoctorPhoto || photo) : (editPatientPhoto || photo);
+
+  const userFirstName = editFirstName || firstName;
+  const userLastName = editLastName || lastName;
+  const userPhoto = editPhoto || photo;
   return (
     <Header
       roleName={roleName}

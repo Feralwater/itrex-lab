@@ -14,7 +14,6 @@ import occupationsSaga from './occupations.saga';
 import getDoctorsByIDSaga from './getDoctorsByID.saga';
 import freeDoctorTimeSaga from './freeTimeSaga';
 import changePasswordSaga from './changePassword.saga';
-import editPatientProfileSaga from './editPatientProfile.saga';
 import appointmentsForDoctorSaga from './appointmentsForDoctor.saga';
 
 function* rootSaga() {
@@ -34,7 +33,6 @@ function* rootSaga() {
     getDoctorsByIDSaga(),
     freeDoctorTimeSaga(),
     changePasswordSaga(),
-    editPatientProfileSaga(),
     appointmentsForDoctorSaga(),
   ]);
 }

@@ -30,7 +30,7 @@ export interface ProfileResponse {
 }
 
 export interface EditProfileResponse extends ProfileResponse {
-  specialization_name: string;
+  specialization_name?: string;
 }
 
 export type ChangePasswordResponse = ChangePasswordFulfilled[];

@@ -28,7 +28,7 @@ export interface EditProfileState extends Request {
   lastName: string;
   photo: string;
   roleName: string;
-  specializationName: string;
+  specializationName?: string;
 }
 
 export interface EditPatientProfileState extends Request {

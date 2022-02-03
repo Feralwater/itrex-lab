@@ -11,7 +11,6 @@ import { editProfileReducer } from './reducers/editProfile.reducer';
 import { editResolutionReducer } from './reducers/editResolution.reducer';
 import { resolutionsForPatientReducer } from './reducers/resolutionsForPatient.reducer';
 import { changePasswordReducer } from './reducers/changePassword.reducer';
-import { editPatientProfileReducer } from './reducers/editPatientProfile.reducer';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -32,12 +31,11 @@ export const store = configureStore({
     getDoctorsByID: getDoctorsByIDReducer,
     freeDoctorTime: freeDoctorTimeReducer,
     changePassword: changePasswordReducer,
-    editPatientProfile: editPatientProfileReducer,
     appointmentsForDoctor: appointmentsForDoctorReducer,
   },
   middleware: (getDefaultMiddleware) => [...getDefaultMiddleware({
     serializableCheck: {
-      ignoredActions: ['editProfile/pending', 'editPatientProfile/pending'],
+      ignoredActions: ['editProfile/pending'],
     },
   }), sagaMiddleware],
 });

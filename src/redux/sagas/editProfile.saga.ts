@@ -1,16 +1,17 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
-import { editProfile } from '../actions';
 import { createErrorNotificationMessage, utils } from './utils';
-import { NewDoctorProfileResponse } from '../../resources/profile/profile.types';
-import profile from '../../resources/profile/profile.api';
+import { NewProfileResponse } from '../../resources/profile/profile.types';
 import { componentsDictionary } from '../../components';
 import { notificationSlice } from '../reducers';
+import { editProfileSlice } from '../reducers/editProfile.reducer';
+import profile from '../../resources/profile/profile.api';
 
-function* editProfilePatch(action: ReturnType<typeof editProfile.pending>) {
+function* editProfile(action: ReturnType<typeof editProfileSlice.actions.pending>) {
   try {
     const { payload } = action;
-    const response: AxiosResponse<NewDoctorProfileResponse> = yield call(profile.editProfile, payload);
+    const response: AxiosResponse<NewProfileResponse> = yield call(profile.editProfile, payload);
+    // const response: AxiosResponse<NewProfileResponse> = yield call(profile.editPatientProfile, payload);
     yield put(notificationSlice.actions.notificationSuccess(componentsDictionary.message.successMessageBodyEditProfile));
     return response.data;
   } catch (error:any) {
@@ -19,10 +20,10 @@ function* editProfilePatch(action: ReturnType<typeof editProfile.pending>) {
   }
 }
 
-const editProfilePatchSaga = utils.bind(null, editProfile, editProfilePatch);
+const editProfilePatchSaga = utils.bind(null, editProfileSlice.actions, editProfile);
 
 function* editProfilePatchWatcher() {
-  yield takeEvery(editProfile.pending, editProfilePatchSaga);
+  yield takeEvery(editProfileSlice.actions.pending, editProfilePatchSaga);
 }
 
 function* editProfileSaga() {
