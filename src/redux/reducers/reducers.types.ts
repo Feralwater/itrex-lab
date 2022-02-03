@@ -1,4 +1,4 @@
-import { AppointmentForDoctor, AppointmentForPatient } from '../../resources/appointments/appointments.types';
+import { AppointmentForPatient } from '../../resources/appointments/appointments.types';
 import { ResolutionsForPatientResponse, ResolutionsResponse } from '../../resources/resolutions/resolutions.types';
 import { AppointmentForDoctorFulfilled } from '../actions.types';
 
@@ -20,7 +20,6 @@ export interface ProfileState extends Request {
   lastName: string;
   photo: string;
   roleName: RoleName;
-  isAuth: boolean;
 }
 
 export interface EditProfileState extends Request {

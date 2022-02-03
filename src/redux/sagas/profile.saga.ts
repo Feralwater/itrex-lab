@@ -2,10 +2,9 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
 import { ProfileResponse } from '../../resources/auth/auth.types';
 import auth from '../../resources/auth/auth.api';
-import { profile } from '../actions';
 import { loginRepository } from '../../resources/loginRepository';
 import { createErrorNotificationMessage, utils } from './utils';
-import { notificationSlice } from '../reducers';
+import { notificationSlice, profileSlice } from '../reducers';
 
 function* getProfile() {
   try {
@@ -19,10 +18,10 @@ function* getProfile() {
   }
 }
 
-const getProfileSaga = utils.bind(null, profile, getProfile);
+const getProfileSaga = utils.bind(null, profileSlice.actions, getProfile);
 
 function* getProfileWatcher() {
-  yield takeEvery(profile.pending, getProfileSaga);
+  yield takeEvery(profileSlice.actions.pending, getProfileSaga);
 }
 
 function* profileSaga() {
