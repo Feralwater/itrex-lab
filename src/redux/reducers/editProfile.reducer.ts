@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
-import { EditProfileState } from './reducers.types';
+import { EditProfileState, InitEditProfile } from './reducers.types';
 import { FETCH_STATUS } from './constants';
 import { EditProfileResponse } from '../../resources/auth/auth.types';
 
@@ -28,7 +28,7 @@ export const editProfileSlice = createSlice({
       specializationName: action.payload.specialization_name,
       status: FETCH_STATUS.FULFILLED,
     }),
-    pending: (state, action: PayloadAction<FormData>) => ({ ...state, ...action.payload, status: FETCH_STATUS.LOADING }),
+    pending: (state, action: PayloadAction<FormData | InitEditProfile>) => ({ ...state, ...action.payload, status: FETCH_STATUS.LOADING }),
     failed: (state) => ({ ...state, status: FETCH_STATUS.FAILED }),
   },
 });

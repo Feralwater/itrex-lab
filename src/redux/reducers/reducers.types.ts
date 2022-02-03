@@ -31,12 +31,10 @@ export interface EditProfileState extends Request {
   specializationName?: string;
 }
 
-export interface EditPatientProfileState extends Request {
-  id: string;
-  firstName: string;
-  lastName: string;
-  photo: string;
-  roleName: string;
+export interface InitEditProfile {
+  firstName: string,
+  lastName: string,
+  photo: string,
 }
 
 export interface RegistrationState extends Request {
