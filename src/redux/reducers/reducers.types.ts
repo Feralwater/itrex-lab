@@ -32,9 +32,13 @@ export interface EditProfileState extends Request {
 }
 
 export interface InitEditProfile {
+  id: string,
   firstName: string,
   lastName: string,
   photo: string,
+  roleName: RoleName,
+  specializationName: string,
+  status: Status,
 }
 
 export interface RegistrationState extends Request {

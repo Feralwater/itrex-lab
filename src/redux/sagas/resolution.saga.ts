@@ -1,13 +1,12 @@
 import { AxiosResponse } from 'axios';
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { resolution } from '../actions';
 import { ResolutionResponse } from '../../resources/resolutions/resolutions.types';
 import resolutionsAPI from '../../resources/resolutions/resolutions.api';
 import { createErrorNotificationMessage, utils } from './utils';
 import { componentsDictionary } from '../../components';
-import { notificationSlice } from '../reducers';
+import { notificationSlice, resolutionSlice } from '../reducers';
 
-function* resolutionPost(action: ReturnType<typeof resolution.pending>) {
+function* resolutionPost(action: ReturnType<typeof resolutionSlice.actions.pending>) {
   try {
     const { payload } = action;
     const response: AxiosResponse<ResolutionResponse> = yield call(resolutionsAPI.createResolution, { ...payload });
@@ -19,10 +18,10 @@ function* resolutionPost(action: ReturnType<typeof resolution.pending>) {
   }
 }
 
-const resolutionPostSaga = utils.bind(null, resolution, resolutionPost);
+const resolutionPostSaga = utils.bind(null, resolutionSlice.actions, resolutionPost);
 
 function* resolutionPostWatcher() {
-  yield takeEvery(resolution.pending, resolutionPostSaga);
+  yield takeEvery(resolutionSlice.actions.pending, resolutionPostSaga);
 }
 
 function* resolutionSaga() {

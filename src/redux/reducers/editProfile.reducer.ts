@@ -34,5 +34,4 @@ export const editProfileSlice = createSlice({
 });
 
 export const selectEditProfile = (state: RootState) => state.editProfile;
-
 export const editProfileReducer = editProfileSlice.reducer;

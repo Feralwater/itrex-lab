@@ -1,8 +1,8 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ResolutionState } from './reducers.types';
-import { resolution } from '../actions';
 import { RootState } from '../store';
 import { FETCH_STATUS } from './constants';
+import { ResolutionFulfilled, ResolutionPending } from '../actions.types';
 
 const initialState = {
   appointmentID: '',
@@ -16,25 +16,20 @@ const initialState = {
 export const resolutionSlice = createSlice({
   name: 'resolution',
   initialState,
-  reducers: {},
-  extraReducers: (builder) => {
-    builder
-      .addCase(resolution.fulfilled, (state, { payload }) => ({
-        ...state,
-        appointmentID: payload.appointment_id,
-        nextAppointmentDate: payload.next_appointment_date,
-        resolution: payload.resolution,
-        resolutionID: payload.id,
-        total: state.total + 1,
-        status: FETCH_STATUS.FULFILLED,
-      }));
-    builder
-      .addCase(resolution.pending, (state) => ({ ...state, responseStatus: FETCH_STATUS.LOADING }));
-    builder
-      .addCase(resolution.failed, (state) => ({ ...state, responseStatus: FETCH_STATUS.FAILED }));
+  reducers: {
+    fulfilled: (state, action: PayloadAction<ResolutionFulfilled>) => ({
+      ...state,
+      appointmentID: action.payload.appointment_id,
+      nextAppointmentDate: action.payload.next_appointment_date,
+      resolution: action.payload.resolution,
+      resolutionID: action.payload.id,
+      total: state.total + 1,
+      status: FETCH_STATUS.FULFILLED,
+    }),
+    pending: (state, action: PayloadAction<ResolutionPending>) => ({ ...state, ...action.payload, status: FETCH_STATUS.LOADING }),
+    failed: (state) => ({ ...state, status: FETCH_STATUS.FAILED }),
   },
 });
 
 export const selectResolution = (state: RootState) => state.resolution;
-
 export const resolutionReducer = resolutionSlice.reducer;
