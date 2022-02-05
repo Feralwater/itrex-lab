@@ -1,26 +1,23 @@
 import { AxiosResponse } from 'axios';
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { createErrorNotificationMessage, utils } from './utils';
+import { createErrorNotificationMessage } from './utils';
 import { ResolutionsForPatientResponse } from '../../resources/resolutions/resolutions.types';
 import resolutionsAPI from '../../resources/resolutions/resolutions.api';
 import { notificationSlice } from '../reducers';
 import { resolutionsForPatientSlice } from '../reducers/resolutionsForPatient.reducer';
 
-function* getResolutionsForPatient(action: ReturnType<typeof resolutionsForPatientSlice.actions.pending>) {
+function* getResolutionsForPatient({ payload }: ReturnType<typeof resolutionsForPatientSlice.actions.pending>) {
   try {
-    const { payload } = action;
-    const response: AxiosResponse<ResolutionsForPatientResponse> = yield call(resolutionsAPI.fetchResolutionsForPatient, payload.offset, payload.limit);
-    return response.data;
+    const { data }: AxiosResponse<ResolutionsForPatientResponse> = yield call(resolutionsAPI.fetchResolutionsForPatient, payload.offset, payload.limit);
+    yield put(resolutionsForPatientSlice.actions.fulfilled(data));
   } catch (error:any) {
     yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.response.data)));
-    throw error;
+    yield put(resolutionsForPatientSlice.actions.failed());
   }
 }
 
-const getResolutionsForPatientSaga = utils.bind(null, resolutionsForPatientSlice.actions, getResolutionsForPatient);
-
 function* getResolutionsForPatientWatcher() {
-  yield takeEvery(resolutionsForPatientSlice.actions.pending, getResolutionsForPatientSaga);
+  yield takeEvery(resolutionsForPatientSlice.actions.pending, getResolutionsForPatient);
 }
 
 function* resolutionsForPatientSaga() {
