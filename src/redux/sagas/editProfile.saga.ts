@@ -2,7 +2,7 @@ import {
   call, put, takeEvery, select,
 } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
-import { createErrorNotificationMessage, utils } from './utils';
+import { createErrorNotificationMessage } from './utils';
 import { componentsDictionary } from '../../components';
 import { notificationSlice } from '../reducers';
 import { editProfileSlice } from '../reducers/editProfile.reducer';
@@ -19,17 +19,15 @@ function* editProfile({ payload }: ReturnType<typeof editProfileSlice.actions.pe
       ? yield call(profile.editDoctorProfile, payload)
       : yield call(profile.editPatientProfile, payload);
     yield put(notificationSlice.actions.notificationSuccess(componentsDictionary.message.successMessageBodyEditProfile));
-    return data;
+    yield put(editProfileSlice.actions.fulfilled(data));
   } catch (error:any) {
-    yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.response.data)));
-    throw error;
+    yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.message)));
+    yield put(editProfileSlice.actions.failed());
   }
 }
 
-const editProfilePatchSaga = utils.bind(null, editProfileSlice.actions, editProfile);
-
 function* editProfilePatchWatcher() {
-  yield takeEvery(editProfileSlice.actions.pending, editProfilePatchSaga);
+  yield takeEvery(editProfileSlice.actions.pending, editProfile);
 }
 
 function* editProfileSaga() {
