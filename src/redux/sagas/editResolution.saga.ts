@@ -1,28 +1,25 @@
 import { AxiosResponse } from 'axios';
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { createErrorNotificationMessage, utils } from './utils';
+import { createErrorNotificationMessage } from './utils';
 import { EditResolutionResponse } from '../../resources/resolutions/resolutions.types';
 import resolutionsAPI from '../../resources/resolutions/resolutions.api';
 import { componentsDictionary } from '../../components';
 import { notificationSlice } from '../reducers';
 import { editResolutionSlice } from '../reducers/editResolution.reducer';
 
-function* editResolutionPatch(action: ReturnType<typeof editResolutionSlice.actions.pending>) {
+function* editResolutionPatch({ payload }: ReturnType<typeof editResolutionSlice.actions.pending>) {
   try {
-    const { payload } = action;
-    const response: AxiosResponse<EditResolutionResponse> = yield call(resolutionsAPI.editResolution, { ...payload });
+    const { data }: AxiosResponse<EditResolutionResponse> = yield call(resolutionsAPI.editResolution, { ...payload });
     yield put(notificationSlice.actions.notificationSuccess(componentsDictionary.message.successMessageBodyEditResolution));
-    return response.data;
+    yield put(editResolutionSlice.actions.fulfilled(data));
   } catch (error:any) {
     yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.response.data)));
-    throw error;
+    yield put(editResolutionSlice.actions.failed());
   }
 }
 
-const editResolutionPatchSaga = utils.bind(null, editResolutionSlice.actions, editResolutionPatch);
-
 function* editResolutionPatchWatcher() {
-  yield takeEvery(editResolutionSlice.actions.pending, editResolutionPatchSaga);
+  yield takeEvery(editResolutionSlice.actions.pending, editResolutionPatch);
 }
 
 function* editResolutionSaga() {
