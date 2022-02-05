@@ -1,6 +1,5 @@
 /* eslint-disable camelcase */
-import { RoleName, Status } from '../../redux/reducers/reducers.types';
-import { ResolutionForDoctor } from '../resolutions/resolutions.types';
+import { RoleName } from '../../redux/reducers/reducers.types';
 
 export interface Appointment {
   id: 'string',
@@ -41,10 +40,6 @@ export interface AppointmentsForDoctor {
   appointments: Array<AppointmentForDoctor>,
   total: number
   roleName: RoleName
-}
-
-export interface DeleteAppointment {
-  id: string;
 }
 
 export type FreeTimeResponse = Array<string>;

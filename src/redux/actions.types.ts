@@ -2,7 +2,6 @@
 import { SignInData, SignUpData, SignUpInResponse } from '../resources/auth/auth.types';
 import {
   AppointmentsForPatient,
-  DeleteAppointment,
   NewAppointmentResponse,
 } from '../resources/appointments/appointments.types';
 import {
@@ -11,7 +10,6 @@ import {
   ResolutionData, ResolutionForDoctor,
   ResolutionResponse, ResolutionsForPatientResponse,
 } from '../resources/resolutions/resolutions.types';
-import { Status } from './reducers/reducers.types';
 
 export type LoginPending = SignInData;
 export type LoginFulfilled = SignUpInResponse;
@@ -79,8 +77,6 @@ export interface AppointmentsForDoctorFulfilled {
   appointments: Array<AppointmentForDoctorFulfilled>
   total: number
 }
-
-export type DeleteAppointmentFulfilled = DeleteAppointment;
 
 export interface FreeTimePending {
   date: string | null;

@@ -4,7 +4,7 @@ import { FETCH_STATUS } from './constants';
 import { AppointmentsForDoctorState } from './reducers.types';
 import {
   AppointmentsForDoctorFulfilled,
-  AppointmentsForDoctorPending, DeleteAppointmentFulfilled,
+  AppointmentsForDoctorPending,
   DeleteAppointmentPending,
 } from '../actions.types';
 
@@ -27,9 +27,9 @@ export const appointmentsForDoctorSlice = createSlice({
     }),
     pending: (state, action: PayloadAction<AppointmentsForDoctorPending>) => ({ ...state, ...action.payload, status: FETCH_STATUS.LOADING }),
     failed: (state) => ({ ...state, status: FETCH_STATUS.FAILED }),
-    deleteAppointmentFulfilled: (state, action: PayloadAction<DeleteAppointmentFulfilled>) => ({
+    deleteAppointmentFulfilled: (state, action: PayloadAction<string>) => ({
       ...state,
-      appointments: state.appointments.filter((appointment) => appointment.appointmentID !== action.payload.id),
+      appointments: state.appointments.filter((appointment) => appointment.appointmentID !== action.payload),
       entityStatus: FETCH_STATUS.FULFILLED,
     }),
     deleteAppointmentPending: (state, action: PayloadAction<DeleteAppointmentPending>) => ({ ...state, ...action.payload, entityStatus: FETCH_STATUS.LOADING }),
