@@ -71,14 +71,13 @@ export interface AppointmentForDoctorFulfilled{
   lastName: string
   photo: string
   appointmentID: string
-  status: string
-  resolution: ResolutionForDoctor
+  appointmentStatus: string
+  resolution?: ResolutionForDoctor
 }
 
 export interface AppointmentsForDoctorFulfilled {
   appointments: Array<AppointmentForDoctorFulfilled>
   total: number
-  status: Status
 }
 
 export type DeleteAppointmentFulfilled = DeleteAppointment;
