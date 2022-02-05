@@ -2,7 +2,7 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
 import { NewAppointmentResponse } from '../../resources/appointments/appointments.types';
 import appointments from '../../resources/appointments/appointments.api';
-import { createErrorNotificationMessage } from './utils';
+import { createErrorNotificationMessage } from './utils/createErrorNotificationMessage';
 import { componentsDictionary } from '../../components';
 import { makeAppointmentSlice, notificationSlice } from '../reducers';
 

@@ -3,7 +3,7 @@ import { AxiosResponse } from 'axios';
 import { ChangePasswordResponse } from '../../resources/auth/auth.types';
 import auth from '../../resources/auth/auth.api';
 import { componentsDictionary } from '../../components';
-import { createErrorNotificationMessage } from './utils';
+import { createErrorNotificationMessage } from './utils/createErrorNotificationMessage';
 import { changePasswordSlice } from '../reducers/changePassword.reducer';
 import { notificationSlice } from '../reducers';
 

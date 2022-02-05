@@ -2,7 +2,7 @@ import { AxiosResponse } from 'axios';
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { ResolutionResponse } from '../../resources/resolutions/resolutions.types';
 import resolutionsAPI from '../../resources/resolutions/resolutions.api';
-import { createErrorNotificationMessage } from './utils';
+import { createErrorNotificationMessage } from './utils/createErrorNotificationMessage';
 import { componentsDictionary } from '../../components';
 import { notificationSlice, resolutionSlice } from '../reducers';
 

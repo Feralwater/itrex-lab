@@ -1,6 +1,6 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
-import { createErrorNotificationMessage } from './utils';
+import { createErrorNotificationMessage } from './utils/createErrorNotificationMessage';
 import appointments from '../../resources/appointments/appointments.api';
 import { AppointmentsForPatient } from '../../resources/appointments/appointments.types';
 import { appointmentsForPatientSlice, notificationSlice } from '../reducers';

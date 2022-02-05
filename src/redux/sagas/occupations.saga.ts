@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { createErrorNotificationMessage } from './utils';
+import { createErrorNotificationMessage } from './utils/createErrorNotificationMessage';
 import occupationsAPI from '../../resources/occupations/occupations.api';
 import { OccupationsResponse } from '../../resources/occupations/occupations.types';
 import { notificationSlice, occupationsSlice } from '../reducers';

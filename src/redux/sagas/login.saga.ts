@@ -3,7 +3,7 @@ import { AxiosResponse } from 'axios';
 import { SignUpInResponse } from '../../resources/auth/auth.types';
 import auth from '../../resources/auth/auth.api';
 import { loginRepository } from '../../resources/loginRepository';
-import { createErrorNotificationMessage } from './utils';
+import { createErrorNotificationMessage } from './utils/createErrorNotificationMessage';
 import { loginSlice, notificationSlice } from '../reducers';
 
 function* loginPost({ payload }: ReturnType<typeof loginSlice.actions.pending>) {

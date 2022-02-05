@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { createErrorNotificationMessage } from './utils';
+import { createErrorNotificationMessage } from './utils/createErrorNotificationMessage';
 import appointments from '../../resources/appointments/appointments.api';
 import { FreeTimeResponse } from '../../resources/appointments/appointments.types';
 import { freeDoctorTimeSlice, notificationSlice } from '../reducers';

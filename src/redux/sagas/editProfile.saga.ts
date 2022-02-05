@@ -2,7 +2,7 @@ import {
   call, put, takeEvery, select,
 } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
-import { createErrorNotificationMessage } from './utils';
+import { createErrorNotificationMessage } from './utils/createErrorNotificationMessage';
 import { componentsDictionary } from '../../components';
 import { notificationSlice } from '../reducers';
 import { editProfileSlice } from '../reducers/editProfile.reducer';

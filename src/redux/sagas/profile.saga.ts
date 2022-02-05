@@ -3,7 +3,7 @@ import { AxiosResponse } from 'axios';
 import { ProfileResponse } from '../../resources/auth/auth.types';
 import auth from '../../resources/auth/auth.api';
 import { loginRepository } from '../../resources/loginRepository';
-import { createErrorNotificationMessage } from './utils';
+import { createErrorNotificationMessage } from './utils/createErrorNotificationMessage';
 import { notificationSlice, profileSlice } from '../reducers';
 
 function* getProfile() {
