@@ -1,25 +1,22 @@
 import { AxiosResponse } from 'axios';
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { createErrorNotificationMessage, utils } from './utils';
+import { createErrorNotificationMessage } from './utils';
 import { ResolutionsResponse } from '../../resources/resolutions/resolutions.types';
 import resolutionsAPI from '../../resources/resolutions/resolutions.api';
 import { notificationSlice, resolutionsSlice } from '../reducers';
 
-function* getResolutions(action: ReturnType<typeof resolutionsSlice.actions.pending>) {
+function* getResolutions({ payload } : ReturnType<typeof resolutionsSlice.actions.pending>) {
   try {
-    const { payload } = action;
-    const response: AxiosResponse<ResolutionsResponse> = yield call(resolutionsAPI.fetchResolutions, payload.offset, payload.limit);
-    return response.data;
+    const { data }: AxiosResponse<ResolutionsResponse> = yield call(resolutionsAPI.fetchResolutions, payload.offset, payload.limit);
+    yield put(resolutionsSlice.actions.fulfilled(data));
   } catch (error:any) {
     yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.response.data)));
-    throw error;
+    yield put(resolutionsSlice.actions.failed());
   }
 }
 
-const getResolutionsSaga = utils.bind(null, resolutionsSlice.actions, getResolutions);
-
 function* getResolutionsWatcher() {
-  yield takeEvery(resolutionsSlice.actions.pending, getResolutionsSaga);
+  yield takeEvery(resolutionsSlice.actions.pending, getResolutions);
 }
 
 function* resolutionsSaga() {
