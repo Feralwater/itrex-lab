@@ -1,25 +1,22 @@
 import { AxiosResponse } from 'axios';
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { createErrorNotificationMessage, utils } from './utils';
+import { createErrorNotificationMessage } from './utils';
 import doctors from '../../resources/doctors/doctors.api';
 import { DoctorsBySpecializationIdResponse } from '../../resources/doctors/doctors.types';
 import { getDoctorsByIDSlice, notificationSlice } from '../reducers';
 
-function* getDoctorsByID(action: ReturnType<typeof getDoctorsByIDSlice.actions.pending>) {
+function* getDoctorsByID({ payload }: ReturnType<typeof getDoctorsByIDSlice.actions.pending>) {
   try {
-    const { payload } = action;
-    const response: AxiosResponse<DoctorsBySpecializationIdResponse> = yield call(doctors.fetchDoctorsBySpecializationId, payload);
-    return response.data;
+    const { data }: AxiosResponse<DoctorsBySpecializationIdResponse> = yield call(doctors.fetchDoctorsBySpecializationId, payload);
+    yield put(getDoctorsByIDSlice.actions.fulfilled(data));
   } catch (error:any) {
     yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.response.data)));
-    throw error;
+    yield put(getDoctorsByIDSlice.actions.failed());
   }
 }
 
-const getDoctorsByIDSaga = utils.bind(null, getDoctorsByIDSlice.actions, getDoctorsByID);
-
 function* getDoctorsByIDWatcher() {
-  yield takeEvery(getDoctorsByIDSlice.actions.pending, getDoctorsByIDSaga);
+  yield takeEvery(getDoctorsByIDSlice.actions.pending, getDoctorsByID);
 }
 
 function* doctorsByIDSaga() {
