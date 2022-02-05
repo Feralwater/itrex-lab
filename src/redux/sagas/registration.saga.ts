@@ -3,33 +3,26 @@ import { AxiosResponse } from 'axios';
 import { SignUpInResponse } from '../../resources/auth/auth.types';
 import auth from '../../resources/auth/auth.api';
 import { loginRepository } from '../../resources/loginRepository';
-import { createErrorNotificationMessage, utils } from './utils';
+import { createErrorNotificationMessage } from './utils';
 import { notificationSlice, registrationSlice } from '../reducers';
 
-function* registrationPost(action: ReturnType<typeof registrationSlice.actions.pending>) {
+function* registrationPost({ payload }: ReturnType<typeof registrationSlice.actions.pending>) {
   try {
-    const { payload } = action;
-    const response: AxiosResponse<SignUpInResponse> = yield call(auth.SignUp, { ...payload });
-
-    const { data } = response;
-
+    const { data }: AxiosResponse<SignUpInResponse> = yield call(auth.SignUp, { ...payload });
     if (data.access_token) {
       loginRepository
         .setAccessToken(data.access_token)
         .setRefreshToken(data.refresh_token);
     }
-
-    return response.data;
+    yield put(registrationSlice.actions.fulfilled(data));
   } catch (error:any) {
     yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.response.data)));
-    throw error;
+    yield put(registrationSlice.actions.failed());
   }
 }
 
-const registrationPostSaga = utils.bind(null, registrationSlice.actions, registrationPost);
-
 function* registrationPostWatcher() {
-  yield takeEvery(registrationSlice.actions.pending, registrationPostSaga);
+  yield takeEvery(registrationSlice.actions.pending, registrationPost);
 }
 
 function* registrationSaga() {
