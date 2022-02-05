@@ -3,25 +3,22 @@ import { AxiosResponse } from 'axios';
 import { ProfileResponse } from '../../resources/auth/auth.types';
 import auth from '../../resources/auth/auth.api';
 import { loginRepository } from '../../resources/loginRepository';
-import { createErrorNotificationMessage, utils } from './utils';
+import { createErrorNotificationMessage } from './utils';
 import { notificationSlice, profileSlice } from '../reducers';
 
 function* getProfile() {
   try {
     const token = loginRepository.getAccessToken();
-    const me: AxiosResponse<ProfileResponse> = token ? yield call(auth.getMe) : null;
-
-    return me?.data || null;
+    const me : AxiosResponse<ProfileResponse> = token ? yield call(auth.getMe) : null;
+    yield put(profileSlice.actions.fulfilled(me?.data || null));
   } catch (error:any) {
-    yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.response.data)));
-    throw error;
+    yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.message)));
+    yield put(profileSlice.actions.failed());
   }
 }
 
-const getProfileSaga = utils.bind(null, profileSlice.actions, getProfile);
-
 function* getProfileWatcher() {
-  yield takeEvery(profileSlice.actions.pending, getProfileSaga);
+  yield takeEvery(profileSlice.actions.pending, getProfile);
 }
 
 function* profileSaga() {
