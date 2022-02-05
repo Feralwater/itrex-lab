@@ -3,26 +3,23 @@ import { AxiosResponse } from 'axios';
 import { ChangePasswordResponse } from '../../resources/auth/auth.types';
 import auth from '../../resources/auth/auth.api';
 import { componentsDictionary } from '../../components';
-import { createErrorNotificationMessage, utils } from './utils';
+import { createErrorNotificationMessage } from './utils';
 import { changePasswordSlice } from '../reducers/changePassword.reducer';
 import { notificationSlice } from '../reducers';
 
-function* updatePassword(action: ReturnType<typeof changePasswordSlice.actions.pending>) {
+function* updatePassword({ payload }: ReturnType<typeof changePasswordSlice.actions.pending>) {
   try {
-    const { payload } = action;
-    const response: AxiosResponse<ChangePasswordResponse> = yield call(auth.changePassword, { ...payload });
+    const { data }: AxiosResponse<ChangePasswordResponse> = yield call(auth.changePassword, { ...payload });
     yield put(notificationSlice.actions.notificationSuccess(componentsDictionary.message.successMessageBodyChangePassword));
-    return response.data[0];
+    yield put(changePasswordSlice.actions.fulfilled(data[0]));
   } catch (error:any) {
     yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.response.data)));
-    throw error;
+    yield put(changePasswordSlice.actions.failed());
   }
 }
 
-const updatePasswordSaga = utils.bind(null, changePasswordSlice.actions, updatePassword);
-
 function* changePasswordWatcher() {
-  yield takeEvery(changePasswordSlice.actions.pending, updatePasswordSaga);
+  yield takeEvery(changePasswordSlice.actions.pending, updatePassword);
 }
 
 function* changePasswordSaga() {
