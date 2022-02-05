@@ -12,7 +12,7 @@ import editResolutionSaga from './editResolution.saga';
 import resolutionsForPatientSaga from './resolutionsForPatient.saga';
 import occupationsSaga from './occupations.saga';
 import getDoctorsByIDSaga from './getDoctorsByID.saga';
-import freeDoctorTimeSaga from './freeTimeSaga';
+import freeDoctorTimeSaga from './freeTime.saga';
 import changePasswordSaga from './changePassword.saga';
 import appointmentsForDoctorSaga from './appointmentsForDoctor.saga';
 
