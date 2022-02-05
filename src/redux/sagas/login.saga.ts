@@ -3,32 +3,26 @@ import { AxiosResponse } from 'axios';
 import { SignUpInResponse } from '../../resources/auth/auth.types';
 import auth from '../../resources/auth/auth.api';
 import { loginRepository } from '../../resources/loginRepository';
-import { createErrorNotificationMessage, utils } from './utils';
+import { createErrorNotificationMessage } from './utils';
 import { loginSlice, notificationSlice } from '../reducers';
 
-function* loginPost(action: ReturnType<typeof loginSlice.actions.pending>) {
+function* loginPost({ payload }: ReturnType<typeof loginSlice.actions.pending>) {
   try {
-    const { payload } = action;
-    const response: AxiosResponse<SignUpInResponse> = yield call(auth.SignIn, { ...payload });
-
-    const { data } = response;
+    const { data } : AxiosResponse<SignUpInResponse> = yield call(auth.SignIn, { ...payload });
     if (data.access_token) {
       loginRepository
         .setAccessToken(data.access_token)
         .setRefreshToken(data.refresh_token);
     }
-
-    return response.data;
+    yield put(loginSlice.actions.fulfilled(data));
   } catch (error:any) {
     yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.response.data)));
-    throw error;
+    yield put(loginSlice.actions.failed());
   }
 }
 
-const loginPostSaga = utils.bind(null, loginSlice.actions, loginPost);
-
 function* loginPostWatcher() {
-  yield takeEvery(loginSlice.actions.pending, loginPostSaga);
+  yield takeEvery(loginSlice.actions.pending, loginPost);
 }
 
 function* loginSaga() {
