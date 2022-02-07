@@ -33,7 +33,7 @@ function generateAppointmentsForDoctor(appointmentsResponse: AppointmentsForDoct
 function* fetchAppointmentsForDoctor({ payload }: ReturnType<typeof appointmentsForDoctorSlice.actions.pending>) {
   try {
     const { data: appointmentsResponse }: AxiosResponse<AppointmentsForDoctor> = yield call(appointments.fetchAppointmentsForDoctor, payload.offset, payload.limit);
-    const { data: resolutionResponse }: AxiosResponse<ResolutionsResponse> = yield call(resolutionsAPI.fetchResolutions, payload.offset, payload.limit);
+    const { data: resolutionResponse }: AxiosResponse<ResolutionsResponse> = yield call(resolutionsAPI.fetchResolutionsForDoctor, payload.offset, payload.limit);
     const appointmentsForDoctor = generateAppointmentsForDoctor(appointmentsResponse, resolutionResponse);
     yield put(appointmentsForDoctorSlice.actions.fulfilled(appointmentsForDoctor));
   } catch (error:any) {

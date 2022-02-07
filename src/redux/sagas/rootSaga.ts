@@ -5,10 +5,9 @@ import registrationSaga from './registration.saga';
 import profileSaga from './profile.saga';
 import deleteAppointmentSaga from './deleteAppointment.saga';
 import resolutionSaga from './resolution.saga';
-import resolutionsSaga from './resolutions.saga';
 import editProfileSaga from './editProfile.saga';
 import editResolutionSaga from './editResolution.saga';
-import resolutionsForPatientSaga from './resolutionsForPatient.saga';
+import { fetchResolutionsWatcher } from './fetchResolutions.saga';
 import occupationsSaga from './occupations.saga';
 import getDoctorsByIDSaga from './getDoctorsByID.saga';
 import freeDoctorTimeSaga from './freeTime.saga';
@@ -23,15 +22,14 @@ function* rootSaga() {
     profileSaga(),
     deleteAppointmentSaga(),
     resolutionSaga(),
-    resolutionsSaga(),
     editProfileSaga(),
     editResolutionSaga(),
-    resolutionsForPatientSaga(),
     occupationsSaga(),
     getDoctorsByIDSaga(),
     freeDoctorTimeSaga(),
     changePasswordSaga(),
     fetchAppointmentsWatcher(),
+    fetchResolutionsWatcher(),
   ]);
 }
 

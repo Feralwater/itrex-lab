@@ -11,7 +11,7 @@ const resolutionsAPI = {
   async editResolution({ resolution, resolutionID }: EditResolutionData) {
     return instance.patch<EditResolutionResponse>(RESOLUTIONS_API.resolutionsByResolutionID(resolutionID), { resolution });
   },
-  async fetchResolutions(offset: number, limit:number) {
+  async fetchResolutionsForDoctor(offset: number, limit:number) {
     return instance.get<ResolutionResponse>(RESOLUTIONS_API.resolutionsDoctorMe(), {
       params: {
         offset,
