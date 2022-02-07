@@ -1,10 +1,19 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
+import {
+  call, put, select, takeEvery,
+} from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
-import { ProfileResponse } from '../../resources/auth/auth.types';
+import { ChangePasswordResponse, EditProfileResponse, ProfileResponse } from '../../resources/auth/auth.types';
 import auth from '../../resources/auth/auth.api';
 import { loginRepository } from '../../resources/loginRepository';
 import { createErrorNotificationMessage } from './utils/createErrorNotificationMessage';
 import { notificationSlice, profileSlice } from '../reducers';
+import { editProfileSlice } from '../reducers/editProfile.reducer';
+import { RoleName } from '../reducers/reducers.types';
+import * as selectors from '../selectors';
+import { ROLES } from '../../routes/constants';
+import profile from '../../resources/profile/profile.api';
+import { componentsDictionary } from '../../components';
+import { changePasswordSlice } from '../reducers/changePassword.reducer';
 
 function* getProfile() {
   try {
@@ -17,12 +26,33 @@ function* getProfile() {
   }
 }
 
-function* getProfileWatcher() {
+function* editProfile({ payload }: ReturnType<typeof editProfileSlice.actions.pending>) {
+  try {
+    const roleName: RoleName = yield select(selectors.roleName);
+    const { data }: AxiosResponse<EditProfileResponse> = roleName === ROLES.DOCTOR
+      ? yield call(profile.editDoctorProfile, payload)
+      : yield call(profile.editPatientProfile, payload);
+    yield put(notificationSlice.actions.notificationSuccess(componentsDictionary.message.successMessageBodyEditProfile));
+    yield put(editProfileSlice.actions.fulfilled(data));
+  } catch (error:any) {
+    yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.message)));
+    yield put(editProfileSlice.actions.failed());
+  }
+}
+
+function* changePassword({ payload }: ReturnType<typeof changePasswordSlice.actions.pending>) {
+  try {
+    const { data }: AxiosResponse<ChangePasswordResponse> = yield call(auth.changePassword, { ...payload });
+    yield put(notificationSlice.actions.notificationSuccess(componentsDictionary.message.successMessageBodyChangePassword));
+    yield put(changePasswordSlice.actions.fulfilled(data[0]));
+  } catch (error:any) {
+    yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.response.data)));
+    yield put(changePasswordSlice.actions.failed());
+  }
+}
+
+export function* profileWatcher() {
   yield takeEvery(profileSlice.actions.pending, getProfile);
+  yield takeEvery(editProfileSlice.actions.pending, editProfile);
+  yield takeEvery(changePasswordSlice.actions.pending, changePassword);
 }
-
-function* profileSaga() {
-  yield getProfileWatcher();
-}
-
-export default profileSaga;
