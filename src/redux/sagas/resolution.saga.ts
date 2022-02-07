@@ -1,12 +1,13 @@
 import { AxiosResponse } from 'axios';
-import { call, put, takeEvery } from 'redux-saga/effects';
-import { ResolutionResponse } from '../../resources/resolutions/resolutions.types';
+import { call, put, takeLatest } from 'redux-saga/effects';
+import { EditResolutionResponse, ResolutionResponse } from '../../resources/resolutions/resolutions.types';
 import resolutionsAPI from '../../resources/resolutions/resolutions.api';
 import { createErrorNotificationMessage } from './utils/createErrorNotificationMessage';
 import { componentsDictionary } from '../../components';
 import { notificationSlice, resolutionSlice } from '../reducers';
+import { editResolutionSlice } from '../reducers/editResolution.reducer';
 
-function* resolutionPost({ payload }: ReturnType<typeof resolutionSlice.actions.pending>) {
+function* createResolution({ payload }: ReturnType<typeof resolutionSlice.actions.pending>) {
   try {
     const { data }: AxiosResponse<ResolutionResponse> = yield call(resolutionsAPI.createResolution, { ...payload });
     yield put(notificationSlice.actions.notificationSuccess(componentsDictionary.message.successMessageBodyCreateResolution));
@@ -17,12 +18,18 @@ function* resolutionPost({ payload }: ReturnType<typeof resolutionSlice.actions.
   }
 }
 
-function* resolutionPostWatcher() {
-  yield takeEvery(resolutionSlice.actions.pending, resolutionPost);
+function* editResolution({ payload }: ReturnType<typeof editResolutionSlice.actions.pending>) {
+  try {
+    const { data }: AxiosResponse<EditResolutionResponse> = yield call(resolutionsAPI.editResolution, { ...payload });
+    yield put(notificationSlice.actions.notificationSuccess(componentsDictionary.message.successMessageBodyEditResolution));
+    yield put(editResolutionSlice.actions.fulfilled(data));
+  } catch (error:any) {
+    yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.response.data)));
+    yield put(editResolutionSlice.actions.failed());
+  }
 }
 
-function* resolutionSaga() {
-  yield resolutionPostWatcher();
+export function* resolutionWatcher() {
+  yield takeLatest(resolutionSlice.actions.pending, createResolution);
+  yield takeLatest(editResolutionSlice.actions.pending, editResolution);
 }
-
-export default resolutionSaga;
