@@ -4,8 +4,12 @@ import { createErrorNotificationMessage } from './utils/createErrorNotificationM
 import appointments from '../../resources/appointments/appointments.api';
 import { ResolutionsResponse } from '../../resources/resolutions/resolutions.types';
 import resolutionsAPI from '../../resources/resolutions/resolutions.api';
-import { appointmentsForDoctorSlice, notificationSlice } from '../reducers';
-import { AppointmentForDoctor, AppointmentsForDoctor } from '../../resources/appointments/appointments.types';
+import { appointmentsForDoctorSlice, appointmentsForPatientSlice, notificationSlice } from '../reducers';
+import {
+  AppointmentForDoctor,
+  AppointmentsForDoctor,
+  AppointmentsForPatient,
+} from '../../resources/appointments/appointments.types';
 
 function generateAppointmentForDoctor(resolutionResponse: ResolutionsResponse) {
   return (appointment:AppointmentForDoctor) => ({
@@ -26,7 +30,7 @@ function generateAppointmentsForDoctor(appointmentsResponse: AppointmentsForDoct
   };
 }
 
-function* getAppointmentsForDoctor({ payload }: ReturnType<typeof appointmentsForDoctorSlice.actions.pending>) {
+function* fetchAppointmentsForDoctor({ payload }: ReturnType<typeof appointmentsForDoctorSlice.actions.pending>) {
   try {
     const { data: appointmentsResponse }: AxiosResponse<AppointmentsForDoctor> = yield call(appointments.fetchAppointmentsForDoctor, payload.offset, payload.limit);
     const { data: resolutionResponse }: AxiosResponse<ResolutionsResponse> = yield call(resolutionsAPI.fetchResolutions, payload.offset, payload.limit);
@@ -38,12 +42,17 @@ function* getAppointmentsForDoctor({ payload }: ReturnType<typeof appointmentsFo
   }
 }
 
-function* getAppointmentsForDoctorWatcher() {
-  yield takeEvery(appointmentsForDoctorSlice.actions.pending, getAppointmentsForDoctor);
+function* fetchAppointmentsForPatient({ payload }: ReturnType<typeof appointmentsForPatientSlice.actions.pending>) {
+  try {
+    const { data }: AxiosResponse<AppointmentsForPatient> = yield call(appointments.fetchAppointmentsForPatient, payload.offset, payload.limit);
+    yield put(appointmentsForPatientSlice.actions.fulfilled(data));
+  } catch (error:any) {
+    yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.response.data)));
+    yield put(appointmentsForPatientSlice.actions.failed());
+  }
 }
 
-function* appointmentsForDoctorSaga() {
-  yield getAppointmentsForDoctorWatcher();
+export function* fetchAppointmentsWatcher() {
+  yield takeEvery(appointmentsForDoctorSlice.actions.pending, fetchAppointmentsForDoctor);
+  yield takeEvery(appointmentsForPatientSlice.actions.pending, fetchAppointmentsForPatient);
 }
-
-export default appointmentsForDoctorSaga;

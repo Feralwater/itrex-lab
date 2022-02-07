@@ -3,7 +3,6 @@ import loginSaga from './login.saga';
 import makeAppointmentSaga from './makeAppointment.saga';
 import registrationSaga from './registration.saga';
 import profileSaga from './profile.saga';
-import appointmentsForPatientSaga from './appointmentsForPatient.saga';
 import deleteAppointmentSaga from './deleteAppointment.saga';
 import resolutionSaga from './resolution.saga';
 import resolutionsSaga from './resolutions.saga';
@@ -14,7 +13,7 @@ import occupationsSaga from './occupations.saga';
 import getDoctorsByIDSaga from './getDoctorsByID.saga';
 import freeDoctorTimeSaga from './freeTime.saga';
 import changePasswordSaga from './changePassword.saga';
-import appointmentsForDoctorSaga from './appointmentsForDoctor.saga';
+import { fetchAppointmentsWatcher } from './fetchAppointments.saga';
 
 function* rootSaga() {
   yield all([
@@ -22,7 +21,6 @@ function* rootSaga() {
     makeAppointmentSaga(),
     registrationSaga(),
     profileSaga(),
-    appointmentsForPatientSaga(),
     deleteAppointmentSaga(),
     resolutionSaga(),
     resolutionsSaga(),
@@ -33,7 +31,7 @@ function* rootSaga() {
     getDoctorsByIDSaga(),
     freeDoctorTimeSaga(),
     changePasswordSaga(),
-    appointmentsForDoctorSaga(),
+    fetchAppointmentsWatcher(),
   ]);
 }
 
