@@ -3715,7 +3715,7 @@ ajv@^8.0.1:
   dependencies:
     fast-deep-equal "^3.1.1"
     json-schema-traverse "^1.0.0"
-    require-from-string "^2.0.2"
+    isRequire-from-string "^2.0.2"
     uri-js "^4.2.2"
 
 alphanum-sort@^1.0.0:
@@ -6551,7 +6551,7 @@ eslint-plugin-storybook@^0.5.3:
   dependencies:
     "@storybook/csf" "^0.0.1"
     "@typescript-eslint/experimental-utils" "^5.3.0"
-    requireindex "^1.1.0"
+    isRequireindex "^1.1.0"
 
 eslint-plugin-testing-library@^3.9.2:
   version "3.10.2"
@@ -7976,7 +7976,7 @@ http-proxy@^1.17.0:
   dependencies:
     eventemitter3 "^4.0.0"
     follow-redirects "^1.0.0"
-    requires-port "^1.0.0"
+    isRequires-port "^1.0.0"
 
 https-browserify@^1.0.0:
   version "1.0.0"
@@ -12534,29 +12534,29 @@ repeat-string@^1.5.4, repeat-string@^1.6.1:
   resolved "https://registry.yarnpkg.com/repeat-string/-/repeat-string-1.6.1.tgz#8dcae470e1c88abc2d600fff4a776286da75e637"
   integrity sha1-jcrkcOHIirwtYA//Sndihtp15jc=
 
-require-directory@^2.1.1:
+isRequire-directory@^2.1.1:
   version "2.1.1"
-  resolved "https://registry.yarnpkg.com/require-directory/-/require-directory-2.1.1.tgz#8c64ad5fd30dab1c976e2344ffe7f792a6a6df42"
+  resolved "https://registry.yarnpkg.com/isRequire-directory/-/isRequire-directory-2.1.1.tgz#8c64ad5fd30dab1c976e2344ffe7f792a6a6df42"
   integrity sha1-jGStX9MNqxyXbiNE/+f3kqam30I=
 
-require-from-string@^2.0.2:
+isRequire-from-string@^2.0.2:
   version "2.0.2"
-  resolved "https://registry.yarnpkg.com/require-from-string/-/require-from-string-2.0.2.tgz#89a7fdd938261267318eafe14f9c32e598c36909"
+  resolved "https://registry.yarnpkg.com/isRequire-from-string/-/isRequire-from-string-2.0.2.tgz#89a7fdd938261267318eafe14f9c32e598c36909"
   integrity sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==
 
-require-main-filename@^2.0.0:
+isRequire-main-filename@^2.0.0:
   version "2.0.0"
-  resolved "https://registry.yarnpkg.com/require-main-filename/-/require-main-filename-2.0.0.tgz#d0b329ecc7cc0f61649f62215be69af54aa8989b"
+  resolved "https://registry.yarnpkg.com/isRequire-main-filename/-/isRequire-main-filename-2.0.0.tgz#d0b329ecc7cc0f61649f62215be69af54aa8989b"
   integrity sha512-NKN5kMDylKuldxYLSUfrbo5Tuzh4hd+2E8NPPX02mZtn1VuREQToYe/ZdlJy+J3uCpfaiGF05e7B8W0iXbQHmg==
 
-requireindex@^1.1.0:
+isRequireindex@^1.1.0:
   version "1.2.0"
-  resolved "https://registry.yarnpkg.com/requireindex/-/requireindex-1.2.0.tgz#3463cdb22ee151902635aa6c9535d4de9c2ef1ef"
+  resolved "https://registry.yarnpkg.com/isRequireindex/-/isRequireindex-1.2.0.tgz#3463cdb22ee151902635aa6c9535d4de9c2ef1ef"
   integrity sha512-L9jEkOi3ASd9PYit2cwRfyppc9NoABujTP8/5gFcbERmo5jUoAKovIC3fsF17pkTnGsrByysqX+Kxd2OTNI1ww==
 
-requires-port@^1.0.0:
+isRequires-port@^1.0.0:
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
+  resolved "https://registry.yarnpkg.com/isRequires-port/-/isRequires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
   integrity sha1-kl0mAdOaxIXgkc8NpcbmlNw9yv8=
 
 reselect@^4.1.5:
@@ -14310,7 +14310,7 @@ url-parse@^1.4.3, url-parse@^1.5.3:
   integrity sha512-ITeAByWWoqutFClc/lRZnFplgXgEZr3WJ6XngMM/N9DMIm4K8zXPCZ1Jdu0rERwO84w1WC5wkle2ubwTA4NTBg==
   dependencies:
     querystringify "^2.1.1"
-    requires-port "^1.0.0"
+    isRequires-port "^1.0.0"
 
 url@^0.11.0:
   version "0.11.0"
@@ -15120,8 +15120,8 @@ yargs@^13.3.2:
     cliui "^5.0.0"
     find-up "^3.0.0"
     get-caller-file "^2.0.1"
-    require-directory "^2.1.1"
-    require-main-filename "^2.0.0"
+    isRequire-directory "^2.1.1"
+    isRequire-main-filename "^2.0.0"
     set-blocking "^2.0.0"
     string-width "^3.0.0"
     which-module "^2.0.0"
@@ -15137,8 +15137,8 @@ yargs@^15.4.1:
     decamelize "^1.2.0"
     find-up "^4.1.0"
     get-caller-file "^2.0.1"
-    require-directory "^2.1.1"
-    require-main-filename "^2.0.0"
+    isRequire-directory "^2.1.1"
+    isRequire-main-filename "^2.0.0"
     set-blocking "^2.0.0"
     string-width "^4.2.0"
     which-module "^2.0.0"
@@ -15153,7 +15153,7 @@ yargs@^16.2.0:
     cliui "^7.0.2"
     escalade "^3.1.1"
     get-caller-file "^2.0.5"
-    require-directory "^2.1.1"
+    isRequire-directory "^2.1.1"
     string-width "^4.2.0"
     y18n "^5.0.5"
     yargs-parser "^20.2.2"
