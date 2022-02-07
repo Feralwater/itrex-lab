@@ -6,7 +6,7 @@ import { loginRepository } from '../../resources/loginRepository';
 import { createErrorNotificationMessage } from './utils/createErrorNotificationMessage';
 import { notificationSlice, registrationSlice } from '../reducers';
 
-function* registrationPost({ payload }: ReturnType<typeof registrationSlice.actions.pending>) {
+function* registration({ payload }: ReturnType<typeof registrationSlice.actions.pending>) {
   try {
     const { data }: AxiosResponse<SignUpInResponse> = yield call(auth.SignUp, { ...payload });
     if (data.access_token) {
@@ -21,12 +21,6 @@ function* registrationPost({ payload }: ReturnType<typeof registrationSlice.acti
   }
 }
 
-function* registrationPostWatcher() {
-  yield takeEvery(registrationSlice.actions.pending, registrationPost);
+export function* registrationWatcher() {
+  yield takeEvery(registrationSlice.actions.pending, registration);
 }
-
-function* registrationSaga() {
-  yield registrationPostWatcher();
-}
-
-export default registrationSaga;
