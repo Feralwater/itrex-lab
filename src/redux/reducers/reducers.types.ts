@@ -1,7 +1,6 @@
-import {
-  AppointmentForDoctor, AppointmentForPatient, CardForDoctor,
-} from '../../resources/appointments/appointments.types';
+import { AppointmentForPatient } from '../../resources/appointments/appointments.types';
 import { ResolutionsForPatientResponse, ResolutionsResponse } from '../../resources/resolutions/resolutions.types';
+import { AppointmentForDoctorFulfilled } from '../actions.types';
 
 export type Status = 'idle' | 'loading' | 'failed' | 'fulfilled';
 export type RoleName = 'Doctor' | 'Patient' | 'Public' | '';
@@ -21,18 +20,6 @@ export interface ProfileState extends Request {
   lastName: string;
   photo: string;
   roleName: RoleName;
-  isAuth: boolean;
-}
-
-export interface AppointmentState {
-  id: string;
-  patientID: string;
-  doctorID: string;
-  visitDate: string;
-  reason: string;
-  note: string;
-  status: string;
-  responseStatus: Status;
 }
 
 export interface EditProfileState extends Request {
@@ -41,15 +28,17 @@ export interface EditProfileState extends Request {
   lastName: string;
   photo: string;
   roleName: string;
-  specializationName: string;
+  specializationName?: string;
 }
 
-export interface EditPatientProfileState extends Request {
-  id: string;
-  firstName: string;
-  lastName: string;
-  photo: string;
-  roleName: string;
+export interface InitEditProfile {
+  id: string,
+  firstName: string,
+  lastName: string,
+  photo: string,
+  roleName: RoleName,
+  specializationName: string,
+  status: Status,
 }
 
 export interface RegistrationState extends Request {
@@ -101,12 +90,6 @@ export interface AppointmentsForPatientState {
   responseStatus: Status
 }
 
-export interface AppointmentsForDoctorState {
-  appointments: Array<AppointmentForDoctor>,
-  total: number
-  responseStatus: Status
-}
-
 export interface Occupation {
   occupationName: string;
   occupationID: string;
@@ -134,18 +117,19 @@ export interface FreeTimeState {
 }
 
 export interface ChangePasswordState {
-  userID: string,
-  firstName: string,
-  lastName: string,
+  id: string,
+  first_name: string,
+  last_name: string,
   password: string,
   photo: string,
-  roleID: string
+  role_id: string
   status: Status;
 }
 
-export interface CardsForDoctorState {
-  cards: Array<CardForDoctor>,
+export interface AppointmentsForDoctorState {
+  appointments: Array<AppointmentForDoctorFulfilled>,
   total: number,
   isMore: boolean,
   status: Status,
+  entityStatus: Status,
 }

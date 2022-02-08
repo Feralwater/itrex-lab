@@ -2,15 +2,13 @@ import React, { useState } from 'react';
 import { ControlCardPanelProps } from './ControlCardPanel.types';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { dictionary } from '../../pages';
-import {
-  editResolution, resolution, resolutions,
-} from '../../redux/actions';
 import { ModalWindow } from '../Modal';
 import { CardControlList } from '..';
 import { ResolutionModal } from './ResolutionModal';
 import { ResolutionModalButtons } from './ResolutionModalButtons';
 import { resolutionsOnPage, resolutionsOnPageOffset } from '../../pages/Resolutions/constants';
-import { selectResolutions } from '../../redux/reducers';
+import { resolutionSlice, resolutionsSlice, selectResolutions } from '../../redux/reducers';
+import { editResolutionSlice } from '../../redux/reducers/editResolution.reducer';
 
 export const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
   appointmentID,
@@ -26,7 +24,7 @@ export const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
   const [editResolutionText, setEditResolutionText] = useState<string>(editResolutionInitialText || '');
 
   const saveHandler = () => {
-    dispatch(resolution.pending({
+    dispatch(resolutionSlice.actions.pending({
       resolution: resolutionText,
       appointmentID,
     }));
@@ -34,11 +32,11 @@ export const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
     setIsMenuOpen(false);
   };
   const editHandler = () => {
-    dispatch(editResolution.pending({
+    dispatch(editResolutionSlice.actions.pending({
       resolution: editResolutionText,
       resolutionID,
     }));
-    dispatch(resolutions.pending({
+    dispatch(resolutionsSlice.actions.pending({
       offset: resolutionsOnPageOffset,
       limit: resolutionsOnPage,
     }));

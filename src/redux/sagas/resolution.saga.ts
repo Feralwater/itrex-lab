@@ -1,31 +1,35 @@
 import { AxiosResponse } from 'axios';
-import { call, put, takeEvery } from 'redux-saga/effects';
-import { resolution, notificationSuccess, notificationError } from '../actions';
-import { ResolutionResponse } from '../../resources/resolutions/resolutions.types';
+import { call, put, takeLatest } from 'redux-saga/effects';
+import { EditResolutionResponse, ResolutionResponse } from '../../resources/resolutions/resolutions.types';
 import resolutionsAPI from '../../resources/resolutions/resolutions.api';
-import { createErrorNotificationMessage, utils } from './utils';
+import { createErrorNotificationMessage } from './utils/createErrorNotificationMessage';
 import { componentsDictionary } from '../../components';
+import { notificationSlice, resolutionSlice } from '../reducers';
+import { editResolutionSlice } from '../reducers/editResolution.reducer';
 
-function* resolutionPost(action: ReturnType<typeof resolution.pending>) {
+function* createResolution({ payload }: ReturnType<typeof resolutionSlice.actions.pending>) {
   try {
-    const { payload } = action;
-    const response: AxiosResponse<ResolutionResponse> = yield call(resolutionsAPI.createResolution, { ...payload });
-    yield put(notificationSuccess(componentsDictionary.message.successMessageBodyCreateResolution));
-    return response.data;
+    const { data }: AxiosResponse<ResolutionResponse> = yield call(resolutionsAPI.createResolution, { ...payload });
+    yield put(notificationSlice.actions.notificationSuccess(componentsDictionary.message.successMessageBodyCreateResolution));
+    yield put(resolutionSlice.actions.fulfilled(data));
   } catch (error:any) {
-    yield put(notificationError(createErrorNotificationMessage(error.response.data)));
-    throw error;
+    yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.response.data)));
+    yield put(resolutionSlice.actions.failed());
   }
 }
 
-const resolutionPostSaga = utils.bind(null, resolution, resolutionPost);
-
-function* resolutionPostWatcher() {
-  yield takeEvery(resolution.pending, resolutionPostSaga);
+function* editResolution({ payload }: ReturnType<typeof editResolutionSlice.actions.pending>) {
+  try {
+    const { data }: AxiosResponse<EditResolutionResponse> = yield call(resolutionsAPI.editResolution, { ...payload });
+    yield put(notificationSlice.actions.notificationSuccess(componentsDictionary.message.successMessageBodyEditResolution));
+    yield put(editResolutionSlice.actions.fulfilled(data));
+  } catch (error:any) {
+    yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.response.data)));
+    yield put(editResolutionSlice.actions.failed());
+  }
 }
 
-function* resolutionSaga() {
-  yield resolutionPostWatcher();
+export function* resolutionWatcher() {
+  yield takeLatest(resolutionSlice.actions.pending, createResolution);
+  yield takeLatest(editResolutionSlice.actions.pending, editResolution);
 }
-
-export default resolutionSaga;

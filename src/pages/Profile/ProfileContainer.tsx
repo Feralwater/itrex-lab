@@ -4,8 +4,6 @@ import { useAppSelector, useProfile } from '../../hooks';
 import { selectEditProfile } from '../../redux/reducers/editProfile.reducer';
 import { selectProfile } from '../../redux/reducers';
 import { loginRepository } from '../../resources/loginRepository';
-import { ROLES } from '../../routes/constants';
-import { selectEditPatientProfile } from '../../redux/reducers/editPatientProfile.reducer';
 
 export const ProfileContainer:React.VFC = () => {
   const {
@@ -15,18 +13,14 @@ export const ProfileContainer:React.VFC = () => {
     photo,
   } = useAppSelector(selectProfile);
   const {
-    firstName: editDoctorFirstName,
-    lastName: editDoctorLastName,
-    photo: editDoctorPhoto,
+    firstName: editFirstName,
+    lastName: editLastName,
+    photo: editPhoto,
   } = useAppSelector(selectEditProfile);
-  const {
-    firstName: editPatientFirstName,
-    lastName: editPatientLastName,
-    photo: editPatientPhoto,
-  } = useAppSelector(selectEditPatientProfile);
-  const userFirstName = roleName === ROLES.DOCTOR ? (editDoctorFirstName || firstName) : (editPatientFirstName || firstName);
-  const userLastName = roleName === ROLES.DOCTOR ? (editDoctorLastName || lastName) : (editPatientLastName || lastName);
-  const userPhoto = roleName === ROLES.DOCTOR ? (editDoctorPhoto || photo) : (editPatientPhoto || photo);
+
+  const userFirstName = editFirstName || firstName;
+  const userLastName = editLastName || lastName;
+  const userPhoto = editPhoto || photo;
   const [activeChangePasswordModal, setActiveChangePasswordModal] = useState<boolean>(false);
   const closeModalHandler = () => setActiveChangePasswordModal(true);
   const { initProfile } = useProfile();

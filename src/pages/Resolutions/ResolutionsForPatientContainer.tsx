@@ -3,16 +3,18 @@ import { PatientNavigatePanel } from '../../components';
 import { dictionary } from '../dictionary/pagesDictionary';
 import { resolutionsOnPage, resolutionsOnPageOffset } from './constants';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { resolutionsForPatient } from '../../redux/actions';
 import { Resolutions } from './Resolutions';
-import { selectResolutionsForPatient } from '../../redux/reducers/resolutionsForPatient.reducer';
+import {
+  resolutionsForPatientSlice,
+  selectResolutionsForPatient,
+} from '../../redux/reducers/resolutionsForPatient.reducer';
 import { ROLES } from '../../routes/constants';
 
 export const ResolutionsForPatientContainer = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(resolutionsForPatient.pending({
+    dispatch(resolutionsForPatientSlice.actions.pending({
       offset: resolutionsOnPageOffset,
       limit: resolutionsOnPage,
     }));

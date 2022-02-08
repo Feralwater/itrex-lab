@@ -2,8 +2,8 @@ import React from 'react';
 import { useAppDispatch } from '../../hooks';
 import { CommandsList, ControlCommand } from './ControlCardPanel.styles';
 import { dictionary } from '../../pages';
-import { deleteAppointment } from '../../redux/actions';
 import { CardControlListProps } from './ControlCardPanel.types';
+import { appointmentsForDoctorSlice } from '../../redux/reducers';
 
 export const CardControlList:React.VFC<CardControlListProps> = ({
   setActiveCreateResolutionModal,
@@ -24,7 +24,7 @@ export const CardControlList:React.VFC<CardControlListProps> = ({
         {dictionary.doctorPage.controlCommandEdit}
       </ControlCommand>
       <ControlCommand
-        onClick={() => dispatch(deleteAppointment.pending({ id: appointmentID }))}
+        onClick={() => dispatch(appointmentsForDoctorSlice.actions.deleteAppointmentPending({ id: appointmentID }))}
       >
         {dictionary.doctorPage.controlCommandDelete}
       </ControlCommand>

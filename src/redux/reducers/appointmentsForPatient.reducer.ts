@@ -1,35 +1,24 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { appointmentsForPatient } from '../actions';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppointmentsForPatientState } from './reducers.types';
 import { RootState } from '../store';
 import { FETCH_STATUS } from './constants';
+import { AppointmentsForPatientFulfilled, AppointmentsForPatientPending } from '../actions.types';
 
 const initialState = {
   appointments: [],
   total: 0,
-  isMore: false,
   responseStatus: FETCH_STATUS.IDLE,
 } as AppointmentsForPatientState;
 
 export const appointmentsForPatientSlice = createSlice({
   name: 'appointmentsForPatient',
   initialState,
-  reducers: {},
-  extraReducers: (builder) => {
-    builder
-      .addCase(appointmentsForPatient.fulfilled, (state, { payload }) => ({
-        appointments: [...state.appointments, ...payload.appointments],
-        total: payload.total,
-        isMore: payload.total > payload.appointments.length,
-        responseStatus: FETCH_STATUS.FULFILLED,
-      }));
-    builder
-      .addCase(appointmentsForPatient.pending, (state) => ({ ...state, responseStatus: FETCH_STATUS.LOADING }));
-    builder
-      .addCase(appointmentsForPatient.failed, (state) => ({ ...state, responseStatus: FETCH_STATUS.FAILED }));
+  reducers: {
+    fulfilled: (state, action: PayloadAction<AppointmentsForPatientFulfilled>) => ({ ...state, ...action.payload, responseStatus: FETCH_STATUS.FULFILLED }),
+    pending: (state, action: PayloadAction<AppointmentsForPatientPending>) => ({ ...state, ...action.payload, responseStatus: FETCH_STATUS.LOADING }),
+    failed: (state) => ({ ...state, responseStatus: FETCH_STATUS.FAILED }),
   },
 });
 
-export const selectAppointmentsForPatient = (state: RootState) => state.appointmentsForPatient;
-
+export const selectMakeAppointmentsForPatient = (state: RootState) => state.appointmentsForPatient;
 export const appointmentsForPatientReducer = appointmentsForPatientSlice.reducer;

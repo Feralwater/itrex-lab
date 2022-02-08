@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import AppointmentsWrapper from './AppointmentsContainer.styles';
 import { PatientFullState } from '../FullStateView';
 import { PatientEmptyState } from '../EmptyStateView';

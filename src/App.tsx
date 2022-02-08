@@ -18,9 +18,10 @@ export const AppLoaderContainer = styled.div`
 const App:React.VFC = () => {
   const accessToken = useAppSelector(selectAccessToken);
 
-  const { initProfile, roleName } = useProfile();
+  const { initEditProfile, initProfile, roleName } = useProfile();
   useEffect(() => {
     initProfile();
+    initEditProfile();
   }, [accessToken]);
 
   return (
