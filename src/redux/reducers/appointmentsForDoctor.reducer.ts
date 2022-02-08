@@ -11,6 +11,7 @@ import {
 const initialState = {
   appointments: [],
   total: 0,
+  isMore: false,
   status: FETCH_STATUS.IDLE,
   entityStatus: FETCH_STATUS.IDLE,
 } as AppointmentsForDoctorState;
@@ -22,6 +23,7 @@ export const appointmentsForDoctorSlice = createSlice({
     fulfilled: (state, action: PayloadAction<AppointmentsForDoctorFulfilled>) => ({
       ...state,
       appointments: [...state.appointments, ...action.payload.appointments],
+      isMore: action.payload.total > action.payload.appointments.length,
       total: action.payload.total,
       status: FETCH_STATUS.FULFILLED,
     }),

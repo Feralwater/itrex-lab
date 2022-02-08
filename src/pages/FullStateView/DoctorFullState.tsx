@@ -1,9 +1,15 @@
 import { AppointmentCard } from 'components';
 import React from 'react';
-import { CardsForDoctor } from '../../resources/appointments/appointments.types';
-import { ROLES } from '../../routes/constants';
+import { ROLES } from 'routes/constants';
+import { RoleName } from 'redux/reducers/reducers.types';
+import { AppointmentForDoctorFulfilled } from 'redux/actions.types';
 
-export const DoctorFullState = React.forwardRef(({ appointments }:CardsForDoctor, ref) => (
+export interface DoctorFullStateProps{
+  appointments: Array<AppointmentForDoctorFulfilled>
+  roleName: RoleName
+}
+
+export const DoctorFullState = React.forwardRef(({ appointments }:DoctorFullStateProps, ref) => (
   <>
     { appointments.map((appointment, index) => {
       if (appointments.length === index + 1) {
@@ -14,7 +20,7 @@ export const DoctorFullState = React.forwardRef(({ appointments }:CardsForDoctor
             firstName={appointment.firstName}
             lastName={appointment.lastName}
             avatar={appointment.photo}
-            status={appointment.status}
+            status={appointment.appointmentStatus}
             time={appointment.visitDate}
             resolution={appointment.resolution}
             role={ROLES.DOCTOR}
@@ -29,7 +35,7 @@ export const DoctorFullState = React.forwardRef(({ appointments }:CardsForDoctor
           firstName={appointment.firstName}
           lastName={appointment.lastName}
           avatar={appointment.photo}
-          status={appointment.status}
+          status={appointment.appointmentStatus}
           time={appointment.visitDate}
           resolution={appointment.resolution}
           role={ROLES.DOCTOR}

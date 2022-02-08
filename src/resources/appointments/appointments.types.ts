@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { RoleName } from '../../redux/reducers/reducers.types';
+import { RoleName } from 'redux/reducers/reducers.types';
 
 export interface Appointment {
   id: 'string',

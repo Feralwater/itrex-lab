@@ -1,7 +1,7 @@
 import { AppointmentCard } from 'components';
 import React from 'react';
-import { ROLES } from '../../routes/constants';
-import { AppointmentForPatient } from '../../resources/appointments/appointments.types';
+import { ROLES } from 'routes/constants';
+import { AppointmentForPatient } from 'resources/appointments/appointments.types';
 
 interface PatientFullStateProps{
   appointments: Array<AppointmentForPatient>

@@ -1,16 +1,15 @@
 import { useEffect } from 'react';
-import { cardsForDoctor } from '../../redux/actions';
+import { useAppDispatch, useAppSelector } from 'hooks';
+import { appointmentsForDoctorSlice, selectAppointmentsForDoctor, selectProfile } from 'redux/reducers';
 import { appointmentsPerPage } from './constants';
-import { useAppDispatch, useAppSelector } from '../../hooks';
-import { selectCardsForDoctor, selectProfile } from '../../redux/reducers';
 
-export const useFetchDoctorsCards = (page: number) => {
+export const useFetchDoctorsAppointments = (page: number) => {
   const dispatch = useAppDispatch();
   const { id: userId } = useAppSelector(selectProfile);
-  const { cards: appointments, status: responseStatus, isMore: isMoreAppointments } = useAppSelector(selectCardsForDoctor);
+  const { appointments, status: responseStatus, isMore: isMoreAppointments } = useAppSelector(selectAppointmentsForDoctor);
   useEffect(() => {
     if (userId) {
-      dispatch(cardsForDoctor.pending({
+      dispatch(appointmentsForDoctorSlice.actions.pending({
         offset: (page - 1) * appointmentsPerPage,
         limit: appointmentsPerPage,
       }));

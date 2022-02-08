@@ -1,15 +1,15 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
-import { createErrorNotificationMessage } from './utils/createErrorNotificationMessage';
-import appointments from '../../resources/appointments/appointments.api';
-import { ResolutionsResponse } from '../../resources/resolutions/resolutions.types';
-import resolutionsAPI from '../../resources/resolutions/resolutions.api';
-import { appointmentsForDoctorSlice, appointmentsForPatientSlice, notificationSlice } from '../reducers';
+import { ResolutionsResponse } from 'resources/resolutions/resolutions.types';
 import {
   AppointmentForDoctor,
   AppointmentsForDoctor,
   AppointmentsForPatient,
-} from '../../resources/appointments/appointments.types';
+} from 'resources/appointments/appointments.types';
+import { createErrorNotificationMessage } from './utils/createErrorNotificationMessage';
+import appointments from '../../resources/appointments/appointments.api';
+import resolutionsAPI from '../../resources/resolutions/resolutions.api';
+import { appointmentsForDoctorSlice, appointmentsForPatientSlice, notificationSlice } from '../reducers';
 
 function generateAppointmentForDoctor(resolutionResponse: ResolutionsResponse) {
   return (appointment:AppointmentForDoctor) => ({

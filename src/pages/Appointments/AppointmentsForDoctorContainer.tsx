@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { DoctorNavigatePanel } from '../../components';
+import { useFetchDoctorsAppointments } from 'pages/Appointments/useFetchDoctorsAppointments';
+import { DoctorNavigatePanel } from 'components';
+import { FETCH_STATUS } from 'redux/reducers/constants';
+import { SkeletonCards } from 'components/Skeleton';
+import { useAppSelector } from 'hooks';
+import { selectProfile } from 'redux/reducers';
 import { dictionary } from '../dictionary/pagesDictionary';
-import { FETCH_STATUS } from '../../redux/reducers/constants';
-import { SkeletonCards } from '../../components/Skeleton';
-import { useFetchDoctorsCards } from './useFetchDoctorsCards';
 import { DoctorFullState } from '../FullStateView';
 import { DoctorEmptyState } from '../EmptyStateView';
 import AppointmentsWrapper from './AppointmentsContainer.styles';
@@ -12,8 +14,9 @@ import { useAppointmentRef } from './useLastAppointmentRef';
 export const AppointmentsForDoctorContainer: React.VFC = () => {
   const [, setSearchTerm] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
-  const { responseStatus, appointments, isMoreAppointments } = useFetchDoctorsCards(pageNumber);
+  const { responseStatus, appointments, isMoreAppointments } = useFetchDoctorsAppointments(pageNumber);
   const { lastAppointmentRef } = useAppointmentRef({ responseStatus, isMoreAppointments, setPageNumber });
+  const { roleName } = useAppSelector(selectProfile);
 
   return (
     <>
@@ -22,6 +25,7 @@ export const AppointmentsForDoctorContainer: React.VFC = () => {
         {responseStatus === FETCH_STATUS.FULFILLED && (appointments.length > 0
           ? (
             <DoctorFullState
+              roleName={roleName}
               appointments={appointments}
               ref={lastAppointmentRef}
             />
