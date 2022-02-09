@@ -3,11 +3,8 @@ import { useFetchDoctorsAppointments } from 'pages/Appointments/useFetchDoctorsA
 import { DoctorNavigatePanel } from 'components';
 import { FETCH_STATUS } from 'redux/reducers/constants';
 import { SkeletonCards } from 'components/Skeleton';
-import { useAppSelector } from 'hooks';
-import { selectProfile } from 'redux/reducers';
-import { DoctorEmptyState } from 'modules/doctor';
+import { DoctorEmptyState, DoctorFullState } from 'modules/doctor';
 import { dictionary } from '../dictionary/pagesDictionary';
-import { DoctorFullState } from '../FullStateView';
 import AppointmentsWrapper from './AppointmentsContainer.styles';
 import { useAppointmentRef } from './useLastAppointmentRef';
 
@@ -16,7 +13,6 @@ export const AppointmentsForDoctorContainer: React.VFC = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const { responseStatus, appointments, isMoreAppointments } = useFetchDoctorsAppointments(pageNumber);
   const { lastAppointmentRef } = useAppointmentRef({ responseStatus, isMoreAppointments, setPageNumber });
-  const { roleName } = useAppSelector(selectProfile);
 
   return (
     <>
@@ -25,7 +21,6 @@ export const AppointmentsForDoctorContainer: React.VFC = () => {
         {responseStatus === FETCH_STATUS.FULFILLED && (appointments.length > 0
           ? (
             <DoctorFullState
-              roleName={roleName}
               appointments={appointments}
               ref={lastAppointmentRef}
             />
