@@ -5,9 +5,9 @@ import { FETCH_STATUS } from 'redux/reducers/constants';
 import { SkeletonCards } from 'components/Skeleton';
 import { useAppSelector } from 'hooks';
 import { selectProfile } from 'redux/reducers';
+import { DoctorEmptyState } from 'modules/doctor';
 import { dictionary } from '../dictionary/pagesDictionary';
 import { DoctorFullState } from '../FullStateView';
-import { DoctorEmptyState } from '../EmptyStateView';
 import AppointmentsWrapper from './AppointmentsContainer.styles';
 import { useAppointmentRef } from './useLastAppointmentRef';
 

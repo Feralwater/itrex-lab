@@ -1,6 +1,5 @@
 export * from './Appointments';
 export * from './dictionary/pagesDictionary';
-export * from './EmptyStateView';
 export * from './FullStateView';
 export * from './Profile';
 export * from './Resolutions';
