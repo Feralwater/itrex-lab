@@ -1,7 +1,7 @@
 import React from 'react';
 import { ROLES } from 'routes/constants';
 import { AppointmentForPatient } from 'resources/appointments/appointments.types';
-import { AppointmentCardContainer } from 'components/AppointmentCard/AppointmentCardContainer';
+import { AppointmentCardContainer } from 'components/AppointmentCard';
 
 interface PatientFullStateProps{
   appointments: Array<AppointmentForPatient>

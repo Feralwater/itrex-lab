@@ -1,6 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { AppointmentCard } from 'components/AppointmentCard/AppointmentCard';
 import { AppointmentCardContainerProps } from 'components/AppointmentCard/AppointmentCard.types';
+import { ROLES } from 'routes/constants';
+import { ReactComponent as Board } from '../../assets/svg/board-icon.svg';
+import { ReactComponent as Heart } from '../../assets/svg/heart-icon.svg';
 
 export const AppointmentCardContainer = React.forwardRef(({
   photo,
@@ -16,17 +19,8 @@ export const AppointmentCardContainer = React.forwardRef(({
 }: AppointmentCardContainerProps, ref) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const menuRef = useRef() as React.MutableRefObject<HTMLDivElement> | undefined;
-  const toggleMenuHandler = () => setIsMenuOpen(!isMenuOpen);
-
-  function isCardDescription() {
-    if (reason) {
-      return reason.length > 0;
-    }
-    if (resolution) {
-      return resolution.resolution.length > 0;
-    }
-    return false;
-  }
+  const cardDescription = reason || resolution?.resolution;
+  const cardIcon = role === ROLES.DOCTOR ? <Board /> : <Heart />;
 
   useEffect(() => {
     const handler = (event:Event) => {
@@ -52,13 +46,12 @@ export const AppointmentCardContainer = React.forwardRef(({
       status={status}
       specialization={specialization}
       role={role}
-      toggleMenuHandler={toggleMenuHandler}
-      isCardDescription={isCardDescription()}
       time={time}
-      resolution={resolution}
       isMenuOpen={isMenuOpen}
       setIsMenuOpen={setIsMenuOpen}
-      reason={reason}
+      cardIcon={cardIcon}
+      cardDescription={cardDescription}
+      resolutionID={resolution?.id}
     />
   );
 });

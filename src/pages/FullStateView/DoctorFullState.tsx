@@ -2,7 +2,7 @@ import React from 'react';
 import { ROLES } from 'routes/constants';
 import { RoleName } from 'redux/reducers/reducers.types';
 import { AppointmentForDoctorFulfilled } from 'redux/actions.types';
-import { AppointmentCardContainer } from 'components/AppointmentCard/AppointmentCardContainer';
+import { AppointmentCardContainer } from 'components/AppointmentCard';
 
 export interface DoctorFullStateProps{
   appointments: Array<AppointmentForDoctorFulfilled>

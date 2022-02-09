@@ -1,12 +1,11 @@
 import React from 'react';
-import { ROLES } from 'routes/constants';
 import { AppointmentCardHeader } from 'components/AppointmentCard/AppointmentCardHeader';
 import { AppointmentCardProps } from 'components/AppointmentCard/AppointmentCard.types';
+import { AppointmentCardSettingsButton } from 'components/AppointmentCard/AppointmentCardSettingsButton';
+import { ROLES } from 'routes/constants';
 import { ReactComponent as Clock } from '../../assets/svg/clock-icon.svg';
-import { ReactComponent as Board } from '../../assets/svg/board-icon.svg';
-import { ReactComponent as Heart } from '../../assets/svg/heart-icon.svg';
+
 import {
-  SettingsButton,
   UserCard,
   UserCardBody,
   UserCardBodyDescription,
@@ -20,7 +19,6 @@ import {
   UserInformation,
 } from './AppointmentCard.styles';
 import { UserImage } from '../Header/Header.styles';
-import { ControlCardPanel } from '../ControlCardPanel';
 import { componentsDictionary } from '../dictionary/componentsDictionary';
 import { formatVisitTime } from './utils';
 
@@ -30,16 +28,15 @@ export const AppointmentCard = React.forwardRef(({
   firstName,
   lastName,
   role,
-  toggleMenuHandler,
-  isCardDescription,
   time,
-  reason,
-  resolution,
   isMenuOpen,
   setIsMenuOpen,
   menuRef,
   status,
   specialization,
+  cardIcon,
+  cardDescription,
+  resolutionID,
 }: AppointmentCardProps, ref) => (
   <UserCard ref={ref as React.RefObject<HTMLDivElement>}>
     <UserCardHeader>
@@ -52,27 +49,24 @@ export const AppointmentCard = React.forwardRef(({
           <AppointmentCardHeader status={status} specialization={specialization} />
         </UserInformation>
       </UserData>
-      <div ref={menuRef}>
-        {role === ROLES.DOCTOR && <SettingsButton onClick={toggleMenuHandler} />}
-        {isMenuOpen && (
-        <ControlCardPanel
-          appointmentID={appointmentID}
-          setIsMenuOpen={setIsMenuOpen}
-          resolutionID={resolution?.id}
-        />
-        )}
-      </div>
+      {role === ROLES.DOCTOR && (
+      <AppointmentCardSettingsButton
+        appointmentID={appointmentID}
+        setIsMenuOpen={setIsMenuOpen}
+        resolutionID={resolutionID}
+        menuRef={menuRef}
+        isMenuOpen={isMenuOpen}
+      />
+      )}
     </UserCardHeader>
     <UserCardBody>
       <UserCardBodyTime>
         <Clock />
         <UserCardBodyTimeText>{formatVisitTime(time)}</UserCardBodyTimeText>
       </UserCardBodyTime>
-      <UserCardBodyDescription isDescription={isCardDescription}>
-        {role === ROLES.DOCTOR ? <div><Board /></div> : <div><Heart /></div>}
-        {role === ROLES.DOCTOR
-          ? <UserCardBodyDescriptionText>{resolution?.resolution}</UserCardBodyDescriptionText>
-          : <UserCardBodyDescriptionText>{reason}</UserCardBodyDescriptionText>}
+      <UserCardBodyDescription isDescription={!!cardDescription?.length}>
+        <div>{cardIcon}</div>
+        <UserCardBodyDescriptionText>{cardDescription}</UserCardBodyDescriptionText>
       </UserCardBodyDescription>
     </UserCardBody>
   </UserCard>

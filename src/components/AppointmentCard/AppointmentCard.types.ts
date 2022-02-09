@@ -1,6 +1,8 @@
 import { RoleName } from 'redux/reducers/reducers.types';
 import { ResolutionForDoctor } from 'resources/resolutions/resolutions.types';
-import { Dispatch, SetStateAction } from 'react';
+import {
+  Dispatch, MutableRefObject, ReactElement, SetStateAction,
+} from 'react';
 
 export interface AppointmentCardContainerProps {
   photo: string;
@@ -26,14 +28,21 @@ export interface AppointmentCardProps {
   firstName: string;
   lastName: string;
   role: RoleName;
-  toggleMenuHandler: ()=>void;
-  isCardDescription: boolean;
   time: string;
-  reason?: string;
-  resolution?: ResolutionForDoctor;
   isMenuOpen: boolean;
   setIsMenuOpen: Dispatch<SetStateAction<boolean>>;
-  menuRef: any;
+  menuRef: MutableRefObject<HTMLDivElement> | undefined;
   specialization?: string
   status?: string
+  cardIcon: ReactElement
+  cardDescription?: string
+  resolutionID?: string
+}
+
+export interface AppointmentCardSettingsButtonProps{
+  setIsMenuOpen: Dispatch<SetStateAction<boolean>>;
+  menuRef: MutableRefObject<HTMLDivElement> | undefined;
+  isMenuOpen: boolean;
+  appointmentID: string
+  resolutionID?: string
 }
