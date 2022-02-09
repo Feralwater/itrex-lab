@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 interface AppointmentsWrapperProps {
-  patientsLength: number;
+  appointmentsLength: number;
 }
 
-const AppointmentsWrapper = styled.div<AppointmentsWrapperProps>`
-  display: ${(props) => (props.patientsLength > 0 ? 'grid' : 'flex')};
-  height: ${(props) => (props?.patientsLength === 0 && '68vh')};
-  justify-content: ${(props) => (props?.patientsLength === 0 && 'center')};
-  align-items: ${(props) => (props?.patientsLength === 0 && 'center')};
+export const AppointmentsWrapper = styled.div<AppointmentsWrapperProps>`
+  display: ${(props) => (props.appointmentsLength > 0 ? 'grid' : 'flex')};
+  height: ${(props) => (props?.appointmentsLength === 0 && '68vh')};
+  justify-content: ${(props) => (props?.appointmentsLength === 0 && 'center')};
+  align-items: ${(props) => (props?.appointmentsLength === 0 && 'center')};
   grid-template-columns: repeat(auto-fit, minmax(calc(25% - 18px), calc(25% - 18px)));
   grid-template-rows: minmax(217px, 264px);
   gap: 25px 24px;
@@ -26,5 +26,3 @@ const AppointmentsWrapper = styled.div<AppointmentsWrapperProps>`
     padding: 0;
   }
 `;
-
-export default AppointmentsWrapper;

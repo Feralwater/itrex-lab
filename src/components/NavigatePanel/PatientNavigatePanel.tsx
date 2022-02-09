@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import { ButtonWrapper } from 'components/AuthForms/AuthForm.styles';
 import { H1 } from 'components/CommonStyles/Topography';
+import { dictionary } from 'pages';
+import { PATH } from 'routes/constants';
 import {
   ButtonLeftPlusIcon,
   CreateAppointmentButton,
@@ -8,10 +10,12 @@ import {
   PatientsButtonsContainer,
   UserPageTitle,
 } from './NavigatePanel.styles';
-import { dictionary } from '../../pages';
-import { PATH } from '../../routes/constants';
 import isActiveTab from './utils';
-import { NavigatePanelProps } from '../../pages/Appointments/AppointmentsContainer.types';
+
+export interface NavigatePanelProps {
+  pageTitle: string
+  setSearchTerm?: Dispatch<SetStateAction<string>>;
+}
 
 export const PatientNavigatePanel:React.VFC<NavigatePanelProps> = ({ pageTitle }) => (
   <>

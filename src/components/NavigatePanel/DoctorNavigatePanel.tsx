@@ -3,9 +3,9 @@ import {
   PatientsButton, PatientsButtonsContainer, UserPageTitle, SearchAndFilter,
 } from 'components/NavigatePanel/NavigatePanel.styles';
 import { H1 } from 'components/CommonStyles/Topography';
-import { dictionary } from '../../pages';
-import { PATH } from '../../routes/constants';
-import { NavigatePanelProps } from '../../pages/Appointments/AppointmentsContainer.types';
+import { dictionary } from 'pages';
+import { PATH } from 'routes/constants';
+import { NavigatePanelProps } from 'components/NavigatePanel/PatientNavigatePanel';
 import isActiveTab from './utils';
 import { InputSearchContainer } from '../Input';
 
