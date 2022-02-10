@@ -5,7 +5,7 @@ import { ROLES } from 'routes/constants';
 import { ReactComponent as Board } from '../../assets/svg/board-icon.svg';
 import { ReactComponent as Heart } from '../../assets/svg/heart-icon.svg';
 
-export const AppointmentCardContainer = React.forwardRef(({
+export const AppointmentCardContainer:React.VFC<AppointmentCardContainerProps> = ({
   photo,
   appointmentID,
   firstName,
@@ -16,7 +16,7 @@ export const AppointmentCardContainer = React.forwardRef(({
   resolution,
   reason,
   time,
-}: AppointmentCardContainerProps, ref) => {
+}) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const menuRef = useRef() as React.MutableRefObject<HTMLDivElement> | undefined;
   const cardDescription = reason || resolution?.resolution;
@@ -42,7 +42,6 @@ export const AppointmentCardContainer = React.forwardRef(({
       appointmentID={appointmentID}
       firstName={firstName}
       lastName={lastName}
-      ref={ref}
       status={status}
       specialization={specialization}
       role={role}
@@ -54,4 +53,4 @@ export const AppointmentCardContainer = React.forwardRef(({
       resolutionID={resolution?.id}
     />
   );
-});
+};

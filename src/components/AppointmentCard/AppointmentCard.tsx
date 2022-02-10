@@ -22,7 +22,7 @@ import { UserImage } from '../Header/Header.styles';
 import { componentsDictionary } from '../dictionary/componentsDictionary';
 import { formatVisitTime } from './utils';
 
-export const AppointmentCard = React.forwardRef(({
+export const AppointmentCard:React.VFC<AppointmentCardProps> = ({
   photo,
   appointmentID,
   firstName,
@@ -37,8 +37,8 @@ export const AppointmentCard = React.forwardRef(({
   cardIcon,
   cardDescription,
   resolutionID,
-}: AppointmentCardProps, ref) => (
-  <UserCard ref={ref as React.RefObject<HTMLDivElement>}>
+}) => (
+  <UserCard>
     <UserCardHeader>
       <UserData>
         <UserCardImageContainer>
@@ -70,4 +70,4 @@ export const AppointmentCard = React.forwardRef(({
       </UserCardBodyDescription>
     </UserCardBody>
   </UserCard>
-));
+);
