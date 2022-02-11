@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { EditProfileFormContainer } from 'pages/Profile/EditProfileFormContainer';
 import { useAppSelector, useProfile } from 'hooks';
-import { selectEditProfile } from 'redux/reducers/editProfile.reducer';
 import { selectProfile } from 'redux/reducers';
 import { loginRepository } from 'resources/loginRepository';
 import { Profile } from './Profile';
@@ -13,16 +12,11 @@ export const ProfileContainer:React.VFC = () => {
     roleName,
     photo,
   } = useAppSelector(selectProfile);
-  const {
-    firstName: editFirstName,
-    lastName: editLastName,
-    photo: editPhoto,
-  } = useAppSelector(selectEditProfile);
-
-  const userFirstName = editFirstName || firstName;
-  const userLastName = editLastName || lastName;
-  const userPhoto = editPhoto || photo;
   const [activeChangePasswordModal, setActiveChangePasswordModal] = useState<boolean>(false);
+  const [editMode, setEditMode] = useState(false);
+  const closeEditModeHandler = () => setEditMode(false);
+  const openEditModeHandler = () => setEditMode(true);
+
   const closeModalHandler = () => setActiveChangePasswordModal(true);
   const { initProfile } = useProfile();
   const logoutHandler = () => {
@@ -30,9 +24,6 @@ export const ProfileContainer:React.VFC = () => {
     loginRepository.removeRefreshToken();
     initProfile();
   };
-  const [editMode, setEditMode] = useState(false);
-  const closeEditModeHandler = () => setEditMode(false);
-  const openEditModeHandler = () => setEditMode(true);
   if (editMode) {
     return <EditProfileFormContainer closeEditModeHandler={closeEditModeHandler} />;
   }
@@ -40,9 +31,9 @@ export const ProfileContainer:React.VFC = () => {
     <Profile
       openEditModeHandler={openEditModeHandler}
       roleName={roleName}
-      firstName={userFirstName}
-      lastName={userLastName}
-      photo={userPhoto}
+      firstName={firstName}
+      lastName={lastName}
+      photo={photo}
       activeChangePasswordModal={activeChangePasswordModal}
       setActiveChangePasswordModal={setActiveChangePasswordModal}
       closeModalHandler={closeModalHandler}
