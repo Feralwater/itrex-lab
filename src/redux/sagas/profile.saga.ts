@@ -2,17 +2,17 @@ import {
   call, put, select, takeEvery,
 } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
-import { ChangePasswordResponse, EditProfileResponse, ProfileResponse } from '../../resources/auth/auth.types';
+import { ChangePasswordResponse, EditProfileResponse, ProfileResponse } from 'resources/auth/auth.types';
+import { loginRepository } from 'resources/loginRepository';
+import { ROLES } from 'routes/constants';
+import { componentsDictionary } from 'components';
+import { createErrorNotificationMessage } from 'redux/sagas/utils/createErrorNotificationMessage';
 import auth from '../../resources/auth/auth.api';
-import { loginRepository } from '../../resources/loginRepository';
-import { createErrorNotificationMessage } from './utils/createErrorNotificationMessage';
 import { notificationSlice, profileSlice } from '../reducers';
 import { editProfileSlice } from '../reducers/editProfile.reducer';
 import { RoleName } from '../reducers/reducers.types';
 import * as selectors from '../selectors';
-import { ROLES } from '../../routes/constants';
 import profile from '../../resources/profile/profile.api';
-import { componentsDictionary } from '../../components';
 import { changePasswordSlice } from '../reducers/changePassword.reducer';
 
 function* getProfile() {
@@ -21,7 +21,6 @@ function* getProfile() {
     const me : AxiosResponse<ProfileResponse> = token ? yield call(auth.getMe) : null;
     yield put(profileSlice.actions.fulfilled(me?.data || null));
   } catch (error:any) {
-    yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.message)));
     yield put(profileSlice.actions.failed());
   }
 }
@@ -35,7 +34,7 @@ function* editProfile({ payload }: ReturnType<typeof editProfileSlice.actions.pe
     yield put(notificationSlice.actions.notificationSuccess(componentsDictionary.message.successMessageBodyEditProfile));
     yield put(editProfileSlice.actions.fulfilled(data));
   } catch (error:any) {
-    yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.message)));
+    yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(componentsDictionary.message.errorMessageEditProfile)));
     yield put(editProfileSlice.actions.failed());
   }
 }

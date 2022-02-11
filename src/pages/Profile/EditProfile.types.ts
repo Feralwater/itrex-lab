@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import { RoleName, Status } from '../../redux/reducers/reducers.types';
+import { RoleName, Status } from 'redux/reducers/reducers.types';
 
 export interface EditProfileData {
   firstName: string;
@@ -20,6 +20,11 @@ export interface EditProfileFormProps {
   status: Status;
   initialValues: EditProfileData;
   profilePhoto: string;
+  closeEditModeHandler: () => void
+}
+
+export interface EditProfileFormContainerProps {
+  closeEditModeHandler: () => void
 }
 
 export interface ProfileProps {
@@ -31,4 +36,5 @@ export interface ProfileProps {
   setActiveChangePasswordModal: Dispatch<SetStateAction<boolean>>;
   closeModalHandler: () => void;
   logoutHandler: () => void;
+  openEditModeHandler: () => void
 }

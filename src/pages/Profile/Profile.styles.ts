@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { colors } from '../../components/CommonStyles';
+import { colors } from 'components/CommonStyles';
 
 export const TitlePanel = styled.div`
   display: flex;
@@ -22,17 +21,6 @@ export const InfoContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-`;
-
-export const EditLink = styled(Link)`
-  color: ${colors.white};
-  text-decoration: none;
-  margin: 0 0 0 32px;
-`;
-
-export const CancelLink = styled(Link)`
-  color: ${colors.rock_blue};
-  text-decoration: none;
 `;
 
 export const EditButtons = styled.div`

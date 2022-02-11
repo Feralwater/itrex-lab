@@ -9,6 +9,8 @@ export const componentsDictionary = {
     successMessageBodyDeleteAppointment: 'You have successfully deleted appointment.',
     messageTitleError: 'Error message goes here',
     errorMessageText: 'We show this message if something irreparable has happened. But there is nothing irreparable',
+    errorMessageEditProfile: 'Failed to update the profile. Check the data and try again',
+    errorMessageLogin: 'Login or password is incorrect. Please check it and try again',
   },
   header: {
     avatarAlt: 'Your Profile',

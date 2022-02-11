@@ -6,9 +6,7 @@ import { SendEmail } from 'pages/SendEmail/SendEmail';
 import { SignIn } from 'pages/SignIn/SignIn';
 import { SignUp } from 'pages/SignUp/SignUp';
 import { useAppSelector } from 'hooks';
-import {
-  ResolutionsForDoctorContainer, ResolutionsForPatientContainer, EditProfileFormContainer, ProfileContainer,
-} from 'pages';
+import { ResolutionsForDoctorContainer, ResolutionsForPatientContainer, ProfileContainer } from 'pages';
 import { selectProfile } from 'redux/reducers';
 import { AppointmentsForDoctorContainer } from 'modules/doctor';
 import { AppointmentsForPatientContainer } from 'modules/patient';
@@ -49,7 +47,6 @@ export const AppRouter:React.VFC = () => {
       <Route path={PATH.APPOINTMENTS} element={<LayoutPrivate><AppointmentsForPatientContainer /></LayoutPrivate>} />
       <Route path={PATH.RESOLUTIONS} element={<LayoutPrivate><ResolutionsForDoctorContainer /></LayoutPrivate>} />
       <Route path={PATH.PROFILE} element={<LayoutPrivate><ProfileContainer /></LayoutPrivate>} />
-      <Route path={PATH.EDIT_PROFILE} element={<LayoutPrivate><EditProfileFormContainer /></LayoutPrivate>} />
       <Route path={PATH.MY_RESOLUTIONS} element={<LayoutPrivate><ResolutionsForPatientContainer /></LayoutPrivate>} />
       <Route
         path={PATH.CREATE_APPOINTMENT}

@@ -1,8 +1,8 @@
 import { NavigateFunction } from 'react-router';
+import { RoleName } from 'redux/reducers/reducers.types';
 import {
   DEFAULT_PATH, ROLES, ROLES_ACCESS, PATH,
 } from './constants';
-import { RoleName } from '../redux/reducers/reducers.types';
 
 const legalPaths = new Set(Object.values(PATH));
 

@@ -1,30 +1,29 @@
 import React from 'react';
 import Loader from 'react-loader-spinner';
-import { CancelLink, EditButtons } from './Profile.styles';
-import { Button, ButtonWithLoaderProps } from '../../components';
-import { PATH } from '../../routes/constants';
+import { Button, ButtonWithLoaderProps } from 'components';
+import { FETCH_STATUS } from 'redux/reducers/constants';
+import { colors } from 'components/CommonStyles';
 import { dictionary as pagesDictionary } from '../dictionary/pagesDictionary';
-import { FETCH_STATUS } from '../../redux/reducers/constants';
-import { colors } from '../../components/CommonStyles';
+import { EditButtons } from './Profile.styles';
 
 export const ProfileButtonsBlock: React.VFC<ButtonWithLoaderProps> = ({
   status,
   isValid,
   dirty,
+  closeEditModeHandler,
 }) => (
   <EditButtons>
-    <CancelLink to={PATH.PROFILE}>
-      <Button
-        type="button"
-        icon="left"
-        size="large"
-        variant="secondary"
-        iconUrl="/svg/close-icon.svg"
-        isBorder
-      >
-        {pagesDictionary.resolutionModal.cancelButtonText}
-      </Button>
-    </CancelLink>
+    <Button
+      type="button"
+      icon="left"
+      size="large"
+      variant="secondary"
+      iconUrl="/svg/close-icon.svg"
+      isBorder
+      onClick={closeEditModeHandler}
+    >
+      {pagesDictionary.resolutionModal.cancelButtonText}
+    </Button>
     {
       status !== FETCH_STATUS.LOADING
         ? (

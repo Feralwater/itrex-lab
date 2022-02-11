@@ -1,9 +1,11 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
-import { FreeTimeResponse, NewAppointmentResponse } from '../../resources/appointments/appointments.types';
+import { FreeTimeResponse, NewAppointmentResponse } from 'resources/appointments/appointments.types';
+import { componentsDictionary } from 'components';
+import { DoctorsBySpecializationIdResponse } from 'resources/doctors/doctors.types';
+import { OccupationsResponse } from 'resources/occupations/occupations.types';
 import appointments from '../../resources/appointments/appointments.api';
 import { createErrorNotificationMessage } from './utils/createErrorNotificationMessage';
-import { componentsDictionary } from '../../components';
 import {
   appointmentsForDoctorSlice,
   freeDoctorTimeSlice,
@@ -12,9 +14,7 @@ import {
   notificationSlice,
   occupationsSlice,
 } from '../reducers';
-import { DoctorsBySpecializationIdResponse } from '../../resources/doctors/doctors.types';
 import doctors from '../../resources/doctors/doctors.api';
-import { OccupationsResponse } from '../../resources/occupations/occupations.types';
 import occupationsAPI from '../../resources/occupations/occupations.api';
 
 function* createAppointment({ payload }: ReturnType<typeof makeAppointmentSlice.actions.pending>) {

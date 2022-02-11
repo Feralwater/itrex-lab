@@ -1,9 +1,9 @@
 import { AxiosResponse } from 'axios';
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { EditResolutionResponse, ResolutionResponse } from '../../resources/resolutions/resolutions.types';
+import { EditResolutionResponse, ResolutionResponse } from 'resources/resolutions/resolutions.types';
+import { componentsDictionary } from 'components';
 import resolutionsAPI from '../../resources/resolutions/resolutions.api';
 import { createErrorNotificationMessage } from './utils/createErrorNotificationMessage';
-import { componentsDictionary } from '../../components';
 import { notificationSlice, resolutionSlice } from '../reducers';
 import { editResolutionSlice } from '../reducers/editResolution.reducer';
 

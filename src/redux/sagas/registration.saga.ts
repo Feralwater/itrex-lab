@@ -1,8 +1,8 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
-import { SignUpInResponse } from '../../resources/auth/auth.types';
+import { SignUpInResponse } from 'resources/auth/auth.types';
+import { loginRepository } from 'resources/loginRepository';
 import auth from '../../resources/auth/auth.api';
-import { loginRepository } from '../../resources/loginRepository';
 import { createErrorNotificationMessage } from './utils/createErrorNotificationMessage';
 import { notificationSlice, registrationSlice } from '../reducers';
 
