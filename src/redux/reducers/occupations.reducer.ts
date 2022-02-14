@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { OccupationsResponse } from 'resources/occupations/occupations.types';
 import { OccupationState } from './reducers.types';
 import { RootState } from '../store';
 import { FETCH_STATUS } from './constants';
-import { OccupationsResponse } from '../../resources/occupations/occupations.types';
 
 const initialState = {
   occupations: [],

@@ -1,15 +1,15 @@
 export const PATH = {
-  PATIENTS: '/patients',
-  RESOLUTIONS: '/doctors/resolutions',
+  DOCTOR_APPOINTMENTS: '/doctor/appointments',
+  DOCTOR_RESOLUTIONS: '/doctor/resolutions',
+  PATIENT_APPOINTMENTS: '/patient/appointments',
+  PATIENT_RESOLUTIONS: '/patient/resolutions',
+  CREATE_APPOINTMENT: '/create-appointment',
   RESTORE_PASSWORD: '/restore-password',
   SEND_EMAIL: '/send-email',
   SIGN_IN: '/sign-in',
   SIGN_UP: '/sign-up',
-  APPOINTMENTS: '/appointments',
-  CREATE_APPOINTMENT: '/create-an-appointment',
   PROFILE: '/profile',
-  MY_RESOLUTIONS: '/patient/resolutions',
-  EDIT_PROFILE: '/profile/edit',
+  PROFILE_EDIT: '/profile/edit',
 };
 
 export const ROLES = {
@@ -26,22 +26,22 @@ export const ROLES_API = {
 };
 
 export const DEFAULT_PATH = {
-  [ROLES.DOCTOR]: PATH.PATIENTS,
-  [ROLES.PATIENT]: PATH.APPOINTMENTS,
+  [ROLES.DOCTOR]: PATH.DOCTOR_APPOINTMENTS,
+  [ROLES.PATIENT]: PATH.PATIENT_APPOINTMENTS,
   [ROLES.PUBLIC]: PATH.SIGN_IN,
 };
 
 export const ROLES_ACCESS = {
-  [ROLES.DOCTOR]: new Set([PATH.PATIENTS,
-    PATH.RESOLUTIONS,
+  [ROLES.DOCTOR]: new Set([PATH.DOCTOR_APPOINTMENTS,
+    PATH.DOCTOR_RESOLUTIONS,
     PATH.PROFILE,
-    PATH.EDIT_PROFILE,
+    PATH.PROFILE_EDIT,
   ]),
   [ROLES.PATIENT]: new Set([
-    PATH.APPOINTMENTS,
+    PATH.PATIENT_APPOINTMENTS,
     PATH.CREATE_APPOINTMENT,
     PATH.PROFILE,
-    PATH.MY_RESOLUTIONS,
+    PATH.PATIENT_RESOLUTIONS,
   ]),
   [ROLES.PUBLIC]: new Set([PATH.SIGN_IN, PATH.SIGN_UP, PATH.RESTORE_PASSWORD, PATH.SEND_EMAIL]),
 };

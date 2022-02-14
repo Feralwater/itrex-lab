@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction } from 'react';
+import { Status } from 'redux/reducers/reducers.types';
+import { SignInData, SignUpData } from 'resources/auth/auth.types';
 import { InputProps } from '../Input/Input.types';
-import { Status } from '../../redux/reducers/reducers.types';
-import { SignInData, SignUpData } from '../../resources/auth/auth.types';
 
 export interface SignInValues {
   email: string;

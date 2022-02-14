@@ -1,8 +1,8 @@
 import React from 'react';
+import { PATH } from 'routes/constants';
+import { SignInFormContainer } from 'components';
 import { dictionary } from '../dictionary/pagesDictionary';
 import { SignInUpLink, SignInUpMessage } from './SignIn.styles';
-import { PATH } from '../../routes/constants';
-import { SignInFormContainer } from '../../components';
 
 export const SignIn:React.VFC = () => (
   <>

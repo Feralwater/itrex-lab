@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { RoleName } from 'redux/reducers/reducers.types';
+import { PATH, ROLES } from 'routes/const';
 import { ReactComponent as Logo } from '../../assets/svg/logo.svg';
-
 import {
   HeaderContainer,
   HeaderLogo,
@@ -15,8 +16,6 @@ import {
   UserRole,
 } from './Header.styles';
 import { componentsDictionary } from '../dictionary/componentsDictionary';
-import { PATH, ROLES } from '../../routes/constants';
-import { RoleName } from '../../redux/reducers/reducers.types';
 
 export interface HeaderProps {
   roleName: RoleName;
@@ -33,7 +32,7 @@ export const Header: React.VFC<HeaderProps> = ({
 }) => (
   <HeaderWrapper>
     <HeaderContainer>
-      <HeaderLogo to={roleName === ROLES.DOCTOR ? PATH.PATIENTS : PATH.APPOINTMENTS}>
+      <HeaderLogo to={roleName === ROLES.DOCTOR ? PATH.DOCTOR_APPOINTMENTS : PATH.PATIENT_APPOINTMENTS}>
         <Logo />
         <LogoText>{componentsDictionary.header.logoText}</LogoText>
       </HeaderLogo>

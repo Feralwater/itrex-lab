@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { ResolutionsResponse } from 'resources/resolutions/resolutions.types';
 import { ResolutionsState } from './reducers.types';
 import { RootState } from '../store';
 import { FETCH_STATUS } from './constants';
 import { ResolutionsPending } from '../actions.types';
-import { ResolutionsResponse } from '../../resources/resolutions/resolutions.types';
 
 const initialState = {
   resolutions: [],

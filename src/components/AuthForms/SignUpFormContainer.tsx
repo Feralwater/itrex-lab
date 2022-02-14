@@ -1,10 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '../../hooks';
-import { SignUpData } from '../../resources/auth/auth.types';
-import { PATH } from '../../routes/constants';
+import { useAppDispatch } from 'hooks';
+import { SignUpData } from 'resources/auth/auth.types';
+import { registrationSlice } from 'redux/reducers';
+import { PATH } from 'routes/const';
 import { SignUpForm } from './singUpForm';
-import { registrationSlice } from '../../redux/reducers';
 
 export const SignUpFormContainer:React.VFC = () => {
   const history = useNavigate();
@@ -15,7 +15,7 @@ export const SignUpFormContainer:React.VFC = () => {
     dispatch(registrationSlice.actions.pending({
       userName, password, firstName, lastName,
     }));
-    history(PATH.APPOINTMENTS);
+    history(PATH.PROFILE);
   };
   return (<SignUpForm handleSubmitForm={handleSubmitForm} />);
 };

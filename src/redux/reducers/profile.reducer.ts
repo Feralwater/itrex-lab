@@ -10,7 +10,7 @@ const initialState = {
   firstName: '',
   lastName: '',
   photo: '',
-  roleName: '',
+  roleName: null,
   status: FETCH_STATUS.IDLE,
 } as ProfileState;
 
