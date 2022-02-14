@@ -9,7 +9,6 @@ const initialState = {
   firstName: '',
   lastName: '',
   photo: '',
-  roleName: null,
   status: FETCH_STATUS.IDLE,
 } as ProfileState;
 
@@ -27,7 +26,7 @@ export const profileSlice = createSlice({
       status: FETCH_STATUS.FULFILLED,
     }),
     pending: (state) => ({ ...state, status: FETCH_STATUS.LOADING }),
-    failed: (state) => ({ ...state, status: FETCH_STATUS.FAILED }),
+    failed: (state) => ({ ...state, status: FETCH_STATUS.FAILED, roleName: null }),
     editProfileFulfilled: (state, action: PayloadAction<EditProfileResponse>) => ({
       ...state,
       id: action.payload.id,

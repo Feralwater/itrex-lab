@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React from 'react';
 import { Status } from 'redux/reducers/reducers.types';
 import { SignInData, SignUpData } from 'resources/auth/auth.types';
 import { InputProps } from '../Input/Input.types';
@@ -48,8 +48,4 @@ export interface FormFieldData {
 
 export interface RestoreValues {
   email: string;
-}
-
-export interface RestoreEmail {
-  setEmailForRestorePassword: Dispatch<SetStateAction<string>>;
 }

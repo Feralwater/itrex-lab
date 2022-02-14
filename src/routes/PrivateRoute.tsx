@@ -1,13 +1,24 @@
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import { PATH } from 'routes/constants';
-import { loginRepository } from 'resources/loginRepository';
+import { PATH, ROLES } from 'routes/constants';
+import { useProfile } from 'hooks';
 
-export const PrivateRoute = ({ children }: { children: JSX.Element }) => {
+function getDefaultPath(role: any): string {
+  switch (role) {
+    case ROLES.DOCTOR: return PATH.DOCTOR_APPOINTMENTS;
+    case ROLES.PATIENT: return PATH.PATIENT_APPOINTMENTS;
+    case null: return PATH.SIGN_IN;
+    default:
+      throw new Error('');
+  }
+}
+
+export const PrivateRoute = ({ children, roleName: needRole }: { children: JSX.Element, roleName: any }) => {
+  const { roleName } = useProfile();
   const location = useLocation();
-  const accessToken = loginRepository.getAccessToken() || '';
-  if (!accessToken) {
-    return <Navigate to={PATH.SIGN_IN} state={{ from: location }} replace />;
+  if (roleName !== undefined && needRole !== roleName) {
+    const defaultPath = getDefaultPath(roleName);
+    return <Navigate to={defaultPath} state={{ from: location }} replace />;
   }
   return children;
 };

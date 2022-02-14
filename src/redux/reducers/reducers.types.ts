@@ -19,7 +19,7 @@ export interface ProfileState extends Request {
   firstName: string;
   lastName: string;
   photo: string;
-  roleName: RoleName | null;
+  roleName?: RoleName;
 }
 
 export interface RegistrationState extends Request {

@@ -28,7 +28,7 @@ export interface EditProfileFormContainerProps {
 }
 
 export interface ProfileProps {
-  roleName: RoleName;
+  roleName?: RoleName;
   firstName: string;
   lastName: string;
   photo: string;

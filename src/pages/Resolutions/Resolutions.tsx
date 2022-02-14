@@ -1,6 +1,10 @@
 import { format } from 'date-fns';
 import Loader from 'react-loader-spinner';
 import React from 'react';
+import { colors } from 'components/CommonStyles';
+import { FETCH_STATUS } from 'redux/reducers/constants';
+import { ROLES } from 'routes/constants';
+import { ResolutionForDoctor, ResolutionForPatient } from 'resources/resolutions/resolutions.types';
 import {
   ResolutionsLoaderContainer,
   ResolutionsTable,
@@ -9,12 +13,8 @@ import {
 } from './Resolutions.styles';
 import { columnsNames, visitDate } from './constants';
 import { ResolutionRow } from './ResolutionRow';
-import { colors } from '../../components/CommonStyles';
 import { ResolutionsProps } from './Resolutions.types';
-import { FETCH_STATUS } from '../../redux/reducers/constants';
 import { ResolutionsForPatientPaginateContainer, ResolutionsForDoctorPaginateContainer } from '..';
-import { ROLES } from '../../routes/constants';
-import { ResolutionForDoctor, ResolutionForPatient } from '../../resources/resolutions/resolutions.types';
 
 function createResolutionsTableBody(myResolutions: Array<ResolutionForPatient> | Array<ResolutionForDoctor>) {
   return (

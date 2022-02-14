@@ -13,23 +13,16 @@ import {
 import { Button } from '../Button';
 import restorePasswordValidationSchema from './validation/restorePassword.validation';
 import { restoreFieldsData } from './fieldsData';
-import { RestoreEmail } from './Form.types';
 
-export const RestorePasswordForm:React.VFC<RestoreEmail> = ({ setEmailForRestorePassword }) => {
-  const history = useNavigate();
-  const handleSubmitForm = (email:string) => {
-    setEmailForRestorePassword(email);
-    history(PATH.SEND_EMAIL);
-  };
+export const RestorePasswordForm:React.VFC = () => {
+  const navigate = useNavigate();
+  const handleSubmitForm = () => navigate(PATH.SEND_EMAIL);
   return (
     <Formik
       initialValues={{
         email: '',
       }}
-      onSubmit={({ email }, actions) => {
-        handleSubmitForm(email);
-        actions.setSubmitting(false);
-      }}
+      onSubmit={handleSubmitForm}
       validationSchema={restorePasswordValidationSchema}
     >
       {({

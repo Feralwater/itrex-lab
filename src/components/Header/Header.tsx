@@ -18,7 +18,7 @@ import {
 import { componentsDictionary } from '../dictionary/componentsDictionary';
 
 export interface HeaderProps {
-  roleName: RoleName;
+  roleName?: RoleName;
   firstName: string;
   lastName: string;
   photo: string;
@@ -32,7 +32,7 @@ export const Header: React.VFC<HeaderProps> = ({
 }) => (
   <HeaderWrapper>
     <HeaderContainer>
-      <HeaderLogo to={PATH.APPOINTMENTS(roleName)}>
+      <HeaderLogo to={PATH.DEFAULT}>
         <Logo />
         <LogoText>{componentsDictionary.header.logoText}</LogoText>
       </HeaderLogo>

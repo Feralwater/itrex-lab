@@ -4,7 +4,7 @@ import {
 } from 'components/NavigatePanel/NavigatePanel.styles';
 import { H1 } from 'components/CommonStyles/Topography';
 import { dictionary } from 'pages';
-import { PATH, ROLES } from 'routes/constants';
+import { PATH } from 'routes/constants';
 import { NavigatePanelProps } from 'components/NavigatePanel/PatientNavigatePanel';
 import isActiveTab from './utils';
 import { InputSearchContainer } from '../Input';
@@ -13,7 +13,7 @@ export const DoctorNavigatePanel: React.VFC<NavigatePanelProps> = ({ pageTitle, 
   <>
     <PatientsButtonsContainer>
       <PatientsButton
-        to={PATH.APPOINTMENTS(ROLES.DOCTOR)}
+        to={PATH.DOCTOR_APPOINTMENTS}
         $active={isActiveTab(dictionary.doctorPage.buttonPatients)}
       >
         {dictionary.doctorPage.buttonPatients}
