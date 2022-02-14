@@ -3,7 +3,7 @@ import {
 } from 'formik';
 import React from 'react';
 import { dictionary } from 'pages';
-import { PATH } from 'routes/const';
+import { PATH } from 'routes/constants';
 import {
   CustomForm,
   CustomLink,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { RoleName } from 'redux/reducers/reducers.types';
-import { PATH, ROLES } from 'routes/const';
+import { PATH } from 'routes/constants';
 import { ReactComponent as Logo } from '../../assets/svg/logo.svg';
 import {
   HeaderContainer,
@@ -32,7 +32,7 @@ export const Header: React.VFC<HeaderProps> = ({
 }) => (
   <HeaderWrapper>
     <HeaderContainer>
-      <HeaderLogo to={roleName === ROLES.DOCTOR ? PATH.DOCTOR_APPOINTMENTS : PATH.PATIENT_APPOINTMENTS}>
+      <HeaderLogo to={PATH.APPOINTMENTS(roleName)}>
         <Logo />
         <LogoText>{componentsDictionary.header.logoText}</LogoText>
       </HeaderLogo>

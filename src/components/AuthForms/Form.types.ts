@@ -51,5 +51,5 @@ export interface RestoreValues {
 }
 
 export interface RestoreEmail {
-  setRestorePassword: Dispatch<SetStateAction<string>>;
+  setEmailForRestorePassword: Dispatch<SetStateAction<string>>;
 }

@@ -17,7 +17,7 @@ import {
 } from 'components';
 import { dictionary as pagesDictionary } from 'pages/dictionary/pagesDictionary';
 import { H1 } from 'components/CommonStyles';
-import { PATH } from 'routes/const';
+import { PATH, ROLES } from 'routes/constants';
 import appointmentValidationSchema from './validation/appointment.validation';
 import makeAppointmentsFieldsData from './fieldsData';
 import { MakeAppointmentFormProps } from './form.types';
@@ -38,7 +38,7 @@ export const MakeAppointmentForm: React.VFC<MakeAppointmentFormProps> = ({
 }) => (
   <>
     <LinksContainer>
-      <NoUnderlineLink to={PATH.PATIENT_APPOINTMENTS}>{pagesDictionary.patientPage.buttonAppointments}</NoUnderlineLink>
+      <NoUnderlineLink to={PATH.APPOINTMENTS(ROLES.PATIENT)}>{pagesDictionary.patientPage.buttonAppointments}</NoUnderlineLink>
       <RightArrow />
       <DisabledLink to={PATH.CREATE_APPOINTMENT}>{pagesDictionary.form.makeAppointmentTitle}</DisabledLink>
     </LinksContainer>

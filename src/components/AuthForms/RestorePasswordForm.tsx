@@ -3,22 +3,22 @@ import {
   Field, Formik, FormikErrors, FormikTouched, FormikValues,
 } from 'formik';
 import { Link, useNavigate } from 'react-router-dom';
+import { dictionary } from 'pages';
+import { PATH } from 'routes/constants';
 import {
   ButtonWrapper,
   CustomForm, FormTitle, FormTitleLeftArrow,
   RestoreMessage,
 } from './AuthForm.styles';
 import { Button } from '../Button';
-import { dictionary } from '../../pages';
 import restorePasswordValidationSchema from './validation/restorePassword.validation';
-import { PATH } from '../../routes/constants';
 import { restoreFieldsData } from './fieldsData';
 import { RestoreEmail } from './Form.types';
 
-export const RestorePasswordForm:React.VFC<RestoreEmail> = ({ setRestorePassword }) => {
+export const RestorePasswordForm:React.VFC<RestoreEmail> = ({ setEmailForRestorePassword }) => {
   const history = useNavigate();
   const handleSubmitForm = (email:string) => {
-    setRestorePassword(email);
+    setEmailForRestorePassword(email);
     history(PATH.SEND_EMAIL);
   };
   return (
