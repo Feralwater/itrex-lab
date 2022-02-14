@@ -1,4 +1,4 @@
-import { PATH } from 'routes/constants';
+import { PATH, ROLES } from 'routes/constants';
 import { MakeAppointmentFormContainer } from 'components';
 import { AppointmentsForPatientContainer } from 'modules/patient/AppointmentsForPatientContainer';
 import { ProfileContainer, ResolutionsForPatientContainer } from 'pages';
@@ -21,7 +21,7 @@ export const patientsRoutes = [
     element: MakeAppointmentFormContainer,
   },
   {
-    path: PATH.PROFILE,
+    path: PATH.profile(ROLES.PATIENT),
     element: ProfileContainer,
   },
 ];

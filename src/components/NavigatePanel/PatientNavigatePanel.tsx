@@ -2,7 +2,7 @@ import React, { Dispatch, SetStateAction } from 'react';
 import { ButtonWrapper } from 'components/AuthForms/AuthForm.styles';
 import { H1 } from 'components/CommonStyles/Topography';
 import { dictionary } from 'pages';
-import { PATH } from 'routes/constants';
+import { PATH, ROLES } from 'routes/constants';
 import {
   ButtonLeftPlusIcon,
   CreateAppointmentButton,
@@ -20,7 +20,7 @@ export interface NavigatePanelProps {
 export const PatientNavigatePanel:React.VFC<NavigatePanelProps> = ({ pageTitle }) => (
   <>
     <PatientsButtonsContainer>
-      <PatientsButton to={PATH.PROFILE} $active={isActiveTab(dictionary.patientPage.buttonProfile)}>{dictionary.patientPage.buttonProfile}</PatientsButton>
+      <PatientsButton to={PATH.profile(ROLES.PATIENT)} $active={isActiveTab(dictionary.patientPage.buttonProfile)}>{dictionary.patientPage.buttonProfile}</PatientsButton>
       <PatientsButton
         to={PATH.PATIENT_APPOINTMENTS}
         $active={isActiveTab(dictionary.patientPage.buttonAppointments)}
