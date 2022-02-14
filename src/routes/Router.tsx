@@ -11,17 +11,70 @@ import { AppointmentsForPatientContainer } from 'modules/patient';
 import { RoleName } from 'redux/reducers/reducers.types';
 
 export const PrivateRouter = ({ roleName }: { roleName: RoleName }) => (
-  <PrivateRoute>
-    <Routes>
-      <Route path={PATH.APPOINTMENTS(roleName)} element={<LayoutPrivate><AppointmentsForPatientContainer /></LayoutPrivate>} />
-      <Route path={PATH.APPOINTMENTS(roleName)} element={<LayoutPrivate><AppointmentsForDoctorContainer /></LayoutPrivate>} />
-      <Route path={PATH.DOCTOR_RESOLUTIONS} element={<LayoutPrivate><ResolutionsForDoctorContainer /></LayoutPrivate>} />
-      <Route path={PATH.PROFILE} element={<LayoutPrivate><ProfileContainer /></LayoutPrivate>} />
-      <Route path={PATH.PATIENT_RESOLUTIONS} element={<LayoutPrivate><ResolutionsForPatientContainer /></LayoutPrivate>} />
-      <Route
-        path={PATH.CREATE_APPOINTMENT}
-        element={<LayoutPrivate><MakeAppointmentFormContainer /></LayoutPrivate>}
-      />
-    </Routes>
-  </PrivateRoute>
+  <Routes>
+    <Route
+      path={PATH.DEFAULT}
+      element={(
+        <PrivateRoute>
+          <LayoutPrivate><AppointmentsForPatientContainer /></LayoutPrivate>
+        </PrivateRoute>
+)}
+    />
+    <Route
+      path={PATH.DEFAULT}
+      element={(
+        <PrivateRoute>
+          <LayoutPrivate><AppointmentsForDoctorContainer /></LayoutPrivate>
+        </PrivateRoute>
+)}
+    />
+    <Route
+      path={PATH.APPOINTMENTS(roleName)}
+      element={(
+        <PrivateRoute>
+          <LayoutPrivate><AppointmentsForPatientContainer /></LayoutPrivate>
+        </PrivateRoute>
+      )}
+    />
+    <Route
+      path={PATH.APPOINTMENTS(roleName)}
+      element={(
+        <PrivateRoute>
+          <LayoutPrivate><AppointmentsForDoctorContainer /></LayoutPrivate>
+        </PrivateRoute>
+)}
+    />
+    <Route
+      path={PATH.DOCTOR_RESOLUTIONS}
+      element={(
+        <PrivateRoute>
+          <LayoutPrivate><ResolutionsForDoctorContainer /></LayoutPrivate>
+        </PrivateRoute>
+      )}
+    />
+    <Route
+      path={PATH.PROFILE}
+      element={(
+        <PrivateRoute>
+          <LayoutPrivate><ProfileContainer /></LayoutPrivate>
+        </PrivateRoute>
+)}
+    />
+    <Route
+      path={PATH.PATIENT_RESOLUTIONS}
+      element={(
+        <PrivateRoute>
+          <LayoutPrivate><ResolutionsForPatientContainer /></LayoutPrivate>
+        </PrivateRoute>
+)}
+    />
+    <Route
+      path={PATH.CREATE_APPOINTMENT}
+      element={(
+        <PrivateRoute>
+          <LayoutPrivate><MakeAppointmentFormContainer /></LayoutPrivate>
+        </PrivateRoute>
+)}
+    />
+  </Routes>
 );

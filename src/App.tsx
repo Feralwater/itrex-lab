@@ -25,7 +25,7 @@ const App:React.VFC = () => {
 
   return (
     <>
-      {(roleName !== '')
+      {(roleName)
         ? <AppRouter />
         : (
           <AppLoaderContainer>
