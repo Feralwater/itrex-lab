@@ -3,8 +3,9 @@ import ReactPaginate from 'react-paginate';
 import { useParams } from 'react-router';
 import { useNavigate } from 'react-router-dom';
 import { PATH } from 'routes/constants';
-import { resolutionsSlice, selectResolutions } from 'redux/reducers';
-import { useAppDispatch, useAppSelector } from 'hooks';
+import { selectResolutions } from 'redux/reducers';
+import { useAppSelector } from 'hooks';
+import { useOnPageChange } from 'pages/Resolutions/hooks/useOnPageChange';
 import { resolutionsOnPage } from './constants';
 import { ReactComponent as NextIcon } from '../../assets/svg/rightArrowGrey-icon.svg';
 import { ReactComponent as PrevIcon } from '../../assets/svg/leftArrowGrey-icon.svg';
@@ -15,15 +16,8 @@ export const ResolutionsPaginate = () => {
   const { currentPageNumber = 1 } = useParams();
   const { total: totalCount } = useAppSelector(selectResolutions);
   const [currentPage, setCurrentPage] = useState<number>(Number(currentPageNumber));
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const handleClick = (current: { selected: number }) => {
-    setCurrentPage(current.selected + 1);
-    dispatch(resolutionsSlice.actions.pending({
-      offset: current.selected * resolutionsOnPage,
-      limit: resolutionsOnPage,
-    }));
-  };
+  const handleClick = useOnPageChange({ setCurrentPage });
   const pagesCount = Math.ceil(totalCount / resolutionsOnPage);
   const fromItem = (Number(currentPageNumber) - 1) * resolutionsOnPage + 1;
   const toItem = Math.min((Number(currentPageNumber) - 1) * resolutionsOnPage + resolutionsOnPage, totalCount);
