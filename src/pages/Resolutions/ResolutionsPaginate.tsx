@@ -1,21 +1,37 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
+import { useParams } from 'react-router';
+import { useNavigate } from 'react-router-dom';
+import { PATH } from 'routes/constants';
+import { resolutionsSlice, selectResolutions } from 'redux/reducers';
+import { useAppDispatch, useAppSelector } from 'hooks';
 import { resolutionsOnPage } from './constants';
 import { ReactComponent as NextIcon } from '../../assets/svg/rightArrowGrey-icon.svg';
 import { ReactComponent as PrevIcon } from '../../assets/svg/leftArrowGrey-icon.svg';
 import { Paginate, StyledPaginateContainer } from './ResolutionsPaginate.styles';
 import { dictionary } from '../dictionary/pagesDictionary';
-import { ResolutionsPaginateProps } from './Resolutions.types';
 
-export const ResolutionsPaginate: React.VFC<ResolutionsPaginateProps> = ({ totalCount, handleClick }) => {
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const pagesCount = Math.ceil(totalCount / resolutionsOnPage);
-  const fromItem = (currentPage - 1) * resolutionsOnPage + 1;
-  const toItem = Math.min((currentPage - 1) * resolutionsOnPage + resolutionsOnPage, totalCount);
-  const handlePageClick = (currentPageNumber: { selected: number }) => {
-    handleClick(currentPageNumber);
-    setCurrentPage(currentPageNumber.selected + 1);
+export const ResolutionsPaginate = () => {
+  const { currentPageNumber = 0 } = useParams();
+  const { total: totalCount } = useAppSelector(selectResolutions);
+  const [currentPage, setCurrentPage] = useState<number>(Number(currentPageNumber));
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const handleClick = (current: { selected: number }) => {
+    setCurrentPage(current.selected);
+    dispatch(resolutionsSlice.actions.pending({
+      offset: current.selected * resolutionsOnPage,
+      limit: resolutionsOnPage,
+    }));
   };
+  const pagesCount = Math.ceil(totalCount / resolutionsOnPage);
+  const fromItem = (Number(currentPageNumber) - 1) * resolutionsOnPage + 1;
+  const toItem = Math.min((Number(currentPageNumber) - 1) * resolutionsOnPage + resolutionsOnPage, totalCount);
+
+  useEffect(() => {
+    navigate(`${PATH.DOCTOR_RESOLUTIONS.replace(':currentPageNumber', '')}${currentPage}`);
+  }, [currentPage]);
+
   return (
     <Paginate>
       <div>
@@ -24,9 +40,10 @@ export const ResolutionsPaginate: React.VFC<ResolutionsPaginateProps> = ({ total
       <StyledPaginateContainer>
         <ReactPaginate
           nextLabel={<NextIcon />}
-          onPageChange={handlePageClick}
+          onPageChange={handleClick}
           pageCount={pagesCount}
           previousLabel={<PrevIcon />}
+          initialPage={Number(currentPageNumber)}
         />
       </StyledPaginateContainer>
     </Paginate>

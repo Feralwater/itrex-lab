@@ -2,7 +2,7 @@ import { RoleName } from 'redux/reducers/reducers.types';
 
 export const PATH = {
   DEFAULT: '/',
-  DOCTOR_RESOLUTIONS: '/doctor/resolutions',
+  DOCTOR_RESOLUTIONS: '/doctor/resolutions/:currentPageNumber',
   DOCTOR_APPOINTMENTS: '/doctor/appointments',
   PATIENT_APPOINTMENTS: '/patient/appointments',
   PATIENT_RESOLUTIONS: '/patient/resolutions',
@@ -18,3 +18,5 @@ export enum ROLES {
   DOCTOR = 'Doctor',
   PATIENT = 'Patient',
 }
+
+export const initialResolutionsPageNumber = 0;

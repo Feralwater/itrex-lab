@@ -14,7 +14,7 @@ import {
 import { columnsNames, visitDate } from './constants';
 import { ResolutionRow } from './ResolutionRow';
 import { ResolutionsProps } from './Resolutions.types';
-import { ResolutionsForPatientPaginateContainer, ResolutionsForDoctorPaginateContainer } from '..';
+import { ResolutionsForPatientPaginateContainer, ResolutionsPaginate } from '..';
 
 function createResolutionsTableBody(myResolutions: Array<ResolutionForPatient> | Array<ResolutionForDoctor>) {
   return (
@@ -68,6 +68,6 @@ export const Resolutions:React.VFC<ResolutionsProps> = ({ responseStatus, myReso
       )}
     {role === ROLES.PATIENT
       ? (myResolutions.length > 0 && <ResolutionsForPatientPaginateContainer />)
-      : (myResolutions.length > 0 && <ResolutionsForDoctorPaginateContainer />)}
+      : (myResolutions.length > 0 && <ResolutionsPaginate />)}
   </>
 );

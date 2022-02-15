@@ -14,8 +14,3 @@ export interface ResolutionsProps {
   myResolutions: Array<ResolutionForPatient> | Array<ResolutionForDoctor>
   role: 'Doctor' | 'Patient'
 }
-
-export interface ResolutionsPaginateProps{
-  totalCount: number
-  handleClick: (currentPageNumber: { selected: number })=>void
-}

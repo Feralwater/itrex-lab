@@ -1,4 +1,4 @@
-import { PATH, ROLES } from 'routes/constants';
+import { initialResolutionsPageNumber, PATH, ROLES } from 'routes/constants';
 import { dictionary } from 'pages';
 
 export const searchOptions = [
@@ -38,7 +38,7 @@ export const doctorTabs = [
     text: dictionary.doctorPage.buttonAppointment,
   },
   {
-    path: PATH.DOCTOR_RESOLUTIONS,
+    path: `${PATH.DOCTOR_RESOLUTIONS.replaceAll(':currentPageNumber', '')}${initialResolutionsPageNumber}`,
     text: dictionary.doctorPage.buttonResolutions,
   },
 ];
