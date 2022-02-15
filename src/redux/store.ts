@@ -1,24 +1,23 @@
 import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 import {
-  loginReducer, appointmentReducer, registrationReducer,
+  loginReducer, makeAppointmentReducer, registrationReducer,
   profileReducer, notificationReducer, appointmentsForPatientReducer,
   resolutionReducer, resolutionsReducer,
-  occupationsReducer, doctorsByIDReducer, freeDoctorTimeReducer, cardsForDoctorReducer,
+  occupationsReducer, getDoctorsByIDReducer, freeDoctorTimeReducer, appointmentsForDoctorReducer,
 } from './reducers';
 import rootSaga from './sagas/rootSaga';
 import { editProfileReducer } from './reducers/editProfile.reducer';
 import { editResolutionReducer } from './reducers/editResolution.reducer';
 import { resolutionsForPatientReducer } from './reducers/resolutionsForPatient.reducer';
 import { changePasswordReducer } from './reducers/changePassword.reducer';
-import { editPatientProfileReducer } from './reducers/editPatientProfile.reducer';
 
 const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
   reducer: {
     login: loginReducer,
-    appointments: appointmentReducer,
+    makeAppointment: makeAppointmentReducer,
     registration: registrationReducer,
     profile: profileReducer,
     notification: notificationReducer,
@@ -29,15 +28,14 @@ export const store = configureStore({
     editResolution: editResolutionReducer,
     resolutionsForPatient: resolutionsForPatientReducer,
     occupations: occupationsReducer,
-    doctorsByID: doctorsByIDReducer,
+    getDoctorsByID: getDoctorsByIDReducer,
     freeDoctorTime: freeDoctorTimeReducer,
     changePassword: changePasswordReducer,
-    editPatientProfile: editPatientProfileReducer,
-    cardsForDoctor: cardsForDoctorReducer,
+    appointmentsForDoctor: appointmentsForDoctorReducer,
   },
   middleware: (getDefaultMiddleware) => [...getDefaultMiddleware({
     serializableCheck: {
-      ignoredActions: ['editProfile/pending', 'editPatientProfile/pending'],
+      ignoredActions: ['editProfile/pending'],
     },
   }), sagaMiddleware],
 });

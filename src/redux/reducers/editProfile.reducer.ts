@@ -1,9 +1,8 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
-import { EditProfileState } from './reducers.types';
-import { editProfile } from '../actions';
-import { NewDoctorProfileResponse } from '../../resources/profile/profile.types';
+import { EditProfileState, InitEditProfile } from './reducers.types';
 import { FETCH_STATUS } from './constants';
+import { EditProfileResponse } from '../../resources/auth/auth.types';
 
 const initialState = {
   id: '',
@@ -18,26 +17,21 @@ const initialState = {
 export const editProfileSlice = createSlice({
   name: 'editProfile',
   initialState,
-  reducers: {},
-  extraReducers: (builder) => {
-    builder
-      .addCase(editProfile.fulfilled, (state, { payload }: { payload: NewDoctorProfileResponse }) => ({
-        ...state,
-        id: payload.id,
-        firstName: payload.first_name,
-        lastName: payload.last_name,
-        photo: payload.photo,
-        roleName: payload.role_name,
-        specializationName: payload.specialization_name,
-        status: FETCH_STATUS.FULFILLED,
-      }));
-    builder
-      .addCase(editProfile.pending, (state) => ({ ...state, status: FETCH_STATUS.LOADING }));
-    builder
-      .addCase(editProfile.failed, (state) => ({ ...state, status: FETCH_STATUS.FAILED }));
+  reducers: {
+    fulfilled: (state, action: PayloadAction<EditProfileResponse>) => ({
+      ...state,
+      id: action.payload.id,
+      firstName: action.payload.first_name,
+      lastName: action.payload.last_name,
+      photo: action.payload.photo,
+      roleName: action.payload.role_name,
+      specializationName: action.payload.specialization_name,
+      status: FETCH_STATUS.FULFILLED,
+    }),
+    pending: (state, action: PayloadAction<FormData | InitEditProfile>) => ({ ...state, ...action.payload, status: FETCH_STATUS.LOADING }),
+    failed: (state) => ({ ...state, status: FETCH_STATUS.FAILED }),
   },
 });
 
 export const selectEditProfile = (state: RootState) => state.editProfile;
-
 export const editProfileReducer = editProfileSlice.reducer;

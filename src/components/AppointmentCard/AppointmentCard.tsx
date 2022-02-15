@@ -22,15 +22,13 @@ import {
 } from './AppointmentCard.styles';
 import { UserImage } from '../Header/Header.styles';
 import { statusColor, statusDescription } from './constants';
-import { AppointmentCardProps } from './AppointmentCard.types';
 import { ControlCardPanel } from '../ControlCardPanel';
 import { ROLES } from '../../routes/constants';
 import { componentsDictionary } from '../dictionary/componentsDictionary';
 import { formatVisitTime } from './utils';
-import { useAppSelector } from '../../hooks';
-import { selectResolutions } from '../../redux/reducers';
+import { AppointmentCardProps } from './AppointmentCard.types';
 
-export const AppointmentCard: React.VFC<AppointmentCardProps> = ({
+export const AppointmentCard = React.forwardRef(({
   specialization,
   appointmentID,
   firstName,
@@ -39,11 +37,10 @@ export const AppointmentCard: React.VFC<AppointmentCardProps> = ({
   status,
   time,
   role,
+  resolution,
   reason,
-}) => {
+}: AppointmentCardProps, ref) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-  const { resolutions: doctorsResolutions } = useAppSelector(selectResolutions);
-  const resolution = doctorsResolutions?.find((res) => res.appointment_id === appointmentID);
   const menuRef = useRef() as React.MutableRefObject<HTMLDivElement> | undefined;
 
   function statusOrDoctor() {
@@ -84,7 +81,7 @@ export const AppointmentCard: React.VFC<AppointmentCardProps> = ({
   const toggleMenuHandler = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <UserCard>
+    <UserCard ref={ref as React.RefObject<HTMLDivElement>}>
       <UserCardHeader>
         <UserData>
           <UserCardImageContainer>
@@ -122,4 +119,4 @@ export const AppointmentCard: React.VFC<AppointmentCardProps> = ({
       </UserCardBody>
     </UserCard>
   );
-};
+});

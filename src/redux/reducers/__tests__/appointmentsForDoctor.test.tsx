@@ -1,16 +1,16 @@
 import { FETCH_STATUS } from '../constants';
-import { appointmentsForDoctorReducer } from '../appointmentsForDoctor.reducer';
 import { appointmentsForDoctor } from '../../actions';
-import { AppointmentsForDoctorState } from '../reducers.types';
+import { appointmentsForDoctorState } from '../reducers.types';
+import { appointmentsForDoctorReducer } from '../appointmentsForDoctor.reducer';
 
 // Arrange
 const startState = {
-  appointments: [],
+  cards: [],
   total: 0,
-  responseStatus: FETCH_STATUS.IDLE,
-} as AppointmentsForDoctorState;
+  status: FETCH_STATUS.IDLE,
+} as appointmentsForDoctorState;
 const data: any = {
-  appointments: [
+  cards: [
     {
       id: 'c55d6400-503a-11ec-b7df-f1784d8070ff',
       visit_date: '2021-11-29T14:00:00.000Z',
@@ -43,11 +43,11 @@ const data: any = {
     },
   ],
   total: 2,
-  responseStatus: FETCH_STATUS.IDLE,
+  status: FETCH_STATUS.IDLE,
 };
 const endState = {
   ...data,
-  responseStatus: FETCH_STATUS.FULFILLED,
+  status: FETCH_STATUS.FULFILLED,
 };
 
 it('should return the initial state', () => {

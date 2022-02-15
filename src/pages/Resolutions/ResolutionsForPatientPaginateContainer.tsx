@@ -1,16 +1,18 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { selectResolutionsForPatient } from '../../redux/reducers/resolutionsForPatient.reducer';
+import {
+  resolutionsForPatientSlice,
+  selectResolutionsForPatient,
+} from '../../redux/reducers/resolutionsForPatient.reducer';
 import { ResolutionsPaginate } from './ResolutionsPaginate';
 import { resolutionsOnPage } from './constants';
-import { resolutionsForPatient } from '../../redux/actions';
 
 export const ResolutionsForPatientPaginateContainer: React.VFC = () => {
   const dispatch = useAppDispatch();
   const { total: totalCount } = useAppSelector(selectResolutionsForPatient);
 
   const handleClick = (currentPageNumber: { selected: number }) => {
-    dispatch(resolutionsForPatient.pending({
+    dispatch(resolutionsForPatientSlice.actions.pending({
       offset: currentPageNumber.selected * resolutionsOnPage,
       limit: resolutionsOnPage,
     }));

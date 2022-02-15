@@ -10,7 +10,7 @@ import {
 import { dictionary } from '../../pages';
 import { componentsDictionary } from '../dictionary/componentsDictionary';
 import { useAppSelector } from '../../hooks';
-import { selectCardsForDoctor } from '../../redux/reducers';
+import { selectAppointmentsForDoctor } from '../../redux/reducers';
 import { ResolutionModalProps } from './ControlCardPanel.types';
 
 export const ResolutionModal:React.VFC<ResolutionModalProps> = ({
@@ -19,7 +19,7 @@ export const ResolutionModal:React.VFC<ResolutionModalProps> = ({
   appointmentID,
   resolutionModalTitle,
 }) => {
-  const { cards: appointments } = useAppSelector(selectCardsForDoctor);
+  const { appointments } = useAppSelector(selectAppointmentsForDoctor);
   const selectedAppointment = appointments.find((appointment) => appointment.appointmentID === appointmentID);
   const validationSchema = Yup.object({
     resolutionText: Yup.string()

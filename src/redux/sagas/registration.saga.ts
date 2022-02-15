@@ -1,41 +1,26 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
-import { notificationError, registration } from '../actions';
-import { ProfileResponse, SignUpInResponse } from '../../resources/auth/auth.types';
+import { SignUpInResponse } from '../../resources/auth/auth.types';
 import auth from '../../resources/auth/auth.api';
 import { loginRepository } from '../../resources/loginRepository';
-import { createErrorNotificationMessage, utils } from './utils';
+import { createErrorNotificationMessage } from './utils/createErrorNotificationMessage';
+import { notificationSlice, registrationSlice } from '../reducers';
 
-function* registrationPost(action: ReturnType<typeof registration.pending>) {
+function* registration({ payload }: ReturnType<typeof registrationSlice.actions.pending>) {
   try {
-    const { payload } = action;
-    const response: AxiosResponse<SignUpInResponse> = yield call(auth.SignUp, { ...payload });
-
-    const { data } = response;
-
+    const { data }: AxiosResponse<SignUpInResponse> = yield call(auth.SignUp, { ...payload });
     if (data.access_token) {
       loginRepository
         .setAccessToken(data.access_token)
         .setRefreshToken(data.refresh_token);
     }
-
-    const profile: AxiosResponse<ProfileResponse> = yield call(auth.getMe);
-
-    return { ...response.data, ...profile.data };
+    yield put(registrationSlice.actions.fulfilled(data));
   } catch (error:any) {
-    yield put(notificationError(createErrorNotificationMessage(error.response.data)));
-    throw error;
+    yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.response.data)));
+    yield put(registrationSlice.actions.failed());
   }
 }
 
-const registrationPostSaga = utils.bind(null, registration, registrationPost);
-
-function* registrationPostWatcher() {
-  yield takeEvery(registration.pending, registrationPostSaga);
+export function* registrationWatcher() {
+  yield takeEvery(registrationSlice.actions.pending, registration);
 }
-
-function* registrationSaga() {
-  yield registrationPostWatcher();
-}
-
-export default registrationSaga;

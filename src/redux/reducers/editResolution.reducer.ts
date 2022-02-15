@@ -1,8 +1,8 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { editResolution } from '../actions';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { EditResolutionState } from './reducers.types';
 import { FETCH_STATUS } from './constants';
 import { RootState } from '../store';
+import { EditResolutionFulfilled, EditResolutionPending } from '../actions.types';
 
 const initialState = {
   resolutionID: '',
@@ -12,18 +12,10 @@ const initialState = {
 export const editResolutionSlice = createSlice({
   name: 'editResolution',
   initialState,
-  reducers: {},
-  extraReducers: (builder) => {
-    builder
-      .addCase(editResolution.fulfilled, (state, { payload }) => ({
-        ...state,
-        resolutionID: payload.resolutionID,
-        status: FETCH_STATUS.FULFILLED,
-      }));
-    builder
-      .addCase(editResolution.pending, (state) => ({ ...state, status: FETCH_STATUS.LOADING }));
-    builder
-      .addCase(editResolution.failed, (state) => ({ ...state, status: FETCH_STATUS.FAILED }));
+  reducers: {
+    fulfilled: (state, action: PayloadAction<EditResolutionFulfilled>) => ({ ...state, ...action.payload, status: FETCH_STATUS.FULFILLED }),
+    pending: (state, action: PayloadAction<EditResolutionPending>) => ({ ...state, ...action.payload, status: FETCH_STATUS.LOADING }),
+    failed: (state) => ({ ...state, status: FETCH_STATUS.FAILED }),
   },
 });
 

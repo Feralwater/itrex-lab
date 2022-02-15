@@ -1,6 +1,5 @@
 import { FETCH_STATUS } from '../constants';
-import { appointmentsForPatient } from '../../actions';
-import { appointmentsForPatientReducer } from '../appointmentsForPatient.reducer';
+import { appointmentsForPatientReducer, appointmentsForPatientSlice } from '../appointmentsForPatient.reducer';
 import { AppointmentsForPatientState } from '../reducers.types';
 
 // Arrange
@@ -62,7 +61,7 @@ it('should return the initial state', () => {
 
 it('should handle list of appointments being added', () => {
   // Assert
-  expect(appointmentsForPatientReducer({ ...startState }, appointmentsForPatient.fulfilled(data)))
+  expect(appointmentsForPatientReducer({ ...startState }, appointmentsForPatientSlice.actions.fulfilled(data)))
     .toEqual(
       { ...endState },
     );
