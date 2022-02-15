@@ -1,9 +1,9 @@
 import React from 'react';
-import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from 'hooks';
 import {
   resolutionsForPatientSlice,
   selectResolutionsForPatient,
-} from '../../redux/reducers/resolutionsForPatient.reducer';
+} from 'redux/reducers/resolutionsForPatient.reducer';
 import { ResolutionsPaginate } from './ResolutionsPaginate';
 import { resolutionsOnPage } from './constants';
 

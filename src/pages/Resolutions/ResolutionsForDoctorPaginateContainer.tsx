@@ -1,6 +1,6 @@
 import React from 'react';
-import { useAppDispatch, useAppSelector } from '../../hooks';
-import { resolutionsSlice, selectResolutions } from '../../redux/reducers';
+import { useAppDispatch, useAppSelector } from 'hooks';
+import { resolutionsSlice, selectResolutions } from 'redux/reducers';
 import { resolutionsOnPage } from './constants';
 import { ResolutionsPaginate } from './ResolutionsPaginate';
 

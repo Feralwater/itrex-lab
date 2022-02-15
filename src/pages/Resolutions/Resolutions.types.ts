@@ -1,5 +1,5 @@
-import { Status } from '../../redux/reducers/reducers.types';
-import { ResolutionForDoctor, ResolutionForPatient } from '../../resources/resolutions/resolutions.types';
+import { Status } from 'redux/reducers/reducers.types';
+import { ResolutionForDoctor, ResolutionForPatient } from 'resources/resolutions/resolutions.types';
 
 export interface ResolutionRowProps {
   firstName: string;
