@@ -19,4 +19,4 @@ export enum ROLES {
   PATIENT = 'Patient',
 }
 
-export const initialResolutionsPageNumber = 0;
+export const initialResolutionsPageNumber = 1;

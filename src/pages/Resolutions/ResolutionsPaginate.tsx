@@ -12,13 +12,13 @@ import { Paginate, StyledPaginateContainer } from './ResolutionsPaginate.styles'
 import { dictionary } from '../dictionary/pagesDictionary';
 
 export const ResolutionsPaginate = () => {
-  const { currentPageNumber = 0 } = useParams();
+  const { currentPageNumber = 1 } = useParams();
   const { total: totalCount } = useAppSelector(selectResolutions);
   const [currentPage, setCurrentPage] = useState<number>(Number(currentPageNumber));
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const handleClick = (current: { selected: number }) => {
-    setCurrentPage(current.selected);
+    setCurrentPage(current.selected + 1);
     dispatch(resolutionsSlice.actions.pending({
       offset: current.selected * resolutionsOnPage,
       limit: resolutionsOnPage,
@@ -27,7 +27,6 @@ export const ResolutionsPaginate = () => {
   const pagesCount = Math.ceil(totalCount / resolutionsOnPage);
   const fromItem = (Number(currentPageNumber) - 1) * resolutionsOnPage + 1;
   const toItem = Math.min((Number(currentPageNumber) - 1) * resolutionsOnPage + resolutionsOnPage, totalCount);
-
   useEffect(() => {
     navigate(`${PATH.DOCTOR_RESOLUTIONS.replace(':currentPageNumber', '')}${currentPage}`);
   }, [currentPage]);
@@ -43,7 +42,7 @@ export const ResolutionsPaginate = () => {
           onPageChange={handleClick}
           pageCount={pagesCount}
           previousLabel={<PrevIcon />}
-          initialPage={Number(currentPageNumber)}
+          initialPage={Number(currentPageNumber) - 1}
         />
       </StyledPaginateContainer>
     </Paginate>
