@@ -5,7 +5,7 @@ export const PATH = {
   DOCTOR_RESOLUTIONS: '/doctor/resolutions/:currentPageNumber',
   DOCTOR_APPOINTMENTS: '/doctor/appointments',
   PATIENT_APPOINTMENTS: '/patient/appointments',
-  PATIENT_RESOLUTIONS: '/patient/resolutions',
+  PATIENT_RESOLUTIONS: '/patient/resolutions/:currentPageNumber',
   CREATE_APPOINTMENT: '/create-appointment',
   RESTORE_PASSWORD: '/restore-password',
   SEND_EMAIL: '/send-email',

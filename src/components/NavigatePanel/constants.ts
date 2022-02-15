@@ -27,7 +27,7 @@ export const patientTabs = [
     text: dictionary.patientPage.buttonAppointments,
   },
   {
-    path: PATH.PATIENT_RESOLUTIONS,
+    path: `${PATH.PATIENT_RESOLUTIONS.replaceAll(':currentPageNumber', '')}${initialResolutionsPageNumber}`,
     text: dictionary.patientPage.buttonResolutions,
   },
 ];
