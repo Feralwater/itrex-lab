@@ -13,11 +13,12 @@ export const useOnPageChange = ({ setCurrentPage }:OnPageChange) => {
   const dispatch = useAppDispatch();
   const { roleName } = useAppSelector(selectProfile);
   const slice = roleName === ROLES.DOCTOR ? resolutionsSlice : resolutionsForPatientSlice;
-  return (current: { selected: number }) => {
+  const onPageChange = (current: { selected: number }) => {
     setCurrentPage(current.selected + 1);
     dispatch(slice.actions.pending({
       offset: current.selected * resolutionsOnPage,
       limit: resolutionsOnPage,
     }));
   };
+  return { onPageChange };
 };

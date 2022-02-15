@@ -21,7 +21,8 @@ export const ResolutionsPaginate = () => {
   const totalResolutionsCount = roleName === ROLES.DOCTOR ? doctorsResolutionsTotalCount : patientsResolutionsTotalCount;
   const [currentPage, setCurrentPage] = useState<number>(Number(currentPageNumber));
   const navigate = useNavigate();
-  const handleClick = useOnPageChange({ setCurrentPage });
+  const { onPageChange } = useOnPageChange({ setCurrentPage });
+  const handleClick = onPageChange;
   const pagesCount = Math.ceil(totalResolutionsCount / resolutionsOnPage);
   const fromItem = (Number(currentPageNumber) - 1) * resolutionsOnPage + 1;
   const toItem = Math.min((Number(currentPageNumber) - 1) * resolutionsOnPage + resolutionsOnPage, totalResolutionsCount);
