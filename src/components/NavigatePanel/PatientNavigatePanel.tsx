@@ -2,33 +2,19 @@ import React, { Dispatch, SetStateAction } from 'react';
 import { ButtonWrapper } from 'components/AuthForms/AuthForm.styles';
 import { H1 } from 'components/CommonStyles/Topography';
 import { dictionary } from 'pages';
-import { PATH, ROLES } from 'routes/constants';
-import {
-  ButtonLeftPlusIcon,
-  CreateAppointmentButton,
-  PatientsButton,
-  PatientsButtonsContainer,
-  UserPageTitle,
-} from './NavigatePanel.styles';
-import isActiveTab from './utils';
+import { PATH } from 'routes/constants';
+import { NavigatePanel } from 'components/NavigatePanel/NavigatePanel';
+import { patientTabs } from 'components/NavigatePanel/constants';
+import { ButtonLeftPlusIcon, CreateAppointmentButton, UserPageTitle } from './NavigatePanel.styles';
 
 export interface NavigatePanelProps {
-  pageTitle: string
+  pageTitle: string;
   setSearchTerm?: Dispatch<SetStateAction<string>>;
 }
 
 export const PatientNavigatePanel:React.VFC<NavigatePanelProps> = ({ pageTitle }) => (
   <>
-    <PatientsButtonsContainer>
-      <PatientsButton to={PATH.profile(ROLES.PATIENT)} $active={isActiveTab(dictionary.patientPage.buttonProfile)}>{dictionary.patientPage.buttonProfile}</PatientsButton>
-      <PatientsButton
-        to={PATH.PATIENT_APPOINTMENTS}
-        $active={isActiveTab(dictionary.patientPage.buttonAppointments)}
-      >
-        {dictionary.patientPage.buttonAppointments}
-      </PatientsButton>
-      <PatientsButton to={PATH.PATIENT_RESOLUTIONS} $active={isActiveTab(dictionary.patientPage.buttonResolutions)}>{dictionary.patientPage.buttonResolutions}</PatientsButton>
-    </PatientsButtonsContainer>
+    <NavigatePanel buttonOnNavigatePanel={patientTabs} />
     <UserPageTitle>
       <H1>{ pageTitle }</H1>
       <ButtonWrapper>

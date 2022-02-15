@@ -1,30 +1,14 @@
 import React from 'react';
-import {
-  PatientsButton, PatientsButtonsContainer, UserPageTitle, SearchAndFilter,
-} from 'components/NavigatePanel/NavigatePanel.styles';
+import { UserPageTitle, SearchAndFilter } from 'components/NavigatePanel/NavigatePanel.styles';
 import { H1 } from 'components/CommonStyles/Topography';
-import { dictionary } from 'pages';
-import { PATH } from 'routes/constants';
 import { NavigatePanelProps } from 'components/NavigatePanel/PatientNavigatePanel';
-import isActiveTab from './utils';
+import { NavigatePanel } from 'components/NavigatePanel/NavigatePanel';
+import { doctorTabs } from 'components/NavigatePanel/constants';
 import { InputSearchContainer } from '../Input';
 
 export const DoctorNavigatePanel: React.VFC<NavigatePanelProps> = ({ pageTitle, setSearchTerm }) => (
   <>
-    <PatientsButtonsContainer>
-      <PatientsButton
-        to={PATH.DOCTOR_APPOINTMENTS}
-        $active={isActiveTab(dictionary.doctorPage.buttonPatients)}
-      >
-        {dictionary.doctorPage.buttonPatients}
-      </PatientsButton>
-      <PatientsButton
-        to={PATH.DOCTOR_RESOLUTIONS}
-        $active={isActiveTab(dictionary.doctorPage.buttonResolutions)}
-      >
-        {dictionary.doctorPage.buttonResolutions}
-      </PatientsButton>
-    </PatientsButtonsContainer>
+    <NavigatePanel buttonOnNavigatePanel={doctorTabs} />
     <UserPageTitle>
       <H1>{pageTitle}</H1>
       <SearchAndFilter>

@@ -15,9 +15,7 @@ export const CustomSelect: React.VFC<any> = ({
   <SelectLabel htmlFor={id}>
     <span>
       {labelText}
-      <RequireSign isRequire={isRequire}>
-        *
-      </RequireSign>
+      {isRequire && <RequireSign>*</RequireSign>}
     </span>
     <Select
       {...props}

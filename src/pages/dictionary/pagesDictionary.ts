@@ -28,7 +28,7 @@ export const dictionary = {
     resolutionsTitle: 'Resolutions',
     emptyMedicalHistoryTextLine1: 'You have no patient yet.',
     emptyMedicalHistoryTextLine2: 'To create a patient profile, please contact your administrator.',
-    buttonPatients: 'Patients',
+    buttonAppointment: 'Appointments',
     buttonResolutions: 'Resolutions',
     controlCommandCreate: 'Create a resolution',
     controlCommandEdit: 'Edit a resolution',

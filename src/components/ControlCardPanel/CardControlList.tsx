@@ -1,9 +1,9 @@
 import React from 'react';
-import { useAppDispatch } from '../../hooks';
+import { useAppDispatch } from 'hooks';
+import { dictionary } from 'pages';
+import { appointmentsForDoctorSlice } from 'redux/reducers';
 import { CommandsList, ControlCommand } from './ControlCardPanel.styles';
-import { dictionary } from '../../pages';
 import { CardControlListProps } from './ControlCardPanel.types';
-import { appointmentsForDoctorSlice } from '../../redux/reducers';
 
 export const CardControlList:React.VFC<CardControlListProps> = ({
   setActiveCreateResolutionModal,
