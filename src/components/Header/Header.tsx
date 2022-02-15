@@ -45,7 +45,7 @@ export const Header: React.VFC<HeaderProps> = ({
           <Link to={PATH.profile(roleName)}>
             <UserImage src={photo} alt={componentsDictionary.header.avatarAlt} />
           </Link>
-          <NetworkStatus isOnline />
+          <NetworkStatus />
         </UserImageContainer>
       </User>
     </HeaderContainer>

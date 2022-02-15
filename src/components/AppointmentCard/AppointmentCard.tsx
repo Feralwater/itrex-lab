@@ -3,13 +3,12 @@ import { AppointmentCardHeader } from 'components/AppointmentCard/AppointmentCar
 import { AppointmentCardProps } from 'components/AppointmentCard/AppointmentCard.types';
 import { AppointmentCardSettingsButton } from 'components/AppointmentCard/AppointmentCardSettingsButton';
 import { ROLES } from 'routes/constants';
+import { AppointmentCardDescription } from 'components/AppointmentCard/AppointmentCardDescription';
 import { ReactComponent as Clock } from '../../assets/svg/clock-icon.svg';
 
 import {
   UserCard,
   UserCardBody,
-  UserCardBodyDescription,
-  UserCardBodyDescriptionText,
   UserCardBodyTime,
   UserCardBodyTimeText,
   UserCardHeader,
@@ -64,10 +63,10 @@ export const AppointmentCard:React.VFC<AppointmentCardProps> = ({
         <Clock />
         <UserCardBodyTimeText>{formatVisitTime(time)}</UserCardBodyTimeText>
       </UserCardBodyTime>
-      <UserCardBodyDescription isDescription={!!cardDescription?.length}>
-        <div>{cardIcon}</div>
-        <UserCardBodyDescriptionText>{cardDescription}</UserCardBodyDescriptionText>
-      </UserCardBodyDescription>
+      <AppointmentCardDescription
+        cardIcon={cardIcon}
+        cardDescription={cardDescription}
+      />
     </UserCardBody>
   </UserCard>
 );

@@ -26,9 +26,7 @@ export const InputFormContainer:React.VFC<InputProps> = ({
       <Label htmlFor={id}>
         <span>
           {label}
-          <RequireSign isRequire={isRequire}>
-            *
-          </RequireSign>
+          {isRequire && <RequireSign>*</RequireSign>}
         </span>
       </Label>
       <InputContainer icon={icon} iconURL={iconURL}>

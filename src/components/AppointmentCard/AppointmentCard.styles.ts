@@ -67,12 +67,8 @@ export const UserCardBodyTimeText = styled.time`
   margin: 0 0 16px 0;
 `;
 
-interface UserCardBodyDescriptionProps {
-  isDescription: boolean | undefined;
-}
-
-export const UserCardBodyDescription = styled(UserCardBodyTime)<UserCardBodyDescriptionProps>`
-  display: ${(props) => (props.isDescription ? 'flex' : 'none')};
+export const UserCardBodyDescription = styled(UserCardBodyTime)`
+  display: flex;
 `;
 
 export const UserCardBodyDescriptionText = styled(Title)`
