@@ -1,12 +1,12 @@
 import React from 'react';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import {
-  SkeletonBodyWrapper, SkeletonCardHeader, SkeletonImageWrapper, SkeletonInfoWrapper,
+  SkeletonBodyWrapper, SkeletonCardContainer, SkeletonCardHeader, SkeletonImageWrapper, SkeletonInfoWrapper,
 } from './Skeleton.styles';
 import { colors } from '../CommonStyles';
 
-export const SkeletonCard:React.VFC = () => (
-  <>
+export const SkeletonCard = React.forwardRef((props, ref) => (
+  <SkeletonCardContainer ref={ref as React.RefObject<HTMLDivElement>}>
     <SkeletonCardHeader>
       <SkeletonTheme baseColor={`${colors.alabaster}`} highlightColor={`${colors.link_water['016']}`}>
         <Skeleton wrapper={SkeletonImageWrapper} height={48} width={48} circle />
@@ -24,5 +24,5 @@ export const SkeletonCard:React.VFC = () => (
         <Skeleton width={342} height={43} />
       </SkeletonTheme>
     </SkeletonBodyWrapper>
-  </>
-);
+  </SkeletonCardContainer>
+));
