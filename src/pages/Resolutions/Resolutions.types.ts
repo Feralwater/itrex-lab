@@ -12,5 +12,4 @@ export interface ResolutionRowProps {
 export interface ResolutionsProps {
   responseStatus: Status;
   myResolutions: Array<ResolutionForPatient> | Array<ResolutionForDoctor>
-  role: 'Doctor' | 'Patient'
 }

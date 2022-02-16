@@ -53,7 +53,7 @@ const GetResolutionsTable:React.VFC<ResolutionsTableProps> = ({ myResolutions })
   </ResolutionsTable>
 );
 
-export const Resolutions:React.VFC<ResolutionsProps> = ({ responseStatus, myResolutions, role }) => (
+export const Resolutions:React.VFC<ResolutionsProps> = ({ responseStatus, myResolutions }) => (
   <>
     {responseStatus !== FETCH_STATUS.LOADING
       ? <GetResolutionsTable myResolutions={myResolutions} />
