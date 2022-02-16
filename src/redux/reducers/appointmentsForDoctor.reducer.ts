@@ -12,7 +12,7 @@ const initialState = {
   appointments: [],
   total: 0,
   isMore: false,
-  status: FETCH_STATUS.IDLE,
+  responseStatus: FETCH_STATUS.IDLE,
   entityStatus: FETCH_STATUS.IDLE,
 } as AppointmentsForDoctorState;
 
