@@ -6,5 +6,5 @@ export interface MainPage {
   responseStatus: Status
   fullState: ReactElement
   emptyState: ReactElement
-  isMoreAppointments: boolean
+  totalAppointmentsCount: number
 }

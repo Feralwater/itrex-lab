@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { colors } from '../CommonStyles';
 
 export const SkeletonCardContainer = styled.div`
- height: 217px;
+  min-height: 217px;
   border-radius: 12px;
   background-color: ${colors.white};
 `;

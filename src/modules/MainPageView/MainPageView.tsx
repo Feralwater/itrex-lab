@@ -10,14 +10,15 @@ export const MainPageView = React.forwardRef(({
   responseStatus,
   fullState,
   emptyState,
-  isMoreAppointments,
+  totalAppointmentsCount,
 }:MainPage, ref) => {
   const isAppointmentsEmpty = responseStatus === FETCH_STATUS.FULFILLED && appointmentsLength === 0;
+  const isMoreAppointments = totalAppointmentsCount !== appointmentsLength;
   return (
     <>
       <AppointmentsWrapper isAppointmentsEmpty={isAppointmentsEmpty}>
         {fullState}
-        {isMoreAppointments && (
+        { isMoreAppointments && (
         <SkeletonCardContainer ref={ref as React.RefObject<HTMLDivElement>}>
           <SkeletonCard />
         </SkeletonCardContainer>

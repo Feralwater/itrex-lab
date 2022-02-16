@@ -10,7 +10,9 @@ import { useAppointmentsOnScreen } from 'modules/hooks/useAppointmentsOnScreen';
 export const AppointmentsForDoctorContainer: React.VFC = () => {
   const [, setSearchTerm] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
-  const { responseStatus, appointments, isMoreAppointments } = useFetchDoctorsAppointments(pageNumber);
+  const {
+    responseStatus, appointments, isMoreAppointments, totalAppointmentsCount,
+  } = useFetchDoctorsAppointments(pageNumber);
   const { hiddenBlockRef } = useAppointmentsOnScreen({ responseStatus, isMoreAppointments, setPageNumber });
 
   return (
@@ -22,7 +24,7 @@ export const AppointmentsForDoctorContainer: React.VFC = () => {
         emptyState={<DoctorEmptyState />}
         responseStatus={responseStatus}
         appointmentsLength={appointments.length}
-        isMoreAppointments={isMoreAppointments}
+        totalAppointmentsCount={totalAppointmentsCount}
       />
     </>
   );
