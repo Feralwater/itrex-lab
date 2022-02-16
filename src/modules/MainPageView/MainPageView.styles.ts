@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 interface AppointmentsWrapperProps {
-  appointmentsLength: number;
+  isAppointmentsEmpty: boolean;
 }
 
 export const AppointmentsWrapper = styled.div<AppointmentsWrapperProps>`
-  display: ${(props) => (props.appointmentsLength > 0 ? 'grid' : 'flex')};
-  height: ${(props) => (props?.appointmentsLength === 0 && '68vh')};
-  justify-content: ${(props) => (props?.appointmentsLength === 0 && 'center')};
-  align-items: ${(props) => (props?.appointmentsLength === 0 && 'center')};
+  display: ${(props) => (!props.isAppointmentsEmpty ? 'grid' : 'flex')};
+  height: ${(props) => (props?.isAppointmentsEmpty && '68vh')};
+  justify-content: ${(props) => (props?.isAppointmentsEmpty && 'center')};
+  align-items: ${(props) => (props?.isAppointmentsEmpty && 'center')};
   grid-template-columns: repeat(auto-fit, minmax(calc(25% - 18px), calc(25% - 18px)));
   grid-template-rows: minmax(217px, 264px);
   gap: 25px 24px;

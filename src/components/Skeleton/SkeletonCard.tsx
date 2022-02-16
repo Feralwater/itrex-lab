@@ -21,7 +21,7 @@ export const SkeletonCard:React.VFC = () => (
     <SkeletonBodyWrapper>
       <SkeletonTheme baseColor={`${colors.alabaster}`} highlightColor={`${colors.link_water['016']}`}>
         <Skeleton width={342} height={24} />
-        <Skeleton width={342} height={63} />
+        <Skeleton width={342} height={43} />
       </SkeletonTheme>
     </SkeletonBodyWrapper>
   </>

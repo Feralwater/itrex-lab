@@ -9,13 +9,16 @@ export const MainPageView = React.forwardRef(({
   responseStatus,
   fullState,
   emptyState,
-}:MainPage, ref) => (
-  <>
-    <AppointmentsWrapper appointmentsLength={appointmentsLength}>
-      {fullState}
-      <HiddenBlock ref={ref as React.RefObject<HTMLDivElement>} />
-    </AppointmentsWrapper>
-    {responseStatus === FETCH_STATUS.LOADING && <SkeletonCards />}
-    {appointmentsLength < 0 && responseStatus === FETCH_STATUS.FULFILLED && emptyState}
-  </>
-));
+}:MainPage, ref) => {
+  const isAppointmentsEmpty = responseStatus === FETCH_STATUS.FULFILLED && appointmentsLength === 0;
+  return (
+    <>
+      <AppointmentsWrapper isAppointmentsEmpty={isAppointmentsEmpty}>
+        {fullState}
+        <HiddenBlock ref={ref as React.RefObject<HTMLDivElement>} />
+        {responseStatus === FETCH_STATUS.LOADING && <SkeletonCards />}
+      </AppointmentsWrapper>
+      {isAppointmentsEmpty && emptyState}
+    </>
+  );
+});
