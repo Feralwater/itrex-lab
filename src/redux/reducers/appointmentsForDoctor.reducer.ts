@@ -25,10 +25,10 @@ export const appointmentsForDoctorSlice = createSlice({
       appointments: [...state.appointments, ...action.payload.appointments],
       isMore: action.payload.total > action.payload.appointments.length,
       total: action.payload.total,
-      status: FETCH_STATUS.FULFILLED,
+      responseStatus: FETCH_STATUS.FULFILLED,
     }),
-    pending: (state, action: PayloadAction<AppointmentsForDoctorPending>) => ({ ...state, ...action.payload, status: FETCH_STATUS.LOADING }),
-    failed: (state) => ({ ...state, status: FETCH_STATUS.FAILED }),
+    pending: (state, action: PayloadAction<AppointmentsForDoctorPending>) => ({ ...state, ...action.payload, responseStatus: FETCH_STATUS.LOADING }),
+    failed: (state) => ({ ...state, responseStatus: FETCH_STATUS.FAILED }),
     deleteAppointmentFulfilled: (state, action: PayloadAction<string>) => ({
       ...state,
       appointments: state.appointments.filter((appointment) => appointment.appointmentID !== action.payload),
