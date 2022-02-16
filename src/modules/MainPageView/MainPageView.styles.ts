@@ -26,7 +26,3 @@ export const AppointmentsWrapper = styled.div<AppointmentsWrapperProps>`
     padding: 0;
   }
 `;
-
-export const HiddenBlock = styled.div`
-  height: 0px;
-`;

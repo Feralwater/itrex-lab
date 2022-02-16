@@ -22,6 +22,7 @@ export const AppointmentsForDoctorContainer: React.VFC = () => {
         emptyState={<DoctorEmptyState />}
         responseStatus={responseStatus}
         appointmentsLength={appointments.length}
+        isMoreAppointments={isMoreAppointments}
       />
     </>
   );
