@@ -1,5 +1,5 @@
-import { FormFieldData } from '../../components/AuthForms/Form.types';
-import { InputFormContainer } from '../../components';
+import { FormFieldData } from 'components/AuthForms/Form.types';
+import { InputFormContainer } from 'components/Input';
 
 export const signUpFieldsData:Array<FormFieldData> = [
   {

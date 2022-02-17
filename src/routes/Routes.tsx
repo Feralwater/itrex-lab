@@ -5,18 +5,18 @@ import {
 import { SendEmail } from 'pages/SendEmail/SendEmail';
 import { SignIn } from 'pages/SignIn/SignIn';
 import { SignUp } from 'pages/SignUp/SignUp';
-import { AppointmentsForDoctorContainer } from 'pages/Appointments/AppointmentsForDoctorContainer';
-import { AppointmentsForPatientContainer } from 'pages/Appointments/AppointmentsForPatientContainer';
+import { useAppSelector } from 'hooks';
+import {
+  ResolutionsForDoctorContainer, ResolutionsForPatientContainer, EditProfileFormContainer, ProfileContainer,
+} from 'pages';
+import { selectProfile } from 'redux/reducers';
+import { AppointmentsForDoctorContainer } from 'modules/doctor';
+import { AppointmentsForPatientContainer } from 'modules/patient';
+import checkUserRole from './utils';
+import { PATH } from './constants';
 import {
   Error404, AuthorisedLayout, LayoutPrivate, RestorePasswordForm, MakeAppointmentFormContainer,
 } from '../components';
-import { useAppSelector } from '../hooks';
-import { PATH } from './constants';
-import checkUserRole from './utils';
-import {
-  ResolutionsForDoctorContainer, ResolutionsForPatientContainer, EditProfileFormContainer, ProfileContainer,
-} from '../pages';
-import { selectProfile } from '../redux/reducers';
 
 export const AppRouter:React.VFC = () => {
   const { roleName } = useAppSelector(selectProfile);

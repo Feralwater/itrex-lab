@@ -1,7 +1,7 @@
 import {
   Dispatch, SetStateAction, useCallback, useRef,
 } from 'react';
-import { FETCH_STATUS } from '../../redux/reducers/constants';
+import { FETCH_STATUS } from 'redux/reducers/constants';
 
 interface AppointmentRef {
   responseStatus: 'idle' | 'loading' | 'failed' | 'fulfilled',

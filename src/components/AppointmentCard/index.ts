@@ -1,1 +1,1 @@
-export * from './AppointmentCard';
+export * from './AppointmentCardContainer';
