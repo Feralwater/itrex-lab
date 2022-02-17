@@ -1,14 +1,7 @@
 import styled from 'styled-components';
 
-interface AppointmentsWrapperProps {
-  isAppointmentsEmpty: boolean;
-}
-
-export const AppointmentsWrapper = styled.div<AppointmentsWrapperProps>`
-  display: ${(props) => (!props.isAppointmentsEmpty ? 'grid' : 'flex')};
-  height: ${(props) => (props?.isAppointmentsEmpty && '68vh')};
-  justify-content: ${(props) => (props?.isAppointmentsEmpty && 'center')};
-  align-items: ${(props) => (props?.isAppointmentsEmpty && 'center')};
+export const AppointmentsWrapper = styled.div`
+  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(calc(25% - 18px), calc(25% - 18px)));
   grid-template-rows: minmax(217px, 264px);
   gap: 25px 24px;

@@ -10,17 +10,17 @@ export const MainPageView = React.forwardRef(({
   fullState,
   emptyState,
   totalAppointmentsCount,
-}:MainPage, ref) => {
+}: MainPage, ref) => {
   const isAppointmentsEmpty = responseStatus === FETCH_STATUS.FULFILLED && appointmentsLength === 0;
   const isMoreAppointments = totalAppointmentsCount !== appointmentsLength;
+  if (isAppointmentsEmpty) {
+    return emptyState;
+  }
   return (
-    <>
-      <AppointmentsWrapper isAppointmentsEmpty={isAppointmentsEmpty}>
-        {fullState}
-        { isMoreAppointments && <SkeletonCard ref={ref} /> }
-        {responseStatus === FETCH_STATUS.LOADING && <SkeletonCards />}
-      </AppointmentsWrapper>
-      {isAppointmentsEmpty && emptyState}
-    </>
+    <AppointmentsWrapper>
+      {fullState}
+      {isMoreAppointments && <SkeletonCard ref={ref} />}
+      {responseStatus === FETCH_STATUS.LOADING && <SkeletonCards />}
+    </AppointmentsWrapper>
   );
 });
