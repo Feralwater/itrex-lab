@@ -7,7 +7,6 @@ import {
   occupationsReducer, getDoctorsByIDReducer, freeDoctorTimeReducer, appointmentsForDoctorReducer,
 } from './reducers';
 import rootSaga from './sagas/rootSaga';
-import { editProfileReducer } from './reducers/editProfile.reducer';
 import { editResolutionReducer } from './reducers/editResolution.reducer';
 import { resolutionsForPatientReducer } from './reducers/resolutionsForPatient.reducer';
 import { changePasswordReducer } from './reducers/changePassword.reducer';
@@ -24,7 +23,6 @@ export const store = configureStore({
     appointmentsForPatient: appointmentsForPatientReducer,
     resolution: resolutionReducer,
     resolutions: resolutionsReducer,
-    editProfile: editProfileReducer,
     editResolution: editResolutionReducer,
     resolutionsForPatient: resolutionsForPatientReducer,
     occupations: occupationsReducer,

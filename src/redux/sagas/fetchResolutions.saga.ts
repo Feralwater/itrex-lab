@@ -1,7 +1,7 @@
 import { AxiosResponse } from 'axios';
 import { call, put, takeEvery } from 'redux-saga/effects';
+import { ResolutionsForPatientResponse, ResolutionsResponse } from 'resources/resolutions/resolutions.types';
 import { createErrorNotificationMessage } from './utils/createErrorNotificationMessage';
-import { ResolutionsForPatientResponse, ResolutionsResponse } from '../../resources/resolutions/resolutions.types';
 import resolutionsAPI from '../../resources/resolutions/resolutions.api';
 import { notificationSlice, resolutionsSlice } from '../reducers';
 import { resolutionsForPatientSlice } from '../reducers/resolutionsForPatient.reducer';

@@ -1,15 +1,16 @@
 import Loader from 'react-loader-spinner';
 import React from 'react';
+import { Status } from 'redux/reducers/reducers.types';
+import { FETCH_STATUS } from 'redux/reducers/constants';
 import { ButtonWrapper } from './AuthForm.styles';
 import { Button } from '../Button';
 import { colors } from '../CommonStyles';
-import { Status } from '../../redux/reducers/reducers.types';
-import { FETCH_STATUS } from '../../redux/reducers/constants';
 
 export interface ButtonWithLoaderProps{
   status: Status
   isValid: boolean
   dirty: boolean
+  closeEditModeHandler?: ()=>void
 }
 
 export const ButtonWithLoader:React.FC<ButtonWithLoaderProps> = ({

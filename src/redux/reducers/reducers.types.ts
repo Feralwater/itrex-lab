@@ -22,25 +22,6 @@ export interface ProfileState extends Request {
   roleName: RoleName;
 }
 
-export interface EditProfileState extends Request {
-  id: string;
-  firstName: string;
-  lastName: string;
-  photo: string;
-  roleName: string;
-  specializationName?: string;
-}
-
-export interface InitEditProfile {
-  id: string,
-  firstName: string,
-  lastName: string,
-  photo: string,
-  roleName: RoleName,
-  specializationName: string,
-  status: Status,
-}
-
 export interface RegistrationState extends Request {
   accessToken: string;
   refreshToken?: string;

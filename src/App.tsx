@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import Loader from 'react-loader-spinner';
 import styled from 'styled-components';
-import { useAppSelector, useProfile } from './hooks';
-import { NotificationContainer } from './components';
-import { selectAccessToken } from './redux/reducers';
-import { AppRouter } from './routes/Routes';
-import { colors } from './components/CommonStyles';
+import { useAppSelector, useProfile } from 'hooks';
+import { NotificationContainer } from 'components';
+import { selectAccessToken } from 'redux/reducers';
+import { AppRouter } from 'routes/Routes';
+import { colors } from 'components/CommonStyles';
 
 export const AppLoaderContainer = styled.div`
   width: 100%;
@@ -18,10 +18,9 @@ export const AppLoaderContainer = styled.div`
 const App:React.VFC = () => {
   const accessToken = useAppSelector(selectAccessToken);
 
-  const { initEditProfile, initProfile, roleName } = useProfile();
+  const { initProfile, roleName } = useProfile();
   useEffect(() => {
     initProfile();
-    initEditProfile();
   }, [accessToken]);
 
   return (

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { ROLES, ROLES_API } from 'routes/constants';
+import { EditProfileResponse, ProfileResponse } from 'resources/auth/auth.types';
 import { ProfileState } from './reducers.types';
-import { ROLES, ROLES_API } from '../../routes/constants';
-import { ProfileResponse } from '../../resources/auth/auth.types';
 import { RootState } from '../store';
 import { FETCH_STATUS } from './constants';
 
@@ -29,6 +29,17 @@ export const profileSlice = createSlice({
     }),
     pending: (state) => ({ ...state, status: FETCH_STATUS.LOADING }),
     failed: (state) => ({ ...state, status: FETCH_STATUS.FAILED, roleName: ROLES.PUBLIC }),
+    editProfileFulfilled: (state, action: PayloadAction<EditProfileResponse>) => ({
+      ...state,
+      id: action.payload.id,
+      firstName: action.payload.first_name,
+      lastName: action.payload.last_name,
+      photo: action.payload.photo,
+      roleName: action.payload.role_name,
+      status: FETCH_STATUS.FULFILLED,
+    }),
+    editProfilePending: (state, action: PayloadAction<FormData>) => ({ ...state, ...action.payload, status: FETCH_STATUS.LOADING }),
+    editProfileFailed: (state) => ({ ...state, status: FETCH_STATUS.FAILED }),
   },
 });
 

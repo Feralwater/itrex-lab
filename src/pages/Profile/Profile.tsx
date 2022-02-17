@@ -1,12 +1,10 @@
 import React from 'react';
 import { H1, H2, SubTitle } from 'components/CommonStyles/Topography';
+import { Button, ModalWindow } from 'components';
 import { dictionary as pagesDictionary } from '../dictionary/pagesDictionary';
-import { Button, ModalWindow } from '../../components';
 import {
-  EditLink,
   ImageContainer, InfoContainer, ProfileContainer, TitlePanel,
 } from './Profile.styles';
-import { PATH } from '../../routes/constants';
 import { ProfileProps } from './EditProfile.types';
 import { ChangePasswordModal } from '..';
 
@@ -19,6 +17,7 @@ export const Profile: React.VFC<ProfileProps> = ({
   setActiveChangePasswordModal,
   closeModalHandler,
   logoutHandler,
+  openEditModeHandler,
 }) => (
   <>
     <TitlePanel>
@@ -34,17 +33,17 @@ export const Profile: React.VFC<ProfileProps> = ({
         >
           logout
         </Button>
-        <EditLink to={PATH.EDIT_PROFILE}>
-          <Button
-            size="small"
-            variant="primary"
-            icon="left"
-            type="button"
-            iconUrl="/svg/pencil-icon.svg"
-          >
-            {pagesDictionary.profile.editButton}
-          </Button>
-        </EditLink>
+        {' '}
+        <Button
+          size="small"
+          variant="primary"
+          icon="left"
+          type="button"
+          iconUrl="/svg/pencil-icon.svg"
+          onClick={openEditModeHandler}
+        >
+          {pagesDictionary.profile.editButton}
+        </Button>
       </div>
     </TitlePanel>
     <ProfileContainer>
