@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { appointmentsPerPage } from 'modules/hooks/constants';
 import { ROLES } from 'routes/constants';
 
-export const useFetchAppointments = (page: number, searchTerm: string) => {
+export const useFetchAppointments = (page: number, searchTerm?: string) => {
   const dispatch = useAppDispatch();
   const { id: userId, roleName } = useAppSelector(selectProfile);
   const slice = roleName === ROLES.DOCTOR ? appointmentsForDoctorSlice : appointmentsForPatientSlice;
