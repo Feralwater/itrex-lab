@@ -36,6 +36,7 @@ export const appointmentsForDoctorSlice = createSlice({
     }),
     deleteAppointmentPending: (state, action: PayloadAction<DeleteAppointmentPending>) => ({ ...state, ...action.payload, entityStatus: FETCH_STATUS.LOADING }),
     deleteAppointmentFailed: (state) => ({ ...state, entityStatus: FETCH_STATUS.FAILED }),
+    clearState: (state) => ({ ...state, appointments: [] }),
   },
 });
 

@@ -20,4 +20,7 @@ export const useFetchAppointments = (page: number, searchTerm?: string) => {
       }));
     }
   }, [userId, dispatch, page, searchTerm]);
+  useEffect(() => () => {
+    dispatch(slice.actions.clearState());
+  }, []);
 };
