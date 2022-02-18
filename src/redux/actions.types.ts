@@ -39,6 +39,7 @@ export interface AppointmentsForPatientPending {
 export interface AppointmentsForDoctorPending {
   offset: number;
   limit: number;
+  name?: string
 }
 
 export interface DeleteAppointmentPending {

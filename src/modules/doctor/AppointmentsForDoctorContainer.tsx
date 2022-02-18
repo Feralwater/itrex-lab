@@ -10,14 +10,18 @@ import { useAppSelector } from 'hooks';
 import { selectAppointmentsForDoctor } from 'redux/reducers';
 
 export const AppointmentsForDoctorContainer: React.VFC = () => {
-  const [, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
   const { appointments, responseStatus, isMore: isMoreAppointments } = useAppSelector(selectAppointmentsForDoctor);
   const { hiddenBlockRef } = useAppointmentsOnScreen({ responseStatus, isMoreAppointments, setPageNumber });
-  useFetchAppointments(pageNumber);
+  useFetchAppointments(pageNumber, searchTerm);
   return (
     <>
-      <DoctorNavigatePanel pageTitle={dictionary.doctorPage.patientsTitle} setSearchTerm={setSearchTerm} />
+      <DoctorNavigatePanel
+        pageTitle={dictionary.doctorPage.patientsTitle}
+        setPageNumber={setPageNumber}
+        setSearchTerm={setSearchTerm}
+      />
       <MainPageView
         ref={hiddenBlockRef}
         fullState={<DoctorFullState appointments={appointments} />}
