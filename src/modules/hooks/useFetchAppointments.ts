@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from 'hooks';
 import {
-  appointmentsForDoctorSlice, appointmentsForPatientSlice, selectProfile,
+  appointmentsForDoctorSlice, appointmentsForPatientSlice, selectAppointmentsForDoctor, selectProfile,
 } from 'redux/reducers';
 import { useEffect } from 'react';
 import { appointmentsPerPage } from 'modules/hooks/constants';
@@ -20,6 +20,11 @@ export const useFetchAppointments = (page: number, searchTerm?: string) => {
       }));
     }
   }, [userId, dispatch, page, searchTerm]);
+  useEffect(() => {
+    if (searchTerm) {
+      dispatch(slice.actions.clearState());
+    }
+  }, [searchTerm]);
   useEffect(() => () => {
     dispatch(slice.actions.clearState());
   }, []);

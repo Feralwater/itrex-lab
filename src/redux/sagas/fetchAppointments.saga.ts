@@ -1,4 +1,6 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
+import {
+  call, delay, put, takeEvery, takeLatest,
+} from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
 import { ResolutionsResponse } from 'resources/resolutions/resolutions.types';
 import {
@@ -32,6 +34,7 @@ function generateAppointmentsForDoctor(appointmentsResponse: AppointmentsForDoct
 
 function* fetchAppointmentsForDoctor({ payload }: ReturnType<typeof appointmentsForDoctorSlice.actions.pending>) {
   try {
+    yield delay(500);
     const { data: appointmentsResponse }: AxiosResponse<AppointmentsForDoctor> = yield call(appointments.fetchAppointmentsForDoctor, payload.offset, payload.limit, payload.name);
     const { data: resolutionResponse }: AxiosResponse<ResolutionsResponse> = yield call(resolutionsAPI.fetchResolutionsForDoctor, payload.offset, payload.limit);
     const appointmentsForDoctor = generateAppointmentsForDoctor(appointmentsResponse, resolutionResponse);
@@ -53,6 +56,6 @@ function* fetchAppointmentsForPatient({ payload }: ReturnType<typeof appointment
 }
 
 export function* fetchAppointmentsWatcher() {
-  yield takeEvery(appointmentsForDoctorSlice.actions.pending, fetchAppointmentsForDoctor);
+  yield takeLatest(appointmentsForDoctorSlice.actions.pending, fetchAppointmentsForDoctor);
   yield takeEvery(appointmentsForPatientSlice.actions.pending, fetchAppointmentsForPatient);
 }
