@@ -8,7 +8,7 @@ function getDefaultPath(role: RoleName): string {
   switch (role) {
     case ROLES.DOCTOR: return PATH.DOCTOR_APPOINTMENTS;
     case ROLES.PATIENT: return PATH.PATIENT_APPOINTMENTS;
-    case null: return PATH.SIGN_IN;
+    case ROLES.PUBLIC: return PATH.SIGN_IN;
     default:
       throw new Error('');
   }

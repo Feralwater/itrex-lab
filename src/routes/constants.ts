@@ -17,4 +17,5 @@ export const PATH = {
 export enum ROLES {
   DOCTOR = 'Doctor',
   PATIENT = 'Patient',
+  PUBLIC = 'Public',
 }
