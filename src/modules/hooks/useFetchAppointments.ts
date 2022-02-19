@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from 'hooks';
 import {
-  appointmentsForDoctorSlice, appointmentsForPatientSlice, selectAppointmentsForDoctor, selectProfile,
+  appointmentsForDoctorSlice, appointmentsForPatientSlice, selectProfile,
 } from 'redux/reducers';
 import { useEffect } from 'react';
 import { appointmentsPerPage } from 'modules/hooks/constants';
