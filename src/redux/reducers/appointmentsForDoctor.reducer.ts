@@ -5,7 +5,7 @@ import { AppointmentsForDoctorState } from './reducers.types';
 import {
   AppointmentsForDoctorFulfilled,
   AppointmentsForDoctorPending,
-  DeleteAppointmentPending,
+  DeleteAppointmentPending, EditResolutionFulfilled, EditResolutionPending, ResolutionFulfilled, ResolutionPending,
 } from '../actions.types';
 
 const initialState = {
@@ -36,6 +36,23 @@ export const appointmentsForDoctorSlice = createSlice({
     }),
     deleteAppointmentPending: (state, action: PayloadAction<DeleteAppointmentPending>) => ({ ...state, ...action.payload, entityStatus: FETCH_STATUS.LOADING }),
     deleteAppointmentFailed: (state) => ({ ...state, entityStatus: FETCH_STATUS.FAILED }),
+    createResolutionFulfilled: (state, action: PayloadAction<ResolutionFulfilled>) => ({
+      ...state,
+      appointmentID: action.payload.appointment_id,
+      nextAppointmentDate: action.payload.next_appointment_date,
+      resolution: action.payload.resolution,
+      resolutionID: action.payload.id,
+      total: state.total + 1,
+      status: FETCH_STATUS.FULFILLED,
+    }),
+    createResolutionPending: (state, action: PayloadAction<ResolutionPending>) => ({ ...state, ...action.payload, status: FETCH_STATUS.LOADING }),
+    createResolutionFailed: (state) => ({ ...state, status: FETCH_STATUS.FAILED }),
+    editResolutionFulfilled: (state, action: PayloadAction<EditResolutionFulfilled>) => ({
+      ...state,
+      status: FETCH_STATUS.FULFILLED,
+    }),
+    editResolutionPending: (state, action: PayloadAction<EditResolutionPending>) => ({ ...state, ...action.payload, status: FETCH_STATUS.LOADING }),
+    editResolutionFailed: (state) => ({ ...state, status: FETCH_STATUS.FAILED }),
   },
 });
 

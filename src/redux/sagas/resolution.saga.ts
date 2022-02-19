@@ -4,31 +4,31 @@ import { EditResolutionResponse, ResolutionResponse } from 'resources/resolution
 import { componentsDictionary } from 'components';
 import resolutionsAPI from '../../resources/resolutions/resolutions.api';
 import { createErrorNotificationMessage } from './utils/createErrorNotificationMessage';
-import { notificationSlice, resolutionSlice } from '../reducers';
+import { appointmentsForDoctorSlice, notificationSlice } from '../reducers';
 
-function* createResolution({ payload }: ReturnType<typeof resolutionSlice.actions.pending>) {
+function* createResolution({ payload }: ReturnType<typeof appointmentsForDoctorSlice.actions.createResolutionPending>) {
   try {
     const { data }: AxiosResponse<ResolutionResponse> = yield call(resolutionsAPI.createResolution, { ...payload });
     yield put(notificationSlice.actions.notificationSuccess(componentsDictionary.message.successMessageBodyCreateResolution));
-    yield put(resolutionSlice.actions.fulfilled(data));
+    yield put(appointmentsForDoctorSlice.actions.createResolutionFulfilled(data));
   } catch (error:any) {
     yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.response.data)));
-    yield put(resolutionSlice.actions.failed());
+    yield put(appointmentsForDoctorSlice.actions.createResolutionFailed());
   }
 }
 
-function* editResolution({ payload }: ReturnType<typeof resolutionSlice.actions.editResolutionPending>) {
+function* editResolution({ payload }: ReturnType<typeof appointmentsForDoctorSlice.actions.editResolutionPending>) {
   try {
     const { data }: AxiosResponse<EditResolutionResponse> = yield call(resolutionsAPI.editResolution, { ...payload });
     yield put(notificationSlice.actions.notificationSuccess(componentsDictionary.message.successMessageBodyEditResolution));
-    yield put(resolutionSlice.actions.editResolutionFulfilled(data));
+    yield put(appointmentsForDoctorSlice.actions.editResolutionFulfilled(data));
   } catch (error:any) {
     yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.response.data)));
-    yield put(resolutionSlice.actions.editResolutionFailed());
+    yield put(appointmentsForDoctorSlice.actions.editResolutionFailed());
   }
 }
 
 export function* resolutionWatcher() {
-  yield takeLatest(resolutionSlice.actions.pending, createResolution);
-  yield takeLatest(resolutionSlice.actions.editResolutionPending, editResolution);
+  yield takeLatest(appointmentsForDoctorSlice.actions.createResolutionPending, createResolution);
+  yield takeLatest(appointmentsForDoctorSlice.actions.editResolutionPending, editResolution);
 }

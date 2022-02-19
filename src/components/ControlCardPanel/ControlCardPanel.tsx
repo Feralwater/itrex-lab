@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import { dictionary } from 'pages';
-import { resolutionsOnPage, resolutionsOnPageOffset } from 'pages/Resolutions/constants';
-import {
-  resolutionsForDoctorSlice,
-  resolutionSlice, selectAppointmentsForDoctor,
-} from 'redux/reducers';
+import { appointmentsForDoctorSlice, selectAppointmentsForDoctor } from 'redux/reducers';
 import { ControlCardPanelProps } from './ControlCardPanel.types';
 import { ModalWindow } from '../Modal';
 import { CardControlList } from '..';
@@ -26,7 +22,7 @@ export const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
   const [editResolutionText, setEditResolutionText] = useState<string>(editResolutionInitialText || '');
 
   const saveHandler = () => {
-    dispatch(resolutionSlice.actions.pending({
+    dispatch(appointmentsForDoctorSlice.actions.createResolutionPending({
       resolution: resolutionText,
       appointmentID,
     }));
@@ -34,13 +30,9 @@ export const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
     setIsMenuOpen(false);
   };
   const editHandler = () => {
-    dispatch(resolutionSlice.actions.editResolutionPending({
+    dispatch(appointmentsForDoctorSlice.actions.editResolutionPending({
       resolution: editResolutionText,
       resolutionID,
-    }));
-    dispatch(resolutionsForDoctorSlice.actions.pending({
-      offset: resolutionsOnPageOffset,
-      limit: resolutionsOnPage,
     }));
     setActiveEditResolutionModal(false);
     setIsMenuOpen(false);
