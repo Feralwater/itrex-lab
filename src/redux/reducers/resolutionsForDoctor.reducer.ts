@@ -21,5 +21,5 @@ export const resolutionsForDoctorSlice = createSlice({
   },
 });
 
-export const selectResolutions = (state: RootState) => state.resolutions;
+export const selectResolutions = (state: RootState) => state.resolutionsForDoctor;
 export const resolutionsForDoctorReducer = resolutionsForDoctorSlice.reducer;
