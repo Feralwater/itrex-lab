@@ -2,8 +2,8 @@ import { Status } from '../../redux/reducers/reducers.types';
 import { ResolutionForDoctor, ResolutionForPatient } from '../../resources/resolutions/resolutions.types';
 
 export interface ResolutionRowProps {
-  firstName: string;
-  lastName: string;
+  firstName?: string;
+  lastName?: string;
   resolution: string;
   visitDate: string;
   nextAppointmentDate: string;
