@@ -1,9 +1,8 @@
 import React from 'react';
 import { AppointmentCardHeader } from 'components/AppointmentCard/AppointmentCardHeader';
 import { AppointmentCardProps } from 'components/AppointmentCard/AppointmentCard.types';
-import { AppointmentCardSettingsButton } from 'components/AppointmentCard/AppointmentCardSettingsButton';
-import { ROLES } from 'routes/constants';
 import { AppointmentCardDescription } from 'components/AppointmentCard/AppointmentCardDescription';
+import { SettingsButtons } from 'components/AppointmentCard/SettingsButtons';
 import { ReactComponent as Clock } from '../../assets/svg/clock-icon.svg';
 
 import {
@@ -26,16 +25,13 @@ export const AppointmentCard:React.VFC<AppointmentCardProps> = ({
   appointmentID,
   firstName,
   lastName,
-  role,
   time,
-  isMenuOpen,
-  setIsMenuOpen,
-  menuRef,
   status,
   specialization,
   cardIcon,
   cardDescription,
   resolutionID,
+  shouldRenderAppointmentCardSettingsButton,
 }) => (
   <UserCard>
     <UserCardHeader>
@@ -48,15 +44,11 @@ export const AppointmentCard:React.VFC<AppointmentCardProps> = ({
           <AppointmentCardHeader status={status} specialization={specialization} />
         </UserInformation>
       </UserData>
-      {role === ROLES.DOCTOR && (
-      <AppointmentCardSettingsButton
+      <SettingsButtons
+        shouldRenderAppointmentCardSettingsButton={shouldRenderAppointmentCardSettingsButton}
         appointmentID={appointmentID}
-        setIsMenuOpen={setIsMenuOpen}
         resolutionID={resolutionID}
-        menuRef={menuRef}
-        isMenuOpen={isMenuOpen}
       />
-      )}
     </UserCardHeader>
     <UserCardBody>
       <UserCardBodyTime>
