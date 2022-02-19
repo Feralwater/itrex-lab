@@ -5,7 +5,6 @@ import { resolutionsOnPage, resolutionsOnPageOffset } from 'pages/Resolutions/co
 import {
   resolutionSlice, resolutionsSlice, selectAppointmentsForDoctor,
 } from 'redux/reducers';
-import { editResolutionSlice } from 'redux/reducers/editResolution.reducer';
 import { ControlCardPanelProps } from './ControlCardPanel.types';
 import { ModalWindow } from '../Modal';
 import { CardControlList } from '..';
@@ -34,7 +33,7 @@ export const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
     setIsMenuOpen(false);
   };
   const editHandler = () => {
-    dispatch(editResolutionSlice.actions.pending({
+    dispatch(resolutionSlice.actions.editResolutionPending({
       resolution: editResolutionText,
       resolutionID,
     }));

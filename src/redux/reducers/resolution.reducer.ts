@@ -2,7 +2,9 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ResolutionState } from './reducers.types';
 import { RootState } from '../store';
 import { FETCH_STATUS } from './constants';
-import { ResolutionFulfilled, ResolutionPending } from '../actions.types';
+import {
+  EditResolutionFulfilled, EditResolutionPending, ResolutionFulfilled, ResolutionPending,
+} from '../actions.types';
 
 const initialState = {
   appointmentID: '',
@@ -28,6 +30,9 @@ export const resolutionSlice = createSlice({
     }),
     pending: (state, action: PayloadAction<ResolutionPending>) => ({ ...state, ...action.payload, status: FETCH_STATUS.LOADING }),
     failed: (state) => ({ ...state, status: FETCH_STATUS.FAILED }),
+    editResolutionFulfilled: (state, action: PayloadAction<EditResolutionFulfilled>) => ({ ...state, ...action.payload, status: FETCH_STATUS.FULFILLED }),
+    editResolutionPending: (state, action: PayloadAction<EditResolutionPending>) => ({ ...state, ...action.payload, status: FETCH_STATUS.LOADING }),
+    editResolutionFailed: (state) => ({ ...state, status: FETCH_STATUS.FAILED }),
   },
 });
 
