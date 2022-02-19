@@ -3,7 +3,7 @@ import { DoctorNavigatePanel } from '../../components';
 import { dictionary } from '../dictionary/pagesDictionary';
 import { resolutionsOnPage, resolutionsOnPageOffset } from './constants';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { resolutionsSlice, selectResolutions } from '../../redux/reducers';
+import { resolutionsForDoctorSlice, selectResolutions } from '../../redux/reducers';
 import { Resolutions } from './Resolutions';
 import { ROLES } from '../../routes/constants';
 
@@ -11,7 +11,7 @@ export const ResolutionsForDoctorContainer = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(resolutionsSlice.actions.pending({
+    dispatch(resolutionsForDoctorSlice.actions.pending({
       offset: resolutionsOnPageOffset,
       limit: resolutionsOnPage,
     }));

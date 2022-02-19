@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { resolutionsSlice, selectResolutions } from '../../redux/reducers';
+import { resolutionsForDoctorSlice, selectResolutions } from '../../redux/reducers';
 import { resolutionsOnPage } from './constants';
 import { ResolutionsPaginate } from './ResolutionsPaginate';
 
@@ -9,7 +9,7 @@ export const ResolutionsForDoctorPaginateContainer = () => {
   const { total: totalCount } = useAppSelector(selectResolutions);
 
   const handleClick = (currentPageNumber: { selected: number }) => {
-    dispatch(resolutionsSlice.actions.pending({
+    dispatch(resolutionsForDoctorSlice.actions.pending({
       offset: currentPageNumber.selected * resolutionsOnPage,
       limit: resolutionsOnPage,
     }));

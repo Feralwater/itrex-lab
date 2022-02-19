@@ -3,7 +3,8 @@ import { useAppDispatch, useAppSelector } from 'hooks';
 import { dictionary } from 'pages';
 import { resolutionsOnPage, resolutionsOnPageOffset } from 'pages/Resolutions/constants';
 import {
-  resolutionSlice, resolutionsSlice, selectAppointmentsForDoctor,
+  resolutionsForDoctorSlice,
+  resolutionSlice, selectAppointmentsForDoctor,
 } from 'redux/reducers';
 import { ControlCardPanelProps } from './ControlCardPanel.types';
 import { ModalWindow } from '../Modal';
@@ -37,7 +38,7 @@ export const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
       resolution: editResolutionText,
       resolutionID,
     }));
-    dispatch(resolutionsSlice.actions.pending({
+    dispatch(resolutionsForDoctorSlice.actions.pending({
       offset: resolutionsOnPageOffset,
       limit: resolutionsOnPage,
     }));
