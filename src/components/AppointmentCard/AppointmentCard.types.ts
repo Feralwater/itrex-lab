@@ -20,6 +20,7 @@ export interface AppointmentCardContainerProps {
 export interface AppointmentCardHeaderProps {
   status?: string
   specialization?: string
+  appointmentID: string
 }
 
 export interface AppointmentCardProps {

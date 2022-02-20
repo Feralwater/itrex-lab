@@ -23,4 +23,8 @@ export const componentsDictionary = {
     selectedPatientImageAlt: '',
     errorMessage: 'Must be 2-200 characters',
   },
+  changeAppointmentStatus: {
+    title: 'Change appointment status',
+    subTitle: 'Select status',
+  },
 } as const;
