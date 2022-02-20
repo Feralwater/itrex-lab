@@ -1,11 +1,10 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 import { Status } from 'components/AppointmentCard/AppointmentCard.styles';
 import { statusDescription } from 'components/AppointmentCard/constants';
+import { StatusSwitcherProps } from 'components/AppointmentCard/StatusSwitcher';
 
-interface AppointmentStatusProps {
+interface AppointmentStatusProps extends StatusSwitcherProps{
   currentStatus: string
-  activeStatus: string
-  changeAppointmentStatus: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
 export const AppointmentStatus: React.VFC<AppointmentStatusProps> = (
