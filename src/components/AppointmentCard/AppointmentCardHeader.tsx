@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  AppointmentStatus,
+  AppointmentStatus, AppointmentSubTitle,
   DoctorSpecializationName,
   UserCardBodyAppointmentConfirm,
 } from 'components/AppointmentCard/AppointmentCard.styles';
@@ -11,14 +11,14 @@ export const AppointmentCardHeader:React.VFC<AppointmentCardHeaderProps> = ({
   status,
   specialization,
 }) => (
-  <AppointmentStatus>
+  <AppointmentSubTitle>
     { status
       ? (
-        <>
+        <AppointmentStatus>
           <UserCardBodyAppointmentConfirm color={statusColor[status]} />
           <div>{statusDescription[status]}</div>
-        </>
+        </AppointmentStatus>
       )
       : <DoctorSpecializationName>{specialization}</DoctorSpecializationName>}
-  </AppointmentStatus>
+  </AppointmentSubTitle>
 );

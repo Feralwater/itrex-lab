@@ -91,9 +91,14 @@ export const UserCardBodyAppointmentConfirm = styled.div<UserCardBodyAppointment
   background-color: ${(props) => props.color};
 `;
 
-export const AppointmentStatus = styled(SubTitle)`
+export const AppointmentSubTitle = styled(SubTitle)`
   color: ${colors.rock_blue};
-  margin: 0;
+`;
+
+export const AppointmentStatus = styled.div`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 `;
 
 export const DoctorSpecializationName = styled(SubTitle)`

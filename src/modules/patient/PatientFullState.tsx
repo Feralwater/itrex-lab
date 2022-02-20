@@ -18,7 +18,6 @@ export const PatientFullState:React.VFC<PatientFullStateProps> = ({ appointments
             firstName={appointment.doctor.first_name}
             lastName={appointment.doctor.last_name}
             photo={appointment.doctor.photo}
-            status={appointment.status}
             reason={appointment.reason}
             time={appointment.visit_date}
             role={ROLES.PATIENT}

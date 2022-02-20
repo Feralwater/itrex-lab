@@ -9,7 +9,7 @@ export interface AppointmentCardContainerProps {
   appointmentID: string;
   firstName: string;
   lastName: string;
-  status: string;
+  status?: string;
   role: RoleName;
   specialization?:string;
   resolution?: ResolutionForDoctor;
