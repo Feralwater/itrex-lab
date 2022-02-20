@@ -3,7 +3,7 @@ import {
   AppointmentsForDoctor,
   AppointmentsForPatient,
   FreeTimeResponse,
-  NewAppointmentResponse,
+  NewAppointmentResponse, UpdateStatus,
 } from './appointments.types';
 import { APPOINTMENTS_API } from './constants';
 import instance from '../../services/api/api';
@@ -38,6 +38,9 @@ const appointments = {
   },
   async deleteAppointment(id:string) {
     return instance.delete<string>(APPOINTMENTS_API.appointmentsById(id));
+  },
+  async updateAppointmentStatus(id:string, data:UpdateStatus) {
+    return instance.patch<string>(APPOINTMENTS_API.updateAppointmentStatus(id), data);
   },
 };
 

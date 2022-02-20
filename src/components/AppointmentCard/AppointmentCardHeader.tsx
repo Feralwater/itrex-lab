@@ -11,12 +11,12 @@ import { AppointmentCardHeaderProps } from 'components/AppointmentCard/Appointme
 import { ModalWindow } from 'components/Modal';
 import { ResolutionModalButtons } from 'components/ControlCardPanel';
 import { dictionary } from 'pages';
-import { selectAppointmentsForDoctor } from 'redux/reducers';
+import { appointmentsForDoctorSlice, selectAppointmentsForDoctor } from 'redux/reducers';
 import {
   ResolutionModalBody, ResolutionModalTitle, SelectedPatientImage, SelectedPatientInfo,
 } from 'components/ControlCardPanel/ControlCardPanel.styles';
 import { componentsDictionary } from 'components/dictionary/componentsDictionary';
-import { useAppSelector } from 'hooks';
+import { useAppDispatch, useAppSelector } from 'hooks';
 
 interface ChangeStatusModalProps{
   appointmentID:string
@@ -26,6 +26,7 @@ interface ChangeStatusModalProps{
 export const ChangeStatusModal:React.VFC<ChangeStatusModalProps> = (
   { appointmentID, setOpenModalWindow },
 ) => {
+  const dispatch = useAppDispatch();
   const [activeAppointmentStatusModal, setActiveAppointmentStatusModal] = useState<boolean>(true);
   const [activeStatus, setActiveStatus] = useState<string>(statuses.waiting);
   const { appointments } = useAppSelector(selectAppointmentsForDoctor);
@@ -34,6 +35,10 @@ export const ChangeStatusModal:React.VFC<ChangeStatusModalProps> = (
     setActiveStatus(event.currentTarget.value);
   }
   const saveAppointmentStatusHandler = () => {
+    dispatch(appointmentsForDoctorSlice.actions.updateStatusPending({
+      id: appointmentID,
+      status: activeStatus,
+    }));
     setActiveAppointmentStatusModal(false);
     setOpenModalWindow(false);
   };

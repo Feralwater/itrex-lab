@@ -50,6 +50,10 @@ export interface AppointmentData {
   doctorID: string;
 }
 
+export interface UpdateStatus {
+  status: string
+}
+
 export interface NewAppointmentResponse {
   id: 'string',
   patient_id: 'string',
