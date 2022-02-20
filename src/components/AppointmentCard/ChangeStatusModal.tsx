@@ -1,9 +1,9 @@
 import React, {
   ChangeEvent, Dispatch, SetStateAction, useState,
 } from 'react';
-import { useAppDispatch } from 'hooks';
+import { useAppDispatch, useAppSelector } from 'hooks';
 import { statuses } from 'components/AppointmentCard/constants';
-import { appointmentsForDoctorSlice } from 'redux/reducers';
+import { appointmentsForDoctorSlice, selectAppointmentsForDoctor } from 'redux/reducers';
 import { ModalWindow } from 'components/Modal';
 import { ResolutionModalBody, ResolutionModalTitle } from 'components/ControlCardPanel/ControlCardPanel.styles';
 import { componentsDictionary } from 'components/dictionary/componentsDictionary';
@@ -21,7 +21,10 @@ export const ChangeStatusModal: React.VFC<ChangeStatusModalProps> = (
 ) => {
   const dispatch = useAppDispatch();
   const [activeAppointmentStatusModal, setActiveAppointmentStatusModal] = useState<boolean>(true);
-  const [activeStatus, setActiveStatus] = useState<string>(statuses.waiting);
+  const { appointments } = useAppSelector(selectAppointmentsForDoctor);
+  const selectedAppointment = appointments.find((appointment) => (appointment.appointmentID === appointmentID));
+  const selectedAppointmentStatus = selectedAppointment ? selectedAppointment.appointmentStatus : statuses.waiting;
+  const [activeStatus, setActiveStatus] = useState<string>(selectedAppointmentStatus);
 
   const changeAppointmentStatus = (event: ChangeEvent<HTMLInputElement>) => setActiveStatus(event.currentTarget.value);
   const saveAppointmentStatusHandler = () => {
