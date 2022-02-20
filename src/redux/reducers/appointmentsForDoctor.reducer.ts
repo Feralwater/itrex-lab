@@ -83,8 +83,19 @@ export const appointmentsForDoctorSlice = createSlice({
     },
     editResolutionPending: (state, action: PayloadAction<EditResolutionPending>) => ({ ...state, ...action.payload, editResolutionStatus: FETCH_STATUS.LOADING }),
     editResolutionFailed: (state) => ({ ...state, editResolutionStatus: FETCH_STATUS.FAILED }),
-    updateStatusFulfilled: (state, action:PayloadAction<string>) => ({ ...state, newStatus: action.payload, changeStatusStatus: FETCH_STATUS.FULFILLED }),
-    updateStatusPending: (state, action:PayloadAction<UpdateStatus>) => ({ ...state, changeStatusStatus: FETCH_STATUS.LOADING }),
+    updateStatusFulfilled: (state, action:PayloadAction<string>) => {
+      const editedAppointments = state.appointments.map((appointment) => {
+        if (appointment.appointmentID === action.payload.editedAppointmentID) {
+          return {
+            ...appointment,
+            appointmentStatus: action.payload.status,
+          };
+        }
+        return { ...appointment };
+      });
+      return ({ ...state, appointments: editedAppointments, changeStatusStatus: FETCH_STATUS.FULFILLED });
+    },
+    updateStatusPending: (state, action:PayloadAction<UpdateStatus>) => ({ ...state, newStatus: action.payload.status, changeStatusStatus: FETCH_STATUS.LOADING }),
     updateStatusFailed: (state) => ({ ...state, changeStatusStatus: FETCH_STATUS.FAILED }),
   },
 });
