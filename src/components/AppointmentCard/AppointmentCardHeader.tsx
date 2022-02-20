@@ -24,7 +24,13 @@ export const AppointmentCardHeader:React.VFC<AppointmentCardHeaderProps> = ({
           )
           : <DoctorSpecializationName>{specialization}</DoctorSpecializationName>}
       </AppointmentSubTitle>
-      {openModalWindow && <ChangeStatusModal appointmentID={appointmentID} setOpenModalWindow={setOpenModalWindow} />}
+      {openModalWindow && (
+      <ChangeStatusModal
+        appointmentID={appointmentID}
+        setOpenModalWindow={setOpenModalWindow}
+        openModalWindow={openModalWindow}
+      />
+      )}
     </>
   );
 };

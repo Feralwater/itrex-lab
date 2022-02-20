@@ -13,14 +13,14 @@ import { StatusSwitcher } from 'components/AppointmentCard/StatusSwitcher';
 import { PatientInfo, PatientInfoProps } from './PatientInfo';
 
 interface ChangeStatusModalProps extends PatientInfoProps {
+  openModalWindow: boolean;
   setOpenModalWindow: Dispatch<SetStateAction<boolean>>;
 }
 
 export const ChangeStatusModal: React.VFC<ChangeStatusModalProps> = (
-  { appointmentID, setOpenModalWindow },
+  { appointmentID, setOpenModalWindow, openModalWindow },
 ) => {
   const dispatch = useAppDispatch();
-  const [activeAppointmentStatusModal, setActiveAppointmentStatusModal] = useState<boolean>(true);
   const { appointments } = useAppSelector(selectAppointmentsForDoctor);
   const selectedAppointment = appointments.find((appointment) => (appointment.appointmentID === appointmentID));
   const selectedAppointmentStatus = selectedAppointment ? selectedAppointment.appointmentStatus : statuses.waiting;
@@ -32,18 +32,14 @@ export const ChangeStatusModal: React.VFC<ChangeStatusModalProps> = (
       id: appointmentID,
       status: activeStatus,
     }));
-    setActiveAppointmentStatusModal(false);
     setOpenModalWindow(false);
   };
-  const cancelHandler = () => {
-    setActiveAppointmentStatusModal(false);
-    setOpenModalWindow(false);
-  };
+  const cancelHandler = () => setOpenModalWindow(false);
 
   return (
     <ModalWindow
-      activeModal={activeAppointmentStatusModal}
-      setActiveModal={setActiveAppointmentStatusModal}
+      activeModal={openModalWindow}
+      setActiveModal={setOpenModalWindow}
     >
       <ResolutionModalBody>
         <ResolutionModalTitle>{componentsDictionary.changeAppointmentStatus.title}</ResolutionModalTitle>
