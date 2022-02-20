@@ -73,7 +73,7 @@ function* updateAppointmentStatus({ payload } : ReturnType<typeof appointmentsFo
   try {
     const { data } : AxiosResponse<string> = yield call(appointments.updateAppointmentStatus, payload.id, { status: payload.status });
     yield put(notificationSlice.actions.notificationSuccess(componentsDictionary.message.successMessageBodyUpdateAppointmentStatus));
-    yield put(appointmentsForDoctorSlice.actions.updateStatusFulfilled({ editedAppointmentID: data, status: payload.status }));
+    yield put(appointmentsForDoctorSlice.actions.updateStatusFulfilled({ editedAppointmentID: data, editedStatus: payload.status }));
   } catch (error:any) {
     yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.response.data)));
     yield put(appointmentsForDoctorSlice.actions.updateStatusFailed());
