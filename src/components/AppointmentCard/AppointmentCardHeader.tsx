@@ -1,5 +1,5 @@
 import React, {
-  ChangeEvent, Dispatch, SetStateAction, useRef, useState,
+  ChangeEvent, Dispatch, SetStateAction, useState,
 } from 'react';
 import {
   AppointmentStatus, AppointmentStatusSwitcher, AppointmentSubTitle,
@@ -31,7 +31,7 @@ export const ChangeStatusModal:React.VFC<ChangeStatusModalProps> = (
   const { appointments } = useAppSelector(selectAppointmentsForDoctor);
   const selectedAppointment = appointments.find((appointment) => appointment.appointmentID === appointmentID);
   function changeAppointmentStatus(event: ChangeEvent<HTMLInputElement>) {
-    setActiveStatus(event.currentTarget.name);
+    setActiveStatus(event.currentTarget.value);
   }
   const saveAppointmentStatusHandler = () => {
     setActiveAppointmentStatusModal(false);
@@ -67,6 +67,8 @@ export const ChangeStatusModal:React.VFC<ChangeStatusModalProps> = (
                 <input
                   type="radio"
                   name={statuses.waiting}
+                  value={statuses.waiting}
+                  id={statuses.waiting}
                   checked={activeStatus === statuses.waiting}
                   onChange={changeAppointmentStatus}
                 />
@@ -78,6 +80,8 @@ export const ChangeStatusModal:React.VFC<ChangeStatusModalProps> = (
                 <input
                   type="radio"
                   name={statuses.confirmed}
+                  value={statuses.confirmed}
+                  id={statuses.confirmed}
                   checked={activeStatus === statuses.confirmed}
                   onChange={changeAppointmentStatus}
                 />
@@ -89,6 +93,8 @@ export const ChangeStatusModal:React.VFC<ChangeStatusModalProps> = (
                 <input
                   type="radio"
                   name={statuses.canceled}
+                  value={statuses.canceled}
+                  id={statuses.canceled}
                   checked={activeStatus === statuses.canceled}
                   onChange={changeAppointmentStatus}
                 />

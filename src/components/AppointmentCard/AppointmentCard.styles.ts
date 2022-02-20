@@ -101,7 +101,7 @@ export const AppointmentStatus = styled.div`
   cursor: pointer;
 `;
 
-export const AppointmentStatusSwitcher = styled.form`
+export const AppointmentStatusSwitcher = styled.div`
   padding: 26px;
 `;
 
