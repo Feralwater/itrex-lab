@@ -1,23 +1,37 @@
 import React, {
   ChangeEvent, Dispatch, SetStateAction, useState,
 } from 'react';
-import { useAppDispatch, useAppSelector } from 'hooks';
+import { useAppDispatch } from 'hooks';
 import { statusDescription, statuses } from 'components/AppointmentCard/constants';
-import { appointmentsForDoctorSlice, selectAppointmentsForDoctor } from 'redux/reducers';
+import { appointmentsForDoctorSlice } from 'redux/reducers';
 import { ModalWindow } from 'components/Modal';
-import {
-  ResolutionModalBody,
-  ResolutionModalTitle, SelectedPatientImage,
-  SelectedPatientInfo,
-} from 'components/ControlCardPanel/ControlCardPanel.styles';
+import { ResolutionModalBody, ResolutionModalTitle } from 'components/ControlCardPanel/ControlCardPanel.styles';
 import { componentsDictionary } from 'components/dictionary/componentsDictionary';
 import { AppointmentStatusSwitcher, Status, StatusList } from 'components/AppointmentCard/AppointmentCard.styles';
 import { ResolutionModalButtons } from 'components/ControlCardPanel';
 import { dictionary } from 'pages';
+import { PatientInfo, PatientInfoProps } from './PatientInfo';
 
-interface ChangeStatusModalProps{
-  appointmentID:string
+interface ChangeStatusModalProps extends PatientInfoProps{
   setOpenModalWindow: Dispatch<SetStateAction<boolean>>;
+}
+
+function getStatus(activeStatus: string, changeAppointmentStatus: (event: React.ChangeEvent<HTMLInputElement>) => void) {
+  return (
+    <Status>
+      <label htmlFor={statuses.waiting}>
+        <input
+          type="radio"
+          name={statuses.waiting}
+          value={statuses.waiting}
+          id={statuses.waiting}
+          checked={activeStatus === statuses.waiting}
+          onChange={changeAppointmentStatus}
+        />
+        {statusDescription[statuses.waiting]}
+      </label>
+    </Status>
+  );
 }
 
 export const ChangeStatusModal:React.VFC<ChangeStatusModalProps> = (
@@ -26,11 +40,8 @@ export const ChangeStatusModal:React.VFC<ChangeStatusModalProps> = (
   const dispatch = useAppDispatch();
   const [activeAppointmentStatusModal, setActiveAppointmentStatusModal] = useState<boolean>(true);
   const [activeStatus, setActiveStatus] = useState<string>(statuses.waiting);
-  const { appointments } = useAppSelector(selectAppointmentsForDoctor);
-  const selectedAppointment = appointments.find((appointment) => appointment.appointmentID === appointmentID);
-  function changeAppointmentStatus(event: ChangeEvent<HTMLInputElement>) {
-    setActiveStatus(event.currentTarget.value);
-  }
+
+  const changeAppointmentStatus = (event: ChangeEvent<HTMLInputElement>) => setActiveStatus(event.currentTarget.value);
   const saveAppointmentStatusHandler = () => {
     dispatch(appointmentsForDoctorSlice.actions.updateStatusPending({
       id: appointmentID,
@@ -43,6 +54,7 @@ export const ChangeStatusModal:React.VFC<ChangeStatusModalProps> = (
     setActiveAppointmentStatusModal(false);
     setOpenModalWindow(false);
   };
+
   return (
     <ModalWindow
       activeModal={activeAppointmentStatusModal}
@@ -50,33 +62,11 @@ export const ChangeStatusModal:React.VFC<ChangeStatusModalProps> = (
     >
       <ResolutionModalBody>
         <ResolutionModalTitle>{componentsDictionary.changeAppointmentStatus.title}</ResolutionModalTitle>
-        <SelectedPatientInfo>
-          <SelectedPatientImage
-            src={selectedAppointment?.photo}
-            alt={componentsDictionary.controlCardPanel.selectedPatientImageAlt}
-          />
-          <span>
-            {selectedAppointment?.firstName}
-            {' '}
-            {selectedAppointment?.lastName}
-          </span>
-        </SelectedPatientInfo>
+        <PatientInfo appointmentID={appointmentID} />
         {componentsDictionary.changeAppointmentStatus.subTitle}
         <AppointmentStatusSwitcher>
           <StatusList>
-            <Status>
-              <label htmlFor={statuses.waiting}>
-                <input
-                  type="radio"
-                  name={statuses.waiting}
-                  value={statuses.waiting}
-                  id={statuses.waiting}
-                  checked={activeStatus === statuses.waiting}
-                  onChange={changeAppointmentStatus}
-                />
-                {statusDescription[statuses.waiting]}
-              </label>
-            </Status>
+            {getStatus(activeStatus, changeAppointmentStatus)}
             <Status>
               <label htmlFor={statuses.confirmed}>
                 <input
