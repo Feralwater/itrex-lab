@@ -6,7 +6,7 @@ import { resolutionSlice, resolutionsSlice, selectResolutions } from 'redux/redu
 import { editResolutionSlice } from 'redux/reducers/editResolution.reducer';
 import { ControlCardPanelProps } from './ControlCardPanel.types';
 import { ModalWindow } from '../Modal';
-import { CardControlList } from '..';
+import { MemoCardControlList } from '..';
 import { ResolutionModal } from './ResolutionModal';
 import { ResolutionModalButtons } from './ResolutionModalButtons';
 
@@ -50,7 +50,7 @@ export const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
 
   return (
     <>
-      <CardControlList
+      <MemoCardControlList
         setActiveCreateResolutionModal={setActiveCreateResolutionModal}
         appointmentID={appointmentID}
         setActiveEditResolutionModal={setActiveEditResolutionModal}

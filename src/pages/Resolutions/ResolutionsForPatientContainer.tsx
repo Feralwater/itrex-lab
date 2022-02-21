@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-import { MemoPatientNavigatePanel } from 'components';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import {
   resolutionsForPatientSlice,
   selectResolutionsForPatient,
 } from 'redux/reducers/resolutionsForPatient.reducer';
 import { ROLES } from 'routes/constants';
+import { PatientNavigatePanel } from 'components';
 import { dictionary } from '../dictionary/pagesDictionary';
 import { resolutionsOnPage, resolutionsOnPageOffset } from './constants';
 import { Resolutions } from './Resolutions';
@@ -22,7 +22,7 @@ export const ResolutionsForPatientContainer = () => {
   const { resolutions: myResolutions, status: responseStatus } = useAppSelector(selectResolutionsForPatient);
   return (
     <div>
-      <MemoPatientNavigatePanel pageTitle={dictionary.patientPage.resolutionsTitle} />
+      <PatientNavigatePanel pageTitle={dictionary.patientPage.resolutionsTitle} />
       <Resolutions responseStatus={responseStatus} myResolutions={myResolutions} role={ROLES.PATIENT} />
     </div>
   );

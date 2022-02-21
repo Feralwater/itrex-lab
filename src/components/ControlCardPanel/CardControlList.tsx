@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useAppDispatch } from 'hooks';
 import { dictionary } from 'pages';
 import { appointmentsForDoctorSlice } from 'redux/reducers';
@@ -31,3 +31,5 @@ export const CardControlList:React.VFC<CardControlListProps> = ({
     </CommandsList>
   );
 };
+
+export const MemoCardControlList = memo(CardControlList);
