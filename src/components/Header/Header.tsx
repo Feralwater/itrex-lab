@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { RoleName } from 'redux/reducers/reducers.types';
+import { PATH } from 'routes/constants';
 import { ReactComponent as Logo } from '../../assets/svg/logo.svg';
-
 import {
   HeaderContainer,
   HeaderLogo,
@@ -15,11 +16,9 @@ import {
   UserRole,
 } from './Header.styles';
 import { componentsDictionary } from '../dictionary/componentsDictionary';
-import { PATH, ROLES } from '../../routes/constants';
-import { RoleName } from '../../redux/reducers/reducers.types';
 
 export interface HeaderProps {
-  roleName: RoleName;
+  roleName?: RoleName;
   firstName: string;
   lastName: string;
   photo: string;
@@ -33,7 +32,7 @@ export const Header: React.VFC<HeaderProps> = ({
 }) => (
   <HeaderWrapper>
     <HeaderContainer>
-      <HeaderLogo to={roleName === ROLES.DOCTOR ? PATH.PATIENTS : PATH.APPOINTMENTS}>
+      <HeaderLogo to={PATH.DEFAULT}>
         <Logo />
         <LogoText>{componentsDictionary.header.logoText}</LogoText>
       </HeaderLogo>
@@ -43,10 +42,10 @@ export const Header: React.VFC<HeaderProps> = ({
           <UserRole>{roleName}</UserRole>
         </UserInfo>
         <UserImageContainer>
-          <Link to={PATH.PROFILE}>
+          <Link to={PATH.profile(roleName)}>
             <UserImage src={photo} alt={componentsDictionary.header.avatarAlt} />
           </Link>
-          <NetworkStatus isOnline />
+          <NetworkStatus />
         </UserImageContainer>
       </User>
     </HeaderContainer>

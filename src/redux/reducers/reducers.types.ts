@@ -1,9 +1,9 @@
-import { AppointmentForPatient } from '../../resources/appointments/appointments.types';
-import { ResolutionsForPatientResponse, ResolutionsResponse } from '../../resources/resolutions/resolutions.types';
+import { AppointmentForPatient } from 'resources/appointments/appointments.types';
+import { ResolutionsForPatientResponse, ResolutionsResponse } from 'resources/resolutions/resolutions.types';
 import { AppointmentForDoctorFulfilled } from '../actions.types';
 
 export type Status = 'idle' | 'loading' | 'failed' | 'fulfilled';
-export type RoleName = 'Doctor' | 'Patient' | 'Public' | '';
+export type RoleName = 'Doctor' | 'Patient' | 'Public';
 
 interface Request {
   status: Status;
@@ -19,7 +19,7 @@ export interface ProfileState extends Request {
   firstName: string;
   lastName: string;
   photo: string;
-  roleName: RoleName;
+  roleName?: RoleName;
 }
 
 export interface RegistrationState extends Request {

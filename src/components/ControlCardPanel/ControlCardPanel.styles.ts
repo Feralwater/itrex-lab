@@ -74,12 +74,7 @@ export const ResolutionModalFooter = styled.div`
   border-radius: 0 0 8px 8px;
 `;
 
-export interface ModalErrorMessageProps{
-  isError: boolean
-}
-
-export const ModalErrorMessage = styled.div<ModalErrorMessageProps>`
-  display: ${((props) => (!props.isError ? 'inline-block' : 'none'))};
+export const ModalErrorMessage = styled.div`
   font-weight: 400;
   font-size: 14px;
   color: ${colors.brink_pink};

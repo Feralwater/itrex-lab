@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import { RoleName } from 'redux/reducers/reducers.types';
-import { ChangePasswordFulfilled, ChangePasswordPending } from '../../redux/actions.types';
+import { ChangePasswordFulfilled, ChangePasswordPending } from 'redux/actions.types';
 
 export interface SignUpInResponse {
   access_token: string;

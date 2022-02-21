@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { DoctorsBySpecializationIdResponse } from 'resources/doctors/doctors.types';
 import { DoctorsByIDState } from './reducers.types';
 import { RootState } from '../store';
 import { FETCH_STATUS } from './constants';
-import { DoctorsBySpecializationIdResponse } from '../../resources/doctors/doctors.types';
 
 const initialState = {
   doctors: [],

@@ -2,15 +2,15 @@ import {
   Formik, Field, FormikValues, FormikTouched, FormikErrors,
 } from 'formik';
 import React from 'react';
+import { dictionary } from 'pages';
+import { PATH } from 'routes/constants';
 import {
   CustomForm,
   CustomLink,
   FormTitle,
 } from './AuthForm.styles';
-import { dictionary } from '../../pages';
 import singInValidationSchema from './validation/singIn.validation';
 import { signInFieldsData } from './fieldsData';
-import { PATH } from '../../routes/constants';
 import { ButtonWithLoader } from '..';
 import { signInInitial } from './constants';
 import { SignInFormProps } from './Form.types';

@@ -1,47 +1,21 @@
+import { RoleName } from 'redux/reducers/reducers.types';
+
 export const PATH = {
-  PATIENTS: '/patients',
-  RESOLUTIONS: '/doctors/resolutions',
+  DEFAULT: '/',
+  DOCTOR_RESOLUTIONS: '/doctor/resolutions',
+  DOCTOR_APPOINTMENTS: '/doctor/appointments',
+  PATIENT_APPOINTMENTS: '/patient/appointments',
+  PATIENT_RESOLUTIONS: '/patient/resolutions',
+  CREATE_APPOINTMENT: '/create-appointment',
   RESTORE_PASSWORD: '/restore-password',
   SEND_EMAIL: '/send-email',
   SIGN_IN: '/sign-in',
   SIGN_UP: '/sign-up',
-  APPOINTMENTS: '/appointments',
-  CREATE_APPOINTMENT: '/create-an-appointment',
-  PROFILE: '/profile',
-  MY_RESOLUTIONS: '/patient/resolutions',
-  EDIT_PROFILE: '/profile/edit',
+  profile: (roleName?:RoleName) => `/${roleName?.toLocaleLowerCase()}/profile`,
 };
 
-export const ROLES = {
-  DOCTOR: 'Doctor',
-  PATIENT: 'Patient',
-  PUBLIC: 'Public',
-} as const;
-
-export const ROLES_API = {
-  Doctor: ROLES.DOCTOR,
-  Patient: ROLES.PATIENT,
-  Public: ROLES.PUBLIC,
-  '': ROLES.PUBLIC,
-};
-
-export const DEFAULT_PATH = {
-  [ROLES.DOCTOR]: PATH.PATIENTS,
-  [ROLES.PATIENT]: PATH.APPOINTMENTS,
-  [ROLES.PUBLIC]: PATH.SIGN_IN,
-};
-
-export const ROLES_ACCESS = {
-  [ROLES.DOCTOR]: new Set([PATH.PATIENTS,
-    PATH.RESOLUTIONS,
-    PATH.PROFILE,
-    PATH.EDIT_PROFILE,
-  ]),
-  [ROLES.PATIENT]: new Set([
-    PATH.APPOINTMENTS,
-    PATH.CREATE_APPOINTMENT,
-    PATH.PROFILE,
-    PATH.MY_RESOLUTIONS,
-  ]),
-  [ROLES.PUBLIC]: new Set([PATH.SIGN_IN, PATH.SIGN_UP, PATH.RESTORE_PASSWORD, PATH.SEND_EMAIL]),
-};
+export enum ROLES {
+  DOCTOR = 'Doctor',
+  PATIENT = 'Patient',
+  PUBLIC = 'Public',
+}

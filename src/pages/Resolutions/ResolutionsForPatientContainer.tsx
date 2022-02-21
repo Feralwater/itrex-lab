@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
-import { PatientNavigatePanel } from '../../components';
-import { dictionary } from '../dictionary/pagesDictionary';
-import { resolutionsOnPage, resolutionsOnPageOffset } from './constants';
-import { useAppDispatch, useAppSelector } from '../../hooks';
-import { Resolutions } from './Resolutions';
+import { PatientNavigatePanel } from 'components';
+import { useAppDispatch, useAppSelector } from 'hooks';
 import {
   resolutionsForPatientSlice,
   selectResolutionsForPatient,
-} from '../../redux/reducers/resolutionsForPatient.reducer';
-import { ROLES } from '../../routes/constants';
+} from 'redux/reducers/resolutionsForPatient.reducer';
+import { ROLES } from 'routes/constants';
+import { dictionary } from '../dictionary/pagesDictionary';
+import { resolutionsOnPage, resolutionsOnPageOffset } from './constants';
+import { Resolutions } from './Resolutions';
 
 export const ResolutionsForPatientContainer = () => {
   const dispatch = useAppDispatch();

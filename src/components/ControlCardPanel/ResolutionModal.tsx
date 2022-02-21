@@ -1,5 +1,9 @@
 import React, { useState, ChangeEvent } from 'react';
 import * as Yup from 'yup';
+import { dictionary } from 'pages';
+import { useAppSelector } from 'hooks';
+import { selectAppointmentsForDoctor } from 'redux/reducers';
+import { componentsDictionary } from '../dictionary/componentsDictionary';
 import {
   ModalErrorMessage,
   ResolutionModalBody, ResolutionModalTextArea,
@@ -7,10 +11,6 @@ import {
   SelectedPatientImage,
   SelectedPatientInfo,
 } from './ControlCardPanel.styles';
-import { dictionary } from '../../pages';
-import { componentsDictionary } from '../dictionary/componentsDictionary';
-import { useAppSelector } from '../../hooks';
-import { selectAppointmentsForDoctor } from '../../redux/reducers';
 import { ResolutionModalProps } from './ControlCardPanel.types';
 
 export const ResolutionModal:React.VFC<ResolutionModalProps> = ({
@@ -59,7 +59,8 @@ export const ResolutionModal:React.VFC<ResolutionModalProps> = ({
           onChange={onChangeHandler}
         />
       </ResolutionTextareaTitle>
-      <ModalErrorMessage isError={isValidResolution}>{componentsDictionary.controlCardPanel.errorMessage}</ModalErrorMessage>
+      {!isValidResolution
+          && <ModalErrorMessage>{componentsDictionary.controlCardPanel.errorMessage}</ModalErrorMessage>}
     </ResolutionModalBody>
   );
 };

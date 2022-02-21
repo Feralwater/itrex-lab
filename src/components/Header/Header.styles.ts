@@ -73,12 +73,8 @@ export const UserImage = styled.img`
   object-fit: cover;
 `;
 
-interface NetworkStatusProps {
-  isOnline: boolean;
-}
-
-export const NetworkStatus = styled.span<NetworkStatusProps>`
-  display: ${(props) => (props.isOnline ? 'inline-block' : 'none')};
+export const NetworkStatus = styled.span`
+  display: inline-block;
   width: 8px;
   height: 8px;
   border-radius: 100%;

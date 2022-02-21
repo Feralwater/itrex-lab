@@ -6,12 +6,11 @@ import {
   FormTitleLeftArrow,
   RestoreMessage,
   RestorePasswordContainer,
-} from '../../components/AuthForms/AuthForm.styles';
-import { dictionary } from '../dictionary/pagesDictionary';
-import { SendEmailProps } from './SendEmail.types';
-import { PATH } from '../../routes/constants';
+} from 'components/AuthForms/AuthForm.styles';
+import { dictionary } from 'pages/dictionary/pagesDictionary';
+import { PATH } from 'routes/constants';
 
-export const SendEmail: React.VFC<SendEmailProps> = ({ email }) => (
+export const SendEmail: React.VFC = () => (
   <RestorePasswordContainer>
     <FormTitle as={Link} to={PATH.RESTORE_PASSWORD}>
       <FormTitleLeftArrow />
@@ -23,11 +22,11 @@ export const SendEmail: React.VFC<SendEmailProps> = ({ email }) => (
       <CustomLink
         to="#"
         onClick={(e) => {
-          window.location.href = `mailto:${email}`;
+          window.location.href = 'mailto:email@gmail.com';
           e.preventDefault();
         }}
       >
-        {email}
+        email@gmail.com
       </CustomLink>
       {'. '}
       {dictionary.authorisedPages.sendEmailMessage2}

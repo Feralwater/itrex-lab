@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
+import { useAppDispatch, useAppSelector } from 'hooks';
+import { dictionary } from 'pages';
+import { resolutionsOnPage, resolutionsOnPageOffset } from 'pages/Resolutions/constants';
+import { resolutionSlice, resolutionsSlice, selectResolutions } from 'redux/reducers';
+import { editResolutionSlice } from 'redux/reducers/editResolution.reducer';
 import { ControlCardPanelProps } from './ControlCardPanel.types';
-import { useAppDispatch, useAppSelector } from '../../hooks';
-import { dictionary } from '../../pages';
 import { ModalWindow } from '../Modal';
 import { CardControlList } from '..';
 import { ResolutionModal } from './ResolutionModal';
 import { ResolutionModalButtons } from './ResolutionModalButtons';
-import { resolutionsOnPage, resolutionsOnPageOffset } from '../../pages/Resolutions/constants';
-import { resolutionSlice, resolutionsSlice, selectResolutions } from '../../redux/reducers';
-import { editResolutionSlice } from '../../redux/reducers/editResolution.reducer';
 
 export const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
   appointmentID,

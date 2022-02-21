@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import { useAppSelector, useProfile } from 'hooks';
 import { NotificationContainer } from 'components';
 import { selectAccessToken } from 'redux/reducers';
-import { AppRouter } from 'routes/Routes';
 import { colors } from 'components/CommonStyles';
+import { AppRouter } from 'routes';
 
 export const AppLoaderContainer = styled.div`
   width: 100%;
@@ -25,7 +25,7 @@ const App:React.VFC = () => {
 
   return (
     <>
-      {(roleName !== '')
+      {roleName
         ? <AppRouter />
         : (
           <AppLoaderContainer>
