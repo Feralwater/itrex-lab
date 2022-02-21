@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { AppointmentCardHeader } from 'components/AppointmentCard/AppointmentCardHeader';
 import { AppointmentCardProps } from 'components/AppointmentCard/AppointmentCard.types';
 import { AppointmentCardDescription } from 'components/AppointmentCard/AppointmentCardDescription';
@@ -62,3 +62,5 @@ export const AppointmentCard:React.VFC<AppointmentCardProps> = ({
     </UserCardBody>
   </UserCard>
 );
+
+export const MemoAppointmentCard = memo(AppointmentCard);
