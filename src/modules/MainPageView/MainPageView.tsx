@@ -1,5 +1,5 @@
 import React from 'react';
-import { SkeletonCards } from 'components/Skeleton';
+import { MemoSkeletonCards } from 'components/Skeleton';
 import { FETCH_STATUS } from 'redux/reducers/constants';
 import { AppointmentsWrapper, HiddenBlock } from './MainPageView.styles';
 import { MainPage } from './MainPage.types';
@@ -15,7 +15,7 @@ export const MainPageView = React.forwardRef(({
       {fullState}
       <HiddenBlock ref={ref as React.RefObject<HTMLDivElement>} />
     </AppointmentsWrapper>
-    {responseStatus === FETCH_STATUS.LOADING && <SkeletonCards />}
+    {responseStatus === FETCH_STATUS.LOADING && <MemoSkeletonCards />}
     {appointmentsLength < 0 && responseStatus === FETCH_STATUS.FULFILLED && emptyState}
   </>
 ));
