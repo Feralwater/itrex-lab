@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React, { Dispatch, memo, SetStateAction } from 'react';
 import { ButtonWrapper } from 'components/AuthForms/AuthForm.styles';
 import { H1 } from 'components/CommonStyles/Topography';
 import { dictionary } from 'pages';
@@ -26,3 +26,5 @@ export const PatientNavigatePanel:React.VFC<NavigatePanelProps> = ({ pageTitle }
     </UserPageTitle>
   </>
 );
+
+export const MemoPatientNavigatePanel = memo(PatientNavigatePanel);

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { PatientNavigatePanel } from 'components';
+import { MemoPatientNavigatePanel } from 'components';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import {
   resolutionsForPatientSlice,
@@ -22,7 +22,7 @@ export const ResolutionsForPatientContainer = () => {
   const { resolutions: myResolutions, status: responseStatus } = useAppSelector(selectResolutionsForPatient);
   return (
     <div>
-      <PatientNavigatePanel pageTitle={dictionary.patientPage.resolutionsTitle} />
+      <MemoPatientNavigatePanel pageTitle={dictionary.patientPage.resolutionsTitle} />
       <Resolutions responseStatus={responseStatus} myResolutions={myResolutions} role={ROLES.PATIENT} />
     </div>
   );

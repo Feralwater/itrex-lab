@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { UserPageTitle, SearchAndFilter } from 'components/NavigatePanel/NavigatePanel.styles';
 import { H1 } from 'components/CommonStyles/Topography';
 import { NavigatePanelProps } from 'components/NavigatePanel/PatientNavigatePanel';
@@ -27,3 +27,5 @@ export const DoctorNavigatePanel: React.VFC<NavigatePanelProps> = ({ pageTitle, 
     </UserPageTitle>
   </>
 );
+
+export const MemoDoctorNavigatePanel = memo(DoctorNavigatePanel);
