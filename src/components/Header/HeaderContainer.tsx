@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useAppSelector } from 'hooks';
 import { selectProfile } from 'redux/reducers';
 import { Header } from './Header';
@@ -20,3 +20,5 @@ export const HeaderContainer:React.VFC = () => {
     />
   );
 };
+
+export const MemoHeaderContainer = memo(HeaderContainer);

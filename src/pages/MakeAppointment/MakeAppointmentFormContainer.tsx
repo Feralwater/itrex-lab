@@ -1,7 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../../hooks';
-import { AppointmentValues } from './form.types';
-import { MakeAppointmentForm } from './MakeAppointmentForm';
+import { useAppDispatch, useAppSelector } from 'hooks';
 import {
   selectOccupations,
   selectDoctorsByID,
@@ -9,7 +7,9 @@ import {
   selectMakeAppointment,
   makeAppointmentSlice,
   getDoctorsByIDSlice, freeDoctorTimeSlice, occupationsSlice,
-} from '../../redux/reducers';
+} from 'redux/reducers';
+import { AppointmentValues } from './form.types';
+import { MakeAppointmentForm } from './MakeAppointmentForm';
 
 export const MakeAppointmentFormContainer:React.VFC = () => {
   const [selectedOccupationID, setSelectedOccupationID] = useState<string>('');
