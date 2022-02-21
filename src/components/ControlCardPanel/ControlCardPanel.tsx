@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import { dictionary } from 'pages';
 import { resolutionsOnPage, resolutionsOnPageOffset } from 'pages/Resolutions/constants';
@@ -23,15 +23,15 @@ export const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
   const editResolutionInitialText = resolutionForDoctor?.find((res) => res?.appointment_id === appointmentID)?.resolution;
   const [editResolutionText, setEditResolutionText] = useState<string>(editResolutionInitialText || '');
 
-  const saveHandler = () => {
+  const saveHandler = useCallback(() => {
     dispatch(resolutionSlice.actions.pending({
       resolution: resolutionText,
       appointmentID,
     }));
     setActiveCreateResolutionModal(false);
     setIsMenuOpen(false);
-  };
-  const editHandler = () => {
+  }, [dispatch, resolutionText, appointmentID]);
+  const editHandler = useCallback(() => {
     dispatch(editResolutionSlice.actions.pending({
       resolution: editResolutionText,
       resolutionID,
@@ -42,7 +42,7 @@ export const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
     }));
     setActiveEditResolutionModal(false);
     setIsMenuOpen(false);
-  };
+  }, [dispatch, editResolutionText, resolutionID]);
   const cancelHandler = () => {
     setActiveEditResolutionModal(false);
     setIsMenuOpen(false);

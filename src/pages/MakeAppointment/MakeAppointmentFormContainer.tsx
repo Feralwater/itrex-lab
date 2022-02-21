@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { AppointmentValues } from './form.types';
 import { MakeAppointmentForm } from './MakeAppointmentForm';
@@ -48,14 +48,14 @@ export const MakeAppointmentFormContainer:React.VFC = () => {
     label: [doctorName.firstName, doctorName.lastName].join(' '),
     value: doctorName.doctorID,
   }));
-  const handleSubmitForm = (formValues: AppointmentValues) => {
+  const handleSubmitForm = useCallback((formValues: AppointmentValues) => {
     const {
       time: date, reason, note, doctorName: { value: doctorID },
     } = formValues;
     dispatch(makeAppointmentSlice.actions.pending({
       date, reason, note, doctorID,
     }));
-  };
+  }, [dispatch]);
   return (
     <MakeAppointmentForm
       handleSubmitForm={handleSubmitForm}

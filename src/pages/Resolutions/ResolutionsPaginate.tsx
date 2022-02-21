@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import { resolutionsOnPage } from './constants';
 import { ReactComponent as NextIcon } from '../../assets/svg/rightArrowGrey-icon.svg';
@@ -12,10 +12,10 @@ export const ResolutionsPaginate: React.VFC<ResolutionsPaginateProps> = ({ total
   const pagesCount = Math.ceil(totalCount / resolutionsOnPage);
   const fromItem = (currentPage - 1) * resolutionsOnPage + 1;
   const toItem = Math.min((currentPage - 1) * resolutionsOnPage + resolutionsOnPage, totalCount);
-  const handlePageClick = (currentPageNumber: { selected: number }) => {
+  const handlePageClick = useCallback((currentPageNumber: { selected: number }) => {
     handleClick(currentPageNumber);
     setCurrentPage(currentPageNumber.selected + 1);
-  };
+  }, []);
   return (
     <Paginate>
       <div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { useAppSelector } from 'hooks';
+import { selectNotification } from 'redux/reducers';
 import { Notification } from './Notification';
-import { useAppSelector } from '../../hooks';
-import { selectNotification } from '../../redux/reducers';
 
 export const NotificationContainer = () => {
   const [showNotification, setShowNotification] = useState<boolean>(false);
