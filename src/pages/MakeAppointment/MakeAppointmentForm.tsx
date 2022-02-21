@@ -6,9 +6,8 @@ import {
   AppointmentFormContainer,
   AppointmentStepsContainer,
   ChooseDayStep,
-  NoUnderlineLink,
   SelectDoctorStep,
-  SelectTimeslotStep, LinksContainer, DisabledLink,
+  SelectTimeslotStep,
 } from 'pages/MakeAppointment/MakeAppointment.styles';
 import {
   AppointmentsSteps, SubmitOrLoader, TimeSlots,
@@ -17,11 +16,10 @@ import {
 } from 'components';
 import { dictionary as pagesDictionary } from 'pages/dictionary/pagesDictionary';
 import { H1 } from 'components/CommonStyles';
-import { PATH } from 'routes/constants';
+import { MemoBreadcrumbs } from 'pages/MakeAppointment/Breadcrumbs';
 import appointmentValidationSchema from './validation/appointment.validation';
 import makeAppointmentsFieldsData from './fieldsData';
 import { MakeAppointmentFormProps } from './form.types';
-import { ReactComponent as RightArrow } from '../../assets/svg/rightArrowGrey-icon.svg';
 import { initialValuesForAppointmentForm } from './constants';
 import { resetDoctorName } from './utils';
 
@@ -37,11 +35,7 @@ export const MakeAppointmentForm: React.VFC<MakeAppointmentFormProps> = ({
   makeAppointmentFetchStatus,
 }) => (
   <>
-    <LinksContainer>
-      <NoUnderlineLink to={PATH.PATIENT_APPOINTMENTS}>{pagesDictionary.patientPage.buttonAppointments}</NoUnderlineLink>
-      <RightArrow />
-      <DisabledLink to={PATH.CREATE_APPOINTMENT}>{pagesDictionary.form.makeAppointmentTitle}</DisabledLink>
-    </LinksContainer>
+    <MemoBreadcrumbs />
     <H1>{pagesDictionary.form.makeAppointmentTitle}</H1>
     <Formik
       initialValues={initialValuesForAppointmentForm}
