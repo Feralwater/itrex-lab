@@ -8,6 +8,7 @@ import {
   AppointmentsForDoctor,
   AppointmentsForPatient,
 } from 'resources/appointments/appointments.types';
+import { resolutionsOnPageOffset } from 'pages/Resolutions/constants';
 import { createErrorNotificationMessage } from './utils/createErrorNotificationMessage';
 import appointments from '../../resources/appointments/appointments.api';
 import resolutionsAPI from '../../resources/resolutions/resolutions.api';
@@ -36,7 +37,7 @@ function* fetchAppointmentsForDoctor({ payload }: ReturnType<typeof appointments
   try {
     yield delay(1000);
     const { data: appointmentsResponse }: AxiosResponse<AppointmentsForDoctor> = yield call(appointments.fetchAppointmentsForDoctor, payload.offset, payload.limit, payload.name, payload.firstNameSort);
-    const { data: resolutionResponse }: AxiosResponse<ResolutionsResponse> = yield call(resolutionsAPI.fetchResolutionsForDoctor, payload.offset, payload.limit);
+    const { data: resolutionResponse }: AxiosResponse<ResolutionsResponse> = yield call(resolutionsAPI.fetchResolutionsForDoctor, resolutionsOnPageOffset, appointmentsResponse.total);
     const appointmentsForDoctor = generateAppointmentsForDoctor(appointmentsResponse, resolutionResponse);
     yield put(appointmentsForDoctorSlice.actions.fulfilled(appointmentsForDoctor));
   } catch (error:any) {
