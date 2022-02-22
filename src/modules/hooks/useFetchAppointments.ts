@@ -17,6 +17,7 @@ export const useFetchAppointments = (page: number, searchTerm?: string) => {
         offset: (page - 1) * appointmentsPerPage,
         limit: appointmentsPerPage,
         name: searchTerm,
+        dateStatus: 'Upcoming',
       }));
     }
   }, [userId, dispatch, page, searchTerm]);

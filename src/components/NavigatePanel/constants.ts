@@ -12,7 +12,7 @@ export const searchOptions = [
   },
   {
     label: 'Outdated',
-    value: 'Outdated',
+    value: 'Outdate',
   },
 ];
 

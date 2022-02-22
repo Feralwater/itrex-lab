@@ -34,6 +34,7 @@ export interface AppointmentPending {
 export interface AppointmentsForPatientPending {
   offset: number;
   limit: number;
+  dateStatus?: string;
 }
 
 export interface AppointmentsForDoctorPending {
