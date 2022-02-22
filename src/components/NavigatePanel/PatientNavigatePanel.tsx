@@ -17,9 +17,12 @@ export interface NavigatePanelProps {
   pageTitle: string;
   setSearchTerm?: Dispatch<SetStateAction<string>>;
   setPageNumber?: Dispatch<SetStateAction<number>>;
+  setFilterQuery?: Dispatch<SetStateAction<string>>;
 }
 
-export const PatientNavigatePanel: React.VFC<NavigatePanelProps> = ({ pageTitle }) => (
+export const PatientNavigatePanel: React.VFC<NavigatePanelProps> = (
+  { pageTitle, setFilterQuery, setPageNumber },
+) => (
   <>
     <NavigatePanel buttonOnNavigatePanel={patientTabs} />
     <UserPageTitle>
@@ -31,6 +34,8 @@ export const PatientNavigatePanel: React.VFC<NavigatePanelProps> = ({ pageTitle 
           id="filter"
           labelText={dictionary.patientPage.filterTitle}
           placeholder={dictionary.patientPage.filterPlaceholder}
+          setFilterQuery={setFilterQuery}
+          setPageNumber={setPageNumber}
         />
         <ButtonWrapper>
           <ButtonLeftPlusIcon />
