@@ -1,7 +1,7 @@
 import { PATH, ROLES } from 'routes/constants';
 import { dictionary } from 'pages';
 
-export const searchOptions = [
+export const filterOptionsForPatient = [
   {
     label: 'All',
     value: 'All',
@@ -13,6 +13,21 @@ export const searchOptions = [
   {
     label: 'Outdated',
     value: 'Outdate',
+  },
+];
+
+export const filterOptionsForDoctor = [
+  {
+    label: 'None',
+    value: 'None',
+  },
+  {
+    label: 'Date',
+    value: 'dateSort',
+  },
+  {
+    label: 'Name',
+    value: 'firstNameSort',
   },
 ];
 
