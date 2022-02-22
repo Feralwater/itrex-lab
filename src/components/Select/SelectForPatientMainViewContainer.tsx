@@ -1,4 +1,5 @@
 import React from 'react';
+import { SelectForPatientMailView } from 'components/Select/SelectForPatientMailView.styles';
 import { CustomSelectProps, Options } from './Select.types';
 import { CustomSelect } from './Select';
 
@@ -12,5 +13,12 @@ export const SelectForPatientMainViewContainer: React.VFC<CustomSelectProps> = (
     }
   };
 
-  return (<CustomSelect onChangeHandler={onChangeHandler} {...props} />);
+  return (
+    <CustomSelect
+      onChangeHandler={onChangeHandler}
+      styles={SelectForPatientMailView}
+      labelPosition="inline"
+      {...props}
+    />
+  );
 };

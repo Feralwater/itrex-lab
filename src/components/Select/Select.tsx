@@ -1,6 +1,6 @@
 import React from 'react';
 import Select from 'react-select';
-import { RequireSign, SelectLabel, SelectStyles } from './Select.styles';
+import { RequireSign, SelectLabel } from 'components/Select/SelectForAppointmentForm.styles';
 import { searchOptionHelper } from './searchOptionHelper';
 
 export const CustomSelect: React.VFC<any> = ({
@@ -10,9 +10,11 @@ export const CustomSelect: React.VFC<any> = ({
   placeholder,
   onChangeHandler,
   isRequire,
+  styles,
+  labelPosition,
   ...props
 }) => (
-  <SelectLabel htmlFor={id}>
+  <SelectLabel htmlFor={id} labelPosition={labelPosition}>
     <span>
       {labelText}
       {isRequire && <RequireSign>*</RequireSign>}
@@ -22,7 +24,7 @@ export const CustomSelect: React.VFC<any> = ({
       id={id}
       placeholder={placeholder}
       formatOptionLabel={searchOptionHelper}
-      styles={SelectStyles}
+      styles={styles}
       options={options}
       onChange={onChangeHandler}
     />

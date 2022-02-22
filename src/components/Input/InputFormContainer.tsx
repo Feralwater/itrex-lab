@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
+import { RequireSign } from 'components/Select/SelectForAppointmentForm.styles';
 import {
   InputContainer, InputErrorMessage, InputPasswordIconNotVisible, InputPasswordIconVisible, Label,
 } from './Input.styles';
 import { InputProps } from './Input.types';
 import { Input } from './Input';
-import { RequireSign } from '../Select/Select.styles';
 
 export const InputFormContainer:React.VFC<InputProps> = ({
   type,
