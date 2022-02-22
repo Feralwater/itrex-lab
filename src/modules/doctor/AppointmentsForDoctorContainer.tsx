@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useFetchDoctorsAppointments } from 'modules/hooks/useFetchDoctorsAppointments';
-import { MemoDoctorNavigatePanel } from 'components';
 import { dictionary } from 'pages/dictionary/pagesDictionary';
 import { MainPageView } from 'modules/MainPageView';
 import { DoctorFullState } from 'modules/doctor/DoctorFullState';
 import { DoctorEmptyState } from 'modules/doctor/DoctorEmptyState';
 import { useAppointmentsOnScreen } from 'modules/hooks/useAppointmentsOnScreen';
+import { DoctorNavigatePanel } from 'components';
 
 export const AppointmentsForDoctorContainer: React.VFC = () => {
   const [, setSearchTerm] = useState('');
@@ -15,7 +15,7 @@ export const AppointmentsForDoctorContainer: React.VFC = () => {
 
   return (
     <>
-      <MemoDoctorNavigatePanel pageTitle={dictionary.doctorPage.patientsTitle} setSearchTerm={setSearchTerm} />
+      <DoctorNavigatePanel pageTitle={dictionary.doctorPage.patientsTitle} setSearchTerm={setSearchTerm} />
       <MainPageView
         ref={hiddenBlockRef}
         fullState={<DoctorFullState appointments={appointments} />}

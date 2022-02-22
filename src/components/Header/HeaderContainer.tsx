@@ -3,7 +3,7 @@ import { useAppSelector } from 'hooks';
 import { selectProfile } from 'redux/reducers';
 import { Header } from './Header';
 
-export const HeaderContainer:React.VFC = () => {
+export const HeaderContainer:React.VFC = memo(() => {
   const {
     firstName,
     lastName,
@@ -19,6 +19,4 @@ export const HeaderContainer:React.VFC = () => {
       photo={photo}
     />
   );
-};
-
-export const MemoHeaderContainer = memo(HeaderContainer);
+});

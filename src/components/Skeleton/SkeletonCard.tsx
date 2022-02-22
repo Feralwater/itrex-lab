@@ -5,7 +5,7 @@ import {
 } from './Skeleton.styles';
 import { colors } from '../CommonStyles';
 
-export const SkeletonCard:React.VFC = () => (
+export const SkeletonCard:React.VFC = memo(() => (
   <>
     <SkeletonCardHeader>
       <SkeletonTheme baseColor={`${colors.alabaster}`} highlightColor={`${colors.link_water['016']}`}>
@@ -25,6 +25,4 @@ export const SkeletonCard:React.VFC = () => (
       </SkeletonTheme>
     </SkeletonBodyWrapper>
   </>
-);
-
-export const MemoSkeletonCard = memo(SkeletonCard);
+));

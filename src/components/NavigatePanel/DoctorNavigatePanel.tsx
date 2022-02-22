@@ -6,7 +6,7 @@ import { NavigatePanel } from 'components/NavigatePanel/NavigatePanel';
 import { doctorTabs } from 'components/NavigatePanel/constants';
 import { InputSearchContainer } from '../Input';
 
-export const DoctorNavigatePanel: React.VFC<NavigatePanelProps> = ({ pageTitle, setSearchTerm }) => (
+export const DoctorNavigatePanel: React.VFC<NavigatePanelProps> = memo(({ pageTitle, setSearchTerm }) => (
   <>
     <NavigatePanel buttonOnNavigatePanel={doctorTabs} />
     <UserPageTitle>
@@ -26,6 +26,4 @@ export const DoctorNavigatePanel: React.VFC<NavigatePanelProps> = ({ pageTitle, 
       </SearchAndFilter>
     </UserPageTitle>
   </>
-);
-
-export const MemoDoctorNavigatePanel = memo(DoctorNavigatePanel);
+));

@@ -16,7 +16,7 @@ import {
 } from 'components';
 import { dictionary as pagesDictionary } from 'pages/dictionary/pagesDictionary';
 import { H1 } from 'components/CommonStyles';
-import { MemoBreadcrumbs } from 'pages/MakeAppointment/Breadcrumbs';
+import { Breadcrumbs } from 'pages/MakeAppointment/Breadcrumbs';
 import appointmentValidationSchema from './validation/appointment.validation';
 import makeAppointmentsFieldsData from './fieldsData';
 import { MakeAppointmentFormProps } from './form.types';
@@ -35,7 +35,7 @@ export const MakeAppointmentForm: React.VFC<MakeAppointmentFormProps> = ({
   makeAppointmentFetchStatus,
 }) => (
   <>
-    <MemoBreadcrumbs />
+    <Breadcrumbs />
     <H1>{pagesDictionary.form.makeAppointmentTitle}</H1>
     <Formik
       initialValues={initialValuesForAppointmentForm}

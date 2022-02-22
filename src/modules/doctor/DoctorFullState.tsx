@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { AppointmentForDoctorFulfilled } from 'redux/actions.types';
 import { ReactComponent as Board } from 'assets/svg/board-icon.svg';
-import { MemoAppointmentCard } from 'components/AppointmentCard/AppointmentCard';
+import { AppointmentCard } from 'components/AppointmentCard/AppointmentCard';
 
 export interface DoctorFullStateProps{
   appointments: Array<AppointmentForDoctorFulfilled>
@@ -12,7 +12,7 @@ export const DoctorFullState:React.VFC<DoctorFullStateProps> = ({ appointments }
   return (
     <>
       {appointments.map((appointment) => (
-        <MemoAppointmentCard
+        <AppointmentCard
           photo={appointment.photo}
           key={appointment.appointmentID}
           appointmentID={appointment.appointmentID}

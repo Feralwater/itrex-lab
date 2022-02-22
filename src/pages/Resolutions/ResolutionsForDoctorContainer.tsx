@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { MemoDoctorNavigatePanel } from 'components';
+import { DoctorNavigatePanel } from 'components';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import { resolutionsSlice, selectResolutions } from 'redux/reducers';
 import { ROLES } from 'routes/constants';
@@ -19,7 +19,7 @@ export const ResolutionsForDoctorContainer = () => {
   const { resolutions: myResolutions, status: responseStatus } = useAppSelector(selectResolutions);
   return (
     <div>
-      <MemoDoctorNavigatePanel pageTitle={dictionary.doctorPage.resolutionsTitle} />
+      <DoctorNavigatePanel pageTitle={dictionary.doctorPage.resolutionsTitle} />
       <Resolutions responseStatus={responseStatus} myResolutions={myResolutions} role={ROLES.DOCTOR} />
     </div>
   );

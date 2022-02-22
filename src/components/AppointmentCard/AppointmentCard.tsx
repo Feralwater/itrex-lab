@@ -20,7 +20,7 @@ import { UserImage } from '../Header/Header.styles';
 import { componentsDictionary } from '../dictionary/componentsDictionary';
 import { formatVisitTime } from './utils';
 
-export const AppointmentCard:React.VFC<AppointmentCardProps> = ({
+export const AppointmentCard:React.VFC<AppointmentCardProps> = memo(({
   photo,
   appointmentID,
   firstName,
@@ -61,6 +61,4 @@ export const AppointmentCard:React.VFC<AppointmentCardProps> = ({
       />
     </UserCardBody>
   </UserCard>
-);
-
-export const MemoAppointmentCard = memo(AppointmentCard);
+));
