@@ -6,11 +6,12 @@ import { useEffect } from 'react';
 import { appointmentsPerPage } from 'modules/hooks/constants';
 import { ROLES } from 'routes/constants';
 
-export const useFetchAppointments = (page: number, searchTerm?: string, filterQuery?: string) => {
+export const useFetchAppointments = (page: number, filterQuery?: string, searchTerm?: string) => {
   const dispatch = useAppDispatch();
   const { id: userId, roleName } = useAppSelector(selectProfile);
   const slice = roleName === ROLES.DOCTOR ? appointmentsForDoctorSlice : appointmentsForPatientSlice;
   const dateStatus = filterQuery === 'All' ? '' : filterQuery;
+
   useEffect(() => {
     if (userId) {
       dispatch(slice.actions.pending({
@@ -18,6 +19,7 @@ export const useFetchAppointments = (page: number, searchTerm?: string, filterQu
         limit: appointmentsPerPage,
         name: searchTerm,
         dateStatus,
+        firstNameSort: filterQuery,
       }));
     }
   }, [userId, dispatch, page, searchTerm, filterQuery]);

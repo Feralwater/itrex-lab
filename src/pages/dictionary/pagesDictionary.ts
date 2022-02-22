@@ -35,7 +35,7 @@ export const dictionary = {
     controlCommandDelete: 'Delete',
     controlCommandEditAppointment: 'Edit an appointment',
     filterTitle: 'Sort by:',
-    filterPlaceholder: 'None',
+    filterPlaceholder: 'Date',
   },
   patientPage: {
     emptyAppointmentsHistoryTextLine1: 'You have no appointments yet.',

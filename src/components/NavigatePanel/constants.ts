@@ -18,10 +18,6 @@ export const filterOptionsForPatient = [
 
 export const filterOptionsForDoctor = [
   {
-    label: 'None',
-    value: 'None',
-  },
-  {
     label: 'Date',
     value: 'dateSort',
   },
