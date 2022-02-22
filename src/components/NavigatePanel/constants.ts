@@ -3,19 +3,18 @@ import { dictionary } from 'pages';
 
 export const searchOptions = [
   {
-    label: 'Date',
-    value: 'Date',
+    label: 'All',
+    value: 'All',
   },
   {
-    label: 'Name',
-    value: 'Name',
+    label: 'Upcoming',
+    value: 'Upcoming',
+  },
+  {
+    label: 'Outdated',
+    value: 'Outdated',
   },
 ];
-
-export const optionsForSearchSelect = searchOptions.map((option) => ({
-  label: option.label,
-  value: option.value,
-}));
 
 export const patientTabs = [
   {
