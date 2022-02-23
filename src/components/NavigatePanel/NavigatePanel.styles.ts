@@ -47,7 +47,7 @@ export const SearchAndFilter = styled.div`
   padding: 0 50px 0 0;
 `;
 
-export const CreateAppointmentButton = styled(Link)`
+export const AppointmentButton = styled(Link)`
   display: inline-flex;
   align-items: center;
   justify-content: center;
