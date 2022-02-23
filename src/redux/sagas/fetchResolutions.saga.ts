@@ -1,5 +1,7 @@
 import { AxiosResponse } from 'axios';
-import { call, put, takeEvery } from 'redux-saga/effects';
+import {
+  call, delay, put, takeEvery, takeLatest,
+} from 'redux-saga/effects';
 import { ResolutionsForPatientResponse, ResolutionsResponse } from 'resources/resolutions/resolutions.types';
 import { createErrorNotificationMessage } from './utils/createErrorNotificationMessage';
 import resolutionsAPI from '../../resources/resolutions/resolutions.api';
@@ -8,6 +10,7 @@ import { resolutionsForPatientSlice } from '../reducers/resolutionsForPatient.re
 
 function* fetchResolutionsForPatient({ payload }: ReturnType<typeof resolutionsForPatientSlice.actions.pending>) {
   try {
+    yield delay(1000);
     const { data }: AxiosResponse<ResolutionsForPatientResponse> = yield call(resolutionsAPI.fetchResolutionsForPatient, payload.offset, payload.limit, payload.name);
     yield put(resolutionsForPatientSlice.actions.fulfilled(data));
   } catch (error:any) {
@@ -27,6 +30,6 @@ function* fetchResolutionsForDoctor({ payload } : ReturnType<typeof resolutionsS
 }
 
 export function* fetchResolutionsWatcher() {
-  yield takeEvery(resolutionsForPatientSlice.actions.pending, fetchResolutionsForPatient);
+  yield takeLatest(resolutionsForPatientSlice.actions.pending, fetchResolutionsForPatient);
   yield takeEvery(resolutionsSlice.actions.pending, fetchResolutionsForDoctor);
 }
