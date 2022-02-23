@@ -8,7 +8,6 @@ import { ROLES } from 'routes/constants';
 import { componentsDictionary } from 'components';
 import { createErrorNotificationMessage } from 'redux/sagas/utils/createErrorNotificationMessage';
 import { cacheUserPhoto } from 'redux/sagas/utils/cacheUserPhoto';
-import { userPhotoPlug } from 'redux/sagas/utils/constants';
 import auth from '../../resources/auth/auth.api';
 import { notificationSlice, profileSlice } from '../reducers';
 import { RoleName } from '../reducers/reducers.types';
