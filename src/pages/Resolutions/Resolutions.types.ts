@@ -9,7 +9,16 @@ export interface ResolutionRowProps {
   nextAppointmentDate: string;
 }
 
-export interface ResolutionsProps {
+export interface ResolutionsPaginateProps {
+  fromItem: number
+  toItem: number
+  totalResolutionsCount: number
+  handleClick: (current: { selected: number; }) => void
+  pagesCount: number
+  currentPageNumber: string | number
+}
+
+export interface ResolutionsProps extends ResolutionsPaginateProps {
   responseStatus: Status;
   myResolutions: Array<ResolutionForPatient> | Array<ResolutionForDoctor>
 }

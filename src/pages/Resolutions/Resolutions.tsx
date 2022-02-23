@@ -7,7 +7,9 @@ import { ResolutionsTable } from 'pages/Resolutions/ResolutionsTable';
 import { ResolutionsLoaderContainer } from './Resolutions.styles';
 import { ResolutionsProps } from './Resolutions.types';
 
-export const Resolutions:React.VFC<ResolutionsProps> = ({ responseStatus, myResolutions }) => (
+export const Resolutions:React.VFC<ResolutionsProps> = (
+  { responseStatus, myResolutions, ...restProps },
+) => (
   <>
     {responseStatus !== FETCH_STATUS.LOADING
       ? <ResolutionsTable myResolutions={myResolutions} />
@@ -23,6 +25,6 @@ export const Resolutions:React.VFC<ResolutionsProps> = ({ responseStatus, myReso
           />
         </ResolutionsLoaderContainer>
       )}
-    {myResolutions.length > 0 && <ResolutionsPaginate />}
+    {myResolutions.length > 0 && <ResolutionsPaginate {...restProps} />}
   </>
 );

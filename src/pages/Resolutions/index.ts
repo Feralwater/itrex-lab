@@ -1,4 +1,3 @@
-export * from './ResolutionsForPatientContainer';
-export * from './ResolutionsForDoctorContainer';
+export * from './ResolutionsContainer';
 export * from './ResolutionRow';
 export * from './ResolutionsPaginate';
