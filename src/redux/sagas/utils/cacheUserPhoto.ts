@@ -6,3 +6,9 @@ export const cacheUserPhoto = async (src:string) => new Promise((resolve) => {
   img.onload = () => resolve(src);
   img.onerror = () => resolve(userPhotoPlug);
 });
+
+export const cacheUserPhotos = async (src:string[]) => {
+  const promiseArray = src.map((url) => cacheUserPhoto(url));
+
+  return Promise.all(promiseArray);
+};
