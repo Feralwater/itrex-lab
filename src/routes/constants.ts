@@ -11,7 +11,8 @@ export const PATH = {
   SEND_EMAIL: '/send-email',
   SIGN_IN: '/sign-in',
   SIGN_UP: '/sign-up',
-  ADMIN: '/admin',
+  ADMIN_PATIENTS: '/admin/patients',
+  ADMIN_DOCTORS: '/admin/doctors',
   profile: (roleName?:RoleName) => `/${roleName?.toLocaleLowerCase()}/profile`,
 };
 
