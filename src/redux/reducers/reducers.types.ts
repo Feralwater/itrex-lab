@@ -114,3 +114,16 @@ export interface AppointmentsForDoctorState {
   status: Status,
   entityStatus: Status,
 }
+
+export interface AllPatientsState{
+  userID: string
+  firsName: string
+  lastName: string
+  photo: string
+  roleName: RoleName
+}
+
+export interface AllUsersState {
+  users: AllPatientsState[];
+  status: Status;
+}

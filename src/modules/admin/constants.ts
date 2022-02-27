@@ -1,15 +1,15 @@
 import { PATH } from 'routes/constants';
 import { dictionary } from 'pages';
-import { AdminMainPage } from 'modules/admin/AdminMainPage';
+import { AdminPatientsPage } from 'modules/admin/AdminPatientsPage';
 
 export const adminRoutes = [
   {
     path: PATH.ADMIN_PATIENTS,
-    element: AdminMainPage,
+    element: AdminPatientsPage,
   },
   {
     path: PATH.ADMIN_DOCTORS,
-    element: AdminMainPage,
+    element: AdminPatientsPage,
   },
 ];
 
