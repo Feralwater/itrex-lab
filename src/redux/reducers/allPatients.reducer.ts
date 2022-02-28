@@ -11,8 +11,8 @@ const initialState = {
   status: FETCH_STATUS.IDLE,
 } as AllUsersState;
 
-export const getAllUsersSlice = createSlice({
-  name: 'getAllUsers',
+export const getAllPatientsSlice = createSlice({
+  name: 'getAllPatients',
   initialState,
   reducers: {
     fulfilled: (state, action: PayloadAction<AllPatients>) => ({
@@ -32,5 +32,5 @@ export const getAllUsersSlice = createSlice({
   },
 });
 
-export const selectAllUsers = (state: RootState) => state.getAllUsers;
-export const getAllUsersReducer = getAllUsersSlice.reducer;
+export const selectAllPatients = (state: RootState) => state.getAllPatients;
+export const getAllPatientsReducer = getAllPatientsSlice.reducer;

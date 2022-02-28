@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from 'hooks';
-import { getAllUsersSlice, selectAllUsers } from 'redux/reducers/allPatients.reducer';
+import { getAllPatientsSlice, selectAllPatients } from 'redux/reducers/allPatients.reducer';
 import { useEffect } from 'react';
 import { userPerPage } from 'modules/admin/constants';
 import { getAllDoctorsSlice, selectAllDoctors } from 'redux/reducers/allDoctors.reducer';
@@ -8,8 +8,8 @@ import { RoleName } from 'redux/reducers/reducers.types';
 
 export const useFetchUsers = (roleName: RoleName) => {
   const dispatch = useAppDispatch();
-  const slice = roleName === ROLES.DOCTOR ? getAllDoctorsSlice : getAllUsersSlice;
-  const selector = roleName === ROLES.DOCTOR ? selectAllDoctors : selectAllUsers;
+  const slice = roleName === ROLES.DOCTOR ? getAllDoctorsSlice : getAllPatientsSlice;
+  const selector = roleName === ROLES.DOCTOR ? selectAllDoctors : selectAllPatients;
   const { users, status: responseStatus, total: totalUsersCount } = useAppSelector(selector);
 
   useEffect(() => {
