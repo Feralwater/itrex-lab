@@ -7,9 +7,10 @@ import Loader from 'react-loader-spinner';
 import { colors } from 'components/CommonStyles';
 import { UserTable } from 'modules/admin/userTable/UserTable';
 import { useFetchUsers } from 'modules/admin/hooks/useFetchUsers';
+import { ROLES } from 'routes/constants';
 
 export const AdminPatientsPage = () => {
-  const { users, responseStatus } = useFetchUsers();
+  const { users, responseStatus } = useFetchUsers(ROLES.PATIENT);
   return (
     <>
       <NavigatePanel buttonOnNavigatePanel={adminTabs} />

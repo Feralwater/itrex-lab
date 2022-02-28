@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 import { getAllUsersReducer } from 'redux/reducers/allPatients.reducer';
+import { getAllDoctorsReducer } from 'redux/reducers/allDoctors.reducer';
 import {
   loginReducer, makeAppointmentReducer, registrationReducer,
   profileReducer, notificationReducer, appointmentsForPatientReducer,
@@ -32,6 +33,7 @@ export const store = configureStore({
     changePassword: changePasswordReducer,
     appointmentsForDoctor: appointmentsForDoctorReducer,
     getAllUsers: getAllUsersReducer,
+    getAllDoctors: getAllDoctorsReducer,
   },
   middleware: (getDefaultMiddleware) => [...getDefaultMiddleware({
     serializableCheck: {
