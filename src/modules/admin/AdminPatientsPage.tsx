@@ -10,7 +10,8 @@ import { useFetchUsers } from 'modules/admin/hooks/useFetchUsers';
 import { ROLES } from 'routes/constants';
 
 export const AdminPatientsPage = () => {
-  const { users, responseStatus } = useFetchUsers(ROLES.PATIENT);
+  const { users, responseStatus } = useFetchUsers(ROLES.DOCTOR);
+
   return (
     <>
       <NavigatePanel buttonOnNavigatePanel={adminTabs} />

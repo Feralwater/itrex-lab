@@ -33,5 +33,5 @@ export const getAllDoctorsSlice = createSlice({
   },
 });
 
-export const selectAllDoctors = (state: RootState) => state.getAllUsers;
+export const selectAllDoctors = (state: RootState) => state.getAllDoctors;
 export const getAllDoctorsReducer = getAllDoctorsSlice.reducer;
