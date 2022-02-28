@@ -20,8 +20,12 @@ export const TableCell = styled.td`
   }
 `;
 
-export const TableHeaderCell = styled(TableCell)`
-  width: 20%;
+interface HeaderCell{
+  specializationCell?: boolean
+}
+
+export const TableHeaderCell = styled(TableCell)<HeaderCell>`
+  width: ${(props) => (props.specializationCell ? '17%' : '20%')};
 
   &:last-child {
     width: 100%;

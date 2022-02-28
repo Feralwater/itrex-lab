@@ -16,7 +16,7 @@ export const AdminDoctorsPage = () => {
     <>
       <NavigatePanel buttonOnNavigatePanel={adminTabs} />
       {responseStatus !== FETCH_STATUS.LOADING
-        ? <UserTable users={users} />
+        ? <UserTable users={users} specializationCell />
         : (
           <ResolutionsLoaderContainer>
             <Loader
