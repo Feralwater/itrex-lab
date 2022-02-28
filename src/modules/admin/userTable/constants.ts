@@ -4,4 +4,5 @@ export const tableColumnsNames = {
   firstName: 'First Name',
   lastName: 'Last Name',
   settingsButton: 'Control',
+  // specializationName: 'Specialization name',
 };

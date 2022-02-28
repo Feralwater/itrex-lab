@@ -9,8 +9,8 @@ import { UserTable } from 'modules/admin/userTable/UserTable';
 import { useFetchUsers } from 'modules/admin/hooks/useFetchUsers';
 import { ROLES } from 'routes/constants';
 
-export const AdminPatientsPage = () => {
-  const { users, responseStatus } = useFetchUsers(ROLES.PATIENT);
+export const AdminDoctorsPage = () => {
+  const { users, responseStatus } = useFetchUsers(ROLES.DOCTOR);
 
   return (
     <>

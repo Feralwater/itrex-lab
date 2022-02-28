@@ -1,6 +1,7 @@
 import { PATH } from 'routes/constants';
 import { dictionary } from 'pages';
 import { AdminPatientsPage } from 'modules/admin/AdminPatientsPage';
+import { AdminDoctorsPage } from 'modules/admin/AdminDoctorsPage';
 
 export const adminRoutes = [
   {
@@ -9,7 +10,7 @@ export const adminRoutes = [
   },
   {
     path: PATH.ADMIN_DOCTORS,
-    element: AdminPatientsPage,
+    element: AdminDoctorsPage,
   },
 ];
 
