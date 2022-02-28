@@ -23,3 +23,5 @@ export const adminTabs = [
     text: dictionary.adminPage.buttonDoctors,
   },
 ];
+
+export const userPerPage = 6;

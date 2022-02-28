@@ -1,23 +1,15 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { NavigatePanel } from 'components/NavigatePanel/NavigatePanel';
 import { adminTabs } from 'modules/admin/constants';
-import { useAppDispatch, useAppSelector } from 'hooks';
-import { getAllUsersSlice, selectAllUsers } from 'redux/reducers/allPatients.reducer';
 import { FETCH_STATUS } from 'redux/reducers/constants';
 import { ResolutionsLoaderContainer } from 'pages/Resolutions/Resolutions.styles';
 import Loader from 'react-loader-spinner';
 import { colors } from 'components/CommonStyles';
 import { UserTable } from 'modules/admin/userTable/UserTable';
+import { useFetchUsers } from 'modules/admin/hooks/useFetchUsers';
 
 export const AdminPatientsPage = () => {
-  const dispatch = useAppDispatch();
-  const { users, status: responseStatus } = useAppSelector(selectAllUsers);
-  useEffect(() => {
-    dispatch(getAllUsersSlice.actions.pending({
-      offset: 0,
-      limit: 8,
-    }));
-  }, []);
+  const { users, responseStatus } = useFetchUsers();
   return (
     <>
       <NavigatePanel buttonOnNavigatePanel={adminTabs} />
