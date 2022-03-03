@@ -9,6 +9,7 @@ export const TableBody:React.VFC<Users> = ({ users }) => (
         photo={user.photo}
         roleName={user.roleName}
         key={user.userID}
+        userID={user.userID}
         firstName={user.firsName}
         lastName={user.lastName}
         specializationName={user.specializationName}

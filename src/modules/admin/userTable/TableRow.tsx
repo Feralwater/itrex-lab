@@ -3,8 +3,10 @@ import { ResolutionsTableCell, ResolutionsTableRow } from 'pages/Resolutions/Res
 import { SettingsButton } from 'components/AppointmentCard/AppointmentCard.styles';
 import { RoleName } from 'redux/reducers/reducers.types';
 import { ModalWindow } from 'components';
+import { UserSettingsWindow } from 'modules/admin/userTable/UserSettingsWindow';
 
 interface TableRowProps {
+  userID: string
   firstName: string
   lastName: string
   photo: string
@@ -13,6 +15,7 @@ interface TableRowProps {
 }
 
 export const TableRow: React.VFC<TableRowProps> = ({
+  userID,
   firstName,
   lastName,
   photo,
@@ -31,7 +34,9 @@ export const TableRow: React.VFC<TableRowProps> = ({
         {specializationName && <ResolutionsTableCell>{specializationName}</ResolutionsTableCell>}
         <ResolutionsTableCell><SettingsButton onClick={openSettingsModal} /></ResolutionsTableCell>
       </ResolutionsTableRow>
-      <ModalWindow activeModal={showSettingsModal} setActiveModal={setShowSettingsModal}>text</ModalWindow>
+      <ModalWindow activeModal={showSettingsModal} setActiveModal={setShowSettingsModal}>
+        <UserSettingsWindow userID={userID} />
+      </ModalWindow>
     </>
   );
 };
