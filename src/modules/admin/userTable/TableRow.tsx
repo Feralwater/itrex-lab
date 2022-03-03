@@ -42,6 +42,7 @@ export const TableRow: React.VFC<TableRowProps> = ({
           photo={photo}
           roleName={roleName}
           specializationName={specializationName}
+          setShowSettingsModal={setShowSettingsModal}
         />
       </ModalWindow>
     </>
