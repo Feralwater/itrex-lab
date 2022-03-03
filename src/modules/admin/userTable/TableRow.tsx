@@ -5,7 +5,7 @@ import { RoleName } from 'redux/reducers/reducers.types';
 import { ModalWindow } from 'components';
 import { UserSettingsWindow } from 'modules/admin/userTable/UserSettingsWindow';
 
-interface TableRowProps {
+export interface TableRowProps {
   userID: string
   firstName: string
   lastName: string
@@ -35,7 +35,14 @@ export const TableRow: React.VFC<TableRowProps> = ({
         <ResolutionsTableCell><SettingsButton onClick={openSettingsModal} /></ResolutionsTableCell>
       </ResolutionsTableRow>
       <ModalWindow activeModal={showSettingsModal} setActiveModal={setShowSettingsModal}>
-        <UserSettingsWindow userID={userID} />
+        <UserSettingsWindow
+          userID={userID}
+          firstName={firstName}
+          lastName={lastName}
+          photo={photo}
+          roleName={roleName}
+          specializationName={specializationName}
+        />
       </ModalWindow>
     </>
   );

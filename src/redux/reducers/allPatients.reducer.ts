@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ResolutionsPending } from 'redux/actions.types';
-import { AllPatients } from 'resources/patients/patients.types';
-import { AllUsersState } from './reducers.types';
+import { AllPatients, UpdatePatientData, Users } from 'resources/patients/patients.types';
+import { AllPatientsState, AllUsersState, UpdateUser } from './reducers.types';
 import { RootState } from '../store';
 import { FETCH_STATUS } from './constants';
 
@@ -9,6 +9,7 @@ const initialState = {
   users: [],
   total: 0,
   status: FETCH_STATUS.IDLE,
+  updateUserStatus: FETCH_STATUS.IDLE,
 } as AllUsersState;
 
 export const getAllPatientsSlice = createSlice({
@@ -29,6 +30,21 @@ export const getAllPatientsSlice = createSlice({
     }),
     pending: (state, action: PayloadAction<ResolutionsPending>) => ({ ...state, ...action.payload, responseStatus: FETCH_STATUS.LOADING }),
     failed: (state) => ({ ...state, responseStatus: FETCH_STATUS.FAILED }),
+    updatePatientFulfilled: (state, action:PayloadAction<Users>) => ({
+      ...state,
+      users: state.users.map((user) => (user.userID === action.payload.id
+        ? {
+          userID: action.payload.id,
+          firsName: action.payload.first_name,
+          lastName: action.payload.last_name,
+          photo: action.payload.photo,
+          roleName: action.payload.role_name,
+        }
+        : { ...user })),
+      updateUserStatus: FETCH_STATUS.FULFILLED,
+    }),
+    updatePatientPending: (state, action:PayloadAction<UpdateUser>) => ({ ...state, ...action.payload, updateUserStatus: FETCH_STATUS.LOADING }),
+    updatePatientFailed: (state) => ({ ...state, updateUserStatus: FETCH_STATUS.FAILED }),
   },
 });
 

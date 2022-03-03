@@ -6,7 +6,7 @@ import { getAllDoctorsSlice } from 'redux/reducers/allDoctors.reducer';
 import doctors from 'resources/doctors/doctors.api';
 import { AllDoctors } from 'resources/doctors/doctors.types';
 import { getAllPatientsSlice } from 'redux/reducers/allPatients.reducer';
-import { AllPatients } from 'resources/patients/patients.types';
+import { AllPatients, Users } from 'resources/patients/patients.types';
 import patientsAPI from 'resources/patients/patients.api';
 
 function* fetchAllDoctors({ payload }: ReturnType<typeof getAllDoctorsSlice.actions.pending>) {
@@ -29,7 +29,18 @@ function* fetchAllPatients({ payload }: ReturnType<typeof getAllPatientsSlice.ac
   }
 }
 
+function* updatePatient({ payload }: ReturnType<typeof getAllPatientsSlice.actions.updatePatientPending>) {
+  try {
+    const { data }: AxiosResponse<Users> = yield call(patientsAPI.updatePatient, payload.id, { firstName: payload.firstName, lastName: payload.lastName });
+    yield put(getAllPatientsSlice.actions.updatePatientFulfilled(data));
+  } catch (error:any) {
+    yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.response.data)));
+    yield put(getAllPatientsSlice.actions.updatePatientFailed());
+  }
+}
+
 export function* fetchAllUsersWatcher() {
   yield takeEvery(getAllDoctorsSlice.actions.pending, fetchAllDoctors);
   yield takeEvery(getAllPatientsSlice.actions.pending, fetchAllPatients);
+  yield takeEvery(getAllPatientsSlice.actions.updatePatientPending, updatePatient);
 }
