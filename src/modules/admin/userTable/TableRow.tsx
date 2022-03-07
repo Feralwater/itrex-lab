@@ -1,14 +1,9 @@
 import React, {
-  Dispatch,
-  MutableRefObject, SetStateAction, useEffect, useRef, useState,
+  Dispatch, MutableRefObject, SetStateAction, useEffect, useRef, useState,
 } from 'react';
-import {
-  ResolutionsTableCell, ResolutionsTableRow,
-} from 'pages/Resolutions/Resolutions.styles';
-import { SettingsButton } from 'components/AppointmentCard/AppointmentCard.styles';
+import { ResolutionsTableCell, ResolutionsTableRow } from 'pages/Resolutions/Resolutions.styles';
 import { RoleName } from 'redux/reducers/reducers.types';
-import { SettingsPanel } from 'modules/admin/userTable/SettingsPanel';
-import { LastAdminTableCell, SettingsWrapper } from 'modules/admin/userTable/Table.styles';
+import { LastTableCell } from './LastTableCell';
 
 export interface TableRowProps {
   userID: string
@@ -51,23 +46,18 @@ export const TableRow: React.VFC<TableRowProps> = ({
       <ResolutionsTableCell>{firstName}</ResolutionsTableCell>
       <ResolutionsTableCell>{lastName}</ResolutionsTableCell>
       {specializationName && <ResolutionsTableCell>{specializationName}</ResolutionsTableCell>}
-      <LastAdminTableCell>
-        <SettingsWrapper>
-          <SettingsButton onClick={openSettingsModal} />
-          {showSettingsModal && (
-          <SettingsPanel
-            userID={userID}
-            firstName={firstName}
-            lastName={lastName}
-            photo={photo}
-            roleName={roleName}
-            specializationName={specializationName}
-            settingsRef={settingsRef}
-            setShowSettingsModal={setShowSettingsModal}
-          />
-          )}
-        </SettingsWrapper>
-      </LastAdminTableCell>
+      <LastTableCell
+        openSettingsModal={openSettingsModal}
+        showSettingsModal={showSettingsModal}
+        userID={userID}
+        firstName={firstName}
+        lastName={lastName}
+        photo={photo}
+        roleName={roleName}
+        specializationName={specializationName}
+        settingsRef={settingsRef}
+        setShowSettingsModal={setShowSettingsModal}
+      />
     </ResolutionsTableRow>
   );
 };
