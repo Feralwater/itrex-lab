@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import { ModalWindow } from 'components';
 import { UserUpdateWindow } from 'modules/admin/userTable/UserUpdateWindow';
 import { TableRowProps } from 'modules/admin/userTable/TableRow';
@@ -6,7 +6,11 @@ import { dictionary } from 'pages';
 import { ControlCommand } from 'components/ControlCardPanel/ControlCardPanel.styles';
 import { AdminCommandsList } from 'modules/admin/userTable/Table.styles';
 
-export const SettingsPanel:React.VFC<TableRowProps> = ({
+export interface SettingsPanelProps extends TableRowProps{
+  setShowSettingsModal: Dispatch<SetStateAction<boolean>>
+}
+
+export const SettingsPanel:React.VFC<SettingsPanelProps> = ({
   userID,
   firstName,
   lastName,

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import { LastAdminTableCell, SettingsWrapper } from 'modules/admin/userTable/Table.styles';
 import { SettingsButton } from 'components/AppointmentCard/AppointmentCard.styles';
 import { SettingsPanel } from 'modules/admin/userTable/SettingsPanel';
@@ -7,6 +7,7 @@ import { TableRowProps } from 'modules/admin/userTable/TableRow';
 export interface LastTableCellProps extends TableRowProps{
   openSettingsModal: () => void,
   showSettingsModal: boolean,
+  setShowSettingsModal: Dispatch<SetStateAction<boolean>>
 }
 
 export const LastTableCell:React.VFC<LastTableCellProps> = ({

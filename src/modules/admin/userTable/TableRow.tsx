@@ -1,5 +1,5 @@
 import React, {
-  Dispatch, MutableRefObject, SetStateAction, useEffect, useRef, useState,
+  MutableRefObject, useEffect, useRef, useState,
 } from 'react';
 import { ResolutionsTableCell, ResolutionsTableRow } from 'pages/Resolutions/Resolutions.styles';
 import { RoleName } from 'redux/reducers/reducers.types';
@@ -13,7 +13,6 @@ export interface TableRowProps {
   roleName: RoleName
   specializationName?: string
   settingsRef?: MutableRefObject<HTMLUListElement>;
-  setShowSettingsModal: Dispatch<SetStateAction<boolean>>
 }
 
 export const TableRow: React.VFC<TableRowProps> = ({
