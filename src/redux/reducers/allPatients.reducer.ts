@@ -10,6 +10,7 @@ const initialState = {
   total: 0,
   status: FETCH_STATUS.IDLE,
   updateUserStatus: FETCH_STATUS.IDLE,
+  deleteUserStatus: FETCH_STATUS.IDLE,
 } as AllUsersState;
 
 export const getAllPatientsSlice = createSlice({
@@ -45,6 +46,13 @@ export const getAllPatientsSlice = createSlice({
     }),
     updatePatientPending: (state, action:PayloadAction<UpdateUser>) => ({ ...state, ...action.payload, updateUserStatus: FETCH_STATUS.LOADING }),
     updatePatientFailed: (state) => ({ ...state, updateUserStatus: FETCH_STATUS.FAILED }),
+    deletePatientFulfilled: (state, action:PayloadAction<string>) => ({
+      ...state,
+      users: state.users.filter((user) => (user.userID !== action.payload)),
+      deleteUserStatus: FETCH_STATUS.FULFILLED,
+    }),
+    deletePatientPending: (state, action:PayloadAction<string>) => ({ ...state, id: action.payload, deleteUserStatus: FETCH_STATUS.LOADING }),
+    deletePatientFailed: (state) => ({ ...state, deleteUserStatus: FETCH_STATUS.FAILED }),
   },
 });
 

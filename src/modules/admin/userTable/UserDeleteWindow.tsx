@@ -2,6 +2,7 @@ import React, { Dispatch, SetStateAction } from 'react';
 import { useAppDispatch } from 'hooks';
 import { ResolutionModalButtons } from 'components';
 import { dictionary } from 'pages';
+import { getAllPatientsSlice } from 'redux/reducers/allPatients.reducer';
 
 export interface UserDeleteWindowProps {
   userID: string
@@ -20,9 +21,7 @@ export const UserDeleteWindow: React.VFC<UserDeleteWindowProps> = ({
 }) => {
   const dispatch = useAppDispatch();
   const deleteUserHandle = () => {
-    // dispatch(getAllPatientsSlice.actions.updatePatientPending(
-    //   { id: userID, firstName: userName, lastName: userSurName },
-    // ));
+    dispatch(getAllPatientsSlice.actions.deletePatientPending(userID));
     setShowDeleteModal(false);
     setShowSettingsModal(false);
   };

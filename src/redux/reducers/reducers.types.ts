@@ -130,6 +130,7 @@ export interface AllUsersState {
   total: number;
   status: Status;
   updateUserStatus: Status;
+  deleteUserStatus: Status;
 }
 
 export interface UpdateUser extends UpdatePatientData {
