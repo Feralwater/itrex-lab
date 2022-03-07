@@ -13,6 +13,7 @@ export const SettingsPanel:React.VFC<TableRowProps> = ({
   photo,
   roleName,
   specializationName,
+  settingsRef,
 }) => {
   const [showEditModal, setShowEditModal] = useState<boolean>(false);
 
@@ -20,7 +21,7 @@ export const SettingsPanel:React.VFC<TableRowProps> = ({
 
   return (
     <>
-      <AdminCommandsList>
+      <AdminCommandsList ref={settingsRef}>
         <ControlCommand onClick={openUpdateModalHandle}>{dictionary.userModal.updatePatient}</ControlCommand>
         <ControlCommand>{dictionary.userModal.deletePatient}</ControlCommand>
       </AdminCommandsList>
