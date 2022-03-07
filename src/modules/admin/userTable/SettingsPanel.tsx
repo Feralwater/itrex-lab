@@ -3,7 +3,8 @@ import { ModalWindow } from 'components';
 import { UserSettingsWindow } from 'modules/admin/userTable/UserSettingsWindow';
 import { TableRowProps } from 'modules/admin/userTable/TableRow';
 import { dictionary } from 'pages';
-import { CommandsList, ControlCommand } from 'components/ControlCardPanel/ControlCardPanel.styles';
+import { ControlCommand } from 'components/ControlCardPanel/ControlCardPanel.styles';
+import { AdminCommandsList } from 'modules/admin/userTable/Table.styles';
 
 export const SettingsPanel:React.VFC<TableRowProps> = ({
   userID,
@@ -19,10 +20,10 @@ export const SettingsPanel:React.VFC<TableRowProps> = ({
 
   return (
     <>
-      <CommandsList>
+      <AdminCommandsList>
         <ControlCommand onClick={openUpdateModalHandle}>{dictionary.userModal.updatePatient}</ControlCommand>
         <ControlCommand>{dictionary.userModal.deletePatient}</ControlCommand>
-      </CommandsList>
+      </AdminCommandsList>
       <ModalWindow activeModal={showEditModal} setActiveModal={setShowEditModal}>
         <UserSettingsWindow
           userID={userID}

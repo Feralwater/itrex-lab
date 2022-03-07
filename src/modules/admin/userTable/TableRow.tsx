@@ -5,6 +5,7 @@ import {
 import { SettingsButton } from 'components/AppointmentCard/AppointmentCard.styles';
 import { RoleName } from 'redux/reducers/reducers.types';
 import { SettingsPanel } from 'modules/admin/userTable/SettingsPanel';
+import { LastAdminTableCell, SettingsWrapper } from 'modules/admin/userTable/Table.styles';
 
 export interface TableRowProps {
   userID: string
@@ -24,7 +25,7 @@ export const TableRow: React.VFC<TableRowProps> = ({
   specializationName,
 }) => {
   const [showSettingsModal, setShowSettingsModal] = useState<boolean>(false);
-  const openSettingsModal = () => setShowSettingsModal(true);
+  const openSettingsModal = () => setShowSettingsModal((prevState) => !prevState);
   return (
     <ResolutionsTableRow>
       <ResolutionsTableCell><img src={photo} alt="" /></ResolutionsTableCell>
@@ -32,9 +33,10 @@ export const TableRow: React.VFC<TableRowProps> = ({
       <ResolutionsTableCell>{firstName}</ResolutionsTableCell>
       <ResolutionsTableCell>{lastName}</ResolutionsTableCell>
       {specializationName && <ResolutionsTableCell>{specializationName}</ResolutionsTableCell>}
-      <ResolutionsTableCell>
-        <SettingsButton onClick={openSettingsModal} />
-        {showSettingsModal && (
+      <LastAdminTableCell>
+        <SettingsWrapper>
+          <SettingsButton onClick={openSettingsModal} />
+          {showSettingsModal && (
           <SettingsPanel
             userID={userID}
             firstName={firstName}
@@ -43,8 +45,9 @@ export const TableRow: React.VFC<TableRowProps> = ({
             roleName={roleName}
             specializationName={specializationName}
           />
-        )}
-      </ResolutionsTableCell>
+          )}
+        </SettingsWrapper>
+      </LastAdminTableCell>
     </ResolutionsTableRow>
   );
 };

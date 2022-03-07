@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { colors } from 'components/CommonStyles';
+import { CommandsList } from 'components/ControlCardPanel/ControlCardPanel.styles';
 
 export const TableCell = styled.td`
   padding: 10px 25px 10px 0;
@@ -20,7 +21,7 @@ export const TableCell = styled.td`
   }
 `;
 
-interface HeaderCell{
+interface HeaderCell {
   specializationCell?: boolean
 }
 
@@ -33,4 +34,31 @@ export const TableHeaderCell = styled(TableCell)<HeaderCell>`
     justify-content: flex-end;
     align-items: flex-end;
   }
+`;
+
+export const SettingsWrapper = styled.div`
+  position: relative;
+  overflow: visible;
+`;
+
+export const LastAdminTableCell = styled.td`
+  border-bottom: 3px solid ${colors.link_water['032']};
+  box-sizing: border-box;
+  overflow: visible;
+  white-space: nowrap;
+  border-radius: 0 4px 4px 0;
+  padding: 10px 12px 10px 0;
+  display: flex;
+  justify-content: flex-end;
+
+  & img {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+  }
+`;
+
+export const AdminCommandsList = styled(CommandsList)`
+  top: 20px;
+  right: 40px;
 `;
