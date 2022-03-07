@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { ResolutionsTableCell, ResolutionsTableRow } from 'pages/Resolutions/Resolutions.styles';
+import {
+  ResolutionsTableCell, ResolutionsTableRow,
+} from 'pages/Resolutions/Resolutions.styles';
 import { SettingsButton } from 'components/AppointmentCard/AppointmentCard.styles';
 import { RoleName } from 'redux/reducers/reducers.types';
 import { SettingsPanel } from 'modules/admin/userTable/SettingsPanel';
@@ -24,25 +26,25 @@ export const TableRow: React.VFC<TableRowProps> = ({
   const [showSettingsModal, setShowSettingsModal] = useState<boolean>(false);
   const openSettingsModal = () => setShowSettingsModal(true);
   return (
-    <>
-      <ResolutionsTableRow>
-        <ResolutionsTableCell><img src={photo} alt="" /></ResolutionsTableCell>
-        <ResolutionsTableCell>{roleName}</ResolutionsTableCell>
-        <ResolutionsTableCell>{firstName}</ResolutionsTableCell>
-        <ResolutionsTableCell>{lastName}</ResolutionsTableCell>
-        {specializationName && <ResolutionsTableCell>{specializationName}</ResolutionsTableCell>}
-        <ResolutionsTableCell><SettingsButton onClick={openSettingsModal} /></ResolutionsTableCell>
-      </ResolutionsTableRow>
-      {showSettingsModal && (
-      <SettingsPanel
-        userID={userID}
-        firstName={firstName}
-        lastName={lastName}
-        photo={photo}
-        roleName={roleName}
-        specializationName={specializationName}
-      />
-      )}
-    </>
+    <ResolutionsTableRow>
+      <ResolutionsTableCell><img src={photo} alt="" /></ResolutionsTableCell>
+      <ResolutionsTableCell>{roleName}</ResolutionsTableCell>
+      <ResolutionsTableCell>{firstName}</ResolutionsTableCell>
+      <ResolutionsTableCell>{lastName}</ResolutionsTableCell>
+      {specializationName && <ResolutionsTableCell>{specializationName}</ResolutionsTableCell>}
+      <ResolutionsTableCell>
+        <SettingsButton onClick={openSettingsModal} />
+        {showSettingsModal && (
+          <SettingsPanel
+            userID={userID}
+            firstName={firstName}
+            lastName={lastName}
+            photo={photo}
+            roleName={roleName}
+            specializationName={specializationName}
+          />
+        )}
+      </ResolutionsTableCell>
+    </ResolutionsTableRow>
   );
 };

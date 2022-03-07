@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { ModalWindow } from 'components';
 import { UserSettingsWindow } from 'modules/admin/userTable/UserSettingsWindow';
 import { TableRowProps } from 'modules/admin/userTable/TableRow';
+import { dictionary } from 'pages';
+import { CommandsList, ControlCommand } from 'components/ControlCardPanel/ControlCardPanel.styles';
 
 export const SettingsPanel:React.VFC<TableRowProps> = ({
   userID,
@@ -12,10 +14,15 @@ export const SettingsPanel:React.VFC<TableRowProps> = ({
   specializationName,
 }) => {
   const [showEditModal, setShowEditModal] = useState<boolean>(false);
+
+  const openUpdateModalHandle = () => setShowEditModal(true);
+
   return (
     <>
-      <tr onClick={() => setShowEditModal(true)}>update</tr>
-      <tr>delete</tr>
+      <CommandsList>
+        <ControlCommand onClick={openUpdateModalHandle}>{dictionary.userModal.updatePatient}</ControlCommand>
+        <ControlCommand>{dictionary.userModal.deletePatient}</ControlCommand>
+      </CommandsList>
       <ModalWindow activeModal={showEditModal} setActiveModal={setShowEditModal}>
         <UserSettingsWindow
           userID={userID}
