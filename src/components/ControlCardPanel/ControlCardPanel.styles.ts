@@ -24,7 +24,7 @@ export const ControlCommand = styled.li`
   cursor: pointer;
   border-radius: 6px;
 
-  &:last-child {
+  &:nth-child(2) {
     color: ${colors.radical_red};
   }
 

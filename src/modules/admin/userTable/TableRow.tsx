@@ -1,5 +1,6 @@
 import React, {
-  MutableRefObject, useEffect, useRef, useState,
+  Dispatch,
+  MutableRefObject, SetStateAction, useEffect, useRef, useState,
 } from 'react';
 import {
   ResolutionsTableCell, ResolutionsTableRow,
@@ -17,6 +18,7 @@ export interface TableRowProps {
   roleName: RoleName
   specializationName?: string
   settingsRef?: MutableRefObject<HTMLUListElement>;
+  setShowSettingsModal: Dispatch<SetStateAction<boolean>>
 }
 
 export const TableRow: React.VFC<TableRowProps> = ({
@@ -61,6 +63,7 @@ export const TableRow: React.VFC<TableRowProps> = ({
             roleName={roleName}
             specializationName={specializationName}
             settingsRef={settingsRef}
+            setShowSettingsModal={setShowSettingsModal}
           />
           )}
         </SettingsWrapper>

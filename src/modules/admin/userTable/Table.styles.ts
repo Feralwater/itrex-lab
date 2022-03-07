@@ -62,3 +62,7 @@ export const AdminCommandsList = styled(CommandsList)`
   top: 20px;
   right: 40px;
 `;
+
+export const AdminUpdateWindow = styled.div`
+
+`;
