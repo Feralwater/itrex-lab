@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { ResolutionsTableCell, ResolutionsTableRow } from 'pages/Resolutions/Resolutions.styles';
 import { SettingsButton } from 'components/AppointmentCard/AppointmentCard.styles';
 import { RoleName } from 'redux/reducers/reducers.types';
-import { ModalWindow } from 'components';
-import { UserSettingsWindow } from 'modules/admin/userTable/UserSettingsWindow';
+import { SettingsPanel } from 'modules/admin/userTable/SettingsPanel';
 
 export interface TableRowProps {
   userID: string
@@ -34,17 +33,16 @@ export const TableRow: React.VFC<TableRowProps> = ({
         {specializationName && <ResolutionsTableCell>{specializationName}</ResolutionsTableCell>}
         <ResolutionsTableCell><SettingsButton onClick={openSettingsModal} /></ResolutionsTableCell>
       </ResolutionsTableRow>
-      <ModalWindow activeModal={showSettingsModal} setActiveModal={setShowSettingsModal}>
-        <UserSettingsWindow
-          userID={userID}
-          firstName={firstName}
-          lastName={lastName}
-          photo={photo}
-          roleName={roleName}
-          specializationName={specializationName}
-          setShowSettingsModal={setShowSettingsModal}
-        />
-      </ModalWindow>
+      {showSettingsModal && (
+      <SettingsPanel
+        userID={userID}
+        firstName={firstName}
+        lastName={lastName}
+        photo={photo}
+        roleName={roleName}
+        specializationName={specializationName}
+      />
+      )}
     </>
   );
 };
