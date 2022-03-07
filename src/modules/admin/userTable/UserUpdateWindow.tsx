@@ -6,7 +6,6 @@ import { useAppDispatch } from 'hooks';
 import { getAllPatientsSlice } from 'redux/reducers/allPatients.reducer';
 import { InputFormContainer, ResolutionModalButtons } from 'components';
 import { dictionary } from 'pages';
-import { AdminUpdateWindow } from 'modules/admin/userTable/Table.styles';
 
 export interface UserUpdateWindowProps extends TableRowProps {
   setShowEditModal: Dispatch<SetStateAction<boolean>>
@@ -41,7 +40,7 @@ export const UserUpdateWindow: React.VFC<UserUpdateWindowProps> = ({
   const secondNameChangeHandler = (event:ChangeEvent<HTMLInputElement>) => setUserSurName(event.currentTarget.value);
 
   return (
-    <AdminUpdateWindow>
+    <div>
       <div>{roleName}</div>
       <img src={photo} alt="" />
       <InputFormContainer
@@ -78,6 +77,6 @@ export const UserUpdateWindow: React.VFC<UserUpdateWindowProps> = ({
         activeButtonIcon="/svg/board-icon.svg"
         passiveButtonIcon="/svg/close-icon.svg"
       />
-    </AdminUpdateWindow>
+    </div>
   );
 };
