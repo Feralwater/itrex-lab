@@ -26,8 +26,8 @@ export const SettingsPanel:React.VFC<SettingsPanelProps> = ({
 
   return (
     <AdminCommandsList ref={settingsRef}>
-      <ControlCommand onClick={openUpdateModalHandle}>{dictionary.userModal.updatePatient}</ControlCommand>
-      <ControlCommand>{dictionary.userModal.deletePatient}</ControlCommand>
+      <ControlCommand onClick={openUpdateModalHandle}>{dictionary.userModal.updateUser}</ControlCommand>
+      <ControlCommand>{dictionary.userModal.deleteUser}</ControlCommand>
       <ModalWindow activeModal={showEditModal} setActiveModal={setShowEditModal}>
         <UserUpdateWindow
           userID={userID}

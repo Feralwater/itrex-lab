@@ -85,7 +85,7 @@ export const dictionary = {
     firstNameLabel: 'User first name',
     secondNamePlaceholder: 'Second name',
     secondNameLabel: 'User second name',
-    updatePatient: 'Update Patient',
-    deletePatient: 'Delete Patient',
+    updateUser: 'Update User',
+    deleteUser: 'Delete User',
   },
 };
