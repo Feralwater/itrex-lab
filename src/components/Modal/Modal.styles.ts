@@ -28,4 +28,7 @@ export const ModalContent = styled.div<ModalProps>`
   transition: .5s all;
   width: 560px;
   min-height: 467px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;

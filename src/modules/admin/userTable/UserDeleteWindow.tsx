@@ -3,6 +3,7 @@ import { useAppDispatch } from 'hooks';
 import { ResolutionModalButtons } from 'components';
 import { dictionary } from 'pages';
 import { getAllPatientsSlice } from 'redux/reducers/allPatients.reducer';
+import { AgreeQuestion } from 'modules/admin/userTable/Table.styles';
 
 export interface UserDeleteWindowProps {
   userID: string
@@ -31,8 +32,10 @@ export const UserDeleteWindow: React.VFC<UserDeleteWindowProps> = ({
   };
 
   return (
-    <div>
-      {`${`${dictionary.userModal.deleteUserQuestion} ${firstName} ${lastName}`}?`}
+    <>
+      <AgreeQuestion>
+        {`${`${dictionary.userModal.deleteUserQuestion} ${firstName} ${lastName}`}?`}
+      </AgreeQuestion>
       <ResolutionModalButtons
         disabled={false}
         activeButtonType="button"
@@ -43,6 +46,6 @@ export const UserDeleteWindow: React.VFC<UserDeleteWindowProps> = ({
         activeButtonIcon="/svg/save-icon.svg"
         passiveButtonIcon="/svg/close-icon.svg"
       />
-    </div>
+    </>
   );
 };
