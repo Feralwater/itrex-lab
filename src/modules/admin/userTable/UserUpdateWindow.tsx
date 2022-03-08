@@ -7,6 +7,8 @@ import { getAllPatientsSlice } from 'redux/reducers/allPatients.reducer';
 import { InputFormContainer, ResolutionModalButtons } from 'components';
 import { dictionary } from 'pages';
 import { PatientData, UserRoleAndPhoto } from 'modules/admin/userTable/Table.styles';
+import { ROLES } from 'routes/constants';
+import { getAllDoctorsSlice } from 'redux/reducers/allDoctors.reducer';
 
 export interface UserUpdateWindowProps extends TableRowProps {
   setShowEditModal: Dispatch<SetStateAction<boolean>>
@@ -27,13 +29,24 @@ export const UserUpdateWindow: React.VFC<UserUpdateWindowProps> = ({
   const [userSurName, setUserSurName] = useState<string>(lastName);
   const [doctorSpecializationName, setDoctorSpecializationName] = useState<string | undefined>(specializationName);
   const dispatch = useAppDispatch();
-  const updateUserHandle = () => {
+  const updatePatientHandle = () => {
     dispatch(getAllPatientsSlice.actions.updatePatientPending(
       { id: userID, firstName: userName, lastName: userSurName },
     ));
     setShowEditModal(false);
     setShowSettingsModal(false);
   };
+  const updateDoctorHandle = () => {
+    dispatch(getAllDoctorsSlice.actions.updateDoctorPending(
+      {
+        id: userID, firstName: userName, lastName: userSurName, specializations: [doctorSpecializationName],
+      },
+    ));
+    setShowEditModal(false);
+    setShowSettingsModal(false);
+  };
+  const updateUserHandle = roleName === ROLES.DOCTOR ? updateDoctorHandle : updatePatientHandle;
+  console.log(roleName);
   const cancelHandler = () => {
     setShowEditModal(false);
     setShowSettingsModal(false);

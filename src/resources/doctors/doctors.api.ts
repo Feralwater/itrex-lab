@@ -1,4 +1,3 @@
-import { PATIENTS_API } from 'resources/patients/constants';
 import instance from '../../services/api/api';
 import {
   AllDoctors, Doctors, DoctorsBySpecializationIdResponse, UpdateDoctorData,
@@ -18,7 +17,7 @@ const doctors = {
     });
   },
   async updateDoctor(id: string, data:UpdateDoctorData) {
-    return instance.patch<Doctors>(PATIENTS_API.updatePatient(id), data);
+    return instance.patch<Doctors>(DOCTORS_API.updateDoctor(id), data);
   },
 };
 

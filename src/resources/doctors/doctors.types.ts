@@ -19,5 +19,5 @@ export interface AllDoctors {
 }
 
 export interface UpdateDoctorData extends UpdatePatientData {
-  specializations: string[]
+  specializations: (string | undefined)[]
 }

@@ -149,5 +149,5 @@ export interface UpdateUser extends UpdatePatientData {
 }
 
 export interface UpdateDoctor extends UpdateUser {
-  specializations: string[]
+  specializations: (string | undefined)[]
 }
