@@ -46,7 +46,6 @@ export const UserUpdateWindow: React.VFC<UserUpdateWindowProps> = ({
     setShowSettingsModal(false);
   };
   const updateUserHandle = roleName === ROLES.DOCTOR ? updateDoctorHandle : updatePatientHandle;
-  console.log(roleName);
   const cancelHandler = () => {
     setShowEditModal(false);
     setShowSettingsModal(false);

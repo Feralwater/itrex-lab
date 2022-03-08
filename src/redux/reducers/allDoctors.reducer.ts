@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ResolutionsPending } from 'redux/actions.types';
 import { AllDoctors, Doctors } from 'resources/doctors/doctors.types';
-import { DoctorsState, UpdateDoctor, UpdateUser } from './reducers.types';
+import { DoctorsState, UpdateDoctor } from './reducers.types';
 import { RootState } from '../store';
 import { FETCH_STATUS } from './constants';
 
