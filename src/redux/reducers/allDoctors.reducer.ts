@@ -48,6 +48,13 @@ export const getAllDoctorsSlice = createSlice({
     }),
     updateDoctorPending: (state, action:PayloadAction<UpdateDoctor>) => ({ ...state, ...action.payload, updateUserStatus: FETCH_STATUS.LOADING }),
     updateDoctorFailed: (state) => ({ ...state, updateUserStatus: FETCH_STATUS.FAILED }),
+    deleteDoctorFulfilled: (state, action:PayloadAction<string>) => ({
+      ...state,
+      users: state.users.filter((user) => (user.userID !== action.payload)),
+      deleteUserStatus: FETCH_STATUS.FULFILLED,
+    }),
+    deleteDoctorPending: (state, action:PayloadAction<string>) => ({ ...state, id: action.payload, deleteUserStatus: FETCH_STATUS.LOADING }),
+    deleteDoctorFailed: (state) => ({ ...state, deleteUserStatus: FETCH_STATUS.FAILED }),
   },
 });
 
