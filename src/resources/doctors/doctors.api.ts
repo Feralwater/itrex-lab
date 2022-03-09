@@ -19,6 +19,9 @@ const doctors = {
   async updateDoctor(id: string, data:UpdateDoctorData) {
     return instance.patch<Doctors>(DOCTORS_API.updateDoctor(id), data);
   },
+  async deleteDoctor(id: string) {
+    return instance.delete<string>(DOCTORS_API.deleteDoctor(id));
+  },
 };
 
 export default doctors;
