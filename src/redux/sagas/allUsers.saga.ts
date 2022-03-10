@@ -81,6 +81,17 @@ function* deleteDoctor({ payload }: ReturnType<typeof getAllDoctorsSlice.actions
   }
 }
 
+function* createDoctor({ payload }: ReturnType<typeof getAllDoctorsSlice.actions.createDoctorPending>) {
+  try {
+    const { data }: AxiosResponse<Users> = yield call(doctors.createDoctor, payload);
+    yield put(getAllDoctorsSlice.actions.createDoctorFulfilled(data));
+    yield put(notificationSlice.actions.notificationSuccess(componentsDictionary.message.successMessageBodyCreateNewDoctor));
+  } catch (error:any) {
+    yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.response.data)));
+    yield put(getAllDoctorsSlice.actions.createDoctorFailed());
+  }
+}
+
 export function* fetchAllUsersWatcher() {
   yield takeEvery(getAllDoctorsSlice.actions.pending, fetchAllDoctors);
   yield takeEvery(getAllPatientsSlice.actions.pending, fetchAllPatients);
@@ -89,4 +100,5 @@ export function* fetchAllUsersWatcher() {
   yield takeEvery(getAllPatientsSlice.actions.createPatientPending, createPatient);
   yield takeEvery(getAllDoctorsSlice.actions.updateDoctorPending, updateDoctor);
   yield takeEvery(getAllDoctorsSlice.actions.deleteDoctorPending, deleteDoctor);
+  yield takeEvery(getAllDoctorsSlice.actions.createDoctorPending, createDoctor);
 }

@@ -8,6 +8,7 @@ import { useAppDispatch } from 'hooks';
 import { getAllPatientsSlice } from 'redux/reducers/allPatients.reducer';
 import { RoleName } from 'redux/reducers/reducers.types';
 import { ROLES } from 'routes/constants';
+import { getAllDoctorsSlice } from 'redux/reducers/allDoctors.reducer';
 
 interface CreateUserModalProps {
   createPatientWindow: boolean
@@ -31,9 +32,16 @@ export const CreateUserModal: React.VFC<CreateUserModalProps> = ({
   const dispatch = useAppDispatch();
   const cancelHandler = () => setCreatePatientWindow(false);
   const createPatientHandle = () => {
-    dispatch(getAllPatientsSlice.actions.createPatientPending({
-      firstName, lastName, userName, password,
-    }));
+    if (roleName === ROLES.DOCTOR) {
+      dispatch(getAllDoctorsSlice.actions.createDoctorPending({
+        firstName, lastName, userName, password, specializations: [specialization],
+      }));
+    }
+    if (roleName === ROLES.PATIENT) {
+      dispatch(getAllPatientsSlice.actions.createPatientPending({
+        firstName, lastName, userName, password,
+      }));
+    }
     setCreatePatientWindow(false);
   };
   return (
