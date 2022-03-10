@@ -11,6 +11,7 @@ const initialState = {
   status: FETCH_STATUS.IDLE,
   updateUserStatus: FETCH_STATUS.IDLE,
   deleteUserStatus: FETCH_STATUS.IDLE,
+  createUserStatus: FETCH_STATUS.IDLE,
 } as DoctorsState;
 
 export const getAllDoctorsSlice = createSlice({
