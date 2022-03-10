@@ -14,7 +14,7 @@ export const AdminPatientsPage = () => {
 
   return (
     <>
-      <AdminNavigatePanel>
+      <AdminNavigatePanel roleName={ROLES.PATIENT}>
         {dictionary.adminPage.addPatientButton}
       </AdminNavigatePanel>
       {responseStatus !== FETCH_STATUS.LOADING
