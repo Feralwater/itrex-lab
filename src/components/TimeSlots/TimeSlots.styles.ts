@@ -42,7 +42,7 @@ export const TimeSlotLabel = styled.label`
   border-radius: 8px;
   padding: 8px 0;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 1.5rem;
   line-height: 130%;
   align-items: center;
   justify-content: center;

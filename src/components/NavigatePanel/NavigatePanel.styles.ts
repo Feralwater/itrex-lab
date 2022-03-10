@@ -21,7 +21,7 @@ export const PatientsButton = styled(Link)<PatientsButtonProps>`
   width: 137px;
   display: inline-flex;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 1.5rem;
   align-items: center;
   justify-content: center;
   border-radius: 8px;
@@ -56,7 +56,7 @@ export const CreateAppointmentButton = styled(Link)`
   border-radius: 8px;
   border: none;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 1.5rem;
   color: ${colors.white};
   cursor: pointer;
   background-color: ${colors.cornflower_blue};

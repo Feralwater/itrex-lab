@@ -62,7 +62,7 @@ export const UserCardBodyTime = styled.div`
 
 export const UserCardBodyTimeText = styled.time`
   font-weight: 600;
-  font-size: 15px;
+  font-size: 1.5rem;
   color: ${colors.dark_jungle_green};
   margin: 0 0 16px 0;
 `;

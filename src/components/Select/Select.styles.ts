@@ -87,7 +87,7 @@ export const SelectStyles: StylesConfig<LabelType, false, GroupBase<LabelType>> 
 
 export const SelectLabel = styled.label`
   font-weight: 500;
-  font-size: 13px;
+  font-size: 1.3rem;
   line-height: 130%;
   color: ${colors.black['1']};
   display: flex;
@@ -98,7 +98,7 @@ export const SelectLabel = styled.label`
 
 export const RequireSign = styled.i`
   font-weight: 400;
-  font-size: 15px;
+  font-size: 1.5rem;
   line-height: 140%;
   color: ${colors.brink_pink};
 `;
