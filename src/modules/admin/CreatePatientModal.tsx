@@ -4,6 +4,8 @@ import React, {
 import { InputFormContainer, ModalWindow, ResolutionModalButtons } from 'components';
 import { CreatePatientFields } from 'modules/admin/AdminPage.styles';
 import { dictionary } from 'pages';
+import { useAppDispatch } from 'hooks';
+import { getAllPatientsSlice } from 'redux/reducers/allPatients.reducer';
 
 interface CreatePatientModalProps {
   createPatientWindow: boolean
@@ -15,15 +17,18 @@ export const CreatePatientModal: React.VFC<CreatePatientModalProps> = ({
 }) => {
   const [firstName, setFirstName] = useState<string>('');
   const [lastName, setLastName] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
+  const [userName, setUserName] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const firstNameChangeHandler = (event: ChangeEvent<HTMLInputElement>) => setFirstName(event.currentTarget.value);
   const lastNameChangeHandler = (event: ChangeEvent<HTMLInputElement>) => setLastName(event.currentTarget.value);
-  const emailChangeHandler = (event: ChangeEvent<HTMLInputElement>) => setEmail(event.currentTarget.value);
+  const emailChangeHandler = (event: ChangeEvent<HTMLInputElement>) => setUserName(event.currentTarget.value);
   const passwordChangeHandler = (event: ChangeEvent<HTMLInputElement>) => setPassword(event.currentTarget.value);
-
+  const dispatch = useAppDispatch();
   const cancelHandler = () => setCreatePatientWindow(false);
   const createPatientHandle = () => {
+    dispatch(getAllPatientsSlice.actions.createPatientPending({
+      firstName, lastName, userName, password,
+    }));
     setCreatePatientWindow(false);
   };
   return (
@@ -58,7 +63,7 @@ export const CreatePatientModal: React.VFC<CreatePatientModalProps> = ({
           type="email"
           isRequire
           placeholder={dictionary.userModal.emailPlaceholder}
-          value={email}
+          value={userName}
           label={dictionary.userModal.emailLabel}
           onChange={emailChangeHandler}
         />
