@@ -134,6 +134,7 @@ export interface AllUsers {
   status: Status;
   updateUserStatus: Status;
   deleteUserStatus: Status;
+  createUserStatus: Status;
 }
 
 export interface AllUsersState extends AllUsers {

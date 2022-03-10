@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ResolutionsPending } from 'redux/actions.types';
-import { AllPatients, Users } from 'resources/patients/patients.types';
+import { AllPatients, CreatePatientData, Users } from 'resources/patients/patients.types';
 import { AllUsersState, UpdateUser } from './reducers.types';
 import { RootState } from '../store';
 import { FETCH_STATUS } from './constants';
@@ -11,6 +11,7 @@ const initialState = {
   status: FETCH_STATUS.IDLE,
   updateUserStatus: FETCH_STATUS.IDLE,
   deleteUserStatus: FETCH_STATUS.IDLE,
+  createUserStatus: FETCH_STATUS.IDLE,
 } as AllUsersState;
 
 export const getAllPatientsSlice = createSlice({
@@ -29,9 +30,13 @@ export const getAllPatientsSlice = createSlice({
       total: action.payload.total,
       responseStatus: FETCH_STATUS.FULFILLED,
     }),
-    pending: (state, action: PayloadAction<ResolutionsPending>) => ({ ...state, ...action.payload, responseStatus: FETCH_STATUS.LOADING }),
+    pending: (state, action: PayloadAction<ResolutionsPending>) => ({
+      ...state,
+      ...action.payload,
+      responseStatus: FETCH_STATUS.LOADING,
+    }),
     failed: (state) => ({ ...state, responseStatus: FETCH_STATUS.FAILED }),
-    updatePatientFulfilled: (state, action:PayloadAction<Users>) => ({
+    updatePatientFulfilled: (state, action: PayloadAction<Users>) => ({
       ...state,
       users: state.users.map((user) => (user.userID === action.payload.id
         ? {
@@ -44,15 +49,43 @@ export const getAllPatientsSlice = createSlice({
         : { ...user })),
       updateUserStatus: FETCH_STATUS.FULFILLED,
     }),
-    updatePatientPending: (state, action:PayloadAction<UpdateUser>) => ({ ...state, ...action.payload, updateUserStatus: FETCH_STATUS.LOADING }),
+    updatePatientPending: (state, action: PayloadAction<UpdateUser>) => ({
+      ...state,
+      ...action.payload,
+      updateUserStatus: FETCH_STATUS.LOADING,
+    }),
     updatePatientFailed: (state) => ({ ...state, updateUserStatus: FETCH_STATUS.FAILED }),
-    deletePatientFulfilled: (state, action:PayloadAction<string>) => ({
+    deletePatientFulfilled: (state, action: PayloadAction<string>) => ({
       ...state,
       users: state.users.filter((user) => (user.userID !== action.payload)),
       deleteUserStatus: FETCH_STATUS.FULFILLED,
     }),
-    deletePatientPending: (state, action:PayloadAction<string>) => ({ ...state, id: action.payload, deleteUserStatus: FETCH_STATUS.LOADING }),
+    deletePatientPending: (state, action: PayloadAction<string>) => ({
+      ...state,
+      id: action.payload,
+      deleteUserStatus: FETCH_STATUS.LOADING,
+    }),
     deletePatientFailed: (state) => ({ ...state, deleteUserStatus: FETCH_STATUS.FAILED }),
+    createPatientFulfilled: (state, action: PayloadAction<Users>) => ({
+      ...state,
+      users: [
+        {
+          userID: action.payload.id,
+          firsName: action.payload.first_name,
+          lastName: action.payload.last_name,
+          photo: action.payload.photo,
+          roleName: action.payload.role_name,
+        },
+        ...state.users,
+      ],
+      createUserStatus: FETCH_STATUS.FULFILLED,
+    }),
+    createPatientPending: (state, action: PayloadAction<CreatePatientData>) => ({
+      ...state,
+      id: action.payload,
+      createUserStatus: FETCH_STATUS.LOADING,
+    }),
+    createPatientFailed: (state) => ({ ...state, createUserStatus: FETCH_STATUS.FAILED }),
   },
 });
 
