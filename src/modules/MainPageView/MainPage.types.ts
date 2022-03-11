@@ -6,4 +6,5 @@ export interface MainPage {
   responseStatus: Status
   fullState: ReactElement
   emptyState: ReactElement
+  totalAppointmentsCount: number
 }
