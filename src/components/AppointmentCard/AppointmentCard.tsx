@@ -37,7 +37,7 @@ export const AppointmentCard:React.VFC<AppointmentCardProps> = ({
     <UserCardHeader>
       <UserData>
         <UserCardImageContainer>
-          <UserImage src={photo} alt={componentsDictionary.appointmentCard.avatarAlt} />
+          <UserImage src={photo} alt={componentsDictionary.appointmentCard.photoAlt} />
         </UserCardImageContainer>
         <UserInformation>
           <UserCardName>{`${firstName} ${lastName}`}</UserCardName>

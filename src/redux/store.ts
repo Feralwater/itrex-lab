@@ -33,7 +33,7 @@ export const store = configureStore({
   },
   middleware: (getDefaultMiddleware) => [...getDefaultMiddleware({
     serializableCheck: {
-      ignoredActions: ['editProfile/pending'],
+      ignoredActions: ['profile/editProfilePending'],
     },
   }), sagaMiddleware],
 });
