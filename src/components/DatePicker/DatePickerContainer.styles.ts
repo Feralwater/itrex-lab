@@ -50,8 +50,6 @@ const ReactCalendarContainer = styled.div`
   }
 
   & div.react-calendar__month-view__weekdays__weekday {
-    padding: 4px;
-
     & abbr {
       text-decoration: none;
     }

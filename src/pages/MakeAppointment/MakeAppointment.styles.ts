@@ -20,6 +20,10 @@ export const AppointmentFormContainer = styled(Form)`
 export const AppointmentStepsContainer = styled.div`
   display: flex;
   gap: 0 95px;
+  @media only screen and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3),
+  (max-device-width: 767px) {
+    flex-direction: column;
+  }
 `;
 
 export const ChooseDayStep = styled.div`
