@@ -72,6 +72,9 @@ export const ResolutionModalFooter = styled.div`
   justify-content: space-between;
   background: ${colors.alabaster};
   border-radius: 0 0 8px 8px;
+  @media (max-width: 370px) {
+    padding: 20px 30px;
+  }
 `;
 
 export const ModalErrorMessage = styled.div`

@@ -28,4 +28,8 @@ export const ModalContent = styled.div<ModalProps>`
   transition: .5s all;
   width: 560px;
   min-height: 467px;
+  @media (max-width: 585px) {
+    width: 360px;
+    min-height: 400px;
+  }
 `;
