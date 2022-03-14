@@ -71,6 +71,7 @@ export const SelectDoctorStep = styled.div`
 export const MakeAppointmentButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;
+  padding: 40px 0;
 `;
 
 export const NoUnderlineLink = styled(Link)`
