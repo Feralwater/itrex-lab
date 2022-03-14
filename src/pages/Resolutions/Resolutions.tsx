@@ -7,7 +7,7 @@ import { ResolutionForDoctor, ResolutionForPatient } from 'resources/resolutions
 import { ResolutionsPaginate } from 'pages/Resolutions/ResolutionsPaginate';
 import {
   ResolutionsLoaderContainer,
-  ResolutionsTable,
+  ResolutionsTable, ResolutionsTableContainer,
   ResolutionsTableHead,
   ResolutionsTableHeaderCell,
 } from './Resolutions.styles';
@@ -35,22 +35,24 @@ interface ResolutionsTableProps{
   myResolutions: Array<ResolutionForPatient> | Array<ResolutionForDoctor>
 }
 const GetResolutionsTable:React.VFC<ResolutionsTableProps> = ({ myResolutions }) => (
-  <ResolutionsTable>
-    <thead>
-      <ResolutionsTableHead>
-        {Object.entries(columnsNames)
-          .map(([key, value]) => (
-            <ResolutionsTableHeaderCell
-              as="th"
-              key={key}
-            >
-              {value}
-            </ResolutionsTableHeaderCell>
-          ))}
-      </ResolutionsTableHead>
-    </thead>
-    {createResolutionsTableBody(myResolutions)}
-  </ResolutionsTable>
+  <ResolutionsTableContainer>
+    <ResolutionsTable>
+      <thead>
+        <ResolutionsTableHead>
+          {Object.entries(columnsNames)
+            .map(([key, value]) => (
+              <ResolutionsTableHeaderCell
+                as="th"
+                key={key}
+              >
+                {value}
+              </ResolutionsTableHeaderCell>
+            ))}
+        </ResolutionsTableHead>
+      </thead>
+      {createResolutionsTableBody(myResolutions)}
+    </ResolutionsTable>
+  </ResolutionsTableContainer>
 );
 
 export const Resolutions:React.VFC<ResolutionsProps> = ({ responseStatus, myResolutions }) => (

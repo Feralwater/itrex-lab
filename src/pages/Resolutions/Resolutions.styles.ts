@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 import { colors } from 'components/CommonStyles';
 
+export const ResolutionsTableContainer = styled.div`
+  overflow-x: auto;
+`;
+
 export const ResolutionsTable = styled.table`
-  width: 100%;
+  min-width: 100%;
   border-collapse: separate;
   text-align: left;
   border-spacing: 0 4px;
