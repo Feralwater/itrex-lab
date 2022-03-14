@@ -11,6 +11,13 @@ export const TimeSlotsContainer = styled.div`
   overflow: hidden;
   padding: 0;
   margin: 0;
+  @media only screen and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3),
+  (max-device-width: 767px) {
+    display: flex;
+    overflow: auto;
+    min-height: 50px;
+    max-width: 100%;
+  }
 `;
 
 export const TimeSlotContainer = styled.input`
