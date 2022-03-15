@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import {
-  colors, H4, SubTitle, Title,
+  BoldSubTitle, colors, SubTitle, Title,
 } from '../CommonStyles';
 
 export const UserCard = styled.div`
@@ -120,7 +120,7 @@ export const UserCardImageContainer = styled.div`
   border-radius: 100%;
 `;
 
-export const UserCardName = styled(H4)`
+export const UserCardName = styled(BoldSubTitle)`
   margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;
