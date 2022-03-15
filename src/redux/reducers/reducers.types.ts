@@ -111,4 +111,5 @@ export interface AppointmentsForDoctorState extends AppointmentsForDoctorFulfill
   status: Status,
   deleteAppointmentStatus: Status,
   createResolutionStatus: Status,
+  editResolutionStatus: Status,
 }

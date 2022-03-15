@@ -17,6 +17,7 @@ const initialState = {
   status: FETCH_STATUS.IDLE,
   deleteAppointmentStatus: FETCH_STATUS.IDLE,
   createResolutionStatus: FETCH_STATUS.IDLE,
+  editResolutionStatus: FETCH_STATUS.IDLE,
 } as AppointmentsForDoctorState;
 
 function createResolution(appointment: AppointmentForDoctorFulfilled, newResolution:ResolutionResponse): ResolutionForDoctor | undefined {
@@ -63,13 +64,23 @@ export const appointmentsForDoctorSlice = createSlice({
     createResolutionPending: (state, action: PayloadAction<ResolutionPending>) => (
       { ...state, ...action.payload, createResolutionStatus: FETCH_STATUS.LOADING }),
     createResolutionFailed: (state) => ({ ...state, createResolutionStatus: FETCH_STATUS.FAILED }),
-    editResolutionFulfilled: (state, action: PayloadAction<EditResolutionFulfilled>) => ({
-      ...state,
-      ...action.payload,
-      status: FETCH_STATUS.FULFILLED,
-    }),
-    editResolutionPending: (state, action: PayloadAction<EditResolutionPending>) => ({ ...state, ...action.payload, status: FETCH_STATUS.LOADING }),
-    editResolutionFailed: (state) => ({ ...state, status: FETCH_STATUS.FAILED }),
+    editResolutionFulfilled: (state, action: PayloadAction<EditResolutionFulfilled>) => {
+      const editedAppointments = state.appointments.map((appointment) => {
+        if (appointment.resolution?.id === action.payload.resolutionID) {
+          return {
+            ...appointment,
+            resolution: {
+              ...appointment.resolution,
+              resolution: action.payload.resolution,
+            },
+          };
+        }
+        return { ...appointment };
+      });
+      return ({ ...state, appointments: editedAppointments, editResolutionStatus: FETCH_STATUS.FULFILLED });
+    },
+    editResolutionPending: (state, action: PayloadAction<EditResolutionPending>) => ({ ...state, ...action.payload, editResolutionStatus: FETCH_STATUS.LOADING }),
+    editResolutionFailed: (state) => ({ ...state, editResolutionStatus: FETCH_STATUS.FAILED }),
   },
 });
 
