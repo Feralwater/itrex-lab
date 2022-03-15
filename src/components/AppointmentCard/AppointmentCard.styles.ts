@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import {
+  borders,
   colors, H4, SubTitle, Title,
 } from '../CommonStyles';
 
@@ -21,7 +22,7 @@ export const UserCard = styled.div`
 export const UserCardHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid ${colors.platinum['050']};
+  border-bottom: ${borders.platinum05_border};
   padding: 24px 31px;
   @media only screen and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3),
   (max-device-width: 767px) {

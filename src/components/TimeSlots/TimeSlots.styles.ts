@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from '../CommonStyles';
+import { borders, colors } from '../CommonStyles';
 
 export const TimeSlotsContainer = styled.div`
   display: grid;
@@ -19,7 +19,7 @@ export const TimeSlotContainer = styled.input`
   &:checked {
     & + label {
       color: ${colors.cornflower_blue};
-      border: 1px solid ${colors.cornflower_blue};
+      border: ${borders.cornflower_border};
     }
   }
 
@@ -37,7 +37,7 @@ export const TimeSlotLabel = styled.label`
   display: inline-flex;
   background: ${colors.white};
   color: ${colors.dark_jungle_green};
-  border: 1px solid ${colors.transparent};
+  border: ${borders.transparent_border};
   box-shadow: 0px 4px 32px ${colors.link_water['024']};
   border-radius: 8px;
   padding: 8px 0;

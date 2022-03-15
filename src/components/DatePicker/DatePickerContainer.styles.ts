@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from '../CommonStyles';
+import { borders, colors } from '../CommonStyles';
 
 const ReactCalendarContainer = styled.div`
   & div.react-calendar {
@@ -14,7 +14,7 @@ const ReactCalendarContainer = styled.div`
 
   & button {
     margin: 4px 0;
-    border: 1px solid transparent;
+    border: ${borders.transparent_border};
     outline: none;
 
     &:enabled:hover {
@@ -26,7 +26,7 @@ const ReactCalendarContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid ${colors.platinum['050']};
+    border-bottom: ${borders.platinum05_border};
     margin: 0 0 30px 0;
     padding: 17px 0;
 
@@ -76,7 +76,7 @@ const ReactCalendarContainer = styled.div`
   }
 
   &:enabled:hover {
-    border: 1px solid ${colors.cornflower_blue};
+    border: ${borders.cornflower_border};
     background-color: ${colors.white};
     color: ${colors.black};
   }
@@ -96,7 +96,7 @@ const ReactCalendarContainer = styled.div`
 
 & button.react-calendar__tile--now {
   color: ${colors.cornflower_blue};
-  border: 1px solid ${colors.cornflower_blue};
+  border: ${borders.cornflower_border};
 `;
 
 export default ReactCalendarContainer;

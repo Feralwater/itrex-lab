@@ -19,7 +19,7 @@ export const ResolutionsTableHead = styled.tr`
 
 export const ResolutionsTableCell = styled.td`
   padding: 10px 25px 10px 0;
-  border-bottom: solid ${colors.link_water['032']};
+  border-bottom: 0px;
   box-sizing: border-box;
   overflow: hidden;
   white-space: nowrap;

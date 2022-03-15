@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import { Field, Form } from 'formik';
 import { Link } from 'react-router-dom';
-import { colors, H1, Title } from '../CommonStyles';
+import {
+  borders, colors, H1, Title,
+} from '../CommonStyles';
 
 export const ButtonWrapper = styled.div`
   position: relative;
@@ -51,7 +53,7 @@ interface CustomFieldProps {
 }
 
 export const CustomField = styled(Field)<CustomFieldProps>`
-  border: ${(props) => (props.error ? `1px solid ${colors.radical_red}` : `1px solid ${colors.link_water['1']}`)};
+  border: ${(props) => (props.error ? `${borders.radical_red_border}` : `${borders.link_water1_border}`)};
   box-sizing: border-box;
   box-shadow: 0px 4px 32px ${colors.link_water['016']};
   border-radius: 8px;
@@ -72,7 +74,7 @@ export const CustomField = styled(Field)<CustomFieldProps>`
   }
 
   &:focus {
-    border: 1px solid ${colors.cornflower_blue};
+    border: ${borders.cornflower_border};
     box-shadow: 0px 4px 32px ${colors.link_water['024']};
     background: ${colors.white};
   }
