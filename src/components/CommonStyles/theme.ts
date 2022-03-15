@@ -47,3 +47,9 @@ export const borders = {
   platinum05_border: `1px solid ${colors.platinum['050']}`,
   radical_red_border: `1px solid ${colors.radical_red}`,
 };
+
+export const shadows = {
+  link_water024_shadow: `0px 4px 32px ${colors.link_water['024']}`,
+  link_water016_shadow: `0px 4px 32px ${colors.link_water['016']}`,
+  link_water032_shadow: `0px 4px 32px ${colors.link_water['032']}`,
+};

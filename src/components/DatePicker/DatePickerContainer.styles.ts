@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import { borders, colors } from '../CommonStyles';
+import { borders, colors, shadows } from '../CommonStyles';
 
 const ReactCalendarContainer = styled.div`
   & div.react-calendar {
     width: 400px;
     max-width: 100%;
     background: ${colors.white};
-    box-shadow: 0px 4px 32px ${colors.link_water['024']};
+    box-shadow: ${shadows.link_water024_shadow};
     border-radius: 12px;
     box-sizing: border-box;
     padding: 0 32px 6px 32px;

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { borders, colors } from '../CommonStyles';
+import { borders, colors, shadows } from '../CommonStyles';
 
 export const TimeSlotsContainer = styled.div`
   display: grid;
@@ -38,7 +38,7 @@ export const TimeSlotLabel = styled.label`
   background: ${colors.white};
   color: ${colors.dark_jungle_green};
   border: ${borders.transparent_border};
-  box-shadow: 0px 4px 32px ${colors.link_water['024']};
+  box-shadow: ${shadows.link_water024_shadow};
   border-radius: 8px;
   padding: 8px 0;
   font-weight: 600;

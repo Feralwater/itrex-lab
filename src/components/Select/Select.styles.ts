@@ -2,7 +2,7 @@
 import { GroupBase, StylesConfig } from 'react-select';
 import styled from 'styled-components';
 import { LabelType } from './Select.types';
-import { borders, colors } from '../CommonStyles';
+import { borders, colors, shadows } from '../CommonStyles';
 
 export const SelectStyles: StylesConfig<LabelType, false, GroupBase<LabelType>> = {
   control: (styles) => ({
@@ -10,7 +10,7 @@ export const SelectStyles: StylesConfig<LabelType, false, GroupBase<LabelType>> 
     backgroundColor: `${colors.white}`,
     border: `${borders.link_water1_border}`,
     boxSizing: 'border-box',
-    boxShadow: `0px 4px 32px ${colors.link_water['016']}`,
+    boxShadow: `${shadows.link_water016_shadow}`,
     borderRadius: '8px',
     padding: '9px 17px',
     fontSize: '17px',

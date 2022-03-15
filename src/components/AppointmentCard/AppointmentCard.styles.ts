@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import {
   borders,
-  colors, H4, SubTitle, Title,
+  colors, H4, shadows, SubTitle, Title,
 } from '../CommonStyles';
 
 export const UserCard = styled.div`
@@ -9,7 +9,7 @@ export const UserCard = styled.div`
   flex-direction: column;
   background: ${colors.white};
   min-height: 217px;
-  box-shadow: 0px 4px 32px ${colors.link_water['024']};
+  box-shadow: ${shadows.link_water024_shadow};
   border-radius: 12px;
   overflow: hidden;
   position: relative;
