@@ -12,6 +12,7 @@ export const useFetchAppointments = (page: number, searchTerm?: string) => {
   const { id: userId, roleName } = useAppSelector(selectProfile);
   const slice = roleName === ROLES.DOCTOR ? appointmentsForDoctorSlice : appointmentsForPatientSlice;
   const debouncedSearchTerm = useDebounce(searchTerm, 1000);
+
   useEffect(() => {
     if (userId) {
       dispatch(slice.actions.pending({

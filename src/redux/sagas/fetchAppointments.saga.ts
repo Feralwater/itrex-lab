@@ -1,6 +1,4 @@
-import {
-  call, delay, put, takeEvery, takeLatest,
-} from 'redux-saga/effects';
+import { call, put, takeEvery } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
 import { ResolutionsResponse } from 'resources/resolutions/resolutions.types';
 import {
