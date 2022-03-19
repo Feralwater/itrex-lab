@@ -11,11 +11,12 @@ const resolutionsAPI = {
   async editResolution({ resolution, resolutionID }: EditResolutionData) {
     return instance.patch<EditResolutionResponse>(RESOLUTIONS_API.resolutionsByResolutionID(resolutionID), { resolution });
   },
-  async fetchResolutionsForDoctor(offset: number, limit:number) {
+  async fetchResolutionsForDoctor(offset: number, limit:number, name?:string) {
     return instance.get<ResolutionResponse>(RESOLUTIONS_API.resolutionsDoctorMe(), {
       params: {
         offset,
         limit,
+        name,
       },
     });
   },
