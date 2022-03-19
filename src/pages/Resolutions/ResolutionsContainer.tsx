@@ -6,6 +6,7 @@ import { selectResolutionsForPatient } from 'redux/reducers/resolutionsForPatien
 import { ROLES } from 'routes/constants';
 import { useFetchResolutions } from 'pages/Resolutions/hooks/useFetchResolutions';
 import { NavigatePanelToDisplay } from 'components/NavigatePanel/NavigatePanelToDisplay';
+import { useDebounce } from 'modules/hooks/useDebounce';
 import { Resolutions } from './Resolutions';
 import { resolutionsOnPage } from './constants';
 
@@ -23,7 +24,8 @@ export const ResolutionsContainer = () => {
   const fromItem = (Number(currentPageNumber) - 1) * resolutionsOnPage + 1;
   const toItem = Math.min((Number(currentPageNumber) - 1) * resolutionsOnPage + resolutionsOnPage, totalResolutionsCount);
   const [searchTerm, setSearchTerm] = useState('');
-  useFetchResolutions(currentPage, searchTerm);
+  const debouncedSearchTerm = useDebounce(searchTerm, 1000);
+  useFetchResolutions(currentPage, debouncedSearchTerm);
 
   return (
     <div>
