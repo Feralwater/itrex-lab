@@ -6,7 +6,7 @@ import { PATH, ROLES } from 'routes/constants';
 import { resolutionsForPatientSlice } from 'redux/reducers/resolutionsForPatient.reducer';
 import { useNavigate } from 'react-router-dom';
 
-export const useFetchResolutions = (currentPage:number, searchTerm?: string) => {
+export const useFetchResolutions = (currentPage:number, searchTerm?: string, specializationID?:string) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { roleName } = useAppSelector(selectProfile);
@@ -16,6 +16,7 @@ export const useFetchResolutions = (currentPage:number, searchTerm?: string) => 
       offset: (currentPage - 1) * resolutionsOnPage,
       limit: resolutionsOnPage,
       name: searchTerm,
+      specializationID,
     }));
     if (roleName === ROLES.DOCTOR) {
       navigate(`${PATH.DOCTOR_RESOLUTIONS.replace(':currentPageNumber', '')}${currentPage}`);
@@ -23,5 +24,5 @@ export const useFetchResolutions = (currentPage:number, searchTerm?: string) => 
     if (roleName === ROLES.PATIENT) {
       navigate(`${PATH.PATIENT_RESOLUTIONS.replace(':currentPageNumber', '')}${currentPage}`);
     }
-  }, [currentPage, searchTerm]);
+  }, [currentPage, searchTerm, specializationID]);
 };

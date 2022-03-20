@@ -11,7 +11,9 @@ import { resolutionsForPatientSlice } from '../reducers/resolutionsForPatient.re
 function* fetchResolutionsForPatient({ payload }: ReturnType<typeof resolutionsForPatientSlice.actions.pending>) {
   try {
     yield delay(1000);
-    const { data }: AxiosResponse<ResolutionsForPatientResponse> = yield call(resolutionsAPI.fetchResolutionsForPatient, payload.offset, payload.limit, payload.name);
+    const { data }: AxiosResponse<ResolutionsForPatientResponse> = payload.specializationID
+      ? yield call(resolutionsAPI.fetchResolutionsBySpecialization, payload.offset, payload.limit, payload.specializationID)
+      : yield call(resolutionsAPI.fetchResolutionsForPatient, payload.offset, payload.limit, payload.name);
     yield put(resolutionsForPatientSlice.actions.fulfilled(data));
   } catch (error:any) {
     yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.response.data)));
