@@ -1,28 +1,36 @@
 import React, { Dispatch, SetStateAction } from 'react';
-import { ButtonWrapper } from 'components/AuthForms/AuthForm.styles';
 import { H1 } from 'components/CommonStyles/Topography';
-import { dictionary } from 'pages';
-import { PATH } from 'routes/constants';
 import { NavigatePanel } from 'components/NavigatePanel/NavigatePanel';
 import { patientTabs } from 'components/NavigatePanel/constants';
-import { ButtonLeftPlusIcon, CreateAppointmentButton, UserPageTitle } from './NavigatePanel.styles';
+import { CreateAppointmentButton } from 'components/NavigatePanel/CreateAppointmentButton';
+import { InputSearchContainer } from 'components/Input';
+import { UserPageTitle } from './NavigatePanel.styles';
 
 export interface NavigatePanelProps {
   pageTitle: string;
   setSearchTerm?: Dispatch<SetStateAction<string>>;
 }
 
-export const PatientNavigatePanel:React.VFC<NavigatePanelProps> = ({ pageTitle }) => (
+export const PatientNavigatePanel: React.VFC<NavigatePanelProps> = ({ pageTitle, setSearchTerm }) => (
   <>
     <NavigatePanel buttonOnNavigatePanel={patientTabs} />
     <UserPageTitle>
-      <H1>{ pageTitle }</H1>
-      <ButtonWrapper>
-        <ButtonLeftPlusIcon />
-        <CreateAppointmentButton to={PATH.CREATE_APPOINTMENT}>
-          {dictionary.patientPage.createAppointments}
-        </CreateAppointmentButton>
-      </ButtonWrapper>
+      <H1>{pageTitle}</H1>
+      {pageTitle === 'Resolutions'
+        ? (
+          <InputSearchContainer
+            label=""
+            type="text"
+            inputSize="large"
+            placeholder="Search"
+            id="resolutionSearch"
+            icon="left"
+            iconURL="/svg/search-icon.svg"
+            isRequire={false}
+            setSearchTerm={setSearchTerm}
+          />
+        )
+        : <CreateAppointmentButton />}
     </UserPageTitle>
   </>
 );
