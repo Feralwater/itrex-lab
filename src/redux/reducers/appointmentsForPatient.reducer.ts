@@ -24,6 +24,7 @@ export const appointmentsForPatientSlice = createSlice({
     }),
     pending: (state, action: PayloadAction<AppointmentsForPatientPending>) => ({ ...state, ...action.payload, responseStatus: FETCH_STATUS.LOADING }),
     failed: (state) => ({ ...state, responseStatus: FETCH_STATUS.FAILED }),
+    clearState: (state) => ({ ...state, appointments: [] }),
   },
 });
 

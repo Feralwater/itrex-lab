@@ -81,6 +81,7 @@ export const appointmentsForDoctorSlice = createSlice({
     },
     editResolutionPending: (state, action: PayloadAction<EditResolutionPending>) => ({ ...state, ...action.payload, editResolutionStatus: FETCH_STATUS.LOADING }),
     editResolutionFailed: (state) => ({ ...state, editResolutionStatus: FETCH_STATUS.FAILED }),
+    clearState: (state) => ({ ...state, appointments: [] }),
   },
 });
 
