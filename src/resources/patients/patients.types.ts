@@ -8,6 +8,7 @@ export interface Users {
   photo: string,
   role_name: RoleName
 }
+
 export interface AllPatients {
   users: Users[]
   total: number
@@ -16,4 +17,9 @@ export interface AllPatients {
 export interface UpdatePatientData {
   firstName: string
   lastName: string
+}
+
+export interface CreatePatientData extends UpdatePatientData {
+  userName: string
+  password: string
 }

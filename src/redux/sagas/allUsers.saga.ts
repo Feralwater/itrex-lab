@@ -8,6 +8,7 @@ import { AllDoctors, Doctors } from 'resources/doctors/doctors.types';
 import { getAllPatientsSlice } from 'redux/reducers/allPatients.reducer';
 import { AllPatients, Users } from 'resources/patients/patients.types';
 import patientsAPI from 'resources/patients/patients.api';
+import { componentsDictionary } from 'components';
 
 function* fetchAllDoctors({ payload }: ReturnType<typeof getAllDoctorsSlice.actions.pending>) {
   try {
@@ -49,6 +50,17 @@ function* deletePatient({ payload }: ReturnType<typeof getAllPatientsSlice.actio
   }
 }
 
+function* createPatient({ payload }: ReturnType<typeof getAllPatientsSlice.actions.createPatientPending>) {
+  try {
+    const { data }: AxiosResponse<Users> = yield call(patientsAPI.createPatient, payload);
+    yield put(getAllPatientsSlice.actions.createPatientFulfilled(data));
+    yield put(notificationSlice.actions.notificationSuccess(componentsDictionary.message.successMessageBodyCreateNewPatient));
+  } catch (error:any) {
+    yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.response.data)));
+    yield put(getAllPatientsSlice.actions.updatePatientFailed());
+  }
+}
+
 function* updateDoctor({ payload }: ReturnType<typeof getAllDoctorsSlice.actions.updateDoctorPending>) {
   try {
     const { data }: AxiosResponse<Doctors> = yield call(doctors.updateDoctor, payload.id, { firstName: payload.firstName, lastName: payload.lastName, specializations: [...payload.specializations] });
@@ -74,6 +86,7 @@ export function* fetchAllUsersWatcher() {
   yield takeEvery(getAllPatientsSlice.actions.pending, fetchAllPatients);
   yield takeEvery(getAllPatientsSlice.actions.updatePatientPending, updatePatient);
   yield takeEvery(getAllPatientsSlice.actions.deletePatientPending, deletePatient);
+  yield takeEvery(getAllPatientsSlice.actions.createPatientPending, createPatient);
   yield takeEvery(getAllDoctorsSlice.actions.updateDoctorPending, updateDoctor);
   yield takeEvery(getAllDoctorsSlice.actions.deleteDoctorPending, deleteDoctor);
 }
