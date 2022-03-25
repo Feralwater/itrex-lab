@@ -9,10 +9,10 @@ export const MainPageView = React.forwardRef(({
   responseStatus,
   fullState,
   emptyState,
-  totalAppointmentsCount,
+  isMoreAppointments,
 }: MainPage, ref) => {
   const isAppointmentsEmpty = responseStatus === FETCH_STATUS.FULFILLED && appointmentsLength === 0;
-  const isMoreAppointments = totalAppointmentsCount !== appointmentsLength;
+
   if (isAppointmentsEmpty) {
     return emptyState;
   }

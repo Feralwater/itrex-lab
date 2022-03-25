@@ -111,6 +111,6 @@ export interface AppointmentsForDoctorState {
   appointments: Array<AppointmentForDoctorFulfilled>,
   total: number,
   isMore: boolean,
-  status: Status,
+  responseStatus: Status,
   entityStatus: Status,
 }
