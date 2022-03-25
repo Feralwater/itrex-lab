@@ -3,7 +3,7 @@ import { ResolutionsForPatientResponse, ResolutionsResponse } from 'resources/re
 import { AppointmentForDoctorFulfilled } from '../actions.types';
 
 export type Status = 'idle' | 'loading' | 'failed' | 'fulfilled';
-export type RoleName = 'Doctor' | 'Patient' | null;
+export type RoleName = 'Doctor' | 'Patient' | 'Public';
 
 interface Request {
   status: Status;

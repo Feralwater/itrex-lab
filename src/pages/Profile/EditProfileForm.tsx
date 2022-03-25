@@ -47,12 +47,12 @@ export const EditProfileForm: React.VFC<EditProfileFormProps> = ({
         <EditFormElements>
           <EditImageContainer profilePhoto={profilePhoto}>
             <EditImage
-              id="avatar"
-              name="avatar"
+              id="photo"
+              name="photo"
               type="file"
               onChange={(event) => {
                 if (event.target.files) {
-                  setFieldValue('avatar', event.target.files[0]);
+                  setFieldValue('photo', event.target.files[0]);
                 }
               }}
             />

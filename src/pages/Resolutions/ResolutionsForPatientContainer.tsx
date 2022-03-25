@@ -5,7 +5,6 @@ import {
   resolutionsForPatientSlice,
   selectResolutionsForPatient,
 } from 'redux/reducers/resolutionsForPatient.reducer';
-import { ROLES } from 'routes/constants';
 import { dictionary } from '../dictionary/pagesDictionary';
 import { resolutionsOnPage, resolutionsOnPageOffset } from './constants';
 import { Resolutions } from './Resolutions';
@@ -23,7 +22,7 @@ export const ResolutionsForPatientContainer = () => {
   return (
     <div>
       <PatientNavigatePanel pageTitle={dictionary.patientPage.resolutionsTitle} />
-      <Resolutions responseStatus={responseStatus} myResolutions={myResolutions} role={ROLES.PATIENT} />
+      <Resolutions responseStatus={responseStatus} myResolutions={myResolutions} />
     </div>
   );
 };
