@@ -4,8 +4,8 @@ import { H1 } from 'components/CommonStyles/Topography';
 import { dictionary } from 'pages';
 import { PATH } from 'routes/constants';
 import { NavigatePanel } from 'components/NavigatePanel/NavigatePanel';
-import { patientTabs, searchOptions } from 'components/NavigatePanel/constants';
-import { SelectForPatientMainViewContainer } from 'components/Select/SelectForPatientMainViewContainer';
+import { filterOptionsForPatient, patientTabs } from 'components/NavigatePanel/constants';
+import { SelectForMainViewContainer } from 'components/Select/SelectForMainViewContainer';
 import {
   ButtonLeftPlusIcon,
   CreateAppointmentButton,
@@ -28,8 +28,8 @@ export const PatientNavigatePanel: React.VFC<NavigatePanelProps> = (
     <UserPageTitle>
       <H1>{pageTitle}</H1>
       <FilterAndButtonContainer>
-        <SelectForPatientMainViewContainer
-          options={searchOptions}
+        <SelectForMainViewContainer
+          options={filterOptionsForPatient}
           name="filter"
           id="filter"
           labelText={dictionary.patientPage.filterTitle}

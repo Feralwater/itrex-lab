@@ -15,7 +15,7 @@ export const AppointmentsForPatientContainer:React.VFC = () => {
   const { appointments, responseStatus, isMore: isMoreAppointments } = useAppSelector(selectAppointmentsForPatient);
   const { hiddenBlockRef } = useAppointmentsOnScreen({ responseStatus, isMoreAppointments, setPageNumber });
   const [filterQuery, setFilterQuery] = useState<string>('');
-  useFetchAppointments(pageNumber, undefined, filterQuery);
+  useFetchAppointments(pageNumber, filterQuery);
   return (
     <>
       <PatientNavigatePanel
