@@ -6,11 +6,12 @@ import { AllPatientsState } from 'redux/reducers/reducers.types';
 
 export interface Users{
   users: AllPatientsState[]
+  specializationCell?: boolean
 }
 
-export const UserTable:React.VFC<Users> = ({ users }) => (
+export const UserTable:React.VFC<Users> = ({ users, specializationCell }) => (
   <ResolutionsTable>
-    <TableHead />
+    <TableHead specializationCell={specializationCell} />
     <TableBody users={users} />
   </ResolutionsTable>
 );

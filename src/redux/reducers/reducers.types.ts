@@ -121,9 +121,11 @@ export interface AllPatientsState{
   lastName: string
   photo: string
   roleName: RoleName
+  specializationName?: string
 }
 
 export interface AllUsersState {
   users: AllPatientsState[];
+  total: number;
   status: Status;
 }

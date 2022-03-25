@@ -11,6 +11,7 @@ export const TableBody:React.VFC<Users> = ({ users }) => (
         key={user.userID}
         firstName={user.firsName}
         lastName={user.lastName}
+        specializationName={user.specializationName}
       />
     ))}
   </tbody>

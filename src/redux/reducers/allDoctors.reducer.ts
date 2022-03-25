@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ResolutionsPending } from 'redux/actions.types';
-import { AllPatients } from 'resources/patients/patients.types';
+import { AllDoctors } from 'resources/doctors/doctors.types';
 import { AllUsersState } from './reducers.types';
 import { RootState } from '../store';
 import { FETCH_STATUS } from './constants';
@@ -11,11 +11,11 @@ const initialState = {
   status: FETCH_STATUS.IDLE,
 } as AllUsersState;
 
-export const getAllPatientsSlice = createSlice({
-  name: 'getAllPatients',
+export const getAllDoctorsSlice = createSlice({
+  name: 'getAllDoctors',
   initialState,
   reducers: {
-    fulfilled: (state, action: PayloadAction<AllPatients>) => ({
+    fulfilled: (state, action: PayloadAction<AllDoctors>) => ({
       ...state,
       users: action.payload.users.map((user) => ({
         userID: user.id,
@@ -23,6 +23,7 @@ export const getAllPatientsSlice = createSlice({
         lastName: user.last_name,
         photo: user.photo,
         roleName: user.role_name,
+        specializationName: user.specialization_name,
       })),
       total: action.payload.total,
       responseStatus: FETCH_STATUS.FULFILLED,
@@ -32,5 +33,5 @@ export const getAllPatientsSlice = createSlice({
   },
 });
 
-export const selectAllPatients = (state: RootState) => state.getAllPatients;
-export const getAllPatientsReducer = getAllPatientsSlice.reducer;
+export const selectAllDoctors = (state: RootState) => state.getAllDoctors;
+export const getAllDoctorsReducer = getAllDoctorsSlice.reducer;
