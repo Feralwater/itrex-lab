@@ -1,5 +1,6 @@
 import { AppointmentForPatient } from 'resources/appointments/appointments.types';
 import { ResolutionsForPatientResponse, ResolutionsResponse } from 'resources/resolutions/resolutions.types';
+import { UpdatePatientData } from 'resources/patients/patients.types';
 import { AppointmentForDoctorFulfilled } from '../actions.types';
 
 export type Status = 'idle' | 'loading' | 'failed' | 'fulfilled';
@@ -115,7 +116,7 @@ export interface AppointmentsForDoctorState {
   entityStatus: Status,
 }
 
-export interface AllPatientsState{
+export interface AllPatientsState {
   userID: string
   firsName: string
   lastName: string
@@ -128,4 +129,9 @@ export interface AllUsersState {
   users: AllPatientsState[];
   total: number;
   status: Status;
+  updateUserStatus: Status;
+}
+
+export interface UpdateUser extends UpdatePatientData {
+  id: string
 }

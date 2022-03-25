@@ -9,6 +9,7 @@ const initialState = {
   users: [],
   total: 0,
   status: FETCH_STATUS.IDLE,
+  updateUserStatus: FETCH_STATUS.IDLE,
 } as AllUsersState;
 
 export const getAllDoctorsSlice = createSlice({

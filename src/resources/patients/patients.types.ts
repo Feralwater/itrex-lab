@@ -12,3 +12,8 @@ export interface AllPatients {
   users: Users[]
   total: number
 }
+
+export interface UpdatePatientData {
+  firstName: string
+  lastName: string
+}

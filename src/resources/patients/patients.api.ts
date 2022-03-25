@@ -1,5 +1,5 @@
 import { PATIENTS_API } from 'resources/patients/constants';
-import { AllPatients } from 'resources/patients/patients.types';
+import { AllPatients, UpdatePatientData, Users } from 'resources/patients/patients.types';
 import instance from '../../services/api/api';
 
 const patientsAPI = {
@@ -10,6 +10,9 @@ const patientsAPI = {
         limit,
       },
     });
+  },
+  async updatePatient(id: string, data:UpdatePatientData) {
+    return instance.patch<Users>(PATIENTS_API.updatePatient(id), data);
   },
 };
 

@@ -78,4 +78,12 @@ export const dictionary = {
     doctorNamePlaceholder: 'Choose a doctor',
     doctorNameLabelText: 'Doctor`s name',
   },
+  userModal: {
+    cancelButtonText: 'Cancel',
+    saveButtonText: 'Save',
+    firstNamePlaceholder: 'First name',
+    firstNameLabel: 'User first name',
+    secondNamePlaceholder: 'Second name',
+    secondNameLabel: 'User second name',
+  },
 };

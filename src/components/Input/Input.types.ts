@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from 'react';
 
 export interface InputProps {
-  label: string;
+  label?: string;
   id: string;
   type: string;
   icon: 'default' | 'left';
