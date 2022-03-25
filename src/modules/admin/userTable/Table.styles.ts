@@ -62,3 +62,21 @@ export const AdminCommandsList = styled(CommandsList)`
   top: 20px;
   right: 40px;
 `;
+
+export const AgreeQuestion = styled.div`
+  color: ${colors.radical_red};
+  font-size: 20px;
+  padding: 100px 0;
+  text-align: center;
+`;
+
+export const PatientData = styled.div`
+  padding: 30px;
+`;
+
+export const UserRoleAndPhoto = styled.div`
+  padding: 0 0 15px 0;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+`;

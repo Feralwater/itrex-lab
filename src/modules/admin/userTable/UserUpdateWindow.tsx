@@ -6,6 +6,7 @@ import { useAppDispatch } from 'hooks';
 import { getAllPatientsSlice } from 'redux/reducers/allPatients.reducer';
 import { InputFormContainer, ResolutionModalButtons } from 'components';
 import { dictionary } from 'pages';
+import { PatientData, UserRoleAndPhoto } from 'modules/admin/userTable/Table.styles';
 
 export interface UserUpdateWindowProps extends TableRowProps {
   setShowEditModal: Dispatch<SetStateAction<boolean>>
@@ -40,33 +41,36 @@ export const UserUpdateWindow: React.VFC<UserUpdateWindowProps> = ({
   const secondNameChangeHandler = (event:ChangeEvent<HTMLInputElement>) => setUserSurName(event.currentTarget.value);
 
   return (
-    <div>
-      <div>{roleName}</div>
-      <img src={photo} alt="" />
-      <InputFormContainer
-        inputSize="small"
-        icon="default"
-        id="firstName"
-        type="text"
-        isRequire
-        placeholder={dictionary.userModal.firstNamePlaceholder}
-        value={userName}
-        label={dictionary.userModal.firstNameLabel}
-        onChange={firstNameChangeHandler}
-      />
-      <InputFormContainer
-        inputSize="small"
-        icon="default"
-        id="lastName"
-        type="text"
-        isRequire
-        placeholder={dictionary.userModal.secondNamePlaceholder}
-        value={userSurName}
-        label={dictionary.userModal.secondNameLabel}
-        onChange={secondNameChangeHandler}
-      />
-      {specializationName && <div>{specializationName}</div>}
-
+    <>
+      <PatientData>
+        <UserRoleAndPhoto>
+          <img src={photo} alt="" />
+          {roleName}
+        </UserRoleAndPhoto>
+        <InputFormContainer
+          inputSize="small"
+          icon="default"
+          id="firstName"
+          type="text"
+          isRequire
+          placeholder={dictionary.userModal.firstNamePlaceholder}
+          value={userName}
+          label={dictionary.userModal.firstNameLabel}
+          onChange={firstNameChangeHandler}
+        />
+        <InputFormContainer
+          inputSize="small"
+          icon="default"
+          id="lastName"
+          type="text"
+          isRequire
+          placeholder={dictionary.userModal.secondNamePlaceholder}
+          value={userSurName}
+          label={dictionary.userModal.secondNameLabel}
+          onChange={secondNameChangeHandler}
+        />
+        {specializationName && <div>{specializationName}</div>}
+      </PatientData>
       <ResolutionModalButtons
         disabled={false}
         activeButtonType="button"
@@ -77,6 +81,6 @@ export const UserUpdateWindow: React.VFC<UserUpdateWindowProps> = ({
         activeButtonIcon="/svg/board-icon.svg"
         passiveButtonIcon="/svg/close-icon.svg"
       />
-    </div>
+    </>
   );
 };

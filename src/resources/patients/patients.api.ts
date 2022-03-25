@@ -14,6 +14,9 @@ const patientsAPI = {
   async updatePatient(id: string, data:UpdatePatientData) {
     return instance.patch<Users>(PATIENTS_API.updatePatient(id), data);
   },
+  async deletePatient(id: string) {
+    return instance.delete<string>(PATIENTS_API.deletePatient(id));
+  },
 };
 
 export default patientsAPI;

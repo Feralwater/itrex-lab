@@ -81,11 +81,13 @@ export const dictionary = {
   userModal: {
     cancelButtonText: 'Cancel',
     saveButtonText: 'Save',
+    agreeButtonText: 'Yes',
     firstNamePlaceholder: 'First name',
     firstNameLabel: 'User first name',
     secondNamePlaceholder: 'Second name',
     secondNameLabel: 'User second name',
-    updateUser: 'Update User',
-    deleteUser: 'Delete User',
+    updateUser: 'Update user',
+    deleteUser: 'Delete user',
+    deleteUserQuestion: 'Are you sure you want to delete',
   },
 };
