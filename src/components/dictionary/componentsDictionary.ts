@@ -14,11 +14,11 @@ export const componentsDictionary = {
     errorMessageLogin: 'Login or password is incorrect. Please check it and try again',
   },
   header: {
-    avatarAlt: 'Your Profile',
+    photoAlt: 'Your Profile',
     logoText: 'palm clinic',
   },
   appointmentCard: {
-    avatarAlt: '',
+    photoAlt: '',
   },
   controlCardPanel: {
     selectedPatientImageAlt: '',

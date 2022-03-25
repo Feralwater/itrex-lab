@@ -66,7 +66,7 @@ export const dictionary = {
     pageTitle: 'Profile',
     changePasswordButton: 'Change Password',
     editButton: 'Edit',
-    avatarAlt: '',
+    photoAlt: '',
   },
   makeAppointmentsForm: {
     occupationPlaceholder: 'Choose an occupation',

@@ -10,7 +10,9 @@ import { PatientEmptyState } from 'modules/patient/PatientEmptyState';
 
 export const AppointmentsForPatientContainer:React.VFC = () => {
   const [pageNumber, setPageNumber] = useState(1);
-  const { responseStatus, appointments, isMoreAppointments } = useFetchPatientsAppointments(pageNumber);
+  const {
+    responseStatus, appointments, isMoreAppointments, totalAppointmentsCount,
+  } = useFetchPatientsAppointments(pageNumber);
   const { hiddenBlockRef } = useAppointmentsOnScreen({ responseStatus, isMoreAppointments, setPageNumber });
 
   return (
@@ -22,6 +24,7 @@ export const AppointmentsForPatientContainer:React.VFC = () => {
         emptyState={<PatientEmptyState />}
         responseStatus={responseStatus}
         appointmentsLength={appointments.length}
+        totalAppointmentsCount={totalAppointmentsCount}
       />
     </>
   );
