@@ -17,11 +17,12 @@ const appointments = {
       },
     });
   },
-  async fetchAppointmentsForDoctor(offset:number, limit:number) {
+  async fetchAppointmentsForDoctor(offset:number, limit:number, name?:string) {
     return instance.get<AppointmentsForDoctor>(APPOINTMENTS_API.appointmentsDoctorMe(), {
       params: {
         offset,
         limit,
+        name,
       },
     });
   },
