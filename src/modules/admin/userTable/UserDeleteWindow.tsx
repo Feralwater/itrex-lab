@@ -4,11 +4,15 @@ import { ResolutionModalButtons } from 'components';
 import { dictionary } from 'pages';
 import { getAllPatientsSlice } from 'redux/reducers/allPatients.reducer';
 import { AgreeQuestion } from 'modules/admin/userTable/Table.styles';
+import { getAllDoctorsSlice } from 'redux/reducers/allDoctors.reducer';
+import { RoleName } from 'redux/reducers/reducers.types';
+import { ROLES } from 'routes/constants';
 
 export interface UserDeleteWindowProps {
   userID: string
   firstName: string
   lastName: string
+  roleName: RoleName
   setShowDeleteModal: Dispatch<SetStateAction<boolean>>
   setShowSettingsModal: Dispatch<SetStateAction<boolean>>
 }
@@ -19,10 +23,16 @@ export const UserDeleteWindow: React.VFC<UserDeleteWindowProps> = ({
   lastName,
   setShowDeleteModal,
   setShowSettingsModal,
+  roleName,
 }) => {
   const dispatch = useAppDispatch();
   const deleteUserHandle = () => {
-    dispatch(getAllPatientsSlice.actions.deletePatientPending(userID));
+    if (roleName === ROLES.PATIENT) {
+      dispatch(getAllPatientsSlice.actions.deletePatientPending(userID));
+    }
+    if (roleName === ROLES.DOCTOR) {
+      dispatch(getAllDoctorsSlice.actions.deleteDoctorPending(userID));
+    }
     setShowDeleteModal(false);
     setShowSettingsModal(false);
   };

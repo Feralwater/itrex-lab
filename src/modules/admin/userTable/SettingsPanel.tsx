@@ -50,6 +50,7 @@ export const SettingsPanel:React.VFC<SettingsPanelProps> = ({
           lastName={lastName}
           setShowDeleteModal={setShowDeleteModal}
           setShowSettingsModal={setShowSettingsModal}
+          roleName={roleName}
         />
       </ModalWindow>
     </AdminCommandsList>
