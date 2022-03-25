@@ -12,7 +12,7 @@ interface NavigatePanelToDisplayProps{
 
 export const NavigatePanelToDisplay:React.VFC<NavigatePanelToDisplayProps> = ({ roleName, setSearchTerm }) => {
   if (roleName === ROLES.DOCTOR) {
-    return <DoctorNavigatePanel pageTitle={dictionary.doctorPage.resolutionsTitle} />;
+    return <DoctorNavigatePanel pageTitle={dictionary.doctorPage.resolutionsTitle} setSearchTerm={setSearchTerm} />;
   }
   return <PatientNavigatePanel pageTitle={dictionary.patientPage.resolutionsTitle} setSearchTerm={setSearchTerm} />;
 };
