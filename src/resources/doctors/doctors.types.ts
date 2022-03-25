@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { Users } from 'resources/patients/patients.types';
+import { UpdatePatientData, Users } from 'resources/patients/patients.types';
 
 export interface DoctorsBySpecializationId {
   first_name: string
@@ -16,4 +16,8 @@ export interface Doctors extends Users {
 export interface AllDoctors {
   users: Doctors[]
   total: number
+}
+
+export interface UpdateDoctorData extends UpdatePatientData {
+  specializations: (string | undefined)[]
 }

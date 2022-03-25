@@ -117,22 +117,37 @@ export interface AppointmentsForDoctorState {
 }
 
 export interface AllPatientsState {
+  specializationName?: string;
   userID: string
   firsName: string
   lastName: string
   photo: string
   roleName: RoleName
-  specializationName?: string
 }
 
-export interface AllUsersState {
-  users: AllPatientsState[];
+export interface AllDoctorsState extends AllPatientsState {
+  specializationName: string
+}
+
+export interface AllUsers {
   total: number;
   status: Status;
   updateUserStatus: Status;
   deleteUserStatus: Status;
 }
 
+export interface AllUsersState extends AllUsers {
+  users: AllPatientsState[];
+}
+
+export interface DoctorsState extends AllUsers {
+  users: AllDoctorsState[];
+}
+
 export interface UpdateUser extends UpdatePatientData {
   id: string
+}
+
+export interface UpdateDoctor extends UpdateUser {
+  specializations: (string | undefined)[]
 }

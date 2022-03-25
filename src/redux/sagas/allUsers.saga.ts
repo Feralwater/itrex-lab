@@ -4,7 +4,7 @@ import { notificationSlice } from 'redux/reducers';
 import { createErrorNotificationMessage } from 'redux/sagas/utils/createErrorNotificationMessage';
 import { getAllDoctorsSlice } from 'redux/reducers/allDoctors.reducer';
 import doctors from 'resources/doctors/doctors.api';
-import { AllDoctors } from 'resources/doctors/doctors.types';
+import { AllDoctors, Doctors } from 'resources/doctors/doctors.types';
 import { getAllPatientsSlice } from 'redux/reducers/allPatients.reducer';
 import { AllPatients, Users } from 'resources/patients/patients.types';
 import patientsAPI from 'resources/patients/patients.api';
@@ -49,9 +49,20 @@ function* deletePatient({ payload }: ReturnType<typeof getAllPatientsSlice.actio
   }
 }
 
+function* updateDoctor({ payload }: ReturnType<typeof getAllDoctorsSlice.actions.updateDoctorPending>) {
+  try {
+    const { data }: AxiosResponse<Doctors> = yield call(doctors.updateDoctor, payload.id, { firstName: payload.firstName, lastName: payload.lastName, specializations: [...payload.specializations] });
+    yield put(getAllDoctorsSlice.actions.updateDoctorFulfilled(data));
+  } catch (error:any) {
+    yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.response.data)));
+    yield put(getAllDoctorsSlice.actions.updateDoctorFailed());
+  }
+}
+
 export function* fetchAllUsersWatcher() {
   yield takeEvery(getAllDoctorsSlice.actions.pending, fetchAllDoctors);
   yield takeEvery(getAllPatientsSlice.actions.pending, fetchAllPatients);
   yield takeEvery(getAllPatientsSlice.actions.updatePatientPending, updatePatient);
   yield takeEvery(getAllPatientsSlice.actions.deletePatientPending, deletePatient);
+  yield takeEvery(getAllDoctorsSlice.actions.updateDoctorPending, updateDoctor);
 }
