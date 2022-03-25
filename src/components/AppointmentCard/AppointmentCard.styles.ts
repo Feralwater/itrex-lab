@@ -38,6 +38,7 @@ export const SettingsButton = styled.button`
   outline: none;
   cursor: pointer;
   border-radius: 6px;
+  position: relative;
 
   &:hover {
     background: ${colors.alabaster} url("../../svg/settings-dots-blue.svg") no-repeat center/24px;

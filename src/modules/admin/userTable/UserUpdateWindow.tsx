@@ -7,17 +7,19 @@ import { getAllPatientsSlice } from 'redux/reducers/allPatients.reducer';
 import { InputFormContainer, ResolutionModalButtons } from 'components';
 import { dictionary } from 'pages';
 
-export interface UserSettingsWindowProps extends TableRowProps {
+export interface UserUpdateWindowProps extends TableRowProps {
+  setShowEditModal: Dispatch<SetStateAction<boolean>>
   setShowSettingsModal: Dispatch<SetStateAction<boolean>>
 }
 
-export const UserSettingsWindow: React.VFC<UserSettingsWindowProps> = ({
+export const UserUpdateWindow: React.VFC<UserUpdateWindowProps> = ({
   userID,
   firstName,
   lastName,
   photo,
   roleName,
   specializationName,
+  setShowEditModal,
   setShowSettingsModal,
 }) => {
   const [userName, setUserName] = useState<string>(firstName);
@@ -27,14 +29,18 @@ export const UserSettingsWindow: React.VFC<UserSettingsWindowProps> = ({
     dispatch(getAllPatientsSlice.actions.updatePatientPending(
       { id: userID, firstName: userName, lastName: userSurName },
     ));
+    setShowEditModal(false);
     setShowSettingsModal(false);
   };
-  const cancelHandler = () => setShowSettingsModal(false);
+  const cancelHandler = () => {
+    setShowEditModal(false);
+    setShowSettingsModal(false);
+  };
   const firstNameChangeHandler = (event:ChangeEvent<HTMLInputElement>) => setUserName(event.currentTarget.value);
   const secondNameChangeHandler = (event:ChangeEvent<HTMLInputElement>) => setUserSurName(event.currentTarget.value);
 
   return (
-    <>
+    <div>
       <div>{roleName}</div>
       <img src={photo} alt="" />
       <InputFormContainer
@@ -71,6 +77,6 @@ export const UserSettingsWindow: React.VFC<UserSettingsWindowProps> = ({
         activeButtonIcon="/svg/board-icon.svg"
         passiveButtonIcon="/svg/close-icon.svg"
       />
-    </>
+    </div>
   );
 };
