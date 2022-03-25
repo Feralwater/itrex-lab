@@ -113,3 +113,16 @@ export interface AppointmentsForDoctorState extends AppointmentsForDoctorFulfill
   createResolutionStatus: Status,
   editResolutionStatus: Status,
 }
+
+export interface AllPatientsState{
+  userID: string
+  firsName: string
+  lastName: string
+  photo: string
+  roleName: RoleName
+}
+
+export interface AllUsersState {
+  users: AllPatientsState[];
+  status: Status;
+}

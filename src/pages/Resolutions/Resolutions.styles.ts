@@ -37,6 +37,12 @@ export const ResolutionsTableCell = styled.td`
     justify-content: flex-end;
     border: none;
   }
+
+  & img {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+  }
 `;
 
 export const ResolutionsTableHeaderCell = styled(ResolutionsTableCell)`

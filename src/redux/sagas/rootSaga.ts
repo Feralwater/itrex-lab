@@ -1,4 +1,5 @@
 import { all } from 'redux-saga/effects';
+import { fetchAllPatientsWatcher } from 'redux/sagas/allPatients.saga';
 import { appointmentWatcher } from './appointment.saga';
 import { profileWatcher } from './profile.saga';
 import { resolutionWatcher } from './resolution.saga';
@@ -16,6 +17,7 @@ function* rootSaga() {
     appointmentWatcher(),
     registrationWatcher(),
     loginWatcher(),
+    fetchAllPatientsWatcher(),
   ]);
 }
 
