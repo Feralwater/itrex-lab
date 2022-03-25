@@ -6,7 +6,9 @@ import { appointmentsPerPage } from 'modules/hooks/constants';
 export const useFetchPatientsAppointments = (page: number) => {
   const dispatch = useAppDispatch();
   const { id: userId } = useAppSelector(selectProfile);
-  const { appointments, responseStatus, isMore: isMoreAppointments } = useAppSelector(selectAppointmentsForPatient);
+  const {
+    appointments, responseStatus, isMore: isMoreAppointments, total: totalAppointmentsCount,
+  } = useAppSelector(selectAppointmentsForPatient);
   useEffect(() => {
     if (userId) {
       dispatch(appointmentsForPatientSlice.actions.pending({
@@ -16,5 +18,7 @@ export const useFetchPatientsAppointments = (page: number) => {
     }
   }, [userId, dispatch, page]);
 
-  return { responseStatus, appointments, isMoreAppointments };
+  return {
+    responseStatus, appointments, isMoreAppointments, totalAppointmentsCount,
+  };
 };

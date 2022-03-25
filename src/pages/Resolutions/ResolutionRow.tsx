@@ -1,6 +1,6 @@
 import React from 'react';
+import { SettingsButton } from 'components/AppointmentCard/AppointmentCard.styles';
 import { ResolutionRowProps } from './Resolutions.types';
-import { SettingsButton } from '../../components/AppointmentCard/AppointmentCard.styles';
 import { ResolutionsTableCell, ResolutionsTableRow } from './Resolutions.styles';
 
 export const ResolutionRow: React.VFC<ResolutionRowProps> = ({

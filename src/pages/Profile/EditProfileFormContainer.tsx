@@ -7,28 +7,24 @@ import { EditProfileData, EditProfileFormContainerProps } from './EditProfile.ty
 export const EditProfileFormContainer:React.VFC<EditProfileFormContainerProps> = ({ closeEditModeHandler }) => {
   const dispatch = useAppDispatch();
   const {
-    status: fetchStatus, lastName, firstName, photo,
+    status, lastName, firstName, photo,
   } = useAppSelector(selectProfile);
 
   const handleSubmitForm = (values: EditProfileData) => {
     const data = new FormData();
     data.append('firstName', values.firstName);
     data.append('lastName', values.lastName);
-    data.append('avatar', values.avatar);
+    data.append('avatar', values.photo);
     dispatch(profileSlice.actions.editProfilePending(data));
     closeEditModeHandler();
   };
-  const editProfileFormInitialValues = {
-    firstName,
-    lastName,
-    avatar: photo,
-  };
+  const editProfileFormInitialValues = { firstName, lastName, photo };
 
   return (
     <EditProfileForm
       closeEditModeHandler={closeEditModeHandler}
       handleSubmitForm={handleSubmitForm}
-      status={fetchStatus}
+      status={status}
       initialValues={editProfileFormInitialValues}
       profilePhoto={photo}
     />

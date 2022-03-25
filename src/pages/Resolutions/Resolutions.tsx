@@ -3,8 +3,8 @@ import Loader from 'react-loader-spinner';
 import React from 'react';
 import { colors } from 'components/CommonStyles';
 import { FETCH_STATUS } from 'redux/reducers/constants';
-import { ROLES } from 'routes/constants';
 import { ResolutionForDoctor, ResolutionForPatient } from 'resources/resolutions/resolutions.types';
+import { ResolutionsPaginate } from 'pages/Resolutions/ResolutionsPaginate';
 import {
   ResolutionsLoaderContainer,
   ResolutionsTable,
@@ -14,7 +14,6 @@ import {
 import { columnsNames, visitDate } from './constants';
 import { ResolutionRow } from './ResolutionRow';
 import { ResolutionsProps } from './Resolutions.types';
-import { ResolutionsForPatientPaginateContainer, ResolutionsForDoctorPaginateContainer } from '..';
 
 function createResolutionsTableBody(myResolutions: Array<ResolutionForPatient> | Array<ResolutionForDoctor>) {
   return (
@@ -32,28 +31,32 @@ function createResolutionsTableBody(myResolutions: Array<ResolutionForPatient> |
     </tbody>
   );
 }
+interface ResolutionsTableProps{
+  myResolutions: Array<ResolutionForPatient> | Array<ResolutionForDoctor>
+}
+const GetResolutionsTable:React.VFC<ResolutionsTableProps> = ({ myResolutions }) => (
+  <ResolutionsTable>
+    <thead>
+      <ResolutionsTableHead>
+        {Object.entries(columnsNames)
+          .map(([key, value]) => (
+            <ResolutionsTableHeaderCell
+              as="th"
+              key={key}
+            >
+              {value}
+            </ResolutionsTableHeaderCell>
+          ))}
+      </ResolutionsTableHead>
+    </thead>
+    {createResolutionsTableBody(myResolutions)}
+  </ResolutionsTable>
+);
 
-export const Resolutions:React.VFC<ResolutionsProps> = ({ responseStatus, myResolutions, role }) => (
+export const Resolutions:React.VFC<ResolutionsProps> = ({ responseStatus, myResolutions }) => (
   <>
     {responseStatus !== FETCH_STATUS.LOADING
-      ? (
-        <ResolutionsTable>
-          <thead>
-            <ResolutionsTableHead>
-              {Object.entries(columnsNames)
-                .map(([key, value]) => (
-                  <ResolutionsTableHeaderCell
-                    as="th"
-                    key={key}
-                  >
-                    {value}
-                  </ResolutionsTableHeaderCell>
-                ))}
-            </ResolutionsTableHead>
-          </thead>
-          {createResolutionsTableBody(myResolutions)}
-        </ResolutionsTable>
-      )
+      ? <GetResolutionsTable myResolutions={myResolutions} />
       : (
         <ResolutionsLoaderContainer>
           <Loader
@@ -66,8 +69,6 @@ export const Resolutions:React.VFC<ResolutionsProps> = ({ responseStatus, myReso
           />
         </ResolutionsLoaderContainer>
       )}
-    {role === ROLES.PATIENT
-      ? (myResolutions.length > 0 && <ResolutionsForPatientPaginateContainer />)
-      : (myResolutions.length > 0 && <ResolutionsForDoctorPaginateContainer />)}
+    {myResolutions.length > 0 && <ResolutionsPaginate />}
   </>
 );

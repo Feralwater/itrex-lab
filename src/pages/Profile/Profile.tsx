@@ -48,7 +48,7 @@ export const Profile: React.VFC<ProfileProps> = ({
     </TitlePanel>
     <ProfileContainer>
       <ImageContainer>
-        <img src={photo} alt={pagesDictionary.profile.avatarAlt} />
+        <img src={photo} alt={pagesDictionary.profile.photoAlt} />
       </ImageContainer>
       <InfoContainer>
         <div>
