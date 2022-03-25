@@ -126,7 +126,7 @@ export interface AllPatientsState {
 }
 
 export interface AllDoctorsState extends AllPatientsState {
-  specializationName: string
+  specializationName?: string
 }
 
 export interface AllUsers {
@@ -143,6 +143,7 @@ export interface AllUsersState extends AllUsers {
 
 export interface DoctorsState extends AllUsers {
   users: AllDoctorsState[];
+  specializationName?: string;
 }
 
 export interface UpdateUser extends UpdatePatientData {

@@ -3,4 +3,5 @@ export const DOCTORS_API = {
   allDoctors: () => 'admin/doctors',
   updateDoctor: (id:string) => `admin/doctors/${id}`,
   deleteDoctor: (id:string) => `admin/doctors/${id}`,
+  createDoctor: () => 'admin/doctors',
 };

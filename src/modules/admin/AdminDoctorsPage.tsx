@@ -1,6 +1,4 @@
 import React from 'react';
-import { NavigatePanel } from 'components/NavigatePanel/NavigatePanel';
-import { adminTabs } from 'modules/admin/constants';
 import { FETCH_STATUS } from 'redux/reducers/constants';
 import { ResolutionsLoaderContainer } from 'pages/Resolutions/Resolutions.styles';
 import Loader from 'react-loader-spinner';
@@ -8,13 +6,17 @@ import { colors } from 'components/CommonStyles';
 import { UserTable } from 'modules/admin/userTable/UserTable';
 import { useFetchUsers } from 'modules/admin/hooks/useFetchUsers';
 import { ROLES } from 'routes/constants';
+import { AdminNavigatePanel } from 'modules/admin/AdminNavigatePanel';
+import { dictionary } from 'pages';
 
 export const AdminDoctorsPage = () => {
   const { users, responseStatus } = useFetchUsers(ROLES.DOCTOR);
 
   return (
     <>
-      <NavigatePanel buttonOnNavigatePanel={adminTabs} />
+      <AdminNavigatePanel roleName={ROLES.DOCTOR}>
+        {dictionary.adminPage.addDoctorButton}
+      </AdminNavigatePanel>
       {responseStatus !== FETCH_STATUS.LOADING
         ? <UserTable users={users} specializationCell />
         : (

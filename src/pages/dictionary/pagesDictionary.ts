@@ -49,6 +49,7 @@ export const dictionary = {
     buttonPatients: 'Patients',
     buttonDoctors: 'Doctors',
     addPatientButton: 'Create new patient',
+    addDoctorButton: 'Create new doctor',
   },
   makeAppointments: {
     step1Description: 'Select a doctor and define the reason of your visit',

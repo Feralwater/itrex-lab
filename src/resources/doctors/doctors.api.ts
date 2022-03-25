@@ -1,6 +1,7 @@
+import { Users } from 'resources/patients/patients.types';
 import instance from '../../services/api/api';
 import {
-  AllDoctors, Doctors, DoctorsBySpecializationIdResponse, UpdateDoctorData,
+  AllDoctors, CreateDoctorData, Doctors, DoctorsBySpecializationIdResponse, UpdateDoctorData,
 } from './doctors.types';
 import { DOCTORS_API } from './constants';
 
@@ -21,6 +22,9 @@ const doctors = {
   },
   async deleteDoctor(id: string) {
     return instance.delete<string>(DOCTORS_API.deleteDoctor(id));
+  },
+  async createDoctor(data:CreateDoctorData) {
+    return instance.post<Users>(DOCTORS_API.createDoctor(), data);
   },
 };
 

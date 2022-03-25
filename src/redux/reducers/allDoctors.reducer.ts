@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ResolutionsPending } from 'redux/actions.types';
-import { AllDoctors, Doctors } from 'resources/doctors/doctors.types';
+import { AllDoctors, CreateDoctorData, Doctors } from 'resources/doctors/doctors.types';
+import { Users } from 'resources/patients/patients.types';
 import { DoctorsState, UpdateDoctor } from './reducers.types';
 import { RootState } from '../store';
 import { FETCH_STATUS } from './constants';
@@ -56,6 +57,27 @@ export const getAllDoctorsSlice = createSlice({
     }),
     deleteDoctorPending: (state, action:PayloadAction<string>) => ({ ...state, id: action.payload, deleteUserStatus: FETCH_STATUS.LOADING }),
     deleteDoctorFailed: (state) => ({ ...state, deleteUserStatus: FETCH_STATUS.FAILED }),
+    createDoctorFulfilled: (state, action: PayloadAction<Users>) => ({
+      ...state,
+      users: [
+        {
+          userID: action.payload.id,
+          firsName: action.payload.first_name,
+          lastName: action.payload.last_name,
+          photo: action.payload.photo,
+          roleName: action.payload.role_name,
+          specializationName: state.specializationName,
+        },
+        ...state.users,
+      ],
+      createUserStatus: FETCH_STATUS.FULFILLED,
+    }),
+    createDoctorPending: (state, action: PayloadAction<CreateDoctorData>) => ({
+      ...state,
+      specializationName: action.payload.specializations[0],
+      createUserStatus: FETCH_STATUS.LOADING,
+    }),
+    createDoctorFailed: (state) => ({ ...state, createUserStatus: FETCH_STATUS.FAILED }),
   },
 });
 

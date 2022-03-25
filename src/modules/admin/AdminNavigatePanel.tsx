@@ -3,9 +3,14 @@ import { NavigatePanel } from 'components/NavigatePanel/NavigatePanel';
 import { adminTabs } from 'modules/admin/constants';
 import { Button } from 'components';
 import React, { useState } from 'react';
-import { CreatePatientModal } from 'modules/admin/CreatePatientModal';
+import { CreateUserModal } from 'modules/admin/CreateUserModal';
+import { RoleName } from 'redux/reducers/reducers.types';
 
-export const AdminNavigatePanel:React.FC = ({ children }) => {
+interface AdminNavigatePanelProps {
+  roleName: RoleName
+}
+
+export const AdminNavigatePanel:React.FC<AdminNavigatePanelProps> = ({ roleName, children }) => {
   const [createPatientWindow, setCreatePatientWindow] = useState<boolean>(false);
   const openCreatePatientWindow = () => setCreatePatientWindow(true);
 
@@ -24,7 +29,11 @@ export const AdminNavigatePanel:React.FC = ({ children }) => {
           {children}
         </Button>
       </AdminNavigate>
-      <CreatePatientModal createPatientWindow={createPatientWindow} setCreatePatientWindow={setCreatePatientWindow} />
+      <CreateUserModal
+        createPatientWindow={createPatientWindow}
+        setCreatePatientWindow={setCreatePatientWindow}
+        roleName={roleName}
+      />
     </>
   );
 };
