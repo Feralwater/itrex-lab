@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ResolutionForDoctor, ResolutionResponse } from 'resources/resolutions/resolutions.types';
+import { UpdateStatusData, UpdateStatusFulfilled } from 'resources/appointments/appointments.types';
 import { RootState } from '../store';
 import { FETCH_STATUS } from './constants';
 import { AppointmentsForDoctorState } from './reducers.types';
@@ -18,6 +19,7 @@ const initialState = {
   deleteAppointmentStatus: FETCH_STATUS.IDLE,
   createResolutionStatus: FETCH_STATUS.IDLE,
   editResolutionStatus: FETCH_STATUS.IDLE,
+  changeStatusStatus: FETCH_STATUS.IDLE,
 } as AppointmentsForDoctorState;
 
 function createResolution(appointment: AppointmentForDoctorFulfilled, newResolution:ResolutionResponse): ResolutionForDoctor | undefined {
@@ -81,6 +83,20 @@ export const appointmentsForDoctorSlice = createSlice({
     },
     editResolutionPending: (state, action: PayloadAction<EditResolutionPending>) => ({ ...state, ...action.payload, editResolutionStatus: FETCH_STATUS.LOADING }),
     editResolutionFailed: (state) => ({ ...state, editResolutionStatus: FETCH_STATUS.FAILED }),
+    updateStatusFulfilled: (state, action:PayloadAction<UpdateStatusFulfilled>) => {
+      const editedAppointments = state.appointments.map((appointment) => {
+        if (appointment.appointmentID === action.payload.editedAppointmentID) {
+          return {
+            ...appointment,
+            appointmentStatus: action.payload.editedStatus,
+          };
+        }
+        return { ...appointment };
+      });
+      return ({ ...state, appointments: editedAppointments, changeStatusStatus: FETCH_STATUS.FULFILLED });
+    },
+    updateStatusPending: (state, action:PayloadAction<UpdateStatusData>) => ({ ...state, newStatus: action.payload.status, changeStatusStatus: FETCH_STATUS.LOADING }),
+    updateStatusFailed: (state) => ({ ...state, changeStatusStatus: FETCH_STATUS.FAILED }),
     clearState: (state) => ({ ...state, appointments: [] }),
   },
 });

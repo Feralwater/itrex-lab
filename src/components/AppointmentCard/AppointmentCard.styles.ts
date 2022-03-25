@@ -91,9 +91,45 @@ export const UserCardBodyAppointmentConfirm = styled.div<UserCardBodyAppointment
   background-color: ${(props) => props.color};
 `;
 
-export const AppointmentStatus = styled(SubTitle)`
+export const AppointmentSubTitle = styled(SubTitle)`
   color: ${colors.rock_blue};
-  margin: 0;
+`;
+
+export const AppointmentStatus = styled.div`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+`;
+
+export const AppointmentStatusSwitcher = styled.div`
+  padding: 26px;
+`;
+
+export const StatusList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding-inline-start: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  gap: 20px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 130%;
+  color: ${colors.rock_blue};
+  padding: 10px 0 0 0;
+`;
+
+export const Status = styled.li`
+  display: flex;
+  align-items: center;
+  & label{
+    cursor: pointer;
+  }
+  & input{
+    cursor: pointer;
+    margin: 0 10px 0 0;
+  }
 `;
 
 export const DoctorSpecializationName = styled(SubTitle)`

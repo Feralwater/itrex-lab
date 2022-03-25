@@ -41,7 +41,7 @@ export const AppointmentCard:React.VFC<AppointmentCardProps> = ({
         </UserCardImageContainer>
         <UserInformation>
           <UserCardName>{`${firstName} ${lastName}`}</UserCardName>
-          <AppointmentCardHeader status={status} specialization={specialization} />
+          <AppointmentCardHeader status={status} specialization={specialization} appointmentID={appointmentID} />
         </UserInformation>
       </UserData>
       <SettingsButtons
