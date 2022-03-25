@@ -3,11 +3,10 @@ import createSagaMiddleware from 'redux-saga';
 import {
   loginReducer, makeAppointmentReducer, registrationReducer,
   profileReducer, notificationReducer, appointmentsForPatientReducer,
-  resolutionReducer, resolutionsReducer,
-  occupationsReducer, getDoctorsByIDReducer, freeDoctorTimeReducer, appointmentsForDoctorReducer,
+  resolutionsForDoctorReducer, occupationsReducer, getDoctorsByIDReducer,
+  freeDoctorTimeReducer, appointmentsForDoctorReducer,
 } from './reducers';
 import rootSaga from './sagas/rootSaga';
-import { editResolutionReducer } from './reducers/editResolution.reducer';
 import { resolutionsForPatientReducer } from './reducers/resolutionsForPatient.reducer';
 import { changePasswordReducer } from './reducers/changePassword.reducer';
 
@@ -21,9 +20,7 @@ export const store = configureStore({
     profile: profileReducer,
     notification: notificationReducer,
     appointmentsForPatient: appointmentsForPatientReducer,
-    resolution: resolutionReducer,
-    resolutions: resolutionsReducer,
-    editResolution: editResolutionReducer,
+    resolutionsForDoctor: resolutionsForDoctorReducer,
     resolutionsForPatient: resolutionsForPatientReducer,
     occupations: occupationsReducer,
     getDoctorsByID: getDoctorsByIDReducer,

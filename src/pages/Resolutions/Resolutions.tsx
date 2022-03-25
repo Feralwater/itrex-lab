@@ -21,8 +21,8 @@ function createResolutionsTableBody(myResolutions: Array<ResolutionForPatient> |
       {myResolutions.map((resolution) => (
         <ResolutionRow
           key={resolution.id}
-          firstName={'doctor' in resolution ? resolution.doctor.first_name : resolution.patient.first_name}
-          lastName={'doctor' in resolution ? resolution.doctor.last_name : resolution.patient.last_name}
+          firstName={'doctor' in resolution ? resolution.doctor.first_name : resolution.patient?.first_name}
+          lastName={'doctor' in resolution ? resolution.doctor.last_name : resolution.patient?.last_name}
           resolution={resolution.resolution}
           visitDate={format(new Date(resolution.visit_date), visitDate)}
           nextAppointmentDate={format(new Date(resolution.next_appointment_date), visitDate)}
