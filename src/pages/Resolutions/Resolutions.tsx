@@ -1,4 +1,3 @@
-import { format } from 'date-fns';
 import Loader from 'react-loader-spinner';
 import React from 'react';
 import { colors } from 'components/CommonStyles';
