@@ -7,20 +7,25 @@ export const componentsDictionary = {
     successMessageBodyCreateResolution: 'You have successfully created new resolution.',
     successMessageBodyEditResolution: 'You have successfully edited resolution.',
     successMessageBodyDeleteAppointment: 'You have successfully deleted appointment.',
+    successMessageBodyUpdateAppointmentStatus: 'You have successfully update appointment status.',
     messageTitleError: 'Error message goes here',
     errorMessageText: 'We show this message if something irreparable has happened. But there is nothing irreparable',
     errorMessageEditProfile: 'Failed to update the profile. Check the data and try again',
     errorMessageLogin: 'Login or password is incorrect. Please check it and try again',
   },
   header: {
-    avatarAlt: 'Your Profile',
+    photoAlt: 'Your Profile',
     logoText: 'palm clinic',
   },
   appointmentCard: {
-    avatarAlt: '',
+    photoAlt: '',
   },
   controlCardPanel: {
     selectedPatientImageAlt: '',
     errorMessage: 'Must be 2-200 characters',
+  },
+  changeAppointmentStatus: {
+    title: 'Change appointment status',
+    subTitle: 'Select status',
   },
 } as const;

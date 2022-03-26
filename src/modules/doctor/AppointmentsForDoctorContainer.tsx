@@ -12,8 +12,8 @@ import { selectAppointmentsForDoctor } from 'redux/reducers';
 export const AppointmentsForDoctorContainer: React.VFC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
-  const { appointments, responseStatus, isMore: isMoreAppointments } = useAppSelector(selectAppointmentsForDoctor);
-  const { hiddenBlockRef } = useAppointmentsOnScreen({ responseStatus, isMoreAppointments, setPageNumber });
+  const { appointments, status, isMore: isMoreAppointments } = useAppSelector(selectAppointmentsForDoctor);
+  const { hiddenBlockRef } = useAppointmentsOnScreen({ responseStatus: status, isMoreAppointments, setPageNumber });
   useFetchAppointments(pageNumber, searchTerm);
   return (
     <>
@@ -26,8 +26,9 @@ export const AppointmentsForDoctorContainer: React.VFC = () => {
         ref={hiddenBlockRef}
         fullState={<DoctorFullState appointments={appointments} />}
         emptyState={<DoctorEmptyState />}
-        responseStatus={responseStatus}
+        responseStatus={status}
         appointmentsLength={appointments.length}
+        isMoreAppointments={isMoreAppointments}
       />
     </>
   );

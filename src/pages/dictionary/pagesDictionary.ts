@@ -47,6 +47,10 @@ export const dictionary = {
     filterTitle: 'Show:',
     filterPlaceholder: 'All',
   },
+  adminPage: {
+    buttonPatients: 'Patients',
+    buttonDoctors: 'Doctors',
+  },
   makeAppointments: {
     step1Description: 'Select a doctor and define the reason of your visit',
     step2Description: 'Choose a day for an appointment',
@@ -68,7 +72,7 @@ export const dictionary = {
     pageTitle: 'Profile',
     changePasswordButton: 'Change Password',
     editButton: 'Edit',
-    avatarAlt: '',
+    photoAlt: '',
   },
   makeAppointmentsForm: {
     occupationPlaceholder: 'Choose an occupation',

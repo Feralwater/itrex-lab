@@ -1,9 +1,9 @@
 import { AppointmentForPatient } from 'resources/appointments/appointments.types';
 import { ResolutionsForPatientResponse, ResolutionsResponse } from 'resources/resolutions/resolutions.types';
-import { AppointmentForDoctorFulfilled } from '../actions.types';
+import { AppointmentsForDoctorFulfilled } from '../actions.types';
 
 export type Status = 'idle' | 'loading' | 'failed' | 'fulfilled';
-export type RoleName = 'Doctor' | 'Patient' | null;
+export type RoleName = 'Doctor' | 'Patient' | 'Public' | 'Admin';
 
 interface Request {
   status: Status;
@@ -48,7 +48,6 @@ export interface ResolutionState {
   resolution: string;
   resolutionID: string;
   total: number;
-  status: Status;
 }
 
 export interface EditResolutionState {
@@ -107,10 +106,23 @@ export interface ChangePasswordState {
   status: Status;
 }
 
-export interface AppointmentsForDoctorState {
-  appointments: Array<AppointmentForDoctorFulfilled>,
-  total: number,
+export interface AppointmentsForDoctorState extends AppointmentsForDoctorFulfilled {
   isMore: boolean,
-  responseStatus: Status,
-  entityStatus: Status,
+  status: Status,
+  deleteAppointmentStatus: Status,
+  createResolutionStatus: Status,
+  editResolutionStatus: Status,
+}
+
+export interface AllPatientsState{
+  userID: string
+  firsName: string
+  lastName: string
+  photo: string
+  roleName: RoleName
+}
+
+export interface AllUsersState {
+  users: AllPatientsState[];
+  status: Status;
 }

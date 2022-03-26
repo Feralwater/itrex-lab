@@ -1,11 +1,12 @@
 import React from 'react';
 import { PatientsButton, PatientsButtonsContainer } from 'components/NavigatePanel/NavigatePanel.styles';
-import isActiveTab from 'components/NavigatePanel/utils';
 
 interface NavigatePanelButton{
   path: string
   text: string
 }
+
+const isActiveTab = (tabText: string) => window.location.pathname.includes(tabText.toLocaleLowerCase());
 
 interface NavigatePanelProps {
   buttonOnNavigatePanel: NavigatePanelButton[]

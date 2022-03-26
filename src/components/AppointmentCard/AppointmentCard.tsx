@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { AppointmentCardHeader } from 'components/AppointmentCard/AppointmentCardHeader';
 import { AppointmentCardProps } from 'components/AppointmentCard/AppointmentCard.types';
-import { AppointmentCardSettingsButton } from 'components/AppointmentCard/AppointmentCardSettingsButton';
-import { ROLES } from 'routes/constants';
 import { AppointmentCardDescription } from 'components/AppointmentCard/AppointmentCardDescription';
+import { SettingsButtons } from 'components/AppointmentCard/SettingsButtons';
 import { ReactComponent as Clock } from '../../assets/svg/clock-icon.svg';
 
 import {
@@ -21,42 +20,35 @@ import { UserImage } from '../Header/Header.styles';
 import { componentsDictionary } from '../dictionary/componentsDictionary';
 import { formatVisitTime } from './utils';
 
-export const AppointmentCard:React.VFC<AppointmentCardProps> = ({
+export const AppointmentCard:React.VFC<AppointmentCardProps> = memo(({
   photo,
   appointmentID,
   firstName,
   lastName,
-  role,
   time,
-  isMenuOpen,
-  setIsMenuOpen,
-  menuRef,
   status,
   specialization,
   cardIcon,
   cardDescription,
   resolutionID,
+  shouldRenderAppointmentCardSettingsButton,
 }) => (
   <UserCard>
     <UserCardHeader>
       <UserData>
         <UserCardImageContainer>
-          <UserImage src={photo} alt={componentsDictionary.appointmentCard.avatarAlt} />
+          <UserImage src={photo} alt={componentsDictionary.appointmentCard.photoAlt} />
         </UserCardImageContainer>
         <UserInformation>
           <UserCardName>{`${firstName} ${lastName}`}</UserCardName>
-          <AppointmentCardHeader status={status} specialization={specialization} />
+          <AppointmentCardHeader status={status} specialization={specialization} appointmentID={appointmentID} />
         </UserInformation>
       </UserData>
-      {role === ROLES.DOCTOR && (
-      <AppointmentCardSettingsButton
+      <SettingsButtons
+        shouldRenderAppointmentCardSettingsButton={shouldRenderAppointmentCardSettingsButton}
         appointmentID={appointmentID}
-        setIsMenuOpen={setIsMenuOpen}
         resolutionID={resolutionID}
-        menuRef={menuRef}
-        isMenuOpen={isMenuOpen}
       />
-      )}
     </UserCardHeader>
     <UserCardBody>
       <UserCardBodyTime>
@@ -69,4 +61,4 @@ export const AppointmentCard:React.VFC<AppointmentCardProps> = ({
       />
     </UserCardBody>
   </UserCard>
-);
+));
