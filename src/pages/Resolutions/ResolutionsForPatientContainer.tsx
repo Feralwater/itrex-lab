@@ -17,7 +17,7 @@ export const ResolutionsForPatientContainer = () => {
       offset: resolutionsOnPageOffset,
       limit: resolutionsOnPage,
     }));
-  }, [dispatch]);
+  }, []);
   const { resolutions: myResolutions, status: responseStatus } = useAppSelector(selectResolutionsForPatient);
   return (
     <div>
