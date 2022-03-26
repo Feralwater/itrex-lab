@@ -2,7 +2,6 @@ import React, { Dispatch, SetStateAction } from 'react';
 import { ButtonWrapper } from 'components/AuthForms/AuthForm.styles';
 import { H1 } from 'components/CommonStyles/Topography';
 import { dictionary } from 'pages';
-import { PATH } from 'routes/constants';
 import { NavigatePanel } from 'components/NavigatePanel/NavigatePanel';
 import { filterOptionsForPatient, patientTabs } from 'components/NavigatePanel/constants';
 import { SelectForMainViewContainer } from 'components/Select/SelectForMainViewContainer';
