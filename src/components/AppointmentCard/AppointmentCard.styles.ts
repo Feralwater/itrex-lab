@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import {
-  BoldSubTitle,  borders,
-  colors, H4, shadows, SubTitle, Title,
+  BoldSubTitle, borders, colors, shadows, SubTitle, Title,
 } from '../CommonStyles';
 
 export const UserCard = styled.div`
