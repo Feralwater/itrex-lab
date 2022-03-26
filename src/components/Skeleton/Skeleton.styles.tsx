@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from '../CommonStyles';
+import { borders, colors } from '../CommonStyles';
 
 export const SkeletonCardContainer = styled.div`
   min-height: 217px;
@@ -8,7 +8,7 @@ export const SkeletonCardContainer = styled.div`
 `;
 
 export const SkeletonCardHeader = styled.div`
-  border-bottom: 1px solid ${colors.link_water['050']};
+  border-bottom: ${borders.link_water05_border};
   padding: 24px 31px;
   display: flex;
   gap: 16px;

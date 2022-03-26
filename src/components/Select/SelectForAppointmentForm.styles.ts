@@ -2,22 +2,22 @@
 import { GroupBase, StylesConfig } from 'react-select';
 import styled from 'styled-components';
 import { LabelType } from './Select.types';
-import { colors } from '../CommonStyles';
+import { borders, colors, shadows } from '../CommonStyles';
 
 export const SelectForAppointmentFormStyles: StylesConfig<LabelType, false, GroupBase<LabelType>> = {
   control: (styles) => ({
     ...styles,
     backgroundColor: `${colors.white}`,
-    border: `1px solid ${colors.link_water['1']}`,
+    border: `${borders.link_water1_border}`,
     boxSizing: 'border-box',
-    boxShadow: `0px 4px 32px ${colors.link_water['016']}`,
+    boxShadow: `${shadows.link_water016_shadow}`,
     borderRadius: '8px',
     padding: '9px 17px',
     fontSize: '17px',
     lineHeight: '24px',
     cursor: 'pointer',
     ':hover': {
-      border: `1px solid ${colors.cornflower_blue}`,
+      border: `${borders.cornflower_border}`,
     },
   }),
   menu: (styles) => ({

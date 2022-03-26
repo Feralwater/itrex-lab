@@ -1,14 +1,14 @@
 /* eslint-disable no-nested-ternary */
 import styled, { css } from 'styled-components';
 import { ButtonProps } from './Button.types';
-import { colors } from '../CommonStyles';
+import { borders, colors } from '../CommonStyles';
 
 const StyledButton = styled.button<ButtonProps>`
   display: inline-flex;
   width: fit-content;
   font-weight: 600;
   border-radius: 8px;
-  border: ${(props) => (props.isBorder ? `1px solid ${colors.link_water['1']}` : 'none')};
+  border: ${(props) => (props.isBorder ? `${borders.link_water1_border}` : 'none')};
   cursor: pointer;
   text-transform: capitalize;
   @media (max-width: 465px) {

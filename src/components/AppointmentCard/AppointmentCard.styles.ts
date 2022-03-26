@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import {
-  BoldSubTitle, colors, SubTitle, Title,
+  BoldSubTitle, borders, colors, shadows, SubTitle, Title,
 } from '../CommonStyles';
 
 export const UserCard = styled.div`
@@ -8,7 +8,7 @@ export const UserCard = styled.div`
   flex-direction: column;
   background: ${colors.white};
   min-height: 217px;
-  box-shadow: 0px 4px 32px ${colors.link_water['024']};
+  box-shadow: ${shadows.link_water024_shadow};
   border-radius: 12px;
   overflow: hidden;
   position: relative;
@@ -21,7 +21,7 @@ export const UserCard = styled.div`
 export const UserCardHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid ${colors.platinum['050']};
+  border-bottom: ${borders.platinum05_border};
   padding: 24px 31px;
   @media only screen and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3),
   (max-device-width: 767px) {

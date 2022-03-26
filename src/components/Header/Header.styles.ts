@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { colors, H6, SubTitle } from '../CommonStyles';
+import {
+  borders, colors, H6, SubTitle,
+} from '../CommonStyles';
 
 export const HeaderWrapper = styled.header`
   position: fixed;
@@ -80,7 +82,7 @@ export const NetworkStatus = styled.span`
   width: 8px;
   height: 8px;
   border-radius: 100%;
-  border: 3px solid ${colors.blue_chalk};
+  border: ${borders.blue_chalk_border};
   background-color: ${colors.greenish_teal};
   position: absolute;
   top: -1px;

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from 'components/CommonStyles';
+import { colors, shadows } from 'components/CommonStyles';
 
 export const ResolutionsTableContainer = styled.div`
   overflow-x: auto;
@@ -18,12 +18,12 @@ export const ResolutionsTableHead = styled.tr`
   line-height: 140%;
   color: ${colors.rock_blue};
   background-color: ${colors.white};
-  box-shadow: 0px 4px 32px ${colors.link_water['024']};
+  box-shadow: ${shadows.link_water024_shadow};
 `;
 
 export const ResolutionsTableCell = styled.td`
   padding: 10px 25px 10px 0;
-  border-bottom: solid ${colors.link_water['032']};
+  border-bottom: 0px;
   box-sizing: border-box;
   overflow: hidden;
   white-space: nowrap;
@@ -81,7 +81,7 @@ export const ResolutionsTableRow = styled.tr`
   line-height: 110%;
   color: ${colors.dark_jungle_green};
   background-color: ${colors.white};
-  box-shadow: 0px 4px 32px ${colors.link_water['024']};
+  box-shadow: ${shadows.link_water024_shadow};
 
   &:last-child {
     border-bottom: none;

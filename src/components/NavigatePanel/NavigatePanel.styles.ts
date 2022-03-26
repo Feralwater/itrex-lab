@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { colors } from '../CommonStyles';
+import { colors, shadows } from '../CommonStyles';
 
 export const PatientsButtonsContainer = styled.div`
   display: flex;
@@ -30,7 +30,7 @@ export const PatientsButton = styled(Link)<PatientsButtonProps>`
   cursor: pointer;
   color: ${(props) => (props.$active ? `${colors.white}` : `${colors.cornflower_blue}`)};
   background-color: ${(props) => (props.$active ? `${colors.cornflower_blue}` : `${colors.white}`)};
-  box-shadow: ${(props) => (props.color === `${colors.white}` && `0px 4px 32px ${colors.link_water['016']}`)};
+  box-shadow: ${(props) => (props.color === `${colors.white}` && `${shadows.link_water016_shadow}`)};
 `;
 export const UserPageTitle = styled.div`
   margin: 0 0 18px 0;

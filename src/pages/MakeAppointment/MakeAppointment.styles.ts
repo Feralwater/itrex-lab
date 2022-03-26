@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Form } from 'formik';
 import { Link } from 'react-router-dom';
-import { BoldSubTitle, colors } from 'components/CommonStyles';
+import { BoldSubTitle, borders, colors } from 'components/CommonStyles';
 
 export const AppointmentStepsNumbers = styled.div`
   display: flex;
@@ -115,7 +115,7 @@ export const Step = styled.div`
 export const StepNumber = styled(BoldSubTitle)`
   width: 32px;
   height: 32px;
-  border: 1px solid ${colors.rock_blue};
+  border: ${borders.blue_border};
   border-radius: 100%;
   justify-content: center;
   color: ${colors.rock_blue};

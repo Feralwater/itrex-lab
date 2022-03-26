@@ -1,5 +1,7 @@
 import styled from 'styled-components';
-import { colors, H2 } from '../CommonStyles';
+import {
+  borders, colors, H2, shadows,
+} from '../CommonStyles';
 
 export const CommandsList = styled.ul`
   list-style-type: none;
@@ -13,7 +15,7 @@ export const CommandsList = styled.ul`
   position: absolute;
   top: 72px;
   right: 16px;
-  box-shadow: 0px 4px 32px ${colors.link_water['032']};
+  box-shadow: ${shadows.link_water032_shadow};
 `;
 
 export const ControlCommand = styled.li`
@@ -85,9 +87,9 @@ export const ModalErrorMessage = styled.div`
 
 export const ResolutionModalTextArea = styled.textarea`
   background: ${colors.white};
-  border: 1px solid ${colors.link_water['1']};
+  border: ${borders.link_water1_border};
   box-sizing: border-box;
-  box-shadow: 0px 4px 32px ${colors.link_water['016']};
+  box-shadow: ${shadows.link_water016_shadow};
   border-radius: 8px;
   overflow-y: auto;
   width: 100%;
@@ -100,6 +102,6 @@ export const ResolutionModalTextArea = styled.textarea`
   padding: 16px 28px 18px 24px;
 
   &:focus {
-    border: 1px solid ${colors.cornflower_blue};
+    border: ${borders.cornflower_border};
   }
 `;

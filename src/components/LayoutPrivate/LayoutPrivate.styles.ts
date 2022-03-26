@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from '../CommonStyles';
+import { colors, shadows } from '../CommonStyles';
 
 export const Body = styled.div`
   padding: 80px 0 0 0;
@@ -26,7 +26,7 @@ export const Patients = styled.div`
   display: flex;
   flex-direction: column;
   background: ${colors.alabaster};
-  box-shadow: 0px 4px 32px ${colors.link_water['032']};
+  box-shadow: ${shadows.link_water032_shadow};
   border-radius: 16px;
   box-sizing: border-box;
   overflow: hidden;
