@@ -58,7 +58,7 @@ export const CustomField = styled(Field)<CustomFieldProps>`
   width: 100%;
   padding: 16px 64px;
   font-weight: 400;
-  font-size: 17px;
+  font-size: 1.7rem;
   outline: none;
   background-color: ${colors.alabaster};
   -webkit-appearance: none;
@@ -68,7 +68,7 @@ export const CustomField = styled(Field)<CustomFieldProps>`
   @media only screen and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3),
   (max-device-width: 767px) {
     padding: 10px 48px;
-    font-size: 15px;
+    font-size: 1.5rem;
   }
 
   &:focus {
@@ -84,7 +84,7 @@ export const CustomField = styled(Field)<CustomFieldProps>`
 
 export const CustomLink = styled(Link)`
   font-weight: 500;
-  font-size: 15px;
+  font-size: 1.5rem;
   text-decoration-line: underline;
   color: ${colors.cornflower_blue};
   margin: 32px 0px;

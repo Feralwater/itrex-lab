@@ -18,7 +18,7 @@ export const CommandsList = styled.ul`
 
 export const ControlCommand = styled.li`
   color: ${colors.dark_jungle_green};
-  font-size: 15px;
+  font-size: 1.5rem;
   line-height: 140%;
   padding: 10px 20px;
   cursor: pointer;
@@ -53,7 +53,7 @@ export const SelectedPatientInfo = styled.div`
 
 export const ResolutionTextareaTitle = styled.label`
   font-weight: 500;
-  font-size: 13px;
+  font-size: 1.3rem;
   line-height: 130%;
   color: ${colors.rock_blue};
   display: flex;
@@ -71,15 +71,12 @@ export const ResolutionModalFooter = styled.div`
   align-items: center;
   justify-content: space-between;
   background: ${colors.alabaster};
-  border-radius: 0 0 8px 8px;
-  @media (max-width: 370px) {
-    padding: 20px 30px;
-  }
+  border-radius: 0 0 16px 16px;
 `;
 
 export const ModalErrorMessage = styled.div`
   font-weight: 400;
-  font-size: 14px;
+  font-size: 1.4rem;
   color: ${colors.brink_pink};
   position: absolute;
   top: 70%;
@@ -97,7 +94,7 @@ export const ResolutionModalTextArea = styled.textarea`
   height: 160px;
   resize: none;
   outline: none;
-  font-size: 15px;
+  font-size: 1.5rem;
   line-height: 140%;
   color: ${colors.dark_jungle_green};
   padding: 16px 28px 18px 24px;

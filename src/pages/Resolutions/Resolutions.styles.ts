@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { colors } from 'components/CommonStyles';
 
-export const ResolutionsTable = styled.table`
+export const Table = styled.table`
   width: 100%;
   border-collapse: separate;
   text-align: left;
@@ -10,7 +10,7 @@ export const ResolutionsTable = styled.table`
 `;
 
 export const ResolutionsTableHead = styled.tr`
-  font-size: 15px;
+  font-size: 1.5rem;
   line-height: 140%;
   color: ${colors.rock_blue};
   background-color: ${colors.white};
@@ -36,6 +36,12 @@ export const ResolutionsTableCell = styled.td`
     display: flex;
     justify-content: flex-end;
     border: none;
+  }
+
+  & img {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
   }
 `;
 
@@ -67,7 +73,7 @@ export const ResolutionsTableHeaderCell = styled(ResolutionsTableCell)`
 `;
 
 export const ResolutionsTableRow = styled.tr`
-  font-size: 17px;
+  font-size: 1.7rem;
   line-height: 110%;
   color: ${colors.dark_jungle_green};
   background-color: ${colors.white};

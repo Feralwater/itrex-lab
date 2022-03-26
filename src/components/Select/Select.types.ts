@@ -13,6 +13,8 @@ export interface CustomSelectProps {
   options: Options[];
   placeholder?: string;
   setSelectedValue?: Dispatch<SetStateAction<string>>;
+  setFilterQuery?: Dispatch<SetStateAction<string>>;
+  setPageNumber?: Dispatch<SetStateAction<number>>;
 }
 
 export type SelectProps = CustomSelectProps & FieldProps;

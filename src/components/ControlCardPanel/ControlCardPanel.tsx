@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import { dictionary } from 'pages';
-import { resolutionsOnPage, resolutionsOnPageOffset } from 'pages/Resolutions/constants';
-import { resolutionSlice, resolutionsSlice, selectResolutions } from 'redux/reducers';
-import { editResolutionSlice } from 'redux/reducers/editResolution.reducer';
+import { appointmentsForDoctorSlice, selectAppointmentsForDoctor } from 'redux/reducers';
 import { ControlCardPanelProps } from './ControlCardPanel.types';
 import { ModalWindow } from '../Modal';
 import { CardControlList } from '..';
@@ -19,30 +17,26 @@ export const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
   const [activeCreateResolutionModal, setActiveCreateResolutionModal] = useState<boolean>(false);
   const [activeEditResolutionModal, setActiveEditResolutionModal] = useState<boolean>(false);
   const [resolutionText, setResolutionText] = useState<string>('');
-  const { resolutions: resolutionForDoctor } = useAppSelector(selectResolutions);
-  const editResolutionInitialText = resolutionForDoctor?.find((res) => res?.appointment_id === appointmentID)?.resolution;
+  const { appointments } = useAppSelector(selectAppointmentsForDoctor);
+  const editResolutionInitialText = appointments?.find((appointment) => appointment.resolution?.appointment_id === appointmentID)?.resolution?.resolution;
   const [editResolutionText, setEditResolutionText] = useState<string>(editResolutionInitialText || '');
 
-  const saveHandler = () => {
-    dispatch(resolutionSlice.actions.pending({
+  const saveHandler = useCallback(() => {
+    dispatch(appointmentsForDoctorSlice.actions.createResolutionPending({
       resolution: resolutionText,
       appointmentID,
     }));
     setActiveCreateResolutionModal(false);
     setIsMenuOpen(false);
-  };
-  const editHandler = () => {
-    dispatch(editResolutionSlice.actions.pending({
+  }, [resolutionText, appointmentID]);
+  const editHandler = useCallback(() => {
+    dispatch(appointmentsForDoctorSlice.actions.editResolutionPending({
       resolution: editResolutionText,
       resolutionID,
     }));
-    dispatch(resolutionsSlice.actions.pending({
-      offset: resolutionsOnPageOffset,
-      limit: resolutionsOnPage,
-    }));
     setActiveEditResolutionModal(false);
     setIsMenuOpen(false);
-  };
+  }, [editResolutionText, resolutionID]);
   const cancelHandler = () => {
     setActiveEditResolutionModal(false);
     setIsMenuOpen(false);

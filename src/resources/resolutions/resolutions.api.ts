@@ -19,11 +19,12 @@ const resolutionsAPI = {
       },
     });
   },
-  async fetchResolutionsForPatient(offset: number, limit:number) {
+  async fetchResolutionsForPatient(offset: number, limit:number, name?:string) {
     return instance.get<ResolutionsForPatientResponse>(RESOLUTIONS_API.resolutionsPatientMe(), {
       params: {
         offset,
         limit,
+        name,
       },
     });
   },
