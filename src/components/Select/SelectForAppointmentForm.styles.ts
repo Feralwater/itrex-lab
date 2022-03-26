@@ -91,7 +91,7 @@ interface SelectLabelType {
 
 export const SelectLabel = styled.label<SelectLabelType>`
   font-weight: 500;
-  font-size: 13px;
+  font-size: 1.3rem;
   line-height: 130%;
   color: ${(props) => (props.labelPosition === 'column' ? `${colors.black['1']}` : `${colors.rock_blue}`)};
   display: flex;
@@ -103,7 +103,7 @@ export const SelectLabel = styled.label<SelectLabelType>`
 
 export const RequireSign = styled.i`
   font-weight: 400;
-  font-size: 15px;
+  font-size: 1.5rem;
   line-height: 140%;
   color: ${colors.brink_pink};
 `;
