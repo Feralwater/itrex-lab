@@ -33,7 +33,7 @@ export interface Doctor extends Patient{
 
 export interface ResolutionForDoctor extends ResolutionResponse{
   visit_date: string
-  patient: Patient
+  patient?: Patient
 }
 
 export interface ResolutionForPatient extends ResolutionResponse{

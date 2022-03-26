@@ -1,14 +1,7 @@
 import styled from 'styled-components';
 
-interface AppointmentsWrapperProps {
-  appointmentsLength: number;
-}
-
-export const AppointmentsWrapper = styled.div<AppointmentsWrapperProps>`
-  display: ${(props) => (props.appointmentsLength > 0 ? 'grid' : 'flex')};
-  height: ${(props) => (props?.appointmentsLength === 0 && '68vh')};
-  justify-content: ${(props) => (props?.appointmentsLength === 0 && 'center')};
-  align-items: ${(props) => (props?.appointmentsLength === 0 && 'center')};
+export const AppointmentsWrapper = styled.div`
+  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(calc(25% - 18px), calc(25% - 18px)));
   grid-template-rows: minmax(217px, 264px);
   gap: 25px 24px;
@@ -25,8 +18,4 @@ export const AppointmentsWrapper = styled.div<AppointmentsWrapperProps>`
     gap: 15px;
     padding: 0;
   }
-`;
-
-export const HiddenBlock = styled.div`
-  height: 0px;
 `;

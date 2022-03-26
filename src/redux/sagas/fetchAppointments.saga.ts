@@ -33,7 +33,7 @@ function generateAppointmentsForDoctor(appointmentsResponse: AppointmentsForDoct
 
 function* fetchAppointmentsForDoctor({ payload }: ReturnType<typeof appointmentsForDoctorSlice.actions.pending>) {
   try {
-    const { data: appointmentsResponse }: AxiosResponse<AppointmentsForDoctor> = yield call(appointments.fetchAppointmentsForDoctor, payload.offset, payload.limit);
+    const { data: appointmentsResponse }: AxiosResponse<AppointmentsForDoctor> = yield call(appointments.fetchAppointmentsForDoctor, payload.offset, payload.limit, payload.name);
     const srcArray = appointmentsResponse.appointments.map((appointment) => appointment.patient.photo);
     const usersPhotoArray: string[] = yield call(cacheUserPhotos, srcArray);
     const { data: resolutionResponse }: AxiosResponse<ResolutionsResponse> = yield call(resolutionsAPI.fetchResolutionsForDoctor, payload.offset, payload.limit);
@@ -47,7 +47,7 @@ function* fetchAppointmentsForDoctor({ payload }: ReturnType<typeof appointments
 
 function* fetchAppointmentsForPatient({ payload }: ReturnType<typeof appointmentsForPatientSlice.actions.pending>) {
   try {
-    const { data }: AxiosResponse<AppointmentsForPatient> = yield call(appointments.fetchAppointmentsForPatient, payload.offset, payload.limit);
+    const { data }: AxiosResponse<AppointmentsForPatient> = yield call(appointments.fetchAppointmentsForPatient, payload.offset, payload.limit, payload.dateStatus);
     yield put(appointmentsForPatientSlice.actions.fulfilled(data));
   } catch (error:any) {
     yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.response.data)));

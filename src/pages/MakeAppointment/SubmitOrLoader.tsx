@@ -1,10 +1,10 @@
 import Loader from 'react-loader-spinner';
 import React from 'react';
-import { Button } from '../../components/Button';
-import { colors } from '../../components/CommonStyles';
-import { Status } from '../../redux/reducers/reducers.types';
+import { Button } from 'components';
+import { colors } from 'components/CommonStyles';
+import { Status } from 'redux/reducers/reducers.types';
+import { FETCH_STATUS } from 'redux/reducers/constants';
 import { MakeAppointmentButtonContainer } from './MakeAppointment.styles';
-import { FETCH_STATUS } from '../../redux/reducers/constants';
 
 export interface SubmitOrLoaderProps {
   status: Status;

@@ -3,15 +3,15 @@ import {
   Field, Formik, FormikErrors, FormikTouched, FormikValues,
 } from 'formik';
 import { ResolutionModalTitle } from 'components/ControlCardPanel/ControlCardPanel.styles';
+import { ResolutionModalButtons } from 'components';
+import { useAppDispatch } from 'hooks';
+import { ChangePasswordPending } from 'redux/actions.types';
+import { changePasswordSlice } from 'redux/reducers/changePassword.reducer';
 import { dictionary } from '../dictionary/pagesDictionary';
-import { ResolutionModalButtons } from '../../components';
 import { changePasswordFieldsData, changePasswordInitial } from './constants';
-import { useAppDispatch } from '../../hooks';
 import { ChangePasswordProps } from './EditProfile.types';
-import { ChangePasswordPending } from '../../redux/actions.types';
 import changePasswordValidationSchema from './validation/changePassword.validation';
 import { ChangePasswordForm, ChangePasswordFormBody } from './ChangePassword.styles';
-import { changePasswordSlice } from '../../redux/reducers/changePassword.reducer';
 
 export const ChangePasswordModal: React.VFC<ChangePasswordProps> = ({ setActiveChangePasswordModal }) => {
   const dispatch = useAppDispatch();

@@ -4,4 +4,5 @@ export const APPOINTMENTS_API = {
   appointmentsTimeFree: () => 'appointments/time/free',
   appointments: () => 'appointments',
   appointmentsById: (id:string) => `appointments/${id}`,
+  updateAppointmentStatus: (id:string) => `appointments/${id}`,
 };
