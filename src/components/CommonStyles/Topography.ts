@@ -33,23 +33,6 @@ export const H3 = styled.h3`
   color: ${colors.dark_jungle_green};
 `;
 
-export const H4 = styled.h4`
-  font-weight: 600;
-  font-size: 17px;
-  line-height: 140%;
-  color: ${colors.dark_jungle_green};
-  margin: 0;
-`;
-
-export const H5 = styled.h5`
-  font-weight: 400;
-  font-size: 17px;
-  line-height: 140%;
-  display: flex;
-  align-items: center;
-  color: ${colors.dark_jungle_green};
-`;
-
 export const H6 = styled.h6`
   font-weight: 600;
   font-size: 15px;
@@ -73,4 +56,12 @@ export const SubTitle = styled.div`
   display: flex;
   align-items: center;
   color: ${colors.dark_jungle_green};
+`;
+
+export const BoldSubTitle = styled.div`
+  font-weight: 600; 
+  font-size: 17px;
+  line-height: 140%;
+  color: ${colors.dark_jungle_green};
+  margin: 0;
 `;

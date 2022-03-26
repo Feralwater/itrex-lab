@@ -1,9 +1,9 @@
-import React, { ChangeEvent, useEffect } from 'react';
+import React, { ChangeEvent, useCallback, useEffect } from 'react';
 import { useField } from 'formik';
 import { parseISO, format } from 'date-fns';
+import { TIME_SLOTS } from 'pages/constants';
 import { TimeSlotsContainer } from './TimeSlots.styles';
 import { TimeSlotsProps } from './TimeSlots.types';
-import { TIME_SLOTS } from '../../pages/constants';
 import { timeForDisplayFormat } from './constants';
 import { TimeSlot } from './TimeSlot';
 
@@ -27,8 +27,8 @@ export const TimeSlots: React.VFC<TimeSlotsProps> = ({
   }, [date, occupation, doctorName]);
 
   const getTimeForServer = (time: string) => freeTimeSlots.filter((timeSlot) => timeSlot.timeForDisplay === time)?.[0]?.timeForServer;
-  const isChecked = (time:string) => value === getTimeForServer(time);
-  const handleClick = (e: ChangeEvent<HTMLInputElement>) => setValue(getTimeForServer(e.currentTarget.value));
+  const isChecked = useCallback((time:string) => value === getTimeForServer(time), [value]);
+  const handleClick = useCallback((e: ChangeEvent<HTMLInputElement>) => setValue(getTimeForServer(e.currentTarget.value)), [getTimeForServer]);
 
   return (
     <TimeSlotsContainer>

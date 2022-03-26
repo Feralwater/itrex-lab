@@ -4,7 +4,7 @@ import { RoleName, Status } from 'redux/reducers/reducers.types';
 export interface EditProfileData {
   firstName: string;
   lastName: string;
-  avatar: File | string;
+  photo: File | string;
 }
 
 export interface ChangePasswordProps {
@@ -15,7 +15,7 @@ export interface EditProfileFormProps {
   handleSubmitForm: ({
     firstName,
     lastName,
-    avatar,
+    photo,
   }: EditProfileData) => void;
   status: Status;
   initialValues: EditProfileData;

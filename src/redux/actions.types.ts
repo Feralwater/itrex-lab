@@ -20,7 +20,11 @@ export type RegistrationFulfilled = SignUpInResponse;
 export type ResolutionPending = ResolutionData;
 export type EditResolutionPending = EditResolutionData;
 export type ResolutionFulfilled = ResolutionResponse;
-export type EditResolutionFulfilled = EditResolutionResponse;
+
+export interface EditResolutionFulfilled extends EditResolutionResponse {
+  resolution: string
+}
+
 export type ResolutionsForPatientFulfilled = ResolutionsForPatientResponse;
 export type ResolutionsPending = AppointmentsForDoctorPending;
 
@@ -34,12 +38,14 @@ export interface AppointmentPending {
 export interface AppointmentsForPatientPending {
   offset: number;
   limit: number;
+  dateStatus?: string;
 }
 
 export interface AppointmentsForDoctorPending {
   offset: number;
   limit: number;
   name?: string;
+  firstNameSort?: string;
 }
 
 export interface DeleteAppointmentPending {
@@ -64,7 +70,7 @@ export type MakeAppointmentFulfilled = NewAppointmentResponse;
 
 export type AppointmentsForPatientFulfilled = AppointmentsForPatient;
 
-export interface AppointmentForDoctorFulfilled{
+export interface AppointmentForDoctorFulfilled {
   visitDate: string
   firstName: string
   lastName: string

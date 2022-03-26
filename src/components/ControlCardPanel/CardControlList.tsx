@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useAppDispatch } from 'hooks';
 import { dictionary } from 'pages';
 import { appointmentsForDoctorSlice } from 'redux/reducers';
 import { CommandsList, ControlCommand } from './ControlCardPanel.styles';
 import { CardControlListProps } from './ControlCardPanel.types';
 
-export const CardControlList:React.VFC<CardControlListProps> = ({
+export const CardControlList:React.VFC<CardControlListProps> = memo(({
   setActiveCreateResolutionModal,
   setActiveEditResolutionModal,
   appointmentID,
@@ -30,4 +30,4 @@ export const CardControlList:React.VFC<CardControlListProps> = ({
       </ControlCommand>
     </CommandsList>
   );
-};
+});
