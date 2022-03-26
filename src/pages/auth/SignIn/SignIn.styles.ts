@@ -18,7 +18,7 @@ export const SignInUpMessage = styled(Title)`
 
 export const SignInUpLink = styled(Link)`
   margin: 0 12px;
-  font-size: 15px;
+  font-size: 1.5rem;
   color: ${colors.cornflower_blue};
   font-weight: 600;
   text-decoration: underline;

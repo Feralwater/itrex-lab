@@ -36,3 +36,20 @@ export const colors = {
   },
   transparent: 'transparent',
 };
+
+export const borders = {
+  blue_border: `1px solid ${colors.rock_blue}`,
+  transparent_border: '1px solid transparent',
+  cornflower_border: `1px solid ${colors.cornflower_blue}`,
+  blue_chalk_border: `3px solid ${colors.blue_chalk}`,
+  link_water05_border: `1px solid ${colors.link_water['050']}`,
+  link_water1_border: `1px solid ${colors.link_water['1']}`,
+  platinum05_border: `1px solid ${colors.platinum['050']}`,
+  radical_red_border: `1px solid ${colors.radical_red}`,
+};
+
+export const shadows = {
+  link_water024_shadow: `0px 4px 32px ${colors.link_water['024']}`,
+  link_water016_shadow: `0px 4px 32px ${colors.link_water['016']}`,
+  link_water032_shadow: `0px 4px 32px ${colors.link_water['032']}`,
+};

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Form } from 'formik';
 import { Link } from 'react-router-dom';
-import { colors, H4 } from '../../components/CommonStyles';
+import { BoldSubTitle, borders, colors } from 'components/CommonStyles';
 
 export const AppointmentStepsNumbers = styled.div`
   display: flex;
@@ -15,11 +15,32 @@ export const AppointmentFormContainer = styled(Form)`
   flex-direction: column;
   margin: 38px 33px 0 0;
   overflow-y: auto;
+  @media only screen and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3),
+  (max-device-width: 767px) {
+    margin: 0;
+    overflow-y: visible;
+    & ::-webkit-scrollbar {
+      display: none;
+    }
+  }
 `;
 
 export const AppointmentStepsContainer = styled.div`
   display: flex;
   gap: 0 95px;
+  @media (max-width: 1600px) {
+    gap: 0 50px;
+  }
+  @media only screen and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3),
+  (max-device-width: 1480px) {
+    flex-direction: column;
+    gap: 50px 0;
+    padding: 0 48px;
+  }
+  @media only screen and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3),
+  (max-device-width: 767px) {
+    padding: 0;
+  }
 `;
 
 export const ChooseDayStep = styled.div`
@@ -34,6 +55,10 @@ export const SelectTimeslotStep = styled.div`
   flex-direction: column;
   max-width: 464px;
   gap: 40px;
+  @media only screen and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3),
+  (max-device-width: 767px) {
+    max-width: 100%;
+  }
 `;
 
 export const SelectDoctorStep = styled.div`
@@ -46,10 +71,11 @@ export const SelectDoctorStep = styled.div`
 export const MakeAppointmentButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;
+  padding: 40px 10px;
 `;
 
 export const NoUnderlineLink = styled(Link)`
-  font-size: 17px;
+  font-size: 1.7rem;
   line-height: 140%;
   text-decoration-line: none;
   color: ${colors.cornflower_blue};
@@ -62,14 +88,23 @@ export const LinksContainer = styled.div`
   gap: 16px;
   margin: 0 0 67px 0;
   width: fit-content;
+  @media only screen and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3),
+  (max-device-width: 767px) {
+    margin: 0 0 46px 0;
+  }
 `;
 
 export const DisabledLink = styled(Link)`
-  font-size: 17px;
+  font-size: 1.7rem;
   line-height: 240%;
   text-decoration-line: none;
   color: ${colors.rock_blue};
   width: fit-content;
+  @media only screen and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3),
+  (max-device-width: 767px) {
+    font-size: 15px;
+    line-height: 140%;
+  }
 `;
 
 export const Step = styled.div`
@@ -77,10 +112,10 @@ export const Step = styled.div`
   align-items: center;
 `;
 
-export const StepNumber = styled(H4)`
+export const StepNumber = styled(BoldSubTitle)`
   width: 32px;
   height: 32px;
-  border: 1px solid ${colors.rock_blue};
+  border: ${borders.blue_border};
   border-radius: 100%;
   justify-content: center;
   color: ${colors.rock_blue};
@@ -89,7 +124,7 @@ export const StepNumber = styled(H4)`
   flex-shrink: 0;
 `;
 
-export const StepDescription = styled(H4)`
+export const StepDescription = styled(BoldSubTitle)`
   color: ${colors.rock_blue};
   margin: 0 0 0 16px;
 `;

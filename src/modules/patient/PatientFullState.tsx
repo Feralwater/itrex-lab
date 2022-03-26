@@ -1,17 +1,19 @@
-import React from 'react';
-import { ROLES } from 'routes/constants';
+import React, { useMemo } from 'react';
 import { AppointmentForPatient } from 'resources/appointments/appointments.types';
-import { AppointmentCardContainer } from 'components/AppointmentCard';
+import { ReactComponent as Heart } from 'assets/svg/heart-icon.svg';
+import { AppointmentCard } from 'components/AppointmentCard/AppointmentCard';
 
 interface PatientFullStateProps{
   appointments: Array<AppointmentForPatient>
 }
 
-export const PatientFullState:React.VFC<PatientFullStateProps> = ({ appointments }) => (
-  <>
-    {
+export const PatientFullState:React.VFC<PatientFullStateProps> = ({ appointments }) => {
+  const MemoHeart = useMemo(() => <Heart />, []);
+  return (
+    <>
+      {
         appointments.map((appointment) => (
-          <AppointmentCardContainer
+          <AppointmentCard
             key={appointment.id}
             appointmentID={appointment.id}
             specialization={appointment.doctor.specialization_name}
@@ -19,11 +21,13 @@ export const PatientFullState:React.VFC<PatientFullStateProps> = ({ appointments
             lastName={appointment.doctor.last_name}
             photo={appointment.doctor.photo}
             status={appointment.status}
-            reason={appointment.reason}
             time={appointment.visit_date}
-            role={ROLES.PATIENT}
+            cardIcon={MemoHeart}
+            cardDescription={appointment.reason}
+            shouldRenderAppointmentCardSettingsButton={false}
           />
         ))
       }
-  </>
-);
+    </>
+  );
+};

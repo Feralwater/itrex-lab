@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { colors, H6, SubTitle } from '../CommonStyles';
+import {
+  borders, colors, H6, SubTitle,
+} from '../CommonStyles';
 
 export const HeaderWrapper = styled.header`
   position: fixed;
@@ -61,9 +63,11 @@ export const UserInfo = styled.div`
 
 export const UserImageContainer = styled.div`
   margin: 0 0 0 16px;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   position: relative;
+  background-color: ${colors.white};
+  border-radius: 100%;
 `;
 
 export const UserImage = styled.img`
@@ -78,7 +82,7 @@ export const NetworkStatus = styled.span`
   width: 8px;
   height: 8px;
   border-radius: 100%;
-  border: 3px solid ${colors.blue_chalk};
+  border: ${borders.blue_chalk_border};
   background-color: ${colors.greenish_teal};
   position: absolute;
   top: -1px;

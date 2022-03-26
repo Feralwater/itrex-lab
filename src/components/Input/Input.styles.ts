@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { colors } from '../CommonStyles';
+import { borders, colors, shadows } from '../CommonStyles';
 import { InputProps } from './Input.types';
 
 export interface InputContainerProps {
@@ -32,13 +32,13 @@ export const InputContainer = styled.div<InputContainerProps>`
 
 export const StyledInput = styled.input<InputProps>`
   background: ${colors.white};
-  border: ${(props) => (props.isError ? `1px solid ${colors.radical_red}` : `1px solid ${colors.link_water['1']}`)};
+  border: ${(props) => (props.isError ? `${borders.radical_red_border}` : `${borders.link_water1_border}`)};
   box-sizing: border-box;
-  box-shadow: 0px 4px 32px ${colors.link_water['016']};
+  box-shadow: ${shadows.link_water016_shadow};
   border-radius: 8px;
   outline: none;
   width: 100%;
-  font-size: ${(props) => (props.inputSize === 'large' ? '17px' : '15px')};
+  font-size: ${(props) => (props.inputSize === 'large' ? '1.7rem' : '1.5rem')};
   line-height: ${(props) => (props.inputSize === 'large' ? '140%' : '90%')};
 
   ${(props) => props.icon === 'default' && props.inputSize === 'large' && css`
@@ -58,8 +58,8 @@ export const StyledInput = styled.input<InputProps>`
   }
 
   &:focus {
-    box-shadow: 0px 4px 32px ${colors.link_water['024']};
-    border: 1px solid ${colors.cornflower_blue};
+    box-shadow: ${shadows.link_water024_shadow};
+    border: ${borders.cornflower_border};
   }
 `;
 
@@ -92,7 +92,7 @@ export const InputPasswordIconVisible = styled(InputPasswordIcon)`
 export const InputErrorMessage = styled.div`
   display: inline-block;
   font-weight: 400;
-  font-size: 11px;
+  font-size: 1.1rem;
   letter-spacing: -0.24px;
   color: ${colors.brink_pink};
   margin: 8px 0 0 0;
@@ -115,7 +115,7 @@ export const SearchContainer = styled(InputContainer)`
 
 export const Label = styled.label`
   font-weight: 500;
-  font-size: 13px;
+  font-size: 1.3rem;
   line-height: 130%;
   color: ${colors.black['1']};
 

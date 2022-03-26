@@ -16,6 +16,7 @@ export const NavigatePanel:React.VFC<NavigatePanelProps> = ({ buttonOnNavigatePa
   <PatientsButtonsContainer>
     {buttonOnNavigatePanel.map((tab) => (
       <PatientsButton
+        key={tab.path}
         to={tab.path}
         $active={isActiveTab(tab.text)}
       >

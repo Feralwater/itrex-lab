@@ -53,7 +53,7 @@ export const StyledPaginateContainer = styled.div`
 
   & li.selected {
     font-weight: 600;
-    font-size: 15px;
+    font-size: 1.5rem;
     line-height: 130%;
     color: ${colors.white};
     background-color: ${colors.cornflower_blue};

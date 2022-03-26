@@ -9,9 +9,9 @@ export interface AppointmentCardContainerProps {
   appointmentID: string;
   firstName: string;
   lastName: string;
-  status: string;
+  status?: string;
   role: RoleName;
-  specialization?:string;
+  specialization?: string;
   resolution?: ResolutionForDoctor;
   time: string;
   reason?: string;
@@ -20,6 +20,7 @@ export interface AppointmentCardContainerProps {
 export interface AppointmentCardHeaderProps {
   status?: string
   specialization?: string
+  appointmentID: string
 }
 
 export interface AppointmentCardProps {
@@ -27,19 +28,19 @@ export interface AppointmentCardProps {
   appointmentID: string;
   firstName: string;
   lastName: string;
-  role: RoleName;
   time: string;
-  isMenuOpen: boolean;
-  setIsMenuOpen: Dispatch<SetStateAction<boolean>>;
-  menuRef: MutableRefObject<HTMLDivElement> | undefined;
+  isMenuOpen?: boolean;
+  setIsMenuOpen?: Dispatch<SetStateAction<boolean>>;
+  menuRef?: MutableRefObject<HTMLDivElement> | undefined;
   specialization?: string
   status?: string
   cardIcon: ReactElement
   cardDescription?: string
   resolutionID?: string
+  shouldRenderAppointmentCardSettingsButton: boolean
 }
 
-export interface AppointmentCardSettingsButtonProps{
+export interface AppointmentCardSettingsButtonProps {
   setIsMenuOpen: Dispatch<SetStateAction<boolean>>;
   menuRef: MutableRefObject<HTMLDivElement> | undefined;
   isMenuOpen: boolean;

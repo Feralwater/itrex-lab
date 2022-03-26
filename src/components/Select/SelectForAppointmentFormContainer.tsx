@@ -1,5 +1,6 @@
 import React from 'react';
 import { useField } from 'formik';
+import { SelectForAppointmentFormStyles } from 'components/Select/SelectForAppointmentForm.styles';
 import { Options, SelectProps } from './Select.types';
 import { CustomSelect } from './Select';
 
@@ -16,5 +17,13 @@ export const SelectForAppointmentFormContainer: React.VFC<SelectProps> = ({
     }
   };
 
-  return (<CustomSelect onChangeHandler={onChangeHandler} isRequire {...props} />);
+  return (
+    <CustomSelect
+      onChangeHandler={onChangeHandler}
+      styles={SelectForAppointmentFormStyles}
+      labelPosition="column"
+      isRequire
+      {...props}
+    />
+  );
 };

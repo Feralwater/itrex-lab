@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { colors } from '../CommonStyles';
+import { colors, shadows } from '../CommonStyles';
 
 export const PatientsButtonsContainer = styled.div`
   display: flex;
@@ -21,7 +21,7 @@ export const PatientsButton = styled(Link)<PatientsButtonProps>`
   width: 137px;
   display: inline-flex;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 1.5rem;
   align-items: center;
   justify-content: center;
   border-radius: 8px;
@@ -30,13 +30,19 @@ export const PatientsButton = styled(Link)<PatientsButtonProps>`
   cursor: pointer;
   color: ${(props) => (props.$active ? `${colors.white}` : `${colors.cornflower_blue}`)};
   background-color: ${(props) => (props.$active ? `${colors.cornflower_blue}` : `${colors.white}`)};
-  box-shadow: ${(props) => (props.color === `${colors.white}` && `0px 4px 32px ${colors.link_water['016']}`)};
+  box-shadow: ${(props) => (props.color === `${colors.white}` && `${shadows.link_water016_shadow}`)};
 `;
 export const UserPageTitle = styled.div`
   margin: 0 0 18px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: nowrap;
+`;
+export const FilterAndButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 70px;
   flex-wrap: nowrap;
 `;
 export const SearchAndFilter = styled.div`
@@ -56,7 +62,7 @@ export const AppointmentButton = styled(Link)`
   border-radius: 8px;
   border: none;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 1.5rem;
   color: ${colors.white};
   cursor: pointer;
   background-color: ${colors.cornflower_blue};

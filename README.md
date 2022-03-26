@@ -4,7 +4,10 @@ Palm Clinic is an application used to book the doctor visit, built with React, R
 
 ## Project Status
 
-This project is currently in development. Users can book the doctor visit and doctors can create a resolution.
+This project completed. `Patient` can book the doctor visit and see his
+resolutions. `Doctor` can create, edit and delete a resolution. Also doctor can
+confirm or reject an appointment.
+`Admin` can create, edit and delete doctors and patients.
 
 ## Installation and Setup Instructions
 
@@ -19,9 +22,14 @@ You may see API here: [Swagger UI](https://reactlabapi.herokuapp.com/api/docs/#/
 
 You may handle test application with this credentials:
 
-login: `email@mail.ru` (for patient view) or `email@gmail.com` (for doctor view)
+Admin userName: `alexey@mail.ru`
+Admin password: `alexey@mail.ru`
 
-password: `password`
+Doctor userName: `email@gmal.com`
+Doctor password: `password`
+
+User userName: `lady@gmal.com`
+User password: `password`
 
 To Start Server:
 
@@ -33,6 +41,9 @@ To Visit App: [deploy](https://itrex-lab.vercel.app/sign-in)
 
 This project built during ITRex React.JS-lab
 
-## Project Screen Shot
+## Project Screen Shots
 
-<img src="img.png" height="300">
+<img src="img.png" height="150">
+<img src="img1.png" height="150">
+<img src="img2.png" height="100">
+<img src="img3.png" height="150">

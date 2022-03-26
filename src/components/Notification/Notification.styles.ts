@@ -20,6 +20,9 @@ export const NotificationBody = styled.div<NotificationBodyType>`
   min-height: 122px;
   padding: 0px 16px 0px 34px;
   box-sizing: border-box;
+  @media (max-width: 500px) {
+    width: 288px;
+  }
 `;
 
 export const NotificationTitle = styled.div`

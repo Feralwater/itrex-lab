@@ -1,7 +1,7 @@
 import React from 'react';
-import { SkeletonCards } from 'components/Skeleton';
+import { SkeletonCard, SkeletonCards } from 'components/Skeleton';
 import { FETCH_STATUS } from 'redux/reducers/constants';
-import { AppointmentsWrapper, HiddenBlock } from './MainPageView.styles';
+import { AppointmentsWrapper } from './MainPageView.styles';
 import { MainPage } from './MainPage.types';
 
 export const MainPageView = React.forwardRef(({
@@ -9,13 +9,18 @@ export const MainPageView = React.forwardRef(({
   responseStatus,
   fullState,
   emptyState,
-}:MainPage, ref) => (
-  <>
-    <AppointmentsWrapper appointmentsLength={appointmentsLength}>
+  isMoreAppointments,
+}: MainPage, ref) => {
+  const isAppointmentsEmpty = responseStatus === FETCH_STATUS.FULFILLED && appointmentsLength === 0;
+
+  if (isAppointmentsEmpty) {
+    return emptyState;
+  }
+  return (
+    <AppointmentsWrapper>
       {fullState}
-      <HiddenBlock ref={ref as React.RefObject<HTMLDivElement>} />
+      {isMoreAppointments && <SkeletonCard ref={ref} />}
+      {responseStatus === FETCH_STATUS.LOADING && <SkeletonCards />}
     </AppointmentsWrapper>
-    {responseStatus === FETCH_STATUS.LOADING && <SkeletonCards />}
-    {appointmentsLength < 0 && responseStatus === FETCH_STATUS.FULFILLED && emptyState}
-  </>
-));
+  );
+});

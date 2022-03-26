@@ -9,6 +9,7 @@ export const MedicalHistoryContainer = styled.div`
   justify-content: center;
   text-align: center;
   gap: 40px;
+  margin: auto;
 `;
 export const MedicalHistoryText = styled(Title)`
   color: ${colors.rock_blue};

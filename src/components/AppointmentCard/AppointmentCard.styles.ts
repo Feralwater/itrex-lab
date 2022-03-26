@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import {
-  colors, H4, SubTitle, Title,
+  BoldSubTitle, borders, colors, shadows, SubTitle, Title,
 } from '../CommonStyles';
 
 export const UserCard = styled.div`
@@ -8,7 +8,7 @@ export const UserCard = styled.div`
   flex-direction: column;
   background: ${colors.white};
   min-height: 217px;
-  box-shadow: 0px 4px 32px ${colors.link_water['024']};
+  box-shadow: ${shadows.link_water024_shadow};
   border-radius: 12px;
   overflow: hidden;
   position: relative;
@@ -21,7 +21,7 @@ export const UserCard = styled.div`
 export const UserCardHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid ${colors.platinum['050']};
+  border-bottom: ${borders.platinum05_border};
   padding: 24px 31px;
   @media only screen and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3),
   (max-device-width: 767px) {
@@ -62,7 +62,7 @@ export const UserCardBodyTime = styled.div`
 
 export const UserCardBodyTimeText = styled.time`
   font-weight: 600;
-  font-size: 15px;
+  font-size: 1.5rem;
   color: ${colors.dark_jungle_green};
   margin: 0 0 16px 0;
 `;
@@ -91,9 +91,45 @@ export const UserCardBodyAppointmentConfirm = styled.div<UserCardBodyAppointment
   background-color: ${(props) => props.color};
 `;
 
-export const AppointmentStatus = styled(SubTitle)`
+export const AppointmentSubTitle = styled(SubTitle)`
   color: ${colors.rock_blue};
-  margin: 0;
+`;
+
+export const AppointmentStatus = styled.div`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+`;
+
+export const AppointmentStatusSwitcher = styled.div`
+  padding: 26px;
+`;
+
+export const StatusList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding-inline-start: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  gap: 20px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 130%;
+  color: ${colors.rock_blue};
+  padding: 10px 0 0 0;
+`;
+
+export const Status = styled.li`
+  display: flex;
+  align-items: center;
+  & label{
+    cursor: pointer;
+  }
+  & input{
+    cursor: pointer;
+    margin: 0 10px 0 0;
+  }
 `;
 
 export const DoctorSpecializationName = styled(SubTitle)`
@@ -120,7 +156,7 @@ export const UserCardImageContainer = styled.div`
   border-radius: 100%;
 `;
 
-export const UserCardName = styled(H4)`
+export const UserCardName = styled(BoldSubTitle)`
   margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;

@@ -1,8 +1,16 @@
 import React, { Dispatch, SetStateAction } from 'react';
+import { ButtonWrapper } from 'components/AuthForms/AuthForm.styles';
 import { H1 } from 'components/CommonStyles/Topography';
+import { dictionary } from 'pages';
 import { NavigatePanel } from 'components/NavigatePanel/NavigatePanel';
-import { patientTabs } from 'components/NavigatePanel/constants';
+import { filterOptionsForPatient, patientTabs } from 'components/NavigatePanel/constants';
+import { SelectForMainViewContainer } from 'components/Select/SelectForMainViewContainer';
 import { CreateAppointmentButton } from 'components/NavigatePanel/CreateAppointmentButton';
+import {
+  ButtonLeftPlusIcon,
+  FilterAndButtonContainer,
+  UserPageTitle,
+} from './NavigatePanel.styles';
 import { Sorts } from 'pages/Resolutions/Sorts';
 import { dictionary } from 'pages';
 import { UserPageTitle } from './NavigatePanel.styles';
@@ -10,11 +18,13 @@ import { UserPageTitle } from './NavigatePanel.styles';
 export interface NavigatePanelProps {
   pageTitle: string;
   setSearchTerm?: Dispatch<SetStateAction<string>>;
+  setPageNumber?: Dispatch<SetStateAction<number>>;
+  setFilterQuery?: Dispatch<SetStateAction<string>>;
   setSpecialisationID?: Dispatch<SetStateAction<string>>;
 }
 
 export const PatientNavigatePanel: React.VFC<NavigatePanelProps> = (
-  { pageTitle, setSearchTerm, setSpecialisationID },
+  { pageTitle, setSearchTerm,setSpecialisationID, setFilterQuery, setPageNumber, }
 ) => (
   <>
     <NavigatePanel buttonOnNavigatePanel={patientTabs} />

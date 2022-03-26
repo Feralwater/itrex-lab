@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import { Field, Form } from 'formik';
 import { Link } from 'react-router-dom';
-import { colors, H1, Title } from '../CommonStyles';
+import {
+  borders, colors, H1, shadows, Title,
+} from '../CommonStyles';
 
 export const ButtonWrapper = styled.div`
   position: relative;
@@ -51,14 +53,14 @@ interface CustomFieldProps {
 }
 
 export const CustomField = styled(Field)<CustomFieldProps>`
-  border: ${(props) => (props.error ? `1px solid ${colors.radical_red}` : `1px solid ${colors.link_water['1']}`)};
+  border: ${(props) => (props.error ? `${borders.radical_red_border}` : `${borders.link_water1_border}`)};
   box-sizing: border-box;
-  box-shadow: 0px 4px 32px ${colors.link_water['016']};
+  box-shadow: ${shadows.link_water016_shadow};
   border-radius: 8px;
   width: 100%;
   padding: 16px 64px;
   font-weight: 400;
-  font-size: 17px;
+  font-size: 1.7rem;
   outline: none;
   background-color: ${colors.alabaster};
   -webkit-appearance: none;
@@ -68,12 +70,12 @@ export const CustomField = styled(Field)<CustomFieldProps>`
   @media only screen and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3),
   (max-device-width: 767px) {
     padding: 10px 48px;
-    font-size: 15px;
+    font-size: 1.5rem;
   }
 
   &:focus {
-    border: 1px solid ${colors.cornflower_blue};
-    box-shadow: 0px 4px 32px ${colors.link_water['024']};
+    border: ${borders.cornflower_border};
+    box-shadow: ${shadows.link_water024_shadow};
     background: ${colors.white};
   }
 
@@ -84,7 +86,7 @@ export const CustomField = styled(Field)<CustomFieldProps>`
 
 export const CustomLink = styled(Link)`
   font-weight: 500;
-  font-size: 15px;
+  font-size: 1.5rem;
   text-decoration-line: underline;
   color: ${colors.cornflower_blue};
   margin: 32px 0px;

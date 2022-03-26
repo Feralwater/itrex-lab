@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import { useAppDispatch } from 'hooks';
+import { notificationSlice } from 'redux/reducers';
 import { ReactComponent as SuccessIcon } from '../../assets/svg/check-circle.svg';
 import { ReactComponent as ErrorIcon } from '../../assets/svg/error-icon.svg';
 import { ReactComponent as Close } from '../../assets/svg/close-icon.svg';
@@ -11,8 +13,6 @@ import {
 } from './Notification.styles';
 import { NotificationProps } from './Notification.types';
 import { componentsDictionary } from '../dictionary/componentsDictionary';
-import { useAppDispatch } from '../../hooks';
-import { notificationSlice } from '../../redux/reducers';
 
 export const Notification: React.VFC<NotificationProps> = ({
   isSuccess, message, showNotification, setShowNotification,
