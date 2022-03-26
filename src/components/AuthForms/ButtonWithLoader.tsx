@@ -10,7 +10,6 @@ export interface ButtonWithLoaderProps{
   status: Status
   isValid: boolean
   dirty: boolean
-  closeEditModeHandler?: ()=>void
 }
 
 export const ButtonWithLoader:React.FC<ButtonWithLoaderProps> = ({
