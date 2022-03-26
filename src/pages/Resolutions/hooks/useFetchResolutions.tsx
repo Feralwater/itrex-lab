@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from 'hooks';
-import { resolutionsSlice, selectProfile } from 'redux/reducers';
+import { resolutionsForDoctorSlice, selectProfile } from 'redux/reducers';
 import { resolutionsOnPage } from 'pages/Resolutions/constants';
 import { useEffect } from 'react';
 import { PATH, ROLES } from 'routes/constants';
@@ -10,7 +10,7 @@ export const useFetchResolutions = (currentPage:number, searchTerm?: string) => 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { roleName } = useAppSelector(selectProfile);
-  const slice = roleName === ROLES.DOCTOR ? resolutionsSlice : resolutionsForPatientSlice;
+  const slice = roleName === ROLES.DOCTOR ? resolutionsForDoctorSlice : resolutionsForPatientSlice;
   useEffect(() => {
     dispatch(slice.actions.pending({
       offset: (currentPage - 1) * resolutionsOnPage,

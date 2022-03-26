@@ -6,9 +6,9 @@ import { PATH } from 'routes/constants';
 import { NavigatePanel } from 'components/NavigatePanel/NavigatePanel';
 import { filterOptionsForPatient, patientTabs } from 'components/NavigatePanel/constants';
 import { SelectForMainViewContainer } from 'components/Select/SelectForMainViewContainer';
+import { CreateAppointmentButton } from 'components/NavigatePanel/CreateAppointmentButton';
 import {
   ButtonLeftPlusIcon,
-  CreateAppointmentButton,
   FilterAndButtonContainer,
   UserPageTitle,
 } from './NavigatePanel.styles';
@@ -21,7 +21,9 @@ export interface NavigatePanelProps {
 }
 
 export const PatientNavigatePanel: React.VFC<NavigatePanelProps> = (
-  { pageTitle, setFilterQuery, setPageNumber,setSearchTerm },
+  {
+    pageTitle, setFilterQuery, setPageNumber,
+  },
 ) => (
   <>
     <NavigatePanel buttonOnNavigatePanel={patientTabs} />
@@ -39,9 +41,7 @@ export const PatientNavigatePanel: React.VFC<NavigatePanelProps> = (
         />
         <ButtonWrapper>
           <ButtonLeftPlusIcon />
-          <CreateAppointmentButton to={PATH.CREATE_APPOINTMENT}>
-            {dictionary.patientPage.createAppointments}
-          </CreateAppointmentButton>
+          <CreateAppointmentButton />
         </ButtonWrapper>
       </FilterAndButtonContainer>
     </UserPageTitle>
