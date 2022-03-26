@@ -28,6 +28,7 @@ module.exports = {
     'max-len': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
     'import/prefer-default-export': 'off',
+    'react/require-default-props': 'off',
   },
   settings: {
     'import/resolver': {

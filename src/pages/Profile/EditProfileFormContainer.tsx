@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import { profileSlice, selectProfile } from 'redux/reducers';
 import { EditProfileForm } from './EditProfileForm';
@@ -10,14 +10,15 @@ export const EditProfileFormContainer:React.VFC<EditProfileFormContainerProps> =
     status, lastName, firstName, photo,
   } = useAppSelector(selectProfile);
 
-  const handleSubmitForm = (values: EditProfileData) => {
+  const handleSubmitForm = useCallback((values: EditProfileData) => {
     const data = new FormData();
     data.append('firstName', values.firstName);
     data.append('lastName', values.lastName);
     data.append('avatar', values.photo);
     dispatch(profileSlice.actions.editProfilePending(data));
     closeEditModeHandler();
-  };
+  }, []);
+
   const editProfileFormInitialValues = { firstName, lastName, photo };
 
   return (

@@ -11,6 +11,17 @@ export const TimeSlotsContainer = styled.div`
   overflow: hidden;
   padding: 0;
   margin: 0;
+  @media (max-device-width: 1580px) {
+    max-width: 424px;
+    padding: 0 16px 0 0;
+  }
+  @media only screen and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3),
+  (max-device-width: 767px) {
+    display: flex;
+    overflow: auto;
+    min-height: 50px;
+    max-width: 100%;
+  }
 `;
 
 export const TimeSlotContainer = styled.input`
@@ -42,7 +53,7 @@ export const TimeSlotLabel = styled.label`
   border-radius: 8px;
   padding: 8px 0;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 1.5rem;
   line-height: 130%;
   align-items: center;
   justify-content: center;

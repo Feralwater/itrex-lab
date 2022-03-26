@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { memo } from 'react';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import {
   SkeletonBodyWrapper, SkeletonCardContainer, SkeletonCardHeader, SkeletonImageWrapper, SkeletonInfoWrapper,
 } from './Skeleton.styles';
 import { colors } from '../CommonStyles';
 
-export const SkeletonCard = React.forwardRef((props, ref) => (
+export const SkeletonCard = memo(React.forwardRef((props, ref) => (
   <SkeletonCardContainer ref={ref as React.RefObject<HTMLDivElement>}>
     <SkeletonCardHeader>
       <SkeletonTheme baseColor={`${colors.alabaster}`} highlightColor={`${colors.link_water['016']}`}>
@@ -25,4 +25,4 @@ export const SkeletonCard = React.forwardRef((props, ref) => (
       </SkeletonTheme>
     </SkeletonBodyWrapper>
   </SkeletonCardContainer>
-));
+)));

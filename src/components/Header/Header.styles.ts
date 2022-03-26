@@ -63,9 +63,11 @@ export const UserInfo = styled.div`
 
 export const UserImageContainer = styled.div`
   margin: 0 0 0 16px;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   position: relative;
+  background-color: ${colors.white};
+  border-radius: 100%;
 `;
 
 export const UserImage = styled.img`

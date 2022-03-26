@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import {
-  borders,
+  BoldSubTitle,  borders,
   colors, H4, shadows, SubTitle, Title,
 } from '../CommonStyles';
 
@@ -63,7 +63,7 @@ export const UserCardBodyTime = styled.div`
 
 export const UserCardBodyTimeText = styled.time`
   font-weight: 600;
-  font-size: 15px;
+  font-size: 1.5rem;
   color: ${colors.dark_jungle_green};
   margin: 0 0 16px 0;
 `;
@@ -92,9 +92,45 @@ export const UserCardBodyAppointmentConfirm = styled.div<UserCardBodyAppointment
   background-color: ${(props) => props.color};
 `;
 
-export const AppointmentStatus = styled(SubTitle)`
+export const AppointmentSubTitle = styled(SubTitle)`
   color: ${colors.rock_blue};
-  margin: 0;
+`;
+
+export const AppointmentStatus = styled.div`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+`;
+
+export const AppointmentStatusSwitcher = styled.div`
+  padding: 26px;
+`;
+
+export const StatusList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding-inline-start: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  gap: 20px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 130%;
+  color: ${colors.rock_blue};
+  padding: 10px 0 0 0;
+`;
+
+export const Status = styled.li`
+  display: flex;
+  align-items: center;
+  & label{
+    cursor: pointer;
+  }
+  & input{
+    cursor: pointer;
+    margin: 0 10px 0 0;
+  }
 `;
 
 export const DoctorSpecializationName = styled(SubTitle)`
@@ -121,7 +157,7 @@ export const UserCardImageContainer = styled.div`
   border-radius: 100%;
 `;
 
-export const UserCardName = styled(H4)`
+export const UserCardName = styled(BoldSubTitle)`
   margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;

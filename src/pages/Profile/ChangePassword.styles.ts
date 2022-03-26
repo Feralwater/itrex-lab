@@ -8,4 +8,7 @@ export const ChangePasswordForm = styled(Form)`
 
 export const ChangePasswordFormBody = styled.div`
   padding: 40px;
+  @media (max-width: 370px) {
+    padding: 20px;
+  }
 `;

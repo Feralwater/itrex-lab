@@ -34,7 +34,7 @@ const ReactCalendarContainer = styled.div`
       background: none;
       color: ${colors.black['1']};
       font-weight: 600;
-      font-size: 17px;
+      font-size: 1.7rem;
       line-height: 240%;
     }
   }
@@ -43,15 +43,13 @@ const ReactCalendarContainer = styled.div`
     text-align: center;
     text-transform: uppercase;
     font-weight: 500;
-    font-size: 13px;
+    font-size: 1.3rem;
     line-height: 130%;
     color: ${colors.rock_blue};
     margin: 0 0 24px 0;
   }
 
   & div.react-calendar__month-view__weekdays__weekday {
-    padding: 4px;
-
     & abbr {
       text-decoration: none;
     }

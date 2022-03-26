@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { LabelType } from './Select.types';
 import { borders, colors, shadows } from '../CommonStyles';
 
-export const SelectStyles: StylesConfig<LabelType, false, GroupBase<LabelType>> = {
+export const SelectForAppointmentFormStyles: StylesConfig<LabelType, false, GroupBase<LabelType>> = {
   control: (styles) => ({
     ...styles,
     backgroundColor: `${colors.white}`,
@@ -85,20 +85,25 @@ export const SelectStyles: StylesConfig<LabelType, false, GroupBase<LabelType>> 
   }),
 };
 
-export const SelectLabel = styled.label`
+interface SelectLabelType {
+  labelPosition: 'column' | 'inline';
+}
+
+export const SelectLabel = styled.label<SelectLabelType>`
   font-weight: 500;
-  font-size: 13px;
+  font-size: 1.3rem;
   line-height: 130%;
-  color: ${colors.black['1']};
+  color: ${(props) => (props.labelPosition === 'column' ? `${colors.black['1']}` : `${colors.rock_blue}`)};
   display: flex;
-  flex-direction: column;
+  flex-direction: ${(props) => (props.labelPosition === 'column' && 'column')};
   gap: 10px;
-  margin: 0 0 26px 0;
+  margin: ${(props) => (props.labelPosition === 'column' && '0 0 26px 0')};
+  align-items: ${(props) => (props.labelPosition === 'inline' && 'center')};
 `;
 
 export const RequireSign = styled.i`
   font-weight: 400;
-  font-size: 15px;
+  font-size: 1.5rem;
   line-height: 140%;
   color: ${colors.brink_pink};
 `;
