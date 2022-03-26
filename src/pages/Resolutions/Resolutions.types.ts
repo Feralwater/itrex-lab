@@ -10,12 +10,12 @@ export interface ResolutionRowProps {
 }
 
 export interface ResolutionsPaginateProps {
-  fromItem: number
-  toItem: number
-  totalResolutionsCount: number
-  handleClick: (current: { selected: number; }) => void
-  pagesCount: number
-  currentPageNumber: string | number
+  fromItem?: number
+  toItem?: number
+  totalResolutionsCount?: number
+  handleClick?: (current: { selected: number; }) => void
+  pagesCount?: number
+  currentPageNumber?: string | number
 }
 
 export interface ResolutionsProps extends ResolutionsPaginateProps {

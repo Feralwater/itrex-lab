@@ -8,7 +8,7 @@ import { ResolutionsLoaderContainer } from './Resolutions.styles';
 import { ResolutionsProps } from './Resolutions.types';
 
 export const Resolutions:React.VFC<ResolutionsProps> = (
-  { responseStatus, myResolutions, ...restProps },
+  { responseStatus, myResolutions },
 ) => (
   <>
     {responseStatus !== FETCH_STATUS.LOADING
@@ -25,6 +25,6 @@ export const Resolutions:React.VFC<ResolutionsProps> = (
           />
         </ResolutionsLoaderContainer>
       )}
-    {myResolutions.length > 0 && <ResolutionsPaginate {...restProps} />}
+    {myResolutions.length > 0 && <ResolutionsPaginate />}
   </>
 );
