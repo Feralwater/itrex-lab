@@ -5,7 +5,7 @@ export const ResolutionsTableContainer = styled.div`
   overflow-x: auto;
 `;
 
-export const ResolutionsTable = styled.table`
+export const Table = styled.table`
   min-width: 100%;
   border-collapse: separate;
   text-align: left;
