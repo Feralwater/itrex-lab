@@ -21,7 +21,7 @@ export const PatientsButton = styled(Link)<PatientsButtonProps>`
   width: 137px;
   display: inline-flex;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 1.5rem;
   align-items: center;
   justify-content: center;
   border-radius: 8px;
@@ -39,6 +39,12 @@ export const UserPageTitle = styled.div`
   justify-content: space-between;
   flex-wrap: nowrap;
 `;
+export const FilterAndButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 70px;
+  flex-wrap: nowrap;
+`;
 export const SearchAndFilter = styled.div`
   display: flex;
   align-items: center;
@@ -47,7 +53,7 @@ export const SearchAndFilter = styled.div`
   padding: 0 50px 0 0;
 `;
 
-export const CreateAppointmentButton = styled(Link)`
+export const AppointmentButton = styled(Link)`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -56,7 +62,7 @@ export const CreateAppointmentButton = styled(Link)`
   border-radius: 8px;
   border: none;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 1.5rem;
   color: ${colors.white};
   cursor: pointer;
   background-color: ${colors.cornflower_blue};

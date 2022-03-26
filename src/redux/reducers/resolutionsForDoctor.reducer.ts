@@ -11,8 +11,8 @@ const initialState = {
   status: FETCH_STATUS.IDLE,
 } as ResolutionsState;
 
-export const resolutionsSlice = createSlice({
-  name: 'resolutions',
+export const resolutionsForDoctorSlice = createSlice({
+  name: 'resolutionsForDoctor',
   initialState,
   reducers: {
     fulfilled: (state, action: PayloadAction<ResolutionsResponse>) => ({ ...state, ...action.payload, status: FETCH_STATUS.FULFILLED }),
@@ -21,5 +21,5 @@ export const resolutionsSlice = createSlice({
   },
 });
 
-export const selectResolutions = (state: RootState) => state.resolutions;
-export const resolutionsReducer = resolutionsSlice.reducer;
+export const selectResolutions = (state: RootState) => state.resolutionsForDoctor;
+export const resolutionsForDoctorReducer = resolutionsForDoctorSlice.reducer;

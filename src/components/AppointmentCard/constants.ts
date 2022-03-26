@@ -20,3 +20,15 @@ export const statusDescription = {
 
 export const endVisitHourFormat = 'h';
 export const visitTimeFormat = (endVisitHour: string) => `ccc LLL dd, Y h aaa - ${endVisitHour} aaa`;
+
+export const appointmentsStatuses = [
+  {
+    currentStatus: statuses.waiting,
+  },
+  {
+    currentStatus: statuses.confirmed,
+  },
+  {
+    currentStatus: statuses.canceled,
+  },
+];

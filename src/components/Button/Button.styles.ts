@@ -15,7 +15,7 @@ const StyledButton = styled.button<ButtonProps>`
     font-size: 12px;
   }
   ${(props) => props.size === 'large' && css`
-    font-size: 17px;
+    font-size: 1.7rem;
     line-height: 120%;
   `}
   ${(props) => props.variant === 'primary' && css`
@@ -28,7 +28,7 @@ const StyledButton = styled.button<ButtonProps>`
     }
   `}
   ${(props) => props.size === 'small' && css`
-    font-size: 15px;
+    font-size: 1.5rem;
     line-height: 120%;
   `}
   ${(props) => props.variant === 'secondary' && css`

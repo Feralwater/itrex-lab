@@ -6,7 +6,10 @@ import { colors } from 'components/CommonStyles';
 import { dictionary as pagesDictionary } from '../dictionary/pagesDictionary';
 import { EditButtons } from './Profile.styles';
 
-export const ProfileButtonsBlock: React.VFC<ButtonWithLoaderProps> = ({
+export interface ProfileButtonsBlockProps extends ButtonWithLoaderProps{
+  closeEditModeHandler: ()=>void
+}
+export const ProfileButtonsBlock: React.VFC<ProfileButtonsBlockProps> = ({
   status,
   isValid,
   dirty,

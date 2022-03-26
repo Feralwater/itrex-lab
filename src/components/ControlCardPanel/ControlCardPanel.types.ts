@@ -27,5 +27,5 @@ export interface ResolutionModalButtonsProps {
   activeButtonIcon: string;
   passiveButtonIcon: string;
   activeButtonType: 'button' | 'submit' | 'reset' | undefined;
-  disabled: boolean;
+  disabled?: boolean;
 }
