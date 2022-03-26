@@ -1,18 +1,10 @@
 import React, { Dispatch, SetStateAction } from 'react';
-import { ButtonWrapper } from 'components/AuthForms/AuthForm.styles';
 import { H1 } from 'components/CommonStyles/Topography';
 import { dictionary } from 'pages';
 import { NavigatePanel } from 'components/NavigatePanel/NavigatePanel';
-import { filterOptionsForPatient, patientTabs } from 'components/NavigatePanel/constants';
-import { SelectForMainViewContainer } from 'components/Select/SelectForMainViewContainer';
+import { patientTabs } from 'components/NavigatePanel/constants';
 import { CreateAppointmentButton } from 'components/NavigatePanel/CreateAppointmentButton';
-import {
-  ButtonLeftPlusIcon,
-  FilterAndButtonContainer,
-  UserPageTitle,
-} from './NavigatePanel.styles';
 import { Sorts } from 'pages/Resolutions/Sorts';
-import { dictionary } from 'pages';
 import { UserPageTitle } from './NavigatePanel.styles';
 
 export interface NavigatePanelProps {
@@ -24,7 +16,9 @@ export interface NavigatePanelProps {
 }
 
 export const PatientNavigatePanel: React.VFC<NavigatePanelProps> = (
-  { pageTitle, setSearchTerm,setSpecialisationID, setFilterQuery, setPageNumber, }
+  {
+    pageTitle, setSearchTerm, setSpecialisationID,
+  },
 ) => (
   <>
     <NavigatePanel buttonOnNavigatePanel={patientTabs} />
