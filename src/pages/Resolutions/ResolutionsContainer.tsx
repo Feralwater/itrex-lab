@@ -23,11 +23,16 @@ export const ResolutionsContainer = () => {
   const fromItem = (Number(currentPageNumber) - 1) * resolutionsOnPage + 1;
   const toItem = Math.min((Number(currentPageNumber) - 1) * resolutionsOnPage + resolutionsOnPage, totalResolutionsCount);
   const [searchTerm, setSearchTerm] = useState('');
-  useFetchResolutions(currentPage, searchTerm);
+  const [specialisationID, setSpecialisationID] = useState('');
+  useFetchResolutions(currentPage, searchTerm, specialisationID);
 
   return (
     <div>
-      <NavigatePanelToDisplay roleName={roleName} setSearchTerm={setSearchTerm} />
+      <NavigatePanelToDisplay
+        roleName={roleName}
+        setSearchTerm={setSearchTerm}
+        setSpecialisationID={setSpecialisationID}
+      />
       <Resolutions
         responseStatus={responseStatus}
         myResolutions={myResolutions}

@@ -46,6 +46,7 @@ export const dictionary = {
     buttonAppointments: 'Appointments',
     createAppointments: 'Create an appointment',
     resolutionsTitle: 'Resolutions',
+    resolutionsFilterPlaceholder: 'Doctor',
     filterTitle: 'Show:',
     filterPlaceholder: 'All',
   },

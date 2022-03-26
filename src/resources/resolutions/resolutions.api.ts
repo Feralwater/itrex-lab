@@ -28,6 +28,14 @@ const resolutionsAPI = {
       },
     });
   },
+  async fetchResolutionsBySpecialization(offset: number, limit:number, specializationID:string) {
+    return instance.get<ResolutionsForPatientResponse>(RESOLUTIONS_API.resolutionsDoctorSpecialization(specializationID), {
+      params: {
+        offset,
+        limit,
+      },
+    });
+  },
 };
 
 export default resolutionsAPI;

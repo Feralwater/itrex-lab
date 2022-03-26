@@ -42,6 +42,7 @@ export interface AppointmentsForPatientPending {
 }
 
 export interface AppointmentsForDoctorPending {
+  specializationID?:string
   offset: number;
   limit: number;
   name?: string;
