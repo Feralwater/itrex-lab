@@ -21,6 +21,7 @@ export const useFetchAppointments = (page: number, searchTerm?: string, filterQu
         limit: appointmentsPerPage,
         name: debouncedSearchTerm,
         dateStatus,
+        firstNameSort: filterQuery,
       }));
     }
   }, [userId, dispatch, page, debouncedSearchTerm, filterQuery]);

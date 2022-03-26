@@ -3,7 +3,7 @@ import { SelectForPatientMailView } from 'components/Select/SelectForPatientMail
 import { CustomSelectProps, Options } from './Select.types';
 import { CustomSelect } from './Select';
 
-export const SelectForPatientMainViewContainer: React.VFC<CustomSelectProps> = ({
+export const SelectForMainViewContainer: React.VFC<CustomSelectProps> = ({
   setPageNumber, setFilterQuery, ...props
 }) => {
   const onChangeHandler = ({ value } : Options) => {

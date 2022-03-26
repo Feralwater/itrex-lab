@@ -15,12 +15,17 @@ export const AppointmentsForDoctorContainer: React.VFC = () => {
   const { appointments, status, isMore: isMoreAppointments } = useAppSelector(selectAppointmentsForDoctor);
   const { hiddenBlockRef } = useAppointmentsOnScreen({ responseStatus: status, isMoreAppointments, setPageNumber });
   useFetchAppointments(pageNumber, searchTerm);
+  const { appointments, status, isMore: isMoreAppointments } = useAppSelector(selectAppointmentsForDoctor);
+  const { hiddenBlockRef } = useAppointmentsOnScreen({ responseStatus, isMoreAppointments, setPageNumber });
+  const [filterQuery, setFilterQuery] = useState<string>('dateSort');
+  useFetchAppointments(pageNumber, filterQuery, searchTerm);
   return (
     <>
       <DoctorNavigatePanel
         pageTitle={dictionary.doctorPage.patientsTitle}
         setPageNumber={setPageNumber}
         setSearchTerm={setSearchTerm}
+        setFilterQuery={setFilterQuery}
       />
       <MainPageView
         ref={hiddenBlockRef}
