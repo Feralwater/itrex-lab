@@ -34,6 +34,8 @@ export const dictionary = {
     controlCommandEdit: 'Edit a resolution',
     controlCommandDelete: 'Delete',
     controlCommandEditAppointment: 'Edit an appointment',
+    filterTitle: 'Sort by:',
+    filterPlaceholder: 'Date',
   },
   patientPage: {
     emptyAppointmentsHistoryTextLine1: 'You have no appointments yet.',
@@ -44,6 +46,8 @@ export const dictionary = {
     buttonAppointments: 'Appointments',
     createAppointments: 'Create an appointment',
     resolutionsTitle: 'Resolutions',
+    filterTitle: 'Show:',
+    filterPlaceholder: 'All',
   },
   adminPage: {
     buttonPatients: 'Patients',

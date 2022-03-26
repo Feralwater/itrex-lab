@@ -39,6 +39,12 @@ export const UserPageTitle = styled.div`
   justify-content: space-between;
   flex-wrap: nowrap;
 `;
+export const FilterAndButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 70px;
+  flex-wrap: nowrap;
+`;
 export const SearchAndFilter = styled.div`
   display: flex;
   align-items: center;

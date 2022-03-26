@@ -1,21 +1,31 @@
 import { initialResolutionsPageNumber, PATH, ROLES } from 'routes/constants';
 import { dictionary } from 'pages';
 
-export const searchOptions = [
+export const filterOptionsForPatient = [
   {
-    label: 'Date',
-    value: 'Date',
+    label: 'All',
+    value: 'All',
   },
   {
-    label: 'Name',
-    value: 'Name',
+    label: 'Upcoming',
+    value: 'Upcoming',
+  },
+  {
+    label: 'Outdated',
+    value: 'Outdate',
   },
 ];
 
-export const optionsForSearchSelect = searchOptions.map((option) => ({
-  label: option.label,
-  value: option.value,
-}));
+export const filterOptionsForDoctor = [
+  {
+    label: 'Date',
+    value: 'dateSort',
+  },
+  {
+    label: 'Name',
+    value: 'firstNameSort',
+  },
+];
 
 export const patientTabs = [
   {

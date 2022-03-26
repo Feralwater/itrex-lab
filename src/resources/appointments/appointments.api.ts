@@ -9,20 +9,23 @@ import { APPOINTMENTS_API } from './constants';
 import instance from '../../services/api/api';
 
 const appointments = {
-  async fetchAppointmentsForPatient(offset:number, limit:number) {
+  async fetchAppointmentsForPatient(offset:number, limit:number, dateStatus?: string) {
     return instance.get<AppointmentsForPatient>(APPOINTMENTS_API.appointmentsPatientMe(), {
       params: {
         offset,
         limit,
+        dateStatus,
       },
     });
   },
-  async fetchAppointmentsForDoctor(offset:number, limit:number, name?:string) {
+  async fetchAppointmentsForDoctor(offset:number, limit:number, name?:string, sortBy?:string, order = 'Asc') {
     return instance.get<AppointmentsForDoctor>(APPOINTMENTS_API.appointmentsDoctorMe(), {
       params: {
         offset,
         limit,
         name,
+        sortBy,
+        order,
       },
     });
   },

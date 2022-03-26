@@ -38,12 +38,14 @@ export interface AppointmentPending {
 export interface AppointmentsForPatientPending {
   offset: number;
   limit: number;
+  dateStatus?: string;
 }
 
 export interface AppointmentsForDoctorPending {
   offset: number;
   limit: number;
-  name?: string
+  name?: string;
+  firstNameSort?: string;
 }
 
 export interface DeleteAppointmentPending {

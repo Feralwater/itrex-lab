@@ -44,7 +44,7 @@ function* fetchAppointmentsForDoctor({ payload }: ReturnType<typeof appointments
 
 function* fetchAppointmentsForPatient({ payload }: ReturnType<typeof appointmentsForPatientSlice.actions.pending>) {
   try {
-    const { data }: AxiosResponse<AppointmentsForPatient> = yield call(appointments.fetchAppointmentsForPatient, payload.offset, payload.limit);
+    const { data }: AxiosResponse<AppointmentsForPatient> = yield call(appointments.fetchAppointmentsForPatient, payload.offset, payload.limit, payload.dateStatus);
     yield put(appointmentsForPatientSlice.actions.fulfilled(data));
   } catch (error:any) {
     yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.response.data)));
