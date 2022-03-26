@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { AppointmentCardHeader } from 'components/AppointmentCard/AppointmentCardHeader';
 import { AppointmentCardProps } from 'components/AppointmentCard/AppointmentCard.types';
 import { AppointmentCardDescription } from 'components/AppointmentCard/AppointmentCardDescription';
@@ -20,7 +20,7 @@ import { UserImage } from '../Header/Header.styles';
 import { componentsDictionary } from '../dictionary/componentsDictionary';
 import { formatVisitTime } from './utils';
 
-export const AppointmentCard:React.VFC<AppointmentCardProps> = ({
+export const AppointmentCard:React.VFC<AppointmentCardProps> = memo(({
   photo,
   appointmentID,
   firstName,
@@ -61,4 +61,4 @@ export const AppointmentCard:React.VFC<AppointmentCardProps> = ({
       />
     </UserCardBody>
   </UserCard>
-);
+));

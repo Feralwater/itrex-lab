@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { AppointmentForPatient } from 'resources/appointments/appointments.types';
 import { ReactComponent as Heart } from 'assets/svg/heart-icon.svg';
 import { AppointmentCard } from 'components/AppointmentCard/AppointmentCard';
@@ -7,9 +7,11 @@ interface PatientFullStateProps{
   appointments: Array<AppointmentForPatient>
 }
 
-export const PatientFullState:React.VFC<PatientFullStateProps> = ({ appointments }) => (
-  <>
-    {
+export const PatientFullState:React.VFC<PatientFullStateProps> = ({ appointments }) => {
+  const MemoHeart = useMemo(() => <Heart />, []);
+  return (
+    <>
+      {
         appointments.map((appointment) => (
           <AppointmentCard
             key={appointment.id}
@@ -20,11 +22,12 @@ export const PatientFullState:React.VFC<PatientFullStateProps> = ({ appointments
             photo={appointment.doctor.photo}
             status={appointment.status}
             time={appointment.visit_date}
-            cardIcon={<Heart />}
+            cardIcon={MemoHeart}
             cardDescription={appointment.reason}
             shouldRenderAppointmentCardSettingsButton={false}
           />
         ))
       }
-  </>
-);
+    </>
+  );
+};

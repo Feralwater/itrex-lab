@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { UserPageTitle, SearchAndFilter } from 'components/NavigatePanel/NavigatePanel.styles';
 import { H1 } from 'components/CommonStyles/Topography';
 import { NavigatePanelProps } from 'components/NavigatePanel/PatientNavigatePanel';
@@ -6,9 +6,7 @@ import { NavigatePanel } from 'components/NavigatePanel/NavigatePanel';
 import { doctorTabs } from 'components/NavigatePanel/constants';
 import { InputSearchContainer } from '../Input';
 
-export const DoctorNavigatePanel: React.VFC<NavigatePanelProps> = (
-  { pageTitle, setSearchTerm, setPageNumber },
-) => (
+export const DoctorNavigatePanel: React.VFC<NavigatePanelProps> = memo(({ pageTitle, setSearchTerm, setPageNumber }) => (
   <>
     <NavigatePanel buttonOnNavigatePanel={doctorTabs} />
     <UserPageTitle>
@@ -29,4 +27,4 @@ export const DoctorNavigatePanel: React.VFC<NavigatePanelProps> = (
       </SearchAndFilter>
     </UserPageTitle>
   </>
-);
+));

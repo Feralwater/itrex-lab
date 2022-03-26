@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import { dictionary } from 'pages';
 import { appointmentsForDoctorSlice, selectAppointmentsForDoctor } from 'redux/reducers';
@@ -21,22 +21,22 @@ export const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
   const editResolutionInitialText = appointments?.find((appointment) => appointment.resolution?.appointment_id === appointmentID)?.resolution?.resolution;
   const [editResolutionText, setEditResolutionText] = useState<string>(editResolutionInitialText || '');
 
-  const saveHandler = () => {
+  const saveHandler = useCallback(() => {
     dispatch(appointmentsForDoctorSlice.actions.createResolutionPending({
       resolution: resolutionText,
       appointmentID,
     }));
     setActiveCreateResolutionModal(false);
     setIsMenuOpen(false);
-  };
-  const editHandler = () => {
+  }, [resolutionText, appointmentID]);
+  const editHandler = useCallback(() => {
     dispatch(appointmentsForDoctorSlice.actions.editResolutionPending({
       resolution: editResolutionText,
       resolutionID,
     }));
     setActiveEditResolutionModal(false);
     setIsMenuOpen(false);
-  };
+  }, [editResolutionText, resolutionID]);
   const cancelHandler = () => {
     setActiveEditResolutionModal(false);
     setIsMenuOpen(false);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { CalendarTileProperties } from 'react-calendar';
 import { useField } from 'formik';
 import { isPast, addDays, format } from 'date-fns';
@@ -16,12 +16,12 @@ export const DatePickerContainer:React.VFC<DatePickerContainerProps> = ({
   };
   const formatDate = (date: Date) => format(new Date(date), shortWeekdayFormatString);
 
-  const disabledDays = ({ date }: CalendarTileProperties) => {
+  const disabledDays = useCallback(({ date }: CalendarTileProperties) => {
     if (disableDate) {
       return disableDate;
     }
     return isPast(addDays(date, 1));
-  };
+  }, [disableDate]);
 
   return <ReactCalendar handlerClickDay={handlerClickDay} formatDate={formatDate} disabledDays={disabledDays} />;
 };
