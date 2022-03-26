@@ -7,6 +7,7 @@ import { loginRepository } from 'resources/loginRepository';
 import { ROLES } from 'routes/constants';
 import { componentsDictionary } from 'components';
 import { createErrorNotificationMessage } from 'redux/sagas/utils/createErrorNotificationMessage';
+import { cacheUserPhoto } from 'redux/sagas/utils/cacheUserPhoto';
 import auth from '../../resources/auth/auth.api';
 import { notificationSlice, profileSlice } from '../reducers';
 import { RoleName } from '../reducers/reducers.types';
@@ -18,7 +19,8 @@ function* getProfile() {
   try {
     const token = loginRepository.getAccessToken();
     const me : AxiosResponse<ProfileResponse> = token ? yield call(auth.getMe) : null;
-    yield put(profileSlice.actions.fulfilled(me?.data || null));
+    const userPhotoUrl: string = yield call(cacheUserPhoto, me.data.photo);
+    yield put(profileSlice.actions.fulfilled({ ...me?.data, photo: userPhotoUrl } || null));
   } catch (error:any) {
     yield put(profileSlice.actions.failed());
   }
