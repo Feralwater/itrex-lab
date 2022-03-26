@@ -10,13 +10,14 @@ import { ButtonLeftPlusIcon, CreateAppointmentButton, UserPageTitle } from './Na
 export interface NavigatePanelProps {
   pageTitle: string;
   setSearchTerm?: Dispatch<SetStateAction<string>>;
+  setPageNumber?: Dispatch<SetStateAction<number>>;
 }
 
-export const PatientNavigatePanel:React.VFC<NavigatePanelProps> = ({ pageTitle }) => (
+export const PatientNavigatePanel: React.VFC<NavigatePanelProps> = ({ pageTitle }) => (
   <>
     <NavigatePanel buttonOnNavigatePanel={patientTabs} />
     <UserPageTitle>
-      <H1>{ pageTitle }</H1>
+      <H1>{pageTitle}</H1>
       <ButtonWrapper>
         <ButtonLeftPlusIcon />
         <CreateAppointmentButton to={PATH.CREATE_APPOINTMENT}>

@@ -69,10 +69,22 @@ function* deleteAppointment({ payload } : ReturnType<typeof appointmentsForDocto
   }
 }
 
+function* updateAppointmentStatus({ payload } : ReturnType<typeof appointmentsForDoctorSlice.actions.updateStatusPending>) {
+  try {
+    const { data } : AxiosResponse<string> = yield call(appointments.updateAppointmentStatus, payload.id, { status: payload.status });
+    yield put(notificationSlice.actions.notificationSuccess(componentsDictionary.message.successMessageBodyUpdateAppointmentStatus));
+    yield put(appointmentsForDoctorSlice.actions.updateStatusFulfilled({ editedAppointmentID: data, editedStatus: payload.status }));
+  } catch (error:any) {
+    yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.response.data)));
+    yield put(appointmentsForDoctorSlice.actions.updateStatusFailed());
+  }
+}
+
 export function* appointmentWatcher() {
   yield takeEvery(makeAppointmentSlice.actions.pending, createAppointment);
   yield takeEvery(getDoctorsByIDSlice.actions.pending, getDoctorsByID);
   yield takeEvery(freeDoctorTimeSlice.actions.pending, getFreeDoctorTime);
   yield takeEvery(occupationsSlice.actions.pending, getOccupations);
   yield takeEvery(appointmentsForDoctorSlice.actions.deleteAppointmentPending, deleteAppointment);
+  yield takeEvery(appointmentsForDoctorSlice.actions.updateStatusPending, updateAppointmentStatus);
 }

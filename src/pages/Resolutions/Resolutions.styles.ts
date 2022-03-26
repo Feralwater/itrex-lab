@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from '../../components/CommonStyles';
+import { colors } from 'components/CommonStyles';
 
 export const ResolutionsTable = styled.table`
   width: 100%;
@@ -36,6 +36,12 @@ export const ResolutionsTableCell = styled.td`
     display: flex;
     justify-content: flex-end;
     border: none;
+  }
+
+  & img {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
   }
 `;
 

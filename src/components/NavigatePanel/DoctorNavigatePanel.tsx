@@ -6,7 +6,7 @@ import { NavigatePanel } from 'components/NavigatePanel/NavigatePanel';
 import { doctorTabs } from 'components/NavigatePanel/constants';
 import { InputSearchContainer } from '../Input';
 
-export const DoctorNavigatePanel: React.VFC<NavigatePanelProps> = memo(({ pageTitle, setSearchTerm }) => (
+export const DoctorNavigatePanel: React.VFC<NavigatePanelProps> = memo(({  pageTitle, setSearchTerm, setPageNumber  }) => (
   <>
     <NavigatePanel buttonOnNavigatePanel={doctorTabs} />
     <UserPageTitle>
@@ -22,6 +22,7 @@ export const DoctorNavigatePanel: React.VFC<NavigatePanelProps> = memo(({ pageTi
           isRequire={false}
           inputSize="small"
           setSearchTerm={setSearchTerm}
+          setPageNumber={setPageNumber}
         />
       </SearchAndFilter>
     </UserPageTitle>

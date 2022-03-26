@@ -37,11 +37,11 @@ export const AppointmentCard:React.VFC<AppointmentCardProps> = memo(({
     <UserCardHeader>
       <UserData>
         <UserCardImageContainer>
-          <UserImage src={photo} alt={componentsDictionary.appointmentCard.avatarAlt} />
+          <UserImage src={photo} alt={componentsDictionary.appointmentCard.photoAlt} />
         </UserCardImageContainer>
         <UserInformation>
           <UserCardName>{`${firstName} ${lastName}`}</UserCardName>
-          <AppointmentCardHeader status={status} specialization={specialization} />
+          <AppointmentCardHeader status={status} specialization={specialization} appointmentID={appointmentID} />
         </UserInformation>
       </UserData>
       <SettingsButtons
