@@ -1,5 +1,5 @@
 import { PATH, ROLES } from 'routes/constants';
-import { ProfileContainer, ResolutionsForDoctorContainer } from 'pages';
+import { ProfileContainer, ResolutionsContainer } from 'pages';
 import { AppointmentsForDoctorContainer } from 'modules/doctor/AppointmentsForDoctorContainer';
 
 export const doctorsRoutes = [
@@ -13,7 +13,7 @@ export const doctorsRoutes = [
   },
   {
     path: PATH.DOCTOR_RESOLUTIONS,
-    element: ResolutionsForDoctorContainer,
+    element: ResolutionsContainer,
   },
   {
     path: PATH.profile(ROLES.DOCTOR),

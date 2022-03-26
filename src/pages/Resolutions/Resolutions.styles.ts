@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { colors } from 'components/CommonStyles';
 
-export const ResolutionsTable = styled.table`
+export const Table = styled.table`
   width: 100%;
   border-collapse: separate;
   text-align: left;
