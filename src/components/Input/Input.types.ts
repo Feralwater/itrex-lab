@@ -12,6 +12,7 @@ export interface InputProps {
   inputSize: 'large' | 'small';
   isSecurePassword?: boolean;
   setSearchTerm?: Dispatch<SetStateAction<string>>;
+  setPageNumber?: Dispatch<SetStateAction<number>>;
   isRequire: boolean;
 
   [x: string]: any;

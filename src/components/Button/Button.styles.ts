@@ -11,6 +11,9 @@ const StyledButton = styled.button<ButtonProps>`
   border: ${(props) => (props.isBorder ? `1px solid ${colors.link_water['1']}` : 'none')};
   cursor: pointer;
   text-transform: capitalize;
+  @media (max-width: 465px) {
+    font-size: 12px;
+  }
   ${(props) => props.size === 'large' && css`
     font-size: 1.7rem;
     line-height: 120%;
@@ -46,6 +49,10 @@ const StyledButton = styled.button<ButtonProps>`
                     background-image: url("./svg/right-arrow.svg");
                     background-repeat: no-repeat;
                     background-position: 25px 50%;
+                    @media (max-width: 465px) {
+                      padding: 10px 14px 10px 45px;
+                      background-position: 10px 50%;
+                    }
                   `
       : css`
                     padding: 16px 57px 16px 24px;

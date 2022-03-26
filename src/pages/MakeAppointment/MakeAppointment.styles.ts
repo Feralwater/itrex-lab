@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Form } from 'formik';
 import { Link } from 'react-router-dom';
-import { colors, H4 } from '../../components/CommonStyles';
+import { BoldSubTitle, colors } from 'components/CommonStyles';
 
 export const AppointmentStepsNumbers = styled.div`
   display: flex;
@@ -77,7 +77,7 @@ export const Step = styled.div`
   align-items: center;
 `;
 
-export const StepNumber = styled(H4)`
+export const StepNumber = styled(BoldSubTitle)`
   width: 32px;
   height: 32px;
   border: 1px solid ${colors.rock_blue};
@@ -89,7 +89,7 @@ export const StepNumber = styled(H4)`
   flex-shrink: 0;
 `;
 
-export const StepDescription = styled(H4)`
+export const StepDescription = styled(BoldSubTitle)`
   color: ${colors.rock_blue};
   margin: 0 0 0 16px;
 `;

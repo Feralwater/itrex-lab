@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from 'hooks';
-import { resolutionsSlice, selectProfile } from 'redux/reducers';
+import { resolutionsForDoctorSlice, selectProfile } from 'redux/reducers';
 import { resolutionsOnPage } from 'pages/Resolutions/constants';
 import { Dispatch, SetStateAction } from 'react';
 import { ROLES } from 'routes/constants';
@@ -12,7 +12,7 @@ interface OnPageChange{
 export const useOnPageChange = ({ setCurrentPage }:OnPageChange) => {
   const dispatch = useAppDispatch();
   const { roleName } = useAppSelector(selectProfile);
-  const slice = roleName === ROLES.DOCTOR ? resolutionsSlice : resolutionsForPatientSlice;
+  const slice = roleName === ROLES.DOCTOR ? resolutionsForDoctorSlice : resolutionsForPatientSlice;
   const onPageChange = (current: { selected: number }) => {
     setCurrentPage(current.selected + 1);
     dispatch(slice.actions.pending({

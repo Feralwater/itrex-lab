@@ -13,6 +13,9 @@ export const ProfileContainer = styled.div`
   align-items: center;
   text-align: center;
   gap: 40px;
+  @media (max-width: 465px) {
+    gap: 20px;
+  }
 `;
 
 export const InfoContainer = styled.div`
@@ -27,6 +30,9 @@ export const EditButtons = styled.div`
   display: flex;
   align-items: center;
   gap: 32px;
+  @media (max-width: 465px) {
+    gap: 12px;
+  }
 `;
 
 export const EditImage = styled.input`
@@ -77,9 +83,17 @@ export const EditFormElements = styled.div`
   display: flex;
   align-items: end;
   gap: 32px;
+  @media (max-width: 767px) {
+    flex-direction: column;
+    align-items: start;
+  }
 `;
 
 export const InputContainer = styled.div`
+  @media (max-width: 767px) {
+    width: 100%
+  }
+
   & > div {
     margin: 0;
   }

@@ -8,9 +8,15 @@ export const InputSearchContainer: React.VFC<InputProps> = ({
   icon,
   iconURL,
   setSearchTerm,
+  setPageNumber,
   ...props
 }) => {
-  const changeSearchValueHandler = (event: ChangeEvent<HTMLInputElement>) => setSearchTerm && setSearchTerm(event.currentTarget.value);
+  const changeSearchValueHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    if (setSearchTerm && setPageNumber) {
+      setSearchTerm(event.currentTarget.value);
+      setPageNumber(1);
+    }
+  };
 
   return (
     <SearchContainer iconURL={iconURL} icon={icon}>

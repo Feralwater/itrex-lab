@@ -1,7 +1,7 @@
 import { PATH, ROLES } from 'routes/constants';
 import { MakeAppointmentFormContainer } from 'components';
 import { AppointmentsForPatientContainer } from 'modules/patient/AppointmentsForPatientContainer';
-import { ProfileContainer, ResolutionsForPatientContainer } from 'pages';
+import { ProfileContainer, ResolutionsContainer } from 'pages';
 
 export const patientsRoutes = [
   {
@@ -14,7 +14,7 @@ export const patientsRoutes = [
   },
   {
     path: PATH.PATIENT_RESOLUTIONS,
-    element: ResolutionsForPatientContainer,
+    element: ResolutionsContainer,
   },
   {
     path: PATH.CREATE_APPOINTMENT,

@@ -39,6 +39,12 @@ export const UserPageTitle = styled.div`
   justify-content: space-between;
   flex-wrap: nowrap;
 `;
+export const FilterAndButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 70px;
+  flex-wrap: nowrap;
+`;
 export const SearchAndFilter = styled.div`
   display: flex;
   align-items: center;
@@ -47,7 +53,7 @@ export const SearchAndFilter = styled.div`
   padding: 0 50px 0 0;
 `;
 
-export const CreateAppointmentButton = styled(Link)`
+export const AppointmentButton = styled(Link)`
   display: inline-flex;
   align-items: center;
   justify-content: center;

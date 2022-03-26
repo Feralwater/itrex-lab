@@ -74,3 +74,11 @@ export const SubTitle = styled.div`
   align-items: center;
   color: ${colors.dark_jungle_green};
 `;
+
+export const BoldSubTitle = styled.div`
+  font-weight: 600; 
+  font-size: 17px;
+  line-height: 140%;
+  color: ${colors.dark_jungle_green};
+  margin: 0;
+`;

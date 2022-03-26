@@ -6,35 +6,38 @@ import {
   AppointmentsForDoctor,
   AppointmentsForPatient,
 } from 'resources/appointments/appointments.types';
+import { cacheUserPhotos } from 'redux/sagas/utils/cacheUserPhoto';
 import { createErrorNotificationMessage } from './utils/createErrorNotificationMessage';
 import appointments from '../../resources/appointments/appointments.api';
 import resolutionsAPI from '../../resources/resolutions/resolutions.api';
 import { appointmentsForDoctorSlice, appointmentsForPatientSlice, notificationSlice } from '../reducers';
 
-function generateAppointmentForDoctor(resolutionResponse: ResolutionsResponse) {
-  return (appointment:AppointmentForDoctor) => ({
+function generateAppointmentForDoctor(resolutionResponse: ResolutionsResponse, usersPhotoArray:string[]) {
+  return (appointment:AppointmentForDoctor, index:number) => ({
     visitDate: appointment.visit_date,
     firstName: appointment.patient.first_name,
     lastName: appointment.patient.last_name,
-    photo: appointment.patient.photo,
+    photo: usersPhotoArray[index],
     appointmentID: appointment.id,
     appointmentStatus: appointment.status,
     resolution: resolutionResponse.resolutions.find((resolution) => (resolution.appointment_id === appointment.id)),
   });
 }
 
-function generateAppointmentsForDoctor(appointmentsResponse: AppointmentsForDoctor, resolutionResponse: ResolutionsResponse) {
+function generateAppointmentsForDoctor(appointmentsResponse: AppointmentsForDoctor, resolutionResponse: ResolutionsResponse, usersPhotoArray:string[]) {
   return {
-    appointments: appointmentsResponse.appointments.map(generateAppointmentForDoctor(resolutionResponse)),
+    appointments: appointmentsResponse.appointments.map(generateAppointmentForDoctor(resolutionResponse, usersPhotoArray)),
     total: appointmentsResponse.total,
   };
 }
 
 function* fetchAppointmentsForDoctor({ payload }: ReturnType<typeof appointmentsForDoctorSlice.actions.pending>) {
   try {
-    const { data: appointmentsResponse }: AxiosResponse<AppointmentsForDoctor> = yield call(appointments.fetchAppointmentsForDoctor, payload.offset, payload.limit);
+    const { data: appointmentsResponse }: AxiosResponse<AppointmentsForDoctor> = yield call(appointments.fetchAppointmentsForDoctor, payload.offset, payload.limit, payload.name);
+    const srcArray = appointmentsResponse.appointments.map((appointment) => appointment.patient.photo);
+    const usersPhotoArray: string[] = yield call(cacheUserPhotos, srcArray);
     const { data: resolutionResponse }: AxiosResponse<ResolutionsResponse> = yield call(resolutionsAPI.fetchResolutionsForDoctor, payload.offset, payload.limit);
-    const appointmentsForDoctor = generateAppointmentsForDoctor(appointmentsResponse, resolutionResponse);
+    const appointmentsForDoctor = generateAppointmentsForDoctor(appointmentsResponse, resolutionResponse, usersPhotoArray);
     yield put(appointmentsForDoctorSlice.actions.fulfilled(appointmentsForDoctor));
   } catch (error:any) {
     yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.response.data)));
@@ -44,7 +47,7 @@ function* fetchAppointmentsForDoctor({ payload }: ReturnType<typeof appointments
 
 function* fetchAppointmentsForPatient({ payload }: ReturnType<typeof appointmentsForPatientSlice.actions.pending>) {
   try {
-    const { data }: AxiosResponse<AppointmentsForPatient> = yield call(appointments.fetchAppointmentsForPatient, payload.offset, payload.limit);
+    const { data }: AxiosResponse<AppointmentsForPatient> = yield call(appointments.fetchAppointmentsForPatient, payload.offset, payload.limit, payload.dateStatus);
     yield put(appointmentsForPatientSlice.actions.fulfilled(data));
   } catch (error:any) {
     yield put(notificationSlice.actions.notificationError(createErrorNotificationMessage(error.response.data)));
