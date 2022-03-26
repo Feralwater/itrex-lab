@@ -18,12 +18,7 @@ export const EditProfileFormContainer:React.VFC<EditProfileFormContainerProps> =
     dispatch(profileSlice.actions.editProfilePending(data));
     closeEditModeHandler();
   }, []);
-  const editProfileFormInitialValues = {
-    firstName,
-    lastName,
-    avatar: photo,
-  };
-  };
+
   const editProfileFormInitialValues = { firstName, lastName, photo };
 
   return (

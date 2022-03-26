@@ -1,4 +1,4 @@
-import React, { useCallback, useState , useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactPaginate from 'react-paginate';
 import { useParams } from 'react-router';
 import { useNavigate } from 'react-router-dom';

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useFetchDoctorsAppointments } from 'modules/hooks/useFetchDoctorsAppointments';
 import { DoctorNavigatePanel } from 'components';
 import { dictionary } from 'pages/dictionary/pagesDictionary';
 import { MainPageView } from 'modules/MainPageView';
