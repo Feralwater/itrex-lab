@@ -9,7 +9,10 @@ import { dictionary } from 'pages';
 import { InputSearchContainer } from '../Input';
 
 export const DoctorNavigatePanel: React.VFC<NavigatePanelProps> = memo((
-  { pageTitle, setSearchTerm, setFilterQuery, setPageNumber, }) => (
+  {
+    pageTitle, setSearchTerm, setFilterQuery, setPageNumber,
+  },
+) => (
   <>
     <NavigatePanel buttonOnNavigatePanel={doctorTabs} />
     <UserPageTitle>

@@ -6,7 +6,6 @@ import {
   AppointmentsForDoctor,
   AppointmentsForPatient,
 } from 'resources/appointments/appointments.types';
-import { resolutionsOnPageOffset } from 'pages/Resolutions/constants';
 import { createErrorNotificationMessage } from './utils/createErrorNotificationMessage';
 import appointments from '../../resources/appointments/appointments.api';
 import resolutionsAPI from '../../resources/resolutions/resolutions.api';
