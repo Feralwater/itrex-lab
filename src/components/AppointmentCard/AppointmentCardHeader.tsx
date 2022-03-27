@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import {
   AppointmentStatus, AppointmentSubTitle, DoctorSpecializationName, UserCardBodyAppointmentConfirm,
 } from 'components/AppointmentCard/AppointmentCard.styles';
@@ -11,26 +11,24 @@ export const AppointmentCardHeader:React.VFC<AppointmentCardHeaderProps> = ({
   specialization,
   appointmentID,
 }) => {
-  const [openModalWindow, setOpenModalWindow] = useState<boolean>(false);
+  const modal = useRef(null);
+  const openModalHandler = () => modal.current.open();
   return (
     <>
       <AppointmentSubTitle>
         {status
           ? (
-            <AppointmentStatus onClick={() => setOpenModalWindow(true)}>
+            <AppointmentStatus onClick={openModalHandler}>
               <UserCardBodyAppointmentConfirm color={statusColor[status]} />
               <div>{statusDescription[status]}</div>
             </AppointmentStatus>
           )
           : <DoctorSpecializationName>{specialization}</DoctorSpecializationName>}
       </AppointmentSubTitle>
-      {openModalWindow && (
       <ChangeStatusModal
+        ref={modal}
         appointmentID={appointmentID}
-        setOpenModalWindow={setOpenModalWindow}
-        openModalWindow={openModalWindow}
       />
-      )}
     </>
   );
 };

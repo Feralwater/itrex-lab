@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 import { SettingsButton } from 'components/AppointmentCard/AppointmentCard.styles';
 import { ControlCardPanel } from 'components/ControlCardPanel';
 import { AppointmentCardSettingsButtonProps } from 'components/AppointmentCard/AppointmentCard.types';

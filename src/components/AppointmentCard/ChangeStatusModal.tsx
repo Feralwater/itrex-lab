@@ -1,5 +1,5 @@
 import React, {
-  ChangeEvent, Dispatch, SetStateAction, useState,
+  ChangeEvent, Dispatch, forwardRef, SetStateAction, useState,
 } from 'react';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import { statuses } from 'components/AppointmentCard/constants';
@@ -17,9 +17,7 @@ interface ChangeStatusModalProps extends PatientInfoProps {
   setOpenModalWindow: Dispatch<SetStateAction<boolean>>;
 }
 
-export const ChangeStatusModal: React.VFC<ChangeStatusModalProps> = (
-  { appointmentID, setOpenModalWindow, openModalWindow },
-) => {
+export const ChangeStatusModal: React.VFC<ChangeStatusModalProps> = forwardRef(({ appointmentID }, ref) => {
   const dispatch = useAppDispatch();
   const { appointments } = useAppSelector(selectAppointmentsForDoctor);
   const selectedAppointment = appointments.find((appointment) => (appointment.appointmentID === appointmentID));
@@ -32,15 +30,12 @@ export const ChangeStatusModal: React.VFC<ChangeStatusModalProps> = (
       id: appointmentID,
       status: activeStatus,
     }));
-    setOpenModalWindow(false);
+    ref.current.close();
   };
-  const cancelHandler = () => setOpenModalWindow(false);
+  const cancelHandler = () => ref.current.close();
 
   return (
-    <ModalWindow
-      activeModal={openModalWindow}
-      setActiveModal={setOpenModalWindow}
-    >
+    <ModalWindow ref={ref}>
       <ResolutionModalBody>
         <ResolutionModalTitle>{componentsDictionary.changeAppointmentStatus.title}</ResolutionModalTitle>
         <PatientInfo appointmentID={appointmentID} />
@@ -61,4 +56,4 @@ export const ChangeStatusModal: React.VFC<ChangeStatusModalProps> = (
       />
     </ModalWindow>
   );
-};
+});
