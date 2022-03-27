@@ -2,14 +2,14 @@ import React, { useEffect } from 'react';
 
 interface UseClickOutsideProps{
   elRef: React.MutableRefObject<HTMLDivElement> | undefined
-  callback: (event:Event)=>void
+  callback: ()=>void
 }
 
 export const UseClickOutside = ({ elRef, callback }:UseClickOutsideProps) => {
   useEffect(() => {
     const handleClickOutside = (event:Event) => {
-      if (elRef?.current?.contains(event.target as Element) && callback) {
-        callback(event);
+      if (!elRef?.current?.contains(event.target as Element)) {
+        callback();
       }
     };
     document.addEventListener('click', handleClickOutside, true);
