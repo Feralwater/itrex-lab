@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { H1, H2, SubTitle } from 'components/CommonStyles/Topography';
-import { Button, ModalWindow } from 'components';
+import { Button, ModalWindow, OpenCloseHandle } from 'components';
 import { dictionary as pagesDictionary } from '../dictionary/pagesDictionary';
 import {
   ImageContainer, InfoContainer, ProfileContainer, TitlePanel,
@@ -16,8 +16,8 @@ export const Profile: React.VFC<ProfileProps> = ({
   logoutHandler,
   openEditModeHandler,
 }) => {
-  const modal = useRef(null);
-  const openModalHandler = () => modal.current.open();
+  const modal = useRef<OpenCloseHandle>(null);
+  const openModalHandler = () => modal.current?.open();
 
   return (
     <>

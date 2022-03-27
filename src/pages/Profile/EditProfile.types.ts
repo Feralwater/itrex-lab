@@ -7,10 +7,6 @@ export interface EditProfileData {
   photo: File | string;
 }
 
-export interface ChangePasswordProps {
-  setActiveChangePasswordModal: Dispatch<SetStateAction<boolean>>;
-}
-
 export interface EditProfileFormProps {
   handleSubmitForm: ({
     firstName,

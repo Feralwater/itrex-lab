@@ -7,8 +7,8 @@ export interface ControlCardPanelProps {
 }
 
 export interface CardControlListProps {
-  setActiveCreateResolutionModal: Dispatch<SetStateAction<boolean>>;
-  setActiveEditResolutionModal: Dispatch<SetStateAction<boolean>>;
+  openCreateModalHandler: () => void
+  openEditModalHandler: () => void
   appointmentID: string;
 }
 

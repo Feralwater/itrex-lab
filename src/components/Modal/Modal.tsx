@@ -5,9 +5,17 @@ import React, {
 import { createPortal } from 'react-dom';
 import { Modal, ModalContent } from './Modal.styles';
 
-const modalElement = document.getElementById('modal-root');
+const modalElement = document.getElementById('modal-root')!;
 
-export const ModalWindow = forwardRef(({ children, defaultOpened = false }, ref) => {
+interface ModalProps{
+  children:JSX.Element
+}
+export interface OpenCloseHandle {
+  open: () => void,
+  close: () => void,
+}
+
+export const ModalWindow = forwardRef<OpenCloseHandle, ModalProps>(({ children, defaultOpened = false }, ref) => {
   const [isOpen, setIsOpen] = useState<boolean>(defaultOpened);
 
   const close = useCallback(() => setIsOpen(false), []);

@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from 'hooks';
 import { dictionary } from 'pages';
 import { appointmentsForDoctorSlice, selectAppointmentsForDoctor } from 'redux/reducers';
 import { ControlCardPanelProps } from './ControlCardPanel.types';
-import { ModalWindow } from '../Modal';
+import { ModalWindow, OpenCloseHandle } from '../Modal';
 import { CardControlList } from '..';
 import { ResolutionModal } from './ResolutionModal';
 import { ResolutionModalButtons } from './ResolutionModalButtons';
@@ -38,10 +38,11 @@ export const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
   const cancelHandler = () => {
     setIsMenuOpen(false);
   };
-  const createModal = useRef(null);
-  const editModal = useRef(null);
-  const openCreateModalHandler = () => createModal.current.open();
-  const openEditModalHandler = () => editModal.current.open();
+  const createModal = useRef<OpenCloseHandle>(null);
+  const editModal = useRef<OpenCloseHandle>(null);
+
+  const openCreateModalHandler = () => createModal.current?.open();
+  const openEditModalHandler = () => editModal.current?.open();
 
   return (
     <>
@@ -51,40 +52,44 @@ export const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
         openEditModalHandler={openEditModalHandler}
       />
       <ModalWindow ref={createModal}>
-        <ResolutionModal
-          resolutionText={resolutionText}
-          setResolutionText={setResolutionText}
-          appointmentID={appointmentID}
-          resolutionModalTitle={dictionary.resolutionModal.createResolutionTitle}
-        />
-        <ResolutionModalButtons
-          disabled={resolutionText.length < 2}
-          activeButtonType="button"
-          cancelHandler={cancelHandler}
-          saveHandler={saveHandler}
-          passiveButtonText={dictionary.resolutionModal.cancelButtonText}
-          activeButtonText={dictionary.resolutionModal.createButtonText}
-          activeButtonIcon="/svg/board-icon.svg"
-          passiveButtonIcon="/svg/close-icon.svg"
-        />
+        <>
+          <ResolutionModal
+            resolutionText={resolutionText}
+            setResolutionText={setResolutionText}
+            appointmentID={appointmentID}
+            resolutionModalTitle={dictionary.resolutionModal.createResolutionTitle}
+          />
+          <ResolutionModalButtons
+            disabled={resolutionText.length < 2}
+            activeButtonType="button"
+            cancelHandler={cancelHandler}
+            saveHandler={saveHandler}
+            passiveButtonText={dictionary.resolutionModal.cancelButtonText}
+            activeButtonText={dictionary.resolutionModal.createButtonText}
+            activeButtonIcon="/svg/board-icon.svg"
+            passiveButtonIcon="/svg/close-icon.svg"
+          />
+        </>
       </ModalWindow>
       <ModalWindow ref={editModal}>
-        <ResolutionModal
-          resolutionText={editResolutionText}
-          setResolutionText={setEditResolutionText}
-          appointmentID={appointmentID}
-          resolutionModalTitle={dictionary.resolutionModal.editResolutionTitle}
-        />
-        <ResolutionModalButtons
-          disabled={editResolutionText.length < 2}
-          activeButtonType="button"
-          cancelHandler={cancelHandler}
-          saveHandler={editHandler}
-          passiveButtonText={dictionary.resolutionModal.cancelButtonText}
-          activeButtonText={dictionary.resolutionModal.saveButtonText}
-          activeButtonIcon="/svg/save-icon.svg"
-          passiveButtonIcon="/svg/close-icon.svg"
-        />
+        <>
+          <ResolutionModal
+            resolutionText={editResolutionText}
+            setResolutionText={setEditResolutionText}
+            appointmentID={appointmentID}
+            resolutionModalTitle={dictionary.resolutionModal.editResolutionTitle}
+          />
+          <ResolutionModalButtons
+            disabled={editResolutionText.length < 2}
+            activeButtonType="button"
+            cancelHandler={cancelHandler}
+            saveHandler={editHandler}
+            passiveButtonText={dictionary.resolutionModal.cancelButtonText}
+            activeButtonText={dictionary.resolutionModal.saveButtonText}
+            activeButtonIcon="/svg/save-icon.svg"
+            passiveButtonIcon="/svg/close-icon.svg"
+          />
+        </>
       </ModalWindow>
     </>
   );
