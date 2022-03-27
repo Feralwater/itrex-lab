@@ -1,5 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { AppointmentCardSettingsButton } from 'components/AppointmentCard/AppointmentCardSettingsButton';
+import { UseClickOutside } from 'components/ControlCardPanel/hooks/useClickOutside';
 
 interface SettingsButtonsProps{
   shouldRenderAppointmentCardSettingsButton: boolean,
@@ -16,18 +17,11 @@ export const SettingsButtons:React.VFC<SettingsButtonsProps> = (
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const menuRef = useRef() as React.MutableRefObject<HTMLDivElement> | undefined;
 
-  useEffect(() => {
-    const handler = (event:Event) => {
-      if (menuRef?.current && !menuRef.current.contains(event.target as Element)) {
-        setIsMenuOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handler);
+  const onClickOutside = useCallback(() => {
+    setIsMenuOpen(false);
+  }, []);
 
-    return () => {
-      document.removeEventListener('mousedown', handler);
-    };
-  });
+  UseClickOutside({ elRef: menuRef, callback: onClickOutside });
   if (shouldRenderAppointmentCardSettingsButton) {
     return (
       <AppointmentCardSettingsButton
