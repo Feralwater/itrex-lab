@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { ModalWindow } from '../components';
+import { ModalWindow } from 'components';
 
 export default {
   title: 'Example/ModalWindow',
@@ -11,6 +11,5 @@ const Template: ComponentStory<typeof ModalWindow> = (args) => <ModalWindow {...
 
 export const Primary = Template.bind({});
 Primary.args = {
-  activeModal: true,
-  children: 'Your modal window goes here',
+  children: <div>Your modal window goes here</div>,
 };

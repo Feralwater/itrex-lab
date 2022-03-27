@@ -8,14 +8,14 @@ interface UseClickOutsideProps{
 export const UseClickOutside = ({ elRef, callback }:UseClickOutsideProps) => {
   useEffect(() => {
     const handleClickOutside = (event:Event) => {
-      if (!elRef?.current?.contains(event.target as Element)) {
+      if (!elRef?.current?.contains(event.target as Element) && callback) {
         callback();
       }
     };
-    document.addEventListener('click', handleClickOutside, true);
+    document.addEventListener('click', handleClickOutside, false);
 
     return () => {
-      document.removeEventListener('click', handleClickOutside, true);
+      document.removeEventListener('click', handleClickOutside, false);
     };
   }, [callback, elRef]);
 };

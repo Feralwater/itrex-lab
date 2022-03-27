@@ -15,11 +15,11 @@ export const AppointmentCardSettingsButton:React.VFC<AppointmentCardSettingsButt
     <div ref={menuRef}>
       <SettingsButton onClick={toggleMenuHandler} />
       {isMenuOpen && (
-        <ControlCardPanel
-          appointmentID={appointmentID}
-          setIsMenuOpen={setIsMenuOpen}
-          resolutionID={resolutionID}
-        />
+      <ControlCardPanel
+        appointmentID={appointmentID}
+        setIsMenuOpen={setIsMenuOpen}
+        resolutionID={resolutionID}
+      />
       )}
     </div>
   );
