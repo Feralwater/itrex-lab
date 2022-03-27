@@ -1,4 +1,5 @@
 import React, {
+  forwardRef,
   useCallback, useEffect, useImperativeHandle, useState,
 } from 'react';
 import { createPortal } from 'react-dom';
@@ -7,7 +8,7 @@ import { Modal, ModalContent } from './Modal.styles';
 
 const modalElement = document.getElementById('modal-root');
 
-export const ModalWindow: React.FC<ModalProps> = ({ children, defaultOpened = false }, ref) => {
+export const ModalWindow = forwardRef(({ children, defaultOpened = false }, ref) => {
   const [isOpen, setIsOpen] = useState<boolean>(defaultOpened);
 
   const close = useCallback(() => setIsOpen(false), []);
@@ -30,10 +31,10 @@ export const ModalWindow: React.FC<ModalProps> = ({ children, defaultOpened = fa
 
   return createPortal(isOpen
     ? (
-      <Modal>
-        <ModalContent>
+      <Modal isActive={isOpen} onClick={close}>
+        <ModalContent isActive={isOpen}>
           {children}
         </ModalContent>
       </Modal>
     ) : null, modalElement);
-};
+});

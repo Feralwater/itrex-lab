@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import {
   Field, Formik, FormikErrors, FormikTouched, FormikValues,
 } from 'formik';
@@ -13,7 +13,7 @@ import { ChangePasswordProps } from './EditProfile.types';
 import changePasswordValidationSchema from './validation/changePassword.validation';
 import { ChangePasswordForm, ChangePasswordFormBody } from './ChangePassword.styles';
 
-export const ChangePasswordModal: React.VFC<ChangePasswordProps> = ({ setActiveChangePasswordModal }) => {
+export const ChangePasswordModal: React.VFC<ChangePasswordProps> = forwardRef((props, ref) => {
   const dispatch = useAppDispatch();
   const handleSubmitForm = ({
     oldPassword,
@@ -58,7 +58,7 @@ export const ChangePasswordModal: React.VFC<ChangePasswordProps> = ({ setActiveC
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
               handleSubmit();
-              setActiveChangePasswordModal(false);
+              ref.current.close();
             }
           }}
         >
@@ -80,17 +80,17 @@ export const ChangePasswordModal: React.VFC<ChangePasswordProps> = ({ setActiveC
             disabled={!(isValid && dirty)}
             activeButtonType="submit"
             cancelHandler={() => {
-              setActiveChangePasswordModal(false);
+              ref.current.close();
               handleReset();
             }}
             passiveButtonText={dictionary.resolutionModal.cancelButtonText}
             activeButtonText={dictionary.resolutionModal.saveButtonText}
             activeButtonIcon="/svg/save-icon.svg"
             passiveButtonIcon="/svg/close-icon.svg"
-            saveHandler={() => setActiveChangePasswordModal(false)}
+            saveHandler={() => ref.current.close()}
           />
         </ChangePasswordForm>
       )}
     </Formik>
   );
-};
+});
