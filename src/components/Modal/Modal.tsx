@@ -3,7 +3,6 @@ import React, {
   useCallback, useEffect, useImperativeHandle, useState,
 } from 'react';
 import { createPortal } from 'react-dom';
-import { ModalProps } from './Modal.types';
 import { Modal, ModalContent } from './Modal.styles';
 
 const modalElement = document.getElementById('modal-root');
@@ -32,7 +31,7 @@ export const ModalWindow = forwardRef(({ children, defaultOpened = false }, ref)
   return createPortal(isOpen
     ? (
       <Modal isActive={isOpen} onClick={close}>
-        <ModalContent isActive={isOpen}>
+        <ModalContent isActive={isOpen} onClick={(event) => event.stopPropagation()}>
           {children}
         </ModalContent>
       </Modal>

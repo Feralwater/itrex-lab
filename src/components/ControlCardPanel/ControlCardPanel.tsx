@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import { dictionary } from 'pages';
 import { appointmentsForDoctorSlice, selectAppointmentsForDoctor } from 'redux/reducers';
@@ -14,8 +14,6 @@ export const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
   resolutionID,
 }) => {
   const dispatch = useAppDispatch();
-  const [activeCreateResolutionModal, setActiveCreateResolutionModal] = useState<boolean>(false);
-  const [activeEditResolutionModal, setActiveEditResolutionModal] = useState<boolean>(false);
   const [resolutionText, setResolutionText] = useState<string>('');
   const { appointments } = useAppSelector(selectAppointmentsForDoctor);
   const editResolutionInitialText = appointments?.find((appointment) => appointment.resolution?.appointment_id === appointmentID)?.resolution?.resolution;
@@ -26,7 +24,7 @@ export const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
       resolution: resolutionText,
       appointmentID,
     }));
-    setActiveCreateResolutionModal(false);
+
     setIsMenuOpen(false);
   }, [resolutionText, appointmentID]);
   const editHandler = useCallback(() => {
@@ -34,22 +32,25 @@ export const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
       resolution: editResolutionText,
       resolutionID,
     }));
-    setActiveEditResolutionModal(false);
+
     setIsMenuOpen(false);
   }, [editResolutionText, resolutionID]);
   const cancelHandler = () => {
-    setActiveEditResolutionModal(false);
     setIsMenuOpen(false);
   };
+  const createModal = useRef(null);
+  const editModal = useRef(null);
+  const openCreateModalHandler = () => createModal.current.open();
+  const openEditModalHandler = () => editModal.current.open();
 
   return (
     <>
       <CardControlList
-        setActiveCreateResolutionModal={setActiveCreateResolutionModal}
+        openCreateModalHandler={openCreateModalHandler}
         appointmentID={appointmentID}
-        setActiveEditResolutionModal={setActiveEditResolutionModal}
+        openEditModalHandler={openEditModalHandler}
       />
-      <ModalWindow activeModal={activeCreateResolutionModal} setActiveModal={setActiveCreateResolutionModal}>
+      <ModalWindow ref={createModal}>
         <ResolutionModal
           resolutionText={resolutionText}
           setResolutionText={setResolutionText}
@@ -67,7 +68,7 @@ export const ControlCardPanel: React.VFC<ControlCardPanelProps> = ({
           passiveButtonIcon="/svg/close-icon.svg"
         />
       </ModalWindow>
-      <ModalWindow activeModal={activeEditResolutionModal} setActiveModal={setActiveEditResolutionModal}>
+      <ModalWindow ref={editModal}>
         <ResolutionModal
           resolutionText={editResolutionText}
           setResolutionText={setEditResolutionText}

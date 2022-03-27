@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { SettingsButton } from 'components/AppointmentCard/AppointmentCard.styles';
 import { ControlCardPanel } from 'components/ControlCardPanel';
 import { AppointmentCardSettingsButtonProps } from 'components/AppointmentCard/AppointmentCard.types';
@@ -15,11 +15,11 @@ export const AppointmentCardSettingsButton:React.VFC<AppointmentCardSettingsButt
     <div ref={menuRef}>
       <SettingsButton onClick={toggleMenuHandler} />
       {isMenuOpen && (
-        <ControlCardPanel
-          appointmentID={appointmentID}
-          setIsMenuOpen={setIsMenuOpen}
-          resolutionID={resolutionID}
-        />
+      <ControlCardPanel
+        appointmentID={appointmentID}
+        setIsMenuOpen={setIsMenuOpen}
+        resolutionID={resolutionID}
+      />
       )}
     </div>
   );
