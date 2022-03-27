@@ -9,6 +9,7 @@ const modalElement = document.getElementById('modal-root')!;
 
 interface ModalProps{
   children:JSX.Element
+  defaultOpened: boolean
 }
 export interface OpenCloseHandle {
   open: () => void,
